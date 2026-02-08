@@ -133,8 +133,17 @@
         .modal-content ul { list-style: none; margin: 20px 0; }
         .modal-content li { margin-bottom: 12px; padding-left: 25px; position: relative; }
         .modal-content li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
-        .price-box { background: #f0f7ff; padding: 20px; border-radius: 8px; border-left: 6px solid var(--accent); margin: 25px 0; font-size: 1.2rem; font-weight: 800; color: var(--primary); }
-
+        .price-box { 
+          background: #f0f7ff; 
+            padding: 12px 20px; /* Réduit de 20px à 12px pour diminuer la hauteur */
+            border-radius: 8px; 
+            border-left: 6px solid var(--accent); 
+            margin: 20px 0; 
+            font-size: 1.15rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+             line-height: 1.2; /* Resserre l'espace entre la ligne du prix et la description */
+            }
         /* --- CONTACT --- */
         .section-contact { padding: 100px 0; background: var(--light-bg); }
         .contact-intro { max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; color: #555; text-align: center; }
@@ -273,12 +282,15 @@
                 </p>
             </div>
             <ul>
+                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
                 <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
                 <li>Plan d'entraînement de 12 semaines adapté à votre niveau actuel.</li>
-                <li>Ateliers techniques sur les transitions et la nage en eau libre.</li>
+                <li>Ajustement du plan à votre mode de vie.</li>
+                <li>Explication du déroulement d’un triathlon.</li>
+                <li>Formation sur les règlement de course.</li>
                 <li>Soutien moral et psychologique pour votre première ligne de départ.</li>
             </ul>
-            <div class="price-box">Tarif : 399$ tout inclus pour 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit 133$/mois)</span></div>
+            <div class="price-box">Tarif : 399$ tout inclus pour 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit 133$/mois)<br>Plan d'entrainement + 5 séances de mentorat de 40min</span></div>
             <button class="btn-submit" onclick="closeModal('m1'); location.href='#contact';">C'est mon défi</button>
         </div>
     </div>
@@ -291,7 +303,7 @@
             <ul>
                 <li>Assignation d'un mentor dédié selon vos objectifs.</li>
                 <li>Analyse vidéo de votre technique de nage et de course.</li>
-                <li>Ajustements hebdomadaires selon vos disponibilités réelles.</li>
+                <li>Ajustements bi-mensuel selon vos disponibilités réelles.</li>
                 <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
                 <li>Engagement pour 1 saison (6 mois).</li>
             </ul>
@@ -306,13 +318,15 @@
             <h3>Programme: Performance Solo</h3>
              <blockquote class="quote-athlete">« Je veux arriver à mon meilleur niveau.»</blockquote>
             <ul>
+                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
                 <li>Planification avancée pour distances Ironman et 70.3.</li>
                 <li>Analyse de données poussée via TrainingPeaks*.</li>
+                <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
                 <li>Stratégie de nutrition de course personnalisée.</li>
                 <li>Optimisation de la performance en totale autonomie.</li>
                 <li>Engagement pour 1 an (12 mois).</li>
             </ul>
-            <div class="price-box">Tarif : 449$ tout inclus par 3 mois <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~150$/mois)<br><small>*souscription à TrainingPeaks Premium requise</small></span></div>
+            <div class="price-box">Tarif : 499$ tout inclus par 3 mois <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~166$/mois)<br><small>*souscription à TrainingPeaks Premium requise</small></span></div>
             <button class="btn-submit" onclick="closeModal('m3'); location.href='#contact';">Viser la performance</button>
         </div>
     </div>
