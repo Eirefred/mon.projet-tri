@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mon.projet-tri.org/sitemap.xml
