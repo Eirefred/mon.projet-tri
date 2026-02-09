@@ -168,10 +168,22 @@
     font-weight: 500;
     transition: all 0.2s ease; /* Transition fluide pour la couleur */
     -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu au clic sur mobile */
+/* Empêche la sélection de texte (le bleu transparent qui recouvre le texte) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    /* Supprime le contour bleu de focus sur tous les navigateurs */
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
 }
-.quiz-option:focus {
-    outline: none; /* Double sécurité pour le focus */
-    box-shadow: none; /* Au cas où une ombre serait appliquée par défaut */
+
+/* Force l'état normal même si le bouton est "actif" ou "focus" */
+.quiz-option:focus, .quiz-option:active {
+    outline: none !important;
+    background-color: #f8f8f8; /* La couleur grise d'origine de ton code */
+    border-color: #eee;        /* La bordure d'origine de ton code */
 }
 
 .quiz-option:hover {
