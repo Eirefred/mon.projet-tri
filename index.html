@@ -426,7 +426,7 @@
                 <li>Soutien moral et psychologique pour votre première ligne de départ.</li>
             </ul>
             <div class="price-box">Tarif : 399$ tout inclus pour 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit 133$/mois)<br>Plan d'entrainement + 5 séances de mentorat de 40min</span></div>
-            <button class="btn-submit" onclick="closeModal('m1'); location.href='#contact';">C'est mon défi</button>
+            <button class="btn-submit" onclick="choisirProgramme('PREMIER PAS')">C'est mon défi</button>
         </div>
     </div>
 
@@ -443,7 +443,7 @@
                 <li>...</li>
             </ul>
             <div class="price-box">Tarif : 449$ tout inclus par 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~150$/mois)<br>Engagement pour 1 saison (6 mois).<br></span></div>
-            <button class="btn-submit" onclick="closeModal('m2'); location.href='#contact';">Choisir ce plan</button>
+            <button class="btn-submit" onclick="choisirProgramme('MA SAISON')">Choisir ce plan</button>
         </div>
     </div>
 
@@ -462,7 +462,7 @@
                 <li>Recommendations de spécialistes <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(thérapeutes, nutritionnistes, positionnement vélo et +)</small></li>
             </ul>
             <div class="price-box">Tarif : 499$ tout inclus par 3 mois <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~166$/mois)<br>Engagement pour 1 an (12 mois).<br><small>*souscription à TrainingPeaks Premium requise</small></span></div>
-            <button class="btn-submit" onclick="closeModal('m3'); location.href='#contact';">Viser la performance</button>
+            <button class="btn-submit" onclick="choisirProgramme('PERFORMANCE SOLO')">Viser la performance</button>
         </div>
     </div>
 
@@ -617,6 +617,22 @@ function finaliser(physio) {
     document.getElementById('res-titre').innerText = "Analyse de profil : " + titre;
     document.getElementById('res-text').innerText = desc + " Spécificité : " + physio;
     document.getElementById('qRes').style.display = 'block';
+}
+
+function choisirProgramme(nom) {
+    // On remplit le champ message
+    const champMessage = document.getElementById('message-field');
+    champMessage.value = "PROJET SÉLECTIONNÉ : " + nom + "\n\n";
+    
+    // On ferme la modale qui est ouverte (m1, m2 ou m3)
+    closeModal('m1');
+    closeModal('m2');
+    closeModal('m3');
+    
+    // On descend automatiquement au formulaire
+    setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 300);
 }
 
 function transférerAuForm() {
