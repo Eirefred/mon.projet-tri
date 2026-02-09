@@ -271,7 +271,7 @@
     </style>
 </head>
 <body>
-
+<input type="text" id="focus-trap" style="position:absolute; opacity:0; height:0; width:0; pointer-events:none;">
     <header>
         <div class="nav-container">
             <div class="header-left">
@@ -609,14 +609,20 @@ function noter(cat, pts, next) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
     
     const nextStep = document.getElementById(next);
+    
+    // --- LA RUSE ICI ---
+    const trap = document.getElementById('focus-trap');
+    trap.focus(); // On envoie le focus sur l'élément invisible
+    // -------------------
+
     if (nextStep && next !== 'qRes') {
         mélangerOptions(next);
     }
     
     if (nextStep) {
         nextStep.style.display = 'block';
-        // AJOUTE CETTE LIGNE : Elle enlève le focus de n'importe quel bouton
-        document.activeElement.blur(); 
+        // On retire le focus après un micro-délai pour nettoyer
+        setTimeout(() => { trap.blur(); }, 50);
     }
 }
 
