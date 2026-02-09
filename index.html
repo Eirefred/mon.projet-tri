@@ -157,25 +157,44 @@
         .btn-quiz-launcher:hover { transform: translateY(-3px); background: var(--primary); }
 
         #quiz-steps-box { display: none; }
-        .quiz-option {
+
+/* --- FIX SCROLL HEADER --- */
+#programme, #vision, #contact { 
+    scroll-margin-top: 115px; 
+}
+
+/* --- STYLE DU QUIZ (Version DIV pour éviter le focus bleu) --- */
+.quiz-option {
     display: block;
     width: 100%;
-    padding: 18px;                /* Un peu plus d'espace pour cliquer */
+    box-sizing: border-box;
+    padding: 18px;
     margin: 12px 0;
     text-align: left;
     background: #f8f8f8;
-    border: 2px solid #eee; /* Bordure un peu plus visible par défaut */
+    border: 2px solid #eee;
     border-radius: 6px;
     cursor: pointer;
-    font-size: 1rem;            /* Taille confortable pour les réponses */
+    font-size: 1rem;
     font-weight: 500;
-    transition: all 0.2s ease; /* Transition fluide pour la couleur */
+    transition: all 0.2s ease;
+    /* Empêche le surlignage bleu sur mobile */
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    outline: none !important;
 }
 
-.quiz-option:hover {
-    border-color: var(--brand-blue); /* Utilise ton bleu au lieu du orange */
-    background: #f0f7ff;            /* Un fond bleu très léger au survol */
-    transform: none;                 /* Supprime le mouvement de décalage */
+@media (hover: hover) {
+    .quiz-option:hover {
+        border-color: var(--brand-blue);
+        background: #f0f7ff;
+    }
+}
+
+/* Supprime toute trace de focus-visible */
+.quiz-option:focus, .quiz-option:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
         /* --- CONTACT --- */
@@ -550,14 +569,12 @@
 let scores = { securite: 0, autonomie: 0, social: 0 };
 let progRes = "";
 
-// --- GESTION DES MODALES ---
 function openModal(id) {
     const modal = document.getElementById(id);
     if (!modal) return;
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
 
-    // Si on ouvre le quiz, on remet tout à zéro pour permettre de recommencer
     if (id === 'diag-modal') {
         scores = { securite: 0, autonomie: 0, social: 0 };
         document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
@@ -574,19 +591,16 @@ function closeModal(id) {
     }
 }
 
-// Fermer les modales en cliquant sur le fond noir
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         closeModal(event.target.id);
     }
 };
 
-// --- DÉROULEMENT DU QUIZ ---
 function startQuiz() {
     document.getElementById('quiz-intro').style.display = 'none';
     document.getElementById('quiz-steps-box').style.display = 'block';
-    
-    mélangerOptions('q1'); // Mélange la première question
+    mélangerOptions('q1');
     document.getElementById('q1').style.display = 'block';
 }
 
@@ -596,96 +610,72 @@ function noter(cat, pts, next) {
     
     const nextStep = document.getElementById(next);
     if (nextStep && next !== 'qRes') {
-        mélangerOptions(next); // Mélange les options de la question suivante
+        mélangerOptions(next);
+        nextStep.style.display = 'block';
+    } else if (next === 'qRes') {
+        // La logique est gérée par la question 6 qui appelle finaliser()
     }
-    
-    nextStep.style.display = 'block';
 }
 
 function finaliser(physio) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-    let titre = ""; 
+    
+    // Calcul du profil gagnant (le score le plus haut)
+    const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+    
+    let titre = "";
     let desc = "";
 
-    // Calcul du profil selon les scores
-    if (scores.securite >= scores.autonomie && scores.securite >= scores.social) {
+    if (gagnant === 'securite') {
         titre = "Sérénité Totale";
         progRes = "PREMIER PAS";
-        desc = "Vous avez besoin d'un cadre sécurisant. Le programme Premier Pas est idéal pour vous accompagner de A à Z.";
-    } else if (scores.social > 1) {
+        desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
+    } else if (gagnant === 'social') {
         titre = "Accompagnement Humain";
         progRes = "MA SAISON";
-        desc = "Le mentorat est votre moteur. Le programme Ma Saison vous permettra de ne plus jamais vous entraîner seul.";
+        desc = "Le mentorat est votre moteur. Pour ne plus jamais s'entraîner seul.";
     } else {
         titre = "Performance Autonome";
         progRes = "PERFORMANCE SOLO";
-        desc = "Vous visez les résultats. Le programme Performance Solo optimisera vos datas en totale autonomie.";
+        desc = "Vous visez les résultats et l'optimisation de vos données.";
     }
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
-    
-    // Affichage des résultats dans la modale
-    document.getElementById('res-titre').innerText = "Analyse de profil : " + titre;
-    document.getElementById('res-text').innerText = desc + " Spécificité : " + physio;
+    document.getElementById('res-titre').innerText = "Analyse : " + titre;
+    document.getElementById('res-text').innerText = desc + " (Profil : " + physio + ")";
     document.getElementById('qRes').style.display = 'block';
-}
-
-function choisirProgramme(nom) {
-    // On remplit le champ message
-    const champMessage = document.getElementById('message-field');
-    champMessage.value = "PROJET SÉLECTIONNÉ : " + nom + "\n\n";
-    
-    // On ferme la modale qui est ouverte (m1, m2 ou m3)
-    closeModal('m1');
-    closeModal('m2');
-    closeModal('m3');
-    
-    // On descend automatiquement au formulaire
-    setTimeout(() => {
-        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
 }
 
 function mélangerOptions(containerId) {
     const container = document.querySelector(`#${containerId}`);
-    const boutons = Array.from(container.querySelectorAll('.quiz-option'));
-    
-    // On mélange l'ordre du tableau
-    for (let i = boutons.length - 1; i > 0; i--) {
+    const options = Array.from(container.querySelectorAll('.quiz-option'));
+    for (let i = options.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [boutons[i], boutons[j]] = [boutons[j], boutons[i]];
+        [options[i], options[j]] = [options[j], options[i]];
     }
-    
-    // On ré-insère les boutons dans le nouvel ordre
-    boutons.forEach(bouton => container.appendChild(bouton));
+    options.forEach(opt => container.appendChild(opt));
 }
 
 function transférerAuForm() {
     const area = document.getElementById('message-field');
     const data = window.finalDiagnostic;
-    
     if (!data) return;
-
-    // Remplissage du textarea avec les bons termes
-    area.value = `ANALYSE DE PROFIL :\n- Profil : ${data.titre}\n- Programme suggéré : ${data.prog}\n- Physiologie : ${data.physio}\n\nJe souhaite en discuter ensemble.`;
-    
-    // Ajustement de la hauteur du champ
-    area.style.height = 'auto';
-    area.style.height = area.scrollHeight + 'px';
-    
-    // Fermeture et redirection
+    area.value = `ANALYSE DE PROFIL :\n- Profil : ${data.titre}\n- Programme : ${data.prog}\n- Physiologie : ${data.physio}\n\nJe souhaite en discuter.`;
     closeModal('diag-modal');
-    
-    // Petit délai pour laisser la modale se fermer avant le scroll
     setTimeout(() => {
-        const contactSection = document.getElementById('contact');
-        if (contactSection) {
-            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 150);
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
 }
 
-// --- LOGIQUE TÉLÉPHONE ---
+function choisirProgramme(nom) {
+    document.getElementById('message-field').value = "PROJET : " + nom;
+    closeModal('m1'); closeModal('m2'); closeModal('m3');
+    setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+}
+
+// Téléphone et Dates
 const phoneInput = document.getElementById('phone');
 if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
@@ -694,12 +684,8 @@ if (phoneInput) {
         e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     });
 }
-
-// --- LOGIQUE DATES (Empêcher les dates passées) ---
 const today = new Date().toISOString().split('T')[0];
-document.querySelectorAll('input[type="date"]').forEach(input => {
-    input.setAttribute('min', today);
-});
+document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
 </script>
 </body>
 </html>
