@@ -167,6 +167,11 @@
     font-size: 1rem;            /* Taille confortable pour les réponses */
     font-weight: 500;
     transition: all 0.2s ease; /* Transition fluide pour la couleur */
+    -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu au clic sur mobile */
+}
+.quiz-option:focus {
+    outline: none; /* Double sécurité pour le focus */
+    box-shadow: none; /* Au cas où une ombre serait appliquée par défaut */
 }
 
 .quiz-option:hover {
@@ -593,10 +598,14 @@ function noter(cat, pts, next) {
     
     const nextStep = document.getElementById(next);
     if (nextStep && next !== 'qRes') {
-        mélangerOptions(next); // Mélange les options de la question suivante
+        mélangerOptions(next);
     }
     
-    nextStep.style.display = 'block';
+    if (nextStep) {
+        nextStep.style.display = 'block';
+        // AJOUTE CETTE LIGNE : Elle enlève le focus de n'importe quel bouton
+        document.activeElement.blur(); 
+    }
 }
 
 function finaliser(physio) {
