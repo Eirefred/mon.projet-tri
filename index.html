@@ -84,7 +84,6 @@
         .logo img { height: 55px; display: block; width: auto; }
         
         .region-mention { font-size: 1.15rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
-        .region-mention { font-size: 1.15rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
         nav ul { display: flex; list-style: none; align-items: center; }
         nav ul li { margin-left: 25px; }
         nav ul li a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
@@ -100,7 +99,7 @@
         .btn-high-vis:hover { background: var(--white); color: var(--primary); }
 
         /* --- SECTION PROGRAMMES & VISION --- */
-        .section-white { padding: 100px 0; background: var(--white); }
+        .section-white { padding: 100px0 40px 0; background: var(--white); }
         .container { width: 90%; max-width: 1100px; margin: 0 auto; text-align: center; }
         h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 25px; }
         
@@ -135,17 +134,49 @@
         .modal-content li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
         .price-box { 
           background: #f0f7ff; 
-            padding: 12px 20px; /* Réduit de 20px à 12px pour diminuer la hauteur */
+            padding: 12px 20px; 
             border-radius: 8px; 
             border-left: 6px solid var(--accent); 
             margin: 20px 0; 
             font-size: 1.15rem; 
             font-weight: 800; 
             color: var(--primary); 
-             line-height: 1.2; /* Resserre l'espace entre la ligne du prix et la description */
+             line-height: 1.2; 
             }
+
+        /* --- AJOUTS : STYLE DU QUIZ ET TEXTAREA --- */
+        .btn-quiz-launcher {
+            display: block; margin: 40px auto; padding: 15px 40px;
+            background: var(--brand-blue); color: white; border: none;
+            border-radius: 50px; font-weight: 800; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(4, 129, 251, 0.3); transition: 0.3s;
+        }
+        .btn-quiz-launcher:hover { transform: translateY(-3px); background: var(--primary); }
+
+        #quiz-steps-box { display: none; }
+        .quiz-option {
+    display: block;
+    width: 100%;
+    padding: 18px;                /* Un peu plus d'espace pour cliquer */
+    margin: 12px 0;
+    text-align: left;
+    background: #f8f8f8;
+    border: 2px solid #eee; /* Bordure un peu plus visible par défaut */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;            /* Taille confortable pour les réponses */
+    font-weight: 500;
+    transition: all 0.2s ease; /* Transition fluide pour la couleur */
+}
+
+.quiz-option:hover {
+    border-color: var(--brand-blue); /* Utilise ton bleu au lieu du orange */
+    background: #f0f7ff;            /* Un fond bleu très léger au survol */
+    transform: none;                 /* Supprime le mouvement de décalage */
+}
+
         /* --- CONTACT --- */
-        .section-contact { padding: 100px 0; background: var(--light-bg); }
+        .section-contact { padding:40px 0 100px 0; background: var(--light-bg); }
         .contact-intro { max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; color: #555; text-align: center; }
         .contact-form-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; border-left: 8px solid var(--accent); }
         .form-group { margin-bottom: 20px; }
@@ -158,7 +189,7 @@
         .btn-submit { display: block;margin: 20px auto 0;width: 100%; max-width: 400px; background: var(--accent); color: var(--white); padding: 16px; border: none; border-radius: 6px; font-size: 1rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
         .btn-submit:hover { background: #e65c00; transform: scale(1.02); }
 
-        /* --- FOOTER (Nouveau style avec logo à droite) --- */
+        /* --- FOOTER --- */
         footer { background: var(--brand-blue); color: var(--white); padding: 40px 0; text-align: center; }
         .footer-container { 
             width: 90%; 
@@ -181,6 +212,45 @@
             nav { display: none; }
             .footer-container { flex-direction: column; gap: 20px; }
         }
+        /* --- AJOUT OU REMPLACEMENT --- */
+
+/* Ce bouton copie le style exact de tes .btn-card (bleu, coins 4px, gras) */
+.btn-diagnostic-large {
+    display: block;        /* Obligatoire pour pouvoir centrer avec margin auto */
+    width: 90%;            /* Prend presque toute la place sur mobile */
+    max-width: 450px;      /* NE DÉPASSERA JAMAIS 450px sur grand écran */
+    margin: 40px auto;     /* Le "auto" est ce qui le centre horizontalement */
+    
+    /* Style visuel identique aux cartes */
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 18px 25px;
+    border: none;
+    border-radius: 4px;    /* Coins carrés style card */
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: none;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.btn-diagnostic-large:hover {
+    background-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* On remplace l'ancien style des questions par celui-ci (plus gros) */
+.quiz-question-text {
+    font-size: 1.4rem !important; /* Taille nettement plus grande */
+    font-weight: 800;             /* Très gras pour l'emphase */
+    color: var(--primary);        /* Ton bleu foncé */
+    margin-bottom: 25px; 
+    line-height: 1.2;             /* Plus d'espace entre les lignes */
+    text-align: left;
+    display: block;
+}
     </style>
 </head>
 <body>
@@ -265,9 +335,74 @@
                     <button class="btn-card">C'EST MON PROFIL<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
                 </div>
             </div>
+
+            <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
+            Aidez-moi à choisir mon programme
+            </button>
         </div>
     </div>
 </section>
+
+    <div id="diag-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close-modal" onclick="closeModal('diag-modal')">&times;</span>
+            <div id="quiz-intro">
+                <h3>Diagnostic de Profil</h3>
+                <p>Répondez à 6 questions rapides pour identifier le soutien qui vous correspond.</p>
+                <button class="btn-submit" onclick="startQuiz()">Démarrer</button>
+            </div>
+            
+            <div id="quiz-steps-box">
+    <div class="quiz-step" id="q1">
+        <p class="quiz-question-text">1. Quel est votre niveau d'expérience en triathlon ?</p>
+        <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Débutant complet (Je pars de zéro)</button>
+        <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initié (J'ai déjà fait quelques courses)</button>
+        <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmé (Je connais bien mes besoins)</button>
+    </div>
+
+    <div class="quiz-step" id="q2" style="display:none">
+        <p class="quiz-question-text">2. Face à l'aspect technique (vélo, transitions), vous préférez :</p>
+        <button class="quiz-option" onclick="noter('securite', 2, 'q3')">Qu'on me guide pas à pas avec simplicité</button>
+        <button class="quiz-option" onclick="noter('social', 1, 'q3')">Échanger avec un mentor pour valider mes choix</button>
+        <button class="quiz-option" onclick="noter('autonomie', 2, 'q3')">Analyser les données pour optimiser chaque détail</button>
+    </div>
+
+    <div class="quiz-step" id="q3" style="display:none">
+        <p class="quiz-question-text">3. Qu'est-ce qui vous motive le plus au quotidien ?</p>
+        <button class="quiz-option" onclick="noter('securite', 1, 'q4')">Réussir à finir mon défi avec fierté</button>
+        <button class="quiz-option" onclick="noter('social', 2, 'q4')">Sentir que je suis soutenu et encouragé</button>
+        <button class="quiz-option" onclick="noter('autonomie', 2, 'q4')">Battre mes records personnels et progresser</button>
+    </div>
+
+    <div class="quiz-step" id="q4" style="display:none">
+        <p class="quiz-question-text">4. Combien d'heures pouvez-vous investir par semaine ?</p>
+        <button class="quiz-option" onclick="noter('securite', 2, 'q5')">Moins de 6h (Je dois maximiser chaque minute)</button>
+        <button class="quiz-option" onclick="noter('social', 1, 'q5')">Entre 6h et 10h (Je suis prêt à m'investir sérieusement)</button>
+        <button class="quiz-option" onclick="noter('autonomie', 2, 'q5')">Plus de 10h (Je vise une préparation intensive)</button>
+    </div>
+
+    <div class="quiz-step" id="q5" style="display:none">
+        <p class="quiz-question-text">5. Quelle distance visez-vous pour votre projet ?</p>
+        <button class="quiz-option" onclick="noter('securite', 1, 'q6')">Initiation (Découverte ou Sprint)</button>
+        <button class="quiz-option" onclick="noter('social', 1, 'q6')">Standard (Distance Olympique)</button>
+        <button class="quiz-option" onclick="noter('autonomie', 2, 'q6')">Endurance (70.3 ou Ironman complet)</button>
+    </div>
+
+    <div class="quiz-step" id="q6" style="display:none">
+        <p class="quiz-question-text">6. Avez-vous une spécificité à intégrer ?</p>
+        <button class="quiz-option" onclick="finaliser('Standard')">Profil Standard (Général)</button>
+        <button class="quiz-option" onclick="finaliser('Féminin')">Profil Féminin (Cycle & Hormonal)</button>
+        <button class="quiz-option" onclick="finaliser('Master')">Profil Master (Récupération 45+)</button>
+    </div>
+
+    <div class="quiz-step" id="qRes" style="display:none">
+        <h4 id="res-titre" style="color: var(--accent); margin-bottom:10px;"></h4>
+        <p id="res-text"></p>
+        <button class="btn-submit" onclick="transférerAuForm()">Appliquer ce profil au formulaire</button>
+    </div>
+</div>
+        </div>
+    </div>
 
     <div id="m1" class="modal-overlay">
         <div class="modal-content">
@@ -286,7 +421,7 @@
                 <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
                 <li>Plan d'entraînement de 12 semaines adapté à votre niveau actuel.</li>
                 <li>Ajustement du plan à votre mode de vie.</li>
-                <li>Explication du déroulement d’un triathlon.</li>
+                <li>Explications du déroulement d’un triathlon.</li>
                 <li>Formation sur les règlement de course.</li>
                 <li>Soutien moral et psychologique pour votre première ligne de départ.</li>
             </ul>
@@ -385,7 +520,7 @@
                     </div>
                     <div class="form-group">
                         <label>Un message pour nous ? (Optionnel)</label>
-                        <textarea name="message" placeholder="Parlez-nous de vos objectifs..."></textarea>
+                        <textarea id="message-field" name="message" placeholder="Parlez-nous de vos objectifs..."></textarea>
                     </div>
                     <div class="btn-container">
                         <button type="submit" class="btn-submit">Planifier mon appel gratuit</button>
@@ -408,35 +543,122 @@
     </footer>
 
 <script>
-    function openModal(id) {
-        document.getElementById(id).style.display = "flex";
-        document.body.style.overflow = "hidden";
+   // --- LOGIQUE GLOBALE DU QUIZ ---
+let scores = { securite: 0, autonomie: 0, social: 0 };
+let progRes = "";
+
+// --- GESTION DES MODALES ---
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    // Si on ouvre le quiz, on remet tout à zéro pour permettre de recommencer
+    if (id === 'diag-modal') {
+        scores = { securite: 0, autonomie: 0, social: 0 };
+        document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+        document.getElementById('quiz-intro').style.display = 'block';
+        document.getElementById('quiz-steps-box').style.display = 'none';
     }
-    function closeModal(id) {
-        document.getElementById(id).style.display = "none";
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = "none";
         document.body.style.overflow = "auto";
     }
+}
 
-    // Fermer en cliquant à côté
-    window.onclick = function(event) {
-        if (event.target.className === 'modal-overlay') {
-            event.target.style.display = "none";
-            document.body.style.overflow = "auto";
-        }
+// Fermer les modales en cliquant sur le fond noir
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        closeModal(event.target.id);
+    }
+};
+
+// --- DÉROULEMENT DU QUIZ ---
+function startQuiz() {
+    document.getElementById('quiz-intro').style.display = 'none';
+    document.getElementById('quiz-steps-box').style.display = 'block';
+    document.getElementById('q1').style.display = 'block';
+}
+
+function noter(cat, pts, next) {
+    scores[cat] += pts;
+    document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    document.getElementById(next).style.display = 'block';
+}
+
+function finaliser(physio) {
+    document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    let titre = ""; 
+    let desc = "";
+
+    // Calcul du profil selon les scores
+    if (scores.securite >= scores.autonomie && scores.securite >= scores.social) {
+        titre = "Sérénité Totale";
+        progRes = "PREMIER PAS";
+        desc = "Vous avez besoin d'un cadre sécurisant. Le programme Premier Pas est idéal pour vous accompagner de A à Z.";
+    } else if (scores.social > 1) {
+        titre = "Accompagnement Humain";
+        progRes = "MA SAISON";
+        desc = "Le mentorat est votre moteur. Le programme Ma Saison vous permettra de ne plus jamais vous entraîner seul.";
+    } else {
+        titre = "Performance Autonome";
+        progRes = "PERFORMANCE SOLO";
+        desc = "Vous visez les résultats. Le programme Performance Solo optimisera vos datas en totale autonomie.";
     }
 
-    const phoneInput = document.getElementById('phone');
+    window.finalDiagnostic = { titre, prog: progRes, physio };
+    
+    // Affichage des résultats dans la modale
+    document.getElementById('res-titre').innerText = "Analyse de profil : " + titre;
+    document.getElementById('res-text').innerText = desc + " Spécificité : " + physio;
+    document.getElementById('qRes').style.display = 'block';
+}
+
+function transférerAuForm() {
+    const area = document.getElementById('message-field');
+    const data = window.finalDiagnostic;
+    
+    if (!data) return;
+
+    // Remplissage du textarea avec les bons termes
+    area.value = `ANALYSE DE PROFIL :\n- Profil : ${data.titre}\n- Programme suggéré : ${data.prog}\n- Physiologie : ${data.physio}\n\nJe souhaite en discuter ensemble.`;
+    
+    // Ajustement de la hauteur du champ
+    area.style.height = 'auto';
+    area.style.height = area.scrollHeight + 'px';
+    
+    // Fermeture et redirection
+    closeModal('diag-modal');
+    
+    // Petit délai pour laisser la modale se fermer avant le scroll
+    setTimeout(() => {
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 150);
+}
+
+// --- LOGIQUE TÉLÉPHONE ---
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
     phoneInput.addEventListener('input', (e) => {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
         if (!x[1]) { e.target.value = ''; return; }
         e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     });
+}
 
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementsByName("date_1")[0].setAttribute('min', today);
-    if(document.getElementsByName("date_2")[0]) {
-        document.getElementsByName("date_2")[0].setAttribute('min', today);
-    }
+// --- LOGIQUE DATES (Empêcher les dates passées) ---
+const today = new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(input => {
+    input.setAttribute('min', today);
+});
 </script>
 </body>
 </html>
