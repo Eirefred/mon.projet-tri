@@ -60,7 +60,7 @@
             line-height: 1.6;
         }
 
-        #programme { scroll-margin-top: 120px; }
+        #programme, #vision, #contact { scroll-margin-top: 110px; }
         
         .modal-content h3 { margin-bottom: 5px !important; }
 
@@ -167,6 +167,29 @@
     font-size: 1rem;            /* Taille confortable pour les réponses */
     font-weight: 500;
     transition: all 0.2s ease; /* Transition fluide pour la couleur */
+    -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu au clic sur mobile */
+/* Empêche la sélection de texte (le bleu transparent qui recouvre le texte) */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+    /* Supprime le contour bleu de focus sur tous les navigateurs */
+.quiz-option {
+    /* ... tes propriétés existantes ... */
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
+}
+
+/* On s'assure qu'aucun état de focus ne vient gâcher le design */
+.quiz-option:focus, 
+.quiz-option:active,
+.quiz-option:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+    background: #f8f8f8; /* On force le gris d'origine */
 }
 
 .quiz-option:hover {
@@ -254,7 +277,7 @@
     </style>
 </head>
 <body>
-
+<input type="text" id="focus-trap" style="position:absolute; opacity:0; height:0; width:0; pointer-events:none;">
     <header>
         <div class="nav-container">
             <div class="header-left">
@@ -288,7 +311,7 @@
     </div>
 </section>
 
-<section id="vision" class="section-white">
+<div id="vision" class="section-white">
     <div class="container">
         <h2>Notre promesse : l'adaptation</h2>
         
@@ -353,12 +376,12 @@
             </div>
             
             <div id="quiz-steps-box">
-    <div class="quiz-step" id="q1">
-        <p class="quiz-question-text">1. Quel est votre niveau d'expérience en triathlon ?</p>
-        <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Débutant complet (Je pars de zéro)</button>
-        <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initié (J'ai déjà fait quelques courses)</button>
-        <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmé (Je connais bien mes besoins)</button>
-    </div>
+<div class="quiz-step" id="q1">
+    <p class="quiz-question-text">1. Quel est votre niveau d'expérience en triathlon ?</p>
+    <div class="quiz-option" onclick="noter('securite', 2, 'q2')">Débutant complet (Je pars de zéro)</div>
+    <div class="quiz-option" onclick="noter('social', 1, 'q2')">Initié (J'ai déjà fait quelques courses)</div>
+    <div class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmé (Je connais bien mes besoins)</div>
+</div>
 
     <div class="quiz-step" id="q2" style="display:none">
         <p class="quiz-question-text">2. Face à l'aspect technique (vélo, transitions), vous préférez :</p>
@@ -506,7 +529,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><img src="calendrier.jpg" class="icon-small" alt=""> Option de date 2</label>
-                            <input type="date" name="date_2">
+                            <input type="date" name="date_2" required>
                         </div>
                         <div class="form-group">
                             <label><img src="horloge.jpg" class="icon-small" alt=""> Préférence horaire (Jour 2)</label>
@@ -592,11 +615,21 @@ function noter(cat, pts, next) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
     
     const nextStep = document.getElementById(next);
+    
+    // --- LA RUSE ICI ---
+    const trap = document.getElementById('focus-trap');
+    trap.focus(); // On envoie le focus sur l'élément invisible
+    // -------------------
+
     if (nextStep && next !== 'qRes') {
-        mélangerOptions(next); // Mélange les options de la question suivante
+        mélangerOptions(next);
     }
     
-    nextStep.style.display = 'block';
+    if (nextStep) {
+        nextStep.style.display = 'block';
+        // On retire le focus après un micro-délai pour nettoyer
+        setTimeout(() => { trap.blur(); }, 50);
+    }
 }
 
 function finaliser(physio) {
@@ -604,16 +637,22 @@ function finaliser(physio) {
     let titre = ""; 
     let desc = "";
 
-    // Calcul du profil selon les scores
-    if (scores.securite >= scores.autonomie && scores.securite >= scores.social) {
+    // 1. On trouve la catégorie qui a le plus de points
+    // En cas d'égalité, l'ordre de l'objet détermine la priorité (ici : Sécurité > Social > Autonomie)
+    const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+
+    // 2. Attribution des résultats selon le gagnant
+    if (gagnant === 'securite') {
         titre = "Sérénité Totale";
         progRes = "PREMIER PAS";
         desc = "Vous avez besoin d'un cadre sécurisant. Le programme Premier Pas est idéal pour vous accompagner de A à Z.";
-    } else if (scores.social > 1) {
+    } 
+    else if (gagnant === 'social') {
         titre = "Accompagnement Humain";
         progRes = "MA SAISON";
         desc = "Le mentorat est votre moteur. Le programme Ma Saison vous permettra de ne plus jamais vous entraîner seul.";
-    } else {
+    } 
+    else {
         titre = "Performance Autonome";
         progRes = "PERFORMANCE SOLO";
         desc = "Vous visez les résultats. Le programme Performance Solo optimisera vos datas en totale autonomie.";
@@ -621,9 +660,9 @@ function finaliser(physio) {
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     
-    // Affichage des résultats dans la modale
+    // Affichage des résultats
     document.getElementById('res-titre').innerText = "Analyse de profil : " + titre;
-    document.getElementById('res-text').innerText = desc + " Spécificité : " + physio;
+    document.getElementById('res-text').innerText = desc + " (Profil : " + physio + ")";
     document.getElementById('qRes').style.display = 'block';
 }
 
@@ -645,15 +684,14 @@ function choisirProgramme(nom) {
 
 function mélangerOptions(containerId) {
     const container = document.querySelector(`#${containerId}`);
+    // On change 'button' par '.quiz-option'
     const boutons = Array.from(container.querySelectorAll('.quiz-option'));
     
-    // On mélange l'ordre du tableau
     for (let i = boutons.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [boutons[i], boutons[j]] = [boutons[j], boutons[i]];
     }
     
-    // On ré-insère les boutons dans le nouvel ordre
     boutons.forEach(bouton => container.appendChild(bouton));
 }
 
