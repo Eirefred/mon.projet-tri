@@ -506,7 +506,7 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label><img src="calendrier.jpg" class="icon-small" alt=""> Option de date 2</label>
-                            <input type="date" name="date_2">
+                            <input type="date" name="date_2" required>
                         </div>
                         <div class="form-group">
                             <label><img src="horloge.jpg" class="icon-small" alt=""> Préférence horaire (Jour 2)</label>
@@ -582,13 +582,21 @@ window.onclick = function(event) {
 function startQuiz() {
     document.getElementById('quiz-intro').style.display = 'none';
     document.getElementById('quiz-steps-box').style.display = 'block';
+    
+    mélangerOptions('q1'); // Mélange la première question
     document.getElementById('q1').style.display = 'block';
 }
 
 function noter(cat, pts, next) {
     scores[cat] += pts;
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-    document.getElementById(next).style.display = 'block';
+    
+    const nextStep = document.getElementById(next);
+    if (nextStep && next !== 'qRes') {
+        mélangerOptions(next); // Mélange les options de la question suivante
+    }
+    
+    nextStep.style.display = 'block';
 }
 
 function finaliser(physio) {
@@ -596,16 +604,22 @@ function finaliser(physio) {
     let titre = ""; 
     let desc = "";
 
-    // Calcul du profil selon les scores
-    if (scores.securite >= scores.autonomie && scores.securite >= scores.social) {
+    // 1. On trouve la catégorie qui a le plus de points
+    // En cas d'égalité, l'ordre de l'objet détermine la priorité (ici : Sécurité > Social > Autonomie)
+    const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+
+    // 2. Attribution des résultats selon le gagnant
+    if (gagnant === 'securite') {
         titre = "Sérénité Totale";
         progRes = "PREMIER PAS";
         desc = "Vous avez besoin d'un cadre sécurisant. Le programme Premier Pas est idéal pour vous accompagner de A à Z.";
-    } else if (scores.social > 1) {
+    } 
+    else if (gagnant === 'social') {
         titre = "Accompagnement Humain";
         progRes = "MA SAISON";
         desc = "Le mentorat est votre moteur. Le programme Ma Saison vous permettra de ne plus jamais vous entraîner seul.";
-    } else {
+    } 
+    else {
         titre = "Performance Autonome";
         progRes = "PERFORMANCE SOLO";
         desc = "Vous visez les résultats. Le programme Performance Solo optimisera vos datas en totale autonomie.";
@@ -613,9 +627,9 @@ function finaliser(physio) {
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     
-    // Affichage des résultats dans la modale
+    // Affichage des résultats
     document.getElementById('res-titre').innerText = "Analyse de profil : " + titre;
-    document.getElementById('res-text').innerText = desc + " Spécificité : " + physio;
+    document.getElementById('res-text').innerText = desc + " (Profil : " + physio + ")";
     document.getElementById('qRes').style.display = 'block';
 }
 
@@ -633,6 +647,20 @@ function choisirProgramme(nom) {
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 300);
+}
+
+function mélangerOptions(containerId) {
+    const container = document.querySelector(`#${containerId}`);
+    const boutons = Array.from(container.querySelectorAll('.quiz-option'));
+    
+    // On mélange l'ordre du tableau
+    for (let i = boutons.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [boutons[i], boutons[j]] = [boutons[j], boutons[i]];
+    }
+    
+    // On ré-insère les boutons dans le nouvel ordre
+    boutons.forEach(bouton => container.appendChild(bouton));
 }
 
 function transférerAuForm() {
