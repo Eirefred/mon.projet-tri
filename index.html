@@ -175,15 +175,21 @@
     user-select: none;
 
     /* Supprime le contour bleu de focus sur tous les navigateurs */
-    outline: none !important;
+.quiz-option {
+    /* ... tes propriétés existantes ... */
+    cursor: pointer;
+    user-select: none;
     -webkit-tap-highlight-color: transparent !important;
+    outline: none !important;
 }
 
-/* Force l'état normal même si le bouton est "actif" ou "focus" */
-.quiz-option:focus, .quiz-option:active {
+/* On s'assure qu'aucun état de focus ne vient gâcher le design */
+.quiz-option:focus, 
+.quiz-option:active,
+.quiz-option:focus-visible {
     outline: none !important;
-    background-color: #f8f8f8; /* La couleur grise d'origine de ton code */
-    border-color: #eee;        /* La bordure d'origine de ton code */
+    box-shadow: none !important;
+    background: #f8f8f8; /* On force le gris d'origine */
 }
 
 .quiz-option:hover {
@@ -370,12 +376,12 @@
             </div>
             
             <div id="quiz-steps-box">
-    <div class="quiz-step" id="q1">
-        <p class="quiz-question-text">1. Quel est votre niveau d'expérience en triathlon ?</p>
-        <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Débutant complet (Je pars de zéro)</button>
-        <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initié (J'ai déjà fait quelques courses)</button>
-        <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmé (Je connais bien mes besoins)</button>
-    </div>
+<div class="quiz-step" id="q1">
+    <p class="quiz-question-text">1. Quel est votre niveau d'expérience en triathlon ?</p>
+    <div class="quiz-option" onclick="noter('securite', 2, 'q2')">Débutant complet (Je pars de zéro)</div>
+    <div class="quiz-option" onclick="noter('social', 1, 'q2')">Initié (J'ai déjà fait quelques courses)</div>
+    <div class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmé (Je connais bien mes besoins)</div>
+</div>
 
     <div class="quiz-step" id="q2" style="display:none">
         <p class="quiz-question-text">2. Face à l'aspect technique (vélo, transitions), vous préférez :</p>
@@ -678,15 +684,14 @@ function choisirProgramme(nom) {
 
 function mélangerOptions(containerId) {
     const container = document.querySelector(`#${containerId}`);
+    // On change 'button' par '.quiz-option'
     const boutons = Array.from(container.querySelectorAll('.quiz-option'));
     
-    // On mélange l'ordre du tableau
     for (let i = boutons.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [boutons[i], boutons[j]] = [boutons[j], boutons[i]];
     }
     
-    // On ré-insère les boutons dans le nouvel ordre
     boutons.forEach(bouton => container.appendChild(bouton));
 }
 
