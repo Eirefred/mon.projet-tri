@@ -60,6 +60,19 @@
             line-height: 1.6;
         }
 
+        /* Cette classe rend le texte invisible pour les visiteurs mais lisible pour Google */
+    .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
         /* Ajoute #contact ici */
         #programme, #vision, #contact { 
         scroll-margin-top: 110px; 
@@ -297,9 +310,10 @@
 <section class="hero">
     <div class="hero-content">
         <h1>
-            <span class="phrase-bloc">Votre Triathlon.</span> 
-            <span class="phrase-bloc">Votre rythme.</span><br>
-            <span class="phrase-bloc">Notre soutien.</span>
+        <span class="sr-only">OBNL de coaching et mentorat de triathlon partout au Québec et à Montréal même à distance et connecté- </span>
+        <span class="phrase-bloc">Votre Triathlon.</span> 
+        <span class="phrase-bloc">Votre rythme.</span><br>
+        <span class="phrase-bloc">Notre soutien.</span>
         </h1>
         <p>
             <span style="background: var(--accent); color: white; padding: 5px 18px; border-radius: 50px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4); display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px;">mon.projet-tri</span> 
