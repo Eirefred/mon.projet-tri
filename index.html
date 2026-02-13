@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="preload" as="image" href="banniere.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet Tri | Entrainement et mentorat connecté</title>
-    <meta name="description" content="OBNL dédiée aux triathlètes au Québec. Coaching sur mesure, mentorat et programmes tous nivreaux partout dans la province.">
+    <meta name="description" content="OBNL dédiée aux triathlètes au Québec. Coaching sur mesure, mentorat et programmes tous niveaux partout dans la province.">
 
     <meta name="keywords" content="triathlon, duathlon, coaching en ligne, mentorat connecté, OBNL, Québec, entraînement à distance, Montréal, Québec, Gaspésie, Saguenay, Estrie, Mauricie, Outaouais, Abitibi, Côte-Nord, Nord-du-Québec, Chaudière-Appalaches, Laval, Lanaudière, Laurentides, Montérégie, Centre-du-Québec, entraineur, remote">
     
@@ -18,7 +19,7 @@
     <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
     <meta property="og:url" content="https://mon.projet-tri.org/" />
 
-    <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "NGO",
@@ -38,7 +39,25 @@
     "Lanaudière", "Laurentides", "Laval", "Mauricie", "Montérégie", "Montréal", 
     "Nord-du-Québec", "Outaouais", "Saguenay–Lac-Saint-Jean", "Québec", "Sherbrooke"
   ],
-  "knowsAbout": ["Triathlon", "Duathlon", "Coaching sportif", "Mentorat", "Entraînement connecté"]
+  "knowsAbout": ["Triathlon", "Duathlon", "Coaching sportif", "Mentorat", "Entraînement connecté"],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Programmes de triathlon",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Premier Pas - Accompagnement débutant" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Ma Saison - Mentorat connecté" }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": { "@type": "Service", "name": "Performance Solo - Analyse de données" }
+      }
+    ]
+  }
 }
 </script>
     
