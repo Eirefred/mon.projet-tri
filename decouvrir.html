@@ -172,12 +172,12 @@ p {
             margin-bottom: 10px;
         }
 
-        footer { 
-    background: #0481fb; /* Votre bleu de marque */
+footer { 
+    background: #0481fb; 
     color: white; 
     padding: 40px 0; 
-    text-align: center; 
-    border-top: 4px solid var(--accent-orange); /* On garde la ligne orange pour le rappel */
+    text-align: center; /* Force le centrage du texte */
+    border-top: 4px solid #FF6600; 
 }
 
 .footer-container { 
@@ -189,16 +189,37 @@ p {
     align-items: center; 
 }
 
-@media (max-width: 768px) {
-    .footer-container { flex-direction: column; gap: 20px; }
+.footer-text {
+    flex: 1; /* Prend l'espace pour permettre le centrage */
+    text-align: center; /* Centre le texte à l'intérieur de son bloc */
+    margin-left: 60px; /* Compense la largeur du logo pour un centrage optique parfait */
 }
 
-        @media (max-width: 768px) {
-            .founder-container { flex-direction: column; align-items: center; text-align: center; }
-            .founder-aside { order: -1; margin-bottom: 20px; }
-            .grid-cards { grid-template-columns: 1fr; }
-            .container { padding: 25px; margin: 15px; }
-        }
+.footer-text p {
+    font-size: 0.75rem; 
+    color: #ffffff; 
+    opacity: 0.4; 
+    margin-top: 10px; 
+    font-weight: 300; 
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.footer-logo img { 
+    height: 60px; 
+    display: block; 
+}
+
+@media (max-width: 768px) {
+    .footer-container { 
+        flex-direction: column; 
+        gap: 20px; 
+    }
+    .footer-text { 
+        margin-left: 0; 
+        text-align: center; 
+    }
+}
     </style>
 </head>
 <body>
@@ -282,15 +303,17 @@ p {
 
     <footer>
     <div class="footer-container">
-         <div class="footer-text">
+        <div class="footer-text">
             &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
-            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
+            <p>
                 Services d'entraînement et mentorat de triathlon offerts partout dans la province : 
-                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
+                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, 
+                Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, 
+                Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
             </p>
         </div>
         <div class="footer-logo">
-            <img src="MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)" style="height: 60px;">
+            <img src="MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)">
         </div>
     </div>
 </footer>
