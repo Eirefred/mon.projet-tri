@@ -1,8 +1,35 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <link rel="preload" as="image" href="banniere.jpg">
     <meta charset="UTF-8">
+    <script>
+    (function() {
+        // 1. On vérifie si on a déjà fait la vérification pendant cette session
+        if (sessionStorage.getItem('lang_checked')) return;
+
+        // 2. On vérifie si l'utilisateur arrive avec un choix forcé dans l'URL (?lang=fr)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('lang') === 'fr') {
+            sessionStorage.setItem('lang_checked', 'true');
+            return;
+        }
+
+        // 3. Détection de la langue du navigateur
+        const userLang = navigator.language || navigator.userLanguage;
+
+        // 4. Si ce n'est pas du français, on redirige et on marque comme "vérifié"
+        if (!userLang.startsWith('fr')) {
+            sessionStorage.setItem('lang_checked', 'true');
+            window.location.href = "./en/index.html";
+        } else {
+            // Si c'est du français, on marque aussi comme vérifié pour ne plus l'embêter
+            sessionStorage.setItem('lang_checked', 'true');
+        }
+    })();
+</script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet Tri | Entrainement et mentorat connecté</title>
     <meta name="description" content="OBNL dédiée aux triathlètes au Québec. Coaching sur mesure, mentorat et programmes tous niveaux partout dans la province.">
@@ -13,9 +40,9 @@
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
-    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
-    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
     <meta name="apple-mobile-web-app-title" content="Projet(tri)">
     <meta property="og:title" content="Mon Projet Tri" />
     <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
@@ -368,7 +395,7 @@
     <header>
         <div class="nav-container">
             <div class="header-left">
-                <div class="logo"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></div>
+                <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
             <nav>
