@@ -134,11 +134,25 @@
             border-radius: 8px;
             background: #fff;
             transition: 0.3s;
+            position: relative; /* Indispensable pour le voile */
+            z-index: 1;         /* Indispensable pour le voile */
+            overflow: hidden;   /* Pour que l'image ne dépasse pas des arrondis */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         .card h3 {
             color: var(--primary-blue);
             margin-top: 0;
+        }
+        .card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        /* Ce voile blanc rend le texte lisible tout en laissant voir l'image derrière */
+        background: rgba(255, 255, 255, 0.85); 
+        z-index: -1;
         }
 
         .mission-highlight {
@@ -278,7 +292,7 @@
                     <h3>Entraîneurs de métier</h3>
                     <p>Possédant des certifications reconnues (<strong>Triathlon Québec, PNCE</strong>), ils maîtrisent la science de la programmation. Ils planifient chaque séance pour assurer une progression mesurable et éviter les blessures.</p>
                 </div>
-                <div class="card">
+                <div class="card" style="background-image: url('EOP.jpg');">
                     <span class="tag">Expérience Élite</span>
                     <h3>Athlètes de haut niveau</h3>
                     <p>Anciens athlètes ou compétiteurs de pointe, ils ont une expérience prouvée du coaching et de la compétition. Ils programment votre saison en y intégrant les subtilités stratégiques que seul le haut niveau enseigne.</p>
