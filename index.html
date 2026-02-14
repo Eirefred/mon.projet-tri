@@ -150,7 +150,13 @@
         .card:active { transform: scale(0.98); }
 
         .card-premier-pas { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('triathlon-debutant-quebec.jpg'); }
-        .card-mentorat { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('mentorat-bg.jpg'); }
+        
+        .card-mentorat { 
+            background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('mentorat-triathlon-quebec.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            }
         .card-performance { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('entrainement-triathlon-solo.jpg'); }
 
         .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; font-weight: 800; text-align: center; width: 100%; }
@@ -393,7 +399,7 @@
                     <p>Pour ceux qui n'ont jamais osé franchir la ligne. Un encadrement sécurisant de A à Z pour votre premier triathlon.</p>
                     <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
                 </div>
-                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Mentorat et coaching de triathlon personnalisé au Québec - Programme Ma Saison" style="cursor: pointer;">
+                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Mentorat et coaching de triathlon personnalisé au Québec - Programme Ma Saison pour athlètes de tous niveaux" style="cursor: pointer; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('mentorat-triathlon-quebec.jpg');">
                     <h3>Ma Saison</h3>
                     <p>Connectez-vous avec un mentor et coach dédié pour ne plus jamais vous sentir seul à l'entraînement.</p>
                     <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
