@@ -325,44 +325,35 @@ footer p {
 </footer>
 <style>
         @media (max-width: 768px) {
-            /* 1. Correction Genèse : On empile et on décolle du bord gauche */
-            .founder-container {
-                flex-direction: column-reverse !important;
-                align-items: center !important;
-                padding: 20px !important; /* Crée la marge à gauche et à droite */
-                margin-left: 10px !important;
-                margin-right: 10px !important;
-            }
-
-            .founder-content {
-                text-align: left !important;
-                padding: 0 !important;
-            }
-
-            /* 2. Correction Cartes : On force l'empilement vertical */
-            /* On cible toutes les div qui contiennent vos cartes */
-            .cards-container, 
-            .grid,
-            div[style*="display: flex"] { 
-                flex-direction: column !important;
-                gap: 20px !important;
-                display: flex !important;
-            }
-
-            /* On force chaque carte à prendre 100% de la largeur */
-            .card {
-                width: 100% !important;
-                flex: none !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-            }
-
-            /* Ajustement photo fondateur */
-            .founder-aside {
-                width: 100% !important;
-                margin-bottom: 20px !important;
-            }
+        /* Empilement Genèse */
+        .founder-container {
+            flex-direction: column-reverse !important;
+            align-items: center !important;
+            padding: 20px !important;
         }
+
+        /* FORCE l'empilement vertical de toutes les rangées de cartes */
+        .cards-container, .grid {
+            flex-direction: column !important;
+            display: flex !important;
+            gap: 20px !important;
+        }
+
+        /* Désactive le mode côte à côte pour chaque carte */
+        .card {
+            flex: none !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        .footer-container {
+            flex-direction: column !important;
+            text-align: center !important;
+            gap: 20px !important;
+        }
+        .footer-text { text-align: center !important; }
+        .founder-aside { width: 100% !important; margin-bottom: 20px; }
+    }
     </style>
 </body>
 </html>
