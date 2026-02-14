@@ -325,24 +325,20 @@ footer p {
 </footer>
 <style>
         @media (max-width: 768px) {
-        /* Empilement Genèse */
         .founder-container {
             flex-direction: column-reverse !important;
             align-items: center !important;
-            padding: 20px !important;
         }
 
-        /* FORCE l'empilement vertical de toutes les rangées de cartes */
+        /* ON FORCE L'EMPILEMENT ICI */
         .cards-container, .grid {
-            flex-direction: column !important;
-            display: flex !important;
+            flex-direction: column !important; /* Passe les lignes en colonnes */
             gap: 20px !important;
         }
 
-        /* Désactive le mode côte à côte pour chaque carte */
         .card {
-            flex: none !important;
             width: 100% !important;
+            flex: none !important; /* EMPÊCHE DE RESTER CÔTE À CÔTE */
             box-sizing: border-box !important;
         }
 
@@ -352,7 +348,7 @@ footer p {
             gap: 20px !important;
         }
         .footer-text { text-align: center !important; }
-        .founder-aside { width: 100% !important; margin-bottom: 20px; }
+        .founder-aside { width: 100% !important; margin-bottom: 20px !important; }
     }
     </style>
 </body>
