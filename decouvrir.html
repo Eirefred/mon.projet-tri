@@ -174,9 +174,8 @@ p {
 
 footer {
     background-color: #0481fb;
-    border-top: 4px solid #FF6600; /* La fameuse ligne orange */
+    border-top: 4px solid #FF6600; /* Ta ligne orange */
     padding: 40px 0;
-    color: white;
 }
 
 footer p {
@@ -195,25 +194,27 @@ footer p {
 
 
 @media (max-width: 768px) {
-    /* 1. La section Coachs (Profils) */
+    /* 1. Force l'empilement des Profils Coachs */
     .cards-container {
-        flex-direction: column !important; /* Force l'empilement */
-        align-items: center;
-        gap: 20px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
     }
 
-    /* 2. La section Experts (Experts certifiés / Expérience Elite) */
+    /* 2. Force l'empilement des sections Experts et Elite */
     .grid {
-        display: flex; /* On s'assure qu'il est en flex */
-        flex-direction: column; /* On empile verticalement */
-        gap: 20px;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
     }
 
-    /* 3. Style commun pour toutes les cartes sur mobile */
+    /* 3. Assure que TOUTES les cartes prennent la bonne largeur */
     .card {
         width: 100% !important;
-        max-width: 350px;
-        margin: 0 auto;
+        max-width: 350px !important; /* Pour ne pas qu'elles soient trop géantes */
+        margin: 0 auto !important;
     }
 
     /* Ajustement pour la section genèse (déjà validé) */
