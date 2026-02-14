@@ -173,9 +173,9 @@ p {
         }
 
 footer {
-    background-color: #0481fb;
-    border-top: 4px solid #FF6600; /* Ta ligne orange */
-    padding: 40px 0;
+    background: #0481fb;       /* Couleur exacte de l'index */
+    border-top: 4px solid #FF6600; 
+    padding: 40px 0;           /* Hauteur de l'index */
 }
 
 footer p {
@@ -194,40 +194,40 @@ footer p {
 
 
 @media (max-width: 768px) {
-    /* 1. Force l'empilement des Profils Coachs */
-    .cards-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 20px !important;
-    }
-
-    /* 2. Force l'empilement des sections Experts et Elite */
-    .grid {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        gap: 20px !important;
-    }
-
-    /* 3. Assure que TOUTES les cartes prennent la bonne largeur */
-    .card {
-        width: 100% !important;
-        max-width: 350px !important; /* Pour ne pas qu'elles soient trop géantes */
-        margin: 0 auto !important;
-    }
-
-    /* Ajustement pour la section genèse (déjà validé) */
+    /* 1. Genèse : On empile la photo et le texte */
     .founder-container {
-        flex-direction: column-reverse;
+        flex-direction: column-reverse; /* Photo en haut, texte en dessous */
         align-items: center;
-        padding: 0 20px;
+        text-align: center;
+        padding: 0 10px; /* Décolle le texte du bord gauche */
     }
+
     .founder-content {
-        text-align: left;
-        margin-top: 20px;
+        padding: 0 15px; /* Évite que le texte touche les bords de l'écran */
+    }
+
+    /* 2. Cartes : On les empile une par une comme sur l'index */
+    .cards-container {
+        flex-direction: column; /* Aligne les éléments verticalement */
+        align-items: center;    /* Centre les cartes dans l'écran */
+        gap: 20px;              /* Ajoute un espace entre chaque carte */
+    }
+
+    .card {
+        width: 100%;            /* La carte prend toute la largeur */
+        max-width: 350px;       /* Mais on limite sa largeur pour l'esthétique */
+        margin: 0 auto;         /* Centre la carte horizontalement */
     }
 }
+    .footer-container { flex-direction: column; gap: 20px; }
+}
+
+        @media (max-width: 768px) {
+            .founder-container { flex-direction: column; align-items: center; text-align: center; }
+            .founder-aside { order: -1; margin-bottom: 20px; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .container { padding: 25px; margin: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -323,6 +323,48 @@ footer p {
         </div>
     </div>
 </footer>
+<style>
+        @media (max-width: 768px) {
+            /* 1. Correction Genèse : On empile et on décolle du bord gauche */
+            .founder-container {
+                flex-direction: column-reverse !important;
+                align-items: center !important;
+                padding: 20px !important; /* Crée la marge à gauche et à droite */
+                margin-left: 10px !important;
+                margin-right: 10px !important;
+            }
 
+            .founder-content {
+                text-align: left !important;
+                padding: 0 !important;
+            }
+
+            /* 2. Correction Cartes : On force l'empilement vertical */
+            /* On cible toutes les div qui contiennent vos cartes */
+            .cards-container, 
+            .grid,
+            div[style*="display: flex"] { 
+                flex-direction: column !important;
+                gap: 20px !important;
+                display: flex !important;
+            }
+
+            /* On force chaque carte à prendre 100% de la largeur */
+            .card {
+                width: 100% !important;
+                flex: none !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            /* Ajustement photo fondateur */
+            .founder-aside {
+                width: 100% !important;
+                margin-bottom: 20px !important;
+            }
+        }
+    </style>
+</body>
+</html>
 </body>
 </html>
