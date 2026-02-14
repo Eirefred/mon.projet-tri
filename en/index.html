@@ -592,11 +592,45 @@ function choisirProgramme(nom) {
 }
 
 const phoneInput = document.getElementById('phone');
+const contactForm = document.querySelector('form'); // Récupère le formulaire
+
 if (phoneInput) {
+    // A. Formattage pendant la saisie (sans changer la couleur)
     phoneInput.addEventListener('input', (e) => {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        if (!x[1]) { e.target.value = ''; return; }
-        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        if (!x[1]) {
+            e.target.value = '';
+        } else {
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        }
+        
+        // Si l'utilisateur recommence à taper, on retire le rouge
+        phoneInput.style.borderColor = '#ddd';
+        phoneInput.style.backgroundColor = 'white';
+    });
+
+    // B. Validation au moment où l'utilisateur SORT du champ (blur)
+    phoneInput.addEventListener('blur', (e) => {
+        const numbersOnly = e.target.value.replace(/\D/g, '');
+        // Si le champ n'est pas vide et fait moins de 10 chiffres
+        if (numbersOnly.length > 0 && numbersOnly.length < 10) {
+            phoneInput.style.borderColor = 'red';
+            phoneInput.style.backgroundColor = '#fff0f0';
+        }
+    });
+}
+
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        const numbersOnly = phoneInput.value.replace(/\D/g, '');
+        if (numbersOnly.length < 10) {
+            e.preventDefault(); // Empêche l'envoi
+            phoneInput.style.borderColor = 'red';
+            phoneInput.style.backgroundColor = '#fff0f0';
+            phoneInput.focus(); // Remet le curseur dans le champ
+            alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
+        }
     });
 }
 const today = new Date().toISOString().split('T')[0];
