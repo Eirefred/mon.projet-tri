@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notre Histoire & Mission | Mon Projet Tri</title>
+    
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --accent-orange: #FF6600;
+            --text-dark: #333333;
+            --light-bg: #f4f7f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin: 0;
+            background-color: var(--light-bg);
+        }
+
+        .hero-about {
+            background: linear-gradient(rgba(0, 51, 102, 0.6), rgba(0, 51, 102, 0.6)), url('banniere.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-orange);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: white;
+            background-color: var(--accent-orange);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.6rem;
+            border-left: 5px solid var(--accent-orange);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .sub-header {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+
+        /* --- RÉGLAGES PHOTO & DISTANCE --- */
+        /* On force l'espace entre tous les paragraphes du site à être uniforme */
+p {
+    margin-top: 0;
+    margin-bottom: 1.5rem; /* Définit exactement une ligne d'espace */
+}
+
+/* On supprime la marge du dernier paragraphe pour éviter le double saut */
+.founder-content p:last-child {
+    margin-bottom: 0;
+}
+
+.founder-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin-bottom: 1.5rem; /* Même espace que sous un paragraphe */
+}
+
+        .founder-aside {
+            flex-shrink: 0;
+            text-align: center;
+            width: 220px; /* Largeur d'origine */
+        }
+
+        .founder-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .founder-caption {
+            font-size: 1.1rem; 
+            color: var(--primary-blue);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .founder-title {
+            font-size: 0.85rem; 
+            color: var(--accent-orange);
+            font-weight: 700;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .founder-details {
+            font-size: 0.75rem; 
+            font-weight: 400;
+            color: var(--text-dark);
+            opacity: 0.8;
+            display: block;
+        }
+        /* --- FIN RÉGLAGES --- */
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            padding: 30px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            background: #fff;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--accent-orange);
+            background-color: rgba(255, 102, 0, 0.02);
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .mission-highlight {
+            background: rgba(0, 51, 102, 0.05);
+            border-left: 5px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .tag {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        footer { 
+    background: #0481fb; /* Votre bleu de marque */
+    color: white; 
+    padding: 40px 0; 
+    text-align: center; 
+    border-top: 4px solid var(--accent-orange); /* On garde la ligne orange pour le rappel */
+}
+
+.footer-container { 
+    width: 90%; 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+@media (max-width: 768px) {
+    .footer-container { flex-direction: column; gap: 20px; }
+}
+
+        @media (max-width: 768px) {
+            .founder-container { flex-direction: column; align-items: center; text-align: center; }
+            .founder-aside { order: -1; margin-bottom: 20px; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .container { padding: 25px; margin: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-about">
+        <a href="index.html" class="btn-back">← Retour à l'accueil</a>
+        <h1>L'ADN de Mon Projet Tri</h1>
+    </header>
+
+    <div class="container">
+        
+        <section>
+    <h2>La genèse du projet</h2>
+    <p class="sub-header">Transformer la passion et l'expérience terrain en une structure d'accompagnement professionnelle.</p>
+    
+    <div class="founder-container">
+        <div class="founder-content">
+            <p><strong>Mon Projet Tri</strong> est né d'une volonté de partage et d'un constat simple réalisé sur le terrain par son fondateur, <strong>Frédéric Hadi</strong>. Triathlète depuis l'adolescence dans les années 90, Frédéric a renoué avec sa passion en 2017 avec l'objectif de compléter un Ironman. Depuis, son engagement n'a cessé de croître, tant comme bénévole sur les grandes courses que comme <strong>Officiel pour Triathlon Québec</strong> depuis 2023.</p>
+            
+            <p>Au fil de ses échanges avec la communauté, Frédéric a souvent croisé des athlètes démunis face à la complexité du sport : novices ne sachant comment débuter, sportifs cherchant désespérément un coach qualifié, ou athlètes solos manquant de ressources techniques malgré leur désir de performance.</p>
+
+            <p>Frédéric a réalisé que les conseils et solutions qu'il partageait spontanément gagnaient à être officialisés pour en faire bénéficier le plus grand nombre. L'idée de l'OBNL était là : combiner les connaissances de triathlètes confirmés et de professionnels pour offrir un encadrement rigoureux à ceux qui veulent progresser sans perdre de temps à tester des méthodes incertaines.</p>
+        </div>
+
+        <aside class="founder-aside">
+            <img src="frederic-hadi.jpg" alt="Frédéric Hadi" class="founder-photo">
+            <div class="founder-caption">
+                Frédéric Hadi
+                <span class="founder-title">Fondateur & Mentor principal</span>
+                <span class="founder-details">Triathlète actif & Officiel Triathlon Québec</span>
+            </div>
+        </aside>
+    </div>
+
+    <div class="mission-highlight">
+        <p style="margin: 0; font-weight: 500;">
+            L'objectif : permettre aux passionnés d'atteindre leurs objectifs en s'appuyant sur une structure qui valorise l'humain, la rigueur technique et l'accessibilité.
+        </p>
+    </div>
+</section>
+
+        <section>
+            <h2>À qui s'adresse l'OBNL ?</h2>
+            <div class="grid-cards">
+                <div class="card">
+                    <h3>Profil : Le Novice</h3>
+                    <p>Pour ceux qui se lancent. Nous rendons la préparation accessible en <strong>adaptant l'entraînement à votre réalité quotidienne</strong> (travail, famille, loisirs), plutôt que l'inverse. Notre approche <strong>simplifie chaque étape</strong> pour vous permettre de franchir votre premier fil d'arrivée avec plaisir et sans compromis.</p>
+                </div>
+                <div class="card">
+                    <h3>Profil : L'Athlète Solo</h3>
+                    <p>Pour ceux qui s'entraînent seuls, par <strong>préférence ou par isolement en région</strong>, mais ne veulent pas plafonner. Nous fournissons un <strong>encadrement de coachs et mentors Québécois</strong> qui ont déjà fait leurs preuves, pour vous aider à atteindre votre <strong>meilleur niveau</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Qui sont nos coachs ?</h2>
+            <p>Nos coachs ne sont pas seulement des guides ; ce sont des <strong>architectes de votre entraînement</strong>. Sous l'encadrement de l'OBNL, ils assurent la programmation, le suivi technique et le mentorat nécessaire à votre réussite.</p>
+
+            <div class="grid-cards">
+                <div class="card">
+                    <span class="tag">Experts Certifiés</span>
+                    <h3>Entraîneurs de métier</h3>
+                    <p>Possédant des certifications reconnues (<strong>Triathlon Québec, PNCE</strong>), ils maîtrisent la science de la programmation. Ils planifient chaque séance pour assurer une progression mesurable et éviter les blessures.</p>
+                </div>
+                <div class="card">
+                    <span class="tag">Expérience Élite</span>
+                    <h3>Athlètes de haut niveau</h3>
+                    <p>Anciens athlètes ou compétiteurs de pointe, ils ont une expérience prouvée du coaching et de la compétition. Ils programment votre saison en y intégrant les subtilités stratégiques que seul le haut niveau enseigne.</p>
+                </div>
+            </div>
+
+            <div class="mission-highlight" style="border-left-color: var(--accent-orange);">
+                <p style="margin: 0; font-weight: 500;">
+                    <strong>Une sélection rigoureuse :</strong> Nous choisissons chaque coach pour son expertise technique, ses certifications et, surtout, pour ses qualités humaines et sa capacité à bâtir une relation de mentorat constructive.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+    <div class="footer-container">
+         <div class="footer-text">
+            &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
+            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
+                Services d'entraînement et mentorat de triathlon offerts partout dans la province : 
+                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
+            </p>
+        </div>
+        <div class="footer-logo">
+            <img src="MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)" style="height: 60px;">
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
