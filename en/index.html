@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preload" as="image" href="../banniere.jpg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Projet Tri | Connected Training & Mentorship</title>
+    <meta name="description" content="Non-profit dedicated to triathletes in Quebec. Custom coaching, mentorship, and programs for all levels across the province.">
+
+    <meta name="keywords" content="triathlon, duathlon, online coaching, connected mentorship, NGO, Quebec, remote training, Montreal, Quebec City, coach, endurance">
+    
+    <link rel="canonical" href="https://mon.projet-tri.org/en/index.html" />
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.jpg">
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/" />
+    
+    <meta property="og:title" content="Mon Projet Tri - Connected Coaching" />
+    <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
+    <meta property="og:url" content="https://mon.projet-tri.org/en/" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NGO",
+  "name": "Mon Projet Tri",
+  "url": "https://mon.projet-tri.org/en/",
+  "logo": "https://mon.projet-tri.org/MPT_Logo_Blue_text.jpg",
+  "description": "Non-profit organization offering connected triathlon mentorship and coaching throughout Quebec.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "knowsAbout": ["Triathlon", "Duathlon", "Sports Coaching", "Mentorship", "Connected Training"]
+}
+</script>
+    
+    <style>
+        :root {
+            --primary: #003366; 
+            --accent: #FF6600;  
+            --white: #ffffff;
+            --light-bg: #f9f9f9;
+            --brand-blue: #0481fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+
+    #programme, #vision, #contact { 
+        scroll-margin-top: 110px; 
+    }
+        
+    .modal-content h3 { margin-bottom: 5px !important; }
+
+    .quote-athlete {
+        display: block;
+        font-style: italic;
+        color: #666;
+        font-size: 1.1rem;
+        margin: 0 0 20px 0;
+        padding-left: 15px;
+        border-left: 3px solid #eee;
+        font-family: Georgia, serif;
+    }
+
+    header { background: var(--white); height: 95px; display: flex; align-items: center; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 1000; }
+    .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .header-left { display: flex; align-items: center; gap: 25px; }
+    .logo img { height: 55px; display: block; width: auto; }
+    .region-mention { font-size: 1.15rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
+    
+    nav ul { display: flex; list-style: none; align-items: center; }
+    nav ul li { margin-left: 25px; }
+    nav ul li a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
+    nav ul li a:hover { color: var(--accent); }
+
+    .hero { position: relative; height: 700px; background: linear-gradient(rgba(0, 51, 102, 0.4), rgba(0, 51, 102, 0.4)), url('../banniere.jpg') no-repeat center center/cover; display: flex; align-items: center; justify-content: center; color: white; }
+    .hero-content { width: 90%; max-width: 1100px; display: flex; flex-direction: column; margin-top: 100px;}
+    .hero h1 { font-size: 3.8rem; font-weight: 800; line-height: 1.2; text-shadow: 2px 2px 15px rgba(0,0,0,0.3); text-align: center; margin-bottom: 25px; }
+    .phrase-bloc { display: inline-block; white-space: nowrap; }
+    .hero p { font-size: 1.5rem; margin-bottom: 40px; text-align: center; align-self: center; }
+    .btn-high-vis { align-self: center; background: rgba(255, 255, 255, 0.25); color: var(--white); border: 2px solid var(--white); padding: 18px 45px; text-decoration: none; border-radius: 50px; font-weight: 800; text-transform: uppercase; backdrop-filter: blur(12px); transition: 0.3s; }
+    .btn-high-vis:hover { background: var(--white); color: var(--primary); }
+
+    .section-white { padding: 60px 0 40px 0; background: var(--white); }
+    .container { width: 90%; max-width: 1100px; margin: 0 auto; text-align: center; }
+    h2 { color: var(--primary); font-size: 2.5rem; margin-bottom: 25px; }
+    
+    .separator { display: flex; align-items: center; justify-content: center; margin: 60px auto; }
+    .sep-line { height: 1px; width: 100px; background: #ddd; }
+    .sep-dot { margin: 0 20px; color: var(--accent); font-size: 1.5rem; }
+
+    .programs-box { background: #fdfdfd; padding: 60px 20px; border-radius: 20px; border: 1px solid #f0f0f0; box-shadow: 0 10px 40px rgba(0,0,0,0.03); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+    
+    .card { position: relative; padding: 45px; border: 1px solid #e8e8e8; border-top: 6px solid var(--primary); border-radius: 8px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; transition: 0.4s; overflow: hidden; text-align: left; background-color: white; background-size: cover; background-position: center; }
+
+    @media (hover: hover) { .card:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 35px rgba(0,0,0,0.12); } }
+    .card:active { transform: scale(0.98); }
+
+    .card-premier-pas { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('../triathlon-debutant-quebec.jpg'); }
+    .card-mentorat { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('../mentorat-triathlon-quebec.jpg'); }
+    .card-performance { background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('../entrainement-triathlon-solo.jpg'); }
+
+    .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; font-weight: 800; text-align: center; width: 100%; }
+    .card p { text-align: center; }
+    .btn-card { display: inline-block; margin-top: 25px; padding: 12px 20px; background-color: var(--primary); color: var(--white); text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: none; font-size: 0.9rem; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
+    .btn-card:hover { background-color: var(--accent); }
+
+    .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); padding: 20px; }
+    .modal-content { background: var(--white); width: 100%; max-width: 700px; padding: 40px; border-radius: 12px; position: relative; max-height: 90vh; overflow-y: auto; text-align: left; }
+    .close-modal { position: absolute; top: 15px; right: 20px; font-size: 35px; cursor: pointer; color: #999; }
+    .modal-content h3 { color: var(--primary); font-size: 2rem; margin-bottom: 20px; border-bottom: 3px solid var(--accent); display: inline-block; }
+    .modal-content ul { list-style: none; margin: 20px 0; }
+    .modal-content li { margin-bottom: 12px; padding-left: 25px; position: relative; }
+    .modal-content li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: bold; }
+    .price-box { background: #f0f7ff; padding: 12px 20px; border-radius: 8px; border-left: 6px solid var(--accent); margin: 20px 0; font-size: 1.15rem; font-weight: 800; color: var(--primary); line-height: 1.2; }
+
+    .quiz-option {
+        display: block; width: 100%; box-sizing: border-box; padding: 18px; margin: 12px 0; text-align: left; background: #f8f8f8; border: 2px solid #eee; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: 500; transition: all 0.2s ease; -webkit-tap-highlight-color: transparent; user-select: none; outline: none !important;
+    }
+    @media (hover: hover) { .quiz-option:hover { border-color: var(--brand-blue); background: #f0f7ff; } }
+
+    .section-contact { padding:40px 0 100px 0; background: var(--light-bg); }
+    .contact-intro { max-width: 700px; margin: 0 auto 30px; font-size: 1.1rem; color: #555; text-align: center; }
+    .contact-form-container { max-width: 800px; margin: 0 auto; background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: left; border-left: 8px solid var(--accent); }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: flex; align-items: center; font-weight: 700; margin-bottom: 8px; color: var(--primary); font-size: 0.95rem; }
+    .icon-small { width: 18px; height: 18px; margin-right: 10px; object-fit: contain; }
+    .form-row { display: flex; gap: 20px; margin-bottom: 5px; }
+    .form-row .form-group { flex: 1; }
+    input, select, textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: inherit; }
+    .btn-submit { display: block;margin: 20px auto 0;width: 100%; max-width: 400px; background: var(--accent); color: var(--white); padding: 16px; border: none; border-radius: 6px; font-size: 1rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
+    .btn-submit:hover { background: #e65c00; transform: scale(1.02); }
+
+    footer { background: #0481fb; color: white; padding: 40px 0; text-align: center; border-top: 4px solid #FF6600; }
+    .footer-container { width: 90%; max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-logo img { height: 60px; display: block; }
+
+    @media (max-width: 768px) {
+        header { position: static; height: auto; padding: 10px 0; }
+        .nav-container { flex-direction: column; gap: 8px; }
+        .header-left { gap: 12px; width: 100%; justify-content: center; }
+        .region-mention { font-size: 0.95rem; padding-left: 12px; }
+        .logo img { height: 45px; }
+        .hero h1 { font-size: 2.2rem; }
+        .form-row { flex-direction: column; gap: 0; }
+        nav { display: block !important; }
+        nav ul { flex-direction: row; justify-content: center; padding: 10px 0; }
+        nav ul li:not(.lang-selector) { display: none; }
+    }
+
+    .btn-diagnostic-large { display: block; width: 90%; max-width: 450px; margin: 40px auto; background-color: var(--primary); color: var(--white); padding: 18px 25px; border: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: 0.3s ease; }
+    .btn-diagnostic-large:hover { background-color: var(--accent); transform: translateY(-2px); }
+    .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
+
+    .lang-selector { display: flex; align-items: center; gap: 8px; margin-left: 20px; font-size: 0.9rem; color: var(--primary); }
+    .lang-selector a { text-decoration: none; color: var(--primary); transition: 0.3s; opacity: 0.7; }
+    .lang-selector a:hover { opacity: 1; color: var(--accent); }
+    .lang-selector .active { font-weight: 800; color: var(--accent); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <div class="header-left">
+                <div class="logo">
+    <a href="index.html">
+        <img src="../MPT_Logo_Blue_text.jpg" alt="Logo Mon Projet Tri - Home">
+    </a>
+</div>
+                <div class="region-mention">Across Quebec</div>
+            </div>
+            <nav>
+    <ul>
+        <li><a href="discover.html">About Us</a></li> 
+        <li><a href="#vision">Our Vision</a></li>
+        <li><a href="#programme">Programs</a></li>
+        <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Join Us</a></li>
+        <li class="lang-selector">
+            <a href="../index.html">FR</a>
+            <span style="opacity: 0.3;">|</span>
+            <span class="active">EN</span>
+        </li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>
+        <span class="sr-only">Non-profit triathlon coaching and mentorship across Quebec and Montreal - </span>
+        <span class="phrase-bloc">Your Triathlon.</span> 
+        <span class="phrase-bloc">Your Pace.</span><br>
+        <span class="phrase-bloc">Our Support.</span>
+        </h1>
+        <p>
+            <span style="background: var(--accent); color: white; padding: 5px 18px; border-radius: 50px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4); display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px;">mon.projet-tri</span> 
+            is <strong>your non-profit</strong> for <strong>triathlon</strong> in <strong>Quebec</strong>.<br> Tailored athletic guidance, wherever you are.<br>
+            <strong>Let's talk about your goals.</strong>
+        </p>
+        <a href="#contact" class="btn-high-vis">Book my free consult</a>
+    </div>
+</section>
+
+<section id="vision" class="section-white">
+    <div class="container">
+        <h2>Our Promise: Adaptation</h2>
+        
+        <div style="max-width: 850px; margin: 0 auto; text-align: left; color: #555; font-size: 1.15rem;">
+            <p style="margin-bottom: 20px;">
+                Preparing for a triathlon can seem complex or daunting, and not everyone knows where to start. While excellent traditional clubs exist, their scheduling or geographical constraints don't work for everyone.
+            </p>
+            <p style="margin-bottom: 20px; padding-left: 20px; border-left: 4px solid var(--accent); color: var(--primary); font-weight: 500; font-style: italic;">
+                We empower those who train alone—by choice or by isolation—to access coach-mentors who guide every step of their progress. Through <strong>flexible, connected tracking</strong>, we break down geographical barriers to offer attentive support, regardless of your location in Quebec.
+            </p>
+            <p>
+                As a registered non-profit, we prioritize <strong>human relationships</strong> and direct support. Our non-profit structure allows us to offer high-level expertise at the <strong>most affordable rates possible</strong>, reinvesting our resources exclusively into the quality of your guidance. Our mission is to share our knowledge to save you time and ensure the full realization of your athletic project.
+            </p>
+            <p style="margin-top: 15px; text-align: right;">
+    <a href="discover.html" style="color: var(--brand-blue); font-weight: 700; text-decoration: none; font-size: 1rem;">
+    Discover our story and team →
+    </a>
+</p>
+        </div>
+
+        <div class="separator" style="margin: 30px auto;">
+            <div class="sep-line"></div>
+            <div class="sep-dot">●</div>
+            <div class="sep-line"></div>
+        </div>
+
+        <div class="programs-box" style="padding-top: 40px;">
+            <h3 id="programme" style="color: var(--accent); font-size: 2rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+                What is your project?
+            </h3>
+            <p style="max-width: 850px; margin: 0 auto; font-size: 1.2rem; color: #555; margin-bottom: 40px;">
+                Click on the profile that matches you best to learn more:
+            </p>
+            
+            <div class="grid">
+                <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Start triathlon in Quebec: complete beginner program with remote training" style="cursor: pointer;">
+                    <h3>First Step</h3>
+                    <p>For those who have never dared to cross the line. A secure A-to-Z guidance for your first triathlon.</p>
+                    <button class="btn-card">THAT'S ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Personalized triathlon mentorship in Quebec - My Season program" style="cursor: pointer;">
+                    <h3>My Season</h3>
+                    <p>Connect with a dedicated mentor and coach to never feel alone in your training again.</p>
+                    <button class="btn-card">THIS IS ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+                <div class="card card-performance" onclick="openModal('m3')" role="img" aria-label="High-level remote triathlon training in Quebec - Solo Performance" style="cursor: pointer;">
+                    <h3>Solo Performance</h3>
+                    <p>A high-level structure for those aiming for results while remaining autonomous.</p>
+                    <button class="btn-card">THIS IS MY PROFILE<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+            </div>
+
+            <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
+            Help me choose my program
+            </button>
+        </div>
+    </div>
+</section>
+
+    <div id="diag-modal" class="modal-overlay">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close-modal" onclick="closeModal('diag-modal')">&times;</span>
+            <div id="quiz-intro">
+                <h3>Profile Diagnostic</h3>
+                <p>Answer 6 quick questions to identify the support that fits you best.</p>
+                <button class="btn-submit" onclick="startQuiz()">Start</button>
+            </div>
+            
+            <div id="quiz-steps-box">
+                <div class="quiz-step" id="q1">
+                    <p class="quiz-question-text">1. What is your experience level in triathlon?</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Complete Beginner (Starting from zero)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initiated (I've done a few races)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmed (I know my needs well)</button>
+                </div>
+
+                <div class="quiz-step" id="q2" style="display:none">
+                    <p class="quiz-question-text">2. Regarding the technical side (bike, transitions), you prefer:</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q3')">To be guided step-by-step with simplicity</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q3')">To discuss with a mentor to validate my choices</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q3')">To analyze data to optimize every detail</button>
+                </div>
+
+                <div class="quiz-step" id="q3" style="display:none">
+                    <p class="quiz-question-text">3. What motivates you the most daily?</p>
+                    <button class="quiz-option" onclick="noter('securite', 1, 'q4')">Successfully finishing my challenge with pride</button>
+                    <button class="quiz-option" onclick="noter('social', 2, 'q4')">Feeling supported and encouraged</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q4')">Beating my personal records and progressing</button>
+                </div>
+
+                <div class="quiz-step" id="q4" style="display:none">
+                    <p class="quiz-question-text">4. How many hours can you invest per week?</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q5')">Less than 6h (I need to maximize every minute)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q5')">Between 6h and 10h (I'm ready to commit seriously)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q5')">More than 10h (Aiming for intensive prep)</button>
+                </div>
+
+                <div class="quiz-step" id="q5" style="display:none">
+                    <p class="quiz-question-text">5. What distance are you aiming for?</p>
+                    <button class="quiz-option" onclick="noter('securite', 1, 'q6')">Discovery (Try-a-tri or Sprint)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q6')">Standard (Olympic Distance)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q6')">Endurance (70.3 or Full Ironman)</button>
+                </div>
+
+                <div class="quiz-step" id="q6" style="display:none">
+                    <p class="quiz-question-text">6. Do you have a specific physiological need to integrate?</p>
+                    <button class="quiz-option" onclick="finaliser('Standard')">Standard Profile (General)</button>
+                    <button class="quiz-option" onclick="finaliser('Female')">Female Profile (Cycle & Hormonal)</button>
+                    <button class="quiz-option" onclick="finaliser('Master')">Master Profile (Recovery 45+)</button>
+                </div>
+
+                <div class="quiz-step" id="qRes" style="display:none">
+                    <h4 id="res-titre" style="color: var(--accent); margin-bottom:10px;"></h4>
+                    <p id="res-text"></p>
+                    <button class="btn-submit" onclick="transférerAuForm()">Apply this profile to the form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="m1" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m1')">&times;</span>
+            <h3>Program: First Step</h3>
+            <blockquote class="quote-athlete" style="margin-top: 0; margin-bottom: 20px;">"One day, I'm going to do one..."</blockquote>
+            <div style="background: #fff8f3; border: 1px dashed var(--accent); padding: 15px; border-radius: 8px; margin-bottom: 25px;">
+                <p style="color: var(--primary); font-weight: 600; font-size: 1.05rem; line-height: 1.4; margin: 0; text-align: center;">
+                    This program is the heart of our mission: <br>
+                    <span style="color: var(--accent);">getting you to cross your very first finish line.</span>
+                </p>
+            </div>
+            <ul>
+                <li>Assignment of a dedicated mentor based on your goals.</li>
+                <li>Complete guidance for purchasing your first gear.</li>
+                <li>12-week training plan adapted to your current level.</li>
+                <li>Plan adjustments to fit your lifestyle.</li>
+                <li>Explanations of how a triathlon unfolds.</li>
+                <li>Training on race rules and regulations.</li>
+                <li>Moral and psychological support for your first starting line.</li>
+            </ul>
+            <div class="price-box">Price: $399 all-included for 3 months<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">($133/month)<br>Training plan + 5 mentorship sessions (40 min each)</span></div>
+            <button class="btn-submit" onclick="choisirProgramme('FIRST STEP')">This is my challenge</button>
+        </div>
+    </div>
+
+    <div id="m2" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m2')">&times;</span>
+            <h3>Program: My Season</h3>
+            <blockquote class="quote-athlete">"This year, I want to improve!"</blockquote>
+            <ul>
+                <li>Assignment of a dedicated mentor based on your goals.</li>
+                <li>Quarterly training plan.</li>
+                <li>Bi-monthly adjustments based on your real availability.</li>
+                <li>Monthly check-in calls to keep motivation at its peak.</li>
+                <li>Strategy and transition optimizations.</li>
+            </ul>
+            <div class="price-box">Price: $449 all-included for 3 months<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $150/month)<br>Commitment for 1 season (6 months).<br></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('MY SEASON')">Choose this plan</button>
+        </div>
+    </div>
+
+    <div id="m3" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m3')">&times;</span>
+            <h3>Program: Solo Performance</h3>
+             <blockquote class="quote-athlete">"I want to reach my absolute best."</blockquote>
+            <ul>
+                <li>Assignment of a dedicated mentor based on your goals.</li>
+                <li>Advanced planning for Ironman and 70.3 distances.</li>
+                <li>In-depth data analysis via TrainingPeaks*.</li>
+                <li>Monthly check-in calls to maintain high performance.</li>
+                <li>Personalized race nutrition strategy.</li>
+                <li>Specialist recommendations <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(therapists, nutritionists, bike fitting, etc.)</small></li>
+            </ul>
+            <div class="price-box">Price: $499 all-included for 3 months <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $166/month)<br>Commitment for 1 year (12 months).<br><small>*TrainingPeaks Premium subscription required</small></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('SOLO PERFORMANCE')">Aim for performance</button>
+        </div>
+    </div>
+
+    <section id="contact" class="section-contact">
+        <div class="container">
+            <h2>Ready to take the first step?</h2>
+            <p class="contact-intro">
+                Every journey begins with a simple conversation. Leave us your details: 
+                <strong>a member of our team will contact you personally</strong> 
+                based on your availability to build your athletic project.
+            </p>
+
+            <div class="contact-form-container">
+                <form action="https://formspree.io/f/mgolvwnq" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(514) 000-0000" required>
+                        </div>
+                    </div>
+                    <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0 25px 0;">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><img src="../calendrier.jpg" class="icon-small" alt=""> Date Option 1</label>
+                            <input type="date" name="date_1" required>
+                        </div>
+                        <div class="form-group">
+                            <label><img src="../horloge.jpg" class="icon-small" alt=""> Time Preference (Day 1)</label>
+                            <select name="horaire_1" required>
+                                <option value="" disabled selected>Choose...</option>
+                                <option value="morning">Morning (8 AM - 12 PM)</option>
+                                <option value="afternoon">Afternoon (12 PM - 5 PM)</option>
+                                <option value="evening">Evening (5 PM - 8 PM)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date Option 2</label>
+                            <input type="date" name="date_2">
+                        </div>
+                        <div class="form-group">
+                            <label><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Time Preference (Day 2)</label>
+                            <select name="horaire_2">
+                                <option value="" disabled selected>Choose...</option>
+                                <option value="morning">Morning</option>
+                                <option value="afternoon">Afternoon</option>
+                                <option value="evening">Evening</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>A message for us? (Optional)</label>
+                        <textarea id="message-field" name="message" placeholder="Tell us about your goals..."></textarea>
+                    </div>
+                    <div class="btn-container">
+                        <button type="submit" class="btn-submit">Schedule my free call</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <footer>
+    <div class="footer-container">
+        <div class="footer-text">
+            &copy; 2026 mon.projet*(tri) - Non-profit dedicated to triathlon in Quebec
+            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
+                Triathlon coaching and mentorship services offered province-wide, focusing on remote and connected support.
+            </p>
+        </div>
+        <div class="footer-logo">
+            <img src="../MPT_Logo_White_text.jpg" alt="Mon Projet Tri Logo - Quebec Triathlon NGO">
+        </div>
+    </div>
+</footer>
+
+<script>
+let scores = { securite: 0, autonomie: 0, social: 0 };
+let progRes = "";
+
+function openModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    if (id === 'diag-modal') {
+        scores = { securite: 0, autonomie: 0, social: 0 };
+        document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+        document.getElementById('quiz-intro').style.display = 'block';
+        document.getElementById('quiz-steps-box').style.display = 'none';
+    }
+}
+
+function closeModal(id) {
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+}
+
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        closeModal(event.target.id);
+    }
+};
+
+function startQuiz() {
+    document.getElementById('quiz-intro').style.display = 'none';
+    document.getElementById('quiz-steps-box').style.display = 'block';
+    mélangerOptions('q1');
+    document.getElementById('q1').style.display = 'block';
+}
+
+function noter(cat, pts, next) {
+    scores[cat] += pts;
+    document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    
+    const nextStep = document.getElementById(next);
+    if (nextStep && next !== 'qRes') {
+        mélangerOptions(next);
+        nextStep.style.display = 'block';
+    }
+}
+
+function finaliser(physio) {
+    document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
+    
+    let titre = "";
+    let desc = "";
+
+    if (gagnant === 'securite') {
+        titre = "Total Serenity";
+        progRes = "FIRST STEP";
+        desc = "You need a supportive environment. Ideal for accompanying you from A to Z.";
+    } else if (gagnant === 'social') {
+        titre = "Human Guidance";
+        progRes = "MY SEASON";
+        desc = "Mentorship is your engine. Never train alone again.";
+    } else {
+        titre = "Autonomous Performance";
+        progRes = "SOLO PERFORMANCE";
+        desc = "You aim for results and data optimization.";
+    }
+
+    window.finalDiagnostic = { titre, prog: progRes, physio };
+    document.getElementById('res-titre').innerText = "Analysis: " + titre;
+    document.getElementById('res-text').innerText = desc + " (Profile: " + physio + ")";
+    document.getElementById('qRes').style.display = 'block';
+}
+
+function mélangerOptions(containerId) {
+    const container = document.querySelector(`#${containerId}`);
+    const options = Array.from(container.querySelectorAll('.quiz-option'));
+    for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+    }
+    options.forEach(opt => container.appendChild(opt));
+}
+
+function transférerAuForm() {
+    const area = document.getElementById('message-field');
+    const data = window.finalDiagnostic;
+    if (!data) return;
+    area.value = `PROFILE ANALYSIS:\n- Profile: ${data.titre}\n- Program: ${data.prog}\n- Physiology: ${data.physio}\n\nI would like to discuss this.`;
+    closeModal('diag-modal');
+    setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+}
+
+function choisirProgramme(nom) {
+    document.getElementById('message-field').value = "PROJECT: " + nom;
+    closeModal('m1'); closeModal('m2'); closeModal('m3');
+    setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
+}
+
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+    phoneInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        if (!x[1]) { e.target.value = ''; return; }
+        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+    });
+}
+const today = new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
+</script>
+</body>
+</html>

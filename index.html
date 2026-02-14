@@ -14,6 +14,9 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/" />
     <meta name="apple-mobile-web-app-title" content="Projet(tri)">
     <meta property="og:title" content="Mon Projet Tri" />
     <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
@@ -278,9 +281,22 @@
             .logo img { height: 45px; }
             .hero h1 { font-size: 2.2rem; }
             .form-row { flex-direction: column; gap: 0; }
-            nav { display: none; }
-            .footer-container { flex-direction: column; gap: 20px; }
-        }
+            nav { 
+        display: block !important; /* Pour afficher le sélecteur même si le menu est caché */
+    }
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 0;
+    }
+    nav ul li:not(.lang-selector) {
+        display: none; /* Cache les liens textes sur mobile pour ne laisser que le FR|EN en haut */
+    }
+    .lang-selector {
+        margin-left: 0;
+        font-size: 1.1rem;
+    }
+}
         /* --- AJOUT OU REMPLACEMENT --- */
 
 /* Ce bouton copie le style exact de tes .btn-card (bleu, coins 4px, gras) */
@@ -320,6 +336,32 @@
     text-align: left;
     display: block;
 }
+
+.lang-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    color: var(--primary);
+}
+
+.lang-selector a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: 0.3s;
+    opacity: 0.7;
+}
+
+.lang-selector a:hover {
+    opacity: 1;
+    color: var(--accent);
+}
+
+.lang-selector .active {
+    font-weight: 800;
+    color: var(--accent);
+}
     </style>
 </head>
 <body>
@@ -331,13 +373,18 @@
                 <div class="region-mention">Partout au Québec</div>
             </div>
             <nav>
-            <ul>
-            <li><a href="decouvrir.html">L'OBNL</a></li>
-            <li><a href="#vision">Notre vision</a></li>
-           <li><a href="#programme">Les programmes</a></li>
-           <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
-            </ul>
-            </nav>
+    <ul>
+        <li><a href="decouvrir.html">L'OBNL</a></li>
+        <li><a href="#vision">Notre vision</a></li>
+        <li><a href="#programme">Les programmes</a></li>
+        <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
+        <li class="lang-selector">
+            <span class="active">FR</span>
+            <span style="opacity: 0.3;">|</span>
+            <a href="en/index.html">EN</a>
+        </li>
+    </ul>
+</nav>
         </div>
     </header>
 
@@ -565,7 +612,7 @@
                     <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0 25px 0;">
                     <div class="form-row">
                         <div class="form-group">
-                            <label><img src="calendrier.jpg" class="icon-small" alt="Contacter entreainement remote"> Option de date 1</label>
+                            <label><img src="calendrier.jpg" class="icon-small" alt="Contacter entrainement remote"> Option de date 1</label>
                             <input type="date" name="date_1" required>
                         </div>
                         <div class="form-group">

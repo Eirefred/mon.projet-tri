@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story & Mission | Triathlon Coaching Quebec | Mon Projet Tri</title>
+    <meta name="description" content="Discover Mon Projet Tri, the non-profit dedicated to triathlon in Quebec. Mentorship for novices, support for solo athletes, and coaching by certified experts.">
+    <meta name="keywords" content="triathlon Quebec, triathlon coach, triathlon training, triathlon NGO, Frédéric Hadi, triathlon mentorship">
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/decouvrir.html" />
+    
+    <style>
+        :root {
+            --primary-blue: #003366;
+            --accent-orange: #FF6600;
+            --text-dark: #333333;
+            --light-bg: #f4f7f9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            margin: 0;
+            background-color: var(--light-bg);
+        }
+
+        .hero-about {
+            background: linear-gradient(rgba(0, 51, 102, 0.6), rgba(0, 51, 102, 0.6)), url('../banniere.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px 20px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-orange);
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: white;
+            background-color: var(--accent-orange);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            font-size: 1.6rem;
+            border-left: 5px solid var(--accent-orange);
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+
+        .sub-header {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 30px;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-content {
+            flex: 1;
+        }
+
+        .founder-aside {
+            flex-shrink: 0;
+            text-align: center;
+            width: 220px;
+        }
+
+        .founder-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--light-bg);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .founder-caption {
+            font-size: 1.1rem; 
+            color: var(--primary-blue);
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .founder-title {
+            font-size: 0.85rem; 
+            color: var(--accent-orange);
+            font-weight: 700;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .founder-details {
+            font-size: 0.75rem; 
+            font-weight: 400;
+            color: var(--text-dark);
+            opacity: 0.8;
+            display: block;
+        }
+
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            padding: 30px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            background: #fff;
+            transition: 0.3s;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .card h3 {
+            color: var(--primary-blue);
+            margin-top: 0;
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(255, 255, 255, 0.85); 
+            z-index: -1;
+        }
+
+        .mission-highlight {
+            background: rgba(0, 51, 102, 0.05);
+            border-left: 5px solid var(--primary-blue);
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .tag {
+            background: var(--accent-orange);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #0481fb;
+            border-top: 4px solid #FF6600; 
+            padding: 40px 0;
+        }
+
+        .footer-text {
+            text-align: center;
+            flex: 1;
+        }
+
+        .footer-container { 
+            width: 90%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 20px;
+            }
+
+            .founder-container {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+
+            .grid-cards {
+                grid-template-columns: 1fr !important;
+                gap: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero-about">
+    <a href="index.html" class="btn-back">← Back to home</a>
+    <h1>The DNA of Mon Projet Tri</h1>
+</header>
+
+    <div class="container">
+        
+        <section>
+            <h2>Project Origins</h2>
+            <p class="sub-header">Transforming passion and field experience into a professional support structure.</p>
+            
+            <div class="founder-container">
+                <div class="founder-content">
+                    <p><strong>Mon Projet Tri</strong> was born from a desire to share and a simple observation made in the field by its founder, <strong>Frédéric Hadi</strong>. A triathlete since his teens in the 90s, Frédéric reconnected with his passion in 2017 with the goal of completing an Ironman. Since then, his commitment has only grown, both as a volunteer at major races and as an <strong>Official for Triathlon Québec</strong> since 2024.</p>
+                    
+                    <p>Through his interactions with the community, Frédéric often met athletes who felt lost facing the complexity of the sport: novices not knowing how to start, athletes desperately looking for a qualified coach, or solo athletes lacking technical resources despite their desire for performance.</p>
+
+                    <p>Frédéric realized that the advice and solutions he shared spontaneously needed to be formalized to benefit as many people as possible. The idea of the non-profit (OBNL) was born: combining the knowledge of experienced triathletes and professionals to offer rigorous guidance to those who want to progress without wasting time testing uncertain methods.</p>
+                </div>
+
+                <aside class="founder-aside">
+                    <img src="../frederic-hadi.jpg" alt="Frédéric Hadi, founder of Mon Projet Tri and expert triathlon mentor in Quebec" class="founder-photo">
+                    <div class="founder-caption">
+                        <strong>Frédéric Hadi</strong>
+                        <span class="founder-title">Founder & Lead Mentor</span>
+                        <span class="founder-details">Active Triathlete & Triathlon Québec Official</span>
+                    </div>
+                </aside>
+            </div>
+
+            <div class="mission-highlight" style="margin-top: -10px;">
+                <p style="margin: 0; font-weight: 500;">
+                    The objective: to allow enthusiasts to achieve their goals by relying on a structure that values human connection, technical rigor, and accessibility.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Who is this Non-Profit for?</h2>
+            <div class="grid-cards">
+                <div class="card" style="background-image: url('../triathlon-debutant-quebec.jpg');" role="img" aria-label="Group of beginner triathletes practicing open water swimming in Quebec">
+                    <h3>Profile: The Novice</h3>
+                    <p>For those starting out. We make preparation accessible by <strong>adapting training to your daily reality</strong> (work, family, hobbies), rather than the other way around. Our guidance <strong>simplifies every step</strong> to lead you calmly through all phases of your project, right up to your first finish line.</p>
+                </div>
+                <div class="card" style="background-image: url('../entrainement-triathlon-solo.jpg');" role="img" aria-label="Triathlon athlete training alone on a bike on a country road">
+                    <h3>Profile: The Solo Athlete</h3>
+                    <p>For those who train alone, by <strong>preference or due to geographic isolation</strong>, but don't want to hit a plateau. We provide <strong>guidance from Quebec-based coaches and mentors</strong> who have already proven themselves, to help you reach your <strong>absolute best</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Who are our Coaches?</h2>
+            <p>
+                Our coaches are more than just guides; they are the <strong>architects of your training</strong>. 
+                Our team is a unique alliance of mentors: you will find <strong>renowned coaches in Quebec</strong> with decades of experience, as well as <strong>young, passionate coaches</strong> driven by a new energy. 
+                They have all chosen to put their dynamism at the service of Mon Projet Tri's mission to offer modern and inspiring guidance. 
+                Under our framework, they ensure the <strong>programming, technical follow-up, and mentorship</strong> necessary for your success.
+            </p>
+
+            <div class="grid-cards">
+                <div class="card" 
+                style="background-image: url('../Entraineurs_Professionels.jpg');" 
+                role="img" 
+                aria-label="Certified triathlon coach in Quebec using a tablet for performance analysis">
+                    <span class="tag">Certified Experts</span>
+                    <h3>Professional Coaches</h3>
+                    <p>Holding recognized certifications, they bring specialized expertise in biomechanics, physiology, and athletic planning to maximize your potential.</p>
+                </div>
+                <div class="card" style="background-image: url('../Athlètes_Confirmés.jpg');" role="img" aria-label="High-level athlete in long-distance triathlon competition in Quebec">
+                    <span class="tag">Elite Experience</span>
+                    <h3>High-Level Athletes</h3>
+                    <p>Former athletes or top competitors, they have proven experience in coaching and competition. They program your season by integrating the strategic subtleties that only the high level teaches.</p>
+                </div>
+            </div>
+
+            <div class="mission-highlight" style="border-left-color: var(--accent-orange);">
+                <p style="margin: 0; font-weight: 500;">
+                    <strong>Rigorous Selection:</strong> We choose each coach for their technical expertise, certifications, and, above all, for their human qualities and ability to build a constructive mentorship relationship.
+                </p>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-container">
+             <div class="footer-text" style="color: white;">
+                &copy; 2026 mon.projet*(tri) - Non-profit dedicated to triathlon in Quebec
+                <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
+                    Triathlon coaching and mentorship services offered province-wide, focusing on remote and connected support.
+                </p>
+            </div>
+            <div class="footer-logo">
+                <img src="../MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)" style="height: 60px;">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
