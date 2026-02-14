@@ -172,12 +172,15 @@ p {
             margin-bottom: 10px;
         }
 
-footer { 
-    background: #0481fb; 
-    color: white; 
-    padding: 40px 0; 
-    text-align: center; /* Force le centrage du texte */
+footer {
+    background: #0481fb;       /* Couleur exacte de l'index */
     border-top: 4px solid #FF6600; 
+    padding: 40px 0;           /* Hauteur de l'index */
+}
+
+footer p {
+    margin: 0;                 /* Supprime les espaces invisibles sous les paragraphes */
+    line-height: 1.4;          /* Interligne identique à l'index */
 }
 
 .footer-container { 
@@ -189,59 +192,16 @@ footer {
     align-items: center; 
 }
 
-.footer-text {
-    flex: 1; /* Prend l'espace pour permettre le centrage */
-    text-align: center; /* Centre le texte à l'intérieur de son bloc */
-    margin-left: 60px; /* Compense la largeur du logo pour un centrage optique parfait */
-}
-
-.footer-text p {
-    font-size: 0.75rem; 
-    color: #ffffff; 
-    opacity: 0.4; 
-    margin-top: 10px; 
-    font-weight: 300; 
-    line-height: 1.4;
-    margin-bottom: 0;
-}
-
-.footer-logo img { 
-    height: 60px; 
-    display: block; 
-}
-
 @media (max-width: 768px) {
-    .founder-container {
-        flex-direction: column-reverse; /* Met la photo au-dessus du texte */
-        align-items: center;
-        gap: 20px;
-    }
-
-    .founder-content {
-        text-align: left; /* Garde le texte lisible à gauche */
-    }
-
-    .founder-aside {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .founder-photo {
-        width: 180px; /* Taille raisonnable sur mobile */
-        height: 180px;
-    }
+    .footer-container { flex-direction: column; gap: 20px; }
 }
-    .footer-container { 
-        flex-direction: column; 
-        gap: 20px; 
-    }
-    .footer-text { 
-        margin-left: 0; 
-        text-align: center; 
-    }
-}
+
+        @media (max-width: 768px) {
+            .founder-container { flex-direction: column; align-items: center; text-align: center; }
+            .founder-aside { order: -1; margin-bottom: 20px; }
+            .grid-cards { grid-template-columns: 1fr; }
+            .container { padding: 25px; margin: 15px; }
+        }
     </style>
 </head>
 <body>
@@ -258,20 +218,23 @@ footer {
     <p class="sub-header">Transformer la passion et l'expérience terrain en une structure d'accompagnement professionnelle.</p>
     
     <div class="founder-container">
-    <div class="founder-content">
-        <p><strong>Mon Projet Tri</strong> est né d'une volonté de partage...</p>
-        <p>Au fil de ses échanges avec la communauté...</p>
-        <p>Frédéric a réalisé que les conseils...</p>
-    </div>
+        <div class="founder-content">
+            <p><strong>Mon Projet Tri</strong> est né d'une volonté de partage et d'un constat simple réalisé sur le terrain par son fondateur, <strong>Frédéric Hadi</strong>. Triathlète depuis l'adolescence dans les années 90, Frédéric a renoué avec sa passion en 2017 avec l'objectif de compléter un Ironman. Depuis, son engagement n'a cessé de croître, tant comme bénévole sur les grandes courses que comme <strong>Officiel pour Triathlon Québec</strong> depuis 2023.</p>
+            
+            <p>Au fil de ses échanges avec la communauté, Frédéric a souvent croisé des athlètes démunis face à la complexité du sport : novices ne sachant comment débuter, sportifs cherchant désespérément un coach qualifié, ou athlètes solos manquant de ressources techniques malgré leur désir de performance.</p>
 
-    <aside class="founder-aside">
-        <img src="frederic-hadi.jpg" alt="Frédéric Hadi" class="founder-photo">
-        <div class="founder-caption">
-            <strong>Frédéric Hadi</strong>
-            <span class="founder-title">Fondateur & Mentor principal</span>
+            <p>Frédéric a réalisé que les conseils et solutions qu'il partageait spontanément gagnaient à être officialisés pour en faire bénéficier le plus grand nombre. L'idée de l'OBNL était là : combiner les connaissances de triathlètes confirmés et de professionnels pour offrir un encadrement rigoureux à ceux qui veulent progresser sans perdre de temps à tester des méthodes incertaines.</p>
         </div>
-    </aside>
-</div>
+
+        <aside class="founder-aside">
+            <img src="frederic-hadi.jpg" alt="Frédéric Hadi" class="founder-photo">
+            <div class="founder-caption">
+                Frédéric Hadi
+                <span class="founder-title">Fondateur & Mentor principal</span>
+                <span class="founder-details">Triathlète actif & Officiel Triathlon Québec</span>
+            </div>
+        </aside>
+    </div>
 
     <div class="mission-highlight">
         <p style="margin: 0; font-weight: 500;">
@@ -322,17 +285,15 @@ footer {
 
     <footer>
     <div class="footer-container">
-        <div class="footer-text">
+         <div class="footer-text">
             &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
-            <p>
+            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
                 Services d'entraînement et mentorat de triathlon offerts partout dans la province : 
-                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, 
-                Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, 
-                Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
+                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
             </p>
         </div>
         <div class="footer-logo">
-            <img src="MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)">
+            <img src="MPT_Logo_White_text.jpg" alt="Logo mon.projet(tri)" style="height: 60px;">
         </div>
     </div>
 </footer>
