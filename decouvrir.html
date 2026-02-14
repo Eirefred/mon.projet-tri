@@ -192,7 +192,32 @@ footer p {
     align-items: center; 
 }
 
+
 @media (max-width: 768px) {
+    /* 1. Genèse : On empile la photo et le texte */
+    .founder-container {
+        flex-direction: column-reverse; /* Photo en haut, texte en dessous */
+        align-items: center;
+        text-align: center;
+        padding: 0 10px; /* Décolle le texte du bord gauche */
+    }
+
+    .founder-content {
+        padding: 0 15px; /* Évite que le texte touche les bords de l'écran */
+    }
+
+    /* 2. Cartes : On les empile une par une comme sur l'index */
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%; /* Prend toute la largeur disponible */
+        max-width: 350px; /* Garde une taille élégante */
+        margin-bottom: 20px;
+    }
+}
     .footer-container { flex-direction: column; gap: 20px; }
 }
 
@@ -229,7 +254,7 @@ footer p {
         <aside class="founder-aside">
             <img src="frederic-hadi.jpg" alt="Frédéric Hadi" class="founder-photo">
             <div class="founder-caption">
-                Frédéric Hadi
+                <strong>Frédéric Hadi</strong>
                 <span class="founder-title">Fondateur & Mentor principal</span>
                 <span class="founder-details">Triathlète actif & Officiel Triathlon Québec</span>
             </div>
