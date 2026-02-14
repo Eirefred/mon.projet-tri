@@ -173,9 +173,10 @@ p {
         }
 
 footer {
-    background: #0481fb;       /* Couleur exacte de l'index */
-    border-top: 4px solid #FF6600; 
-    padding: 40px 0;           /* Hauteur de l'index */
+    background-color: #0481fb;
+    border-top: 4px solid #FF6600; /* La fameuse ligne orange */
+    padding: 40px 0;
+    color: white;
 }
 
 footer p {
@@ -194,40 +195,38 @@ footer p {
 
 
 @media (max-width: 768px) {
-    /* 1. Genèse : On empile la photo et le texte */
-    .founder-container {
-        flex-direction: column-reverse; /* Photo en haut, texte en dessous */
-        align-items: center;
-        text-align: center;
-        padding: 0 10px; /* Décolle le texte du bord gauche */
-    }
-
-    .founder-content {
-        padding: 0 15px; /* Évite que le texte touche les bords de l'écran */
-    }
-
-    /* 2. Cartes : On les empile une par une comme sur l'index */
+    /* 1. La section Coachs (Profils) */
     .cards-container {
-        flex-direction: column; /* Aligne les éléments verticalement */
-        align-items: center;    /* Centre les cartes dans l'écran */
-        gap: 20px;              /* Ajoute un espace entre chaque carte */
+        flex-direction: column !important; /* Force l'empilement */
+        align-items: center;
+        gap: 20px;
     }
 
+    /* 2. La section Experts (Experts certifiés / Expérience Elite) */
+    .grid {
+        display: flex; /* On s'assure qu'il est en flex */
+        flex-direction: column; /* On empile verticalement */
+        gap: 20px;
+    }
+
+    /* 3. Style commun pour toutes les cartes sur mobile */
     .card {
-        width: 100%;            /* La carte prend toute la largeur */
-        max-width: 350px;       /* Mais on limite sa largeur pour l'esthétique */
-        margin: 0 auto;         /* Centre la carte horizontalement */
+        width: 100% !important;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    /* Ajustement pour la section genèse (déjà validé) */
+    .founder-container {
+        flex-direction: column-reverse;
+        align-items: center;
+        padding: 0 20px;
+    }
+    .founder-content {
+        text-align: left;
+        margin-top: 20px;
     }
 }
-    .footer-container { flex-direction: column; gap: 20px; }
-}
-
-        @media (max-width: 768px) {
-            .founder-container { flex-direction: column; align-items: center; text-align: center; }
-            .founder-aside { order: -1; margin-bottom: 20px; }
-            .grid-cards { grid-template-columns: 1fr; }
-            .container { padding: 25px; margin: 15px; }
-        }
     </style>
 </head>
 <body>
