@@ -211,6 +211,28 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .founder-container {
+        flex-direction: column-reverse; /* Met la photo au-dessus du texte */
+        align-items: center;
+        gap: 20px;
+    }
+
+    .founder-content {
+        text-align: left; /* Garde le texte lisible à gauche */
+    }
+
+    .founder-aside {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .founder-photo {
+        width: 180px; /* Taille raisonnable sur mobile */
+        height: 180px;
+    }
+}
     .footer-container { 
         flex-direction: column; 
         gap: 20px; 
