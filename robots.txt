@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Emplacement du plan du site
 Sitemap: https://mon.projet-tri.org/sitemap.xml
