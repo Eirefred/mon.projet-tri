@@ -179,10 +179,92 @@
     .btn-diagnostic-large:hover { background-color: var(--accent); transform: translateY(-2px); }
     .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
-    .lang-selector { display: flex; align-items: center; gap: 8px; margin-left: 20px; font-size: 0.9rem; color: var(--primary); }
-    .lang-selector a { text-decoration: none; color: var(--primary); transition: 0.3s; opacity: 0.7; }
-    .lang-selector a:hover { opacity: 1; color: var(--accent); }
-    .lang-selector .active { font-weight: 800; color: var(--accent); }
+    /* --- TOGGLE VISIBLE FR/EN --- */
+.lang-selector {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 64px;
+    height: 30px;
+}
+
+.switch input { opacity: 0; width: 0; height: 0; }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: #e0e0e0; /* Gris clair pour le rail */
+    transition: .4s;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+}
+
+/* Le bouton rond qui glisse */
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--primary); /* Ton bleu pour le bouton */
+    transition: .4s;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Les textes FR et EN fixes derrière le bouton */
+.labels {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    font-family: sans-serif;
+    font-weight: 800;
+    font-size: 10px;
+}
+
+.labels::before, .labels::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .4s;
+}
+
+.labels::before {
+    content: attr(data-off); /* FR */
+    left: 8px;
+    color: white; /* Blanc car le bouton est par-dessus au début */
+}
+
+.labels::after {
+    content: attr(data-on); /* EN */
+    right: 8px;
+    color: #666;
+}
+
+/* ÉTAT ACTIVÉ (ANGLAIS) */
+input:checked + .slider {
+    background-color: #e0e0e0; /* Le rail reste neutre ou change de couleur */
+}
+
+input:checked + .slider:before {
+    transform: translateX(32px);
+    background-color: var(--accent); /* Devient orange en anglais */
+}
+
+/* On change la couleur des lettres pour la lisibilité */
+input:checked + .slider .labels::before {
+    color: #666; /* FR redevient gris */
+}
+
+input:checked + .slider .labels::after {
+    color: white; /* EN devient blanc car le bouton est dessus */
+}
     </style>
 </head>
 <body>
@@ -204,10 +286,13 @@
         <li><a href="#programme">Programs</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Join Us</a></li>
         <li class="lang-selector">
-            <a href="../index.html?lang=fr">FR</a>
-            <span style="opacity: 0.3;">|</span>
-            <span class="active">EN</span>
-        </li>
+    <label class="switch">
+        <input type="checkbox" id="lang-toggle" onchange="toggleLang()" checked>
+        <span class="slider">
+            <span class="labels" data-on="EN" data-off="FR"></span>
+        </span>
+    </label>
+</li>
     </ul>
 </nav>
         </div>
@@ -629,14 +714,34 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const numbersOnly = phoneInput.value.replace(/\D/g, '');
         if (numbersOnly.length < 10) {
-            e.preventDefault(); // Empêche l'envoi
+            e.preventDefault(); 
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
-            phoneInput.focus(); // Remet le curseur dans le champ
-            alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
+            phoneInput.focus();
+            alert('Please enter a valid 10-digit phone number.');
         }
     });
 }
+
+// D. Gestion du changement de langue (Toggle)
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (!isChecked) {
+        // Retour vers le Français (racine)
+        window.location.href = "../index.html?lang=fr";
+    }
+}
+
+// E. Synchronisation et Date min
+window.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true;
+
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => { 
+        input.setAttribute('min', today); 
+    });
+});
 const today = new Date().toISOString().split('T')[0];
 document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
 </script>
