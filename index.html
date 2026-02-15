@@ -300,62 +300,68 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    /* 1. Header : Logo et Mention sur la même ligne, Switch à droite */
+    /* --- HEADER : LOGO + TEXTE À DROITE + SWITCH --- */
     .nav-container {
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 15px !important;
+        padding: 10px 10px !important;
     }
 
     .header-left {
         display: flex !important;
-        flex-direction: row !important; /* Retour à l'alignement horizontal */
+        flex-direction: row !important; /* Force l'alignement horizontal */
         align-items: center !important;
-        gap: 10px !important;
+        gap: 8px !important;
+        max-width: 70%; /* Empêche le logo/texte de pousser le switch */
     }
 
     .logo img {
-        height: 35px !important; /* Taille raisonnable */
+        height: 30px !important; /* Un peu plus petit pour laisser de la place */
+        width: auto !important;
     }
 
     .region-mention {
         display: block !important;
-        font-size: 11px !important; /* Un peu plus grand et lisible */
-        white-space: nowrap;
+        font-size: 10px !important; /* Taille lisible mais compacte */
+        line-height: 1.1 !important;
+        white-space: normal !important; /* Permet au texte de passer sur 2 lignes si besoin */
         color: var(--primary);
-        font-weight: 600;
+        font-weight: 700;
     }
 
-    /* 2. Empêcher le titre de dépasser */
+    /* --- TITRE H1 : RÉGLAGE DU DÉBORDEMENT --- */
     h1 {
-        font-size: 1.8rem !important; /* Réduit la taille pour mobile */
+        font-size: 1.5rem !important; /* BEAUCOUP plus petit pour que ça rentre */
         line-height: 1.2 !important;
-        word-wrap: break-word !important;
-        overflow-wrap: break-word !important;
-        padding: 0 10px !important; /* Marge interne pour pas que ça touche les bords */
-    }
-
-    .hero-content {
+        margin-bottom: 15px !important;
+        text-align: center !important;
         width: 100% !important;
-        padding: 20px !important;
         box-sizing: border-box !important;
     }
 
-    /* 3. Navigation : on ne garde que le switch */
+    .hero-content {
+        padding: 20px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* --- NAVIGATION : ON GARDE SEULEMENT LE SWITCH --- */
+    nav ul {
+        display: flex !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
     nav ul li:not(.lang-selector) {
         display: none !important;
     }
 
-    .lang-selector {
-        margin: 0 !important;
-    }
-
     .switch {
-        width: 54px !important;
-        height: 26px !important;
+        width: 50px !important;
+        height: 24px !important;
     }
-} /* <--- FIN DU BLOC MOBILE */
+}/* <--- FIN DU BLOC MOBILE */
 
         /* --- AJOUT OU REMPLACEMENT --- */
 
@@ -397,93 +403,31 @@
     display: block;
 }
 
-/* --- TOGGLE VISIBLE FR/EN --- */
 .lang-selector {
-    margin-left: 20px;
     display: flex;
     align-items: center;
+    gap: 8px;
+    margin-left: 20px;
+    font-size: 0.9rem;
+    color: var(--primary);
 }
 
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 64px;
-    height: 30px;
+.lang-selector a {
+    text-decoration: none;
+    color: var(--primary);
+    transition: 0.3s;
+    opacity: 0.7;
 }
 
-.switch input { opacity: 0; width: 0; height: 0; }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #e0e0e0; /* Gris clair pour le rail */
-    transition: .4s;
-    border-radius: 30px;
-    border: 1px solid #ccc;
+.lang-selector a:hover {
+    opacity: 1;
+    color: var(--accent);
 }
 
-/* Le bouton rond qui glisse */
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
-    bottom: 3px;
-    background-color: var(--primary); /* Ton bleu pour le bouton */
-    transition: .4s;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-/* Les textes FR et EN fixes derrière le bouton */
-.labels {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    font-family: sans-serif;
+.lang-selector .active {
     font-weight: 800;
-    font-size: 10px;
+    color: var(--accent);
 }
-
-.labels::before, .labels::after {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: .4s;
-}
-
-.labels::before {
-    content: attr(data-off); /* FR */
-    left: 8px;
-    color: white; /* Blanc car le bouton est par-dessus au début */
-}
-
-.labels::after {
-    content: attr(data-on); /* EN */
-    right: 8px;
-    color: #666;
-}
-
-/* ÉTAT ACTIVÉ (ANGLAIS) */
-input:checked + .slider {
-    background-color: #e0e0e0; /* Le rail reste neutre ou change de couleur */
-}
-
-input:checked + .slider:before {
-    transform: translateX(32px);
-    background-color: var(--accent); /* Devient orange en anglais */
-}
-
-/* On change la couleur des lettres pour la lisibilité */
-input:checked + .slider .labels::before {
-    color: #666; /* FR redevient gris */
-}
-
-input:checked + .slider .labels::after {
-    color: white; /* EN devient blanc car le bouton est dessus */
-}
-
     </style>
 </head>
 <body>
@@ -501,13 +445,10 @@ input:checked + .slider .labels::after {
         <li><a href="#programme">Les programmes</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
         <li class="lang-selector">
-    <label class="switch">
-        <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-        <span class="slider">
-            <span class="labels" data-on="EN" data-off="FR"></span>
-        </span>
-    </label>
-</li>
+            <span class="active">FR</span>
+            <span style="opacity: 0.3;">|</span>
+            <a href="en/index.html">EN</a>
+        </li>
     </ul>
 </nav>
         </div>
@@ -938,47 +879,16 @@ if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const numbersOnly = phoneInput.value.replace(/\D/g, '');
         if (numbersOnly.length < 10) {
-            e.preventDefault(); 
+            e.preventDefault(); // Empêche l'envoi
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
-            phoneInput.focus();
+            phoneInput.focus(); // Remet le curseur dans le champ
             alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
         }
     });
 }
-
-// C. Gestion du changement de langue (Toggle)
-function toggleLang() {
-    const isChecked = document.getElementById('lang-toggle').checked;
-    if (isChecked) {
-        window.location.href = "en/index.html";
-    } else {
-        window.location.href = "index.html?lang=fr";
-    }
-}
-
-// D. Initialisation au chargement (Dates min et état du Toggle)
-window.addEventListener('DOMContentLoaded', () => {
-    // Dates minimum
-    const today = new Date().toISOString().split('T')[0];
-    document.querySelectorAll('input[type="date"]').forEach(input => { 
-        input.setAttribute('min', today); 
-    });
-
-    // État du toggle
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) {
-        // Sur cette page (FR), il doit être décoché par défaut
-        // Sauf si on force la vérification du chemin
-        toggle.checked = window.location.pathname.includes('/en/');
-    }
-});
-
-// Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
-if (window.location.pathname.includes('/en/')) {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
-}
+const today = new Date().toISOString().split('T')[0];
+document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
 </script>
 </body>
 </html>
