@@ -163,47 +163,61 @@
     .footer-logo img { height: 60px; display: block; }
 
     @media (max-width: 768px) {
-    /* 1. On force l'alignement horizontal du Header */
+    /* 1. Force l'alignement horizontal du Header */
+    header {
+        height: 70px; /* On réduit un peu la hauteur sur mobile */
+    }
+
     .nav-container {
-        flex-direction: row !important; /* Empêche l'empilement vertical */
-        justify-content: space-between; /* Logo à gauche, Switch à droite */
-        align-items: center;
-        padding: 10px 15px;
+        flex-direction: row !important; /* EMPÊCHE l'empilement vertical */
+        justify-content: space-between !important; /* Logo à gauche, Switch à droite */
+        align-items: center !important;
+        width: 95%; /* Utilise plus de largeur sur mobile */
+        margin: 0 auto;
     }
 
-    /* 2. On cache les liens textes du menu pour ne pas encombrer */
-    nav ul li:not(.lang-selector) {
-        display: none;
+    /* 2. On ajuste le logo pour qu'il ne prenne pas trop de place */
+    .header-left {
+        gap: 10px;
     }
-
-    /* 3. On cache la mention "Partout au Québec" sur mobile pour gagner de la place */
-    .region-mention {
-        display: none;
-    }
-
-    /* 4. On ajuste la taille du logo pour qu'il ne pousse pas le switch */
     .logo img {
-        height: 40px; /* Ajuste selon tes préférences */
-        width: auto;
+        height: 40px !important; /* Plus petit pour laisser de la place au switch */
+    }
+    .region-mention {
+        display: none !important; /* On cache absolument la mention pour libérer la ligne */
     }
 
-    /* 5. Style du sélecteur de langue sur mobile */
+    /* 3. On gère le menu pour qu'il ne soit pas une "boîte" centrée */
+    nav {
+        display: block !important;
+    }
+    nav ul {
+        display: flex !important;
+        flex-direction: row !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* Cache tout sauf le switch */
+    nav ul li:not(.lang-selector) {
+        display: none !important;
+    }
+
     .lang-selector {
-        margin: 0; /* Retire la marge de gauche */
-        display: flex;
-        align-items: center;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
-    /* Optionnel : rendre le switch légèrement plus compact sur mobile */
+    /* 4. On ajuste la taille du switch pour le mobile */
     .switch {
-        width: 56px;
+        width: 58px;
         height: 28px;
     }
     .slider:before {
         height: 20px;
         width: 20px;
         left: 4px;
-        bottom: 4px;
+        bottom: 3px;
     }
 }
 
