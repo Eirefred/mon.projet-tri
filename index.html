@@ -300,42 +300,44 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    /* 1. Force l'alignement horizontal du Header */
+    /* 1. Ajustement du Header pour tenir sur une ligne */
     header {
-        height: 70px; /* On réduit un peu la hauteur sur mobile */
+        height: 70px !important;
     }
 
     .nav-container {
-        flex-direction: row !important; /* EMPÊCHE l'empilement vertical */
+        flex-direction: row !important; /* Force l'alignement horizontal */
         justify-content: space-between !important; /* Logo à gauche, Switch à droite */
         align-items: center !important;
-        width: 95%; /* Utilise plus de largeur sur mobile */
-        margin: 0 auto;
+        width: 95% !important;
+        margin: 0 auto !important;
     }
 
-    /* 2. On ajuste le logo pour qu'il ne prenne pas trop de place */
+    /* 2. On réduit le logo et on cache la mention inutile sur mobile */
     .header-left {
-        gap: 10px;
+        gap: 10px !important;
     }
     .logo img {
-        height: 40px !important; /* Plus petit pour laisser de la place au switch */
+        height: 40px !important;
     }
     .region-mention {
-        display: none !important; /* On cache absolument la mention pour libérer la ligne */
+        display: none !important;
     }
 
-    /* 3. On gère le menu pour qu'il ne soit pas une "boîte" centrée */
+    /* 3. On nettoie la navigation pour ne garder que le switch */
     nav {
         display: block !important;
     }
     nav ul {
         display: flex !important;
         flex-direction: row !important;
+        align-items: center !important;
         padding: 0 !important;
         margin: 0 !important;
+        list-style: none !important;
     }
 
-    /* Cache tout sauf le switch */
+    /* CACHE LES LIENS TEXTES (L'OBNL, Vision, etc.) UNIQUEMENT SUR MOBILE */
     nav ul li:not(.lang-selector) {
         display: none !important;
     }
@@ -343,33 +345,22 @@
     .lang-selector {
         margin: 0 !important;
         padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
     }
 
-    /* 4. On ajuste la taille du switch pour le mobile */
+    /* 4. Taille du switch adaptée au mobile */
     .switch {
-        width: 58px;
-        height: 28px;
+        width: 58px !important;
+        height: 28px !important;
     }
     .slider:before {
-        height: 20px;
-        width: 20px;
-        left: 4px;
-        bottom: 3px;
+        height: 20px !important;
+        width: 20px !important;
+        left: 4px !important;
+        bottom: 3px !important;
     }
-}
-    nav ul {
-        flex-direction: row;
-        justify-content: center;
-        padding: 10px 0;
-    }
-    nav ul li:not(.lang-selector) {
-        display: none; /* Cache les liens textes sur mobile pour ne laisser que le FR|EN en haut */
-    }
-    .lang-selector {
-        margin-left: 0;
-        font-size: 1.1rem;
-    }
-}
+} /* <--- FIN DU BLOC MOBILE */
         /* --- AJOUT OU REMPLACEMENT --- */
 
 /* Ce bouton copie le style exact de tes .btn-card (bleu, coins 4px, gras) */
