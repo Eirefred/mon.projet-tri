@@ -300,16 +300,49 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-            header { position: static; height: auto; padding: 10px 0; }
-            .nav-container { flex-direction: column; gap: 8px; }
-            .header-left { gap: 12px; width: 100%; justify-content: center; }
-            .region-mention { font-size: 0.95rem; padding-left: 12px; }
-            .logo img { height: 45px; }
-            .hero h1 { font-size: 2.2rem; }
-            .form-row { flex-direction: column; gap: 0; }
-            nav { 
-        display: block !important; /* Pour afficher le sélecteur même si le menu est caché */
+    /* 1. On force l'alignement horizontal du Header */
+    .nav-container {
+        flex-direction: row !important; /* Empêche l'empilement vertical */
+        justify-content: space-between; /* Logo à gauche, Switch à droite */
+        align-items: center;
+        padding: 10px 15px;
     }
+
+    /* 2. On cache les liens textes du menu pour ne pas encombrer */
+    nav ul li:not(.lang-selector) {
+        display: none;
+    }
+
+    /* 3. On cache la mention "Partout au Québec" sur mobile pour gagner de la place */
+    .region-mention {
+        display: none;
+    }
+
+    /* 4. On ajuste la taille du logo pour qu'il ne pousse pas le switch */
+    .logo img {
+        height: 40px; /* Ajuste selon tes préférences */
+        width: auto;
+    }
+
+    /* 5. Style du sélecteur de langue sur mobile */
+    .lang-selector {
+        margin: 0; /* Retire la marge de gauche */
+        display: flex;
+        align-items: center;
+    }
+
+    /* Optionnel : rendre le switch légèrement plus compact sur mobile */
+    .switch {
+        width: 56px;
+        height: 28px;
+    }
+    .slider:before {
+        height: 20px;
+        width: 20px;
+        left: 4px;
+        bottom: 4px;
+    }
+}
     nav ul {
         flex-direction: row;
         justify-content: center;
