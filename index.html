@@ -300,78 +300,63 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    /* 1. Ajustement du Header pour tenir sur une ligne */
-    header {
-        height: 70px !important;
-    }
-
+    /* 1. Header : Logo et Mention sur la même ligne, Switch à droite */
     .nav-container {
-        flex-direction: row !important; /* Force l'alignement horizontal */
-        justify-content: space-between !important; /* Logo à gauche, Switch à droite */
+        flex-direction: row !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        width: 95% !important;
-        margin: 0 auto !important;
+        padding: 10px 15px !important;
     }
 
-    /* 2. On réduit le logo et on cache la mention inutile sur mobile */
-    /* On réaffiche la mention mais on la place sous le logo */
     .header-left {
         display: flex !important;
-        flex-direction: column !important; /* Aligne logo et mention verticalement */
-        align-items: flex-start !important;
-        gap: 2px !important;
+        flex-direction: row !important; /* Retour à l'alignement horizontal */
+        align-items: center !important;
+        gap: 10px !important;
+    }
+
+    .logo img {
+        height: 35px !important; /* Taille raisonnable */
     }
 
     .region-mention {
-        display: block !important; /* On la réaffiche */
-        font-size: 9px !important; /* Très petit pour ne pas encombrer */
-        margin: 0 !important;
+        display: block !important;
+        font-size: 11px !important; /* Un peu plus grand et lisible */
         white-space: nowrap;
         color: var(--primary);
         font-weight: 600;
     }
 
-    .logo img {
-        height: 35px !important; /* On réduit encore un peu le logo pour compenser */
+    /* 2. Empêcher le titre de dépasser */
+    h1 {
+        font-size: 1.8rem !important; /* Réduit la taille pour mobile */
+        line-height: 1.2 !important;
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+        padding: 0 10px !important; /* Marge interne pour pas que ça touche les bords */
     }
 
-    /* 3. On nettoie la navigation pour ne garder que le switch */
-    nav {
-        display: block !important;
-    }
-    nav ul {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        list-style: none !important;
+    .hero-content {
+        width: 100% !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
     }
 
-    /* CACHE LES LIENS TEXTES (L'OBNL, Vision, etc.) UNIQUEMENT SUR MOBILE */
+    /* 3. Navigation : on ne garde que le switch */
     nav ul li:not(.lang-selector) {
         display: none !important;
     }
 
     .lang-selector {
         margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
     }
 
-    /* 4. Taille du switch adaptée au mobile */
     .switch {
-        width: 58px !important;
-        height: 28px !important;
-    }
-    .slider:before {
-        height: 20px !important;
-        width: 20px !important;
-        left: 4px !important;
-        bottom: 3px !important;
+        width: 54px !important;
+        height: 26px !important;
     }
 } /* <--- FIN DU BLOC MOBILE */
+
         /* --- AJOUT OU REMPLACEMENT --- */
 
 /* Ce bouton copie le style exact de tes .btn-card (bleu, coins 4px, gras) */
