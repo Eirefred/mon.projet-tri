@@ -264,9 +264,9 @@ input:checked + .slider .labels::after {
 
     .header-left {
         display: flex !important;
-        flex-direction: row !important; /* Retour à l'alignement horizontal */
+        flex-direction: row !important;
         align-items: center !important;
-        gap: 10px !important;
+        max-width: 70%;
     }
 
     .logo img {
@@ -275,36 +275,21 @@ input:checked + .slider .labels::after {
 
     .region-mention {
         display: block !important;
-        font-size: 11px !important; /* Un peu plus grand et lisible */
-        white-space: nowrap;
-        color: var(--primary);
-        font-weight: 600;
+        white-space: normal !important; /* Pour tenir sur 2 lignes */
+        max-width: 80px;
+        font-size: 10px;
     }
 
-    /* 2. Empêcher le titre de dépasser */
+   nav ul li:not(.lang-selector) {
+        display: none !important;
+    }
+
+    /* TAILLE DU TITRE MOBILE */
     h1 {
-        /* On force une taille généreuse mais adaptée au mobile */
-        font-size: 1.8rem !important; 
-        line-height: 1.2 !important;
-        text-align: center !important;
-        
-        /* Sécurité pour le texte long */
-        word-wrap: break-word !important;
-        width: 100% !important;
-        padding: 0 10px !important;
-        margin: 0 auto 20px auto !important;
-    }
-
-    .hero-content {
-        padding-top: 30px !important; /* Espace sous le bandeau */
-        width: 100% !important;
+        font-size: 2.2rem !important;
     }
 }
 
-    /* 3. Navigation : on ne garde que le switch */
-    nav ul li:not(.lang-selector) {
-        display: none !important;
-    }
 
    
 
