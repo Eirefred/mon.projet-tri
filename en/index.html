@@ -249,10 +249,13 @@
         <li><a href="#programme">Programs</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Join Us</a></li>
         <li class="lang-selector">
-            <a href="../index.html?lang=fr">FR</a>
-            <span style="opacity: 0.3;">|</span>
-            <span class="active">EN</span>
-        </li>
+    <label class="switch">
+        <input type="checkbox" id="lang-toggle" onchange="toggleLang()" checked>
+        <span class="slider">
+            <span class="labels" data-on="EN" data-off="FR"></span>
+        </span>
+    </label>
+</li>
     </ul>
 </nav>
         </div>
@@ -670,35 +673,38 @@ if (phoneInput) {
 }
 
 // C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const numbersOnly = phoneInput.value.replace(/\D/g, '');
         if (numbersOnly.length < 10) {
-            e.preventDefault(); // Empêche l'envoi
+            e.preventDefault(); 
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
-            phoneInput.focus(); // Remet le curseur dans le champ
-            alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
+            phoneInput.focus();
+            alert('Please enter a valid 10-digit phone number.');
         }
     });
 }
-<<<<<<< HEAD
 
 // D. Gestion du changement de langue (Toggle)
 function toggleLang() {
     const isChecked = document.getElementById('lang-toggle').checked;
     if (!isChecked) {
-        // On décoche -> On remonte d'un niveau vers le Français
+        // Retour vers le Français (racine)
         window.location.href = "../index.html?lang=fr";
     }
 }
 
-// Synchronisation au chargement
+// E. Synchronisation et Date min
 window.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true; // On s'assure qu'il est bien à droite
-    
-    // Ton code pour les dates min, etc.
+    if (toggle) toggle.checked = true;
+
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => { 
+        input.setAttribute('min', today); 
+    });
 });
 =======
 >>>>>>> parent of 72a334d (add language switch)
