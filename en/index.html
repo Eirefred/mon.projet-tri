@@ -230,7 +230,27 @@
     color: #666;
 }
 
+/* ÉTAT ACTIVÉ (ANGLAIS) */
+input:checked + .slider {
+    background-color: #e0e0e0; /* Le rail reste neutre ou change de couleur */
+}
 
+input:checked + .slider:before {
+    transform: translateX(32px);
+    background-color: var(--accent); /* Devient orange en anglais */
+}
+
+/* On change la couleur des lettres pour la lisibilité */
+input:checked + .slider .labels::before {
+    color: #666; /* FR redevient gris */
+}
+
+input:checked + .slider .labels::after {
+    color: white; /* EN devient blanc car le bouton est dessus */
+}
+    .btn-diagnostic-large { display: block; width: 90%; max-width: 450px; margin: 40px auto; background-color: var(--primary); color: var(--white); padding: 18px 25px; border: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: 0.3s ease; }
+    .btn-diagnostic-large:hover { background-color: var(--accent); transform: translateY(-2px); }
+    .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
     @media (max-width: 768px) {
     /* 1. Header : Logo et Mention sur la même ligne, Switch à droite */
     .nav-container {
@@ -280,27 +300,7 @@
     }
 
    
-/* ÉTAT ACTIVÉ (ANGLAIS) */
-input:checked + .slider {
-    background-color: #e0e0e0; /* Le rail reste neutre ou change de couleur */
-}
 
-input:checked + .slider:before {
-    transform: translateX(32px);
-    background-color: var(--accent); /* Devient orange en anglais */
-}
-
-/* On change la couleur des lettres pour la lisibilité */
-input:checked + .slider .labels::before {
-    color: #666; /* FR redevient gris */
-}
-
-input:checked + .slider .labels::after {
-    color: white; /* EN devient blanc car le bouton est dessus */
-}
-    .btn-diagnostic-large { display: block; width: 90%; max-width: 450px; margin: 40px auto; background-color: var(--primary); color: var(--white); padding: 18px 25px; border: none; border-radius: 4px; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; cursor: pointer; transition: 0.3s ease; }
-    .btn-diagnostic-large:hover { background-color: var(--accent); transform: translateY(-2px); }
-    .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
     </style>
 </head>
