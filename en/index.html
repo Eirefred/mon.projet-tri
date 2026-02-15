@@ -163,61 +163,53 @@
     .footer-logo img { height: 60px; display: block; }
 
     @media (max-width: 768px) {
-    /* 1. Force l'alignement horizontal du Header */
     header {
-        height: 70px; /* On réduit un peu la hauteur sur mobile */
+        height: auto !important; /* Laisse de la place pour les deux lignes de texte */
+        padding: 10px 0;
     }
 
     .nav-container {
-        flex-direction: row !important; /* EMPÊCHE l'empilement vertical */
-        justify-content: space-between !important; /* Logo à gauche, Switch à droite */
-        align-items: center !important;
-        width: 95%; /* Utilise plus de largeur sur mobile */
-        margin: 0 auto;
-    }
-
-    /* 2. On ajuste le logo pour qu'il ne prenne pas trop de place */
-    .header-left {
-        gap: 10px;
-    }
-    .logo img {
-        height: 40px !important; /* Plus petit pour laisser de la place au switch */
-    }
-    .region-mention {
-        display: none !important; /* On cache absolument la mention pour libérer la ligne */
-    }
-
-    /* 3. On gère le menu pour qu'il ne soit pas une "boîte" centrée */
-    nav {
-        display: block !important;
-    }
-    nav ul {
-        display: flex !important;
         flex-direction: row !important;
-        padding: 0 !important;
-        margin: 0 !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 95% !important;
+        margin: 0 auto !important;
     }
 
-    /* Cache tout sauf le switch */
+    /* Aligne le Logo et "Across Quebec" l'un sous l'autre */
+    .header-left {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 2px !important;
+    }
+
+    .logo img {
+        height: 35px !important; /* Légèrement plus petit pour l'équilibre */
+    }
+
+    .region-mention {
+        display: block !important; /* On le réaffiche */
+        font-size: 9px !important;
+        margin: 0 !important;
+        white-space: nowrap;
+        color: var(--primary);
+        font-weight: 600;
+        line-height: 1;
+    }
+
+    /* Cache les liens du menu pour ne garder que le switch */
     nav ul li:not(.lang-selector) {
         display: none !important;
     }
 
     .lang-selector {
         margin: 0 !important;
-        padding: 0 !important;
     }
 
-    /* 4. On ajuste la taille du switch pour le mobile */
     .switch {
-        width: 58px;
-        height: 28px;
-    }
-    .slider:before {
-        height: 20px;
-        width: 20px;
-        left: 4px;
-        bottom: 3px;
+        width: 58px !important;
+        height: 28px !important;
     }
 }
 

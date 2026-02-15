@@ -314,14 +314,25 @@
     }
 
     /* 2. On réduit le logo et on cache la mention inutile sur mobile */
+    /* On réaffiche la mention mais on la place sous le logo */
     .header-left {
-        gap: 10px !important;
+        display: flex !important;
+        flex-direction: column !important; /* Aligne logo et mention verticalement */
+        align-items: flex-start !important;
+        gap: 2px !important;
     }
-    .logo img {
-        height: 40px !important;
-    }
+
     .region-mention {
-        display: none !important;
+        display: block !important; /* On la réaffiche */
+        font-size: 9px !important; /* Très petit pour ne pas encombrer */
+        margin: 0 !important;
+        white-space: nowrap;
+        color: var(--primary);
+        font-weight: 600;
+    }
+
+    .logo img {
+        height: 35px !important; /* On réduit encore un peu le logo pour compenser */
     }
 
     /* 3. On nettoie la navigation pour ne garder que le switch */
