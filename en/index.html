@@ -260,7 +260,7 @@ input:checked + .slider .labels::after {
     .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
     
-    @@media (max-width: 768px) {
+    @media (max-width: 768px) {
         .nav-container {
             flex-direction: row !important;
             justify-content: space-between !important;
@@ -268,11 +268,20 @@ input:checked + .slider .labels::after {
             padding: 10px 15px !important;
         }
 
+        /* 1. CACHE TOUS LES LIENS TEXTUELS SUR MOBILE */
+        nav ul li {
+            display: none !important;
+        }
+
+        /* 2. FORCE L'AFFICHAGE DU SELECTEUR DE LANGUE SEULEMENT */
+        nav ul li.lang-selector {
+            display: block !important;
+            margin-left: 0 !important;
+        }
+
         .header-left {
             display: flex !important;
-            flex-direction: row !important;
-            align-items: center !important;
-            max-width: 70%;
+            max-width: 75%;
         }
 
         .logo img { height: 35px !important; }
@@ -282,37 +291,20 @@ input:checked + .slider .labels::after {
             white-space: normal !important;
             max-width: 80px;
             font-size: 10px;
-            line-height: 1.1;
         }
 
         .switch {
             width: 44px !important;
             height: 22px !important;
-            flex-shrink: 0 !important;
         }
 
-        .slider:before {
-            height: 16px !important;
-            width: 16px !important;
-            left: 3px !important;
-            bottom: 3px !important;
-            border-radius: 50% !important;
-        }
-
-        /* Ajustement du slider pour qu'il soit bien aligné à droite sur EN */
+        /* Ajustement final du slider à droite */
         input:checked + .slider:before {
             transform: translateX(20px) !important;
         }
 
-        .labels { font-size: 8px !important; }
-
-        /* Cache les liens textes UNIQUEMENT sur mobile */
-        nav ul li:not(.lang-selector) {
-            display: none !important;
-        }
-
         h1 { font-size: 2.2rem !important; }
-    } /* FIN DU BLOC MOBILE */
+    }
 
 
     </style>
