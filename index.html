@@ -325,61 +325,39 @@
         font-size: 10px;
     }
     @media (max-width: 768px) {
-    /* 1. Force l'alignement horizontal du Header */
-    header {
-        height: 70px; /* On réduit un peu la hauteur sur mobile */
+    /* On réduit la taille globale du switch */
+    .switch {
+        width: 44px !important; /* Au lieu de 58px */
+        height: 22px !important;
     }
 
-    .nav-container {
-        flex-direction: row !important; /* EMPÊCHE l'empilement vertical */
-        justify-content: space-between !important; /* Logo à gauche, Switch à droite */
-        align-items: center !important;
-        width: 95%; /* Utilise plus de largeur sur mobile */
-        margin: 0 auto;
+    /* On réduit la taille du curseur (le rond) */
+    .slider:before {
+        height: 16px !important;
+        width: 16px !important;
+        left: 3px !important;
+        bottom: 3px !important;
     }
 
-    /* 2. On ajuste le logo pour qu'il ne prenne pas trop de place */
-    .header-left {
-        gap: 10px;
-    }
-    .logo img {
-        height: 40px !important; /* Plus petit pour laisser de la place au switch */
-    }
-    .region-mention {
-        display: none !important; /* On cache absolument la mention pour libérer la ligne */
+    /* On ajuste le glissement pour la version EN */
+    input:checked + .slider:before {
+        transform: translateX(22px) !important;
     }
 
-    /* 3. On gère le menu pour qu'il ne soit pas une "boîte" centrée */
-    nav {
-        display: block !important;
+    /* On réduit la police FR/EN à l'intérieur */
+    .labels {
+        font-size: 8px !important;
     }
-    nav ul {
-        display: flex !important;
-        flex-direction: row !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
+}
 
-    /* Cache tout sauf le switch */
+    /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
     nav ul li:not(.lang-selector) {
         display: none !important;
     }
 
-    .lang-selector {
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    /* 4. On ajuste la taille du switch pour le mobile */
-    .switch {
-        width: 58px;
-        height: 28px;
-    }
-    .slider:before {
-        height: 20px;
-        width: 22px;
-        left: 4px;
-        bottom: 3px;
+    /* TAILLE DU TITRE MOBILE */
+    h1 {
+        font-size: 2.2rem !important;
     }
 }/* <--- FIN DU BLOC MOBILE */
 
@@ -455,7 +433,7 @@
     position: absolute;
     content: "";
     height: 16px;
-    width: 18px;
+    width: 16px;
     left: 3px;
     bottom: 3px;
     background-color: var(--primary); /* Ton bleu pour le bouton */
