@@ -184,7 +184,7 @@
     top: 0; left: 0; right: 0; bottom: 0;
     background-color: #e0e0e0; /* Gris clair pour le rail */
     transition: .4s;
-    border-radius: 30px;
+    border-radius: 50px;
     border: 1px solid #ccc;
 }
 
@@ -236,7 +236,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(22px);
+    transform: translateX(19px);
     background-color: var(--accent); /* Devient orange en anglais */
 }
 
@@ -292,11 +292,12 @@ input:checked + .slider .labels::after {
         width: 16px !important;
         left: 3px !important;
         bottom: 3px !important;
+        border-radius: 50%;
     }
 
     /* On ajuste le glissement pour la version EN */
     input:checked + .slider:before {
-        transform: translateX(22px) !important;
+        transform: translateX(19px) !important;
     }
 
     /* On réduit la police FR/EN à l'intérieur */
