@@ -300,11 +300,12 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    /* Header : Alignement flexible pour le texte long */
+    /* 1. Header et Alignement */
     .nav-container {
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
+        padding: 10px !important;
     }
 
     .header-left {
@@ -315,23 +316,25 @@
     }
 
     .logo img {
-        height: 32px !important; /* Légèrement réduit pour gagner de la place */
+        height: 32px !important;
     }
 
     .region-mention {
         display: block !important;
-        white-space: normal !important; /* Pour tenir sur 2 lignes */
+        white-space: normal !important;
         max-width: 80px;
         font-size: 10px;
-    }
-    @media (max-width: 768px) {
-    /* On réduit la taille globale du switch */
-    .switch {
-        width: 44px !important; /* Au lieu de 58px */
-        height: 22px !important;
+        line-height: 1.1;
     }
 
-    /* On réduit la taille du curseur (le rond) */
+    /* 2. Le Toggle (Le Rail Fixe) */
+    .switch {
+        width: 44px !important; 
+        height: 22px !important;
+        flex-shrink: 0; /* Empêche le rail de s'écraser ou de bouger */
+    }
+
+    /* 3. Le Slider (Le Rond qui bouge) */
     .slider:before {
         height: 16px !important;
         width: 16px !important;
@@ -340,16 +343,17 @@
         border-radius: 50%;
     }
 
-    /* On ajuste le glissement pour la version FR */
+    /* 4. Le mouvement précis du Slider */
+    /* On utilise 22px seulement si le bouton fait 58px. 
+       Pour un bouton de 44px, utilisez 20px ou 19px */
     input:checked + .slider:before {
-        transform: translateX(22px) !important;
+        transform: translateX(20px) !important; 
     }
 
-    /* On réduit la police FR/EN à l'intérieur */
     .labels {
         font-size: 8px !important;
     }
-}
+} /* <--- Une seule fermeture ici pour tout le bloc mobile */
 
     /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
     nav ul li:not(.lang-selector) {

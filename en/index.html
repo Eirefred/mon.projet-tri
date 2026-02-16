@@ -254,7 +254,7 @@ input:checked + .slider .labels::after {
 
     
     @media (max-width: 768px) {
-    /* 1. Header : Logo et Mention sur la même ligne, Switch à droite */
+    /* 1. Header : Logo et Mention à gauche, Switch à droite */
     .nav-container {
         flex-direction: row !important;
         justify-content: space-between !important;
@@ -270,41 +270,42 @@ input:checked + .slider .labels::after {
     }
 
     .logo img {
-        height: 35px !important; /* Taille raisonnable */
+        height: 35px !important;
     }
 
     .region-mention {
         display: block !important;
-        white-space: normal !important; /* Pour tenir sur 2 lignes */
+        white-space: normal !important;
         max-width: 80px;
         font-size: 10px;
-    }
-    @media (max-width: 768px) {
-    /* On réduit la taille globale du switch */
-    .switch {
-        width: 44px !important; /* Au lieu de 58px */
-        height: 22px !important;
+        line-height: 1.1;
     }
 
-    /* On réduit la taille du curseur (le rond) */
+    /* 2. Le Toggle (Le Rail - On le force à rester FIXE) */
+    .switch {
+        width: 44px !important; 
+        height: 22px !important;
+        flex-shrink: 0 !important; /* Empêche le rail de bouger ou s'écraser */
+    }
+
+    /* 3. Le Slider (Le Rond qui bouge à l'intérieur) */
     .slider:before {
         height: 16px !important;
         width: 16px !important;
         left: 3px !important;
         bottom: 3px !important;
-        border-radius: 50%;
+        border-radius: 50% !important;
     }
 
-    /* On ajuste le glissement pour la version EN */
+    /* 4. Mouvement du slider vers la gauche (Ajusté à 19px) */
     input:checked + .slider:before {
-        transform: translateX(20px) !important;
+        transform: translateX(19px) !important; 
     }
 
-    /* On réduit la police FR/EN à l'intérieur */
     .labels {
         font-size: 8px !important;
     }
-}
+} /* UNE SEULE FERMETURE ICI */
 
    nav ul li:not(.lang-selector) {
         display: none !important;
