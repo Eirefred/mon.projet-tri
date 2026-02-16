@@ -300,202 +300,89 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    /* 1. Header et Alignement */
-    .nav-container {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 10px !important;
-    }
+            .nav-container {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 10px 15px !important;
+            }
 
-    .header-left {
-        display: flex !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        max-width: 70%;
-    }
+            .header-left {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                max-width: 70%;
+            }
 
-    .logo img {
-        height: 32px !important;
-    }
+            .logo img { height: 35px !important; }
 
-    .region-mention {
-        display: block !important;
-        white-space: normal !important;
-        max-width: 80px;
-        font-size: 10px;
-        line-height: 1.1;
-    }
+            .region-mention {
+                display: block !important;
+                white-space: normal !important;
+                max-width: 80px;
+                font-size: 10px;
+                line-height: 1.1;
+            }
 
-    /* 2. Le Toggle (Le Rail Fixe) */
-    .switch {
-        width: 44px !important; 
-        height: 22px !important;
-        flex-shrink: 0; /* Empêche le rail de s'écraser ou de bouger */
-    }
+            .switch {
+                width: 44px !important;
+                height: 22px !important;
+                flex-shrink: 0 !important;
+            }
 
-    /* 3. Le Slider (Le Rond qui bouge) */
-    .slider:before {
-        height: 16px !important;
-        width: 16px !important;
-        left: 3px !important;
-        bottom: 3px !important;
-        border-radius: 50%;
-    }
+            .slider:before {
+                height: 16px !important;
+                width: 16px !important;
+                left: 3px !important;
+                bottom: 3px !important;
+                border-radius: 50% !important;
+            }
 
-    /* 4. Le mouvement précis du Slider */
-    /* On utilise 22px seulement si le bouton fait 58px. 
-       Pour un bouton de 44px, utilisez 20px ou 19px */
-    input:checked + .slider:before {
-        transform: translateX(20px) !important; 
-    }
+            /* Correction du glissement sur mobile */
+            input:checked + .slider:before {
+                transform: translateX(20px) !important;
+            }
 
-    .labels {
-        font-size: 8px !important;
-    }
-} /* <--- Une seule fermeture ici pour tout le bloc mobile */
+            .labels { font-size: 8px !important; }
 
-    /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
-    nav ul li:not(.lang-selector) {
-        display: none !important;
-    }
+            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
+            nav ul li:not(.lang-selector) {
+                display: none !important;
+            }
 
-    /* TAILLE DU TITRE MOBILE */
-    h1 {
-        font-size: 2.2rem !important;
-    }
-}/* <--- FIN DU BLOC MOBILE */
+            h1 { font-size: 2.2rem !important; }
+        } 
+        /* --- FIN DU BLOC MOBILE --- */
 
-        /* --- AJOUT OU REMPLACEMENT --- */
+        /* Styles spécifiques au Toggle (communs PC/Mobile) */
+        .btn-diagnostic-large {
+            display: block;
+            width: 90%;
+            max-width: 450px;
+            margin: 40px auto;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 18px 25px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
 
-/* Ce bouton copie le style exact de tes .btn-card (bleu, coins 4px, gras) */
-.btn-diagnostic-large {
-    display: block;        /* Obligatoire pour pouvoir centrer avec margin auto */
-    width: 90%;            /* Prend presque toute la place sur mobile */
-    max-width: 450px;      /* NE DÉPASSERA JAMAIS 450px sur grand écran */
-    margin: 40px auto;     /* Le "auto" est ce qui le centre horizontalement */
-    
-    /* Style visuel identique aux cartes */
-    background-color: var(--primary);
-    color: var(--white);
-    padding: 18px 25px;
-    border: none;
-    border-radius: 4px;    /* Coins carrés style card */
-    font-weight: bold;
-    font-size: 0.9rem;
-    text-transform: none;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: 0.3s ease;
-}
+        .lang-selector { margin-left: 20px; display: flex; align-items: center; }
+        .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #e0e0e0; transition: .4s; border-radius: 50px; border: 1px solid #ccc; }
+        .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 2px; background-color: var(--primary); transition: .4s; border-radius: 50%; z-index: 2; }
+        .labels { position: absolute; top: 0; left: 0; width: 100%; height: 100%; font-family: sans-serif; font-weight: 800; font-size: 10px; }
+        .labels::before { content: attr(data-off); left: 8px; position: absolute; top: 50%; transform: translateY(-50%); color: white; transition: .4s; }
+        .labels::after { content: attr(data-on); right: 8px; position: absolute; top: 50%; transform: translateY(-50%); color: #666; transition: .4s; }
 
-.btn-diagnostic-large:hover {
-    background-color: var(--accent);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-}
-
-/* On remplace l'ancien style des questions par celui-ci (plus gros) */
-.quiz-question-text {
-    font-size: 1.4rem !important; /* Taille nettement plus grande */
-    font-weight: 800;             /* Très gras pour l'emphase */
-    color: var(--primary);        /* Ton bleu foncé */
-    margin-bottom: 25px; 
-    line-height: 1.2;             /* Plus d'espace entre les lignes */
-    text-align: left;
-    display: block;
-}
-
-/* --- TOGGLE AVEC LETTRES INTÉGRÉES --- */
-/* --- TOGGLE VISIBLE FR/EN --- */
-.lang-selector {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 44px;
-    height: 22px;
-}
-
-.switch input { opacity: 0; width: 0; height: 0; }
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: #e0e0e0; /* Gris clair pour le rail */
-    transition: .4s;
-    border-radius: 50px;
-    border: 1px solid #ccc;
-}
-
-/* Le bouton rond qui glisse */
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 3px;
-    bottom: 3px;
-    background-color: var(--primary); /* Ton bleu pour le bouton */
-    transition: .4s;
-    border-radius: 50%;
-    z-index: 2;
-}
-
-/* Les textes FR et EN fixes derrière le bouton */
-.labels {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    font-family: sans-serif;
-    font-weight: 800;
-    font-size: 10px;
-}
-
-.labels::before, .labels::after {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: .4s;
-}
-
-.labels::before {
-    content: attr(data-off); /* FR */
-    left: 8px;
-    color: white; /* Blanc car le bouton est par-dessus au début */
-}
-
-.labels::after {
-    content: attr(data-on); /* EN */
-    right: 8px;
-    color: #666;
-}
-
-/* ÉTAT ACTIVÉ (ANGLAIS) */
-input:checked + .slider {
-    background-color: #e0e0e0; /* Le rail reste neutre ou change de couleur */
-}
-
-input:checked + .slider:before {
-    transform: translateX(22px);
-    background-color: var(--accent); /* Devient orange en anglais */
-}
-
-/* On change la couleur des lettres pour la lisibilité */
-input:checked + .slider .labels::before {
-    color: #666; /* FR redevient gris */
-}
-
-input:checked + .slider .labels::after {
-    color: white; /* EN devient blanc car le bouton est dessus */
-}
-
-/* Désactive le surlignage bleu sur mobile */
-.switch, .slider { -webkit-tap-highlight-color: transparent; }
+        input:checked + .slider:before { transform: translateX(22px); background-color: var(--accent); }
+        input:checked + .slider .labels::before { color: #666; }
+        input:checked + .slider .labels::after { color: white; }
     </style>
 </head>
 <body>
