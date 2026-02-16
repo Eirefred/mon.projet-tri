@@ -324,6 +324,31 @@
         max-width: 80px;
         font-size: 10px;
     }
+    @media (max-width: 768px) {
+    /* On réduit la taille globale du switch */
+    .switch {
+        width: 44px !important; /* Au lieu de 58px */
+        height: 22px !important;
+    }
+
+    /* On réduit la taille du curseur (le rond) */
+    .slider:before {
+        height: 16px !important;
+        width: 16px !important;
+        left: 3px !important;
+        bottom: 3px !important;
+    }
+
+    /* On ajuste le glissement pour la version EN */
+    input:checked + .slider:before {
+        transform: translateX(22px) !important;
+    }
+
+    /* On réduit la police FR/EN à l'intérieur */
+    .labels {
+        font-size: 8px !important;
+    }
+}
 
     /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
     nav ul li:not(.lang-selector) {

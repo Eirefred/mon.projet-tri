@@ -172,8 +172,8 @@
 .switch {
     position: relative;
     display: inline-block;
-    width: 64px;
-    height: 30px;
+    width: 44px;
+    height: 22px;
 }
 
 .switch input { opacity: 0; width: 0; height: 0; }
@@ -192,9 +192,9 @@
 .slider:before {
     position: absolute;
     content: "";
-    height: 22px;
-    width: 22px;
-    left: 4px;
+    height: 16px;
+    width: 16px;
+    left: 3px;
     bottom: 3px;
     background-color: var(--primary); /* Ton bleu pour le bouton */
     transition: .4s;
@@ -236,7 +236,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-    transform: translateX(32px);
+    transform: translateX(22px);
     background-color: var(--accent); /* Devient orange en anglais */
 }
 
@@ -279,6 +279,31 @@ input:checked + .slider .labels::after {
         max-width: 80px;
         font-size: 10px;
     }
+    @media (max-width: 768px) {
+    /* On réduit la taille globale du switch */
+    .switch {
+        width: 44px !important; /* Au lieu de 58px */
+        height: 22px !important;
+    }
+
+    /* On réduit la taille du curseur (le rond) */
+    .slider:before {
+        height: 16px !important;
+        width: 16px !important;
+        left: 3px !important;
+        bottom: 3px !important;
+    }
+
+    /* On ajuste le glissement pour la version EN */
+    input:checked + .slider:before {
+        transform: translateX(22px) !important;
+    }
+
+    /* On réduit la police FR/EN à l'intérieur */
+    .labels {
+        font-size: 8px !important;
+    }
+}
 
    nav ul li:not(.lang-selector) {
         display: none !important;
