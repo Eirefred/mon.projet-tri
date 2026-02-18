@@ -119,6 +119,18 @@
     white-space: nowrap;
     border-width: 0;
 }
+.hero-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 25px auto;
+    color: var(--primary);
+}
+
+.hero-description strong {
+    color: var(--accent); /* Met la première partie en orange pour attirer l'oeil */
+    display: inline-block;
+}
 
         /* Ajoute #contact ici */
         #programme, #vision, #contact { 
@@ -356,7 +368,7 @@
             flex-direction: column !important;
             gap: 10px !important;
         }
-        
+
         } 
         /* --- FIN DU BLOC MOBILE --- */
 
@@ -426,11 +438,23 @@
         <span class="phrase-bloc">Votre rythme.</span><br>
         <span class="phrase-bloc">Notre soutien.</span>
         </h1>
-        <p>
-            <span style="background: var(--accent); color: white; padding: 5px 18px; border-radius: 50px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4); display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px;">mon.projet-tri</span> 
-            est <strong>votre OBNL</strong> du <strong>triathlon</strong> au <strong>Québec</strong>.<br> Pour un encadrement sportif sur mesure, partout où vous êtes.<br>
-            <strong>On vous appelle, et on s'en parle.</strong>
-        </p>
+        <p style="line-height: 1.2;">
+    <span style="font-size: 1.7rem; display: block;">
+        <span style="background: var(--accent); color: white; padding: 2px 15px; border-radius: 50px; font-weight: 800; font-size: 1rem; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); display: inline-flex; align-items: center; margin-right: 10px; vertical-align: middle; letter-spacing: 0.5px; height: 32px;">
+            mon.projet-tri
+        </span>n'est <strong>pas un club</strong>, mais un organisme de
+    </span>
+
+    <span style="display: block; font-size: 1.7rem; margin-top: -2px;">
+        <strong>mentorat </strong>qui <strong>s'occupe de tout</strong> pour votre projet.
+    </span>
+<br>
+    <span style="display: block; margin-top: 10px; line-height: 1.4;">
+        On vous accompagne sur tous les aspects de votre réussite, de l'idée à la ligne d'arrivée.<br>
+        <strong>On vous appelle, et on s'en parle.</strong>
+    </span>
+</p>
+
         <a href="#contact" class="btn-high-vis">Planifier mon appel</a>
     </div>
 </section>

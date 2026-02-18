@@ -66,6 +66,18 @@
         white-space: nowrap;
         border-width: 0;
     }
+    .hero-description {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    max-width: 850px;
+    margin: 25px auto;
+    color: var(--primary);
+}
+
+.hero-description strong {
+    color: var(--accent); /* Met la première partie en orange pour attirer l'oeil */
+    display: inline-block;
+}
 
     #programme, #vision, #contact { 
         scroll-margin-top: 110px; 
@@ -304,11 +316,6 @@ input:checked + .slider .labels::after {
         }
 
         h1 { font-size: 2.2rem !important; }
-        .form-row {
-            flex-direction: column !important;
-            gap: 10px !important;
-        }
-        
     } /* --- FIN DU BLOC MOBILE --- */
 
 
@@ -353,11 +360,23 @@ input:checked + .slider .labels::after {
         <span class="phrase-bloc">Your Pace.</span><br>
         <span class="phrase-bloc">Our Support.</span>
         </h1>
-        <p>
-            <span style="background: var(--accent); color: white; padding: 5px 18px; border-radius: 50px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 12px rgba(255, 102, 0, 0.4); display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px;">mon.projet-tri</span> 
-            is <strong>your non-profit</strong> for <strong>triathlon</strong> in <strong>Quebec</strong>.<br> Tailored athletic guidance, wherever you are.<br>
-            <strong>Let's talk about your goals.</strong>
-        </p>
+        <p style="line-height: 1.2;">
+    <span style="font-size: 1.7rem; display: block;">
+        <span style="background: var(--accent); color: white; padding: 2px 15px; border-radius: 50px; font-weight: 800; font-size: 1rem; box-shadow: 0 4px 10px rgba(255, 102, 0, 0.3); display: inline-flex; align-items: center; margin-right: 10px; vertical-align: middle; letter-spacing: 0.5px; height: 32px;">
+            mon.projet-tri
+        </span>
+        is <strong>not a club</strong>, but a
+    </span>
+
+    <span style="display: block; font-size: 1.7rem; margin-top: -2px;">
+        <strong>all-inclusive mentorship</strong>. We've got you covered.
+    </span>
+<br>
+    <span style="display: block; margin-top: 10px; line-height: 1.4;">
+        From your initial idea to the finish line, we support every aspect of your success.<br>
+        <strong>We’ll call you to chat about it.</strong>
+    </span>
+</p>
         <a href="#contact" class="btn-high-vis">Book my free consult</a>
     </div>
 </section>
