@@ -132,6 +132,47 @@
     display: inline-block;
 }
 
+/* --- CORRECTION CENTRAGE MOBILE --- */
+
+/* On cible les sections qui contiennent les cartes */
+#programs, #projects {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le titre et le conteneur */
+    width: 100%;
+}
+
+/* On force les conteneurs de cartes à utiliser Flexbox */
+.programs-container, .projects-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important; /* Centre les cartes horizontalement */
+    gap: 30px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Ajustements spécifiques pour Mobile */
+@media (max-width: 768px) {
+    .program-card, .project-card {
+        /* On retire les marges flottantes et on centre la carte */
+        margin: 0 auto 20px auto !important; 
+        display: block !important;
+        float: none !important;
+        
+        /* On ajuste la largeur pour que ce soit beau sur téléphone */
+        width: 90% !important;
+        max-width: 380px;
+    }
+
+    .section-title {
+        text-align: center !important;
+        margin-bottom: 30px;
+    }
+}
+
         /* Ajoute #contact ici */
         #programme, #vision, #contact { 
         scroll-margin-top: 110px; 
