@@ -132,47 +132,6 @@
     display: inline-block;
 }
 
-/* --- CORRECTION CENTRAGE MOBILE --- */
-
-/* On cible les sections qui contiennent les cartes */
-#programs, #projects {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centre le titre et le conteneur */
-    width: 100%;
-}
-
-/* On force les conteneurs de cartes à utiliser Flexbox */
-.programs-container, .projects-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important; /* Centre les cartes horizontalement */
-    gap: 30px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Ajustements spécifiques pour Mobile */
-@media (max-width: 768px) {
-    .program-card, .project-card {
-        /* On retire les marges flottantes et on centre la carte */
-        margin: 0 auto 20px auto !important; 
-        display: block !important;
-        float: none !important;
-        
-        /* On ajuste la largeur pour que ce soit beau sur téléphone */
-        width: 90% !important;
-        max-width: 380px;
-    }
-
-    .section-title {
-        text-align: center !important;
-        margin-bottom: 30px;
-    }
-}
-
         /* Ajoute #contact ici */
         #programme, #vision, #contact { 
         scroll-margin-top: 110px; 
@@ -454,40 +413,6 @@
         input:checked + .slider:before { transform: translateX(22px); background-color: var(--accent); }
         input:checked + .slider .labels::before { color: #666; }
         input:checked + .slider .labels::after { color: white; }
-
-        /* --- FORCE LE CENTRAGE DES CARTES SUR TOUS LES ÉCRANS --- */
-.programs-container, 
-.projects-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important; /* Centre les cartes horizontalement */
-    gap: 30px;
-    width: 100% !important;
-    margin: 0 auto !important;
-    padding: 20px 0;
-}
-
-/* --- AJUSTEMENTS SPÉCIFIQUES MOBILE (768px et moins) --- */
-@media (max-width: 768px) {
-    .program-card, 
-    .project-card {
-        /* On annule les flottements et on centre avec les marges auto */
-        float: none !important;
-        margin: 0 auto 20px auto !important; 
-        display: block !important;
-        
-        /* Largeur adaptée au téléphone */
-        width: 90% !important;
-        max-width: 380px;
-    }
-
-    /* Centrage des titres de section */
-    .section-title {
-        text-align: center !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-}
     </style>
 </head>
 <body>
