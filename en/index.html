@@ -310,12 +310,24 @@ input:checked + .slider .labels::after {
             height: 22px !important;
         }
 
+        .footer-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 20px;
+        }
+
         /* Ajustement final du slider à droite */
         input:checked + .slider:before {
             transform: translateX(20px) !important;
         }
 
         h1 { font-size: 2.2rem !important; }
+
+         /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
+        .form-row {
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
     } /* --- FIN DU BLOC MOBILE --- */
 
 
@@ -406,7 +418,7 @@ input:checked + .slider .labels::after {
             <div style="flex: 1; min-width: 300px; border-top: 3px solid var(--accent); padding-top: 20px;">
                 <h4 style="font-size: 1.3rem; color: var(--accent); margin-bottom: 12px; margin-top: 0;">Technology Empowering Humans</h4>
                 <p style="font-size: 1.05rem; line-height: 1.6; color: #555;">
-                    This approach <strong>sets your training free</strong>: you no longer need to travel to access top-tier expertise. Through <strong>connected platforms </strong>(like <strong>Zwift</strong>) and <strong>video conferencing</strong>, you benefit from high-precision <strong>one-on-one mentorship</strong>. You stay connected to <strong>your mentor</strong> and the rest of the world, while optimizing your time.
+                    This approach <strong>sets your training free</strong>: you no longer need to travel to access top-tier expertise. Through <strong>connected platforms </strong>(like <strong>Zwift</strong>) and <strong>video calls</strong>, you benefit from high-precision <strong>one-on-one mentorship</strong>. You stay connected to <strong>your mentor</strong> and the rest of the world, while optimizing your time.
                 </p>
             </div>
         </div>
@@ -590,7 +602,7 @@ input:checked + .slider .labels::after {
              <blockquote class="quote-athlete">"I want to reach my absolute best."</blockquote>
             <ul>
                 <li>Assignment of a dedicated mentor based on your goals.</li>
-                <li>Advanced planning for Ironman and 70.3 distances.</li>
+                <li>Advanced planning for 70.3 and Ironman distances.</li>
                 <li>In-depth data analysis via TrainingPeaks*.</li>
                 <li>Monthly check-in calls to maintain high performance.</li>
                 <li>Personalized race nutrition strategy.</li>
@@ -666,15 +678,32 @@ input:checked + .slider .labels::after {
     </section>
 
    <footer>
-    <div class="footer-container">
-        <div class="footer-text">
-            &copy; 2026 mon.projet*(tri) - Non-profit dedicated to triathlon in Quebec
-            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
-                Triathlon coaching and mentorship services offered province-wide, focusing on remote and connected support.
-            </p>
+    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        
+        <div class="footer-logo" style="margin-bottom: 10px;">
+            <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
+                <img src="../mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Mon Projet Tri Logo - Back to Home" style="height: 60px; display: block;">
+            </a>
         </div>
-        <div class="footer-logo">
-            <img src="../mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Mon Projet Tri Logo - Quebec Triathlon NGO">
+        
+        <div class="footer-text" style="margin-bottom: 15px; color: #ffffff !important; opacity: 1;">
+            <a href="index.html" style="color: #ffffff; text-decoration: none;">
+                &copy; 2026 mon.projet*(tri) - Non-profit dedicated to triathlon in Quebec
+            </a>
+        </div>
+
+        <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+            <p style="font-size: 0.8rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">
+                Our connected mentorship brings high-level expertise to triathletes across all regions of Quebec. 
+                We proudly support athletes in:
+            </p>
+            
+            <details style="font-size: 0.75rem; color: #ffffff; opacity: 0.6; cursor: pointer;">
+                <summary style="list-style: none; text-decoration: underline; outline: none;">See all covered service areas</summary>
+                <p style="margin-top: 10px; font-style: italic; line-height: 1.5;">
+                    Montreal, Quebec City, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, and the regions of Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Nord-du-Québec, and Outaouais.
+                </p>
+            </details>
         </div>
     </div>
 </footer>

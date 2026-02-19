@@ -335,6 +335,11 @@
                 font-size: 10px;
                 line-height: 1.1;
             }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
 
             .switch {
                 width: 44px !important;
@@ -363,6 +368,7 @@
             }
 
             h1 { font-size: 2.2rem !important; }
+
             /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
         .form-row {
             flex-direction: column !important;
@@ -484,7 +490,7 @@
             <div style="flex: 1; min-width: 300px; border-top: 3px solid var(--accent); padding-top: 20px;">
                 <h4 style="font-size: 1.3rem; color: var(--accent); margin-bottom: 12px; margin-top: 0;">La technologie au service de l’humain</h4>
                 <p style="font-size: 1.05rem; line-height: 1.6; color: #555;">
-                    Cette approche libère <strong>votre entraînement</strong> : plus besoin de vous déplacer pour accéder à une expertise de pointe. Grâce aux <strong>plateformes connectées</strong> (comme <strong>Zwift</strong>) et aux <strong>visioconférences</strong>, vous bénéficiez d’un <strong>accompagnement individuel</strong> de haute précision. Vous restez connecté à <strong>votre mentor</strong> et au reste du monde, tout en optimisant votre temps.
+                    Cette approche libère <strong>votre entraînement</strong> : plus besoin de vous déplacer pour accéder à une expertise de pointe. Grâce aux <strong>plateformes connectées</strong> (comme <strong>Zwift</strong>) et aux <strong>appels vidéo</strong>, vous bénéficiez d’un <strong>accompagnement individuel</strong> de haute précision. Vous restez connecté à <strong>votre mentor</strong> et au reste du monde, tout en optimisant votre temps.
                 </p>
             </div>
         </div>
@@ -670,7 +676,7 @@
              <blockquote class="quote-athlete">« Je veux arriver à mon meilleur niveau.»</blockquote>
             <ul>
                 <li>Assignation d'un mentor dédié selon vos objectifs.</li>
-                <li>Planification avancée pour distances Ironman et 70.3.</li>
+                <li>Planification avancée pour distances 70.3 et Ironman.</li>
                 <li>Analyse de données poussée via TrainingPeaks*.</li>
                 <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
                 <li>Stratégie de nutrition de course personnalisée.</li>
@@ -747,16 +753,32 @@
     </section>
 
    <footer>
-    <div class="footer-container">
-        <div class="footer-text">
-            &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
-            <p style="font-size: 0.75rem; color: #ffffff; opacity: 0.4; margin-top: 10px; font-weight: 300; line-height: 1.4;">
-                Services d'entraînement et mentorat de triathlon offerts partout dans la province : 
-                Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Montréal, Nord-du-Québec, Outaouais et Saguenay mais surtout à distance.
-            </p>
+    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        
+        <div class="footer-logo" style="margin-bottom: 10px;">
+            <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
+                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo mon.projet(tri) - Retour à l'accueil" style="height: 60px; display: block;">
+            </a>
         </div>
-        <div class="footer-logo">
-            <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo mon.projet(tri) - Coaching triathlon Québec">
+        
+        <div class="footer-text" style="margin-bottom: 15px;">
+            <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 1rem; opacity: 1;">
+                &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
+            </a>
+        </div>
+
+        <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+            <p style="font-size: 0.85rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">
+                Notre mentorat connecté apporte une expertise de haut niveau aux triathlètes de toutes les régions. 
+                Nous sommes fiers d'accompagner des athlètes à :
+            </p>
+            
+            <details style="font-size: 0.75rem; color: #ffffff; opacity: 0.6; cursor: pointer;">
+                <summary style="list-style: none; text-decoration: underline; outline: none;">Voir toutes les zones de service couvertes</summary>
+                <p style="margin-top: 10px; font-style: italic; line-height: 1.5;">
+                    Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que les régions d'Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Nord-du-Québec et l'Outaouais.
+                </p>
+            </details>
         </div>
     </div>
 </footer>
