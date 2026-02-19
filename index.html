@@ -413,6 +413,48 @@
         input:checked + .slider:before { transform: translateX(22px); background-color: var(--accent); }
         input:checked + .slider .labels::before { color: #666; }
         input:checked + .slider .labels::after { color: white; }
+
+        /* --- CORRECTION LARGEUR ET CENTRAGE --- */
+
+/* On s'assure que les sections utilisent toute la largeur */
+#programs, #projects {
+    width: 100% !important;
+    padding: 20px 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+/* Conteneurs de cartes */
+.programs-container, .projects-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    width: 100% !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+}
+
+/* STYLE DES CARTES (Correction de la largeur) */
+.program-card, .project-card {
+    /* Au lieu d'une largeur fixe, on utilise max-width */
+    width: 90% !important; /* Prend 90% de l'écran sur mobile */
+    max-width: 380px !important; /* Mais ne dépasse jamais 380px sur ordi */
+    
+    margin: 15px auto !important; /* Centre la carte avec auto */
+    box-sizing: border-box !important; /* Inclus le padding dans la largeur */
+    float: none !important;
+    display: block !important;
+}
+
+/* Ajustement pour les écrans plus larges (ordinateurs) */
+@media (min-width: 769px) {
+    .program-card, .project-card {
+        display: inline-block !important;
+        width: 380px !important; /* Largeur fixe seulement sur grand écran */
+        margin: 15px !important;
+    }
+}
     </style>
 </head>
 <body>
