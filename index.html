@@ -380,20 +380,26 @@
 
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
         .btn-diagnostic-large {
-            display: block;
-            width: 90%;
-            max-width: 450px;
-            margin: 40px auto;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 18px 25px;
-            border: none;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: 0.3s ease;
-        }
+    display: block;
+    width: 90%;
+    max-width: 450px;
+    margin: 40px auto;
+    background-color: var(--primary); /* Bleu comme vos boutons de cartes */
+    color: var(--white);
+    padding: 18px 25px;
+    border: none;
+    border-radius: 4px; /* Même arrondi que les boutons "C'est moi" */
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: none; /* Reste simple comme les autres */
+    transition: 0.3s ease; /* Même vitesse de transition que vos cartes */
+}
+
+.btn-diagnostic-large:hover {
+    background-color: var(--accent); /* Change en orange au survol */
+    transform: translateY(-3px); /* Petit effet de soulèvement pour le distinguer */
+}
 
         .lang-selector { margin-left: 20px; display: flex; align-items: center; }
         .switch { position: relative; display: inline-block; width: 44px; height: 22px; }
