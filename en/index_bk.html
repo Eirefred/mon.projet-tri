@@ -467,19 +467,23 @@ input:checked + .slider .labels::after {
                 Click on the profile that matches you best to learn more:
             </p>
             
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
-    <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Start triathlon in Quebec" style="cursor: pointer;">
-        <h3>First Step</h3>
-        <p>For those who have never dared to cross the line. A secure A-to-Z guidance for your first triathlon.</p>
-        <button class="btn-card">THAT'S ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
-    </div>
-
-    <div class="card card-mentorat" onclick="openModal('m-fusion')" role="img" aria-label="Mentorship and coaching" style="cursor: pointer;">
-        <h3>Mentorship & Performance</h3>
-        <p>Whether you aim for personal growth or a long-distance record, benefit from an expert dedicated to your success.</p>
-        <button class="btn-card">THIS IS MY PROFILE<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
-    </div>
-</div>
+            <div class="grid">
+                <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Start triathlon in Quebec: complete beginner program with remote training" style="cursor: pointer;">
+                    <h3>First Step</h3>
+                    <p>For those who have never dared to cross the line. A secure A-to-Z guidance for your first triathlon.</p>
+                    <button class="btn-card">THAT'S ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Personalized triathlon mentorship in Quebec - My Season program" style="cursor: pointer;">
+                    <h3>My Season</h3>
+                    <p>Connect with a dedicated mentor and coach to never feel alone in your training again.</p>
+                    <button class="btn-card">THIS IS ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+                <div class="card card-performance" onclick="openModal('m3')" role="img" aria-label="High-level remote triathlon training in Quebec - Solo Performance" style="cursor: pointer;">
+                    <h3>Solo Performance</h3>
+                    <p>A high-level structure for those aiming for results while remaining autonomous.</p>
+                    <button class="btn-card">THIS IS MY PROFILE<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+                </div>
+            </div>
 
             <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
             Help me choose my program
@@ -489,67 +493,65 @@ input:checked + .slider .labels::after {
 </section>
 
     <div id="diag-modal" class="modal-overlay">
-    <div class="modal-content" style="max-width: 600px;">
-        <span class="close-modal" onclick="closeModal('diag-modal')">&times;</span>
-        
-        <div id="quiz-intro">
-            <h3>Profile Diagnostic</h3>
-            <p>Answer 6 quick questions to identify the support that fits you best.</p>
-            <button class="btn-submit" onclick="startQuiz()">Start</button>
-        </div>
-        
-        <div id="quiz-steps-box" style="display:none">
+        <div class="modal-content" style="max-width: 600px;">
+            <span class="close-modal" onclick="closeModal('diag-modal')">&times;</span>
+            <div id="quiz-intro">
+                <h3>Profile Diagnostic</h3>
+                <p>Answer 6 quick questions to identify the support that fits you best.</p>
+                <button class="btn-submit" onclick="startQuiz()">Start</button>
+            </div>
             
-            <div class="quiz-step" id="q1" style="display:none">
-                <p class="quiz-question-text">1. What is your experience level in triathlon?</p>
-                <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Complete Beginner (Starting from zero)</button>
-                <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initiated (I've done a few races)</button>
-                <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmed (I know my needs well)</button>
-            </div>
+            <div id="quiz-steps-box">
+                <div class="quiz-step" id="q1">
+                    <p class="quiz-question-text">1. What is your experience level in triathlon?</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q2')">Complete Beginner (Starting from zero)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q2')">Initiated (I've done a few races)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 1, 'q2')">Confirmed (I know my needs well)</button>
+                </div>
 
-            <div class="quiz-step" id="q2" style="display:none">
-                <p class="quiz-question-text">2. Regarding the technical side (bike, transitions), you prefer:</p>
-                <button class="quiz-option" onclick="noter('securite', 2, 'q3')">To be guided step-by-step with simplicity</button>
-                <button class="quiz-option" onclick="noter('social', 1, 'q3')">To discuss with a mentor to validate my choices</button>
-                <button class="quiz-option" onclick="noter('autonomie', 2, 'q3')">To analyze data to optimize every detail</button>
-            </div>
+                <div class="quiz-step" id="q2" style="display:none">
+                    <p class="quiz-question-text">2. Regarding the technical side (bike, transitions), you prefer:</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q3')">To be guided step-by-step with simplicity</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q3')">To discuss with a mentor to validate my choices</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q3')">To analyze data to optimize every detail</button>
+                </div>
 
-            <div class="quiz-step" id="q3" style="display:none">
-                <p class="quiz-question-text">3. What motivates you the most daily?</p>
-                <button class="quiz-option" onclick="noter('securite', 1, 'q4')">Successfully finishing my challenge with pride</button>
-                <button class="quiz-option" onclick="noter('social', 2, 'q4')">Feeling supported and encouraged</button>
-                <button class="quiz-option" onclick="noter('autonomie', 2, 'q4')">Beating my personal records and progressing</button>
-            </div>
+                <div class="quiz-step" id="q3" style="display:none">
+                    <p class="quiz-question-text">3. What motivates you the most daily?</p>
+                    <button class="quiz-option" onclick="noter('securite', 1, 'q4')">Successfully finishing my challenge with pride</button>
+                    <button class="quiz-option" onclick="noter('social', 2, 'q4')">Feeling supported and encouraged</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q4')">Beating my personal records and progressing</button>
+                </div>
 
-            <div class="quiz-step" id="q4" style="display:none">
-                <p class="quiz-question-text">4. How many hours can you invest per week?</p>
-                <button class="quiz-option" onclick="noter('securite', 2, 'q5')">Less than 6h (I need to maximize every minute)</button>
-                <button class="quiz-option" onclick="noter('social', 1, 'q5')">Between 6h and 10h (I'm ready to commit seriously)</button>
-                <button class="quiz-option" onclick="noter('autonomie', 2, 'q5')">More than 10h (Aiming for intensive prep)</button>
-            </div>
+                <div class="quiz-step" id="q4" style="display:none">
+                    <p class="quiz-question-text">4. How many hours can you invest per week?</p>
+                    <button class="quiz-option" onclick="noter('securite', 2, 'q5')">Less than 6h (I need to maximize every minute)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q5')">Between 6h and 10h (I'm ready to commit seriously)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q5')">More than 10h (Aiming for intensive prep)</button>
+                </div>
 
-            <div class="quiz-step" id="q5" style="display:none">
-                <p class="quiz-question-text">5. What distance are you aiming for?</p>
-                <button class="quiz-option" onclick="noter('securite', 1, 'q6')">Discovery (Try-a-tri or Sprint)</button>
-                <button class="quiz-option" onclick="noter('social', 1, 'q6')">Standard (Olympic Distance)</button>
-                <button class="quiz-option" onclick="noter('autonomie', 2, 'q6')">Endurance (70.3 or Full Ironman)</button>
-            </div>
+                <div class="quiz-step" id="q5" style="display:none">
+                    <p class="quiz-question-text">5. What distance are you aiming for?</p>
+                    <button class="quiz-option" onclick="noter('securite', 1, 'q6')">Discovery (Try-a-tri or Sprint)</button>
+                    <button class="quiz-option" onclick="noter('social', 1, 'q6')">Standard (Olympic Distance)</button>
+                    <button class="quiz-option" onclick="noter('autonomie', 2, 'q6')">Endurance (70.3 or Full Ironman)</button>
+                </div>
 
-            <div class="quiz-step" id="q6" style="display:none">
-                <p class="quiz-question-text">6. Do you have a specific physiological need to integrate?</p>
-                <button class="quiz-option" onclick="finaliser('Standard')">Standard Profile (General)</button>
-                <button class="quiz-option" onclick="finaliser('Female')">Female Profile (Cycle & Hormonal)</button>
-                <button class="quiz-option" onclick="finaliser('Master')">Master Profile (Recovery 45+)</button>
-            </div>
+                <div class="quiz-step" id="q6" style="display:none">
+                    <p class="quiz-question-text">6. Do you have a specific physiological need to integrate?</p>
+                    <button class="quiz-option" onclick="finaliser('Standard')">Standard Profile (General)</button>
+                    <button class="quiz-option" onclick="finaliser('Female')">Female Profile (Cycle & Hormonal)</button>
+                    <button class="quiz-option" onclick="finaliser('Master')">Master Profile (Recovery 45+)</button>
+                </div>
 
-            <div class="quiz-step" id="qRes" style="display:none; text-align: center;">
-                <h4 id="res-titre" style="color: var(--accent); margin-bottom:15px; font-size: 1.2rem;"></h4>
-                <p id="res-text" style="margin-bottom:20px; line-height: 1.5;"></p>
-                <button class="btn-submit" onclick="transférerAuForm()">Apply this profile to the form</button>
+                <div class="quiz-step" id="qRes" style="display:none">
+                    <h4 id="res-titre" style="color: var(--accent); margin-bottom:10px;"></h4>
+                    <p id="res-text"></p>
+                    <button class="btn-submit" onclick="transférerAuForm()">Apply this profile to the form</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
     <div id="m1" class="modal-overlay">
         <div class="modal-content">
@@ -576,46 +578,40 @@ input:checked + .slider .labels::after {
         </div>
     </div>
 
-    <div id="m-fusion" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('m-fusion')">&times;</span>
-        <h3>Mentorship & Performance</h3>
-        <blockquote class="quote-athlete">"I want to structure my progress and reach my goals."</blockquote>
-        
-        <p style="margin-bottom: 15px; font-weight: 600; color: var(--primary);">A complete support system that adapts to your ambition:</p>
-        
-        <ul>
-            <li>Assignment of a dedicated mentor based on your goals (Sprint to Ironman).</li>
-            <li>Personalized and evolving training plan.</li>
-            <li>Bi-monthly adjustments based on your real availability.</li>
-            <li>Personalized video calls to validate progress.</li>
-            <li>Data analysis (TrainingPeaks*) to optimize every session.</li>
-            <li>Race nutrition strategy and effort management.</li>
-            <li>Access to our specialist network (therapists, nutritionists, etc.).</li>
-        </ul>
-
-        <div style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.95rem; color: #555; text-align: center; font-style: italic;">
-            Note: The choice of option will depend on your project's scope. <strong>We will discuss this together</strong> to find the most suitable formula for your needs.
+    <div id="m2" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m2')">&times;</span>
+            <h3>Program: My Season</h3>
+            <blockquote class="quote-athlete">"This year, I want to improve!"</blockquote>
+            <ul>
+                <li>Assignment of a dedicated mentor based on your goals.</li>
+                <li>Quarterly training plan.</li>
+                <li>Bi-monthly adjustments based on your real availability.</li>
+                <li>Monthly check-in calls to keep motivation at its peak.</li>
+                <li>Strategy and transition optimizations.</li>
+            </ul>
+            <div class="price-box">Price: $449 all-included for 3 months<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $150/month)<br>Commitment for 1 season (6 months).<br></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('MY SEASON')">Choose this plan</button>
         </div>
-
-        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <div class="price-box" style="flex: 1; min-width: 250px; margin: 10px 0;">
-                <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Season Engagement (6 months)</span><br>
-                $449 / 3 months<br>
-                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Ideal for a specific goal</span>
-            </div>
-            <div class="price-box" style="flex: 1; min-width: 250px; margin: 10px 0; border-left-color: var(--primary);">
-                <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Annual Engagement (12 months)</span><br>
-                $499 / 3 months<br>
-                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Continuous year-round optimization</span>
-            </div>
-        </div>
-        
-        <p style="font-size: 0.75rem; color: #777; margin-bottom: 20px; margin-top: 10px;">*TrainingPeaks Premium subscription required for advanced data analysis.</p>
-        
-        <button class="btn-submit" onclick="choisirProgramme('MENTORSHIP & PERFORMANCE')">Build my project</button>
     </div>
-</div>
+
+    <div id="m3" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m3')">&times;</span>
+            <h3>Program: Solo Performance</h3>
+             <blockquote class="quote-athlete">"I want to reach my absolute best."</blockquote>
+            <ul>
+                <li>Assignment of a dedicated mentor based on your goals.</li>
+                <li>Advanced planning for 70.3 and Ironman distances.</li>
+                <li>In-depth data analysis via TrainingPeaks*.</li>
+                <li>Monthly check-in calls to maintain high performance.</li>
+                <li>Personalized race nutrition strategy.</li>
+                <li>Specialist recommendations <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(therapists, nutritionists, bike fitting, etc.)</small></li>
+            </ul>
+            <div class="price-box">Price: $499 all-included for 3 months <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $166/month)<br>Commitment for 1 year (12 months).<br><small>*TrainingPeaks Premium subscription required</small></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('SOLO PERFORMANCE')">Aim for performance</button>
+        </div>
+    </div>
 
     <section id="contact" class="section-contact">
         <div class="container">
@@ -714,117 +710,178 @@ input:checked + .slider .labels::after {
 
 <script>
 let scores = { securite: 0, autonomie: 0, social: 0 };
+let progRes = "";
 
-// --- GESTION DES MODALES ---
 function openModal(id) {
-    const m = document.getElementById(id);
-    if (m) {
-        m.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+
+    if (id === 'diag-modal') {
+        scores = { securite: 0, autonomie: 0, social: 0 };
+        document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+        document.getElementById('quiz-intro').style.display = 'block';
+        document.getElementById('quiz-steps-box').style.display = 'none';
     }
 }
 
 function closeModal(id) {
-    const m = document.getElementById(id);
-    if (m) {
-        m.style.display = 'none';
-        document.body.style.overflow = 'auto';
+    const modal = document.getElementById(id);
+    if (modal) {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
     }
 }
 
-// --- LOGIQUE DU QUIZ ---
+window.onclick = function(event) {
+    if (event.target.classList.contains('modal-overlay')) {
+        closeModal(event.target.id);
+    }
+};
+
 function startQuiz() {
-    // 1. On cache l'intro
     document.getElementById('quiz-intro').style.display = 'none';
-    
-    // 2. On affiche le conteneur global des questions
-    const stepsBox = document.getElementById('quiz-steps-box');
-    stepsBox.style.display = 'block';
-    
-    // 3. On affiche la première question
+    document.getElementById('quiz-steps-box').style.display = 'block';
+    mélangerOptions('q1');
     document.getElementById('q1').style.display = 'block';
 }
 
 function noter(cat, pts, next) {
     scores[cat] += pts;
-    
-    // On cache toutes les étapes
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
     
-    // On affiche l'étape suivante
     const nextStep = document.getElementById(next);
-    if (nextStep) {
+    if (nextStep && next !== 'qRes') {
+        mélangerOptions(next);
         nextStep.style.display = 'block';
     }
 }
 
 function finaliser(physio) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
-    
     const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
     
     let titre = "";
     let desc = "";
-    let progRes = "";
 
     if (gagnant === 'securite') {
-        titre = "Total Serenity Profile";
+        titre = "Total Serenity";
         progRes = "FIRST STEP";
-        desc = "Based on your answers, you need a highly secure and guided environment. Our 'First Step' program is ideal for you.";
+        desc = "You need a supportive environment. Ideal for accompanying you from A to Z.";
+    } else if (gagnant === 'social') {
+        titre = "Human Guidance";
+        progRes = "MY SEASON";
+        desc = "Mentorship is your engine. Never train alone again.";
     } else {
-        titre = (gagnant === 'social') ? "Mentorship & Human Connection" : "Performance & Data Analysis";
-        progRes = "MENTORSHIP & PERFORMANCE";
-        desc = "Your profile matches our 'Mentorship & Performance' program, offering personalized support and expert analysis.";
+        titre = "Autonomous Performance";
+        progRes = "SOLO PERFORMANCE";
+        desc = "You aim for results and data optimization.";
     }
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
-
     document.getElementById('res-titre').innerText = "Analysis: " + titre;
-    document.getElementById('res-text').innerText = desc + " (Focus: " + physio + ")";
+    document.getElementById('res-text').innerText = desc + " (Profile: " + physio + ")";
     document.getElementById('qRes').style.display = 'block';
 }
 
-// --- ACTIONS FORMULAIRE ---
+function mélangerOptions(containerId) {
+    const container = document.querySelector(`#${containerId}`);
+    const options = Array.from(container.querySelectorAll('.quiz-option'));
+    for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+    }
+    options.forEach(opt => container.appendChild(opt));
+}
+
 function transférerAuForm() {
     const area = document.getElementById('message-field');
     const data = window.finalDiagnostic;
-    if (data && area) {
-        area.value = `DIAGNOSTIC RESULT:\n- Profile: ${data.titre}\n- Program: ${data.prog}\n- Focus: ${data.physio}\n\nHi! I just completed the test and would like to discuss this with you.`;
-        closeModal('diag-modal');
-        setTimeout(() => {
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-    }
+    if (!data) return;
+    area.value = `PROFILE ANALYSIS:\n- Profile: ${data.titre}\n- Program: ${data.prog}\n- Physiology: ${data.physio}\n\nI would like to discuss this.`;
+    closeModal('diag-modal');
+    setTimeout(() => {
+        document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }, 200);
 }
 
 function choisirProgramme(nom) {
-    const area = document.getElementById('message-field');
-    if (area) area.value = "Interested in program: " + nom;
-    closeModal('m1');
-    closeModal('m-fusion');
+    document.getElementById('message-field').value = "PROJECT: " + nom;
+    closeModal('m1'); closeModal('m2'); closeModal('m3');
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-    }, 300);
+    }, 200);
 }
 
-// --- INITIALISATION ---
-window.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
-    
-    const phone = document.getElementById('phone');
-    if (phone) {
-        phone.addEventListener('input', (e) => {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-        });
-    }
-});
+const phoneInput = document.getElementById('phone');
+const contactForm = document.querySelector('form'); // Récupère le formulaire
 
+if (phoneInput) {
+    // A. Formattage pendant la saisie (sans changer la couleur)
+    phoneInput.addEventListener('input', (e) => {
+        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+        if (!x[1]) {
+            e.target.value = '';
+        } else {
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        }
+        
+        // Si l'utilisateur recommence à taper, on retire le rouge
+        phoneInput.style.borderColor = '#ddd';
+        phoneInput.style.backgroundColor = 'white';
+    });
+
+    // B. Validation au moment où l'utilisateur SORT du champ (blur)
+    phoneInput.addEventListener('blur', (e) => {
+        const numbersOnly = e.target.value.replace(/\D/g, '');
+        // Si le champ n'est pas vide et fait moins de 10 chiffres
+        if (numbersOnly.length > 0 && numbersOnly.length < 10) {
+            phoneInput.style.borderColor = 'red';
+            phoneInput.style.backgroundColor = '#fff0f0';
+        }
+    });
+}
+
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        const numbersOnly = phoneInput.value.replace(/\D/g, '');
+        if (numbersOnly.length < 10) {
+            e.preventDefault(); 
+            phoneInput.style.borderColor = 'red';
+            phoneInput.style.backgroundColor = '#fff0f0';
+            phoneInput.focus();
+            alert('Please enter a valid 10-digit phone number.');
+        }
+    });
+}
+
+// D. Gestion du changement de langue (Toggle)
+// Gestion du changement de langue
 function toggleLang() {
     const isChecked = document.getElementById('lang-toggle').checked;
-    if (!isChecked) window.location.href = "../index.html?lang=fr";
+    if (!isChecked) {
+        // Si on décoche, on retourne à la racine (Français)
+        window.location.href = "../index.html?lang=fr";
+    }
 }
+
+// Initialisation au chargement
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. Forcer le bouton sur "ON" (EN)
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true;
+
+    // 2. Dates minimum pour le formulaire
+    const today = new Date().toISOString().split('T')[0];
+    document.querySelectorAll('input[type="date"]').forEach(input => { 
+        input.setAttribute('min', today); 
+    });
+});
+
 </script>
 </body>
 </html>

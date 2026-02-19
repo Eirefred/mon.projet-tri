@@ -546,19 +546,23 @@
                 Cliquez sur le profil qui vous ressemble pour en savoir plus :
             </p>
             
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
-    <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec" style="cursor: pointer;">
-        <h3>Premier Pas</h3>
-        <p>Pour ceux qui n'ont jamais osé franchir la ligne. Un encadrement sécurisant de A à Z pour votre tout premier triathlon.</p>
-        <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
-    </div>
-
-    <div class="card card-mentorat" onclick="openModal('m-fusion')" role="img" aria-label="Mentorat et coaching de triathlon personnalisé" style="cursor: pointer;">
-        <h3>Mentorat & Performance</h3>
-        <p>Que vous visiez une amélioration personnelle ou un record sur longue distance, bénéficiez d'un expert dédié à votre réussite.</p>
-        <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
-    </div>
-</div>
+            <div class="grid">
+                <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec : programme d'accompagnement complet pour débutants entrainement à distance" style="cursor: pointer;">
+                    <h3>Premier Pas</h3>
+                    <p>Pour ceux qui n'ont jamais osé franchir la ligne. Un encadrement sécurisant de A à Z pour votre premier triathlon.</p>
+                    <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+                </div>
+                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Mentorat et coaching de triathlon personnalisé au Québec - Programme Ma Saison pour athlètes de tous niveaux" style="cursor: pointer; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('mentorat-triathlon-quebec.jpg');">
+                    <h3>Ma Saison</h3>
+                    <p>Connectez-vous avec un mentor et coach dédié pour ne plus jamais vous sentir seul à l'entraînement.</p>
+                    <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+                </div>
+                <div class="card card-performance" onclick="openModal('m3')" role="img" aria-label="Entraînement triathlon haut niveau à distace au Québec - Programme Performance Solo" style="cursor: pointer;">
+                    <h3>Performance Solo</h3>
+                    <p>Une structure de haut niveau pour ceux qui visent des résultats, tout en restant autonomes.</p>
+                    <button class="btn-card">C'EST MON PROFIL<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+                </div>
+            </div>
 
             <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
             Aidez-moi à choisir mon programme
@@ -654,47 +658,41 @@
         </div>
     </div>
 
-    <div id="m-fusion" class="modal-overlay">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal('m-fusion')">&times;</span>
-        <h3>Mentorat & Performance</h3>
-        <blockquote class="quote-athlete">« Je veux structurer ma progression et atteindre mes objectifs. »</blockquote>
-        
-        <p style="margin-bottom: 15px; font-weight: 600; color: var(--primary);">Un accompagnement complet qui s'adapte à votre ambition :</p>
-        
-        <ul>
-            <li>Assignation d'un mentor dédié selon vos objectifs (Sprint à Ironman).</li>
-            <li>Plan d'entraînement personnalisé et évolutif.</li>
-            <li>Ajustements bi-mensuels selon vos disponibilités et votre état de forme.</li>
-            <li>Appels vidéo personnalisés pour valider la progression.</li>
-            <li>Analyse de données (TrainingPeaks*) pour optimiser chaque séance.</li>
-            <li>Stratégie de nutrition de course et gestion de l'effort.</li>
-            <li>Accès à notre réseau de spécialistes (thérapeutes, nutritionnistes, etc.).</li>
-        </ul>
-
-        <div style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.95rem; color: #555; text-align: center; font-style: italic;">
-            Note : Le choix de l'option dépendra de l'envergure de votre projet. <strong>Nous en discuterons ensemble</strong> pour valider la formule la plus adaptée à vos besoins.
+    <div id="m2" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m2')">&times;</span>
+            <h3>Programme: Ma Saison</h3>
+            <blockquote class="quote-athlete">« Cette année, je veux m'améliorer!»</blockquote>
+            <ul>
+                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
+                <li>Plan d'entrainement trimestriel.</li>
+                <li>Ajustements bi-mensuel selon vos disponibilités réelles.</li>
+                <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
+                <li>...</li>
+            </ul>
+            <div class="price-box">Tarif : 449$ tout inclus par 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~150$/mois)<br>Engagement pour 1 saison (6 mois).<br></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('MA SAISON')">Choisir ce plan</button>
         </div>
-
-        <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-            <div class="price-box" style="flex: 1; min-width: 250px; margin: 10px 0;">
-                <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Saison (6 mois)</span><br>
-                449$ / 3 mois<br>
-                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Idéal pour un objectif précis</span>
-            </div>
-            <div class="price-box" style="flex: 1; min-width: 250px; margin: 10px 0; border-left-color: var(--primary);">
-                <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Annuel (12 mois)</span><br>
-                499$ / 3 mois<br>
-                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Optimisation continue sur l'année</span>
-            </div>
-        </div>
-        
-        <p style="font-size: 0.75rem; color: #777; margin-bottom: 20px; margin-top: 10px;">*Souscription à TrainingPeaks Premium requise pour l'analyse de données avancée.</p>
-        
-        <button class="btn-submit" onclick="choisirProgramme('MENTORAT ET PERFORMANCE')">Bâtir mon projet</button>
     </div>
-</div>
 
+    <div id="m3" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('m3')">&times;</span>
+            <h3>Programme: Performance Solo</h3>
+             <blockquote class="quote-athlete">« Je veux arriver à mon meilleur niveau.»</blockquote>
+            <ul>
+                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
+                <li>Planification avancée pour distances 70.3 et Ironman.</li>
+                <li>Analyse de données poussée via TrainingPeaks*.</li>
+                <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
+                <li>Stratégie de nutrition de course personnalisée.</li>
+                <li>Optimisation de la performance en totale autonomie.</li>
+                <li>Recommendations de spécialistes <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(thérapeutes, nutritionnistes, positionnement vélo et +)</small></li>
+            </ul>
+            <div class="price-box">Tarif : 499$ tout inclus par 3 mois <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~166$/mois)<br>Engagement pour 1 an (12 mois).<br><small>*souscription à TrainingPeaks Premium requise</small></span></div>
+            <button class="btn-submit" onclick="choisirProgramme('PERFORMANCE SOLO')">Viser la performance</button>
+        </div>
+    </div>
 
     <section id="contact" class="section-contact">
         <div class="container">
@@ -847,40 +845,27 @@ function noter(cat, pts, next) {
 function finaliser(physio) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
     
+    // Calcul du profil gagnant (le score le plus haut)
     const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
     
     let titre = "";
     let desc = "";
-    let progId = ""; // L'ID de la modale à ouvrir après
-    let nomProg = ""; // Le nom textuel pour le formulaire
 
     if (gagnant === 'securite') {
         titre = "Sérénité Totale";
-        progId = "m1";
-        nomProg = "PREMIER PAS";
+        progRes = "PREMIER PAS";
         desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
-    } 
-    else if (gagnant === 'social') {
-        titre = "Accompagnement Mentorat";
-        progId = "m-fusion";
-        nomProg = "MENTORAT & PERFORMANCE (Saison)";
-        desc = "Vous cherchez un équilibre entre vie personnelle et performance avec un suivi humain.";
-    } 
-    else {
-        titre = "Performance Optimisée";
-        progId = "m-fusion";
-        nomProg = "MENTORAT & PERFORMANCE (Performance)";
-        desc = "Vous visez la progression structurée et l'analyse de vos données pour performer.";
+    } else if (gagnant === 'social') {
+        titre = "Accompagnement Humain";
+        progRes = "MA SAISON";
+        desc = "Le mentorat est votre moteur. Pour ne plus jamais s'entraîner seul.";
+    } else {
+        titre = "Performance Autonome";
+        progRes = "PERFORMANCE SOLO";
+        desc = "Vous visez les résultats et l'optimisation de vos données.";
     }
 
-    // CRUCIAL : On enregistre les données pour le formulaire
-    window.finalDiagnostic = { 
-        titre: titre, 
-        prog: nomProg, 
-        physio: physio,
-        targetModal: progId 
-    };
-
+    window.finalDiagnostic = { titre, prog: progRes, physio };
     document.getElementById('res-titre').innerText = "Analyse : " + titre;
     document.getElementById('res-text').innerText = desc + " (Profil : " + physio + ")";
     document.getElementById('qRes').style.display = 'block';
