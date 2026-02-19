@@ -414,45 +414,60 @@
         input:checked + .slider .labels::before { color: #666; }
         input:checked + .slider .labels::after { color: white; }
 
-        /* --- CORRECTION LARGEUR ET CENTRAGE --- */
+        /* --- FIX FINAL POUR IPHONE 15 (393px) --- */
 
-/* On s'assure que les sections utilisent toute la largeur */
+/* 1. On empêche la page de bouger de gauche à droite */
+html, body {
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
+}
+
+/* --- CONFIGURATION DES SECTIONS --- */
 #programs, #projects {
-    width: 100% !important;
-    padding: 20px 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
+    padding: 60px 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centre le contenu de la section */
 }
 
-/* Conteneurs de cartes */
+/* --- LE CONTENEUR (Celui qui gère le groupe de cartes) --- */
 .programs-container, .projects-container {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    width: 100% !important;
-    max-width: 1200px !important;
-    margin: 0 auto !important;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centre les cartes entre elles */
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-/* STYLE DES CARTES (Correction de la largeur) */
+/* --- LA CARTE (Le réglage critique pour iPhone) --- */
 .program-card, .project-card {
-    /* Au lieu d'une largeur fixe, on utilise max-width */
-    width: 90% !important; /* Prend 90% de l'écran sur mobile */
-    max-width: 380px !important; /* Mais ne dépasse jamais 380px sur ordi */
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
     
-    margin: 15px auto !important; /* Centre la carte avec auto */
-    box-sizing: border-box !important; /* Inclus le padding dans la largeur */
-    float: none !important;
-    display: block !important;
+    /* MODIFICATIONS ICI */
+    float: none !important;      /* Supprime l'alignement à gauche */
+    display: flex !important;    /* Permet un contenu interne flexible */
+    flex-direction: column;
+    
+    width: 90% !important;       /* 90% de la largeur sur mobile */
+    max-width: 380px !important; /* Mais max 380px sur ordinateur */
+    margin: 10px auto !important; /* auto à gauche et à droite = CENTRAGE */
+    
+    box-sizing: border-box !important; /* Très important pour iPhone */
 }
 
-/* Ajustement pour les écrans plus larges (ordinateurs) */
+/* --- AJUSTEMENT ORDINATEUR --- */
 @media (min-width: 769px) {
     .program-card, .project-card {
-        display: inline-block !important;
-        width: 380px !important; /* Largeur fixe seulement sur grand écran */
-        margin: 15px !important;
+        width: 380px !important; /* Taille fixe seulement si l'écran est grand */
+        margin: 0 !important;    /* Le centrage est alors géré par le justify-content du parent */
     }
 }
     </style>
@@ -588,7 +603,8 @@
                 Cliquez sur le profil qui vous ressemble pour en savoir plus :
             </p>
             
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
+            
+            <div class="programs-container" style="grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));">
     <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec" style="cursor: pointer;">
         <h3>Premier Pas</h3>
         <p>Pour ceux qui n'ont jamais osé franchir la ligne. Un encadrement sécurisant de A à Z pour votre tout premier triathlon.</p>
