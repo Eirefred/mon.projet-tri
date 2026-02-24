@@ -631,26 +631,41 @@
     <div id="m1" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('m1')">&times;</span>
-            <h3>Programme: Premier Pas</h3>
+            <h3>Programme : Premier Pas</h3>
 
             <blockquote class="quote-athlete" style="margin-top: 0; margin-bottom: 20px;">« Un jour, je vais en faire un... »</blockquote>
+            
             <div style="background: #fff8f3; border: 1px dashed var(--accent); padding: 15px; border-radius: 8px; margin-bottom: 25px;">
                 <p style="color: var(--primary); font-weight: 600; font-size: 1.05rem; line-height: 1.4; margin: 0; text-align: center;">
                     Ce programme est le cœur de notre mission : <br>
                     <span style="color: var(--accent);">vous amener à franchir votre toute première ligne d’arrivée.</span>
                 </p>
             </div>
+
             <ul>
                 <li>Assignation d'un mentor dédié selon vos objectifs.</li>
                 <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
                 <li>Plan d'entraînement de 12 semaines adapté à votre niveau actuel.</li>
                 <li>Ajustement du plan à votre mode de vie.</li>
-                <li>Explications du déroulement d’un triathlon.</li>
-                <li>Formation sur les règlement de course.</li>
+                <li>Explications du déroulement d’un triathlon et règlements.</li>
                 <li>Soutien moral et psychologique pour votre première ligne de départ.</li>
             </ul>
-            <div class="price-box">Tarif : 399$ tout inclus pour 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit 133$/mois)<br>Plan d'entrainement + 5 séances de mentorat de 40min</span></div>
-            <button class="btn-submit" onclick="choisirProgramme('PREMIER PAS')">C'est mon défi</button>
+
+            <div style="display: grid; gap: 15px; margin-top: 20px;">
+                <div class="price-box" style="margin: 0;">
+                    <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement semi-autonome</span><br>
+                    <span style="color: var(--accent);">Option Standard :</span> 299$ / 3 mois
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~99$/mois)<br>Plan d'entraînement + <strong>3 séances</strong> de mentorat de 40min</small>
+                </div>
+
+                <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
+                    <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement complet</span><br>
+                    <span style="color: var(--brand-blue);">Option Accompagnée :</span> 399$ / 3 mois
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit 133$/mois)<br>Plan d'entraînement + <strong>5 séances</strong> de mentorat de 40min</small>
+                </div>
+            </div>
+
+            <button class="btn-submit" style="margin-top: 25px;" onclick="choisirProgramme('PREMIER PAS')">C'est mon défi</button>
         </div>
     </div>
 
@@ -679,12 +694,13 @@
         <div style="display: grid; gap: 15px;">
             <div class="price-box" style="margin: 0;">
                 <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Saison (6 mois)</span><br>
-                <span style="color: var(--accent);">Option Standard :</span> 449$ / 3 mois
+                <span style="color: var(--accent);">Option Standard :</span> 449$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~149$/mois)</small>
                 <br><small style="font-size: 0.85rem; font-weight: 400;">Idéal pour progresser avec structure et motivation.</small>
             </div>
+            
             <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
                 <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Annuel (12 mois)</span><br>
-                <span style="color: var(--brand-blue);">Option Performance :</span> 499$ / 3 mois
+                <span style="color: var(--brand-blue);">Option Performance :</span> 499$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~166$/mois)</small>
                 <br><small style="font-size: 0.85rem; font-weight: 400;">Analyse de données poussée et stratégie avancée (70.3 et Ironman).</small>
             </div>
         </div>
@@ -692,7 +708,6 @@
         <button class="btn-submit" style="margin-top: 25px;" onclick="choisirProgramme('MA SAISON / PERFORMANCE')">Discuter de mon projet</button>
     </div>
 </div>
-
     <section id="contact" class="section-contact">
         <div class="container">
             <h2>Prêt à franchir le pas ?</h2>
