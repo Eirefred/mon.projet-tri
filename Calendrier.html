@@ -30,20 +30,7 @@
         .legend { background: white; padding: 10px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; position: relative; }
         .legend-item { display: flex; align-items: center; gap: 6px; }
         
-        .btn-global-map { 
-            background: var(--primary); 
-            color: white; 
-            border: none; 
-            padding: 8px 12px; 
-            border-radius: 20px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            display: flex; 
-            align-items: center; 
-            gap: 5px;
-            margin-left: 15px;
-            transition: background 0.2s;
-        }
+        .btn-global-map { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; margin-left: 15px; transition: background 0.2s; }
         .btn-global-map:hover { background: var(--dark-blue); }
 
         /* --- TABLEAU --- */
@@ -54,48 +41,24 @@
         thead th { position: sticky; top: 145px; background: var(--dark-blue); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
         td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
-        /* --- ÉTATS PASSÉS --- */
         .past-event { color: var(--gray-light) !important; }
-        .past-event b { color: var(--gray-light) !important; }
         .past-event .badge { opacity: 0.3; filter: grayscale(1); }
-        .past-event .btn-action { opacity: 0.6; filter: saturate(0.5); }
-        .past-event .lieu-link { color: var(--gray-light) !important; opacity: 0.7; }
 
-        /* BADGES & BOUTONS */
+        /* BADGES */
         .badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-weight: bold; font-size: 0.7rem; margin: 2px; border: 1px solid rgba(0,0,0,0.1); }
         .cat-tri { background: #e3f2fd; color: #1976d2; }
         .cat-dua { background: #fff3e0; color: #e65100; }
+        .cat-dual-long { background: #ffe0b2; color: #bf360c; } /* Nouveau style Duathlon Long */
         .cat-multi { background: #f3e5f5; color: #7b1fa2; }
         .cat-init { background: #e8f5e9; color: #2e7d32; }
         
-        .tq-logo { width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; }
         .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
-        .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 75px; text-align: center; border: none; }
+        .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 75px; text-align: center; }
 
-        /* MODAL MAP */
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
         .modal-content { background: white; margin: 2% auto; padding: 20px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; }
-        
-        .close { 
-            position: absolute; 
-            right: 20px; 
-            top: 10px; 
-            font-size: 35px; 
-            font-weight: bold;
-            cursor: pointer; 
-            z-index: 2101;
-            color: #333;
-            line-height: 1;
-            background: white;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-        .close:hover { color: var(--accent); }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 35px; font-weight: bold; cursor: pointer; z-index: 2101; color: #333; background: white; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
         iframe { width: 100%; height: 600px; border: none; border-radius: 8px; }
     </style>
 </head>
@@ -121,7 +84,6 @@
 
     <div class="legend-container">
         <div class="legend">
-            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px;"><img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo"><strong>Accr. TQ</strong></div>
             <div class="legend-item"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item"><span class="badge cat-tri">TO</span> Olymp.</div>
@@ -129,18 +91,16 @@
             <div class="legend-item"><span class="badge cat-tri">TC</span> Complet</div>
             <div class="legend-item"><span class="badge cat-dua">DS</span> Duath. Sprint</div>
             <div class="legend-item"><span class="badge cat-dua">DO</span> Duath. Olymp</div>
+            <div class="legend-item"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
             <div class="legend-item"><span class="badge cat-multi">AV</span> Aquavélo</div>
             <div class="legend-item"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-            
-            <button class="btn-global-map" onclick="openGlobalMap()">
-                🌎 Voir la carte
-            </button>
+            <button class="btn-global-map" onclick="openGlobalMap()">🌎 Carte Globale</button>
         </div>
     </div>
 
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
-        <div id="status" style="text-align:center; padding: 20px;">Chargement du calendrier...</div>
+        <div id="status" style="text-align:center; padding: 20px;">Chargement des données...</div>
         <div class="table-container">
             <table id="calTable" style="display:none;">
                 <thead>
@@ -149,7 +109,7 @@
                         <th>Événement</th>
                         <th>Organisateur</th>
                         <th>Région</th>
-                        <th>Lieu</th>
+                        <th>Lieu (Ville)</th>
                         <th>Site web</th>
                         <th>Contact</th>
                         <th>Disciplines</th>
@@ -172,22 +132,6 @@
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
 
-    function isDatePast(dateStr) {
-        if (!dateStr) return false;
-        const cleanStr = dateStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, '');
-        const dayMatch = cleanStr.match(/\d+/);
-        if (!dayMatch) return false;
-        const day = parseInt(dayMatch[0]);
-        const monthsClean = { "janv":0, "fev":1, "mars":2, "avr":3, "mai":4, "juin":5, "juil":6, "aout":7, "sept":8, "oct":9, "nov":10, "dec":11 };
-        let month = -1;
-        for (let m in monthsClean) { if (cleanStr.includes(m)) { month = monthsClean[m]; break; } }
-        if (month === -1) return false;
-        const eventDate = new Date(2026, month, day);
-        const today = new Date();
-        today.setHours(0,0,0,0);
-        return eventDate < today;
-    }
-
     async function loadExcel() {
         try {
             const response = await fetch(EXCEL_FILE);
@@ -196,7 +140,7 @@
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
-        } catch (e) { document.getElementById('status').innerText = "Erreur de chargement."; }
+        } catch (e) { document.getElementById('status').innerText = "Erreur de chargement du fichier Excel."; }
     }
 
     function renderTable(rows) {
@@ -208,48 +152,31 @@
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
-            const past = isDatePast(row[0]);
-            if(past) tr.classList.add('past-event');
-
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:20px;margin-right:5px;vertical-align:middle;">` : "";
             
-            // --- LOGIQUE LIEU / VILLE AMÉLIORÉE ---
-            // --- LOGIQUE LIEU / VILLE PRÉCISE ---
+            // Logique Ville : On prend l'élément à l'index (length - 3) pour éviter l'adresse et le code postal
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let lieuCell = "-"; 
-
-            if (lieuComplet !== "") {
+            let villeAffichee = "Lieu non défini";
+            if (lieuComplet) {
                 const parties = lieuComplet.split(',');
-                let villeAffichee = lieuComplet;
-
-                // Structure : [Adresse], [Ville], [Province], [Code Postal]
-                // On récupère l'élément qui est à 2 positions de la fin (l'index length - 3)
-                if (parties.length >= 3) {
-                    villeAffichee = parties[parties.length - 3].trim();
-                } 
-                // Sécurité au cas où il n'y aurait qu'une virgule (Ville, Province Code Postal)
-                else if (parties.length === 2) {
-                    villeAffichee = parties[0].trim();
-                }
-                
-                lieuCell = `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">📍 ${villeAffichee}</span>`;
+                villeAffichee = parties.length >= 3 ? parties[parties.length - 3].trim() : lieuComplet;
             }
 
-            const siteUrl = row[4] ? String(row[4]).trim() : "";
-            const siteCell = siteUrl ? `<a href="${siteUrl}" target="_blank" class="btn-action">Lien</a>` : "-";
-
-            const contactEmail = row[3] ? String(row[3]).trim() : "";
-            const contactCell = (contactEmail && contactEmail.includes('@')) ? `<a href="mailto:${contactEmail}" class="btn-action">Courriel</a>` : "-";
-
             let badges = [];
-            for (let j = 11; j <= 19; j++) {
+            // Scan des colonnes disciplines (11 à 20)
+            for (let j = 11; j <= 20; j++) {
                 if (row[j] === "X" || row[j] === "x") {
                     const info = {
-                        "Triathlon Initiation": { code: "TI", cat: "cat-init" }, "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
-                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" }, "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
-                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" }, "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" }, " Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-                        "Aquavelo": { code: "AV", cat: "cat-multi" }, "Aquathlon": { code: "AQ", cat: "cat-multi" }
+                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
+                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
+                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
+                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
+                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
+                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
+                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+                        "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
+                        "Aquavelo": { code: "AV", cat: "cat-multi" },
+                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
                     }[headers[j]] || { code: "?", cat: "" };
                     badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
                 }
@@ -257,11 +184,12 @@
 
             tr.innerHTML = `
                 <td><b>${row[0] || ""}</b></td>
-                <td>${isTQ} ${row[1]}</td>
-                <td>${row[6] || "-"}</td> <td>${row[2] || ""}</td>
-                <td>${lieuCell}</td>
-                <td>${siteCell}</td>
-                <td>${contactCell}</td>
+                <td>${isTQ}${row[1]}</td>
+                <td>${row[6] || "-"}</td>
+                <td>${row[2] || ""}</td>
+                <td><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${villeAffichee}</span></td>
+                <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+                <td>${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
                 <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
@@ -272,30 +200,24 @@
 
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const simpleUrl = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${simpleUrl}"></iframe>`;
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        const url = "https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"; 
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
     function closeMap() {
         document.getElementById('mapModal').style.display = "none";
-        document.getElementById('mapContainer').innerHTML = ""; 
+        document.getElementById('mapContainer').innerHTML = "";
     }
 
     window.onload = loadExcel;
-
-    window.onclick = (e) => { 
-        if (e.target.className === 'modal') {
-            closeMap();
-        } 
-    }
+    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
 </body>
 </html>
