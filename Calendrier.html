@@ -9,14 +9,15 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (STYLE INDEX) --- */
+        /* --- HEADER (STYLE INDEX COMPLET) --- */
         header { background-color: white; position: sticky; top: 0; z-index: 1100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; max-width: 1400px; margin: 0 auto; }
         .header-left { display: flex; align-items: center; gap: 20px; }
         .logo img { height: 60px; width: auto; display: block; }
         .region-mention { font-size: 0.9rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--accent); padding-left: 15px; text-transform: uppercase; line-height: 1.2; }
+        
         nav ul { list-style: none; display: flex; align-items: center; gap: 25px; margin: 0; padding: 0; }
-        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
         nav a:hover { color: var(--accent); }
 
         /* --- LÉGENDE FIXE --- */
@@ -38,6 +39,7 @@
         .cat-dua { background: #fff3e0; color: #e65100; }
         .cat-multi { background: #f3e5f5; color: #7b1fa2; }
         .cat-init { background: #e8f5e9; color: #2e7d32; }
+        
         .tq-logo { width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; }
         .cp-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
         .btn-site { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
@@ -123,7 +125,8 @@
         "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
         "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
         "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-        " Duathlon Olympique": { code: "DO", cat: "cat-dua" }, // Espace conservé selon Excel
+        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+        " Duathlon Olympique": { code: "DO", cat: "cat-dua" }, // Gestion de l'espace dans le CSV
         "Aquavelo": { code: "AV", cat: "cat-multi" },
         "Aquathlon": { code: "AQ", cat: "cat-multi" }
     };
@@ -176,8 +179,9 @@
     }
 
     function openMap(cp, name) {
-        document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
+        document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
+        // Utilisation du zoom z=10 pour une vue plus large
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
