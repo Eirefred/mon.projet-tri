@@ -194,8 +194,10 @@
 
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
 const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
-// Extraction dynamique de l'année depuis le nom du fichier (ex: 2026)
-const CALENDAR_YEAR = parseInt(EXCEL_FILE.match(/\d{4}/)) || new Date().getFullYear();
+
+// Extraction de l'année (cherche 4 chiffres dans le nom du fichier, sinon prend l'année actuelle)
+const yearMatch = EXCEL_FILE.match(/\d{4}/);
+const CALENDAR_YEAR = yearMatch ? parseInt(yearMatch[0]) : new Date().getFullYear();
 
 async function loadExcel() {
     try {
@@ -206,11 +208,27 @@ async function loadExcel() {
         const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
         renderTable(rows);
         setupFilters();
-    } catch (e) { document.getElementById('status').innerText = "Erreur de chargement."; }
+    } catch (e) {
+        console.error(e);
+        document.getElementById('status').innerText = "Erreur de chargement du fichier Excel.";
+    }
+}
+
+function parseFrenchDate(str, year) {
+    if (!str) return null;
+    const months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    let s = str.toLowerCase();
+    const dayMatch = s.match(/\d+/);
+    const monthIndex = months.findIndex(m => s.includes(m));
+    if (dayMatch && monthIndex !== -1) {
+        return new Date(year, monthIndex, parseInt(dayMatch[0]));
+    }
+    return null;
 }
 
 function renderTable(rows) {
     const body = document.getElementById('calBody');
+    body.innerHTML = ""; // Nettoie le tableau avant de remplir
     const headers = rows[0].map(h => h ? String(h).trim() : "");
     
     const today = new Date();
@@ -221,20 +239,17 @@ function renderTable(rows) {
         if (!row[1]) continue;
         const tr = document.createElement('tr');
         
-        // --- Logique de détection intelligente ---
+        // --- Logique de date passée ---
         let isPast = false;
         const dateRaw = row[0] ? String(row[0]).trim() : "";
-        
         if (dateRaw) {
             let dateToCompare;
-            // Gestion du "au" (ex: 23 au 24 mai)
             if (dateRaw.toLowerCase().includes(" au ")) {
                 const parts = dateRaw.split(/ au /i);
                 dateToCompare = parseFrenchDate(parts[1], CALENDAR_YEAR);
             } else {
                 dateToCompare = parseFrenchDate(dateRaw, CALENDAR_YEAR);
             }
-
             if (dateToCompare && dateToCompare < today) {
                 isPast = true;
                 tr.classList.add('past-event');
@@ -249,6 +264,7 @@ function renderTable(rows) {
         let badges = [];
         for (let j = 11; j <= 20; j++) {
             if (row[j] === "X" || row[j] === "x") {
+                const colName = headers[j];
                 const info = {
                     "Triathlon Initiation": { code: "TI", cat: "cat-init" },
                     "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
@@ -260,8 +276,11 @@ function renderTable(rows) {
                     "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
                     "Aquavelo": { code: "AV", cat: "cat-multi" },
                     "Aquathlon": { code: "AQ", cat: "cat-multi" }
-                }[headers[j]] || { code: "?", cat: "" };
-                if(info.code !== "?") { badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); rowCats.push(info.code); }
+                }[colName] || { code: "?", cat: "" };
+                if(info.code !== "?") { 
+                    badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); 
+                    rowCats.push(info.code); 
+                }
             }
         }
 
@@ -282,20 +301,37 @@ function renderTable(rows) {
     document.getElementById('calTable').style.display = 'table';
 }
 
-// Analyse de la date en injectant l'année du calendrier
-function parseFrenchDate(str, year) {
-    if (!str) return null;
-    const months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
-    let s = str.toLowerCase();
-    
-    const dayMatch = s.match(/\d+/);
-    const monthIndex = months.findIndex(m => s.includes(m));
+function setupFilters() {
+    const search = document.getElementById('search');
+    const regionFilter = document.getElementById('regionFilter');
+    const typeFilter = document.getElementById('typeFilter');
 
-    if (dayMatch && monthIndex !== -1) {
-        return new Date(year, monthIndex, parseInt(dayMatch[0]));
+    function filter() {
+        const q = search.value.toLowerCase();
+        const reg = regionFilter.value;
+        const typ = typeFilter.value;
+        document.querySelectorAll('#calBody tr').forEach(tr => {
+            const txt = tr.innerText.toLowerCase();
+            const r = tr.cells[3].innerText;
+            const cats = tr.getAttribute('data-categories').split(',');
+            const matchSearch = txt.includes(q);
+            const matchReg = !reg || r === reg;
+            const matchTyp = !typ || cats.includes(typ);
+            tr.classList.toggle('hidden', !(matchSearch && matchReg && matchTyp));
+        });
     }
-    return null;
+    search.addEventListener('input', filter);
+    regionFilter.addEventListener('change', filter);
+    typeFilter.addEventListener('change', filter);
 }
+
+function openMap(addr, title) {
+    if(!addr || addr === "-") return;
+    const url = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(addr);
+    window.open(url, '_blank');
+}
+
+window.onload = loadExcel;
 
     function setupFilters() {
         const items = document.querySelectorAll('.clickable-cat');
