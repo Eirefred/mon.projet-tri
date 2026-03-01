@@ -510,8 +510,8 @@
 
     function openMap(lieu, name) {
     document.getElementById('modalTitle').innerText = name;
-    // Utilisation de l'URL d'intégration officielle
-    const url = `https://www.google.com/maps?q=${encodeURIComponent(lieu)}&output=embed`;
+    // Utilisation de google.com/maps avec le paramètre q et force du zoom via output=embed
+    const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=10&output=embed`;
     document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
     document.getElementById('mapModal').style.display = "block";
 }
