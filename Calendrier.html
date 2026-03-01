@@ -30,14 +30,14 @@
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; }
         table { width: 100%; border-collapse: collapse; min-width: 1100px; }
         thead th { position: sticky; top: 145px; background: var(--primary); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
-        td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: color 0.3s; }
+        td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
         /* --- ÉTATS PASSÉS --- */
         .past-event { color: var(--gray-light) !important; }
         .past-event b { color: var(--gray-light) !important; }
         .past-event .badge { opacity: 0.3; filter: grayscale(1); }
-        .past-event .btn-action { background: #e9ecef !important; color: #adb5bd !important; border: 1px solid #dee2e6; pointer-events: none; }
-        .past-event .lieu-link { color: var(--gray-light) !important; text-decoration: none; cursor: default; }
+        .past-event .btn-action { opacity: 0.6; filter: saturate(0.5); } /* Grisé mais reste cliquable */
+        .past-event .lieu-link { color: var(--gray-light) !important; opacity: 0.7; }
         .past-event .tq-logo { filter: grayscale(1); opacity: 0.5; }
 
         /* BADGES & BOUTONS */
@@ -127,8 +127,6 @@
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
 
-    const months = { "janv":0, "fév":1, "mars":2, "avr":3, "mai":4, "juin":5, "juil":6, "août":7, "sept":8, "oct":9, "nov":10, "déc":11 };
-
     function isDatePast(dateStr) {
         if (!dateStr) return false;
         const cleanStr = dateStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, '');
@@ -136,9 +134,8 @@
         if (!dayMatch) return false;
         const day = parseInt(dayMatch[0]);
         
-        let month = -1;
-        // Correspondance robuste des mois (sans accents pour le calcul)
         const monthsClean = { "janv":0, "fev":1, "mars":2, "avr":3, "mai":4, "juin":5, "juil":6, "aout":7, "sept":8, "oct":9, "nov":10, "dec":11 };
+        let month = -1;
         for (let m in monthsClean) { if (cleanStr.includes(m)) { month = monthsClean[m]; break; } }
         if (month === -1) return false;
 
@@ -173,18 +170,17 @@
 
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
             
-            // Lieu / Ville
+            // --- LOGIQUE LIEU CONDITIONNELLE ---
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let villeAffichee = "📍 Localisation";
-            if (lieuComplet) {
-                const parties = lieuComplet.split(',');
-                villeAffichee = parties.length >= 2 ? "📍 " + parties[1].trim() : "📍 " + lieuComplet;
-            }
-            const lieuCell = (lieuComplet && !past)
-                ? `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>` 
-                : `<span title="${lieuComplet}">${villeAffichee}</span>`;
+            let lieuCell = "-"; 
 
-            // Inversion Site Web (Col 4) et Contact (Col 3)
+            if (lieuComplet !== "") {
+                const parties = lieuComplet.split(',');
+                const villeAffichee = parties.length >= 2 ? "📍 " + parties[1].trim() : "📍 " + lieuComplet;
+                
+                lieuCell = `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>`;
+            }
+
             const siteUrl = row[4] ? String(row[4]).trim() : "";
             const siteCell = siteUrl ? `<a href="${siteUrl}" target="_blank" class="btn-action">Lien</a>` : "-";
 
@@ -229,7 +225,7 @@
 
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name + " (" + lieu + ")";
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
