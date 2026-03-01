@@ -181,7 +181,7 @@
 function openMap(cp, name) {
         document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
         
-        // z=8 : Zoom plus large (vue provinciale/régionale)
+        // z=10 : Zoom plus large (vue provinciale/régionale)
         // q= : Force l'affichage du marqueur (le "pin") sur le code postal
         const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=8&ie=UTF8&iwloc=&output=embed`;
         
