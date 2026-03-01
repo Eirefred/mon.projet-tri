@@ -81,29 +81,44 @@
     }
 
     /* --- MOBILE --- */
+    /* --- MOBILE --- */
     @media (max-width: 768px) {
-    header { height: 70px; }
-    .logo img { height: 40px; }
-    .region-mention { display: none; }
-    .menu-toggle { display: block; cursor: pointer; }
+        header { height: 70px; }
+        .logo img { height: 40px; }
+        .menu-toggle { display: block; cursor: pointer; }
 
-    /* MENU ACCORDÉON */
-    .navMenu {
-        display: none; /* Caché par défaut */
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        background-color: var(--primary);
-        z-index: 1300;
-    }
+        /* On utilise l'ID #navMenu car c'est ce qui est dans ton HTML */
+        #navMenu {
+            display: none; 
+            flex-direction: column;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background-color: var(--primary);
+            z-index: 1300;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
 
-    /* Cette règle permet l'ouverture via le JS */
-    .navMenu.active {
-        display: flex !important;
+        /* Affiche le menu quand le JS ajoute la classe .active */
+        #navMenu.active {
+            display: flex !important;
+        }
+
+        #navMenu li {
+            width: 100%;
+            text-align: center;
+            display: block !important; /* Force l'affichage des li */
+        }
+
+        #navMenu li a {
+            display: block;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
     }
-}
     /* --- LE RESTE DE TON CODE TABLEAU (NE PAS TOUCHER) --- */
     #backToTop.visible { display: flex; }
     .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
@@ -294,9 +309,9 @@
 
     // Fonction pour ouvrir/fermer le menu mobile
 function toggleMenu() {
-    // On utilise "navMenu" car c'est l'ID écrit dans ton HTML ligne 149
     const menu = document.getElementById('navMenu'); 
-    const toggle = document.getElementById('mobile-menu');
+    // On ne cherche plus 'mobile-menu' car il n'existe pas, on cherche la classe
+    const toggle = document.querySelector('.menu-toggle');
     
     if (menu) {
         menu.classList.toggle('active');
