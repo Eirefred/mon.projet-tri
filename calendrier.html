@@ -146,31 +146,28 @@
 
     td > b, td > span, td > div, td > a { flex: 1; text-align: right; font-size: 0.85rem; word-break: break-word; }
 
-    /* MISE CÔTE À CÔTE : SITE ET CONTACT */
-    td[data-label="Site web"] > a, 
-        td[data-label="Contact"] > a {
-            flex: 0 0 auto !important; /* Ne force pas une largeur fixe */
-            margin-left: auto;         /* Pousse le bouton au bord droit */
-        }
-    /* EN-TÊTE DE CARTE (ÉVÉNEMENT ET DATE) */
-    td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-    td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
-    td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
+    /* SITE WEB ET CONTACT SUR LA MÊME LIGNE */
+    td[data-label="Site web"], 
+    td[data-label="Contact"] {
+        display: inline-flex !important; /* Permet l'alignement côte à côte */
+        width: 50% !important;           /* Chacun prend la moitié de la largeur */
+        float: left;                     /* Les fait monter sur la même ligne */
+        border-bottom: none;             /* Enlève la ligne de séparation entre les deux */
+        min-height: 60px;                /* Hauteur suffisante pour le titre + bouton */
+        flex-direction: column;          /* Aligne le petit texte au-dessus du bouton */
+        justify-content: center;
+        align-items: center;             /* Centre le bouton dans sa moitié de ligne */
+        padding: 5px;
+    }
 
-    td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
-
-    /* BOUTONS SITE ET CONTACT PLUS PETITS SUR MOBILE */
-        .btn-action { 
-            padding: 6px 10px; /* Réduction du rembourrage intérieur */
-            font-size: 0.7rem;   /* Taille de police réduite */
-            min-width: 65px;    /* Largeur minimale plus courte */
-            width: auto;
-            border-radius: 4px;
-            text-transform: none; /* Évite les majuscules qui prennent de la place */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: inline-block;
-            margin-left: 2px;
-        }
+    /* Ajustement des boutons pour qu'ils ne se touchent pas */
+    .btn-action { 
+        padding: 5px 8px !important; 
+        font-size: 0.65rem !important;
+        min-width: 70px !important;
+        margin: 2px auto !important;
+    }
+        
     /* MASQUER LES ÉVÉNEMENTS PASSÉS (GRIS) SUR MOBILE UNIQUEMENT */
         tr.past-event, 
         tr[style*="color: #999"], 
