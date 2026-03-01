@@ -107,65 +107,53 @@
             box-shadow: none; border: 1px solid #eee;
         }
 
-        /@media (max-width: 768px) {
-    /* ... garder vos styles header/menu ... */
+        /* CARTES : Structure et alignement */
+        .main-content { padding: 15px; }
+        table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
+        thead { display: none; }
 
-    /* Suppression des bordures inutiles et mise en forme du conteneur */
-    .table-outer { background: transparent; box-shadow: none; }
-    table, tbody, tr, td { display: block; width: 100% !important; }
-    thead { display: none; }
+        tr { 
+            margin-bottom: 20px; border: 1px solid #ddd; 
+            border-radius: 12px; background: white; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
+        }
 
-    tr { 
-        background: white; 
-        margin-bottom: 15px; 
-        border-radius: 10px; 
-        border: 1px solid #e0e0e0; 
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        overflow: hidden;
+        td { 
+            display: flex; /* Aligne libellé à gauche et info à droite */
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 12px 15px; 
+            border-bottom: 1px solid #f5f5f5; 
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        /* Libellés à gauche (ex: Date, Lieu...) */
+        td:before { 
+            content: attr(data-label); 
+            font-weight: bold; color: #888; 
+            font-size: 0.7rem; text-transform: uppercase;
+            flex: 1; text-align: left;
+        }
+
+        /* Contenu à droite */
+        td > * { flex: 2; }
+
+        /* Mise en avant de l'Événement */
+        td[data-label="Événement"] { 
+            display: block; text-align: left; background: #fafafa; padding: 15px;
+        }
+        td[data-label="Événement"]:before { margin-bottom: 8px; }
+        td[data-label="Événement"] b { font-size: 1.1rem; color: var(--dark-blue); }
+
+        /* Date en en-tête de carte */
+        td[data-label="Date"] { 
+            background: #f0f7ff; color: var(--primary); font-weight: bold;
+        }
+
+        .btn-action { padding: 10px; margin-top: 5px; }
+        .badge { width: 22px; height: 22px; font-size: 0.6rem; }
     }
-
-    td { 
-        display: flex !important; /* Force l'alignement horizontal */
-        justify-content: flex-start; 
-        align-items: center; 
-        padding: 10px 15px; 
-        border-bottom: 1px solid #f0f0f0; 
-        min-height: 40px;
-    }
-
-    /* Style du libellé à gauche (ex: DATE, LIEU) */
-    td:before { 
-        content: attr(data-label); 
-        font-weight: bold; 
-        color: #888; 
-        font-size: 0.7rem; 
-        text-transform: uppercase;
-        width: 35%; /* Largeur fixe pour que tout soit aligné à gauche */
-        flex-shrink: 0;
-        text-align: left;
-    }
-
-    /* Style de la donnée à droite */
-    td > b, td > span, td > div, td > a { 
-        width: 65%; 
-        text-align: right; /* Aligne la donnée à droite pour la lisibilité */
-        font-size: 0.85rem;
-    }
-
-    /* Exception pour l'événement : on lui donne plus de place */
-    td[data-label="Événement"] { 
-        display: block !important; 
-        background: #fafafa; 
-        padding: 15px; 
-    }
-    td[data-label="Événement"]:before { display: block; margin-bottom: 5px; width: 100%; }
-    td[data-label="Événement"] b { display: block; width: 100%; text-align: left; font-size: 1.05rem; color: var(--dark-blue); }
-
-    /* Ajustement des badges d'épreuves */
-    td[data-label="Épreuves"] div { 
-        justify-content: flex-end; /* Aligne les badges à droite */
-    }
-}
 
     /* MODAL */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
