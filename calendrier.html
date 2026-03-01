@@ -96,27 +96,14 @@
         left: 0;
         width: 100%;
         background-color: var(--primary);
-        padding: 10px 0;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         z-index: 1300;
-        list-style: none;
-        margin: 0;
     }
 
-    /* Action du Hamburger (JS ajoute la classe active) */
+    /* Cette règle permet l'ouverture via le JS */
     .nav-menu.active {
         display: flex !important;
     }
-
-    .nav-menu li { width: 100%; text-align: center; margin: 0; }
-    .nav-menu a { 
-        display: block; 
-        padding: 15px; 
-        font-size: 1rem; 
-        color: white; 
-        border-bottom: 1px solid rgba(255,255,255,0.1); 
-    }
-
+}
     /* --- LE RESTE DE TON CODE TABLEAU (NE PAS TOUCHER) --- */
     #backToTop.visible { display: flex; }
     .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
@@ -307,7 +294,8 @@
 
     // Fonction pour ouvrir/fermer le menu mobile
 function toggleMenu() {
-    const menu = document.getElementById('navMenu'); // ID SANS TIRETS
+    // On utilise "navMenu" car c'est l'ID écrit dans ton HTML ligne 149
+    const menu = document.getElementById('navMenu'); 
     const toggle = document.getElementById('mobile-menu');
     
     if (menu) {
