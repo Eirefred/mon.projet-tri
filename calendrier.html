@@ -26,6 +26,43 @@
     nav a:hover { color: var(--accent); }
     .menu-toggle { display: none; font-size: 28px; color: white; cursor: pointer; }
 
+    /* --- FOOTER --- */
+footer {
+    background-color: var(--dark-blue);
+    color: white;
+    padding: 60px 5% 20px;
+    margin-top: 50px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet le retour à la ligne sur mobile */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-logo img { width: 40px; margin-bottom: 15px; filter: brightness(0) invert(1); }
+.footer-logo p { font-size: 0.9rem; color: #ccc; max-width: 250px; }
+.footer-links h4, .footer-contact h4 { margin-bottom: 20px; font-size: 1.1rem; }
+.footer-links ul { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a, .footer-contact a { color: #ccc; text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom { border-top: 1px solid #444; margin-top: 40px; padding-top: 20px; text-align: center; font-size: 0.8rem; color: #888; }
+
+/* Réglages spécifiques Mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Aligne les éléments verticalement */
+        text-align: center;
+    }
+    .footer-logo p {
+        margin: 0 auto;
+    }
+}
+
     /* --- LÉGENDE --- */
     .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1100; padding: 12px 0; border-bottom: 1px solid #ddd; height: 40px; display: flex; align-items: center; }
     .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 0 auto; white-space: nowrap; }
@@ -326,5 +363,27 @@
     window.onload = loadExcel;
     window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo">
+            <p>Mon Projet Tri - Propulsé par la passion du sport.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="calendrier.html">Calendrier</a></li>
+            </ul>
+        </div>
+        <div class="footer-contact">
+            <h4>Contact</h4>
+            <p>Courriel: <a href="mailto:info@monprojettri.com">info@monprojettri.com</a></p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Mon Projet Tri. Tous droits réservés. OBNL enregistrée au Québec.</p>
+    </div>
+</footer>
 </body>
 </html>
