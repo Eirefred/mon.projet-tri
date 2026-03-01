@@ -87,37 +87,55 @@
         .region-mention { display: none; }
         .menu-toggle { display: block; cursor: pointer; }
 
-        /* Ciblage précis de l'ID pour le menu mobile */
-        #navMenu { 
-            display: none; 
-            flex-direction: column; 
-            position: absolute; 
-            top: 70px; 
-            left: 0; 
-            width: 100%; 
-            background-color: var(--primary); 
-            padding: 10px 0; 
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2); 
-            z-index: 1300; 
-        }
+        /* MENU MOBILE */
+        #navMenu { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background-color: var(--primary); padding: 10px 0; z-index: 1300; }
+        #navMenu.active { display: flex !important; }
+        #navMenu li { width: 100%; text-align: center; display: block !important; }
+        #navMenu a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        /* Cette règle déclenche l'affichage lors du clic */
-        #navMenu.active { 
-            display: flex !important; 
-        }
-
-        #navMenu li { 
-            width: 100%; 
-            text-align: center; 
-            display: block !important; /* Force l'affichage des liens */
-        }
+        /* --- TRANSFORMATION DU TABLEAU EN CARTES --- */
+        .main-content { padding: 10px 3%; }
+        table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
         
-        #navMenu a { 
-            display: block; 
-            padding: 15px; 
-            font-size: 1rem; 
-            border-bottom: 1px solid rgba(255,255,255,0.1); 
+        thead { display: none; } /* On cache les entêtes bleues sur mobile */
+
+        tr { 
+            margin-bottom: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 10px; 
+            background: white; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden;
         }
+
+        td { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 12px; 
+            border-bottom: 1px solid #eee; 
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        /* Utilisation des attributs data-label pour recréer les titres à gauche */
+        td:before { 
+            content: attr(data-label); 
+            font-weight: bold; 
+            color: #888; 
+            font-size: 0.75rem; 
+            text-transform: uppercase;
+            flex: 1;
+            text-align: left;
+        }
+
+        /* Ajustements spécifiques pour certains champs */
+        td[data-label="Date"] { background: #f0f7ff; font-weight: bold; color: var(--primary); }
+        td[data-label="Événement"] { display: block; text-align: left; background: #fafafa; }
+        td[data-label="Événement"]:before { display: block; margin-bottom: 5px; }
+        
+        .btn-action { padding: 8px; font-size: 0.8rem; }
+        .badge { width: 22px; height: 22px; font-size: 0.6rem; }
     }
 
     /* MODAL */
@@ -296,7 +314,9 @@
     let activeFilter = null;
     const CALENDAR_YEAR = 2026;
 
-    function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
+    function toggleMenu() { 
+    document.getElementById('navMenu').classList.toggle('active'); 
+}
 
     async function loadExcel() {
         try {
