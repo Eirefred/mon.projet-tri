@@ -9,101 +9,19 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (STRUCTURE EXACTE INDEX.HTML) --- */
-        header {
-            background-color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            width: 100%;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 5%;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .header-left {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            display: block;
-        }
-
-        .region-mention {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 700;
-            border-left: 2px solid var(--accent);
-            padding-left: 15px;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: #333;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-        }
-
+        /* --- HEADER (STYLE INDEX) --- */
+        header { background-color: white; position: sticky; top: 0; z-index: 1100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; max-width: 1400px; margin: 0 auto; }
+        .header-left { display: flex; align-items: center; gap: 20px; }
+        .logo img { height: 60px; width: auto; display: block; }
+        .region-mention { font-size: 0.9rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--accent); padding-left: 15px; text-transform: uppercase; line-height: 1.2; }
+        nav ul { list-style: none; display: flex; align-items: center; gap: 25px; margin: 0; padding: 0; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
         nav a:hover { color: var(--accent); }
 
-        /* --- SÉLECTEUR DE LANGUE --- */
-        .switch { position: relative; display: inline-block; width: 60px; height: 30px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider {
-            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
-            background-color: var(--primary); transition: .4s; border-radius: 34px;
-        }
-        .slider:before {
-            position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px;
-            background-color: white; transition: .4s; border-radius: 50%; z-index: 2;
-        }
-        .labels {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            font-size: 10px; font-family: sans-serif; font-weight: bold;
-        }
-        .labels::after { content: attr(data-off); position: absolute; right: 8px; top: 8px; color: white; }
-        .labels::before { content: attr(data-on); position: absolute; left: 8px; top: 8px; color: white; opacity: 0; }
-        input:checked + .slider:before { transform: translateX(30px); }
-        input:checked + .slider .labels::after { opacity: 0; }
-        input:checked + .slider .labels::before { opacity: 1; }
-
         /* --- LÉGENDE FIXE --- */
-        .legend-container { 
-            position: sticky; 
-            top: 80px; 
-            background: var(--bg); 
-            z-index: 1000; 
-            padding: 10px 5%;
-            border-bottom: 1px solid #eee;
-        }
-        .legend { 
-            background: white; padding: 10px; border-radius: 10px; 
-            display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; 
-        }
+        .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1000; padding: 10px 5%; border-bottom: 1px solid #eee; }
+        .legend { background: white; padding: 10px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; }
         .legend-item { display: flex; align-items: center; gap: 6px; }
 
         /* --- TABLEAU --- */
@@ -111,34 +29,24 @@
         h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; }
         table { width: 100%; border-collapse: collapse; min-width: 900px; }
-        
-        thead th { 
-            position: sticky; 
-            top: 145px; 
-            background: var(--primary); 
-            color: white; 
-            padding: 15px; 
-            z-index: 900; 
-            text-align: left; 
-            font-size: 0.9rem;
-        }
-
+        thead th { position: sticky; top: 145px; background: var(--primary); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
         td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
-        /* BADGES DISCIPLINES 30x30 */
-        .badge { 
-            display: inline-flex; align-items: center; justify-content: center; 
-            width: 30px; height: 30px; border-radius: 6px; 
-            font-weight: bold; font-size: 0.7rem; margin: 2px;
-            flex-shrink: 0; border: 1px solid rgba(0,0,0,0.1);
-        }
+        /* BADGES & ICONES */
+        .badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-weight: bold; font-size: 0.7rem; margin: 2px; border: 1px solid rgba(0,0,0,0.1); }
         .cat-tri { background: #e3f2fd; color: #1976d2; }
         .cat-dua { background: #fff3e0; color: #e65100; }
         .cat-multi { background: #f3e5f5; color: #7b1fa2; }
         .cat-init { background: #e8f5e9; color: #2e7d32; }
-
-        .tq-logo { width: 22px; height: 22px; vertical-align: middle; }
+        .tq-logo { width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; }
+        .cp-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
         .btn-site { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; }
+
+        /* MODAL MAP */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-content { background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 800px; border-radius: 12px; position: relative; }
+        .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+        iframe { width: 100%; height: 500px; border: none; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -146,28 +54,16 @@
     <header>
         <div class="nav-container">
             <div class="header-left">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri">
-                    </a>
-                </div>
+                <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
             <nav>
                 <ul>
                     <li><a href="decouvrir.html">L'OBNL</a></li>
-                    <li><a href="index.html?lang=fr#vision">Notre vision</a></li>
-                    <li><a href="index.html?lang=fr#programme">Les programmes</a></li>
+                    <li><a href="index.html#vision">Notre vision</a></li>
+                    <li><a href="index.html#programme">Les programmes</a></li>
                     <li><a href="Calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier</a></li>
-                    <li><a href="index.html?lang=fr#contact">Rejoignez-nous</a></li>
-                    <li class="lang-selector">
-                        <label class="switch">
-                            <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-                            <span class="slider">
-                                <span class="labels" data-on="EN" data-off="FR"></span>
-                            </span>
-                        </label>
-                    </li>
+                    <li><a href="index.html#contact">Rejoignez-nous</a></li>
                 </ul>
             </nav>
         </div>
@@ -175,10 +71,7 @@
 
     <div class="legend-container">
         <div class="legend">
-            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px; margin-right: 5px;">
-                <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo">
-                <strong>Accr. TQ</strong>
-            </div>
+            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px;"><img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo"><strong>Accr. TQ</strong></div>
             <div class="legend-item"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item"><span class="badge cat-tri">TO</span> Olymp.</div>
@@ -194,7 +87,6 @@
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
         <div id="status" style="text-align:center; padding: 20px;">Chargement du calendrier...</div>
-
         <div class="table-container">
             <table id="calTable" style="display:none;">
                 <thead>
@@ -212,6 +104,14 @@
         </div>
     </div>
 
+    <div id="mapModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMap()">×</span>
+            <h3 id="modalTitle">Emplacement</h3>
+            <div id="mapContainer"></div>
+        </div>
+    </div>
+
 <script>
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
@@ -223,15 +123,10 @@
         "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
         "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
         "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+        " Duathlon Olympique": { code: "DO", cat: "cat-dua" }, // Espace conservé selon Excel
         "Aquavelo": { code: "AV", cat: "cat-multi" },
         "Aquathlon": { code: "AQ", cat: "cat-multi" }
     };
-
-    function toggleLang() {
-        const isChecked = document.getElementById('lang-toggle').checked;
-        window.location.href = isChecked ? "en/Calendrier.html" : "Calendrier.html";
-    }
 
     async function loadExcel() {
         try {
@@ -253,13 +148,15 @@
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Accr. TQ">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
             const cp = row[9] ? String(row[9]).trim() : "";
-            
+            const mapCell = cp ? `<span class="cp-link" onclick="openMap('${cp}', '${row[1].replace(/'/g, "\\'")}')">📍 ${cp}</span>` : "-";
+
             let badges = [];
             for (let j = 11; j <= 19; j++) {
                 if (row[j] === "X" || row[j] === "x") {
-                    const info = legendMap[headers[j]] || { code: "?", cat: "" };
+                    const label = headers[j];
+                    const info = legendMap[label] || { code: "?", cat: "" };
                     badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
                 }
             }
@@ -268,7 +165,7 @@
                 <td><b>${row[0] || ""}</b></td>
                 <td>${isTQ} ${row[1]}</td>
                 <td>${row[2] || ""}</td>
-                <td>${cp ? `📍 ${cp}` : "-"}</td>
+                <td>${mapCell}</td>
                 <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-site">Lien</a>` : "-"}</td>
                 <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
@@ -278,7 +175,20 @@
         document.getElementById('calTable').style.display = 'table';
     }
 
+    function openMap(cp, name) {
+        document.getElementById('modalTitle').innerText = name;
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        document.getElementById('mapModal').style.display = "block";
+    }
+
+    function closeMap() { 
+        document.getElementById('mapModal').style.display = "none";
+        document.getElementById('mapContainer').innerHTML = "";
+    }
+
     window.onload = loadExcel;
+    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
 </body>
 </html>
