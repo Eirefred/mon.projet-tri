@@ -153,9 +153,25 @@
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
             const club = row[6] || "-";
             
-            // On récupère la donnée de la colonne "Lieu" (Index 9)
-            const lieu = row[9] ? String(row[9]).trim() : "";
-            const lieuCell = lieu ? `<span class="lieu-link" onclick="openMap('${lieu.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${lieu}</span>` : "-";
+            // --- LOGIQUE POUR LA VILLE ---
+            const lieuComplet = row[9] ? String(row[9]).trim() : "";
+            let villeAffichee = "📍 Localisation"; // Valeur par défaut si vide
+
+            if (lieuComplet) {
+                const parties = lieuComplet.split(',');
+                if (parties.length >= 2) {
+                    // Si on a une virgule, on prend ce qui suit (généralement la ville)
+                    villeAffichee = "📍 " + parties[1].trim();
+                } else {
+                    // Si pas de virgule (ex: juste un code postal), on affiche le texte tel quel
+                    villeAffichee = "📍 " + lieuComplet;
+                }
+            }
+
+            // Le lien utilise toujours 'lieuComplet' pour Google Maps, mais affiche 'villeAffichee'
+            const lieuCell = lieuComplet 
+                ? `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>` 
+                : "-";
 
             let badges = [];
             for (let j = 11; j <= 19; j++) {
