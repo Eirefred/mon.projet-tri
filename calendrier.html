@@ -499,29 +499,28 @@
                 });
             }
 
-            // REMONTÉE AUTOMATIQUE (PC & MOBILE)
-setTimeout(() => {
-    const header = document.querySelector('header');
-    const legend = document.querySelector('.legend-container');
-    
-    // Mesure réelle des éléments au moment du clic
-    const hHeight = header.offsetHeight; // 80 sur PC, 70 sur Mobile
-    const lHeight = legend.offsetHeight;
-    
-    const target = document.querySelector('h1'); // Cible le haut du calendrier
-    
-    if (target) {
-        const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
-        
-        // On applique votre réglage de +80
-        const offsetPosition = elementPosition - (hHeight + lHeight) + 80;
+            // 2. REMONTÉE AUTOMATIQUE DIFFÉRENCIÉE (PC vs MOBILE)
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                const legend = document.querySelector('.legend-container');
+                const target = document.querySelector('h1'); 
+                
+                if (target && header && legend) {
+                    const hHeight = header.offsetHeight;
+                    const lHeight = legend.offsetHeight;
+                    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
 
-        window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-        });
-    }
-}, 100);
+                    // Application de vos réglages : +80 mobile / +60 ordi
+                    const monAjustement = (window.innerWidth <= 768) ? 80 : 60; 
+
+                    const offsetPosition = elementPosition - (hHeight + lHeight) + monAjustement;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
         });
     });
 }
