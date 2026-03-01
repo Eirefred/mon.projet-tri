@@ -82,47 +82,50 @@
 
     /* --- MOBILE --- */
     @media (max-width: 768px) {
-        header { height: 70px; }
-        .logo img { height: 40px; }
-        .region-mention { display: none; }
-        .menu-toggle { display: block; }
-        nav ul { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background-color: var(--primary); padding: 10px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 1300; }
-        nav ul.active { display: flex; }
-        nav li { width: 100%; text-align: center; }
-        nav a { display: block; padding: 15px; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    header { height: 70px; }
+    .logo img { height: 40px; }
+    .region-mention { display: none; }
+    .menu-toggle { display: block; cursor: pointer; }
 
-        #backToTop.visible { display: flex; } /* Apparaît via JS sur mobile */
-
-        .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
-        .main-content { padding: 15px; width: 100%; }
-        table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
-        thead { display: none; }
-        tr { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 5px; background: white; box-sizing: border-box; }
-        td { display: flex; justify-content: space-between; align-items: center; padding: 10px 8px; border-bottom: 1px solid #f0f0f0; box-sizing: border-box; word-break: break-word; }
-        td:before { content: attr(data-label); font-weight: bold; color: #888; font-size: 0.7rem; text-transform: uppercase; margin-right: 10px; flex-shrink: 0; }
-        td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; border-radius: 8px 8px 0 0; }
-        td[data-label="Événement"] { display: block; }
-        td[data-label="Événement"]:before { display: block; margin-bottom: 5px; }
+    /* Le menu mobile */
     .nav-menu {
-        display: none; /* Caché par défaut sur mobile */
+        display: none; /* Caché par défaut */
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 70px; /* Aligné sur la hauteur du header mobile */
         left: 0;
         width: 100%;
         background-color: var(--primary);
-        z-index: 1000;
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        z-index: 1300;
+        list-style: none;
+        margin: 0;
     }
 
-    /* CETTE RÈGLE EST ESSENTIELLE */
+    /* L'affichage quand le JS ajoute la classe .active */
     .nav-menu.active {
         display: flex !important;
     }
-    /* Style des liens dans le menu mobile */
-    .nav-menu li {
-        margin: 15px 0;
-        text-align: center;
+
+    .nav-menu li { width: 100%; text-align: center; margin: 0; }
+    
+    .nav-menu a { 
+        display: block; 
+        padding: 15px; 
+        font-size: 1rem; 
+        color: white; 
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255,255,255,0.1); 
     }
+
+    /* Le reste de vos styles de tableau (conservés) */
+    .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
+    table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
+    thead { display: none; }
+    tr { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 5px; background: white; box-sizing: border-box; }
+    td { display: flex; justify-content: space-between; align-items: center; padding: 10px 8px; border-bottom: 1px solid #f0f0f0; box-sizing: border-box; }
+    td:before { content: attr(data-label); font-weight: bold; color: #888; font-size: 0.7rem; text-transform: uppercase; }
 }
 
 
@@ -305,14 +308,15 @@
 
     // Fonction pour ouvrir/fermer le menu mobile
 function toggleMenu() {
-    const menu = document.getElementById('navMenu'); // ID corrigé ici
+    // On cible l'ID exact présent dans votre HTML : "navMenu"
+    const menu = document.getElementById('navMenu');
     const toggle = document.getElementById('mobile-menu');
     
     if (menu) {
-        menu.classList.toggle('active');
+        menu.classList.toggle('active'); // Ajoute/enlève la classe qui affiche le menu
     }
     if (toggle) {
-        toggle.classList.toggle('is-active');
+        toggle.classList.toggle('is-active'); // Animation des barres du hamburger
     }
 }
 
