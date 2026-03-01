@@ -88,7 +88,7 @@
     .menu-toggle { display: block; cursor: pointer; }
 
     /* MENU ACCORDÉON */
-    .nav-menu {
+    .navMenu {
         display: none; /* Caché par défaut */
         flex-direction: column;
         position: absolute;
@@ -100,7 +100,7 @@
     }
 
     /* Cette règle permet l'ouverture via le JS */
-    .nav-menu.active {
+    .navMenu.active {
         display: flex !important;
     }
 }
@@ -222,7 +222,7 @@
             </div>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
-                <ul id="nav-menu">
+                <ul id="navMenu">
                     <li><a href="decouvrir.html">L'OBNL</a></li>
                     <li><a href="index.html#vision">Notre vision</a></li>
                     <li><a href="index.html#programme">Les programmes</a></li>
