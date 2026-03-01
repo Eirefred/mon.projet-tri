@@ -79,6 +79,8 @@
         align-items: center;
         justify-content: center;
     }
+    /* bouton back to top
+    #backToTop.visible { display: flex !important; }
 
     /* --- MOBILE --- */
     /* --- OPTIMISATION MOBILE FINALE : BOUTONS IDENTIQUES --- */
@@ -534,7 +536,6 @@ function openGlobalMap() {
             if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
             else backToTopBtn.classList.remove("visible");
         }
-        #backToTop.visible { display: flex; }
     };
     backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 
