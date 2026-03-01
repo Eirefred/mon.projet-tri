@@ -81,7 +81,7 @@
     }
 
     /* --- MOBILE --- */
-   /* --- OPTIMISATION MOBILE FINALE CORRIGÉE --- */
+    /* --- OPTIMISATION MOBILE FINALE --- */
 @media (max-width: 768px) {
     header { height: 70px; }
     .logo img { height: 40px !important; }
@@ -126,7 +126,7 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
     }
 
-    /* CELLULES GÉNÉRIQUES */
+    /* CELLULES (Lignes intérieures) */
     td { 
         display: flex !important; 
         justify-content: space-between; 
@@ -146,36 +146,13 @@
 
     td > b, td > span, td > div, td > a { flex: 1; text-align: right; font-size: 0.85rem; word-break: break-word; }
 
-    /* --- SOLUTION : BOUTONS CÔTE À CÔTE SUR UNE SEULE LIGNE --- */
-    
-    /* 1. On transforme la ligne Site Web en ligne "LIENS" qui contiendra les deux boutons */
-    td[data-label="Site web"]:before { 
-        content: "LIENS"; 
-    }
-
-    /* 2. On rend la cellule Site Web flexible pour accueillir un deuxième bouton qui flottera à côté */
-    td[data-label="Site web"] {
-        border-bottom: 1px solid #f5f5f5;
-        width: 100% !important;
-        display: flex !important;
-    }
-
-    /* 3. On masque complètement la cellule Contact originale (car on va déplacer son bouton) */
-    td[data-label="Contact"] {
-        display: none !important;
-    }
-
-    /* 4. Style des petits boutons */
-    .btn-action { 
-        padding: 6px 10px !important; 
-        font-size: 0.7rem !important;
-        min-width: 75px !important;
-        width: auto;
-        border-radius: 4px;
-        text-transform: none;
-        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        display: inline-block !important;
-        margin-left: 8px !important; /* Espace entre les deux boutons */
+    /* MISE CÔTE À CÔTE : SITE ET CONTACT */
+    td[data-label="Site web"], td[data-label="Contact"] {
+        display: inline-flex !important;
+        width: 50% !important;
+        float: left;
+        border-bottom: none;
+        min-height: 55px;
     }
 
     /* EN-TÊTE DE CARTE (ÉVÉNEMENT ET DATE) */
@@ -185,12 +162,24 @@
 
     td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
 
-    /* MASQUER LES ÉVÉNEMENTS PASSÉS */
-    tr.past-event, 
-    tr[style*="color: #999"], 
-    tr[style*="color: rgb(153, 153, 153)"] { 
-        display: none !important; 
-    }
+    /* BOUTONS SITE ET CONTACT PLUS PETITS SUR MOBILE */
+        .btn-action { 
+            padding: 6px 10px; /* Réduction du rembourrage intérieur */
+            font-size: 0.7rem;   /* Taille de police réduite */
+            min-width: 65px;    /* Largeur minimale plus courte */
+            width: auto;
+            border-radius: 4px;
+            text-transform: none; /* Évite les majuscules qui prennent de la place */
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-left: 2px;
+        }
+    /* MASQUER LES ÉVÉNEMENTS PASSÉS (GRIS) SUR MOBILE UNIQUEMENT */
+        tr.past-event, 
+        tr[style*="color: #999"], 
+        tr[style*="color: rgb(153, 153, 153)"] { 
+            display: none !important; 
+        }
 }
 
     /* MODAL */
