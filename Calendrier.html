@@ -75,18 +75,27 @@
         /* MODAL MAP */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
         .modal-content { background: white; margin: 2% auto; padding: 20px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; }
-.close { 
-    position: absolute; 
-    right: 20px; 
-    top: 10px; 
-    font-size: 35px; 
-    font-weight: bold;
-    cursor: pointer; 
-    z-index: 2100; /* Plus haut que le modal (2000) */
-    color: #333;
-    line-height: 1;
-}
-.close:hover { color: var(--accent); }
+        
+        .close { 
+            position: absolute; 
+            right: 20px; 
+            top: 10px; 
+            font-size: 35px; 
+            font-weight: bold;
+            cursor: pointer; 
+            z-index: 2101; /* Doit être au dessus de tout */
+            color: #333;
+            line-height: 1;
+            background: white; /* Fond blanc pour être sûr qu'on la voie bien */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .close:hover { color: var(--accent); }
         iframe { width: 100%; height: 600px; border: none; border-radius: 8px; }
     </style>
 </head>
@@ -153,7 +162,7 @@
 
     <div id="mapModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeMap()">×</span>
+            <span class="close" onclick="closeMap()">&times;</span>
             <h3 id="modalTitle">Localisation</h3>
             <div id="mapContainer"></div>
         </div>
@@ -162,7 +171,7 @@
 <script>
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
-    let allLocations = []; // Stockage pour la carte globale
+    let allLocations = [];
 
     function isDatePast(dateStr) {
         if (!dateStr) return false;
@@ -211,9 +220,6 @@
                 const parties = lieuComplet.split(',');
                 const villeAffichee = parties.length >= 2 ? "📍 " + parties[1].trim() : "📍 " + lieuComplet;
                 lieuCell = `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>`;
-                
-                // On garde en mémoire pour la carte globale
-                allLocations.push({ name: row[1], address: lieuComplet });
             }
 
             const siteUrl = row[4] ? String(row[4]).trim() : "";
@@ -247,39 +253,34 @@
         document.getElementById('calTable').style.display = 'table';
     }
 
-    // Carte pour un seul événement
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        const simpleUrl = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${simpleUrl}"></iframe>`;
+        document.getElementById('mapModal').style.display = "block";
+    }
+
+    function openGlobalMap() {
+        document.getElementById('modalTitle').innerText = "Carte des événements 2026";
+        const url = "https://www.google.com/maps/d/embed?mid=1vX63_f2T0p_Y0_u-0_Y0_u-0_Y0"; // ICI VOTRE ID MY MAPS REEL
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
-    // CARTE GLOBALE (Affiche le Québec avec une recherche générique basée sur les lieux)
-// CARTE GLOBALE : Zoom ajusté pour voir tout le Québec (z=6)
-// CARTE GLOBALE : Utilise maintenant votre Google My Maps avec tous les pins
-    function openGlobalMap() {
-        document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        
-        // Votre URL My Maps personnalisée
-        const url = "https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F";
-        
-        // On génère l'iframe avec les paramètres optimaux pour l'affichage
-        document.getElementById('mapContainer').innerHTML = `
-            <iframe 
-                src="${url}" 
-                width="100%" 
-                height="600" 
-                style="border:0;" 
-                allowfullscreen="" 
-                loading="lazy">
-            </iframe>`;
-        
-        document.getElementById('mapModal').style.display = "block";
+    // FONCTION DE FERMETURE MANQUANTE
+    function closeMap() {
+        document.getElementById('mapModal').style.display = "none";
+        document.getElementById('mapContainer').innerHTML = ""; // Vide l'iframe
     }
 
     window.onload = loadExcel;
-    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
+
+    // Fermer si clic à l'extérieur
+    window.onclick = (e) => { 
+        if (e.target.className === 'modal') {
+            closeMap();
+        } 
+    }
 </script>
 </body>
 </html>
