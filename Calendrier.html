@@ -25,11 +25,15 @@
         nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
         nav a:hover { color: var(--accent); }
 
-        /* --- LÉGENDE --- */
+        /* --- LÉGENDE INTERACTIVE --- */
         .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1000; padding: 10px 5%; border-bottom: 1px solid #eee; }
-        .legend { background: white; padding: 10px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; position: relative; }
-        .legend-item { display: flex; align-items: center; gap: 6px; }
+        .legend { background: white; padding: 10px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; }
         
+        .legend-item { display: flex; align-items: center; gap: 6px; cursor: pointer; padding: 4px 8px; border-radius: 8px; transition: all 0.2s; border: 1px solid transparent; }
+        .legend-item:hover { background: #f0f7ff; border-color: var(--primary); }
+        .legend-item.active { background: #e3f2fd; border-color: var(--primary); transform: scale(1.05); font-weight: bold; }
+        .legend-item.inactive { opacity: 0.3; filter: grayscale(0.8); }
+
         .tq-logo { width: 22px; height: 22px; vertical-align: middle; }
 
         .btn-global-map { background: var(--primary); color: white; border: none; padding: 8px 16px; border-radius: 20px; cursor: pointer; font-weight: bold; display: flex; align-items: center; gap: 5px; margin-left: 15px; transition: background 0.2s; font-size: 0.75rem; }
@@ -42,6 +46,10 @@
         table { width: 100%; border-collapse: collapse; min-width: 1100px; }
         thead th { position: sticky; top: 145px; background: var(--dark-blue); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
         td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+
+        /* Animation des lignes */
+        tbody tr { transition: opacity 0.3s ease, transform 0.3s ease; }
+        tr.hidden { display: none; }
 
         /* BADGES */
         .badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-weight: bold; font-size: 0.7rem; margin: 2px; border: 1px solid rgba(0,0,0,0.1); }
@@ -82,20 +90,21 @@
     </header>
 
     <div class="legend-container">
-        <div class="legend">
-            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px;">
+        <div class="legend" id="legendContainer">
+            <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo">
                 <strong>Accr. TQ</strong>
             </div>
-            <div class="legend-item"><span class="badge cat-init">TI</span> Initiation</div>
-            <div class="legend-item"><span class="badge cat-tri">TS</span> Sprint</div>
-            <div class="legend-item"><span class="badge cat-tri">TO</span> Olymp.</div>
-            <div class="legend-item"><span class="badge cat-tri">T½</span> Demi</div>
-            <div class="legend-item"><span class="badge cat-tri">TC</span> Complet</div>
-            <div class="legend-item"><span class="badge cat-dua">DS</span> Duath. Sprint</div>
-            <div class="legend-item"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
-            <div class="legend-item"><span class="badge cat-multi">AV</span> Aquavélo</div>
-            <div class="legend-item"><span class="badge cat-multi">AQ</span> Aquathlon</div>
+            <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
+            <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
+            <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
+            <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
+            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
+            <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. Sprint</div>
+            <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. Olymp</div>
+            <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
+            <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
+            <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
             
             <button class="btn-global-map" onclick="openGlobalMap()">🌎 Carte Globale</button>
         </div>
@@ -134,6 +143,7 @@
 <script>
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
+    let activeFilter = null;
 
     async function loadExcel() {
         try {
@@ -143,18 +153,22 @@
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
+            setupFilters();
         } catch (e) { document.getElementById('status').innerText = "Erreur de chargement."; }
     }
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        const headers = rows[0];
+        const headers = rows[0].map(h => h ? String(h).trim() : "");
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
+            // On stocke les catégories présentes pour le filtrage
+            let rowCats = [];
+            
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:20px;margin-right:5px;vertical-align:middle;">` : "";
             
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
@@ -167,6 +181,7 @@
             let badges = [];
             for (let j = 11; j <= 20; j++) {
                 if (row[j] === "X" || row[j] === "x") {
+                    const headerName = headers[j];
                     const info = {
                         "Triathlon Initiation": { code: "TI", cat: "cat-init" },
                         "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
@@ -174,17 +189,20 @@
                         "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
                         "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
                         "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
+                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
                         "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
                         "Aquavelo": { code: "AV", cat: "cat-multi" },
                         "Aquathlon": { code: "AQ", cat: "cat-multi" }
-                    }[headers[j]] || { code: "?", cat: "" };
+                    }[headerName] || { code: "?", cat: "" };
                     
                     if(info.code !== "?") {
                         badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
+                        rowCats.push(info.code);
                     }
                 }
             }
 
+            tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
                 <td><b>${row[0] || ""}</b></td>
                 <td>${isTQ}${row[1]}</td>
@@ -201,10 +219,48 @@
         document.getElementById('calTable').style.display = 'table';
     }
 
+    function setupFilters() {
+        const legendItems = document.querySelectorAll('.clickable-cat');
+        const rows = document.querySelectorAll('#calBody tr');
+
+        legendItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const cat = item.getAttribute('data-cat');
+
+                // Si on clique sur le filtre déjà actif, on réinitialise tout
+                if (activeFilter === cat) {
+                    activeFilter = null;
+                    legendItems.forEach(i => i.classList.remove('active', 'inactive'));
+                    rows.forEach(r => r.classList.remove('hidden'));
+                } else {
+                    activeFilter = cat;
+                    // Mise à jour visuelle de la légende
+                    legendItems.forEach(i => {
+                        if (i.getAttribute('data-cat') === cat) {
+                            i.classList.add('active');
+                            i.classList.remove('inactive');
+                        } else {
+                            i.classList.add('inactive');
+                            i.classList.remove('active');
+                        }
+                    });
+
+                    // Filtrage des lignes du tableau
+                    rows.forEach(row => {
+                        const rowCats = row.getAttribute('data-categories').split(',');
+                        if (rowCats.includes(cat)) {
+                            row.classList.remove('hidden');
+                        } else {
+                            row.classList.add('hidden');
+                        }
+                    });
+                }
+            });
+        });
+    }
+
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://www.google.com/maps/embed/v1/place?key=VOTRE_CLE_API_ICI&q=${encodeURIComponent(lieu)}`;
-        // Note: Si vous n'avez pas de clé API, utilisez l'URL simple sans clé
         const simpleUrl = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${simpleUrl}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
@@ -212,7 +268,7 @@
 
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/u/0/embed?mid=162Wv73T_l_6oYvU3E3-m74FqBv6uM-E"></iframe>`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
