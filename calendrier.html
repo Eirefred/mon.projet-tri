@@ -192,19 +192,24 @@
 
     function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
 
-    async function loadExcel() {
-        try {
-            const response = await fetch(EXCEL_FILE);
-            const arrayBuffer = await response.arrayBuffer();
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-            const sheet = workbook.Sheets[workbook.SheetNames[0]];
-            const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-            renderTable(rows);
-            setupFilters();
-        } catch (e) { document.getElementById('status').innerText = "Erreur."; }
-    }
+    const EXCEL_FILE = 'Calendrier-2026.xlsx';
+const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
+// Extraction dynamique de l'année depuis le nom du fichier (ex: 2026)
+const CALENDAR_YEAR = parseInt(EXCEL_FILE.match(/\d{4}/)) || new Date().getFullYear();
 
-    function renderTable(rows) {
+async function loadExcel() {
+    try {
+        const response = await fetch(EXCEL_FILE);
+        const arrayBuffer = await response.arrayBuffer();
+        const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+        const sheet = workbook.Sheets[workbook.SheetNames[0]];
+        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+        renderTable(rows);
+        setupFilters();
+    } catch (e) { document.getElementById('status').innerText = "Erreur de chargement."; }
+}
+
+function renderTable(rows) {
     const body = document.getElementById('calBody');
     const headers = rows[0].map(h => h ? String(h).trim() : "");
     
@@ -216,33 +221,25 @@
         if (!row[1]) continue;
         const tr = document.createElement('tr');
         
-        // --- Logique Intelligente de Date ---
+        // --- Logique de détection intelligente ---
         let isPast = false;
         const dateRaw = row[0] ? String(row[0]).trim() : "";
-
+        
         if (dateRaw) {
-            let endDate;
-            
-            // Si c'est un format "15 au 17 mai 2026", on cherche la fin
-            if (dateRaw.includes(" au ")) {
-                const parts = dateRaw.split(" au ");
-                // On prend la partie après le "au" et on ajoute l'année si elle manque
-                let endPart = parts[1];
-                if (!endPart.match(/\d{4}/)) { 
-                    const yearMatch = dateRaw.match(/\d{4}/);
-                    if (yearMatch) endPart += " " + yearMatch[0];
-                }
-                endDate = parseFrenchDate(endPart);
+            let dateToCompare;
+            // Gestion du "au" (ex: 23 au 24 mai)
+            if (dateRaw.toLowerCase().includes(" au ")) {
+                const parts = dateRaw.split(/ au /i);
+                dateToCompare = parseFrenchDate(parts[1], CALENDAR_YEAR);
             } else {
-                endDate = parseFrenchDate(dateRaw);
+                dateToCompare = parseFrenchDate(dateRaw, CALENDAR_YEAR);
             }
 
-            if (endDate && endDate < today) {
+            if (dateToCompare && dateToCompare < today) {
                 isPast = true;
                 tr.classList.add('past-event');
             }
         }
-        // ------------------------------------
 
         let rowCats = [];
         const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
@@ -285,20 +282,19 @@
     document.getElementById('calTable').style.display = 'table';
 }
 
-// Fonction utilitaire pour comprendre les dates en français (ex: "15 mai 2026")
-function parseFrenchDate(str) {
+// Analyse de la date en injectant l'année du calendrier
+function parseFrenchDate(str, year) {
+    if (!str) return null;
     const months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
     let s = str.toLowerCase();
-    let day = s.match(/\d+/);
-    let year = s.match(/\d{4}/);
-    let monthIndex = months.findIndex(m => s.includes(m));
     
-    if (day && monthIndex !== -1 && year) {
-        return new Date(year[0], monthIndex, day[0]);
+    const dayMatch = s.match(/\d+/);
+    const monthIndex = months.findIndex(m => s.includes(m));
+
+    if (dayMatch && monthIndex !== -1) {
+        return new Date(year, monthIndex, parseInt(dayMatch[0]));
     }
-    // Si c'est déjà un format ISO dans Excel
-    let d = new Date(str);
-    return isNaN(d) ? null : d;
+    return null;
 }
 
     function setupFilters() {
