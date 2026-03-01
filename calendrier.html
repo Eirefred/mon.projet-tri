@@ -81,54 +81,29 @@
     }
 
     /* --- MOBILE --- */
-    /* --- MOBILE --- */
     @media (max-width: 768px) {
         header { height: 70px; }
         .logo img { height: 40px; }
-        .menu-toggle { display: block; cursor: pointer; }
+        .region-mention { display: none; }
+        .menu-toggle { display: block; }
+        nav ul { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background-color: var(--primary); padding: 10px 0; box-shadow: 0 5px 10px rgba(0,0,0,0.2); z-index: 1300; }
+        nav ul.active { display: flex; }
+        nav li { width: 100%; text-align: center; }
+        nav a { display: block; padding: 15px; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
 
-        /* On utilise l'ID #navMenu car c'est ce qui est dans ton HTML */
-        #navMenu {
-            display: none; 
-            flex-direction: column;
-            position: absolute;
-            top: 70px;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary);
-            z-index: 1300;
-            padding: 0;
-            margin: 0;
-            list-style: none;
-        }
+        #backToTop.visible { display: flex; } /* Apparaît via JS sur mobile */
 
-        /* Affiche le menu quand le JS ajoute la classe .active */
-        #navMenu.active {
-            display: flex !important;
-        }
-
-        #navMenu li {
-            width: 100%;
-            text-align: center;
-            display: block !important; /* Force l'affichage des li */
-        }
-
-        #navMenu li a {
-            display: block;
-            padding: 15px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+        .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
+        .main-content { padding: 15px; width: 100%; }
+        table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
+        thead { display: none; }
+        tr { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 5px; background: white; box-sizing: border-box; }
+        td { display: flex; justify-content: space-between; align-items: center; padding: 10px 8px; border-bottom: 1px solid #f0f0f0; box-sizing: border-box; word-break: break-word; }
+        td:before { content: attr(data-label); font-weight: bold; color: #888; font-size: 0.7rem; text-transform: uppercase; margin-right: 10px; flex-shrink: 0; }
+        td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; border-radius: 8px 8px 0 0; }
+        td[data-label="Événement"] { display: block; }
+        td[data-label="Événement"]:before { display: block; margin-bottom: 5px; }
     }
-    /* --- LE RESTE DE TON CODE TABLEAU (NE PAS TOUCHER) --- */
-    #backToTop.visible { display: flex; }
-    .legend-container { top: 70px; overflow-x: auto; padding: 10px 0; }
-    table, thead, tbody, th, td, tr { display: block; width: 100% !important; }
-    thead { display: none; }
-    tr { margin-bottom: 15px; border: 1px solid #ddd; border-radius: 12px; padding: 5px; background: white; box-sizing: border-box; }
-    td { display: flex; justify-content: space-between; align-items: center; padding: 10px 8px; border-bottom: 1px solid #f0f0f0; }
-    td:before { content: attr(data-label); font-weight: bold; color: #888; font-size: 0.7rem; text-transform: uppercase; }
-}
-
 
     /* MODAL */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
@@ -237,7 +212,7 @@
             </div>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
-                <ul id="navMenu">
+                <ul id="nav-menu">
                     <li><a href="decouvrir.html">L'OBNL</a></li>
                     <li><a href="index.html#vision">Notre vision</a></li>
                     <li><a href="index.html#programme">Les programmes</a></li>
@@ -246,7 +221,6 @@
                 </ul>
             </nav>
         </div>
-
     </header>
 
     <div class="legend-container">
@@ -307,19 +281,7 @@
     let activeFilter = null;
     const CALENDAR_YEAR = 2026;
 
-    // Fonction pour ouvrir/fermer le menu mobile
-function toggleMenu() {
-    const menu = document.getElementById('navMenu'); 
-    // On ne cherche plus 'mobile-menu' car il n'existe pas, on cherche la classe
-    const toggle = document.querySelector('.menu-toggle');
-    
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-    if (toggle) {
-        toggle.classList.toggle('is-active');
-    }
-}
+    function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
 
     async function loadExcel() {
         try {
