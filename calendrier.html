@@ -79,9 +79,9 @@
         align-items: center;
         justify-content: center;
     }
-    /* bouton back to top */
-    backToTop.visible { display: flex !important; }
-
+    
+    #backToTop.visible { display: flex !important; }
+    
     /* --- MOBILE --- */
     /* --- OPTIMISATION MOBILE FINALE : BOUTONS IDENTIQUES --- */
 @media (max-width: 768px) {
@@ -479,7 +479,7 @@
         item.addEventListener('click', () => {
             const cat = item.getAttribute('data-cat');
             
-            // 1. Logique de filtrage (ne change pas)
+            // Logique de filtrage
             if (activeFilter === cat) {
                 activeFilter = null;
                 items.forEach(i => i.classList.remove('active', 'inactive'));
@@ -496,23 +496,18 @@
                 });
             }
 
-            // 2. REMONTÉE AUTOMATIQUE UNIVERSELLE (PC & MOBILE)
-            setTimeout(() => {
-                const headerHeight = document.querySelector('header').offsetHeight;
-                const legendElement = document.querySelector('.legend-container');
-                
-                if (legendElement) {
-                    // On calcule la position de la légende par rapport au haut de la page
-                    const elementPosition = legendElement.getBoundingClientRect().top + window.pageYOffset;
-                    // On soustrait la hauteur du menu pour ne pas cacher la légende
-                    const offsetPosition = elementPosition - headerHeight;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            }, 100);
+            // REMONTÉE AUTOMATIQUE (Mobile uniquement)
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    const mainTitle = document.querySelector('h1');
+                    if (mainTitle) {
+                        mainTitle.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }, 100);
+            }
         });
     });
 }
