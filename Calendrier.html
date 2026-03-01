@@ -322,7 +322,7 @@
 
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=8&ie=UTF8&iwloc=&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
