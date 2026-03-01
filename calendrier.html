@@ -81,7 +81,7 @@
     }
 
     /* --- MOBILE --- */
-    /* --- OPTIMISATION MOBILE FINALE --- */
+   /* --- OPTIMISATION MOBILE FINALE --- */
 @media (max-width: 768px) {
     header { height: 70px; }
     .logo img { height: 40px !important; }
@@ -126,7 +126,7 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
     }
 
-    /* CELLULES (Lignes intérieures) */
+    /* CELLULES GÉNÉRIQUES (Lignes intérieures) */
     td { 
         display: flex !important; 
         justify-content: space-between; 
@@ -146,38 +146,56 @@
 
     td > b, td > span, td > div, td > a { flex: 1; text-align: right; font-size: 0.85rem; word-break: break-word; }
 
-    /* MISE CÔTE À CÔTE : SITE ET CONTACT */
-    td[data-label="Site web"] > a, 
-        td[data-label="Contact"] > a {
-            flex: 0 0 auto !important; /* Ne force pas une largeur fixe */
-            margin-left: auto;         /* Pousse le bouton au bord droit */
-        }
+    /* --- SOLUTION : SITE ET CONTACT SUR LA MÊME LIGNE --- */
+    td[data-label="Site web"], 
+    td[data-label="Contact"] {
+        display: inline-flex !important; /* Permet l'alignement horizontal */
+        width: 50% !important;           /* Moitié de la largeur chacun */
+        float: left;                     /* Les fait monter l'un à côté de l'autre */
+        border-bottom: none;             /* Nettoie la bordure pour l'esthétique */
+        flex-direction: column;          /* Titre au dessus du bouton */
+        justify-content: center;
+        align-items: center;
+        min-height: 65px;                /* Hauteur fixe pour éviter les décalages */
+        padding: 5px;
+    }
+
+    /* Ajustement des labels pour les deux blocs côte à côte */
+    td[data-label="Site web"]:before, 
+    td[data-label="Contact"]:before {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 4px;
+    }
+
+    /* BOUTONS SITE ET CONTACT PLUS PETITS */
+    .btn-action { 
+        padding: 6px 10px !important; 
+        font-size: 0.7rem !important;
+        min-width: 65px !important;
+        width: auto;
+        border-radius: 4px;
+        text-transform: none;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        display: inline-block !important;
+        margin: 0 auto !important;
+        text-align: center;
+    }
+
     /* EN-TÊTE DE CARTE (ÉVÉNEMENT ET DATE) */
-    td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+    td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; width: 100% !important; float: none !important; clear: both; }
     td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
     td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
 
-    td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
+    td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; width: 100% !important; float: none !important; clear: both; }
 
-    /* BOUTONS SITE ET CONTACT PLUS PETITS SUR MOBILE */
-        .btn-action { 
-            padding: 6px 10px; /* Réduction du rembourrage intérieur */
-            font-size: 0.7rem;   /* Taille de police réduite */
-            min-width: 65px;    /* Largeur minimale plus courte */
-            width: auto;
-            border-radius: 4px;
-            text-transform: none; /* Évite les majuscules qui prennent de la place */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: inline-block;
-            margin-left: 2px;
-        }
-        
-    /* MASQUER LES ÉVÉNEMENTS PASSÉS (GRIS) SUR MOBILE UNIQUEMENT */
-        tr.past-event, 
-        tr[style*="color: #999"], 
-        tr[style*="color: rgb(153, 153, 153)"] { 
-            display: none !important; 
-        }
+    /* MASQUER LES ÉVÉNEMENTS PASSÉS */
+    tr.past-event, 
+    tr[style*="color: #999"], 
+    tr[style*="color: rgb(153, 153, 153)"] { 
+        display: none !important; 
+    }
 }
 
     /* MODAL */
