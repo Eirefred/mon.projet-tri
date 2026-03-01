@@ -246,19 +246,25 @@
 
     // CARTE GLOBALE (Affiche le Québec avec une recherche générique basée sur les lieux)
 // CARTE GLOBALE : Zoom ajusté pour voir tout le Québec (z=6)
-function openGlobalMap() {
-        document.getElementById('modalTitle').innerText = "Carte globale des événements 2026";
+// CARTE GLOBALE : Utilise maintenant votre Google My Maps avec tous les pins
+    function openGlobalMap() {
+        document.getElementById('modalTitle').innerText = "Carte des événements 2026";
         
-        // REMPLACEZ l'URL ci-dessous par le lien "Insérer dans mon site" de votre My Maps
-        const url = `https://www.google.com/maps/d/u/1/edit?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&usp=sharing;
+        // Votre URL My Maps personnalisée
+        const url = "https://www.google.com/maps/d/u/1/edit?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&usp=sharing";
         
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}" width="100%" height="600"></iframe>`;
+        // On génère l'iframe avec les paramètres optimaux pour l'affichage
+        document.getElementById('mapContainer').innerHTML = `
+            <iframe 
+                src="${url}" 
+                width="100%" 
+                height="600" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>`;
+        
         document.getElementById('mapModal').style.display = "block";
-    }
-
-    function closeMap() { 
-        document.getElementById('mapModal').style.display = "none";
-        document.getElementById('mapContainer').innerHTML = "";
     }
 
     window.onload = loadExcel;
