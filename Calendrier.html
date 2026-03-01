@@ -25,7 +25,7 @@
         nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.2s; }
         nav a:hover { color: var(--accent); }
 
-        /* --- LÉGENDE AVEC BOUTON CARTE --- */
+        /* --- LÉGENDE --- */
         .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1000; padding: 10px 5%; border-bottom: 1px solid #eee; }
         .legend { background: white; padding: 10px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.75rem; align-items: center; position: relative; }
         .legend-item { display: flex; align-items: center; gap: 6px; }
@@ -83,10 +83,10 @@
             font-size: 35px; 
             font-weight: bold;
             cursor: pointer; 
-            z-index: 2101; /* Doit être au dessus de tout */
+            z-index: 2101;
             color: #333;
             line-height: 1;
-            background: white; /* Fond blanc pour être sûr qu'on la voie bien */
+            background: white;
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -162,7 +162,7 @@
 
     <div id="mapModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeMap()">&times;</span>
+            <span class="close" onclick="closeMap()">×</span>
             <h3 id="modalTitle">Localisation</h3>
             <div id="mapContainer"></div>
         </div>
@@ -171,7 +171,6 @@
 <script>
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
-    let allLocations = [];
 
     function isDatePast(dateStr) {
         if (!dateStr) return false;
@@ -213,13 +212,27 @@
             if(past) tr.classList.add('past-event');
 
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
+            
+            // --- LOGIQUE LIEU / VILLE AMÉLIORÉE ---
+            // --- LOGIQUE LIEU / VILLE PRÉCISE ---
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
             let lieuCell = "-"; 
 
             if (lieuComplet !== "") {
                 const parties = lieuComplet.split(',');
-                const villeAffichee = parties.length >= 2 ? "📍 " + parties[1].trim() : "📍 " + lieuComplet;
-                lieuCell = `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>`;
+                let villeAffichee = lieuComplet;
+
+                // Structure : [Adresse], [Ville], [Province], [Code Postal]
+                // On récupère l'élément qui est à 2 positions de la fin (l'index length - 3)
+                if (parties.length >= 3) {
+                    villeAffichee = parties[parties.length - 3].trim();
+                } 
+                // Sécurité au cas où il n'y aurait qu'une virgule (Ville, Province Code Postal)
+                else if (parties.length === 2) {
+                    villeAffichee = parties[0].trim();
+                }
+                
+                lieuCell = `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">📍 ${villeAffichee}</span>`;
             }
 
             const siteUrl = row[4] ? String(row[4]).trim() : "";
@@ -243,8 +256,12 @@
             }
 
             tr.innerHTML = `
-                <td><b>${row[0] || ""}</b></td><td>${isTQ} ${row[1]}</td><td>${row[6] || "-"}</td>
-                <td>${row[2] || ""}</td><td>${lieuCell}</td><td>${siteCell}</td><td>${contactCell}</td>
+                <td><b>${row[0] || ""}</b></td>
+                <td>${isTQ} ${row[1]}</td>
+                <td>${row[6] || "-"}</td> <td>${row[2] || ""}</td>
+                <td>${lieuCell}</td>
+                <td>${siteCell}</td>
+                <td>${contactCell}</td>
                 <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
@@ -262,20 +279,18 @@
 
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        const url = "https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"; // ICI VOTRE ID MY MAPS REEL
+        const url = "https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"; 
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
-    // FONCTION DE FERMETURE MANQUANTE
     function closeMap() {
         document.getElementById('mapModal').style.display = "none";
-        document.getElementById('mapContainer').innerHTML = ""; // Vide l'iframe
+        document.getElementById('mapContainer').innerHTML = ""; 
     }
 
     window.onload = loadExcel;
 
-    // Fermer si clic à l'extérieur
     window.onclick = (e) => { 
         if (e.target.className === 'modal') {
             closeMap();
