@@ -482,7 +482,7 @@
         item.addEventListener('click', () => {
             const cat = item.getAttribute('data-cat');
             
-            // Logique de filtrage
+            // 1. Logique de filtrage (reste identique)
             if (activeFilter === cat) {
                 activeFilter = null;
                 items.forEach(i => i.classList.remove('active', 'inactive'));
@@ -499,18 +499,27 @@
                 });
             }
 
-            // REMONTÉE AUTOMATIQUE (Mobile uniquement)
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    const mainTitle = document.querySelector('h1');
-                    if (mainTitle) {
-                        mainTitle.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
+            // 2. REMONTÉE AUTOMATIQUE CORRIGÉE (PC & MOBILE)
+            setTimeout(() => {
+                const header = document.querySelector('header');
+                const legend = document.querySelector('.legend-container');
+                
+                // On calcule l'espace total occupé par le menu et la légende
+                const offset = header.offsetHeight + (legend ? legend.offsetHeight : 0);
+
+                // On cible le titre H1 pour garantir de voir le début du tableau
+                const target = document.querySelector('h1');
+                
+                if (target) {
+                    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - offset + 20; // +20px pour un peu d'air
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
         });
     });
 }
