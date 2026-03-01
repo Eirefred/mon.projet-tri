@@ -171,6 +171,12 @@
         border-radius: 6px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+    /* MASQUER LES ÉVÉNEMENTS PASSÉS (GRIS) SUR MOBILE UNIQUEMENT */
+        tr.past-event, 
+        tr[style*="color: #999"], 
+        tr[style*="color: rgb(153, 153, 153)"] { 
+            display: none !important; 
+        }
 }
 
     /* MODAL */
