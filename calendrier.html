@@ -80,77 +80,75 @@
         justify-content: center;
     }
 
-    /* --- MOBILE --- */
     @media (max-width: 768px) {
         header { height: 70px; }
         .logo img { height: 40px; }
         .region-mention { display: none; }
-        .menu-toggle { display: block; cursor: pointer; z-index: 1400; }
-
-        /* Navigation Mobile */
-        #navMenu { 
-            display: none; 
-            flex-direction: column; 
-            position: absolute; 
-            top: 70px; left: 0; width: 100%; 
-            background-color: var(--primary); 
-            padding: 10px 0; 
-            z-index: 1300; 
-        }
         
-        /* Cette règle permet d'afficher le menu quand on clique */
+        /* BOUTON MENU */
+        .menu-toggle { display: block; cursor: pointer; z-index: 1400; font-size: 28px; color: white; }
+
+        /* NAVIGATION MOBILE */
+        #navMenu { 
+            display: none; flex-direction: column; position: absolute; 
+            top: 70px; left: 0; width: 100%; background-color: var(--primary); 
+            padding: 10px 0; z-index: 1300; 
+        }
         #navMenu.active { display: flex !important; }
         
-        /* On s'assure que les liens sont visibles dans le menu mobile */
-        #navMenu li { 
-            display: block !important; 
-            width: 100%; 
-            text-align: center; 
-        }
-        #navMenu li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Correction : n'applique display:block qu'aux LI du menu, pas à tout le site */
+        #navMenu li { display: block !important; width: 100%; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        #navMenu li a { display: block; padding: 15px; color: white; text-decoration: none; }
 
-        /* LÉGENDE : Scroll horizontal */
-        .legend-container { 
-            top: 70px; height: auto; padding: 10px 0;
-            overflow-x: auto; white-space: nowrap; 
-            display: block; width: 100vw;
-        }
-        .legend { display: inline-flex; margin: 0 15px; box-shadow: none; border: 1px solid #eee; }
+        /* LÉGENDE */
+        .legend-container { top: 70px; overflow-x: auto; white-space: nowrap; display: block; width: 100vw; padding: 10px 0; }
+        .legend { display: inline-flex; margin: 0 15px; }
 
-        /* TABLEAU EN CARTES */
-        .table-outer { background: transparent; box-shadow: none; }
+        /* --- ALIGNEMENT DES CARTES (CORRECTION) --- */
+        .table-outer { background: transparent; box-shadow: none; border: none; }
         table, tbody, tr, td { display: block; width: 100% !important; }
         thead { display: none; }
 
         tr { 
-            background: white; margin-bottom: 20px; 
-            border-radius: 12px; border: 1px solid #e0e0e0; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
+            background: white; margin-bottom: 20px; border-radius: 12px; 
+            border: 1px solid #e0e0e0; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
         }
 
         td { 
-            display: flex !important; justify-content: flex-start; align-items: center; 
-            padding: 12px 15px; border-bottom: 1px solid #f5f5f5; min-height: 45px;
+            display: flex !important; /* Force l'alignement en ligne */
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 12px 15px; 
+            border-bottom: 1px solid #f5f5f5; 
+            min-height: 45px;
+            text-align: right;
         }
 
+        /* Libellés à gauche */
         td:before { 
-            content: attr(data-label); font-weight: bold; color: #888; 
-            font-size: 0.7rem; text-transform: uppercase; width: 35%; flex-shrink: 0; text-align: left;
+            content: attr(data-label); 
+            font-weight: bold; color: #888; 
+            font-size: 0.7rem; text-transform: uppercase;
+            flex: 1; text-align: left; /* Prend l'espace à gauche */
         }
 
-        td > b, td > span, td > div, td > a { width: 65%; text-align: right; font-size: 0.9rem; }
+        /* Données à droite */
+        td > b, td > span, td > div, td > a { 
+            flex: 2; /* Prend plus de place que le libellé */
+            text-align: right; 
+            font-size: 0.85rem;
+        }
 
+        /* Cas spécial : Événement */
         td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; }
-        td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
-        td[data-label="Événement"] b { display: block; width: 100%; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
+        td[data-label="Événement"]:before { display: block; margin-bottom: 8px; }
+        td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
+
+        /* Cas spécial : Date */
         td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
 
-        .btn-action { width: auto; min-width: 90px; padding: 8px; margin-left: auto; }
+        .btn-action { width: auto; min-width: 90px; padding: 8px; margin-left: auto; display: inline-block; }
         .badge { width: 22px; height: 22px; font-size: 0.6rem; }
-
-        /* Ajustements Header Mobile */
-        .nav-container { flex-direction: row !important; justify-content: space-between !important; padding: 0 15px !important; }
-        .header-left { display: flex !important; gap: 10px !important; }
     }
 
      /* --- FOOTER --- */
