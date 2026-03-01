@@ -9,37 +9,28 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER --- */
+        /* --- CONTENEUR FIXE (HEADER + LÉGENDE) --- */
+        .sticky-top-container {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--bg);
+        }
+
         header { 
             background-color: var(--primary); 
             color: white; 
             padding: 1rem 2rem; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
             display: flex; 
             justify-content: space-between; 
             align-items: center; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            height: 60px;
-            box-sizing: border-box;
         }
         .logo { font-size: 1.5rem; font-weight: bold; color: white; text-decoration: none; }
         nav ul { list-style: none; display: flex; gap: 20px; margin: 0; padding: 0; }
         nav a { color: white; text-decoration: none; font-weight: 500; }
-        nav a:hover { color: var(--accent); }
 
-        .main-content { padding: 20px 5%; }
-        h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
-
-        /* --- LÉGENDE COMPACTE --- */
-        .legend-container { 
-            position: sticky; 
-            top: 60px; /* Juste sous le header */
-            background: var(--bg); 
-            z-index: 999; 
-            padding: 10px 0; 
-        }
+        .legend-container { padding: 10px 5%; border-bottom: 1px solid #ddd; background: var(--bg); }
         .legend { 
             background: white; 
             padding: 10px; 
@@ -55,13 +46,16 @@
         .legend-item { display: flex; align-items: center; gap: 5px; }
 
         /* --- TABLEAU --- */
+        .main-content { padding: 20px 5%; }
+        h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
+
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow-x: auto; }
         table { width: 100%; border-collapse: collapse; min-width: 800px; }
         
-        /* CORRECTION DÉCALAGE : top calculé (60px header + env. 55px légende) */
+        /* L'en-tête se colle maintenant dynamiquement au bas du conteneur sticky */
         thead th { 
             position: sticky; 
-            top: 125px; 
+            top: 0; /* Se colle au bas de .sticky-top-container */
             background: var(--primary); 
             color: white; 
             padding: 15px; 
@@ -69,9 +63,12 @@
             text-align: left; 
         }
         
+        /* Ajustement technique pour le sticky header */
+        .table-container { overflow: visible; } 
+
         td { padding: 12px 15px; border-bottom: 1px solid #eee; }
 
-        /* ICONES UNIFORMES */
+        /* ICONES UNIFORMES 30x30 */
         .badge { 
             display: inline-flex; 
             align-items: center; 
@@ -93,7 +90,6 @@
         .cp-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
         .btn-site { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 0.85rem; font-weight: bold; }
 
-        /* Modal */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
         .modal-content { background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 800px; border-radius: 12px; position: relative; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
@@ -102,19 +98,17 @@
 </head>
 <body>
 
-    <header>
-        <a href="index.html" class="logo">Mon Projet Tri</a>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="Calendrier.html">Calendrier</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="main-content">
-        <h1>Calendrier Provincial 2026</h1>
+    <div class="sticky-top-container">
+        <header>
+            <a href="index.html" class="logo">Mon Projet Tri</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="Calendrier.html">Calendrier</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
 
         <div class="legend-container">
             <div class="legend">
@@ -133,7 +127,10 @@
                 <div class="legend-item"><span class="badge cat-multi">AQ</span> Aquathlon</div>
             </div>
         </div>
+    </div>
 
+    <div class="main-content">
+        <h1>Calendrier Provincial 2026</h1>
         <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
 
         <div class="table-container">
@@ -200,7 +197,6 @@
 
             const tr = document.createElement('tr');
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Accrédité Triathlon Québec">` : "";
-            
             const cp = row[9] ? String(row[9]).trim() : "";
             const mapCell = cp ? `<span class="cp-link" onclick="openMap('${cp}', '${row[1].replace(/'/g, "\\'")}')">📍 ${cp}</span>` : "-";
 
@@ -209,7 +205,7 @@
                 if (row[j] === "X" || row[j] === "x") {
                     const label = headers[j];
                     const info = legendMap[label] || { code: "?", cat: "" };
-                    badges.push(`<span class="badge ${info.cat}" title="${label}">${info.code}</span>`);
+                    badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
                 }
             }
 
@@ -219,7 +215,7 @@
                 <td>${row[2] || ""}</td>
                 <td>${mapCell}</td>
                 <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-site">Lien</a>` : "-"}</td>
-                <td>${badges.join("")}</td>
+                <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
         }
@@ -229,8 +225,8 @@
 
     function openMap(cp, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        const fallbackUrl = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${fallbackUrl}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
