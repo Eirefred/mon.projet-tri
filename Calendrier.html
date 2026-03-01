@@ -9,7 +9,7 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (STYLE BANDEAU BLANC INDEX) --- */
+        /* --- HEADER (BANDEAU BLANC INDEX) --- */
         header {
             background-color: white;
             padding: 10px 5%;
@@ -58,16 +58,17 @@
         
         thead th { 
             position: sticky; 
-            top: 140px; /* Ajusté pour être sous la légende */
+            top: 140px; 
             background: var(--primary); 
             color: white; 
             padding: 14px; 
             z-index: 850; 
             text-align: left; 
             font-size: 0.85rem; 
+            white-space: nowrap;
         }
 
-        .col-event { width: 1%; white-space: nowrap; font-weight: bold; }
+        .col-event { font-weight: bold; color: var(--primary); }
         td { padding: 12px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
         /* BADGES UNIFORMES (30x30px) */
@@ -140,8 +141,9 @@
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th class="col-event">Événement</th>
+                        <th>Événement</th>
                         <th>Région</th>
+                        <th>Organisateur</th>
                         <th>Code Postal</th>
                         <th>Site</th>
                         <th>Disciplines</th>
@@ -184,30 +186,32 @@
             const sheet = workbook.Sheets[workbook.SheetNames[0]];
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
-        } catch (e) { document.getElementById('status').innerText = "Erreur de fichier."; }
+        } catch (e) { document.getElementById('status').innerText = "Erreur de chargement du fichier."; }
     }
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
         const headers = rows[0]; 
 
-        // On commence à i=1 pour ignorer la ligne d'en-tête du Excel
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1] || row[1] === "Événement") continue; 
 
             const tr = document.createElement('tr');
             
-            // Gestion Logo TQ
+            // Colonne 5 = Affilié TQ
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Accrédité Triathlon Québec">` : "";
             
-            // Gestion Code Postal (Épingle uniquement si CP présent)
+            // Colonne 6 = Club (Organisateur)
+            const club = row[6] || "-";
+
+            // Colonne 9 = Code Postal
             const cp = row[9] ? String(row[9]).trim() : "";
             const mapCell = (cp && cp.length > 3) 
                 ? `<span class="cp-link" onclick="openMap('${cp}', '${row[1].replace(/'/g, "\\'")}')">📍 ${cp}</span>` 
                 : "-";
 
-            // Génération des badges uniformes
+            // Disciplines (Colonnes 11 à 19)
             let badges = [];
             for (let j = 11; j <= 19; j++) {
                 if (row[j] === "X" || row[j] === "x") {
@@ -221,6 +225,7 @@
                 <td>${row[0] || ""}</td>
                 <td class="col-event">${isTQ}${row[1]}</td>
                 <td>${row[2] || ""}</td>
+                <td>${club}</td>
                 <td>${mapCell}</td>
                 <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-site">Lien</a>` : "-"}</td>
                 <td>${badges.join("")}</td>
@@ -244,7 +249,6 @@
     }
 
     window.onload = loadExcel;
-    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
 </body>
 </html>
