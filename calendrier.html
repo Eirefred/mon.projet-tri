@@ -479,7 +479,7 @@
         item.addEventListener('click', () => {
             const cat = item.getAttribute('data-cat');
             
-            // Logique de filtrage
+            // 1. Logique de filtrage (ne change pas)
             if (activeFilter === cat) {
                 activeFilter = null;
                 items.forEach(i => i.classList.remove('active', 'inactive'));
@@ -496,15 +496,20 @@
                 });
             }
 
-            // REMONTÉE AUTOMATIQUE : Version optimisée pour Ordinateur et Mobile
+            // 2. REMONTÉE AUTOMATIQUE UNIVERSELLE (PC & MOBILE)
             setTimeout(() => {
-                // On cible le conteneur de la légende pour que l'utilisateur 
-                // voit les filtres ET le haut du tableau
-                const legendBox = document.querySelector('.legend-container');
-                if (legendBox) {
-                    legendBox.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const legendElement = document.querySelector('.legend-container');
+                
+                if (legendElement) {
+                    // On calcule la position de la légende par rapport au haut de la page
+                    const elementPosition = legendElement.getBoundingClientRect().top + window.pageYOffset;
+                    // On soustrait la hauteur du menu pour ne pas cacher la légende
+                    const offsetPosition = elementPosition - headerHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
                     });
                 }
             }, 100);
