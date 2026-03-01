@@ -496,18 +496,16 @@
                 });
             }
 
-            // REMONTÉE AUTOMATIQUE (Mobile uniquement)
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    const mainTitle = document.querySelector('h1');
-                    if (mainTitle) {
-                        mainTitle.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
+            // REMONTÉE AUTOMATIQUE (Appliquée à tous les écrans)
+            setTimeout(() => {
+                const mainTitle = document.querySelector('h1');
+                if (mainTitle) {
+                    mainTitle.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }, 100);
         });
     });
 }
