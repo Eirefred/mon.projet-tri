@@ -17,7 +17,7 @@
         .region-mention { font-size: 0.9rem; color: var(--primary); font-weight: 700; border-left: 2px solid var(--accent); padding-left: 15px; text-transform: uppercase; line-height: 1.2; }
         
         nav ul { list-style: none; display: flex; align-items: center; gap: 25px; margin: 0; padding: 0; }
-        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; }
+        nav a { color: #333; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
         nav a:hover { color: var(--accent); }
 
         /* --- LÉGENDE FIXE --- */
@@ -29,7 +29,7 @@
         .main-content { padding: 20px 5%; }
         h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; }
-        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        table { width: 100%; border-collapse: collapse; min-width: 1000px; }
         thead th { position: sticky; top: 145px; background: var(--primary); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
         td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
@@ -95,8 +95,9 @@
                     <tr>
                         <th>Date</th>
                         <th>Événement</th>
+                        <th>Organisateur</th>
                         <th>Région</th>
-                        <th>Code Postal</th>
+                        <th>Localisation</th>
                         <th>Site</th>
                         <th>Disciplines</th>
                     </tr>
@@ -126,7 +127,7 @@
         "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
         "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
         "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-        " Duathlon Olympique": { code: "DO", cat: "cat-dua" }, // Gestion de l'espace dans le CSV
+        " Duathlon Olympique": { code: "DO", cat: "cat-dua" },
         "Aquavelo": { code: "AV", cat: "cat-multi" },
         "Aquathlon": { code: "AQ", cat: "cat-multi" }
     };
@@ -151,15 +152,19 @@
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Affilié TQ">` : "";
+            
+            // Organisateur (Colonne Club = Index 6 dans l'Excel)
+            const club = row[6] || "-";
+            
+            // Code Postal et Map
             const cp = row[9] ? String(row[9]).trim() : "";
             const mapCell = cp ? `<span class="cp-link" onclick="openMap('${cp}', '${row[1].replace(/'/g, "\\'")}')">📍 ${cp}</span>` : "-";
 
             let badges = [];
             for (let j = 11; j <= 19; j++) {
                 if (row[j] === "X" || row[j] === "x") {
-                    const label = headers[j];
-                    const info = legendMap[label] || { code: "?", cat: "" };
+                    const info = legendMap[headers[j]] || { code: "?", cat: "" };
                     badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
                 }
             }
@@ -167,6 +172,7 @@
             tr.innerHTML = `
                 <td><b>${row[0] || ""}</b></td>
                 <td>${isTQ} ${row[1]}</td>
+                <td>${club}</td>
                 <td>${row[2] || ""}</td>
                 <td>${mapCell}</td>
                 <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-site">Lien</a>` : "-"}</td>
@@ -178,21 +184,18 @@
         document.getElementById('calTable').style.display = 'table';
     }
 
-function openMap(cp, name) {
-    document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
-    
-    // z=10 : Vue régionale équilibrée
-    // q= : Force le marqueur (le "pin") sur le code postal
-    const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
-    
-    document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
-    document.getElementById('mapModal').style.display = "block";
-}
+    function openMap(cp, name) {
+        document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
+        // Utilisation du zoom z=10 avec le paramètre q= pour forcer le Pin
+        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        document.getElementById('mapModal').style.display = "block";
+    }
 
-function closeMap() { 
-    document.getElementById('mapModal').style.display = "none";
-    document.getElementById('mapContainer').innerHTML = "";
-}
+    function closeMap() { 
+        document.getElementById('mapModal').style.display = "none";
+        document.getElementById('mapContainer').innerHTML = "";
+    }
 
     window.onload = loadExcel;
     window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
