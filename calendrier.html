@@ -498,27 +498,31 @@
         
         // AJOUTEZ CECI :
         setTimeout(() => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }, 100); // Un léger délai pour laisser le temps au filtrage de s'opérer
+    const mainTitle = document.querySelector('h1');
+    mainTitle.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+    });
+}, 100);
     });
 });
     }
 
     function openMap(lieu, name) {
-        document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
-        document.getElementById('mapModal').style.display = "block";
-    }
+    document.getElementById('modalTitle').innerText = name;
+    // Utilisation de l'URL d'intégration officielle
+    const url = `https://www.google.com/maps?q=${encodeURIComponent(lieu)}&output=embed`;
+    document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+    document.getElementById('mapModal').style.display = "block";
+}
 
-    function openGlobalMap() {
-        document.getElementById('modalTitle').innerText = "Carte Globale";
-        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
-        document.getElementById('mapModal').style.display = "block";
-    }
+function openGlobalMap() {
+    document.getElementById('modalTitle').innerText = "Carte Globale";
+    // URL pour une vue d'ensemble du Québec
+    const url = `https://www.google.com/maps?q=Québec,Canada&z=6&output=embed`;
+    document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
+    document.getElementById('mapModal').style.display = "block";
+}
 
     function closeMap() { document.getElementById('mapModal').style.display = "none"; }
 
