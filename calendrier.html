@@ -496,11 +496,13 @@
                 });
             }
 
-            // REMONTÉE AUTOMATIQUE (Appliquée à tous les écrans)
+            // REMONTÉE AUTOMATIQUE : Version optimisée pour Ordinateur et Mobile
             setTimeout(() => {
-                const mainTitle = document.querySelector('h1');
-                if (mainTitle) {
-                    mainTitle.scrollIntoView({
+                // On cible le conteneur de la légende pour que l'utilisateur 
+                // voit les filtres ET le haut du tableau
+                const legendBox = document.querySelector('.legend-container');
+                if (legendBox) {
+                    legendBox.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
                     });
