@@ -15,7 +15,7 @@
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
         /* --- NAVIGATION --- */
-        header { background-color: var(--primary); position: sticky; top: 0; z-index: 1200; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; }
+        header { background-color: var(--primary); position: sticky; top: 0; z-index: 1300; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 10px 5%; max-width: 1400px; margin: 0 auto; }
         .header-left { display: flex; align-items: center; gap: 20px; }
         .logo img { height: 55px; width: auto; display: block; }
@@ -24,7 +24,7 @@
         nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 
         /* --- LÉGENDE --- */
-        .legend-container { position: sticky; background: var(--bg); z-index: 1100; padding: 10px 0; border-bottom: 1px solid #ddd; }
+        .legend-container { position: sticky; background: var(--bg); z-index: 1200; padding: 10px 0; border-bottom: 1px solid #ddd; }
         .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; flex-wrap: nowrap; gap: 6px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); width: max-content; margin: 0 auto; }
         .legend-item { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 3px 6px; border-radius: 20px; font-size: 0.7rem; white-space: nowrap; }
         .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
@@ -34,10 +34,11 @@
         .main-content { padding: 20px 2%; max-width: 1500px; margin: 0 auto; }
         h1 { color: var(--dark-blue); text-align: center; margin-bottom: 20px; font-size: 1.5rem; }
         .table-outer { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .table-container { width: 100%; overflow-x: auto; }
+        .table-container { width: 100%; overflow-x: auto; overflow-y: visible; }
         table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
-        /* L'en-tête du tableau */
+        /* L'en-tête du tableau (Sticky critique) */
+        thead { position: relative; z-index: 1000; }
         thead th { 
             position: sticky; 
             background: var(--dark-blue); 
@@ -47,10 +48,11 @@
             text-align: left; 
             font-size: 0.82rem;
             border: none;
+            top: 0; /* Sera ajusté par JS */
         }
 
         /* CONFIGURATION DES COLONNES */
-        .col-date { width: 70px; }
+        .col-date { width: 75px; }
         .col-event { width: 260px; } 
         .col-org { width: 120px; }
         .col-reg { width: 110px; }
@@ -59,18 +61,13 @@
         .col-mail { width: 75px; }
         .col-epreuves { width: 150px; }
 
-        /* RESSERREMENT DATE ET ÉVÉNEMENT */
         td.col-date { padding-right: 0; } 
         td.col-event { padding-left: 4px; }
         td { padding: 10px 8px; border-bottom: 1px solid #eee; font-size: 0.85rem; vertical-align: middle; word-wrap: break-word; }
 
-        /* --- STYLE POUR ÉVÉNEMENTS PASSÉS --- */
-        tr.past-event { 
-            background-color: #f2f2f2; 
-            opacity: 0.55; 
-            filter: grayscale(0.8); 
-        }
-        tr.past-event:hover { opacity: 0.9; filter: grayscale(0.2); }
+        /* ÉVÉNEMENTS PASSÉS */
+        tr.past-event { background-color: #f2f2f2; opacity: 0.6; filter: grayscale(0.5); }
+        tr.past-event td { color: #777; }
 
         .event-name { font-weight: 600; color: var(--dark-blue); font-size: 0.88rem; line-height: 1.2; }
         .badge { display: inline-flex; align-items: center; justify-content: center; width: 25px; height: 25px; border-radius: 4px; font-weight: bold; font-size: 0.6rem; margin: 1px; border: 1px solid rgba(0,0,0,0.1); }
@@ -83,6 +80,7 @@
         .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
         .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 4px 6px; border-radius: 4px; font-size: 0.68rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; }
 
+        /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
         .modal-content { background: white; margin: 2% auto; padding: 20px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; }
@@ -167,33 +165,32 @@
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
     let activeFilter = null;
 
-    // Ajuste dynamiquement la position collée de l'en-tête du tableau
-    function adjustStickyHeader() {
-        const headerElement = document.getElementById('mainHeader');
-        const legendElement = document.getElementById('legendBar');
-        if(!headerElement || !legendElement) return;
+    // FONCTION CRITIQUE : Calcule la position exacte du sticky
+    function adjustStickyPosition() {
+        const header = document.getElementById('mainHeader');
+        const legend = document.getElementById('legendBar');
+        const headerRow = document.getElementById('tableHeaderRow');
+        
+        if (!header || !legend || !headerRow) return;
 
-        const headerHeight = headerElement.offsetHeight;
-        const legendHeight = legendElement.offsetHeight;
-        const totalOffset = headerHeight + legendHeight - 1;
+        const hHeight = header.offsetHeight;
+        const lHeight = legend.offsetHeight;
         
-        legendElement.style.top = headerHeight + 'px';
+        // Positionne la légende sous le header
+        legend.style.top = hHeight + 'px';
         
-        const ths = document.querySelectorAll('#tableHeaderRow th');
+        // Positionne les TH du tableau sous la légende
+        const ths = headerRow.querySelectorAll('th');
         ths.forEach(th => {
-            th.style.top = totalOffset + 'px';
+            th.style.top = (hHeight + lHeight - 1) + 'px';
         });
     }
 
-    // LOGIQUE DE DATE POUR GRISER LES ÉVÉNEMENTS PASSÉS
     function isDatePast(dateStr) {
         if (!dateStr) return false;
         const months = { "janv.": 0, "fév.": 1, "mars": 2, "avril": 3, "mai": 4, "juin": 5, "juil.": 6, "août": 7, "sept.": 8, "oct.": 9, "nov.": 10, "déc.": 11 };
-        
-        // Prend la date de fin si c'est une plage (ex: 11-13 sept. -> 13 sept.)
         let cleanDate = dateStr.split('-').pop().trim(); 
         let parts = cleanDate.split(' ');
-        
         if (parts.length >= 2) {
             let day = parseInt(parts[0]);
             let month = months[parts[1].toLowerCase()];
@@ -216,9 +213,11 @@
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
             setupFilters();
-            adjustStickyHeader();
-            window.addEventListener('resize', adjustStickyHeader);
-        } catch (e) { document.getElementById('status').innerText = "Erreur de chargement."; }
+            
+            // On attend un court instant pour que le rendu soit fait avant de calculer le sticky
+            setTimeout(adjustStickyPosition, 100);
+            window.addEventListener('resize', adjustStickyPosition);
+        } catch (e) { document.getElementById('status').innerText = "Erreur."; }
     }
 
     function renderTable(rows) {
@@ -229,9 +228,8 @@
             const row = rows[i];
             if (!row[1]) continue;
 
-            const dateText = row[0] || "";
-            const isPast = isDatePast(dateText);
-            
+            const dateStr = row[0] || "";
+            const isPast = isDatePast(dateStr);
             const tr = document.createElement('tr');
             if (isPast) tr.classList.add('past-event');
 
@@ -270,7 +268,7 @@
 
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
-                <td class="col-date"><b>${dateText}</b></td>
+                <td class="col-date"><b>${dateStr}</b></td>
                 <td class="col-event"><span class="event-name">${isTQ}${row[1]}</span></td>
                 <td class="col-org">${row[6] || "-"}</td>
                 <td class="col-reg">${row[2] || ""}</td>
@@ -311,8 +309,6 @@
 
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://www.google.com/maps/embed/v1/place?key=VOTRE_CLE_API&q=${encodeURIComponent(lieu)}`;
-        // Note: L'URL ci-dessus nécessite une clé API. Pour un usage simple sans clé :
         const simpleUrl = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${simpleUrl}" width="100%" height="600" style="border:0;"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
@@ -320,7 +316,7 @@
 
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte Globale";
-        const url = "https://www.google.com/maps/d/embed?mid=VOTRE_ID_CARTE"; 
+        const url = "https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"; 
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}" width="100%" height="600"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
