@@ -6,7 +6,7 @@
     <title>Calendrier 2026 | Mon Projet Tri</title>
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <style>
-        :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; --gray-text: #adb5bd; }
+        :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; --gray-light: #adb5bd; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
         /* --- HEADER --- */
@@ -30,13 +30,15 @@
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; }
         table { width: 100%; border-collapse: collapse; min-width: 1100px; }
         thead th { position: sticky; top: 145px; background: var(--primary); color: white; padding: 15px; z-index: 900; text-align: left; font-size: 0.9rem; }
-        td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
+        td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; transition: color 0.3s; }
 
-        /* --- STYLE POUR LIGNES PASSÉES --- */
-        .past-event { color: var(--gray-text) !important; }
-        .past-event .badge { opacity: 0.4; filter: grayscale(1); }
-        .past-event .btn-action { background: var(--gray-text) !important; }
-        .past-event .lieu-link { color: var(--gray-text) !important; }
+        /* --- ÉTATS PASSÉS --- */
+        .past-event { color: var(--gray-light) !important; }
+        .past-event b { color: var(--gray-light) !important; }
+        .past-event .badge { opacity: 0.3; filter: grayscale(1); }
+        .past-event .btn-action { background: #e9ecef !important; color: #adb5bd !important; border: 1px solid #dee2e6; pointer-events: none; }
+        .past-event .lieu-link { color: var(--gray-light) !important; text-decoration: none; cursor: default; }
+        .past-event .tq-logo { filter: grayscale(1); opacity: 0.5; }
 
         /* BADGES & BOUTONS */
         .badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 6px; font-weight: bold; font-size: 0.7rem; margin: 2px; border: 1px solid rgba(0,0,0,0.1); }
@@ -47,9 +49,7 @@
         
         .tq-logo { width: 22px; height: 22px; vertical-align: middle; margin-right: 5px; }
         .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
-        
-        /* Boutons identiques */
-        .btn-action { background: var(--primary); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 70px; text-align: center; }
+        .btn-action { background: var(--primary); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 75px; text-align: center; border: none; }
 
         /* MODAL MAP */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
@@ -105,8 +105,8 @@
                         <th>Organisateur</th>
                         <th>Région</th>
                         <th>Lieu</th>
-                        <th>Contact</th>
                         <th>Site web</th>
+                        <th>Contact</th>
                         <th>Disciplines</th>
                     </tr>
                 </thead>
@@ -127,29 +127,25 @@
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
 
-    const legendMap = {
-        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
-        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
-        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
-        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
-        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
-        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-        " Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-        "Aquavelo": { code: "AV", cat: "cat-multi" },
-        "Aquathlon": { code: "AQ", cat: "cat-multi" }
-    };
+    const months = { "janv":0, "fév":1, "mars":2, "avr":3, "mai":4, "juin":5, "juil":6, "août":7, "sept":8, "oct":9, "nov":10, "déc":11 };
 
-    // Fonction pour vérifier si une date est passée
     function isDatePast(dateStr) {
         if (!dateStr) return false;
-        const months = { "janv.":0, "fév.":1, "mars":2, "avr.":3, "mai":4, "juin":5, "juil.":6, "août":7, "sept.":8, "oct.":9, "nov.":10, "déc.":11 };
-        const parts = dateStr.split(' ');
-        if (parts.length < 2) return false;
-        const day = parseInt(parts[0]);
-        const month = months[parts[1].toLowerCase().replace('.','')];
+        const cleanStr = dateStr.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\./g, '');
+        const dayMatch = cleanStr.match(/\d+/);
+        if (!dayMatch) return false;
+        const day = parseInt(dayMatch[0]);
+        
+        let month = -1;
+        // Correspondance robuste des mois (sans accents pour le calcul)
+        const monthsClean = { "janv":0, "fev":1, "mars":2, "avr":3, "mai":4, "juin":5, "juil":6, "aout":7, "sept":8, "oct":9, "nov":10, "dec":11 };
+        for (let m in monthsClean) { if (cleanStr.includes(m)) { month = monthsClean[m]; break; } }
+        if (month === -1) return false;
+
         const eventDate = new Date(2026, month, day);
-        return eventDate < new Date().setHours(0,0,0,0);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        return eventDate < today;
     }
 
     async function loadExcel() {
@@ -166,14 +162,14 @@
     function renderTable(rows) {
         const body = document.getElementById('calBody');
         const headers = rows[0];
-        const today = new Date();
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
-            if(isDatePast(row[0])) tr.classList.add('past-event');
+            const past = isDatePast(row[0]);
+            if(past) tr.classList.add('past-event');
 
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo">` : "";
             
@@ -184,26 +180,33 @@
                 const parties = lieuComplet.split(',');
                 villeAffichee = parties.length >= 2 ? "📍 " + parties[1].trim() : "📍 " + lieuComplet;
             }
-            const lieuCell = lieuComplet 
+            const lieuCell = (lieuComplet && !past)
                 ? `<span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')" title="${lieuComplet}">${villeAffichee}</span>` 
-                : "-";
+                : `<span title="${lieuComplet}">${villeAffichee}</span>`;
 
-            // Contact (Courriel)
+            // Inversion Site Web (Col 4) et Contact (Col 3)
+            const siteUrl = row[4] ? String(row[4]).trim() : "";
+            const siteCell = siteUrl ? `<a href="${siteUrl}" target="_blank" class="btn-action">Lien</a>` : "-";
+
             const contactEmail = row[3] ? String(row[3]).trim() : "";
             const contactCell = (contactEmail && contactEmail.includes('@')) 
-                ? `<a href="mailto:${contactEmail}" class="btn-action" title="Écrire à : ${contactEmail}">Courriel</a>` 
-                : "-";
-
-            // Site Web
-            const siteUrl = row[4] ? String(row[4]).trim() : "";
-            const siteCell = siteUrl 
-                ? `<a href="${siteUrl}" target="_blank" class="btn-action" title="Visiter le site">Lien</a>` 
-                : "-";
+                ? `<a href="mailto:${contactEmail}" class="btn-action">Courriel</a>` : "-";
 
             let badges = [];
             for (let j = 11; j <= 19; j++) {
                 if (row[j] === "X" || row[j] === "x") {
-                    const info = legendMap[headers[j]] || { code: "?", cat: "" };
+                    const info = {
+                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
+                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
+                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
+                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
+                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
+                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
+                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+                        " Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+                        "Aquavelo": { code: "AV", cat: "cat-multi" },
+                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
+                    }[headers[j]] || { code: "?", cat: "" };
                     badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
                 }
             }
@@ -214,8 +217,8 @@
                 <td>${row[6] || "-"}</td>
                 <td>${row[2] || ""}</td>
                 <td>${lieuCell}</td>
-                <td>${contactCell}</td>
                 <td>${siteCell}</td>
+                <td>${contactCell}</td>
                 <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
