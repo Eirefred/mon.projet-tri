@@ -236,7 +236,7 @@
                 <td data-label="Région">${row[2] || ""}</td>
                 <td data-label="Lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
                 <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
                 <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
