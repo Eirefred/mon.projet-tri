@@ -9,7 +9,7 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (BANDEAU BLANC INDEX) --- */
+        /* --- HEADER BANDEAU BLANC (INDEX) --- */
         header {
             background-color: white;
             padding: 10px 5%;
@@ -58,7 +58,7 @@
         
         thead th { 
             position: sticky; 
-            top: 140px; 
+            top: 140px; /* Aligné sous la légende */
             background: var(--primary); 
             color: white; 
             padding: 14px; 
@@ -107,7 +107,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="calendrier.html" style="color: var(--accent);">Calendrier</a></li>
+                <li><a href="Calendrier.html" style="color: var(--accent);">Calendrier</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
@@ -191,9 +191,14 @@
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        const headers = rows[0]; 
+        
+        // On cherche dynamiquement la ligne d'en-tête (souvent la 0 ou 1)
+        let headerIndex = rows.findIndex(r => r.includes("Date (2026)") || r.includes("Événement"));
+        if (headerIndex === -1) headerIndex = 0;
+        
+        const headers = rows[headerIndex]; 
 
-        for (let i = 1; i < rows.length; i++) {
+        for (let i = headerIndex + 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1] || row[1] === "Événement") continue; 
 
@@ -238,7 +243,7 @@
 
     function openMap(cp, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+        const url = `https://www.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
