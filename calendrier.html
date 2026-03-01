@@ -492,6 +492,19 @@
                 }
             });
         });
+        document.querySelectorAll('.legend-item').forEach(item => {
+    item.addEventListener('click', () => {
+        // ... votre code existant qui filtre les courses ...
+        
+        // AJOUTEZ CECI :
+        setTimeout(() => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }, 100); // Un léger délai pour laisser le temps au filtrage de s'opérer
+    });
+});
     }
 
     function openMap(lieu, name) {
