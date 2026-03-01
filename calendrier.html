@@ -88,13 +88,34 @@
         .region-mention { display: none; }
         .menu-toggle { display: block; cursor: pointer; }
 
-        /* Navigation Mobile */
+        /* NAVIGATION MOBILE */
         #navMenu { 
-            display: none; flex-direction: column; position: absolute; 
-            top: 70px; left: 0; width: 100%; background-color: var(--primary); 
-            padding: 10px 0; z-index: 1300; 
+            display: none; /* Caché par défaut */
+            flex-direction: column; 
+            position: absolute; 
+            top: 70px; left: 0; width: 100%; 
+            background-color: var(--primary); 
+            padding: 10px 0; 
+            z-index: 1300; 
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
         }
+
+        /* Affiche le menu quand cliqué */
         #navMenu.active { display: flex !important; }
+
+        /* On force l'affichage des LI uniquement à l'intérieur du menu navMenu */
+        #navMenu li { 
+            display: block !important; 
+            width: 100%; 
+            text-align: center; 
+        }
+        
+        #navMenu li a { 
+            display: block; 
+            padding: 15px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); 
+            color: white !important;
+        }
 
         /* LÉGENDE : Empêche le décalage de largeur et permet le scroll */
         .legend-container { 
