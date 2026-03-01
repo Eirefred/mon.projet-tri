@@ -245,10 +245,16 @@
     }
 
     // CARTE GLOBALE (Affiche le Québec avec une recherche générique basée sur les lieux)
+// CARTE GLOBALE : Zoom ajusté pour voir tout le Québec (z=6)
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        // On centre sur le Québec pour la vue d'ensemble
-        const url = `https://maps.google.com/maps?q=Quebec,Canada&t=&z=6&ie=UTF8&iwloc=&output=embed`;
+        
+        // Coordonnées approximatives du centre du Québec pour englober Nord/Sud/Est/Ouest
+        const centreQuebec = "47.5000,-71.5000"; 
+        const zoomLevel = 6; // Niveau 6 permet de voir de Montréal jusqu'à la Gaspésie
+        
+        const url = `https://maps.google.com/maps?q=${centreQuebec}&t=&z=${zoomLevel}&ie=UTF8&iwloc=&output=embed`;
+        
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
