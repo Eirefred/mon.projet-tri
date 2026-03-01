@@ -81,7 +81,7 @@
     }
 
     /* --- MOBILE --- */
-    /* --- OPTIMISATION MOBILE FINALE CORRIGÉE --- */
+    /* --- OPTIMISATION MOBILE FINALE : BOUTONS SUR UNE LIGNE --- */
 @media (max-width: 768px) {
     header { height: 70px; }
     .logo img { height: 40px !important; }
@@ -129,44 +129,34 @@
 
     td > b, td > span, td > div, td > a { flex: 1; text-align: right; font-size: 0.85rem; word-break: break-word; }
 
-    /* --- SOLUTION : SITE ET CONTACT CÔTE À CÔTE --- */
+    /* --- SOLUTION : FUSION VISUELLE DES LIENS --- */
     
-    /* On force les deux cellules à prendre 50% et à flotter à gauche */
+    /* 1. On change le titre de "Site web" en "LIENS" */
+    td[data-label="Site web"]:before { content: "LIENS"; }
+
+    /* 2. On réduit la largeur de "Site web" et "Contact" à 50% pour qu'ils montent côte à côte */
     td[data-label="Site web"], 
     td[data-label="Contact"] {
         display: inline-flex !important;
         width: 50% !important;
         float: left;
         border-bottom: 1px solid #f5f5f5;
-        flex-direction: column; /* Titre en petit au dessus du bouton */
-        justify-content: center;
-        align-items: center;
-        min-height: 70px;
-        padding: 5px;
+        min-height: 50px;
+        padding: 10px;
     }
 
-    /* On ajuste les labels "Site web" et "Contact" pour qu'ils soient centrés et petits */
-    td[data-label="Site web"]:before, 
-    td[data-label="Contact"]:before {
-        flex: none;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 4px;
-        font-size: 0.6rem;
-    }
+    /* 3. On CACHE le mot "Contact" mais on GARDE la cellule pour voir le bouton */
+    td[data-label="Contact"]:before { content: ""; flex: 0; }
 
-    /* On force les boutons à être centrés dans leurs colonnes de 50% */
-    td[data-label="Site web"] a, 
-    td[data-label="Contact"] a {
-        margin: 0 auto !important;
-        text-align: center;
-    }
+    /* 4. Alignement des boutons : le premier à gauche de sa zone, le deuxième à droite */
+    td[data-label="Site web"] a { justify-content: flex-end; margin-right: 5px; }
+    td[data-label="Contact"] a { justify-content: flex-start; margin-left: 5px; }
 
     /* TAILLE DES BOUTONS RÉDUITE */
     .btn-action { 
-        padding: 5px 8px !important; 
-        font-size: 0.65rem !important;
-        min-width: 70px !important;
+        padding: 6px 10px !important; 
+        font-size: 0.7rem !important;
+        min-width: 75px !important;
         width: auto;
         border-radius: 4px;
         text-transform: none;
@@ -174,8 +164,7 @@
         display: inline-block !important;
     }
 
-    /* Reset pour la ligne suivante (évite que le reste de la carte soit tout cassé) */
-    td[data-label="Contact"] { border-right: none; }
+    /* Nettoyage du flux pour les lignes suivantes */
     td:not([data-label="Site web"]):not([data-label="Contact"]) { clear: both; }
 
     /* EN-TÊTE DE CARTE */
