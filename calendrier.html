@@ -100,9 +100,47 @@
     #navMenu li { display: block !important; width: 100%; text-align: center; }
     #navMenu li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 1rem; }
 
-    /* LÉGENDE */
-    .legend-container { top: 70px; height: auto; padding: 10px 0; overflow-x: auto; white-space: nowrap; display: block; width: 100vw; }
-    .legend { display: inline-flex; margin: 0 15px; border: 1px solid #eee; }
+  /* --- AMÉLIORATION LÉGENDE MOBILE --- */
+    .legend-container { 
+        top: 70px; 
+        height: auto; 
+        padding: 15px 0; 
+        overflow-x: auto; 
+        white-space: nowrap; 
+        display: block; 
+        width: 100vw;
+        -webkit-overflow-scrolling: touch; /* Scroll fluide sur iPhone */
+        
+        /* Indication visuelle de contenu caché à droite */
+        background: linear-gradient(to right, #f8f9fa 95%, rgba(4, 129, 251, 0.1) 100%);
+    }
+
+    /* Force l'affichage d'une barre de défilement fine sur mobile */
+    .legend-container::-webkit-scrollbar {
+        height: 5px;
+    }
+    .legend-container::-webkit-scrollbar-thumb {
+        background: var(--primary);
+        border-radius: 10px;
+    }
+    .legend-container::-webkit-scrollbar-track {
+        background: #eee;
+    }
+
+    .legend { 
+        display: inline-flex; 
+        margin: 0 15px; 
+        border: 1px solid #eee;
+        /* L'animation ci-dessous fait bouger la légende au départ */
+        animation: scrollHint 2.5s ease-in-out;
+    }
+
+    /* Animation qui fait un petit "va-et-vient" pour montrer que c'est scrollable */
+    @keyframes scrollHint {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-30px); }
+        50% { transform: translateX(0); }
+    }
 
     /* STRUCTURE DES CARTES */
     .main-content { padding: 10px; }
