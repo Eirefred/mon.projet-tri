@@ -16,58 +16,48 @@
         nav a { color: white; text-decoration: none; font-weight: 500; }
         nav a:hover { color: var(--accent); }
 
-        /* --- STYLE SPÉCIFIQUE CALENDRIER --- */
-        .main-content { padding: 20px; max-width: 1300px; margin: auto; }
-        
-        /* Légende Fixe sous le Header */
-        .legend-container { 
-            position: sticky; 
-            top: 60px; /* Ajuster selon la hauteur de votre header */
-            background: var(--bg); 
-            z-index: 900; 
-            padding: 10px 0;
-            border-bottom: 1px solid #ddd;
+        .main-content { padding: 20px 5%; }
+        h1 { color: var(--primary); text-align: center; margin-bottom: 20px; }
+
+        /* --- LÉGENDE --- */
+        .legend-container { position: sticky; top: 60px; background: var(--bg); z-index: 900; padding: 10px 0; }
+        .legend { background: white; padding: 15px; border-radius: 10px; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); font-size: 0.85rem; align-items: center; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+
+        /* --- TABLEAU --- */
+        .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        thead th { position: sticky; top: 130px; background: var(--primary); color: white; padding: 15px; z-index: 850; text-align: left; }
+        td { padding: 12px 15px; border-bottom: 1px solid #eee; }
+
+        /* TAILLE UNIFORME DES ICONES (30x30px) */
+        .badge { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 30px; 
+            height: 30px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            font-size: 0.75rem; 
+            margin: 2px;
+            flex-shrink: 0;
         }
-        .legend { 
-            background: white; padding: 12px; border-radius: 8px; 
-            display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; 
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1); font-size: 0.8rem;
-        }
-        .legend-item { display: flex; align-items: center; gap: 4px; }
+        .cat-tri { background: #e3f2fd; color: #1976d2; border: 1px solid #bbdefb; }
+        .cat-dua { background: #fff3e0; color: #e65100; border: 1px solid #ffe0b2; }
+        .cat-multi { background: #f3e5f5; color: #7b1fa2; border: 1px solid #e1bee7; }
+        .cat-init { background: #e8f5e9; color: #2e7d32; border: 1px solid #c8e6c9; }
 
-        /* Table avec En-tête Fixe */
-        .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; margin-top: 10px; }
-        table { width: 100%; border-collapse: collapse; }
-        
-        thead th { 
-            position: sticky; 
-            top: 135px; /* Ajuster pour être juste sous la légende */
-            background: var(--primary); 
-            color: white; 
-            padding: 12px; 
-            z-index: 800;
-            text-align: left;
-            font-size: 0.85em;
-        }
-
-        td { padding: 10px; border-bottom: 1px solid #eee; font-size: 0.9em; }
-
-        /* Badges et Icônes */
-        .badge { display: inline-block; width: 28px; height: 28px; line-height: 26px; text-align: center; border-radius: 4px; font-weight: bold; font-size: 0.75em; border: 1px solid transparent; }
-        .cat-tri { background: #e3f2fd; color: #1976d2; border-color: #bbdefb; }
-        .cat-dua { background: #fff3e0; color: #e65100; border-color: #ffe0b2; }
-        .cat-multi { background: #f3e5f5; color: #7b1fa2; border-color: #e1bee7; }
-        .cat-init { background: #e8f5e9; color: #2e7d32; border-color: #c8e6c9; }
-
-        .btn-site { background: var(--primary); color: white; text-decoration: none; padding: 4px 8px; border-radius: 4px; font-size: 0.75em; font-weight: bold; }
+        .tq-logo { width: 24px; height: 24px; vertical-align: middle; margin-right: 5px; }
         .cp-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
-        .tq-logo { width: 18px; vertical-align: middle; margin-right: 5px; }
+        .btn-site { background: var(--primary); color: white; text-decoration: none; padding: 6px 12px; border-radius: 5px; font-size: 0.85rem; font-weight: bold; }
+        .btn-site:hover { background: var(--accent); }
 
-        /* Modal Pop-up */
+        /* Modal Map */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
-        .modal-content { background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 850px; border-radius: 10px; position: relative; }
+        .modal-content { background: white; margin: 5% auto; padding: 20px; width: 90%; max-width: 800px; border-radius: 12px; position: relative; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
-        iframe { width: 100%; height: 500px; border: none; }
+        iframe { width: 100%; height: 500px; border: none; border-radius: 8px; }
     </style>
 </head>
 <body>
@@ -77,30 +67,34 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="calendrier.html" style="color: var(--accent);">Calendrier 2026</a></li>
+                <li><a href="Calendrier.html">Calendrier</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="main-content">
-        <h1>Calendrier Officiel 2026</h1>
+        <h1>Calendrier Provincial 2026</h1>
 
         <div class="legend-container">
             <div class="legend">
-                <div class="legend-item"><span class="badge cat-init">TI</span> Tri Initiation</div>
-                <div class="legend-item"><span class="badge cat-tri">TS</span> Tri Sprint</div>
-                <div class="legend-item"><span class="badge cat-tri">TO</span> Tri Olympique</div>
-                <div class="legend-item"><span class="badge cat-tri">T½</span> Tri Demi</div>
-                <div class="legend-item"><span class="badge cat-tri">TL</span> Tri Longue</div>
-                <div class="legend-item"><span class="badge cat-dua">DS</span> Dua Sprint</div>
-                <div class="legend-item"><span class="badge cat-dua">DO</span> Dua Olympique</div>
+                <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 15px;">
+                    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo">
+                    <strong>Accrédité Triathlon Québec</strong>
+                </div>
+                <div class="legend-item"><span class="badge cat-init">TI</span> Initiation</div>
+                <div class="legend-item"><span class="badge cat-tri">TS</span> Sprint</div>
+                <div class="legend-item"><span class="badge cat-tri">TO</span> Olympique</div>
+                <div class="legend-item"><span class="badge cat-tri">T½</span> Demi</div>
+                <div class="legend-item"><span class="badge cat-tri">TL</span> Longue</div>
+                <div class="legend-item"><span class="badge cat-dua">DS</span> Duathlon Sprint</div>
+                <div class="legend-item"><span class="badge cat-dua">DO</span> Duathlon Olympique</div>
                 <div class="legend-item"><span class="badge cat-multi">AV</span> Aquavélo</div>
                 <div class="legend-item"><span class="badge cat-multi">AQ</span> Aquathlon</div>
             </div>
         </div>
 
-        <div id="status" style="text-align:center; padding: 20px;">Chargement du calendrier...</div>
+        <div id="status" style="text-align:center; padding: 30px; font-weight: bold;">Chargement du calendrier en cours...</div>
 
         <div class="table-container">
             <table id="calTable" style="display:none;">
@@ -110,7 +104,7 @@
                         <th>Événement</th>
                         <th>Région</th>
                         <th>Code Postal</th>
-                        <th>Site</th>
+                        <th>Site Officiel</th>
                         <th>Disciplines</th>
                     </tr>
                 </thead>
@@ -122,7 +116,7 @@
     <div id="mapModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeMap()">×</span>
-            <h3 id="modalTitle" style="color:var(--primary);">Emplacement</h3>
+            <h3 id="modalTitle">Emplacement</h3>
             <div id="mapContainer"></div>
         </div>
     </div>
@@ -131,7 +125,6 @@
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
 
-    // Correspondance avec vos NOUVEAUX noms de colonnes (Ligne 1)
     const legendMap = {
         "Triathlon Initiation": { code: "TI", cat: "cat-init" },
         "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
@@ -149,26 +142,29 @@
             const response = await fetch(EXCEL_FILE);
             const arrayBuffer = await response.arrayBuffer();
             const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-            const rows = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]], { header: 1 });
+            const sheet = workbook.Sheets[workbook.SheetNames[0]];
+            const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
-        } catch (e) { document.getElementById('status').innerText = "Erreur de chargement du fichier."; }
+        } catch (e) {
+            document.getElementById('status').innerText = "Erreur : Impossible de charger le fichier Excel.";
+        }
     }
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        const headers = rows[0]; 
+        const headers = rows[0];
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
 
             const tr = document.createElement('tr');
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Affilié TQ">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Accrédité Triathlon Québec">` : "";
+            
             const cp = row[9] ? String(row[9]).trim() : "";
             const mapCell = cp ? `<span class="cp-link" onclick="openMap('${cp}', '${row[1].replace(/'/g, "\\'")}')">📍 ${cp}</span>` : "-";
 
             let badges = [];
-            // Analyse des colonnes L à T (index 11 à 19)
             for (let j = 11; j <= 19; j++) {
                 if (row[j] === "X" || row[j] === "x") {
                     const label = headers[j];
@@ -193,8 +189,10 @@
 
     function openMap(cp, name) {
         document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        const url = `https://www.google.com/maps/embed/v1/place?key=VOTRE_CLE_API&q=${encodeURIComponent(cp)}`;
+        // Note : L'URL ci-dessus nécessite une clé API. Pour un usage simple sans clé :
+        const fallbackUrl = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${fallbackUrl}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
