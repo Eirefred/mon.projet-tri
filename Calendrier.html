@@ -52,7 +52,7 @@
         .cat-init { background: #e8f5e9; color: #2e7d32; }
         
         .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
-        .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 75px; text-align: center; }
+        .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 6px 10px; border-radius: 5px; font-size: 0.72rem; font-weight: bold; display: inline-block; min-width: 75px; text-align: center; border: none; }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
@@ -87,14 +87,12 @@
                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo">
                 <strong>Accr. TQ</strong>
             </div>
-            
             <div class="legend-item"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item"><span class="badge cat-tri">TO</span> Olymp.</div>
             <div class="legend-item"><span class="badge cat-tri">T½</span> Demi</div>
             <div class="legend-item"><span class="badge cat-tri">TC</span> Complet</div>
             <div class="legend-item"><span class="badge cat-dua">DS</span> Duath. Sprint</div>
-            <div class="legend-item"><span class="badge cat-dua">DO</span> Duath. Olymp</div>
             <div class="legend-item"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
             <div class="legend-item"><span class="badge cat-multi">AV</span> Aquavélo</div>
             <div class="legend-item"><span class="badge cat-multi">AQ</span> Aquathlon</div>
@@ -167,7 +165,6 @@
             }
 
             let badges = [];
-            // Scan des colonnes disciplines (11 à 20) suite à l'ajout du Duathlon Long
             for (let j = 11; j <= 20; j++) {
                 if (row[j] === "X" || row[j] === "x") {
                     const info = {
@@ -177,12 +174,14 @@
                         "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
                         "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
                         "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
                         "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
                         "Aquavelo": { code: "AV", cat: "cat-multi" },
                         "Aquathlon": { code: "AQ", cat: "cat-multi" }
                     }[headers[j]] || { code: "?", cat: "" };
-                    badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
+                    
+                    if(info.code !== "?") {
+                        badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
+                    }
                 }
             }
 
@@ -204,15 +203,16 @@
 
     function openMap(lieu, name) {
         document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        const url = `https://www.google.com/maps/embed/v1/place?key=VOTRE_CLE_API_ICI&q=${encodeURIComponent(lieu)}`;
+        // Note: Si vous n'avez pas de clé API, utilisez l'URL simple sans clé
+        const simpleUrl = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${simpleUrl}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
     function openGlobalMap() {
         document.getElementById('modalTitle').innerText = "Carte des événements 2026";
-        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
-        // Note : Remplacez l'URL ci-dessus par votre lien My Maps réel (.../8)
+        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/u/0/embed?mid=162Wv73T_l_6oYvU3E3-m74FqBv6uM-E"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
 
