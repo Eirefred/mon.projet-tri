@@ -10,11 +10,12 @@
             --primary: #0481fb; 
             --dark-blue: #003366; 
             --accent: #f39200; 
+            --brand-orange: #FF6600; /* Orange du footer index.html */
             --bg: #f8f9fa; 
         }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (Hauteur fixe 80px) --- */
+        /* --- HEADER --- */
         header { background-color: var(--primary); position: sticky; top: 0; z-index: 1200; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; height: 80px; }
         .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 0 5%; max-width: 1400px; margin: 0 auto; height: 100%; }
         .header-left { display: flex; align-items: center; gap: 20px; }
@@ -23,10 +24,10 @@
         nav ul { list-style: none; display: flex; align-items: center; gap: 20px; margin: 0; padding: 0; }
         nav a { color: white; text-decoration: none; font-weight: 500; font-size: 0.95rem; }
 
-        /* --- LÉGENDE (Hauteur fixe approx 60px) --- */
+        /* --- LÉGENDE --- */
         .legend-container { 
             position: sticky; 
-            top: 80px; /* Colle sous le header */
+            top: 80px; 
             background: var(--bg); 
             z-index: 1100; 
             padding: 12px 0; 
@@ -52,18 +53,16 @@
         .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
 
         /* --- TABLEAU --- */
-        .main-content { padding: 20px 2%; max-width: 1500px; margin: 0 auto; }
+        .main-content { padding: 20px 2% 60px 2%; max-width: 1500px; margin: 0 auto; min-height: 600px; }
         h1 { color: var(--dark-blue); text-align: center; margin-bottom: 20px; font-size: 1.6rem; }
         
         .table-outer { background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: visible; }
         .table-container { width: 100%; }
-        
-        table { width: 100%; border-collapse: collapse; table-layout: fixed; } /* Layout fixe pour contrôler les colonnes */
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
 
-        /* L'ENTÊTE QUI RESTE AFFICHÉE */
         thead th { 
             position: sticky; 
-            top: 144px; /* Hauteur Header (80) + Hauteur Légende (64) */
+            top: 144px; 
             background: var(--dark-blue); 
             color: white; 
             padding: 15px 10px; 
@@ -73,10 +72,9 @@
             border: none;
         }
 
-        /* Définition des largeurs de colonnes */
         .col-date { width: 75px; }
         .col-event { width: 220px; }
-        .col-org { width: 130px; } /* Largeur réduite comme demandé */
+        .col-org { width: 130px; }
         .col-reg { width: 120px; }
         .col-lieu { width: 130px; }
         .col-site { width: 80px; }
@@ -87,22 +85,40 @@
         tr:hover { background: #f8fbff; }
         tr.hidden { display: none; }
 
-        /* Style spécifique pour le nom de l'événement */
-        .event-name { font-weight: 600; color: var(--dark-blue); font-size: 0.9rem; }
-
         .badge { 
             display: inline-flex; align-items: center; justify-content: center; 
             width: 26px; height: 26px; border-radius: 5px; font-weight: bold; font-size: 0.65rem; 
             margin: 1px; border: 1px solid rgba(0,0,0,0.1); 
         }
         .cat-tri { background: #e3f2fd; color: #1976d2; }
-        .cat-dua { background: #fff3e0; color: #e65100; }
-        .cat-dual-long { background: #ffe0b2; color: #bf360c; }
-        .cat-multi { background: #f3e5f5; color: #7b1fa2; }
         .cat-init { background: #e8f5e9; color: #2e7d32; }
-        
         .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
         .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; box-sizing: border-box; }
+
+        /* --- FOOTER (Importé de index.html) --- */
+        footer { 
+            background: var(--primary); 
+            color: white; 
+            padding: 40px 0; 
+            text-align: center; 
+            border-top: 4px solid var(--brand-orange); 
+            margin-top: 50px;
+        }
+        .footer-container { 
+            width: 90%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .footer-logo img { height: 60px; display: block; }
+        .footer-text { font-size: 0.9rem; opacity: 0.9; }
+
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; gap: 20px; }
+            thead th { top: 120px; } /* Ajustement mobile pour le sticky */
+        }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
@@ -137,23 +153,15 @@
                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" style="width:18px">
                 <strong style="margin-left:3px; font-size: 0.75rem;">TQ</strong>
             </div>
-            <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
-            <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
-            <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
-            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
-            <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
-            <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
-            <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
-            <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
-            <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-            <button class="btn-global-map" onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:5px;">🌎 Carte</button>
+            <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olympique</div>
+            <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
         </div>
     </div>
 
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
-        <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
+        <div id="status" style="text-align:center; padding: 40px; font-weight: bold; color: var(--dark-blue);">Chargement des données...</div>
         
         <div class="table-outer">
             <div class="table-container">
@@ -164,8 +172,8 @@
                             <th class="col-event">Événement</th>
                             <th class="col-org">Organisateur</th>
                             <th class="col-reg">Région</th>
-                            <th class="col-lieu">Lieu (Ville)</th>
-                            <th class="col-site">Site web</th>
+                            <th class="col-lieu">Ville</th>
+                            <th class="col-site">Site</th>
                             <th class="col-mail">Contact</th>
                             <th class="col-epreuves">Épreuves</th>
                         </tr>
@@ -176,133 +184,115 @@
         </div>
     </div>
 
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri">
+            </div>
+            <div class="footer-text">
+                <p>© 2026 Mon Projet Tri OBNL. Tous droits réservés.</p>
+                <p>Le mentorat qui s'occupe de tout pour votre projet.</p>
+            </div>
+        </div>
+    </footer>
+
     <div id="mapModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeMap()">×</span>
-            <h3 id="modalTitle">Localisation</h3>
             <div id="mapContainer"></div>
         </div>
     </div>
 
-<script>
-    const EXCEL_FILE = 'Calendrier-2026.xlsx';
-    const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
-    let activeFilter = null;
+    <script>
+        const EXCEL_FILE = 'Calendrier-2026.xlsx';
+        let activeFilter = null;
 
-    async function loadExcel() {
-        try {
-            const response = await fetch(EXCEL_FILE);
-            const arrayBuffer = await response.arrayBuffer();
-            const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-            const sheet = workbook.Sheets[workbook.SheetNames[0]];
-            const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-            renderTable(rows);
-            setupFilters();
-        } catch (e) { document.getElementById('status').innerText = "Erreur."; }
-    }
-
-    function renderTable(rows) {
-        const body = document.getElementById('calBody');
-        const headers = rows[0].map(h => h ? String(h).trim() : "");
-
-        for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            if (!row[1]) continue;
-
-            const tr = document.createElement('tr');
-            let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:18px;margin-right:5px;vertical-align:middle;">` : "";
-            
-            const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let villeAffichee = "Lieu";
-            if (lieuComplet) {
-                const parties = lieuComplet.split(',');
-                villeAffichee = parties.length >= 3 ? parties[parties.length - 3].trim() : lieuComplet;
+        async function loadExcel() {
+            try {
+                const response = await fetch(EXCEL_FILE);
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                renderTable(rows);
+                setupFilters();
+            } catch (e) { 
+                document.getElementById('status').innerText = "Erreur lors du chargement du fichier Excel."; 
             }
+        }
 
-            let badges = [];
-            for (let j = 11; j <= 20; j++) {
-                if (row[j] === "X" || row[j] === "x") {
-                    const info = {
-                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
-                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
-                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
-                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
-                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
-                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-                        "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
-                        "Aquavelo": { code: "AV", cat: "cat-multi" },
-                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
-                    }[headers[j]] || { code: "?", cat: "" };
-                    
-                    if(info.code !== "?") {
-                        badges.push(`<span class="badge ${info.cat}">${info.code}</span>`);
-                        rowCats.push(info.code);
+        function renderTable(rows) {
+            const body = document.getElementById('calBody');
+            const headers = rows[0].map(h => h ? String(h).trim() : "");
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row[1]) continue;
+
+                const tr = document.createElement('tr');
+                let rowCats = [];
+                const isTQ = row[5] === "TQ" ? `<img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+                
+                const lieuComplet = row[9] ? String(row[9]).trim() : "";
+                let villeAffichee = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+
+                let badges = [];
+                const mappings = { "Triathlon Initiation": "TI", "Triathlon Sprint": "TS", "Triathlon Olympique": "TO" };
+                for (let j = 11; j <= 20; j++) {
+                    if ((row[j] || "").toString().toUpperCase() === "X" && mappings[headers[j]]) {
+                        badges.push(`<span class="badge cat-tri">${mappings[headers[j]]}</span>`);
+                        rowCats.push(mappings[headers[j]]);
                     }
                 }
+
+                tr.setAttribute('data-categories', rowCats.join(','));
+                tr.innerHTML = `
+                    <td class="col-date"><b>${row[0] || ""}</b></td>
+                    <td class="col-event"><span class="event-name">${isTQ}${row[1]}</span></td>
+                    <td>${row[6] || "-"}</td>
+                    <td>${row[2] || ""}</td>
+                    <td><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}')">📍 ${villeAffichee}</span></td>
+                    <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+                    <td>${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
+                    <td><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+                `;
+                body.appendChild(tr);
             }
-
-            tr.setAttribute('data-categories', rowCats.join(','));
-            tr.innerHTML = `
-                <td class="col-date"><b>${row[0] || ""}</b></td>
-                <td class="col-event"><span class="event-name">${isTQ}${row[1]}</span></td>
-                <td class="col-org">${row[6] || "-"}</td>
-                <td class="col-reg">${row[2] || ""}</td>
-                <td class="col-lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${villeAffichee}</span></td>
-                <td class="col-site">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-                <td class="col-mail">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
-                <td class="col-epreuves"><div style="display:flex; flex-wrap:wrap; gap:2px">${badges.join("")}</div></td>
-            `;
-            body.appendChild(tr);
+            document.getElementById('status').style.display = 'none';
+            document.getElementById('calTable').style.display = 'table';
         }
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('calTable').style.display = 'table';
-    }
 
-    function setupFilters() {
-        const items = document.querySelectorAll('.clickable-cat');
-        const rows = document.querySelectorAll('#calBody tr');
-
-        items.forEach(item => {
-            item.addEventListener('click', () => {
-                const cat = item.getAttribute('data-cat');
-                if (activeFilter === cat) {
-                    activeFilter = null;
-                    items.forEach(i => i.classList.remove('active', 'inactive'));
-                    rows.forEach(r => r.classList.remove('hidden'));
-                } else {
-                    activeFilter = cat;
+        function setupFilters() {
+            const items = document.querySelectorAll('.clickable-cat');
+            const rows = document.querySelectorAll('#calBody tr');
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const cat = item.getAttribute('data-cat');
+                    activeFilter = (activeFilter === cat) ? null : cat;
                     items.forEach(i => {
-                        i.classList.toggle('active', i.getAttribute('data-cat') === cat);
-                        i.classList.toggle('inactive', i.getAttribute('data-cat') !== cat);
+                        i.classList.toggle('active', i.getAttribute('data-cat') === activeFilter);
+                        i.classList.toggle('inactive', activeFilter && i.getAttribute('data-cat') !== activeFilter);
                     });
-                    rows.forEach(row => {
-                        const rowCats = row.getAttribute('data-categories').split(',');
-                        row.classList.toggle('hidden', !rowCats.includes(cat));
-                    });
-                }
+                    rows.forEach(r => r.classList.toggle('hidden', activeFilter && !r.getAttribute('data-categories').split(',').includes(activeFilter)));
+                });
             });
-        });
-    }
+        }
 
-    function openMap(lieu, name) {
-        document.getElementById('modalTitle').innerText = name;
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
-        document.getElementById('mapModal').style.display = "block";
-    }
+        function openMap(lieu) {
+            const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&t=&z=13&ie=UTF8&iwloc=&output=embed`;
+            document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+            document.getElementById('mapModal').style.display = "block";
+        }
 
-    function openGlobalMap() {
-        document.getElementById('modalTitle').innerText = "Carte Globale";
-        document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
-        document.getElementById('mapModal').style.display = "block";
-    }
+        function openGlobalMap() {
+            document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/u/0/embed?mid=1_v_Uv6RzL6Nf7N8l6H9p1N0Z7Ww"></iframe>`;
+            document.getElementById('mapModal').style.display = "block";
+        }
 
-    function closeMap() { document.getElementById('mapModal').style.display = "none"; }
+        function closeMap() { document.getElementById('mapModal').style.display = "none"; }
 
-    window.onload = loadExcel;
-    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
-</script>
+        window.onload = loadExcel;
+        window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
+    </script>
 </body>
 </html>
