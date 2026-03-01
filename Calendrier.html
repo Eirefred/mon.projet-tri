@@ -109,6 +109,28 @@
         .modal-content { background: white; margin: 2% auto; padding: 20px; width: 90%; max-width: 1000px; border-radius: 12px; position: relative; }
         .close { position: absolute; right: 20px; top: 10px; font-size: 35px; cursor: pointer; }
         iframe { width: 100%; height: 600px; border: none; }
+
+        /* --- STYLES FOOTER (Importés de index.html) --- */
+        footer { 
+            background: #0481fb; 
+            color: white; 
+            padding: 40px 0; 
+            text-align: center; 
+            border-top: 4px solid #FF6600; 
+        }
+        .footer-text { max-width: 90%; margin: 0 auto; }
+        .footer-container { 
+            width: 90%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        .footer-logo img { height: 60px; display: block; }
+        @media (max-width: 768px) {
+            .footer-container { flex-direction: column; text-align: center; gap: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -135,7 +157,7 @@
         <div class="legend" id="legendContainer">
             <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" style="width:18px">
-                <strong style="margin-left:3px; font-size: 0.75rem;">TQ</strong>
+                <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
             </div>
             <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
@@ -147,13 +169,13 @@
             <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
             <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
             <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-            <button class="btn-global-map" onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:5px;">🌎 Carte</button>
+            <button class="btn-global-map" onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
         </div>
     </div>
 
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
-        <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
+        <div id="status" style="text-align:center; padding: 20px;">Chargement du calendrier...</div>
         
         <div class="table-outer">
             <div class="table-container">
@@ -175,6 +197,17 @@
             </div>
         </div>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri">
+            </div>
+            <div class="footer-text">
+                <p>© 2026 Mon Projet Tri OBNL. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
 
     <div id="mapModal" class="modal">
         <div class="modal-content">
@@ -198,7 +231,9 @@
             const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
             renderTable(rows);
             setupFilters();
-        } catch (e) { document.getElementById('status').innerText = "Erreur."; }
+        } catch (e) {
+            document.getElementById('status').innerText = "Erreur de chargement du fichier Excel.";
+        }
     }
 
     function renderTable(rows) {
@@ -211,7 +246,7 @@
 
             const tr = document.createElement('tr');
             let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:18px;margin-right:5px;vertical-align:middle;">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
             
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
             let villeAffichee = "Lieu";
@@ -252,7 +287,7 @@
                 <td class="col-lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${villeAffichee}</span></td>
                 <td class="col-site">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
                 <td class="col-mail">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
-                <td class="col-epreuves"><div style="display:flex; flex-wrap:wrap; gap:2px">${badges.join("")}</div></td>
+                <td class="col-epreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
         }
@@ -263,7 +298,6 @@
     function setupFilters() {
         const items = document.querySelectorAll('.clickable-cat');
         const rows = document.querySelectorAll('#calBody tr');
-
         items.forEach(item => {
             item.addEventListener('click', () => {
                 const cat = item.getAttribute('data-cat');
