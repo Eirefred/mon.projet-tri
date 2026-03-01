@@ -81,7 +81,7 @@
     }
 
     /* --- MOBILE --- */
-    /* --- OPTIMISATION MOBILE FINALE --- */
+    /* --- OPTIMISATION MOBILE FINALE CORRIGÉE --- */
 @media (max-width: 768px) {
     header { height: 70px; }
     .logo img { height: 40px !important; }
@@ -92,23 +92,13 @@
 
     /* NAVIGATION MOBILE */
     #navMenu { 
-        display: none; 
-        flex-direction: column; 
-        position: absolute; 
-        top: 70px; left: 0; width: 100%; 
-        background-color: var(--primary); 
-        padding: 10px 0; 
-        z-index: 1300; 
-        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        display: none; flex-direction: column; position: absolute; 
+        top: 70px; left: 0; width: 100%; background-color: var(--primary); 
+        padding: 10px 0; z-index: 1300; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
     }
-
     #navMenu.active { display: flex !important; }
     #navMenu li { display: block !important; width: 100%; text-align: center; }
-    #navMenu li a { 
-        display: block; padding: 15px; 
-        border-bottom: 1px solid rgba(255,255,255,0.1); 
-        color: white !important; font-size: 1rem;
-    }
+    #navMenu li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 1rem; }
 
     /* LÉGENDE */
     .legend-container { top: 70px; height: auto; padding: 10px 0; overflow-x: auto; white-space: nowrap; display: block; width: 100vw; }
@@ -126,62 +116,77 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden;
     }
 
-    /* CELLULES (Lignes intérieures) */
+    /* CELLULES GÉNÉRIQUES */
     td { 
-        display: flex !important; 
-        justify-content: space-between; 
-        align-items: center; 
-        padding: 10px 12px; 
-        border-bottom: 1px solid #f5f5f5; 
-        min-height: 45px;
-        box-sizing: border-box; 
+        display: flex !important; justify-content: space-between; align-items: center; 
+        padding: 10px 12px; border-bottom: 1px solid #f5f5f5; min-height: 45px; box-sizing: border-box; 
     }
 
     td:before { 
-        content: attr(data-label); 
-        font-weight: bold; color: #888; 
-        font-size: 0.65rem; text-transform: uppercase;
-        flex: 0 0 35%; text-align: left;
+        content: attr(data-label); font-weight: bold; color: #888; 
+        font-size: 0.65rem; text-transform: uppercase; flex: 0 0 35%; text-align: left;
     }
 
     td > b, td > span, td > div, td > a { flex: 1; text-align: right; font-size: 0.85rem; word-break: break-word; }
 
-    /* MISE CÔTE À CÔTE : SITE ET CONTACT */
-    td[data-label="Site web"], td[data-label="Contact"] {
+    /* --- SOLUTION : SITE ET CONTACT CÔTE À CÔTE --- */
+    
+    /* On force les deux cellules à prendre 50% et à flotter à gauche */
+    td[data-label="Site web"], 
+    td[data-label="Contact"] {
         display: inline-flex !important;
         width: 50% !important;
         float: left;
-        border-bottom: none;
-        min-height: 55px;
+        border-bottom: 1px solid #f5f5f5;
+        flex-direction: column; /* Titre en petit au dessus du bouton */
+        justify-content: center;
+        align-items: center;
+        min-height: 70px;
+        padding: 5px;
     }
 
-    /* EN-TÊTE DE CARTE (ÉVÉNEMENT ET DATE) */
+    /* On ajuste les labels "Site web" et "Contact" pour qu'ils soient centrés et petits */
+    td[data-label="Site web"]:before, 
+    td[data-label="Contact"]:before {
+        flex: none;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 4px;
+        font-size: 0.6rem;
+    }
+
+    /* On force les boutons à être centrés dans leurs colonnes de 50% */
+    td[data-label="Site web"] a, 
+    td[data-label="Contact"] a {
+        margin: 0 auto !important;
+        text-align: center;
+    }
+
+    /* TAILLE DES BOUTONS RÉDUITE */
+    .btn-action { 
+        padding: 5px 8px !important; 
+        font-size: 0.65rem !important;
+        min-width: 70px !important;
+        width: auto;
+        border-radius: 4px;
+        text-transform: none;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        display: inline-block !important;
+    }
+
+    /* Reset pour la ligne suivante (évite que le reste de la carte soit tout cassé) */
+    td[data-label="Contact"] { border-right: none; }
+    td:not([data-label="Site web"]):not([data-label="Contact"]) { clear: both; }
+
+    /* EN-TÊTE DE CARTE */
     td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
     td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
     td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
-
     td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
 
-    /* BOUTONS SITE ET CONTACT PLUS PETITS SUR MOBILE */
-        .btn-action { 
-            padding: 6px 10px; /* Réduction du rembourrage intérieur */
-            font-size: 0.7rem;   /* Taille de police réduite */
-            min-width: 65px;    /* Largeur minimale plus courte */
-            width: auto;
-            border-radius: 4px;
-            text-transform: none; /* Évite les majuscules qui prennent de la place */
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            display: inline-block;
-            margin-left: 2px;
-        }
-    /* MASQUER LES ÉVÉNEMENTS PASSÉS (GRIS) SUR MOBILE UNIQUEMENT */
-        tr.past-event, 
-        tr[style*="color: #999"], 
-        tr[style*="color: rgb(153, 153, 153)"] { 
-            display: none !important; 
-        }
+    /* MASQUER LES ÉVÉNEMENTS PASSÉS */
+    tr.past-event, tr[style*="999"] { display: none !important; }
 }
-
     /* MODAL */
     .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
     .modal-content { background: white; margin: 2% auto; padding: 15px; width: 95%; max-width: 1000px; border-radius: 12px; position: relative; box-sizing: border-box; }
