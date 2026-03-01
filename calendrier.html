@@ -534,6 +534,7 @@ function openGlobalMap() {
             if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
             else backToTopBtn.classList.remove("visible");
         }
+        #backToTop.visible { display: flex; }
     };
     backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 
