@@ -34,7 +34,7 @@
     .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
 
     /* --- TABLEAU --- */
-    
+
     .main-content { padding: 20px 2%; max-width: 1500px; margin: 0 auto; box-sizing: border-box; }
     h1 { color: var(--dark-blue); text-align: center; margin-bottom: 20px; font-size: 1.6rem; }
     .table-outer { width: 100%; box-sizing: border-box; }
@@ -45,6 +45,8 @@
     td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85rem; vertical-align: middle; overflow: hidden; word-wrap: break-word; }
     tr:hover { background: #f8fbff; }
     tr.hidden { display: none; }
+    tr.past-event { opacity: 0.5; filter: grayscale(0.8); background-color: #f9f9f9; }
+    thead th { z-index: 1001; } /* Pour que le bleu reste au-dessus du gris au scroll */
 
     /* --- BADGES & BOUTONS --- */
     .badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 5px; font-weight: bold; font-size: 0.65rem; margin: 1px; border: 1px solid rgba(0,0,0,0.1); }
@@ -185,6 +187,7 @@
     const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
     let activeFilter = null;
+    const CALENDAR_YEAR = 2026;
 
     function toggleMenu() { document.getElementById('nav-menu').classList.toggle('active'); }
 
@@ -207,6 +210,29 @@
             const row = rows[i];
             if (!row[1]) continue;
             const tr = document.createElement('tr');
+            // --- LOGIQUE DE DATE (AJOUT) ---
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dateRaw = row[0] ? String(row[0]).trim() : "";
+        
+        if (dateRaw) {
+            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
+            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
+            // Pour "11-13 sept.", on extrait "13 sept."
+            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+            
+            const jour = parseInt(dateRef.match(/\d+/));
+            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+            
+            if (jour && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jour);
+                if (dateEpreuve < today) {
+                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
+                }
+            }
+        }
+        // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
