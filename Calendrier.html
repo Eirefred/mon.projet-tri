@@ -184,10 +184,13 @@
         document.getElementById('calTable').style.display = 'table';
     }
 
-    function openMap(cp, name) {
+function openMap(cp, name) {
         document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
-        // Utilisation du zoom z=10 avec le paramètre q= pour forcer le Pin
+        
+        // On utilise 'q=' au lieu de l'ancien format pour forcer le marqueur rouge (Pin)
+        // 'z=10' pour le zoom souhaité
         const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
+        
         document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
         document.getElementById('mapModal').style.display = "block";
     }
