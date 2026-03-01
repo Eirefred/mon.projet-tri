@@ -79,9 +79,7 @@
         align-items: center;
         justify-content: center;
     }
-    
-    #backToTop.visible { display: flex !important; }
-    
+
     /* --- MOBILE --- */
     /* --- OPTIMISATION MOBILE FINALE : BOUTONS IDENTIQUES --- */
 @media (max-width: 768px) {
@@ -472,45 +470,30 @@
     }
 
     function setupFilters() {
-    const items = document.querySelectorAll('.clickable-cat');
-    const rows = document.querySelectorAll('#calBody tr');
-    
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const cat = item.getAttribute('data-cat');
-            
-            // Logique de filtrage
-            if (activeFilter === cat) {
-                activeFilter = null;
-                items.forEach(i => i.classList.remove('active', 'inactive'));
-                rows.forEach(r => r.classList.remove('hidden'));
-            } else {
-                activeFilter = cat;
-                items.forEach(i => {
-                    i.classList.toggle('active', i.getAttribute('data-cat') === cat);
-                    i.classList.toggle('inactive', i.getAttribute('data-cat') !== cat);
-                });
-                rows.forEach(row => {
-                    const rowCats = row.getAttribute('data-categories').split(',');
-                    row.classList.toggle('hidden', !rowCats.includes(cat));
-                });
-            }
-
-            // REMONTÉE AUTOMATIQUE (Mobile uniquement)
-            if (window.innerWidth <= 768) {
-                setTimeout(() => {
-                    const mainTitle = document.querySelector('h1');
-                    if (mainTitle) {
-                        mainTitle.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }, 100);
-            }
+        const items = document.querySelectorAll('.clickable-cat');
+        const rows = document.querySelectorAll('#calBody tr');
+        items.forEach(item => {
+            item.addEventListener('click', () => {
+                const cat = item.getAttribute('data-cat');
+                if (activeFilter === cat) {
+                    activeFilter = null;
+                    items.forEach(i => i.classList.remove('active', 'inactive'));
+                    rows.forEach(r => r.classList.remove('hidden'));
+                } else {
+                    activeFilter = cat;
+                    items.forEach(i => {
+                        i.classList.toggle('active', i.getAttribute('data-cat') === cat);
+                        i.classList.toggle('inactive', i.getAttribute('data-cat') !== cat);
+                    });
+                    rows.forEach(row => {
+                        const rowCats = row.getAttribute('data-categories').split(',');
+                        row.classList.toggle('hidden', !rowCats.includes(cat));
+                    });
+                }
+            });
         });
-    });
-}
+
+    }
 
     function openMap(lieu, name) {
     document.getElementById('modalTitle').innerText = name;
