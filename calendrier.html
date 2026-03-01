@@ -34,6 +34,11 @@
     .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
 
     /* --- TABLEAU --- */
+    tr.past-event {
+    opacity: 0.5;
+    filter: grayscale(0.8);
+    background-color: #f2f2f2;
+}
     .main-content { padding: 20px 2%; max-width: 1500px; margin: 0 auto; box-sizing: border-box; }
     h1 { color: var(--dark-blue); text-align: center; margin-bottom: 20px; font-size: 1.6rem; }
     .table-outer { width: 100%; box-sizing: border-box; }
@@ -200,50 +205,101 @@
     }
 
     function renderTable(rows) {
-        const body = document.getElementById('calBody');
-        const headers = rows[0].map(h => h ? String(h).trim() : "");
-        for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            if (!row[1]) continue;
-            const tr = document.createElement('tr');
-            let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
-            const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
-            let badges = [];
-            for (let j = 11; j <= 20; j++) {
-                if (row[j] === "X" || row[j] === "x") {
-                    const info = {
-                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
-                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
-                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
-                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
-                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
-                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-                        "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
-                        "Aquavelo": { code: "AV", cat: "cat-multi" },
-                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
-                    }[headers[j]] || { code: "?", cat: "" };
-                    if(info.code !== "?") { badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); rowCats.push(info.code); }
+    const body = document.getElementById('calBody');
+    const headers = rows[0].map(h => h ? String(h).trim() : "");
+    
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row[1]) continue;
+        const tr = document.createElement('tr');
+        
+        // --- Logique Intelligente de Date ---
+        let isPast = false;
+        const dateRaw = row[0] ? String(row[0]).trim() : "";
+
+        if (dateRaw) {
+            let endDate;
+            
+            // Si c'est un format "15 au 17 mai 2026", on cherche la fin
+            if (dateRaw.includes(" au ")) {
+                const parts = dateRaw.split(" au ");
+                // On prend la partie après le "au" et on ajoute l'année si elle manque
+                let endPart = parts[1];
+                if (!endPart.match(/\d{4}/)) { 
+                    const yearMatch = dateRaw.match(/\d{4}/);
+                    if (yearMatch) endPart += " " + yearMatch[0];
                 }
+                endDate = parseFrenchDate(endPart);
+            } else {
+                endDate = parseFrenchDate(dateRaw);
             }
-            tr.setAttribute('data-categories', rowCats.join(','));
-            tr.innerHTML = `
-                <td data-label="Date"><b>${row[0] || ""}</b></td>
-                <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
-                <td data-label="Organisateur">${row[6] || "-"}</td>
-                <td data-label="Région">${row[2] || ""}</td>
-                <td data-label="Lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
-                <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
-                <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
-            `;
-            body.appendChild(tr);
+
+            if (endDate && endDate < today) {
+                isPast = true;
+                tr.classList.add('past-event');
+            }
         }
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('calTable').style.display = 'table';
+        // ------------------------------------
+
+        let rowCats = [];
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+        const lieuComplet = row[9] ? String(row[9]).trim() : "";
+        let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+        
+        let badges = [];
+        for (let j = 11; j <= 20; j++) {
+            if (row[j] === "X" || row[j] === "x") {
+                const info = {
+                    "Triathlon Initiation": { code: "TI", cat: "cat-init" },
+                    "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
+                    "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
+                    "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
+                    "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
+                    "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
+                    "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+                    "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
+                    "Aquavelo": { code: "AV", cat: "cat-multi" },
+                    "Aquathlon": { code: "AQ", cat: "cat-multi" }
+                }[headers[j]] || { code: "?", cat: "" };
+                if(info.code !== "?") { badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); rowCats.push(info.code); }
+            }
+        }
+
+        tr.setAttribute('data-categories', rowCats.join(','));
+        tr.innerHTML = `
+            <td data-label="Date"><b>${dateRaw}</b></td>
+            <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
+            <td data-label="Organisateur">${row[6] || "-"}</td>
+            <td data-label="Région">${row[2] || ""}</td>
+            <td data-label="Lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
+            <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
+            <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+        `;
+        body.appendChild(tr);
     }
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('calTable').style.display = 'table';
+}
+
+// Fonction utilitaire pour comprendre les dates en français (ex: "15 mai 2026")
+function parseFrenchDate(str) {
+    const months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+    let s = str.toLowerCase();
+    let day = s.match(/\d+/);
+    let year = s.match(/\d{4}/);
+    let monthIndex = months.findIndex(m => s.includes(m));
+    
+    if (day && monthIndex !== -1 && year) {
+        return new Date(year[0], monthIndex, day[0]);
+    }
+    // Si c'est déjà un format ISO dans Excel
+    let d = new Date(str);
+    return isNaN(d) ? null : d;
+}
 
     function setupFilters() {
         const items = document.querySelectorAll('.clickable-cat');
