@@ -7,12 +7,9 @@
     <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
     <style>
     :root { 
-        --primary: #003366;  /* Bleu foncé index */
+        --primary: #0481fb; 
         --dark-blue: #003366; 
-        --accent: #FF6600;   /* Orange index */
-        --white: #ffffff;
-        --light-bg: #f9f9f9;
-        --brand-blue: #0481fb; 
+        --accent: #f39200; 
         --bg: #f8f9fa; 
     }
     body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; overflow-x: hidden; }
@@ -29,63 +26,6 @@
     nav a:hover { color: var(--accent); }
     .menu-toggle { display: none; font-size: 28px; color: white; cursor: pointer; }
 
-/* --- FOOTER (Identique à Index) --- */
-footer {
-        background-color: var(--primary); /* Utilise #003366 */
-        color: var(--white);
-        padding: 60px 20px 30px;
-        margin-top: 50px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .footer-logo-container {
-        margin-bottom: 25px;
-        display: block !important; /* Force l'affichage */
-    }
-
-    .footer-logo-container img {
-        height: 80px !important; /* Taille identique à l'index */
-        width: auto;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .footer-text a {
-        color: var(--white);
-        text-decoration: none;
-        font-size: 1.1rem;
-    }
-
-    .footer-divider {
-        width: 100%;
-        max-width: 850px;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        margin: 20px 0;
-        padding-top: 20px;
-    }
-
-/* --- RÉGLAGES MOBILE --- */
-@media (max-width: 768px) {
-        footer { padding: 40px 15px 20px; }
-        .footer-logo-container img { height: 60px !important; }
-    }
-
-    .footer-logo p {
-        margin: 0 auto;
-    }
-
-    .footer-links h4::after, .footer-contact h4::after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    footer {
-        padding: 40px 5% 20px;
-    }
-}
     /* --- LÉGENDE --- */
     .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1100; padding: 12px 0; border-bottom: 1px solid #ddd; height: 40px; display: flex; align-items: center; }
     .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 0 auto; white-space: nowrap; }
@@ -386,30 +326,6 @@ footer {
     window.onload = loadExcel;
     window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
-   <footer>
-    <div class="footer-logo-container">
-        <img src="https://mon.projet-tri.org/mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri">
-    </div>
-    
-    <div class="footer-text">
-        <a href="index.html">
-            &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
-        </a>
-    </div>
 
-    <div class="footer-divider">
-        <p style="font-size: 0.9rem; opacity: 0.9; line-height: 1.6; max-width: 800px; margin: 0 auto 15px;">
-            Notre mentorat connecté apporte une expertise de haut niveau aux triathlètes de toutes les régions. 
-            Nous sommes fiers d'accompagner des athlètes à travers tout le Québec.
-        </p>
-        
-        <details style="font-size: 0.8rem; opacity: 0.7; cursor: pointer;">
-            <summary style="list-style: none; text-decoration: underline;">Voir toutes les zones de service couvertes</summary>
-            <p style="margin-top: 10px; font-style: italic;">
-                Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Abitibi, Bas-Saint-Laurent, Côte-Nord et Gaspésie.
-            </p>
-        </details>
-    </div>
-</footer>
 </body>
 </html>
