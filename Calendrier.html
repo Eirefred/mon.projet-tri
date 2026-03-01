@@ -179,20 +179,20 @@
     }
 
 function openMap(cp, name) {
-        document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
-        
-        // z=10 : Zoom plus large (vue provinciale/régionale)
-        // q= : Force l'affichage du marqueur (le "pin") sur le code postal
-        const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=8&ie=UTF8&iwloc=&output=embed`;
-        
-        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
-        document.getElementById('mapModal').style.display = "block";
-    }
+    document.getElementById('modalTitle').innerText = name + " (" + cp + ")";
+    
+    // z=10 : Vue régionale équilibrée
+    // q= : Force le marqueur (le "pin") sur le code postal
+    const url = `https://maps.google.com/maps?q=${encodeURIComponent(cp)}&t=&z=10&ie=UTF8&iwloc=&output=embed`;
+    
+    document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+    document.getElementById('mapModal').style.display = "block";
+}
 
-    function closeMap() { 
-        document.getElementById('mapModal').style.display = "none";
-        document.getElementById('mapContainer').innerHTML = "";
-    }
+function closeMap() { 
+    document.getElementById('mapModal').style.display = "none";
+    document.getElementById('mapContainer').innerHTML = "";
+}
 
     window.onload = loadExcel;
     window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
