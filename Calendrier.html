@@ -9,47 +9,52 @@
         :root { --primary: #003366; --accent: #f39200; --bg: #f8f9fa; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: var(--bg); margin: 0; padding: 0; }
 
-        /* --- HEADER (STYLE INDEX.HTML) --- */
+        /* --- HEADER (STRUCTURE EXACTE INDEX.HTML) --- */
         header {
             background-color: white;
-            padding: 10px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            min-height: 80px;
+            width: 100%;
         }
 
-        .logo {
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header-left {
             display: flex;
             align-items: center;
-            gap: 15px;
-            text-decoration: none;
+            gap: 20px;
         }
 
         .logo img {
-            height: 55px;
+            height: 60px;
             width: auto;
+            display: block;
         }
 
         .region-mention {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--primary);
-            font-weight: 600;
+            font-weight: 700;
             border-left: 2px solid var(--accent);
-            padding-left: 10px;
+            padding-left: 15px;
+            text-transform: uppercase;
             line-height: 1.2;
-            display: block;
         }
 
         nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 25px;
             margin: 0;
             padding: 0;
         }
@@ -58,23 +63,37 @@
             color: #333;
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
         }
 
         nav a:hover { color: var(--accent); }
 
-        .lang-switch { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
-        .switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+        /* --- SÉLECTEUR DE LANGUE --- */
+        .switch { position: relative; display: inline-block; width: 60px; height: 30px; }
         .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 20px; }
-        .slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary); }
-        input:checked + .slider:before { transform: translateX(16px); }
+        .slider {
+            position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+            background-color: var(--primary); transition: .4s; border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px;
+            background-color: white; transition: .4s; border-radius: 50%; z-index: 2;
+        }
+        .labels {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            font-size: 10px; font-family: sans-serif; font-weight: bold;
+        }
+        .labels::after { content: attr(data-off); position: absolute; right: 8px; top: 8px; color: white; }
+        .labels::before { content: attr(data-on); position: absolute; left: 8px; top: 8px; color: white; opacity: 0; }
+        input:checked + .slider:before { transform: translateX(30px); }
+        input:checked + .slider .labels::after { opacity: 0; }
+        input:checked + .slider .labels::before { opacity: 1; }
 
         /* --- LÉGENDE FIXE --- */
         .legend-container { 
             position: sticky; 
-            top: 80px; /* Juste sous le header */
+            top: 80px; 
             background: var(--bg); 
             z-index: 1000; 
             padding: 10px 5%;
@@ -93,10 +112,9 @@
         .table-container { background: white; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: visible; }
         table { width: 100%; border-collapse: collapse; min-width: 900px; }
         
-        /* Titres de colonnes collants */
         thead th { 
             position: sticky; 
-            top: 145px; /* Ajusté pour Header + Légende */
+            top: 145px; 
             background: var(--primary); 
             color: white; 
             padding: 15px; 
@@ -107,7 +125,7 @@
 
         td { padding: 12px 15px; border-bottom: 1px solid #eee; font-size: 0.9rem; }
 
-        /* ICONES UNIFORMES 30x30 */
+        /* BADGES DISCIPLINES 30x30 */
         .badge { 
             display: inline-flex; align-items: center; justify-content: center; 
             width: 30px; height: 30px; border-radius: 6px; 
@@ -126,32 +144,38 @@
 <body>
 
     <header>
-        <a href="https://mon.projet-tri.org/index.html" class="logo">
-            <img src="https://mon.projet-tri.org/mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri">
-            <span class="region-mention">Capitale-Nationale<br>Chaudière-Appalaches</span>
-        </a>
-        <nav>
-            <ul>
-                <li><a href="https://mon.projet-tri.org/decouvrir.html">Découvrir</a></li>
-                <li><a href="https://mon.projet-tri.org/index.html?lang=fr#vision">Vision</a></li>
-                <li><a href="https://mon.projet-tri.org/index.html?lang=fr#programme">Programmes</a></li>
-                <li><a href="Calendrier.html" style="color: var(--accent); font-weight:bold;">Calendrier</a></li>
-                <li><a href="https://mon.projet-tri.org/index.html?lang=fr#contact">Contact</a></li>
-                <li class="lang-switch">
-                    <span>FR</span>
-                    <label class="switch">
-                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
-                        <span class="slider"></span>
-                    </label>
-                    <span>EN</span>
-                </li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <div class="header-left">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri">
+                    </a>
+                </div>
+                <div class="region-mention">Partout au Québec</div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="decouvrir.html">L'OBNL</a></li>
+                    <li><a href="index.html?lang=fr#vision">Notre vision</a></li>
+                    <li><a href="index.html?lang=fr#programme">Les programmes</a></li>
+                    <li><a href="Calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier</a></li>
+                    <li><a href="index.html?lang=fr#contact">Rejoignez-nous</a></li>
+                    <li class="lang-selector">
+                        <label class="switch">
+                            <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
+                            <span class="slider">
+                                <span class="labels" data-on="EN" data-off="FR"></span>
+                            </span>
+                        </label>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <div class="legend-container">
         <div class="legend">
-            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px;">
+            <div class="legend-item" style="border-right: 1px solid #eee; padding-right: 10px; margin-right: 5px;">
                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" class="tq-logo">
                 <strong>Accr. TQ</strong>
             </div>
@@ -169,7 +193,7 @@
 
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
-        <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
+        <div id="status" style="text-align:center; padding: 20px;">Chargement du calendrier...</div>
 
         <div class="table-container">
             <table id="calTable" style="display:none;">
@@ -230,6 +254,7 @@
 
             const tr = document.createElement('tr');
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" class="tq-logo" title="Accr. TQ">` : "";
+            const cp = row[9] ? String(row[9]).trim() : "";
             
             let badges = [];
             for (let j = 11; j <= 19; j++) {
@@ -243,7 +268,7 @@
                 <td><b>${row[0] || ""}</b></td>
                 <td>${isTQ} ${row[1]}</td>
                 <td>${row[2] || ""}</td>
-                <td>${row[9] ? `📍 ${row[9]}` : "-"}</td>
+                <td>${cp ? `📍 ${cp}` : "-"}</td>
                 <td>${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-site">Lien</a>` : "-"}</td>
                 <td><div style="display:flex; flex-wrap:wrap;">${badges.join("")}</div></td>
             `;
