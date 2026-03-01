@@ -60,9 +60,9 @@
     .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
     .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; box-sizing: border-box; }
 
-    /* BOUTON RETOUR EN HAUT (Caché sur PC par défaut) */
+    /* BOUTON RETOUR EN HAUT */
     #backToTop {
-        display: none;
+        display: none; /* Caché par défaut */
         position: fixed;
         bottom: 20px;
         right: 20px;
@@ -78,6 +78,11 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         align-items: center;
         justify-content: center;
+    }
+
+    /* AJOUTEZ CETTE RÈGLE ICI */
+    #backToTop.visible { 
+        display: flex !important; 
     }
 
     /* --- MOBILE --- */
