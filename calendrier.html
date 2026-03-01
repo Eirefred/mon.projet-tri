@@ -492,20 +492,7 @@
                 }
             });
         });
-        document.querySelectorAll('.legend-item').forEach(item => {
-    item.addEventListener('click', () => {
-        // ... votre code existant qui filtre les courses ...
-        
-        // AJOUTEZ CECI :
-        setTimeout(() => {
-    const mainTitle = document.querySelector('h1');
-    mainTitle.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-    });
-}, 100);
-    });
-});
+
     }
 
     function openMap(lieu, name) {
