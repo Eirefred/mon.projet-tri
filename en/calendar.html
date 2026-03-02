@@ -433,7 +433,7 @@
 
 
 
-                <div class="region-mention">Partout au Québec</div>
+                <div class="region-mention">Across Quebec</div>
             </div>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
@@ -496,7 +496,7 @@
                         <th class="col-event">Event</th>
                         <th class="col-org">Organisation</th>
                         <th class="col-reg">Region</th>
-                        <th class="col-lieu">Place</th>
+                        <th class="col-lieu">Location</th>
                         <th class="col-site">Internet</th>
                         <th class="col-mail">Contact</th>
                         <th class="col-epreuves">Races</th>
@@ -594,13 +594,13 @@
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
                 <td data-label="Date"><b>${row[0] || ""}</b></td>
-                <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
-                <td data-label="Organisateur">${row[6] || "-"}</td>
-                <td data-label="Région">${row[2] || ""}</td>
-                <td data-label="Lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
-                <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
-                <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+                <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
+                <td data-label="Organisation">${row[6] || "-"}</td>
+                <td data-label="Region">${row[2] || ""}</td>
+                <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
+                <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Website</a>` : "-"}</td>
+                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+                <td data-label="Races"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
             `;
             body.appendChild(tr);
         }
