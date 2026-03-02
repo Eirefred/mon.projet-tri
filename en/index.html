@@ -273,6 +273,14 @@ input:checked + .slider .labels::after {
     .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
     
+/* CACHER LE HAMBURGER SUR ORDINATEUR */
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: row !important;
@@ -281,19 +289,17 @@ input:checked + .slider .labels::after {
             padding: 10px 15px !important;
         }
 
+        /* AFFICHER LE HAMBURGER SUR MOBILE */
+    .menu-toggle {
+        display: block !important;
+    }
+
         /* 1. CACHE TOUS LES LIENS TEXTUELS SUR MOBILE */
         nav ul li {
             display: none !important;
         }
 
-        /* Affiche le hamburger */
-.menu-toggle {
-        display: block !important;
-        font-size: 30px;
-        cursor: pointer;
-        color: var(--primary);
-        z-index: 1100;
-    }
+
 
 /* Cache les liens par défaut sur mobile, sauf si le menu est actif */
 nav ul:not(.active) li:not(.lang-selector) {
