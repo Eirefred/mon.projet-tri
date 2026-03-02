@@ -421,10 +421,18 @@
 
             .labels { font-size: 8px !important; }
 
-            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
-            nav ul li:not(.lang-selector) {
-                display: none !important;
-            }
+            /* Cache les liens par défaut sur mobile quand le menu est fermé */
+nav ul:not(.active) li:not(.lang-selector) {
+    display: none;
+}
+
+/* Affiche TOUS les liens (y compris le toggle) quand le menu est actif */
+nav ul.active li {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
 
             h1 { font-size: 2.2rem !important; }
 
