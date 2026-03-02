@@ -324,35 +324,37 @@
     .header-left {
         display: flex !important;
         align-items: center !important;
-        gap: 5px !important; 
+        gap: 8px !important; 
     }
 
     .logo img { height: 35px !important; }
 
     .region-mention {
         display: block !important;
-        font-size: 9px;
-        max-width: 65px;
+        font-size: 10px;
+        line-height: 1.1;
+        max-width: 75px;
+        margin: 0 !important;
     }
 
-    /* Affiche le hamburger */
+    /* Le Hamburger */
     .menu-toggle {
         display: block !important;
         font-size: 30px;
         color: #003366;
         cursor: pointer;
-        order: 3;
+        order: 3; /* En dernier à droite */
     }
 
-    /* Force l'affichage du sélecteur de langue sur la barre principale */
+    /* FORCE LE TOGGLE À RESTER DANS LE HEADER */
     .lang-selector {
         display: block !important;
-        order: 2;
+        order: 2; /* Entre le logo et le hamburger */
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 15px;
     }
 
-    /* Style du menu déroulant */
+    /* Le menu qui descend au clic */
     #nav-menu {
         display: none; 
         flex-direction: column;
@@ -361,12 +363,11 @@
         left: 0;
         width: 100%;
         background: white;
-        padding: 10px 0;
+        padding: 20px 0;
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
         z-index: 1000;
     }
 
-    /* CLASSE ACTIVE POUR LE CLIC */
     #nav-menu.active {
         display: flex !important;
     }
@@ -376,11 +377,10 @@
         text-align: center;
     }
 
-    /* Cache les liens textuels de la barre du haut UNIQUEMENT s'ils ne sont pas dans le menu déroulant */
+    /* Cache les liens texte de la barre du haut sans toucher au toggle */
     nav ul:not(.active) li:not(.lang-selector) {
         display: none !important;
     }
-}
 
         } 
         /* --- FIN DU BLOC MOBILE --- */
@@ -813,7 +813,7 @@
 </footer>
 
 <script>
-// --- LOGIQUE GLOBALE DU QUIZ ---
+   // --- LOGIQUE GLOBALE DU QUIZ ---
 let scores = { securite: 0, autonomie: 0, social: 0 };
 let progRes = "";
 
@@ -860,25 +860,30 @@ function noter(cat, pts, next) {
     if (nextStep && next !== 'qRes') {
         mélangerOptions(next);
         nextStep.style.display = 'block';
+    } else if (next === 'qRes') {
+        // La logique est gérée par la question 6 qui appelle finaliser()
     }
 }
 
 function finaliser(physio) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    
+    // Calcul du profil gagnant (le score le plus haut)
     const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
     
     let titre = "";
     let desc = "";
 
     if (gagnant === 'securite') {
-        titre = "Sérénité Totale";
-        progRes = "PREMIER PAS";
-        desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
-    } else {
-        titre = "Progression & Performance";
-        progRes = "MA SAISON / PERFORMANCE";
-        desc = "Vous cherchez à optimiser vos résultats avec un soutien expert.";
-    }
+    titre = "Sérénité Totale";
+    progRes = "PREMIER PAS";
+    desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
+} else {
+    // Fusion du profil social et autonomie
+    titre = "Progression & Performance";
+    progRes = "MA SAISON / PERFORMANCE";
+    desc = "Vous cherchez à optimiser vos résultats avec un soutien expert.";
+}
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     document.getElementById('res-titre').innerText = "Analyse : " + titre;
@@ -888,7 +893,6 @@ function finaliser(physio) {
 
 function mélangerOptions(containerId) {
     const container = document.querySelector(`#${containerId}`);
-    if (!container) return;
     const options = Array.from(container.querySelectorAll('.quiz-option'));
     for (let i = options.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -911,17 +915,18 @@ function transférerAuForm() {
 function choisirProgramme(nom) {
     document.getElementById('message-field').value = "PROJECT: " + nom;
     closeModal('m1'); 
-    closeModal('m2-fusion');
+    closeModal('m2-fusion'); // On ferme la nouvelle modale fusionnée
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 200);
 }
 
-// --- TÉLÉPHONE ET DATES ---
+// Téléphone et Dates
 const phoneInput = document.getElementById('phone');
-const contactForm = document.querySelector('form');
+const contactForm = document.querySelector('form'); // Récupère le formulaire
 
 if (phoneInput) {
+    // A. Formattage pendant la saisie (sans changer la couleur)
     phoneInput.addEventListener('input', (e) => {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
         if (!x[1]) {
@@ -929,12 +934,16 @@ if (phoneInput) {
         } else {
             e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
         }
+        
+        // Si l'utilisateur recommence à taper, on retire le rouge
         phoneInput.style.borderColor = '#ddd';
         phoneInput.style.backgroundColor = 'white';
     });
 
+    // B. Validation au moment où l'utilisateur SORT du champ (blur)
     phoneInput.addEventListener('blur', (e) => {
         const numbersOnly = e.target.value.replace(/\D/g, '');
+        // Si le champ n'est pas vide et fait moins de 10 chiffres
         if (numbersOnly.length > 0 && numbersOnly.length < 10) {
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
@@ -942,23 +951,22 @@ if (phoneInput) {
     });
 }
 
-if (contactForm && phoneInput) {
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const numbersOnly = phoneInput.value.replace(/\D/g, '');
         if (numbersOnly.length < 10) {
-            e.preventDefault();
+            e.preventDefault(); // Empêche l'envoi
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
-            phoneInput.focus();
+            phoneInput.focus(); // Remet le curseur dans le champ
             alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
         }
     });
 }
-
 const today = new Date().toISOString().split('T')[0];
 document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
 
-// --- LANGUE ET MENU HAMBURGER ---
 function toggleLang() {
     const isChecked = document.getElementById('lang-toggle').checked;
     if (isChecked) {
@@ -975,15 +983,14 @@ function toggleMenu() {
     }
 }
 
-// Initialisation au chargement
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Synchronisation bouton langue
+    // Synchronisation du bouton langue
     const toggle = document.getElementById('lang-toggle');
     if (toggle && window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
 
-    // 2. Fermeture automatique du menu au clic sur un lien
+    // Fermeture du menu au clic sur un lien
     document.querySelectorAll('#nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             const menu = document.getElementById('nav-menu');
