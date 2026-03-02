@@ -318,43 +318,47 @@
         justify-content: space-between !important;
         align-items: center !important;
         padding: 0 15px !important;
+        height: 95px !important;
     }
 
-    /* Rapproche la mention du logo */
+    /* Regroupe Logo + Texte à gauche */
     .header-left {
         display: flex !important;
         align-items: center !important;
-        gap: 8px !important; 
+        gap: 8px !important; /* Espace serré comme demandé */
+        max-width: 60%;
     }
 
     .logo img { height: 35px !important; }
 
+    /* Rétablit la taille du texte d'origine */
     .region-mention {
         display: block !important;
-        font-size: 10px;
-        line-height: 1.1;
-        max-width: 75px;
+        font-size: 11px !important; 
+        line-height: 1.2;
+        max-width: 80px;
         margin: 0 !important;
+        color: var(--primary);
     }
 
-    /* Le Hamburger */
+    /* Le Hamburger tout à droite */
     .menu-toggle {
         display: block !important;
-        font-size: 30px;
+        font-size: 32px;
         color: #003366;
         cursor: pointer;
-        order: 3; /* En dernier à droite */
+        order: 3;
     }
 
-    /* FORCE LE TOGGLE À RESTER DANS LE HEADER */
+    /* LE TOGGLE DE LANGUE : Visible dans le header, pas dans le menu */
     .lang-selector {
         display: block !important;
-        order: 2; /* Entre le logo et le hamburger */
+        order: 2; /* Position entre le texte et le hamburger */
         margin-left: auto;
         margin-right: 15px;
     }
 
-    /* Le menu qui descend au clic */
+    /* Le menu déroulant */
     #nav-menu {
         display: none; 
         flex-direction: column;
@@ -377,12 +381,11 @@
         text-align: center;
     }
 
-    /* Cache les liens texte de la barre du haut sans toucher au toggle */
+    /* Cache les liens texte du header, mais GARDE le toggle langue visible */
     nav ul:not(.active) li:not(.lang-selector) {
         display: none !important;
     }
-
-        } 
+}
         /* --- FIN DU BLOC MOBILE --- */
 
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
@@ -430,6 +433,7 @@
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
+            
             <nav>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <ul id="nav-menu">
@@ -438,6 +442,7 @@
         <li><a href="#programme">Les programmes</a></li>
         <li><a href="calendrier.html">Calendrier</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
+        
         <li class="lang-selector">
             <label class="switch">
                 <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
@@ -983,14 +988,14 @@ function toggleMenu() {
     }
 }
 
+// Gestion des clics et de la langue au chargement
 window.addEventListener('DOMContentLoaded', () => {
-    // Synchronisation du bouton langue
     const toggle = document.getElementById('lang-toggle');
     if (toggle && window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
 
-    // Fermeture du menu au clic sur un lien
+    // Ferme le menu quand on clique sur un lien (ex: #vision)
     document.querySelectorAll('#nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
             const menu = document.getElementById('nav-menu');
