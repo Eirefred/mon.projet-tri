@@ -985,14 +985,22 @@ window.addEventListener('DOMContentLoaded', () => {
             if (menuBtn) menuBtn.textContent = '☰';
         });
 const backToTopBtn = document.getElementById("backToTop");
-    window.onscroll = function() {
-        if (window.innerWidth <= 768) {
-            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
-            else backToTopBtn.classList.remove("visible");
-        }
-    };
-    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 
+window.onscroll = function() {
+    // Vérifie si on est sur mobile (largeur < 768px)
+    if (window.innerWidth <= 768) {
+        // Vérifie la distance de scroll (plus de 300px)
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            backToTopBtn.classList.add("visible");
+        } else {
+            backToTopBtn.classList.remove("visible");
+        }
+    } else {
+        // Sur ordinateur, on le cache toujours selon votre demande
+        backToTopBtn.classList.remove("visible");
+    }
+};
+backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 </script>
 </body>
 </html>
