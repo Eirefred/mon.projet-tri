@@ -313,79 +313,70 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0 15px !important;
-        height: 95px !important;
-    }
+            .nav-container {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 10px 15px !important;
+            }
 
-    /* Regroupe Logo + Texte à gauche */
-    .header-left {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important; /* Espace serré comme demandé */
-        max-width: 60%;
-    }
+            .header-left {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                max-width: 70%;
+            }
 
-    .logo img { height: 35px !important; }
+            .logo img { height: 35px !important; }
 
-    /* Rétablit la taille du texte d'origine */
-    .region-mention {
-        display: block !important;
-        font-size: 11px !important; 
-        line-height: 1.2;
-        max-width: 80px;
-        margin: 0 !important;
-        color: var(--primary);
-    }
+            .region-mention {
+                display: block !important;
+                white-space: normal !important;
+                max-width: 80px;
+                font-size: 10px;
+                line-height: 1.1;
+            }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
 
-    /* Le Hamburger tout à droite */
-    .menu-toggle {
-        display: block !important;
-        font-size: 32px;
-        color: #003366;
-        cursor: pointer;
-        order: 3;
-    }
+            .switch {
+                width: 44px !important;
+                height: 22px !important;
+                flex-shrink: 0 !important;
+            }
 
-    /* LE TOGGLE DE LANGUE : Visible dans le header, pas dans le menu */
-    .lang-selector {
-        display: block !important;
-        order: 2; /* Position entre le texte et le hamburger */
-        margin-left: auto;
-        margin-right: 15px;
-    }
+            .slider:before {
+                height: 16px !important;
+                width: 16px !important;
+                left: 3px !important;
+                bottom: 3px !important;
+                border-radius: 50% !important;
+            }
 
-    /* Le menu déroulant */
-    #nav-menu {
-        display: none; 
-        flex-direction: column;
-        position: absolute;
-        top: 95px;
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px 0;
-        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
+            /* Correction du glissement sur mobile */
+            input:checked + .slider:before {
+                transform: translateX(20px) !important;
+            }
 
-    #nav-menu.active {
-        display: flex !important;
-    }
+            .labels { font-size: 8px !important; }
 
-    #nav-menu li {
-        margin: 15px 0;
-        text-align: center;
-    }
+            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
+            nav ul li:not(.lang-selector) {
+                display: none !important;
+            }
 
-    /* Cache les liens texte du header, mais GARDE le toggle langue visible */
-    nav ul:not(.active) li:not(.lang-selector) {
-        display: none !important;
-    }
-}
+            h1 { font-size: 2.2rem !important; }
+
+            /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
+        .form-row {
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
+
+        } 
         /* --- FIN DU BLOC MOBILE --- */
 
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
@@ -433,24 +424,21 @@
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
-            
             <nav>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <ul id="nav-menu">
+    <ul>
         <li><a href="decouvrir.html">L'OBNL</a></li>
         <li><a href="#vision">Notre vision</a></li>
         <li><a href="#programme">Les programmes</a></li>
         <li><a href="calendrier.html">Calendrier</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
-        
         <li class="lang-selector">
-            <label class="switch">
-                <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-                <span class="slider">
-                    <span class="labels" data-on="EN" data-off="FR"></span>
-                </span>
-            </label>
-        </li>
+    <label class="switch">
+        <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
+        <span class="slider">
+            <span class="labels" data-on="EN" data-off="FR"></span>
+        </span>
+    </label>
+</li>
     </ul>
 </nav>
         </div>
@@ -981,28 +969,20 @@ function toggleLang() {
     }
 }
 
-function toggleMenu() {
-    const menu = document.getElementById('nav-menu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
-// Gestion des clics et de la langue au chargement
+// Synchronisation au chargement
 window.addEventListener('DOMContentLoaded', () => {
     const toggle = document.getElementById('lang-toggle');
-    if (toggle && window.location.pathname.includes('/en/')) {
+    // Si on est dans le dossier /en/, on coche le bouton
+    if (window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
-
-    // Ferme le menu quand on clique sur un lien (ex: #vision)
-    document.querySelectorAll('#nav-menu a').forEach(link => {
-        link.addEventListener('click', () => {
-            const menu = document.getElementById('nav-menu');
-            if (menu) menu.classList.remove('active');
-        });
-    });
 });
+
+// Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
+if (window.location.pathname.includes('/en/')) {
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true;
+}
 </script>
 </body>
 </html>
