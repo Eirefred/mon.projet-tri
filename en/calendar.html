@@ -478,7 +478,7 @@
     <img src="../favicon.png" alt="Icon" class="cta-icon-img">
     <div class="cta-content">
         <p class="cta-main-text">
-            Choose your project, and we’ll guide you along the way. 
+            Choose your project, and we’ll guide you along the way 
             <span style="white-space: nowrap;">from <strong class="orange-letter">A</strong> to <strong class="orange-letter">Z</strong>.</span>
         </p>
         <span class="cta-sub-text">
@@ -565,9 +565,9 @@
                     if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
                         dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
                     }
-                });
+                }); // On ferme bien le forEach ici
 
-                // Majuscule (ex: 12 aug -> 12 Aug)
+                // Mise en majuscule de la première lettre
                 dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
 
                 // Logique pour griser les événements passés
@@ -583,9 +583,9 @@
                 }
             }
 
-            // --- 2. CRÉATION DES CELLULES (TD) ---
+            // --- 2. CRÉATION DES CELLULES ---
             
-            // Date (Anglais)
+            // Date (Affichage de la version traduite)
             const tdDate = document.createElement('td');
             tdDate.className = 'col-date';
             tdDate.innerText = dateDisplay;
@@ -603,7 +603,7 @@
             tdRegion.innerText = row[2] || "";
             tr.appendChild(tdRegion);
 
-            // Catégories (badges)
+            // Type (Badges)
             const tdType = document.createElement('td');
             tdType.className = 'col-type';
             const cats = row[3] ? String(row[3]).split(',').map(s => s.trim()) : [];
@@ -615,7 +615,7 @@
             });
             tr.appendChild(tdType);
 
-            // Liens
+            // Liens (Boutons Website et Contact)
             const tdLinks = document.createElement('td');
             tdLinks.className = 'col-links';
             if (row[4]) {
@@ -632,12 +632,13 @@
             }
             tr.appendChild(tdLinks);
 
-            // Attributs pour mobile
+            // Attributs pour le filtrage et le mode mobile
             tr.setAttribute('data-categories', cats.join(','));
             body.appendChild(tr);
         }
 
-        // --- 3. AFFICHAGE DU TABLEAU ET CACHAGE DU STATUS ---
+        // --- 3. COMMANDE D'AFFICHAGE (CRUCIAL) ---
+        // On cache le message "Chargement" et on affiche le tableau
         document.getElementById('status').style.display = 'none';
         document.getElementById('calTable').style.display = 'table';
     }
