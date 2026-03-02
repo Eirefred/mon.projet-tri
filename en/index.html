@@ -306,36 +306,33 @@ input:checked + .slider .labels::after {
         display: flex !important; 
     }
     @media (max-width: 768px) {
-        .nav-container {
-            flex-direction: row !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 10px 15px !important;
-        }
-
-        /* AFFICHER LE HAMBURGER SUR MOBILE */
-    .menu-toggle {
-        display: block !important;
+    .nav-container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
     }
 
-        /* 1. CACHE TOUS LES LIENS TEXTUELS SUR MOBILE */
-        nav ul li {
-            display: none !important;
-        }
+    /* AFFICHER LE HAMBURGER SUR MOBILE */
+    .menu-toggle {
+        display: block !important;
+        cursor: pointer;
+        font-size: 30px;
+        z-index: 1100;
+    }
 
-
-
-/* Cache les liens par défaut sur mobile, sauf si le menu est actif */
-nav ul:not(.active) li:not(.lang-selector) {
+    /* 1. Cache les liens par défaut sur mobile, sauf si le menu est actif */
+    /* On a retiré le "nav ul li { display: none !important; }" qui bloquait tout */
+    nav ul:not(.active) li:not(.lang-selector) {
         display: none !important;
     }
 
-/* Style du menu déroulant quand il est actif */
-nav ul.active {
+    /* 2. Style du menu déroulant quand il est actif */
+    nav ul.active {
         display: flex !important;
         flex-direction: column !important;
         position: absolute;
-        top: 80px; /* Ajustez selon la hauteur de votre header */
+        top: 60px; /* Ajustez selon la hauteur réelle de votre header mobile */
         left: 0;
         width: 100%;
         background-color: white !important;
@@ -344,63 +341,69 @@ nav ul.active {
         z-index: 1000;
     }
 
-/* FORCE l'affichage de chaque item dans le menu ouvert */
+    /* 3. FORCE l'affichage de chaque item dans le menu ouvert */
     nav ul.active li {
         display: block !important; 
         width: 100%;
         text-align: center;
-        margin: 10px 0 !important;
+        margin: 0 !important; /* On met 0 pour que la bordure colle bien */
         border-bottom: 1px solid #eee;
     }
+
     nav ul.active li:last-child {
         border-bottom: none;
     }
+
     nav ul.active li a {
         display: block;
-        padding: 10px;
+        padding: 15px; /* Plus d'espace pour cliquer avec le doigt */
         color: var(--primary) !important;
         font-size: 1.2rem;
         text-decoration: none;
     }
 
-        .header-left {
-            display: flex !important;
-            max-width: 75%;
-        }
+    /* Reste de vos styles de mise en page */
+    .header-left {
+        display: flex !important;
+        max-width: 75%;
+    }
 
-        .logo img { height: 35px !important; }
+    .logo img { height: 35px !important; }
 
-        .region-mention {
-            display: block !important;
-            white-space: normal !important;
-            max-width: 80px;
-            font-size: 10px;
-        }
+    .region-mention {
+        display: block !important;
+        white-space: normal !important;
+        max-width: 80px;
+        font-size: 10px;
+    }
 
-        .switch {
-            width: 44px !important;
-            height: 22px !important;
-        }
+    .switch {
+        width: 44px !important;
+        height: 22px !important;
+    }
 
-        .footer-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 20px;
-        }
+    input:checked + .slider:before {
+        transform: translateX(20px) !important;
+    }
 
-        /* Ajustement final du slider à droite */
-        input:checked + .slider:before {
-            transform: translateX(20px) !important;
-        }
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
 
-        h1 { font-size: 2.2rem !important; }
+    h1 { font-size: 2.2rem !important; }
 
-         /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
-        .form-row {
-            flex-direction: column !important;
-            gap: 10px !important;
-        }
-    } /* --- FIN DU BLOC MOBILE --- */
+    .form-row {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    /* Style spécifique pour le bouton Back to Top sur mobile */
+    #backToTop.visible {
+        display: block !important;
+    }
+} /* --- FIN DU BLOC MOBILE --- */
 
 
     </style>
@@ -967,40 +970,47 @@ function toggleLang() {
 
 // Initialisation au chargement
 window.addEventListener('DOMContentLoaded', () => {
+    // --- 1. GESTION DU HAMBURGER ---
     const menuBtn = document.getElementById('mobile-menu-btn');
     const navMenu = document.getElementById('navMenu');
 
     if (menuBtn && navMenu) {
-        menuBtn.addEventListener('click', () => {
+        menuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
             navMenu.classList.toggle('active');
-            // Change l'icône : X si ouvert, ☰ si fermé
             menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
         });
     }
 
-    // Ferme le menu si on clique sur un lien interne (#)
+    // Fermer le menu si on clique sur un lien
     document.querySelectorAll('#navMenu a').forEach(link => {
         link.addEventListener('click', () => {
-            navMenu.classList.remove('active');
+            if (navMenu) navMenu.classList.remove('active');
             if (menuBtn) menuBtn.textContent = '☰';
         });
-const backToTopBtn = document.getElementById("backToTop");
+    });
 
-window.onscroll = function() {
-    // Vérifie si on est sur mobile (largeur < 768px)
-    if (window.innerWidth <= 768) {
-        // Vérifie la distance de scroll (plus de 300px)
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-            backToTopBtn.classList.add("visible");
-        } else {
-            backToTopBtn.classList.remove("visible");
-        }
-    } else {
-        // Sur ordinateur, on le cache toujours selon votre demande
-        backToTopBtn.classList.remove("visible");
+    // --- 2. GESTION DU BOUTON BACK TO TOP ---
+    const backToTopBtn = document.getElementById("backToTop");
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
     }
-};
-backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
+});
 </script>
 </body>
 </html>
