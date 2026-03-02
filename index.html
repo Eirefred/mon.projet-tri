@@ -320,6 +320,27 @@
                 padding: 10px 15px !important;
             }
 
+            #nav-menu {
+        display: none; /* Caché par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 95px; 
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        padding: 10px 0 30px 0; /* Plus d'espace en bas */
+        box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+    }
+
+    #nav-menu.active {
+        display: flex; /* S'affiche au clic */
+    }
+
+    #nav-menu li {
+        margin: 12px 0; /* Espacement vertical entre les liens */
+        text-align: center;
+    }
+
             .header-left {
                 display: flex !important;
                 flex-direction: row !important;
@@ -377,6 +398,15 @@
         }
 
         } 
+
+        @media (max-width: 480px) {
+    .logo img {
+        height: 45px; /* On réduit un peu le logo sur très petit écran */
+    }
+    .region-mention {
+        display: none; /* On cache "Partout au Québec" sur mobile pour gagner de l'espace */
+    }
+}
         /* --- FIN DU BLOC MOBILE --- */
 
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
@@ -425,6 +455,8 @@
                 <div class="region-mention">Partout au Québec</div>
             </div>
             <nav>
+
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <ul>
         <li><a href="decouvrir.html">L'OBNL</a></li>
         <li><a href="#vision">Notre vision</a></li>

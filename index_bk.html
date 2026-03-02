@@ -32,14 +32,15 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet Tri | Entrainement et mentorat connecté</title>
-    <meta name="description" content="OBNL dédiée aux triathlètes au Québec. Coaching sur mesure, mentorat et programmes tous niveaux partout dans la province.">
+    <meta name="description" content="OBNL dédiée aux triathlètes au Québec. Coaching sur mesure, mentorat et programmes tous niveaux partout dans la province. Trouvez le calendrier complet des triathlon et duathlon au Québec pour 2026">
 
     <meta name="keywords" content="triathlon, duathlon, coaching en ligne, mentorat connecté, OBNL, Québec, entraînement à distance, Montréal, Québec, Gaspésie, Saguenay, Estrie, Mauricie, Outaouais, Abitibi, Côte-Nord, Nord-du-Québec, Chaudière-Appalaches, Laval, Lanaudière, Laurentides, Montérégie, Centre-du-Québec, entraineur, remote">
     
     <link rel="canonical" href="https://mon.projet-tri.org/" />
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.jpg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="apple-touch-icon.png">
     <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
@@ -428,6 +429,7 @@
         <li><a href="decouvrir.html">L'OBNL</a></li>
         <li><a href="#vision">Notre vision</a></li>
         <li><a href="#programme">Les programmes</a></li>
+        <li><a href="calendrier.html">Calendrier</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
         <li class="lang-selector">
     <label class="switch">
@@ -546,23 +548,19 @@
                 Cliquez sur le profil qui vous ressemble pour en savoir plus :
             </p>
             
-            <div class="grid">
-                <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec : programme d'accompagnement complet pour débutants entrainement à distance" style="cursor: pointer;">
-                    <h3>Premier Pas</h3>
-                    <p>Pour ceux qui n'ont jamais osé franchir la ligne. Un encadrement sécurisant de A à Z pour votre premier triathlon.</p>
-                    <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
-                </div>
-                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Mentorat et coaching de triathlon personnalisé au Québec - Programme Ma Saison pour athlètes de tous niveaux" style="cursor: pointer; background-image: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('mentorat-triathlon-quebec.jpg');">
-                    <h3>Ma Saison</h3>
-                    <p>Connectez-vous avec un mentor et coach dédié pour ne plus jamais vous sentir seul à l'entraînement.</p>
-                    <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
-                </div>
-                <div class="card card-performance" onclick="openModal('m3')" role="img" aria-label="Entraînement triathlon haut niveau à distace au Québec - Programme Performance Solo" style="cursor: pointer;">
-                    <h3>Performance Solo</h3>
-                    <p>Une structure de haut niveau pour ceux qui visent des résultats, tout en restant autonomes.</p>
-                    <button class="btn-card">C'EST MON PROFIL<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
-                </div>
-            </div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 450px)); justify-content: center;">
+    <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec" style="cursor: pointer;">
+        <h3>Premier Pas</h3>
+        <p>Pour ceux qui n'ont jamais osé se placer sur la ligne de départ, par crainte ou manque de connaissance. Un encadrement sécurisant de A à Z pour votre premier triathlon avec des mentors qui sont déjà passés par là.</p>
+        <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+    </div>
+
+    <div class="card card-mentorat" onclick="openModal('m2-fusion')" role="img" aria-label="Mentorat et performance triathlon personnalisé" style="cursor: pointer;">
+        <h3>Ma Saison <br> et Performance</h3>
+        <p>Que vous visiez d'être en forme pour la saison de triathlon, ou que vous soyez en quête du défi ultime comme faire un Ironman, bénéficiez d'un mentorat expert et connecté.</p>
+        <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+    </div>
+</div>
 
             <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
             Aidez-moi à choisir mon programme
@@ -635,65 +633,83 @@
     <div id="m1" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('m1')">&times;</span>
-            <h3>Programme: Premier Pas</h3>
+            <h3>Programme : Premier Pas</h3>
 
             <blockquote class="quote-athlete" style="margin-top: 0; margin-bottom: 20px;">« Un jour, je vais en faire un... »</blockquote>
+            
             <div style="background: #fff8f3; border: 1px dashed var(--accent); padding: 15px; border-radius: 8px; margin-bottom: 25px;">
                 <p style="color: var(--primary); font-weight: 600; font-size: 1.05rem; line-height: 1.4; margin: 0; text-align: center;">
                     Ce programme est le cœur de notre mission : <br>
                     <span style="color: var(--accent);">vous amener à franchir votre toute première ligne d’arrivée.</span>
                 </p>
             </div>
+
             <ul>
                 <li>Assignation d'un mentor dédié selon vos objectifs.</li>
                 <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
                 <li>Plan d'entraînement de 12 semaines adapté à votre niveau actuel.</li>
                 <li>Ajustement du plan à votre mode de vie.</li>
-                <li>Explications du déroulement d’un triathlon.</li>
-                <li>Formation sur les règlement de course.</li>
+                <li>Explications du déroulement d’un triathlon et règlements.</li>
                 <li>Soutien moral et psychologique pour votre première ligne de départ.</li>
             </ul>
-            <div class="price-box">Tarif : 399$ tout inclus pour 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit 133$/mois)<br>Plan d'entrainement + 5 séances de mentorat de 40min</span></div>
-            <button class="btn-submit" onclick="choisirProgramme('PREMIER PAS')">C'est mon défi</button>
+
+            <div style="display: grid; gap: 15px; margin-top: 20px;">
+                <div class="price-box" style="margin: 0;">
+                    <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement semi-autonome</span><br>
+                    <span style="color: var(--accent);">Option Standard :</span> 299$ / 3 mois
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~99$/mois +tx)<br>Plan d'entraînement + <strong>3 séances</strong> de mentorat de 40min</small>
+                </div>
+
+                <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
+                    <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement complet</span><br>
+                    <span style="color: var(--brand-blue);">Option Accompagnée :</span> 399$ / 3 mois
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit 133$/mois +tx)<br>Plan d'entraînement + <strong>5 séances</strong> de mentorat de 40min</small>
+                </div>
+            </div>
+
+            <button class="btn-submit" style="margin-top: 25px;" onclick="choisirProgramme('PREMIER PAS')">C'est mon défi</button>
         </div>
     </div>
 
-    <div id="m2" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('m2')">&times;</span>
-            <h3>Programme: Ma Saison</h3>
-            <blockquote class="quote-athlete">« Cette année, je veux m'améliorer!»</blockquote>
-            <ul>
-                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
-                <li>Plan d'entrainement trimestriel.</li>
-                <li>Ajustements bi-mensuel selon vos disponibilités réelles.</li>
-                <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
-                <li>...</li>
-            </ul>
-            <div class="price-box">Tarif : 449$ tout inclus par 3 mois<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~150$/mois)<br>Engagement pour 1 saison (6 mois).<br></span></div>
-            <button class="btn-submit" onclick="choisirProgramme('MA SAISON')">Choisir ce plan</button>
-        </div>
-    </div>
+    <div id="m2-fusion" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('m2-fusion')">&times;</span>
+        <h3>Ma Saison & Performance</h3>
+        <blockquote class="quote-athlete">« Je veux structurer ma progression et atteindre mes objectifs. »</blockquote>
+        
+        <p style="margin-bottom: 15px; font-weight: 600; color: var(--primary);">Un accompagnement complet qui s'adapte à votre ambition :</p>
+        
+        <ul>
+            <li>Assignation d'un mentor dédié selon vos objectifs (Sprint à Ironman).</li>
+            <li>Plan d'entraînement personnalisé et évolutif.</li>
+            <li>Ajustements bi-mensuels selon vos disponibilités et votre état de forme.</li>
+            <li>Appels vidéo personnalisés pour valider la progression.</li>
+            <li>Analyse de données (TrainingPeaks*) pour optimiser chaque séance.</li>
+            <li>Stratégie de nutrition de course et gestion de l'effort.</li>
+            <li>Accès à notre réseau de spécialistes (thérapeutes, nutritionnistes, etc.).</li>
+        </ul>
 
-    <div id="m3" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('m3')">&times;</span>
-            <h3>Programme: Performance Solo</h3>
-             <blockquote class="quote-athlete">« Je veux arriver à mon meilleur niveau.»</blockquote>
-            <ul>
-                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
-                <li>Planification avancée pour distances 70.3 et Ironman.</li>
-                <li>Analyse de données poussée via TrainingPeaks*.</li>
-                <li>Appels de suivi mensuels pour garder la motivation au sommet.</li>
-                <li>Stratégie de nutrition de course personnalisée.</li>
-                <li>Optimisation de la performance en totale autonomie.</li>
-                <li>Recommendations de spécialistes <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(thérapeutes, nutritionnistes, positionnement vélo et +)</small></li>
-            </ul>
-            <div class="price-box">Tarif : 499$ tout inclus par 3 mois <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(soit ~166$/mois)<br>Engagement pour 1 an (12 mois).<br><small>*souscription à TrainingPeaks Premium requise</small></span></div>
-            <button class="btn-submit" onclick="choisirProgramme('PERFORMANCE SOLO')">Viser la performance</button>
+        <div style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.95rem; color: #555; text-align: center; font-style: italic;">
+            Note : Le choix de l'option dépendra de l'envergure de votre projet. <strong>Nous en discuterons ensemble</strong> pour valider la formule la plus adaptée à vos besoins.
         </div>
-    </div>
 
+        <div style="display: grid; gap: 15px;">
+            <div class="price-box" style="margin: 0;">
+                <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Saison (6 mois)</span><br>
+                <span style="color: var(--accent);">Option Standard :</span> 449$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~149$/mois +tx)</small>
+                <br><small style="font-size: 0.85rem; font-weight: 400;">Idéal pour progresser avec structure et motivation.</small>
+            </div>
+            
+            <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
+                <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Annuel (12 mois)</span><br>
+                <span style="color: var(--brand-blue);">Option Performance :</span> 499$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~166$/mois +tx)</small>
+                <br><small style="font-size: 0.85rem; font-weight: 400;">Analyse de données poussée et stratégie avancée (70.3 et Ironman).</small>
+            </div>
+        </div>
+
+        <button class="btn-submit" style="margin-top: 25px;" onclick="choisirProgramme('MA SAISON / PERFORMANCE')">Discuter de mon projet</button>
+    </div>
+</div>
     <section id="contact" class="section-contact">
         <div class="container">
             <h2>Prêt à franchir le pas ?</h2>
@@ -769,7 +785,7 @@
         
         <div class="footer-text" style="margin-bottom: 15px;">
             <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 1rem; opacity: 1;">
-                &copy; 2026 mon.projet*(tri) - OBNL dédiée au triathlon au Québec
+                &copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec
             </a>
         </div>
 
@@ -852,18 +868,15 @@ function finaliser(physio) {
     let desc = "";
 
     if (gagnant === 'securite') {
-        titre = "Sérénité Totale";
-        progRes = "PREMIER PAS";
-        desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
-    } else if (gagnant === 'social') {
-        titre = "Accompagnement Humain";
-        progRes = "MA SAISON";
-        desc = "Le mentorat est votre moteur. Pour ne plus jamais s'entraîner seul.";
-    } else {
-        titre = "Performance Autonome";
-        progRes = "PERFORMANCE SOLO";
-        desc = "Vous visez les résultats et l'optimisation de vos données.";
-    }
+    titre = "Sérénité Totale";
+    progRes = "PREMIER PAS";
+    desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
+} else {
+    // Fusion du profil social et autonomie
+    titre = "Progression & Performance";
+    progRes = "MA SAISON / PERFORMANCE";
+    desc = "Vous cherchez à optimiser vos résultats avec un soutien expert.";
+}
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     document.getElementById('res-titre').innerText = "Analyse : " + titre;
@@ -893,8 +906,9 @@ function transférerAuForm() {
 }
 
 function choisirProgramme(nom) {
-    document.getElementById('message-field').value = "PROJET : " + nom;
-    closeModal('m1'); closeModal('m2'); closeModal('m3');
+    document.getElementById('message-field').value = "PROJECT: " + nom;
+    closeModal('m1'); 
+    closeModal('m2-fusion'); // On ferme la nouvelle modale fusionnée
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 200);
