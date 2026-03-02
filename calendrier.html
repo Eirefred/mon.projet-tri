@@ -35,12 +35,13 @@
         background: white;
         max-width: 700px;
         margin: 0 auto 25px auto;
-        padding: 15px;
+        padding: 20px; /* Un peu plus d'espace pour les deux lignes */
         border-radius: 12px;
         box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         border-bottom: 3px solid var(--accent);
         font-size: 1.1rem;
         color: var(--dark-blue);
+        line-height: 1.4;
     }
     .cta-accompagnement strong {
         color: var(--primary);
@@ -396,10 +397,13 @@
     <div class="main-content">
         <h1>Calendrier Provincial 2026</h1>
 
-<div class="cta-accompagnement">
-            Choisissez votre projet, puis on vous accompagne <strong>de A à Z</strong>.
-        </div>
-    
+        <div class="cta-accompagnement">
+    <p style="margin: 0;">Choisissez votre projet, puis on vous accompagne <strong>de A à Z</strong>.</p>
+    <p style="margin: 10px 0 0 0; font-size: 0.95rem; opacity: 0.9;">
+        Consultez <a href="index.html#programme" style="color: var(--primary); font-weight: bold; text-decoration: underline;">nos programmes</a> pour un accompagnement individuel.
+    </p>
+</div>
+
         <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
         <div class="table-outer">
             <table id="calTable" style="display:none;">
