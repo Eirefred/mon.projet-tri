@@ -313,35 +313,83 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-    .nav-container {
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        padding: 0 15px !important;
-        height: 95px;
-    }
+            .nav-container {
+                flex-direction: row !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                padding: 10px 15px !important;
+            }
 
-    /* Rapprochement de la mention vers le logo */
+            .header-left {
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                max-width: 70%;
+            }
+
+            .logo img { height: 35px !important; }
+
+            .region-mention {
+                display: block !important;
+                white-space: normal !important;
+                max-width: 80px;
+                font-size: 10px;
+                line-height: 1.1;
+            }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .switch {
+                width: 44px !important;
+                height: 22px !important;
+                flex-shrink: 0 !important;
+            }
+
+            .slider:before {
+                height: 16px !important;
+                width: 16px !important;
+                left: 3px !important;
+                bottom: 3px !important;
+                border-radius: 50% !important;
+            }
+
+            /* Correction du glissement sur mobile */
+            input:checked + .slider:before {
+                transform: translateX(20px) !important;
+            }
+
+            .labels { font-size: 8px !important; }
+
+            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
+            nav ul li:not(.lang-selector) {
+                display: none !important;
+            }
+
+            h1 { font-size: 2.2rem !important; }
+
+            /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
+        .form-row {
+            flex-direction: column !important;
+            gap: 10px !important;
+        }
+        /* --- AJUSTEMENTS HAMBURGER --- */
     .header-left {
-        display: flex !important;
-        align-items: center !important;
-        gap: 8px !important; /* Espace réduit entre logo et texte */
-        max-width: 65%;
+        gap: 5px !important; /* Rapproche "Partout au Québec" du logo */
     }
 
-    .logo img { height: 35px !important; }
-
-    .region-mention {
+    .menu-toggle {
         display: block !important;
-        font-size: 10px;
-        line-height: 1.1;
-        max-width: 70px;
-        margin: 0 !important; /* Supprime les marges inutiles */
+        font-size: 30px;
+        color: #003366;
+        cursor: pointer;
+        order: 3;
     }
 
-    /* Le menu déroulant */
     #nav-menu {
-        display: none; /* Caché par défaut */
+        display: none; /* Caché par défaut sur mobile */
         flex-direction: column;
         position: absolute;
         top: 95px;
@@ -353,50 +401,23 @@
         z-index: 1000;
     }
 
-    /* Force l'affichage quand la classe .active est ajoutée par le JS */
+    /* Cette classe est activée par le clic */
     #nav-menu.active {
         display: flex !important;
     }
 
-    /* Affiche les éléments de liste à l'intérieur du menu actif */
-    #nav-menu.active li {
-        display: block !important; 
+    #nav-menu li {
+        display: block !important;
         margin: 15px 0;
         text-align: center;
     }
 
-    /* CACHE LES LIENS SUR LA LIGNE DU HAUT (sauf langue et menu) */
+    /* Cache les liens de la ligne du haut mais garde le toggle langue */
     nav ul:not(.active) li:not(.lang-selector) {
         display: none !important;
     }
 
-    nav {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .menu-toggle {
-        display: block !important;
-        font-size: 30px;
-        color: #003366;
-        cursor: pointer;
-        order: 2;
-    }
-
-    .lang-selector {
-        order: 1;
-    }
-}
-
-        @media (max-width: 480px) {
-    .logo img {
-        height: 45px; /* On réduit un peu le logo sur très petit écran */
-    }
-    .region-mention {
-        display: none; /* On cache "Partout au Québec" sur mobile pour gagner de l'espace */
-    }
-}
+        } 
         /* --- FIN DU BLOC MOBILE --- */
 
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
@@ -445,22 +466,21 @@
                 <div class="region-mention">Partout au Québec</div>
             </div>
             <nav>
-
-            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <ul>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <ul id="nav-menu">
         <li><a href="decouvrir.html">L'OBNL</a></li>
         <li><a href="#vision">Notre vision</a></li>
         <li><a href="#programme">Les programmes</a></li>
         <li><a href="calendrier.html">Calendrier</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
         <li class="lang-selector">
-    <label class="switch">
-        <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-        <span class="slider">
-            <span class="labels" data-on="EN" data-off="FR"></span>
-        </span>
-    </label>
-</li>
+            <label class="switch">
+                <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
+                <span class="slider">
+                    <span class="labels" data-on="EN" data-off="FR"></span>
+                </span>
+            </label>
+        </li>
     </ul>
 </nav>
         </div>
@@ -828,48 +848,7 @@
 </footer>
 
 <script>
-// --- 1. GESTION DU MENU MOBILE (HAMBURGER) ---
-function toggleMenu() {
-    const menu = document.getElementById('nav-menu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
-// Fermer le menu mobile lors d'un clic sur un lien (pour les ancres #)
-document.addEventListener('DOMContentLoaded', () => {
-    const navLinks = document.querySelectorAll('#nav-menu a');
-    const menu = document.getElementById('nav-menu');
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            if (menu) menu.classList.remove('active');
-        });
-    });
-});
-
-
-// --- 2. GESTION DE LA LANGUE ---
-function toggleLang() {
-    const isChecked = document.getElementById('lang-toggle').checked;
-    if (isChecked) {
-        window.location.href = "en/index.html";
-    } else {
-        // Si on est déjà à la racine, on ajoute juste le paramètre
-        window.location.href = window.location.pathname.replace('/en/', '/') + "?lang=fr";
-    }
-}
-
-// Synchronisation du bouton toggle au chargement
-window.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle && window.location.pathname.includes('/en/')) {
-        toggle.checked = true;
-    }
-});
-
-
-// --- 3. LOGIQUE DU QUIZ & MODALES ---
+   // --- LOGIQUE GLOBALE DU QUIZ ---
 let scores = { securite: 0, autonomie: 0, social: 0 };
 let progRes = "";
 
@@ -895,7 +874,6 @@ function closeModal(id) {
     }
 }
 
-// Fermer au clic sur l'overlay
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
         closeModal(event.target.id);
@@ -917,25 +895,30 @@ function noter(cat, pts, next) {
     if (nextStep && next !== 'qRes') {
         mélangerOptions(next);
         nextStep.style.display = 'block';
+    } else if (next === 'qRes') {
+        // La logique est gérée par la question 6 qui appelle finaliser()
     }
 }
 
 function finaliser(physio) {
     document.querySelectorAll('.quiz-step').forEach(s => s.style.display = 'none');
+    
+    // Calcul du profil gagnant (le score le plus haut)
     const gagnant = Object.keys(scores).reduce((a, b) => scores[a] >= scores[b] ? a : b);
     
     let titre = "";
     let desc = "";
 
     if (gagnant === 'securite') {
-        titre = "Sérénité Totale";
-        progRes = "PREMIER PAS";
-        desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
-    } else {
-        titre = "Progression & Performance";
-        progRes = "MA SAISON / PERFORMANCE";
-        desc = "Vous cherchez à optimiser vos résultats avec un soutien expert.";
-    }
+    titre = "Sérénité Totale";
+    progRes = "PREMIER PAS";
+    desc = "Vous avez besoin d'un cadre sécurisant. Idéal pour vous accompagner de A à Z.";
+} else {
+    // Fusion du profil social et autonomie
+    titre = "Progression & Performance";
+    progRes = "MA SAISON / PERFORMANCE";
+    desc = "Vous cherchez à optimiser vos résultats avec un soutien expert.";
+}
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     document.getElementById('res-titre').innerText = "Analyse : " + titre;
@@ -945,7 +928,6 @@ function finaliser(physio) {
 
 function mélangerOptions(containerId) {
     const container = document.querySelector(`#${containerId}`);
-    if (!container) return;
     const options = Array.from(container.querySelectorAll('.quiz-option'));
     for (let i = options.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -957,7 +939,7 @@ function mélangerOptions(containerId) {
 function transférerAuForm() {
     const area = document.getElementById('message-field');
     const data = window.finalDiagnostic;
-    if (!data || !area) return;
+    if (!data) return;
     area.value = `ANALYSE DE PROFIL :\n- Profil : ${data.titre}\n- Programme : ${data.prog}\n- Physiologie : ${data.physio}\n\nJe souhaite en discuter.`;
     closeModal('diag-modal');
     setTimeout(() => {
@@ -966,21 +948,20 @@ function transférerAuForm() {
 }
 
 function choisirProgramme(nom) {
-    const area = document.getElementById('message-field');
-    if (area) area.value = "PROJECT: " + nom;
+    document.getElementById('message-field').value = "PROJECT: " + nom;
     closeModal('m1'); 
-    closeModal('m2-fusion');
+    closeModal('m2-fusion'); // On ferme la nouvelle modale fusionnée
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 200);
 }
 
-
-// --- 4. VALIDATION FORMULAIRE (TEL & DATES) ---
+// Téléphone et Dates
 const phoneInput = document.getElementById('phone');
-const contactForm = document.querySelector('form');
+const contactForm = document.querySelector('form'); // Récupère le formulaire
 
 if (phoneInput) {
+    // A. Formattage pendant la saisie (sans changer la couleur)
     phoneInput.addEventListener('input', (e) => {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
         if (!x[1]) {
@@ -988,12 +969,16 @@ if (phoneInput) {
         } else {
             e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
         }
+        
+        // Si l'utilisateur recommence à taper, on retire le rouge
         phoneInput.style.borderColor = '#ddd';
         phoneInput.style.backgroundColor = 'white';
     });
 
+    // B. Validation au moment où l'utilisateur SORT du champ (blur)
     phoneInput.addEventListener('blur', (e) => {
         const numbersOnly = e.target.value.replace(/\D/g, '');
+        // Si le champ n'est pas vide et fait moins de 10 chiffres
         if (numbersOnly.length > 0 && numbersOnly.length < 10) {
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
@@ -1001,24 +986,57 @@ if (phoneInput) {
     });
 }
 
-if (contactForm && phoneInput) {
+// C. Bloquer l'envoi du formulaire si le téléphone est incomplet
+if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         const numbersOnly = phoneInput.value.replace(/\D/g, '');
         if (numbersOnly.length < 10) {
-            e.preventDefault();
+            e.preventDefault(); // Empêche l'envoi
             phoneInput.style.borderColor = 'red';
             phoneInput.style.backgroundColor = '#fff0f0';
-            phoneInput.focus();
+            phoneInput.focus(); // Remet le curseur dans le champ
             alert(document.documentElement.lang === 'en' ? 'Please enter a valid 10-digit phone number.' : 'Veuillez entrer un numéro de téléphone valide à 10 chiffres.');
         }
     });
 }
-
-// Désactiver les dates passées
 const today = new Date().toISOString().split('T')[0];
-document.querySelectorAll('input[type="date"]').forEach(input => { 
-    input.setAttribute('min', today); 
+document.querySelectorAll('input[type="date"]').forEach(input => { input.setAttribute('min', today); });
+
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (isChecked) {
+        window.location.href = "en/index.html";
+    } else {
+        window.location.href = "index.html?lang=fr";
+    }
+}
+
+// Synchronisation au chargement
+window.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('lang-toggle');
+    // Si on est dans le dossier /en/, on coche le bouton
+    if (window.location.pathname.includes('/en/')) {
+        toggle.checked = true;
+    }
+function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    if (menu) {
+        menu.classList.toggle('active');
+    }
+}
+
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        const menu = document.getElementById('nav-menu');
+        if (menu) menu.classList.remove('active');
+    });
 });
+
+// Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
+if (window.location.pathname.includes('/en/')) {
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true;
+}
 </script>
 </body>
 </html>
