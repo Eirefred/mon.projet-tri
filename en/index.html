@@ -321,25 +321,15 @@ input:checked + .slider .labels::after {
         z-index: 1100;
     }
 
-    /* 1. Cache les liens par défaut sur mobile, sauf si le menu est actif */
-    /* On a retiré le "nav ul li { display: none !important; }" qui bloquait tout */
-    nav ul:not(.active) li:not(.lang-selector) {
-        display: none !important;
-    }
+   /* 1. Cache TOUS les éléments du menu (y compris le toggle) quand il n'est pas actif */
+nav ul:not(.active) li {
+    display: none !important;
+}
 
-    /* 2. Style du menu déroulant quand il est actif */
-    nav ul.active {
-        display: flex !important;
-        flex-direction: column !important;
-        position: absolute;
-        top: 60px; /* Ajustez selon la hauteur réelle de votre header mobile */
-        left: 0;
-        width: 100%;
-        background-color: white !important;
-        padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        z-index: 1000;
-    }
+/* 2. On s'assure que le menu nav lui-même ne prend pas de place quand il est fermé */
+nav ul:not(.active) {
+    display: none;
+}
 
     /* 3. FORCE l'affichage de chaque item dans le menu ouvert */
     nav ul.active li {
@@ -992,7 +982,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     // --- 2. GESTION DU BOUTON BACK TO TOP ---
     const backToTopBtn = document.getElementById("backToTop");
-
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
             if (window.innerWidth <= 768) {
@@ -1010,7 +999,19 @@ window.addEventListener('DOMContentLoaded', () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
     }
+
+    // --- 3. SYNCHRO LANGUE (EN version) ---
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true; // On force à TRUE car on est dans le dossier /en/
 });
+
+// Fonction de bascule (hors du DOMContentLoaded)
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (!isChecked) {
+        window.location.href = "../index.html?lang=fr";
+    }
+}
 </script>
 </body>
 </html>
