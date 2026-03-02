@@ -24,7 +24,7 @@
     <style>
         :root {
             --primary-blue: #003366;
-            --accent-orange: #FF6600;
+            --accent: #FF6600;
             --text-dark: #333333;
             --light-bg: #f4f7f9;
         }
@@ -44,14 +44,14 @@
             color: white;
             padding: 20px 20px;
             text-align: center;
-            border-bottom: 4px solid var(--accent-orange);
+            border-bottom: 4px solid var(--accent);
         }
 
         .btn-back {
             display: inline-block;
             margin-bottom: 20px;
             color: white;
-            background-color: var(--accent-orange);
+            background-color: var(--accent);
             text-decoration: none;
             padding: 10px 20px;
             border-radius: 4px;
@@ -72,7 +72,7 @@
         h2 {
             color: var(--primary-blue);
             font-size: 1.6rem;
-            border-left: 5px solid var(--accent-orange);
+            border-left: 5px solid var(--accent);
             padding-left: 15px;
             margin-top: 40px;
             margin-bottom: 20px;
@@ -127,7 +127,7 @@
 
         .founder-title {
             font-size: 0.85rem; 
-            color: var(--accent-orange);
+            color: var(--accent);
             font-weight: 700;
             display: block;
             margin: 2px 0;
@@ -183,7 +183,7 @@
         }
 
         .tag {
-            background: var(--accent-orange);
+            background: var(--accent);
             color: white;
             padding: 4px 12px;
             border-radius: 4px;
@@ -212,6 +212,31 @@
             justify-content: space-between; 
             align-items: center; 
         }
+
+          /* BOUTON RETOUR EN HAUT */
+    #backToTop {
+        display: none; /* Caché par défaut */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        background-color: var(--accent);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* AJOUTEZ CETTE RÈGLE ICI */
+    #backToTop.visible { 
+        display: flex !important; 
+    }
 
         @media (max-width: 768px) {
             .container {
@@ -275,6 +300,7 @@
                     Our mission: Helping athletes achieve their goals through personalized support, technical expertise, and accessible coaching
                 </p>
             </div>
+            <button id="backToTop" title="Retour en haut">↑</button>
         </section>
 
         <section>
@@ -316,7 +342,7 @@
                 </div>
             </div>
 
-            <div class="mission-highlight" style="border-left-color: var(--accent-orange);">
+            <div class="mission-highlight" style="border-left-color: var(--accent);">
                 <p style="margin: 0; font-weight: 500;">
                     <strong>Rigorous Selection:</strong> We choose each coach for their technical expertise, certifications, and, above all, for their human qualities and ability to build a constructive mentorship relationship.
                 </p>
@@ -355,6 +381,15 @@
         </div>
     </div>
 </footer>
-
+<script>
+const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (window.innerWidth <= 768) {
+            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
+            else backToTopBtn.classList.remove("visible");
+        }
+    };
+    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
+</script>
 </body>
 </html>
