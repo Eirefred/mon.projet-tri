@@ -12,7 +12,8 @@
     <link rel="canonical" href="https://mon.projet-tri.org/en/index.html" />
     <link rel="icon" href="../favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="../favicon.png">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.jpg">
+    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="../apple-touch-icon.png">
     <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
@@ -467,23 +468,19 @@ input:checked + .slider .labels::after {
                 Click on the profile that matches you best to learn more:
             </p>
             
-            <div class="grid">
-                <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Start triathlon in Quebec: complete beginner program with remote training" style="cursor: pointer;">
-                    <h3>First Step</h3>
-                    <p>For those who have never dared to cross the line. A secure A-to-Z guidance for your first triathlon.</p>
-                    <button class="btn-card">THAT'S ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
-                </div>
-                <div class="card card-mentorat" onclick="openModal('m2')" role="img" aria-label="Personalized triathlon mentorship in Quebec - My Season program" style="cursor: pointer;">
-                    <h3>My Season</h3>
-                    <p>Connect with a dedicated mentor and coach to never feel alone in your training again.</p>
-                    <button class="btn-card">THIS IS ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
-                </div>
-                <div class="card card-performance" onclick="openModal('m3')" role="img" aria-label="High-level remote triathlon training in Quebec - Solo Performance" style="cursor: pointer;">
-                    <h3>Solo Performance</h3>
-                    <p>A high-level structure for those aiming for results while remaining autonomous.</p>
-                    <button class="btn-card">THIS IS MY PROFILE<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
-                </div>
-            </div>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 450px)); justify-content: center;">
+    <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Start triathlon in Quebec: complete beginner program" style="cursor: pointer;">
+        <h3>First Step</h3>
+        <p>For those who have never dared to start a triathlon, whether out of fear or uncertainty. Receive complete, reassuring guidance from start to finish with mentors who have been there before.</p>
+        <button class="btn-card">THIS IS ME<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+    </div>
+
+    <div class="card card-mentorat" onclick="openModal('m2-fusion')" role="img" aria-label="Personalized triathlon mentorship and performance" style="cursor: pointer;">
+        <h3>Race Season <br> & Performance</h3>
+        <p>Whether you aim to be in shape for the triathlon season or are pursuing the ultimate challenge like completing an Ironman, benefit from expert, connected mentorship</p>
+        <button class="btn-card">THAT'S MY PLAN<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(view more)</small></button>
+    </div>
+</div>
 
             <button class="btn-diagnostic-large" onclick="openModal('diag-modal')">
             Help me choose my program
@@ -573,45 +570,68 @@ input:checked + .slider .labels::after {
                 <li>Training on race rules and regulations.</li>
                 <li>Moral and psychological support for your first starting line.</li>
             </ul>
-            <div class="price-box">Price: $399 all-included for 3 months<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">($133/month)<br>Training plan + 5 mentorship sessions (40 min each)</span></div>
+            <div style="display: grid; gap: 15px; margin-top: 20px;">
+                <div class="price-box" style="margin: 0;">
+                    <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Resourceful Athlete Plan</span><br>
+                    <span style="color: var(--accent);">Standard Option:</span> $299 / 3 months
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(~$99$/month +tx)<br>Training plan + <strong>3 mentorship sessions</strong> (40 min each)</small>
+                </div>
+
+                <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
+                    <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Full support plan</span><br>
+                    <span style="color: var(--brand-blue);">All-inclusive Option:</span> $399 / 3 months
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(133$/month +tx)<br>Training plan + <strong>5 mentorship sessions</strong> (40 min each)</small>
+                </div>
+            </div>
+
             <button class="btn-submit" onclick="choisirProgramme('FIRST STEP')">This is my challenge</button>
         </div>
     </div>
 
-    <div id="m2" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('m2')">&times;</span>
-            <h3>Program: My Season</h3>
-            <blockquote class="quote-athlete">"This year, I want to improve!"</blockquote>
-            <ul>
-                <li>Assignment of a dedicated mentor based on your goals.</li>
-                <li>Quarterly training plan.</li>
-                <li>Bi-monthly adjustments based on your real availability.</li>
-                <li>Monthly check-in calls to keep motivation at its peak.</li>
-                <li>Strategy and transition optimizations.</li>
-            </ul>
-            <div class="price-box">Price: $449 all-included for 3 months<span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $150/month)<br>Commitment for 1 season (6 months).<br></span></div>
-            <button class="btn-submit" onclick="choisirProgramme('MY SEASON')">Choose this plan</button>
-        </div>
-    </div>
 
-    <div id="m3" class="modal-overlay">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal('m3')">&times;</span>
-            <h3>Program: Solo Performance</h3>
-             <blockquote class="quote-athlete">"I want to reach my absolute best."</blockquote>
-            <ul>
-                <li>Assignment of a dedicated mentor based on your goals.</li>
-                <li>Advanced planning for 70.3 and Ironman distances.</li>
-                <li>In-depth data analysis via TrainingPeaks*.</li>
-                <li>Monthly check-in calls to maintain high performance.</li>
-                <li>Personalized race nutrition strategy.</li>
-                <li>Specialist recommendations <small style="font-size: 0.85em; font-weight: 400; opacity: 0.8;">(therapists, nutritionists, bike fitting, etc.)</small></li>
-            </ul>
-            <div class="price-box">Price: $499 all-included for 3 months <span style="font-size: 0.9rem; font-weight: 400; opacity: 0.8; margin-left: 10px;">(~ $166/month)<br>Commitment for 1 year (12 months).<br><small>*TrainingPeaks Premium subscription required</small></span></div>
-            <button class="btn-submit" onclick="choisirProgramme('SOLO PERFORMANCE')">Aim for performance</button>
+
+
+    <div id="m2-fusion" class="modal-overlay">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('m2-fusion')">&times;</span>
+        <h3>Mentorship & Performance</h3>
+        <blockquote class="quote-athlete">"I want to structure my progress and reach my goals."</blockquote>
+        
+        <p style="margin-bottom: 15px; font-weight: 600; color: var(--primary);">A complete support system that adapts to your ambition:</p>
+        
+         <ul>
+            <li>Assignment of a dedicated mentor based on your goals (Sprint to Ironman).</li>
+            <li>Personalized and evolving training plan.</li>
+            <li>Bi-monthly adjustments based on your real availability.</li>
+            <li>Personalized video calls to validate progress.</li>
+            <li>Data analysis (TrainingPeaks*) to optimize every session.</li>
+            <li>Race nutrition strategy and effort management.</li>
+            <li>Access to our specialist network (therapists, nutritionists, etc.).</li>
+        </ul>
+
+         <div style="background: #fdfdfd; border: 1px solid #eee; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.95rem; color: #555; text-align: center; font-style: italic;">
+            Note: The choice of option will depend on your project's scope. <strong>We will discuss this together</strong> to find the most suitable formula for your needs.
         </div>
+
+        <div style="display: grid; gap: 15px;">
+            <div class="price-box" style="margin: 0;">
+                <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Season Engagement (6 months)</span><br>
+                <span style="color: var(--accent);">Standard Option :</span> $449 / 3 months
+                <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(~149$/month +tx)<br>
+                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">The perfect blend of structure and motivation for your progress.</small>
+            </div>
+            
+            <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
+                <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Annual Engagement (12 months)</span><br>
+                <span style="color: var(--brand-blue);">Performance Option : </span>$499 / 3 months
+                <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(~166$/month +tx)<br>
+                <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">Deep data insights and advanced race strategy (70.3 & Ironman)</small>
+            </div>
+        </div>
+
+        <button class="btn-submit" style="margin-top: 25px;" onclick="choisirProgramme('SEASON / PERFORMANCE')">Discuss my project</button>
     </div>
+</div>
 
     <section id="contact" class="section-contact">
         <div class="container">
@@ -688,7 +708,7 @@ input:checked + .slider .labels::after {
         
         <div class="footer-text" style="margin-bottom: 15px; color: #ffffff !important; opacity: 1;">
             <a href="index.html" style="color: #ffffff; text-decoration: none;">
-                &copy; 2026 mon.projet*(tri) - Non-profit dedicated to triathlon in Quebec
+                &copy; 2026 Mon Projet Tri (My Tri Project) - Non-profit dedicated to triathlon in Quebec
             </a>
         </div>
 
@@ -765,19 +785,17 @@ function finaliser(physio) {
     let titre = "";
     let desc = "";
 
-    if (gagnant === 'securite') {
-        titre = "Total Serenity";
-        progRes = "FIRST STEP";
-        desc = "You need a supportive environment. Ideal for accompanying you from A to Z.";
-    } else if (gagnant === 'social') {
-        titre = "Human Guidance";
-        progRes = "MY SEASON";
-        desc = "Mentorship is your engine. Never train alone again.";
-    } else {
-        titre = "Autonomous Performance";
-        progRes = "SOLO PERFORMANCE";
-        desc = "You aim for results and data optimization.";
-    }
+    // ... trouvez la condition 'else' à la fin de la fonction finaliser ...
+if (gagnant === 'securite') {
+    titre = "Total Serenity";
+    progRes = "FIRST STEP";
+    desc = "You need a supportive environment. Ideal for accompanying you from A to Z.";
+} else {
+    // Fusion of Social and Autonomy profiles
+    titre = "Progress & Performance";
+    progRes = "SEASON / PERFORMANCE";
+    desc = "You are looking to optimize your results with expert support.";
+}
 
     window.finalDiagnostic = { titre, prog: progRes, physio };
     document.getElementById('res-titre').innerText = "Analysis: " + titre;
@@ -808,7 +826,8 @@ function transférerAuForm() {
 
 function choisirProgramme(nom) {
     document.getElementById('message-field').value = "PROJECT: " + nom;
-    closeModal('m1'); closeModal('m2'); closeModal('m3');
+    closeModal('m1'); 
+    closeModal('m2-fusion'); // On ferme la nouvelle modale fusionnée
     setTimeout(() => {
         document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
     }, 200);

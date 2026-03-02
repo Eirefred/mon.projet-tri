@@ -286,11 +286,38 @@ input:checked + .slider .labels::after {
             display: none !important;
         }
 
-        /* 2. FORCE L'AFFICHAGE DU SELECTEUR DE LANGUE SEULEMENT */
-        nav ul li.lang-selector {
-            display: block !important;
-            margin-left: 0 !important;
-        }
+        /* Affiche le hamburger */
+.menu-toggle {
+    display: block !important;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--primary);
+}
+
+/* Cache les liens par défaut sur mobile, sauf si le menu est actif */
+nav ul:not(.active) li:not(.lang-selector) {
+    display: none;
+}
+
+/* Style du menu déroulant quand il est actif */
+nav ul.active {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 95px; /* Hauteur de votre header */
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+nav ul.active li {
+    display: block !important;
+    margin: 10px 0 !important;
+    text-align: center;
+}
 
         .header-left {
             display: flex !important;
@@ -346,7 +373,14 @@ input:checked + .slider .labels::after {
 </div>
                 <div class="region-mention">Across Quebec</div>
             </div>
+
+            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+
             <nav>
+
+                <ul id="navMenu">
+                </ul>
+                
        <ul>
         <li><a href="discover.html">About Us</a></li> 
         <li><a href="#vision">Our Vision</a></li>
@@ -890,14 +924,23 @@ function toggleLang() {
 
 // Initialisation au chargement
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Forcer le bouton sur "ON" (EN)
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('navMenu');
 
-    // 2. Dates minimum pour le formulaire
-    const today = new Date().toISOString().split('T')[0];
-    document.querySelectorAll('input[type="date"]').forEach(input => { 
-        input.setAttribute('min', today); 
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            // Change l'icône : X si ouvert, ☰ si fermé
+            menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+
+    // Ferme le menu si on clique sur un lien interne (#)
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            if (menuBtn) menuBtn.textContent = '☰';
+        });
     });
 });
 
