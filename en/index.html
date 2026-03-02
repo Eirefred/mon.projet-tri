@@ -281,6 +281,30 @@ input:checked + .slider .labels::after {
     color: var(--primary);
 }
 
+/* BOUTON RETOUR EN HAUT */
+    #backToTop {
+        display: none; /* Caché par défaut */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        background-color: var(--accent);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* AJOUTEZ CETTE RÈGLE ICI */
+    #backToTop.visible { 
+        display: flex !important; 
+    }
     @media (max-width: 768px) {
         .nav-container {
             flex-direction: row !important;
@@ -747,6 +771,7 @@ nav ul.active {
                 </form>
             </div>
         </div>
+        <button id="backToTop" title="Retour en haut">↑</button>
     </section>
 
    <footer>
@@ -959,8 +984,14 @@ window.addEventListener('DOMContentLoaded', () => {
             navMenu.classList.remove('active');
             if (menuBtn) menuBtn.textContent = '☰';
         });
-    });
-});
+const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (window.innerWidth <= 768) {
+            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
+            else backToTopBtn.classList.remove("visible");
+        }
+    };
+    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 
 </script>
 </body>
