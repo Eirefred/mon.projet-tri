@@ -461,7 +461,7 @@
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
             <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Half</div>
-            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TF</span> Full</div>
+            <div class="legend-item clickable-cat" data-cat="TF"><span class="badge cat-tri">TF</span> Full</div>
             <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
             <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
             <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
@@ -546,28 +546,42 @@
             const row = rows[i];
             if (!row[1]) continue;
             const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (AJOUT) ---
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const dateRaw = row[0] ? String(row[0]).trim() : "";
-        
-        if (dateRaw) {
-            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
-            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
-            // Pour "11-13 sept.", on extrait "13 sept."
-            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-            
-            const jour = parseInt(dateRef.match(/\d+/));
-            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-            
-            if (jour && indexMois !== -1) {
-                const dateEpreuve = new Date(2026, indexMois, jour);
-                if (dateEpreuve < today) {
-                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
-                }
-            }
+            // --- LOGIQUE DE DATE (VERSION ANGLAISE) ---
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+let dateRaw = row[0] ? String(row[0]).trim() : "";
+
+if (dateRaw) {
+    // Liste pour la détection (Français) et la traduction (Anglais)
+    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+    const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    
+    // TRADUCTION : On remplace le texte français par l'anglais pour l'affichage
+    let dateDisplay = dateRaw;
+    moisFr.forEach((m, index) => {
+        if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
+            dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
         }
+    });
+
+    // Mise en majuscule de la première lettre (ex: "15 aug" -> "15 Aug")
+    dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
+
+    // LOGIQUE DE COMPARAISON (pour griser les événements passés)
+    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+    const jour = parseInt(dateRef.match(/\d+/));
+    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+    
+    if (jour && indexMois !== -1) {
+        const dateEpreuve = new Date(2026, indexMois, jour);
+        if (dateEpreuve < today) {
+            tr.classList.add('past-event');
+        }
+    }
+
+    // IMPORTANT : On met à jour dateRaw pour que l'affichage du tableau utilise l'anglais
+    dateRaw = dateDisplay;
+}
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
