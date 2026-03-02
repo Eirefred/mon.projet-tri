@@ -549,7 +549,7 @@
             
             const tr = document.createElement('tr');
 
-            // --- 1. TRADUCTION DE LA DATE ---
+            // --- 1. LOGIQUE DE TRADUCTION DE LA DATE (Spécifique version ENG) ---
             const today = new Date();
             today.setHours(0, 0, 0, 0);
             let dateRaw = row[0] ? String(row[0]).trim() : "";
@@ -558,6 +558,7 @@
             if (dateRaw) {
                 const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
                 const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                
                 moisFr.forEach((m, index) => {
                     if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
                         dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
@@ -574,33 +575,29 @@
                 }
             }
 
-            // --- 2. CRÉATION DES CELLULES (RÉTABLISSEMENT DES LABELS CSS) ---
+            // --- 2. CRÉATION DES CELLULES (Structure identique à la version FR) ---
             
-            // DATE (Col 1)
+            // 1. DATE
             const tdDate = document.createElement('td');
             tdDate.className = 'col-date';
-            tdDate.setAttribute('data-label', 'DATE');
             tdDate.innerText = dateDisplay;
             tr.appendChild(tdDate);
 
-            // ÉVÉNEMENT (Col 2)
+            // 2. ÉVÉNEMENT
             const tdEvent = document.createElement('td');
             tdEvent.className = 'col-event';
-            tdEvent.setAttribute('data-label', 'EVENT'); // Label en anglais pour la cohérence
             tdEvent.innerText = row[1] || "";
             tr.appendChild(tdEvent);
 
-            // RÉGION (Col 3)
+            // 3. RÉGION
             const tdRegion = document.createElement('td');
             tdRegion.className = 'col-region';
-            tdRegion.setAttribute('data-label', 'REGION');
             tdRegion.innerText = row[2] || "";
             tr.appendChild(tdRegion);
 
-            // TYPE / RACES (Col 4)
+            // 4. TYPE / RACES (Badges)
             const tdType = document.createElement('td');
             tdType.className = 'col-type';
-            tdType.setAttribute('data-label', 'RACES'); // On utilise RACES ici pour le mobile
             const cats = row[3] ? String(row[3]).split(',').map(s => s.trim()) : [];
             cats.forEach(c => {
                 const span = document.createElement('span');
@@ -610,34 +607,24 @@
             });
             tr.appendChild(tdType);
 
-            // LINKS (Col 5)
+            // 5. LINKS
             const tdLinks = document.createElement('td');
             tdLinks.className = 'col-links';
-            tdLinks.setAttribute('data-label', 'LINKS');
-            
-            // Conteneur interne pour les boutons (aide à l'alignement mobile)
-            const linkContainer = document.createElement('div');
-            linkContainer.style.display = "flex";
-            linkContainer.style.gap = "10px";
-            linkContainer.style.justifyContent = "flex-end"; // Aligné à droite sur desktop
-            linkContainer.className = "mobile-link-fix";
-
             if (row[4]) {
                 const aWeb = document.createElement('a');
                 aWeb.href = row[4]; aWeb.target = "_blank";
                 aWeb.className = "btn-web"; aWeb.innerText = "Website";
-                linkContainer.appendChild(aWeb);
+                tdLinks.appendChild(aWeb);
             }
             if (row[5]) {
                 const aMail = document.createElement('a');
                 aMail.href = "mailto:" + row[5];
                 aMail.className = "btn-contact"; aMail.innerText = "Contact";
-                linkContainer.appendChild(aMail);
+                tdLinks.appendChild(aMail);
             }
-            tdLinks.appendChild(linkContainer);
             tr.appendChild(tdLinks);
 
-            // Attributs système
+            // Attributs système pour les filtres
             tr.setAttribute('data-categories', cats.join(','));
             body.appendChild(tr);
         }
