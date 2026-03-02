@@ -1030,37 +1030,49 @@ function toggleLang() {
     }
 }
 
-// Synchronisation au chargement
-window.addEventListener('DOMContentLoaded', () => {
+// On attend que le document soit prêt
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('navMenu');
+
+    // Gestion du clic sur le hamburger
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Empêche des bugs de propagation
+            navMenu.classList.toggle('active');
+            
+            // Change l'icône
+            if (navMenu.classList.contains('active')) {
+                this.textContent = '✕';
+            } else {
+                this.textContent = '☰';
+            }
+        });
+    }
+
+    // Fermer le menu si on clique sur un lien
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            if (menuBtn) menuBtn.textContent = '☰';
+        });
+    });
+
+    // Synchronisation du toggle de langue au chargement
     const toggle = document.getElementById('lang-toggle');
-    // Si on est dans le dossier /en/, on coche le bouton
-    if (window.location.pathname.includes('/en/')) {
+    if (toggle && window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
-// Gestion du menu hamburger
-const menuBtn = document.getElementById('mobile-menu-btn');
-const navMenu = document.getElementById('navMenu');
-
-if (menuBtn) {
-    menuBtn.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        // Change l'icône entre le hamburger et le X
-        menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-    });
-}
-
-// Fermer le menu quand on clique sur un lien (pour les ancres #)
-document.querySelectorAll('#navMenu a').forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        menuBtn.textContent = '☰';
-    });
 });
 
-// Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
-if (window.location.pathname.includes('/en/')) {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
+// La fonction toggleLang reste en dehors
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (isChecked) {
+        window.location.href = "en/index.html";
+    } else {
+        window.location.href = "index.html?lang=fr";
+    }
 }
 </script>
 </body>
