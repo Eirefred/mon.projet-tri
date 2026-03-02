@@ -610,21 +610,19 @@
                 });
             }
 
-            // 2. REMONTÉE AUTOMATIQUE AJUSTÉE SOUS LE BANDEAU
+            // 2. REMONTÉE AUTOMATIQUE DIFFÉRENCIÉE (PC vs MOBILE)
             setTimeout(() => {
                 const header = document.querySelector('header');
                 const legend = document.querySelector('.legend-container');
-                // ON CHANGE LA CIBLE : on vise le div 'status' qui est juste après le bandeau
-                const target = document.getElementById('status'); 
+                const target = document.querySelector('h1'); 
                 
                 if (target && header && legend) {
                     const hHeight = header.offsetHeight;
                     const lHeight = legend.offsetHeight;
                     const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
 
-                    // Ajustement pour caler le haut du tableau pile sous la légende
-                    // On réduit les valeurs pour que le scroll s'arrête plus bas
-                    const monAjustement = (window.innerWidth <= 768) ? -10 : -20; 
+                    // Application de vos réglages : +80 mobile / +60 ordi
+                    const monAjustement = (window.innerWidth <= 768) ? 80 : 50; 
 
                     const offsetPosition = elementPosition - (hHeight + lHeight) + monAjustement;
 
