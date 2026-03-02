@@ -550,23 +550,22 @@
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateRaw = row[0] ? String(row[0]).trim() : "";
-        let dateDisplay = dateRaw; // Par défaut, on garde le texte original
-        
+        let dateDisplay = dateRaw; // Variable pour l'affichage traduit
+
         if (dateRaw) {
             const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
             const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             
-            // 1. TRADUCTION POUR L'AFFICHAGE
+            // TRADUCTION : On remplace le mois FR par le mois EN
             moisFr.forEach((m, index) => {
                 if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
-                    // On remplace le mois FR par le mois EN (ex: "août" -> "Aug")
                     dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
                 }
             });
-            // Met la première lettre en majuscule (ex: "15 aug" -> "15 Aug")
+            // Mise en majuscule de la première lettre (ex: "15 aug" -> "15 Aug")
             dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
 
-            // 2. LOGIQUE DE DATE PASSÉE (Basée sur dateRaw qui est en FR)
+            // LOGIQUE DE GRISAGE (On garde moisFr ici car l'Excel est en FR)
             const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
             const jour = parseInt(dateRef.match(/\d+/));
             const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
@@ -578,10 +577,10 @@
                 }
             }
         }
-        // 3. CRÉATION DE LA CELLULE AVEC LA DATE TRADUITE
+
         const tdDate = document.createElement('td');
         tdDate.className = 'col-date';
-        tdDate.innerText = dateDisplay; // <-- On utilise la version anglaise ici
+        tdDate.innerText = dateDisplay; // <--- TRÈS IMPORTANT : on utilise dateDisplay
         tr.appendChild(tdDate);
 
         
