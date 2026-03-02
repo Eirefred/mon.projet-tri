@@ -541,96 +541,69 @@
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        body.innerHTML = ""; 
-
+        const headers = rows[0].map(h => h ? String(h).trim() : "");
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
-            
             const tr = document.createElement('tr');
-
-            // --- TRADUCTION DE LA DATE ---
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            let dateRaw = row[0] ? String(row[0]).trim() : "";
-            let dateDisplay = dateRaw; 
-
-            if (dateRaw) {
-                const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-                const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                
-                // On remplace le mois FR par le mois EN dans le texte
-                moisFr.forEach((m, index) => {
-                    if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
-                        dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
-                    }
-                });
-                // Majuscule sur la première lettre
-                dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
-
-                // Logique pour griser les événements passés
-                const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-                const jour = parseInt(dateRef.match(/\d+/));
-                const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-                if (jour && indexMois !== -1) {
-                    const dateEpreuve = new Date(2026, indexMois, jour);
-                    if (dateEpreuve < today) tr.classList.add('past-event');
+            // --- LOGIQUE DE DATE (AJOUT) ---
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dateRaw = row[0] ? String(row[0]).trim() : "";
+        
+        if (dateRaw) {
+            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
+            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
+            // Pour "11-13 sept.", on extrait "13 sept."
+            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+            
+            const jour = parseInt(dateRef.match(/\d+/));
+            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+            
+            if (jour && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jour);
+                if (dateEpreuve < today) {
+                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
                 }
             }
-
-            // --- CRÉATION DES CELLULES (Structure identique à votre backup) ---
-            
-            // 1. DATE (On utilise dateDisplay qui est maintenant en anglais)
-            const tdDate = document.createElement('td');
-            tdDate.className = 'col-date';
-            tdDate.innerText = dateDisplay;
-            tr.appendChild(tdDate);
-
-            // 2. ÉVÉNEMENT
-            const tdEvent = document.createElement('td');
-            tdEvent.className = 'col-event';
-            tdEvent.innerText = row[1] || "";
-            tr.appendChild(tdEvent);
-
-            // 3. RÉGION
-            const tdRegion = document.createElement('td');
-            tdRegion.className = 'col-region';
-            tdRegion.innerText = row[2] || "";
-            tr.appendChild(tdRegion);
-
-            // 4. TYPE
-            const tdType = document.createElement('td');
-            tdType.className = 'col-type';
-            const cats = row[3] ? String(row[3]).split(',').map(s => s.trim()) : [];
-            cats.forEach(c => {
-                const span = document.createElement('span');
-                span.className = `badge ${c.toLowerCase()}`;
-                span.innerText = c;
-                tdType.appendChild(span);
-            });
-            tr.appendChild(tdType);
-
-            // 5. LINKS
-            const tdLinks = document.createElement('td');
-            tdLinks.className = 'col-links';
-            if (row[4]) {
-                const aWeb = document.createElement('a');
-                aWeb.href = row[4]; aWeb.target = "_blank";
-                aWeb.className = "btn-web"; aWeb.innerText = "Website";
-                tdLinks.appendChild(aWeb);
+        }
+        // --- FIN DE L'AJOUT ---
+            let rowCats = [];
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+            const lieuComplet = row[9] ? String(row[9]).trim() : "";
+            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+            let badges = [];
+            for (let j = 11; j <= 20; j++) {
+                if (row[j] === "X" || row[j] === "x") {
+                    const info = {
+                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
+                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
+                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
+                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
+                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
+                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
+                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
+                        "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
+                        "Aquavelo": { code: "AV", cat: "cat-multi" },
+                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
+                    }[headers[j]] || { code: "?", cat: "" };
+                    if(info.code !== "?") { badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); rowCats.push(info.code); }
+                }
             }
-            if (row[5]) {
-                const aMail = document.createElement('a');
-                aMail.href = "mailto:" + row[5];
-                aMail.className = "btn-contact"; aMail.innerText = "Contact";
-                tdLinks.appendChild(aMail);
-            }
-            tr.appendChild(tdLinks);
-
-            tr.setAttribute('data-categories', cats.join(','));
+            tr.setAttribute('data-categories', rowCats.join(','));
+            tr.innerHTML = `
+                <td data-label="Date"><b>${row[0] || ""}</b></td>
+                <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
+                <td data-label="Organisation">${row[6] || "-"}</td>
+                <td data-label="Region">${row[2] || ""}</td>
+                <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
+                <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Website</a>` : "-"}</td>
+                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+                <td data-label="Races"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+            `;
             body.appendChild(tr);
         }
-
         document.getElementById('status').style.display = 'none';
         document.getElementById('calTable').style.display = 'table';
     }
