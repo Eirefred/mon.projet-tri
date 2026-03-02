@@ -313,14 +313,16 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
+    /* Conteneur principal : aligne tout sur une ligne */
+    .nav-container {
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 10px 15px !important;
+    }
 
-            #nav-menu {
+    /* Le menu déroulant (Hamburger ouvert) */
+    #nav-menu {
         display: none; /* Caché par défaut */
         flex-direction: column;
         position: absolute;
@@ -328,76 +330,74 @@
         left: 0;
         width: 100%;
         background-color: #ffffff;
-        padding: 10px 0 30px 0; /* Plus d'espace en bas */
+        padding: 10px 0 30px 0;
         box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        z-index: 1000;
     }
 
+    /* IMPORTANT : On affiche le menu quand il est actif */
     #nav-menu.active {
-        display: flex; /* S'affiche au clic */
+        display: flex !important;
     }
 
-    #nav-menu li {
-        margin: 12px 0; /* Espacement vertical entre les liens */
+    /* On s'assure que les LI à l'intérieur du menu actif sont visibles */
+    #nav-menu.active li {
+        display: block !important;
+        margin: 12px 0;
         text-align: center;
     }
 
-            .header-left {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                max-width: 70%;
-            }
+    /* CACHE LES LIENS HORIZONTAUX SUR MOBILE (mais pas le sélecteur) */
+    /* Modifié pour ne pas bloquer le menu déroulant */
+    nav ul:not(.active) li:not(.lang-selector) {
+        display: none;
+    }
 
-            .logo img { height: 35px !important; }
+    .header-left {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        max-width: 60%; /* Réduit pour laisser de la place à droite */
+    }
 
-            .region-mention {
-                display: block !important;
-                white-space: normal !important;
-                max-width: 80px;
-                font-size: 10px;
-                line-height: 1.1;
-            }
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-            }
+    .logo img { height: 35px !important; }
 
-            .switch {
-                width: 44px !important;
-                height: 22px !important;
-                flex-shrink: 0 !important;
-            }
+    .region-mention {
+        display: block !important;
+        white-space: normal !important;
+        max-width: 70px;
+        font-size: 9px; /* Un peu plus petit pour gagner de l'espace */
+        line-height: 1.1;
+        margin-left: 8px;
+    }
 
-            .slider:before {
-                height: 16px !important;
-                width: 16px !important;
-                left: 3px !important;
-                bottom: 3px !important;
-                border-radius: 50% !important;
-            }
+    /* Aligne le toggle et le hamburger à droite */
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
 
-            /* Correction du glissement sur mobile */
-            input:checked + .slider:before {
-                transform: translateX(20px) !important;
-            }
+    .menu-toggle {
+        display: block !important; /* On affiche enfin le hamburger */
+        font-size: 28px;
+        color: #003366;
+        cursor: pointer;
+        order: 2; /* Hamburger en dernier */
+    }
 
-            .labels { font-size: 8px !important; }
+    .lang-selector {
+        order: 1; /* Toggle de langue avant le hamburger */
+    }
 
-            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
-            nav ul li:not(.lang-selector) {
-                display: none !important;
-            }
-
-            h1 { font-size: 2.2rem !important; }
-
-            /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
-        .form-row {
-            flex-direction: column !important;
-            gap: 10px !important;
-        }
-
-        } 
+    /* Le reste de ton code (Switch, H1, Form-row) */
+    .switch { width: 40px !important; height: 20px !important; }
+    .slider:before { height: 14px !important; width: 14px !important; }
+    input:checked + .slider:before { transform: translateX(20px) !important; }
+    .labels { font-size: 8px !important; }
+    h1 { font-size: 2.2rem !important; }
+    .form-row { flex-direction: column !important; gap: 10px !important; }
+}
 
         @media (max-width: 480px) {
     .logo img {
@@ -1015,6 +1015,18 @@ if (window.location.pathname.includes('/en/')) {
     const toggle = document.getElementById('lang-toggle');
     if (toggle) toggle.checked = true;
 }
+
+function toggleMenu() {
+    const menu = document.getElementById('nav-menu');
+    menu.classList.toggle('active');
+}
+
+// Optionnel: Fermer le menu si on clique sur un lien (utile pour les ancres #vision, #programme)
+document.querySelectorAll('#nav-menu a').forEach(link => {
+    link.addEventListener('click', () => {
+        document.getElementById('nav-menu').classList.remove('active');
+    });
+});
 </script>
 </body>
 </html>
