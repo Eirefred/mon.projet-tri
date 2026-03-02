@@ -541,43 +541,61 @@
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        const headers = rows[0].map(h => h ? String(h).trim() : "");
+        body.innerHTML = ""; 
+        
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
+            
             const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (VERSION ANGLAISE) ---
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-let dateRaw = row[0] ? String(row[0]).trim() : "";
 
-if (dateRaw) {
-    // Liste pour la détection (Français) et la traduction (Anglais)
-    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-    const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    
-    // TRADUCTION : On remplace le texte français par l'anglais pour l'affichage
-    let dateDisplay = dateRaw;
-    moisFr.forEach((m, index) => {
-        if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
-            dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
-        }
-    });
+            // --- 1. LOGIQUE DE TRADUCTION DE LA DATE ---
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            let dateRaw = row[0] ? String(row[0]).trim() : "";
+            let dateDisplay = dateRaw; // Cette variable contiendra le texte final en anglais
 
-    // Mise en majuscule de la première lettre (ex: "15 aug" -> "15 Aug")
-    dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
+            if (dateRaw) {
+                const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+                const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+                
+                // On cherche le mois FR dans le texte et on le remplace par le mois EN
+                moisFr.forEach((m, index) => {
+                    if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
+                        dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
+                    }
+                });
 
-    // LOGIQUE DE COMPARAISON (pour griser les événements passés)
-    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-    const jour = parseInt(dateRef.match(/\d+/));
-    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-    
-    if (jour && indexMois !== -1) {
-        const dateEpreuve = new Date(2026, indexMois, jour);
-        if (dateEpreuve < today) {
-            tr.classList.add('past-event');
-        }
-    }
+                // On met la première lettre en majuscule (ex: "15 aug" -> "15 Aug")
+                dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
+
+                // Logique pour griser la ligne si l'événement est passé
+                const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+                const jour = parseInt(dateRef.match(/\d+/));
+                const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+                
+                if (jour && indexMois !== -1) {
+                    const dateEpreuve = new Date(2026, indexMois, jour);
+                    if (dateEpreuve < today) {
+                        tr.classList.add('past-event');
+                    }
+                }
+            }
+
+            // --- 2. CRÉATION DE LA CELLULE DATE (AVEC LE TEXTE TRADUIT) ---
+            const tdDate = document.createElement('td');
+            tdDate.className = 'col-date';
+            tdDate.innerText = dateDisplay; // <-- C'est ici qu'on utilise la version anglaise
+            tr.appendChild(tdDate);
+
+            // --- 3. CRÉATION DES AUTRES CELLULES (Événement, Région, etc.) ---
+            const tdEvent = document.createElement('td');
+            tdEvent.className = 'col-event';
+            tdEvent.innerText = row[1] || "";
+            tr.appendChild(tdEvent);
+
+
 
     // IMPORTANT : On met à jour dateRaw pour que l'affichage du tableau utilise l'anglais
     dateRaw = dateDisplay;
