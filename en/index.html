@@ -281,40 +281,53 @@ input:checked + .slider .labels::after {
             padding: 10px 15px !important;
         }
 
-
+        /* 1. CACHE TOUS LES LIENS TEXTUELS SUR MOBILE */
+        nav ul li {
+            display: none !important;
+        }
 
         /* Affiche le hamburger */
 .menu-toggle {
-    display: block !important;
-    font-size: 30px;
-    cursor: pointer;
-    color: var(--primary);
-}
+        display: block !important;
+        font-size: 30px;
+        cursor: pointer;
+        color: var(--primary);
+        z-index: 1100;
+    }
 
 /* Cache les liens par défaut sur mobile, sauf si le menu est actif */
 nav ul:not(.active) li:not(.lang-selector) {
-    display: none;
-}
+        display: none !important;
+    }
 
 /* Style du menu déroulant quand il est actif */
 nav ul.active {
-    display: flex !important;
-    flex-direction: column;
-    position: absolute;
-    top: 95px; /* Hauteur de votre header */
-    left: 0;
-    width: 100%;
-    background: white;
-    padding: 20px 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute;
+        top: 80px; /* Ajustez selon la hauteur de votre header */
+        left: 0;
+        width: 100%;
+        background-color: white !important;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
 
-nav ul.active li {
-    display: block !important;
-    margin: 10px 0 !important;
-    text-align: center;
-}
+/* FORCE l'affichage de chaque item dans le menu ouvert */
+    nav ul.active li {
+        display: block !important; 
+        width: 100%;
+        text-align: center;
+        margin: 10px 0 !important;
+    }
+    nav ul.active li a {
+        display: block;
+        padding: 10px;
+        color: var(--primary) !important;
+        font-size: 1.2rem;
+        text-decoration: none;
+    }
 
         .header-left {
             display: flex !important;
