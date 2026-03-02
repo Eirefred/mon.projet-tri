@@ -479,7 +479,7 @@
     <div class="cta-content">
         <p class="cta-main-text">
             Choose your project, and we’ll guide you along the way. 
-            <span style="white-space: nowrap;">de <strong class="orange-letter">A</strong> à <strong class="orange-letter">Z</strong>.</span>
+            <span style="white-space: nowrap;">from <strong class="orange-letter">A</strong> to <strong class="orange-letter">Z</strong>.</span>
         </p>
         <span class="cta-sub-text">
             Check <a href="index.html#programme" class="cta-link">our programs</a> for personalized coaching.
@@ -541,8 +541,8 @@
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        body.innerHTML = ""; // On vide le tableau
-        
+        body.innerHTML = ""; // On vide le tableau avant de commencer
+
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
             if (!row[1]) continue;
@@ -554,20 +554,20 @@
             today.setHours(0, 0, 0, 0);
             
             let dateRaw = row[0] ? String(row[0]).trim() : "";
-            let dateDisplay = dateRaw; // Contiendra le texte en anglais
+            let dateDisplay = dateRaw; 
 
             if (dateRaw) {
                 const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
                 const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                 
-                // Traduction du mois
+                // Traduction du mois (ex: "août" -> "Aug")
                 moisFr.forEach((m, index) => {
                     if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
                         dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
                     }
-                }); // <-- Cette parenthèse et ce point-virgule manquaient dans votre fichier
+                });
 
-                // Mise en majuscule (ex: 12 aug -> 12 Aug)
+                // Majuscule (ex: 12 aug -> 12 Aug)
                 dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
 
                 // Logique pour griser les événements passés
@@ -583,27 +583,27 @@
                 }
             }
 
-            // --- 2. CRÉATION DES CELLULES ---
+            // --- 2. CRÉATION DES CELLULES (TD) ---
             
-            // Colonne DATE (Traduite)
+            // Date (Anglais)
             const tdDate = document.createElement('td');
             tdDate.className = 'col-date';
             tdDate.innerText = dateDisplay;
             tr.appendChild(tdDate);
 
-            // Colonne ÉVÉNEMENT
+            // Événement
             const tdEvent = document.createElement('td');
             tdEvent.className = 'col-event';
             tdEvent.innerText = row[1] || "";
             tr.appendChild(tdEvent);
 
-            // Colonne RÉGION
+            // Région
             const tdRegion = document.createElement('td');
             tdRegion.className = 'col-region';
             tdRegion.innerText = row[2] || "";
             tr.appendChild(tdRegion);
 
-            // Colonne TYPE (Catégories)
+            // Catégories (badges)
             const tdType = document.createElement('td');
             tdType.className = 'col-type';
             const cats = row[3] ? String(row[3]).split(',').map(s => s.trim()) : [];
@@ -615,34 +615,29 @@
             });
             tr.appendChild(tdType);
 
-            // Colonne LIENS (Web & Contact)
+            // Liens
             const tdLinks = document.createElement('td');
             tdLinks.className = 'col-links';
-            
-            if (row[4]) { // Site Web
+            if (row[4]) {
                 const aWeb = document.createElement('a');
-                aWeb.href = row[4];
-                aWeb.target = "_blank";
-                aWeb.className = "btn-web";
-                aWeb.innerText = "Website";
+                aWeb.href = row[4]; aWeb.target = "_blank";
+                aWeb.className = "btn-web"; aWeb.innerText = "Website";
                 tdLinks.appendChild(aWeb);
             }
-            if (row[5]) { // Contact
+            if (row[5]) {
                 const aMail = document.createElement('a');
                 aMail.href = "mailto:" + row[5];
-                aMail.className = "btn-contact";
-                aMail.innerText = "Contact";
+                aMail.className = "btn-contact"; aMail.innerText = "Contact";
                 tdLinks.appendChild(aMail);
             }
             tr.appendChild(tdLinks);
 
-            // Attributs pour le mode mobile et les filtres
+            // Attributs pour mobile
             tr.setAttribute('data-categories', cats.join(','));
-            
-            // Ajout de la ligne au tableau
             body.appendChild(tr);
         }
-    }
+
+        // --- 3. AFFICHAGE DU TABLEAU ET CACHAGE DU STATUS ---
         document.getElementById('status').style.display = 'none';
         document.getElementById('calTable').style.display = 'table';
     }
