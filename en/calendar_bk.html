@@ -270,7 +270,7 @@
     /* --- SOLUTION : FUSION VISUELLE ET BOUTONS IDENTIQUES --- */
     
     /* Titre "LIENS" pour la première cellule */
-    td[data-label="Site web"]:before { content: "LINKS"; }
+    td[data-label="Site web"]:before { content: "LIENS"; }
 
     /* Largeur 50% pour Site et Contact */
     td[data-label="Site web"], 
@@ -410,8 +410,8 @@
 {
   "@context": "https://schema.org",
   "@type": "EventSeries",
-  "name": "Calendar Triathlon Québec 2026",
-  "description": "Complete calendar of triathlons and duathlons in Québec for the 2026 season.",
+  "name": "Calendrier Triathlon Québec 2026",
+  "description": "Calendrier complet des triathlon et duathlon au Québec pour la saison 2026.",
   "organizer": {
     "@type": "NGO",
     "name": "Mon Projet Tri",
@@ -419,7 +419,7 @@
   },
   "location": {
     "@type": "Place",
-    "name": "Province of Québec, Canada"
+    "name": "Province de Québec, Canada"
   }
 }
 </script>
@@ -438,11 +438,11 @@
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
                 <ul id="navMenu">
-                    <li><a href="discover.html">About Us</a></li> 
-        <li><a href="#vision">Our Vision</a></li>
-        <li><a href="#programme">Programs</a></li>
-        <li><a href="calendar.html">Calendar</a></li>
-        <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Join Us</a></li>
+                    <li><a href="decouvrir.html">L'OBNL</a></li>
+                    <li><a href="index.html#vision">Notre vision</a></li>
+                    <li><a href="index.html#programme">Les programmes</a></li>
+                    <li><a href="calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier</a></li>
+                    <li><a href="index.html#contact">Rejoignez-nous</a></li>
                 </ul>
             </nav>
         </div>
@@ -453,7 +453,7 @@
            <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
          alt="Affiliation Triathlon Québec" 
-         title="Events affiliated with Triathlon Québec"
+         title="Courses affiliées à Triathlon Québec"
          style="width:18px">
     <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
 </div>
@@ -461,7 +461,7 @@
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
             <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
-            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TF</span> Full</div>
+            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
             <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
             <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
             <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
@@ -472,34 +472,34 @@
     </div>
 
     <div class="main-content">
-        <h1>Provincial Calendar 2026</h1>
+        <h1>Calendrier Provincial 2026</h1>
 
         <div class="cta-accompagnement">
     <img src="../favicon.png" alt="Icon" class="cta-icon-img">
     <div class="cta-content">
         <p class="cta-main-text">
-            Choose your project, and we’ll guide you along the way. 
+            Choisissez votre projet, puis on vous accompagne 
             <span style="white-space: nowrap;">de <strong class="orange-letter">A</strong> à <strong class="orange-letter">Z</strong>.</span>
         </p>
         <span class="cta-sub-text">
-            Check <a href="index.html#programme" class="cta-link">our programs</a> for personalized coaching.
+            Consultez <a href="index.html#programme" class="cta-link">nos programmes</a> pour un encadrement individuel.
         </span>
     </div>
 </div>
 
-        <div id="status" style="text-align:center; padding: 20px;">Loading...</div>
+        <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
         <div class="table-outer">
             <table id="calTable" style="display:none;">
                 <thead>
                     <tr>
                         <th class="col-date">Date</th>
-                        <th class="col-event">Event</th>
-                        <th class="col-org">Organisation</th>
-                        <th class="col-reg">Region</th>
-                        <th class="col-lieu">Place</th>
+                        <th class="col-event">Événement</th>
+                        <th class="col-org">Organisateur</th>
+                        <th class="col-reg">Région</th>
+                        <th class="col-lieu">Lieu</th>
                         <th class="col-site">Internet</th>
                         <th class="col-mail">Contact</th>
-                        <th class="col-epreuves">Races</th>
+                        <th class="col-epreuves">Épreuves</th>
                     </tr>
                 </thead>
                 <tbody id="calBody"></tbody>
