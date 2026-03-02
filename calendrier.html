@@ -29,41 +29,46 @@
     nav a:hover { color: var(--accent); }
     .menu-toggle { display: none; font-size: 28px; color: white; cursor: pointer; }
 
-    /* BANDEAU ACCOMPAGNEMENT DYNAMIQUE */
+    /* BANDEAU ACCOMPAGNEMENT - VERSION BLEUE ALIGNÉE */
     .cta-accompagnement {
         background: linear-gradient(135deg, var(--primary) 0%, var(--dark-blue) 100%);
         max-width: 850px;
         margin: 0 auto 40px;
-        padding: 30px;
+        padding: 25px 30px;
         border-radius: 20px;
-        text-align: center;
         box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
         position: relative;
         overflow: hidden;
         display: flex;
-        flex-direction: column;
+        flex-direction: row; /* Icône sur le côté */
         align-items: center;
-        justify-content: center;
-        gap: 15px;
+        justify-content: center; /* Centre le groupe icône+texte dans le bandeau */
+        gap: 25px;
         color: white;
     }
 
     .cta-icon-img {
-        width: 65px;
-        height: 65px;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
         object-fit: contain;
         filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
     }
 
+    .cta-content {
+        text-align: left; /* Texte aligné à gauche par rapport à l'icône */
+        z-index: 1;
+    }
+
     .cta-main-text {
         margin: 0;
-        font-size: 1.4rem;
+        font-size: 1.35rem;
         font-weight: 700;
-        line-height: 1.3;
+        line-height: 1.2;
         color: white;
     }
 
-    /* Couleur orange UNIQUEMENT pour les lettres A et Z */
+    /* Seules les lettres A et Z en orange */
     .orange-letter {
         color: var(--accent);
         font-weight: 800;
@@ -71,8 +76,8 @@
 
     .cta-sub-text {
         display: block;
-        margin-top: 10px;
-        font-size: 1.05rem;
+        margin-top: 8px;
+        font-size: 1rem;
         color: rgba(255, 255, 255, 0.9);
     }
 
@@ -85,9 +90,16 @@
     .cta-link:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
-        .cta-accompagnement { margin: 0 15px 30px; padding: 25px 15px; }
-        .cta-main-text { font-size: 1.2rem; padding: 0 10px; }
-        .cta-icon-img { width: 55px; height: 55px; }
+        .cta-accompagnement { 
+            margin: 0 15px 30px; 
+            padding: 20px; 
+            flex-direction: column; /* Repasse en colonne sur mobile pour l'espace */
+            text-align: center;
+            gap: 15px;
+        }
+        .cta-content { text-align: center; }
+        .cta-main-text { font-size: 1.15rem; }
+        .cta-icon-img { width: 50px; height: 50px; }
     }
 
     /* --- LÉGENDE --- */
