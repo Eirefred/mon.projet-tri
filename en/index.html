@@ -321,15 +321,24 @@ input:checked + .slider .labels::after {
         z-index: 1100;
     }
 
-   /* 1. Cache TOUS les éléments du menu (y compris le toggle) quand il n'est pas actif */
+    /* 1. Cache TOUS les éléments du menu (y compris le toggle) quand il n'est pas actif */
 nav ul:not(.active) li {
     display: none !important;
 }
 
-/* 2. On s'assure que le menu nav lui-même ne prend pas de place quand il est fermé */
-nav ul:not(.active) {
-    display: none;
-}
+    /* 2. Style du menu déroulant quand il est actif */
+    nav ul.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute;
+        top: 60px; /* Ajustez selon la hauteur réelle de votre header mobile */
+        left: 0;
+        width: 100%;
+        background-color: white !important;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
 
     /* 3. FORCE l'affichage de chaque item dans le menu ouvert */
     nav ul.active li {
