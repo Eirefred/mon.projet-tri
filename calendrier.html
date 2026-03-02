@@ -29,63 +29,50 @@
     nav a:hover { color: var(--accent); }
     .menu-toggle { display: none; font-size: 28px; color: white; cursor: pointer; }
 
-    /* BANDEAU ACCOMPAGNEMENT DYNAMIQUE - VERSION BLEUE */
+    /* BANDEAU ACCOMPAGNEMENT DYNAMIQUE */
     .cta-accompagnement {
         background: linear-gradient(135deg, var(--primary) 0%, var(--dark-blue) 100%);
         max-width: 850px;
         margin: 0 auto 40px;
-        padding: 25px;
+        padding: 30px;
         border-radius: 20px;
         text-align: center;
         box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
         position: relative;
         overflow: hidden;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 25px;
-        color: white; /* Texte en blanc pour le contraste */
-    }
-
-    /* Décoration pour le dynamisme */
-    .cta-accompagnement::before {
-        content: '';
-        position: absolute;
-        top: -20px;
-        left: -20px;
-        width: 100px;
-        height: 100px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
+        gap: 15px;
+        color: white;
     }
 
     .cta-icon-img {
-        width: 60px;
-        height: 60px;
-        flex-shrink: 0;
+        width: 65px;
+        height: 65px;
         object-fit: contain;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-    }
-
-    .cta-content {
-        text-align: left;
-        flex-grow: 1;
-        z-index: 1;
+        filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
     }
 
     .cta-main-text {
         margin: 0;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         font-weight: 700;
-        line-height: 1.2;
+        line-height: 1.3;
         color: white;
     }
-    .cta-main-text strong { color: var(--accent); } /* "De A à Z" en Orange */
+
+    /* Couleur orange UNIQUEMENT pour les lettres A et Z */
+    .orange-letter {
+        color: var(--accent);
+        font-weight: 800;
+    }
 
     .cta-sub-text {
         display: block;
-        margin-top: 8px;
-        font-size: 1rem;
+        margin-top: 10px;
+        font-size: 1.05rem;
         color: rgba(255, 255, 255, 0.9);
     }
 
@@ -93,17 +80,15 @@
         color: white;
         font-weight: bold;
         text-decoration: underline;
-        text-underline-offset: 3px;
-        transition: color 0.3s;
+        transition: all 0.3s;
     }
     .cta-link:hover { color: var(--accent); }
 
     @media (max-width: 768px) {
-        .cta-accompagnement { margin: 0 10px 30px; flex-direction: column; text-align: center; gap: 15px; }
-        .cta-content { text-align: center; }
-        .cta-icon-img { width: 50px; height: 50px; }
+        .cta-accompagnement { margin: 0 15px 30px; padding: 25px 15px; }
+        .cta-main-text { font-size: 1.2rem; padding: 0 10px; }
+        .cta-icon-img { width: 55px; height: 55px; }
     }
-
 
     /* --- LÉGENDE --- */
     .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1100; padding: 12px 0; border-bottom: 1px solid #ddd; height: 40px; display: flex; align-items: center; }
@@ -455,14 +440,17 @@
         <h1>Calendrier Provincial 2026</h1>
 
         <div class="cta-accompagnement">
-            <img src="favicon.png" alt="Icon" class="cta-icon-img">
-            <div class="cta-content">
-                <p class="cta-main-text">Choisissez votre projet, puis on vous accompagne <strong>de A à Z</strong>.</p>
-                <span class="cta-sub-text">
-                    Consultez <a href="index.html#programme" class="cta-link">nos programmes</a> pour un encadrement individuel.
-                </span>
-            </div>
-        </div>
+    <img src="favicon.png" alt="Icon" class="cta-icon-img">
+    <div class="cta-content">
+        <p class="cta-main-text">
+            Choisissez votre projet, puis on vous accompagne 
+            <span style="white-space: nowrap;">de <strong class="orange-letter">A</strong> à <strong class="orange-letter">Z</strong>.</span>
+        </p>
+        <span class="cta-sub-text">
+            Consultez <a href="index.html#programme" class="cta-link">nos programmes</a> pour un accompagnement individuel.
+        </span>
+    </div>
+</div>
 
         <div id="status" style="text-align:center; padding: 20px;">Chargement...</div>
         <div class="table-outer">
