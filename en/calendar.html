@@ -479,7 +479,7 @@
     <div class="cta-content">
         <p class="cta-main-text">
             Choose your project, and we’ll guide you along the way, 
-            <span style="white-space: nowrap;">from <strong class="orange-letter">A</strong> to <strong class="orange-letter">Z</strong></span>
+            <span style="white-space: nowrap;">from <strong class="orange-letter">A</strong> to <strong class="orange-letter">Z</strong>.</span>
         </p>
         <span class="cta-sub-text">
             Check <a href="index.html#programme" class="cta-link">our programs</a> for personalized coaching.
@@ -546,48 +546,28 @@
             const row = rows[i];
             if (!row[1]) continue;
             const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (TRADUCTION VERS ANGLAIS) ---
+            // --- LOGIQUE DE DATE (AJOUT) ---
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateRaw = row[0] ? String(row[0]).trim() : "";
-        let dateDisplay = dateRaw; // Variable qui sera affichée
-
+        
         if (dateRaw) {
             const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            const moisEn = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
-            
-            // 1. On traduit le mois et on inverse l'ordre (ex: "15 mars" -> "March 15")
-            moisFr.forEach((m, index) => {
-                if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
-                    let jour = dateRaw.match(/\d+/); // On extrait le chiffre (ex: 15)
-                    if (jour) {
-                        dateDisplay = moisEn[index] + " " + jour[0];
-                    } else {
-                        dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
-                    }
-                }
-            });
-
-            // 2. Logique de grisage (on garde moisFr car la source reste en FR)
+            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
+            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
+            // Pour "11-13 sept.", on extrait "13 sept."
             const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-            const jourNum = parseInt(dateRef.match(/\d+/));
+            
+            const jour = parseInt(dateRef.match(/\d+/));
             const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
             
-            if (jourNum && indexMois !== -1) {
-                const dateEpreuve = new Date(2026, indexMois, jourNum);
+            if (jour && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jour);
                 if (dateEpreuve < today) {
-                    tr.classList.add('past-event');
+                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
                 }
             }
         }
-
-        // --- CRÉATION DE LA CELLULE (ORDRE CRUCIAL) ---
-        const tdDate = document.createElement('td');
-        tdDate.className = 'col-date';
-        tdDate.innerText = dateDisplay; // <--- C'est ICI qu'on injecte la version traduite
-        tr.appendChild(tdDate);
-
-
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
