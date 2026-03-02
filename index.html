@@ -312,7 +312,65 @@
         }
         .footer-logo img { height: 60px; display: block; }
 
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
         @media (max-width: 768px) {
+            header { height: 80px; }
+    
+    .menu-toggle { 
+        display: block; 
+        z-index: 1500;
+    }
+
+    /* Style du menu mobile déroulant */
+    #navMenu {
+        display: none; /* Caché par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1400;
+    }
+
+    /* Affichage quand actif */
+    #navMenu.active {
+        display: flex !important;
+    }
+
+    #navMenu li {
+        margin: 0 !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    #navMenu li a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 1.1rem;
+    }
+
+    /* Centrer le toggle de langue dans le menu mobile */
+    .lang-selector {
+        justify-content: center;
+        padding: 20px 0;
+        border-bottom: none;
+    }
+
+    /* On s'assure que les liens ne sont pas cachés par l'ancienne règle */
+    nav ul li:not(.lang-selector) {
+        display: block !important;
+    }
             .nav-container {
                 flex-direction: row !important;
                 justify-content: space-between !important;
@@ -424,23 +482,24 @@
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
+            
             <nav>
-    <ul>
-        <li><a href="decouvrir.html">L'OBNL</a></li>
-        <li><a href="#vision">Notre vision</a></li>
-        <li><a href="#programme">Les programmes</a></li>
-        <li><a href="calendrier.html">Calendrier</a></li>
-        <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
-        <li class="lang-selector">
-    <label class="switch">
-        <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-        <span class="slider">
-            <span class="labels" data-on="EN" data-off="FR"></span>
-        </span>
-    </label>
-</li>
-    </ul>
-</nav>
+            <ul id="navMenu">
+                <li><a href="#programme">Programmes</a></li>
+                <li><a href="#vision">Vision</a></li>
+                <li><a href="calendrier.html">Calendrier 2026</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="lang-selector">
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
+                        <span class="slider" data-on="EN" data-off="FR">
+                            <span class="labels" data-on="EN" data-off="FR"></span>
+                        </span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+
         </div>
     </header>
 
@@ -976,6 +1035,24 @@ window.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
+// Gestion du menu hamburger
+const menuBtn = document.getElementById('mobile-menu-btn');
+const navMenu = document.getElementById('navMenu');
+
+if (menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        // Change l'icône entre le hamburger et le X
+        menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+    });
+}
+
+// Fermer le menu quand on clique sur un lien (pour les ancres #)
+document.querySelectorAll('#navMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        menuBtn.textContent = '☰';
+    });
 });
 
 // Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
