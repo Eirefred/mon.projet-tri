@@ -478,7 +478,7 @@
     <img src="../favicon.png" alt="Icon" class="cta-icon-img">
     <div class="cta-content">
         <p class="cta-main-text">
-            Choose your project, and we’ll guide you along the way. 
+            Choose your project, and we’ll guide you along the way, 
             <span style="white-space: nowrap;">from <strong class="orange-letter">A</strong> to <strong class="orange-letter">Z</strong>.</span>
         </p>
         <span class="cta-sub-text">
@@ -546,28 +546,45 @@
             const row = rows[i];
             if (!row[1]) continue;
             const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (AJOUT) ---
+            // --- LOGIQUE DE DATE (TRADUCTION ET ÉVÉNEMENTS PASSÉS) ---
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateRaw = row[0] ? String(row[0]).trim() : "";
+        let dateDisplay = dateRaw; // Par défaut, on garde le texte original
         
         if (dateRaw) {
             const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
-            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
-            // Pour "11-13 sept.", on extrait "13 sept."
-            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+            const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             
+            // 1. TRADUCTION POUR L'AFFICHAGE
+            moisFr.forEach((m, index) => {
+                if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
+                    // On remplace le mois FR par le mois EN (ex: "août" -> "Aug")
+                    dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
+                }
+            });
+            // Met la première lettre en majuscule (ex: "15 aug" -> "15 Aug")
+            dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
+
+            // 2. LOGIQUE DE DATE PASSÉE (Basée sur dateRaw qui est en FR)
+            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
             const jour = parseInt(dateRef.match(/\d+/));
             const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
             
             if (jour && indexMois !== -1) {
                 const dateEpreuve = new Date(2026, indexMois, jour);
                 if (dateEpreuve < today) {
-                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
+                    tr.classList.add('past-event');
                 }
             }
         }
+        // 3. CRÉATION DE LA CELLULE AVEC LA DATE TRADUITE
+        const tdDate = document.createElement('td');
+        tdDate.className = 'col-date';
+        tdDate.innerText = dateDisplay; // <-- On utilise la version anglaise ici
+        tr.appendChild(tdDate);
+
+        
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
