@@ -541,7 +541,7 @@
 
     function renderTable(rows) {
         const body = document.getElementById('calBody');
-        body.innerHTML = ""; // On vide le tableau avant de commencer
+        body.innerHTML = ""; 
 
         for (let i = 1; i < rows.length; i++) {
             const row = rows[i];
@@ -549,67 +549,58 @@
             
             const tr = document.createElement('tr');
 
-            // --- 1. LOGIQUE DE TRADUCTION DE LA DATE ---
+            // --- 1. TRADUCTION DE LA DATE ---
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            
             let dateRaw = row[0] ? String(row[0]).trim() : "";
             let dateDisplay = dateRaw; 
 
             if (dateRaw) {
                 const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
                 const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-                
-                // Traduction du mois
                 moisFr.forEach((m, index) => {
                     if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
                         dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
                     }
-                }); // <-- La fermeture manquante était ici
-
-                // Mise en majuscule (ex: 12 aug -> 12 Aug)
+                });
                 dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
 
-                // Logique pour griser les événements passés
                 const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
                 const jour = parseInt(dateRef.match(/\d+/));
                 const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-                
                 if (jour && indexMois !== -1) {
                     const dateEpreuve = new Date(2026, indexMois, jour);
-                    if (dateEpreuve < today) {
-                        tr.classList.add('past-event');
-                    }
+                    if (dateEpreuve < today) tr.classList.add('past-event');
                 }
             }
 
-            // --- 2. CRÉATION DES CELLULES AVEC LABELS MOBILES ---
+            // --- 2. CRÉATION DES CELLULES (RÉTABLISSEMENT DES LABELS CSS) ---
             
-            // Date
+            // DATE (Col 1)
             const tdDate = document.createElement('td');
             tdDate.className = 'col-date';
             tdDate.setAttribute('data-label', 'DATE');
             tdDate.innerText = dateDisplay;
             tr.appendChild(tdDate);
 
-            // Événement
+            // ÉVÉNEMENT (Col 2)
             const tdEvent = document.createElement('td');
             tdEvent.className = 'col-event';
-            tdEvent.setAttribute('data-label', 'EVENT');
+            tdEvent.setAttribute('data-label', 'EVENT'); // Label en anglais pour la cohérence
             tdEvent.innerText = row[1] || "";
             tr.appendChild(tdEvent);
 
-            // Région
+            // RÉGION (Col 3)
             const tdRegion = document.createElement('td');
             tdRegion.className = 'col-region';
             tdRegion.setAttribute('data-label', 'REGION');
             tdRegion.innerText = row[2] || "";
             tr.appendChild(tdRegion);
 
-            // Type (Badges)
+            // TYPE / RACES (Col 4)
             const tdType = document.createElement('td');
             tdType.className = 'col-type';
-            tdType.setAttribute('data-label', 'TYPE');
+            tdType.setAttribute('data-label', 'RACES'); // On utilise RACES ici pour le mobile
             const cats = row[3] ? String(row[3]).split(',').map(s => s.trim()) : [];
             cats.forEach(c => {
                 const span = document.createElement('span');
@@ -619,30 +610,39 @@
             });
             tr.appendChild(tdType);
 
-            // Liens
+            // LINKS (Col 5)
             const tdLinks = document.createElement('td');
             tdLinks.className = 'col-links';
             tdLinks.setAttribute('data-label', 'LINKS');
+            
+            // Conteneur interne pour les boutons (aide à l'alignement mobile)
+            const linkContainer = document.createElement('div');
+            linkContainer.style.display = "flex";
+            linkContainer.style.gap = "10px";
+            linkContainer.style.justifyContent = "flex-end"; // Aligné à droite sur desktop
+            linkContainer.className = "mobile-link-fix";
+
             if (row[4]) {
                 const aWeb = document.createElement('a');
                 aWeb.href = row[4]; aWeb.target = "_blank";
                 aWeb.className = "btn-web"; aWeb.innerText = "Website";
-                tdLinks.appendChild(aWeb);
+                linkContainer.appendChild(aWeb);
             }
             if (row[5]) {
                 const aMail = document.createElement('a');
                 aMail.href = "mailto:" + row[5];
                 aMail.className = "btn-contact"; aMail.innerText = "Contact";
-                tdLinks.appendChild(aMail);
+                linkContainer.appendChild(aMail);
             }
+            tdLinks.appendChild(linkContainer);
             tr.appendChild(tdLinks);
 
-            // Attributs finaux
+            // Attributs système
             tr.setAttribute('data-categories', cats.join(','));
             body.appendChild(tr);
         }
 
-        // --- 3. AFFICHAGE DU TABLEAU ---
+        // --- 3. AFFICHAGE ---
         document.getElementById('status').style.display = 'none';
         document.getElementById('calTable').style.display = 'table';
     }
