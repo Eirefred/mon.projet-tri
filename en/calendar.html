@@ -546,41 +546,45 @@
             const row = rows[i];
             if (!row[1]) continue;
             const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (TRADUCTION ET ÉVÉNEMENTS PASSÉS) ---
+            // --- LOGIQUE DE DATE (TRADUCTION VERS ANGLAIS) ---
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateRaw = row[0] ? String(row[0]).trim() : "";
-        let dateDisplay = dateRaw; // Variable pour l'affichage traduit
+        let dateDisplay = dateRaw; // Variable qui sera affichée
 
         if (dateRaw) {
             const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            const moisEn = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const moisEn = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
             
-            // TRADUCTION : On remplace le mois FR par le mois EN
+            // 1. On traduit le mois et on inverse l'ordre (ex: "15 mars" -> "March 15")
             moisFr.forEach((m, index) => {
                 if (dateRaw.toLowerCase().includes(m.toLowerCase())) {
-                    dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
+                    let jour = dateRaw.match(/\d+/); // On extrait le chiffre (ex: 15)
+                    if (jour) {
+                        dateDisplay = moisEn[index] + " " + jour[0];
+                    } else {
+                        dateDisplay = dateRaw.toLowerCase().replace(m.toLowerCase(), moisEn[index]);
+                    }
                 }
             });
-            // Mise en majuscule de la première lettre (ex: "15 aug" -> "15 Aug")
-            dateDisplay = dateDisplay.charAt(0).toUpperCase() + dateDisplay.slice(1);
 
-            // LOGIQUE DE GRISAGE (On garde moisFr ici car l'Excel est en FR)
+            // 2. Logique de grisage (on garde moisFr car la source reste en FR)
             const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-            const jour = parseInt(dateRef.match(/\d+/));
+            const jourNum = parseInt(dateRef.match(/\d+/));
             const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
             
-            if (jour && indexMois !== -1) {
-                const dateEpreuve = new Date(2026, indexMois, jour);
+            if (jourNum && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jourNum);
                 if (dateEpreuve < today) {
                     tr.classList.add('past-event');
                 }
             }
         }
 
+        // --- CRÉATION DE LA CELLULE (ORDRE CRUCIAL) ---
         const tdDate = document.createElement('td');
         tdDate.className = 'col-date';
-        tdDate.innerText = dateDisplay; // <--- TRÈS IMPORTANT : on utilise dateDisplay
+        tdDate.innerText = dateDisplay; // <--- C'est ICI qu'on injecte la version traduite
         tr.appendChild(tdDate);
 
         
