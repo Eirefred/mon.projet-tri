@@ -610,24 +610,25 @@
                 });
             }
 
-            // 2. REMONTÉE AUTOMATIQUE DIFFÉRENCIÉE (PC vs MOBILE)
+            // 2. REMONTÉE AUTOMATIQUE PRÉCISE
             setTimeout(() => {
-                const header = document.querySelector('header');
                 const legend = document.querySelector('.legend-container');
-                const target = document.querySelector('h1'); 
+                const table = document.getElementById('calTable');
                 
-                if (target && header && legend) {
-                    const hHeight = header.offsetHeight;
-                    const lHeight = legend.offsetHeight;
-                    const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                if (table && legend) {
+                    // On calcule la position du tableau
+                    const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
+                    // On récupère la hauteur de la barre de légende qui est "sticky"
+                    const legendHeight = legend.offsetHeight;
+                    // On récupère la position du header (80px sur PC, 70px sur Mobile)
+                    const headerHeight = document.querySelector('header').offsetHeight;
 
-                    // Application de vos réglages : +80 mobile / +60 ordi
-                    const monAjustement = (window.innerWidth <= 768) ? 80 : 50; 
-
-                    const offsetPosition = elementPosition - (hHeight + lHeight) + monAjustement;
+                    // La position cible est : le haut du tableau MOINS l'espace pris par les barres fixes
+                    // On ajoute un petit -5 pour cacher le bord du bandeau bleu
+                    const finalScrollTarget = tableTop - (legendHeight + headerHeight) - 5;
 
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: finalScrollTarget,
                         behavior: 'smooth'
                     });
                 }
