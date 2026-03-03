@@ -418,7 +418,7 @@
     "url": "https://mon.projet-tri.org"
   },
   "location": {
-    "@type": "Place",
+    "@type": "Location",
     "name": "Province de Québec, Canada"
   }
 }
@@ -496,7 +496,7 @@
                         <th class="col-event">Event</th>
                         <th class="col-org">Organisation</th>
                         <th class="col-reg">Region</th>
-                        <th class="col-lieu">Place</th>
+                        <th class="col-lieu">Location</th>
                         <th class="col-site">Internet</th>
                         <th class="col-mail">Contact</th>
                         <th class="col-epreuves">Races</th>
@@ -597,7 +597,7 @@
                 <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisation">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
-                <td data-label="Place"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
+                <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
                 <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Web Site</a>` : "-"}</td>
                 <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
                 <td data-label="Races"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
