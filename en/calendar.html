@@ -460,7 +460,7 @@
             <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
-            <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Half</div>
+            <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
             <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TF</span> Full</div>
             <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
             <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
@@ -594,8 +594,8 @@
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
                 <td data-label="Date"><b>${row[0] || ""}</b></td>
-                <td data-label="Evènement"><b>${isTQ}${row[1]}</b></td>
-                <td data-label="Organisation">${row[6] || "-"}</td>
+                <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
+                <td data-label="Organisateur">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
                 <td data-label="Place"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
                 <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Web Site</a>` : "-"}</td>
