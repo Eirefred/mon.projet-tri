@@ -556,27 +556,27 @@ const monthTranslations = {
         // --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
 const today = new Date();
 today.setHours(0, 0, 0, 0);
-let dateRaw = row[0] ? String(row[0]).trim() : ""; // ex: "14-22 fév." 
-let dateDisplay = dateRaw;
+let dateRaw = row[0] ? String(row[0]).trim() : ""; 
+let dateDisplay = dateRaw; // C'est cette variable qu'on affichera
 
 if (dateRaw) {
     let dayPart = "";
     let monthPartFr = "";
 
-    // 1. Séparer le(s) chiffre(s) du mois
+    // 1. Séparer les chiffres (ex: "14" ou "14-22") du texte (ex: "fév.")
     const match = dateRaw.match(/^([\d-]+)\s+(.*)$/);
     if (match) {
-        dayPart = match[1];      // "14-22"
-        monthPartFr = match[2];  // "fév."
+        dayPart = match[1];      
+        monthPartFr = match[2].toLowerCase(); 
+        
+        // 2. Traduire le mois via le dictionnaire monthTranslations
+        let monthEnglish = monthTranslations[monthPartFr] || monthPartFr;
+
+        // 3. Inverser pour le format Nord-Américain : "Feb. 14-22"
+        dateDisplay = `${monthEnglish} ${dayPart}`;
     }
 
-    // 2. Traduire le mois
-    let monthEnglish = monthTranslations[monthPartFr.toLowerCase()] || monthPartFr;
-
-    // 3. Inverser l'ordre : "Feb. 14-22"
-    dateDisplay = `${monthEnglish} ${dayPart}`;
-
-    // 4. Logique pour griser les événements passés 
+    // 4. Logique pour griser les événements passés
     const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
     const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
     const jour = parseInt(dateRef.match(/\d+/));
