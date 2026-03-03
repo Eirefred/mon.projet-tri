@@ -553,21 +553,30 @@ const monthTranslations = {
             const tr = document.createElement('tr');
             // --- LOGIQUE DE DATE (AJOUT) ---
         // --- LOGIQUE DE DATE & TRADUCTION ---
+// --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
 const today = new Date();
 today.setHours(0, 0, 0, 0);
-let dateRaw = row[0] ? String(row[0]).trim() : "";
-let dateEnglish = dateRaw;
+let dateRaw = row[0] ? String(row[0]).trim() : ""; // ex: "14-22 fév." 
+let dateDisplay = dateRaw;
 
 if (dateRaw) {
-    // Traduction pour l'affichage
-    Object.keys(monthTranslations).forEach(frMonth => {
-        if (dateEnglish.toLowerCase().includes(frMonth.toLowerCase())) {
-            const regex = new RegExp(frMonth, "gi");
-            dateEnglish = dateEnglish.replace(regex, monthTranslations[frMonth]);
-        }
-    });
+    let dayPart = "";
+    let monthPartFr = "";
 
-    // Logique pour griser les événements passés (inchangée mais utilise les mois FR pour le calcul)
+    // 1. Séparer le(s) chiffre(s) du mois
+    const match = dateRaw.match(/^([\d-]+)\s+(.*)$/);
+    if (match) {
+        dayPart = match[1];      // "14-22"
+        monthPartFr = match[2];  // "fév."
+    }
+
+    // 2. Traduire le mois
+    let monthEnglish = monthTranslations[monthPartFr.toLowerCase()] || monthPartFr;
+
+    // 3. Inverser l'ordre : "Feb. 14-22"
+    dateDisplay = `${monthEnglish} ${dayPart}`;
+
+    // 4. Logique pour griser les événements passés 
     const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
     const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
     const jour = parseInt(dateRef.match(/\d+/));
