@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar Triathlon & Duathlon Québec 2026 | Mon Projet Tri</title>
-<meta name="description" content="View the complete 2026 calendar of triathlon, duathlon, and aquathlon events in Québec. Plan your season with the non-profit organization Mon Projet Tri.">
-<meta name="keywords" content="ctriathlon Québec 2026 calendar, Québec triathlon races, Québec duathlon, 2026 triathlon competition, Mon Projet Tri, Frédéric Hadi">
+    <title>Calendrier Triathlon & Duathlon Québec 2026 | Mon Projet Tri</title>
+<meta name="description" content="Consultez le calendrier complet des compétitions de triathlon, duathlon et aquathlon au Québec pour 2026. Planifiez votre saison avec l'OBNL Mon Projet Tri.">
+<meta name="keywords" content="calendrier triathlon Québec 2026, courses triathlon Québec, duathlon Québec, compétition triathlon 2026, Mon Projet Tri, Frédéric Hadi">
 
     <link rel="canonical" href="https://mon.projet-tri.org/" />
     <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="../favicon.png">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="apple-touch-icon.png">
     <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
@@ -185,7 +185,7 @@
     /* --- MOBILE --- */
     /* --- OPTIMISATION MOBILE FINALE : BOUTONS IDENTIQUES --- */
 @media (max-width: 768px) {
-    header { height: 70px; }
+    header { height: 80px; }
     .logo img { height: 40px !important; }
     .region-mention { display: none; }
     
@@ -195,12 +195,12 @@
     /* NAVIGATION MOBILE */
     #navMenu { 
         display: none; flex-direction: column; position: absolute; 
-        top: 70px; left: 0; width: 100%; background-color: var(--primary); 
-        padding: 10px 0; z-index: 1300; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        top: 80px; left: 0; width: 100%; background-color: var(--primary); 
+        padding: 0; z-index: 1400; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     #navMenu.active { display: flex !important; }
-    #navMenu li { display: block !important; width: 100%; text-align: center; }
-    #navMenu li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 1rem; }
+    #navMenu li { display: block !important;margin: 0 !important; width: 100%; text-align: center; }
+    #navMenu li a { display: block; padding: 10px 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 1.1rem; }
 
   /* --- AMÉLIORATION LÉGENDE MOBILE --- */
     .legend-container { 
@@ -429,7 +429,7 @@
     <header>
         <div class="nav-container">
             <div class="header-left">
-                <div class="logo"><a href="index.html"><img src="../mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
+                <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
 
 
 
@@ -441,7 +441,7 @@
                     <li><a href="decouvrir.html">L'OBNL</a></li>
                     <li><a href="index.html#vision">Notre vision</a></li>
                     <li><a href="index.html#programme">Les programmes</a></li>
-                    <li><a href="calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier</a></li>
+                    <li><a href="calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier '26</a></li>
                     <li><a href="index.html#contact">Rejoignez-nous</a></li>
                 </ul>
             </nav>
@@ -475,11 +475,11 @@
         <h1>Calendrier Provincial 2026</h1>
 
         <div class="cta-accompagnement">
-    <img src="../favicon.png" alt="Icon" class="cta-icon-img">
+    <img src="favicon.png" alt="Icon" class="cta-icon-img">
     <div class="cta-content">
         <p class="cta-main-text">
             Choisissez votre projet, puis on vous accompagne 
-            <span style="white-space: nowrap;">de <strong class="orange-letter">A</strong> à <strong class="orange-letter">Z</strong>.</span>
+            <span style="white-space: nowrap;">de <strong class="orange-letter">A</strong> à <strong class="orange-letter">Z</strong></span>
         </p>
         <span class="cta-sub-text">
             Consultez <a href="index.html#programme" class="cta-link">nos programmes</a> pour un encadrement individuel.
@@ -518,7 +518,7 @@
     <button id="backToTop" title="Retour en haut">↑</button>
 
 <script>
-    const EXCEL_FILE = '../Calendrier-2026.xlsx';
+    const EXCEL_FILE = 'Calendrier-2026.xlsx';
     const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
     let activeFilter = null;
     const CALENDAR_YEAR = 2026;
@@ -695,7 +695,7 @@ function openGlobalMap() {
         
         <div class="footer-logo" style="margin-bottom: 10px;">
             <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
-                <img src="../mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal" style="height: 60px; display: block;">
+                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal" style="height: 60px; display: block;">
             </a>
         </div>
         
