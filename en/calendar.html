@@ -572,7 +572,7 @@
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
             let badges = [];
             for (let j = 11; j <= 20; j++) {
                 if (row[j] === "X" || row[j] === "x") {
@@ -595,7 +595,7 @@
             tr.innerHTML = `
                 <td data-label="Date"><b>${row[0] || ""}</b></td>
                 <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
-                <td data-label="Organisateur">${row[6] || "-"}</td>
+                <td data-label="Organisation">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
                 <td data-label="Place"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
                 <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Web Site</a>` : "-"}</td>
