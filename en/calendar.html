@@ -615,7 +615,7 @@ if (dateRaw) {
             }
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
-                <td data-label="Date"><b>${dateEnglish || ""}</b></td>
+                <td data-label="Date"><b>${dateDisplay || ""}</b></td>
                 <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisation">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
