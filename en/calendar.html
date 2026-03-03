@@ -527,6 +527,11 @@
     document.getElementById('navMenu').classList.toggle('active'); 
 }
 
+const monthTranslations = {
+    "janv.": "Jan.", "fév.": "Feb.", "mars": "March", "avril": "April", 
+    "mai": "May", "juin": "June", "juil.": "July", "août": "Aug.", 
+    "sept.": "Sept.", "oct.": "Oct.", "nov.": "Nov.", "déc.": "Dec."
+};
     async function loadExcel() {
         try {
             const response = await fetch(EXCEL_FILE);
@@ -547,27 +552,34 @@
             if (!row[1]) continue;
             const tr = document.createElement('tr');
             // --- LOGIQUE DE DATE (AJOUT) ---
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const dateRaw = row[0] ? String(row[0]).trim() : "";
-        
-        if (dateRaw) {
-            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
-            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
-            // Pour "11-13 sept.", on extrait "13 sept."
-            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-            
-            const jour = parseInt(dateRef.match(/\d+/));
-            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-            
-            if (jour && indexMois !== -1) {
-                const dateEpreuve = new Date(2026, indexMois, jour);
-                if (dateEpreuve < today) {
-                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
-                }
-            }
+        // --- LOGIQUE DE DATE & TRADUCTION ---
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+let dateRaw = row[0] ? String(row[0]).trim() : "";
+let dateEnglish = dateRaw;
+
+if (dateRaw) {
+    // Traduction pour l'affichage
+    Object.keys(monthTranslations).forEach(frMonth => {
+        if (dateEnglish.toLowerCase().includes(frMonth.toLowerCase())) {
+            const regex = new RegExp(frMonth, "gi");
+            dateEnglish = dateEnglish.replace(regex, monthTranslations[frMonth]);
         }
+    });
+
+    // Logique pour griser les événements passés (inchangée mais utilise les mois FR pour le calcul)
+    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+    const jour = parseInt(dateRef.match(/\d+/));
+    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+    
+    if (jour && indexMois !== -1) {
+        const dateEpreuve = new Date(2026, indexMois, jour);
+        if (dateEpreuve < today) {
+            tr.classList.add('past-event');
+        }
+    }
+}
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
@@ -593,7 +605,8 @@
             }
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
-                <td data-label="Date"><b>${row[0] || ""}</b></td>
+                // Remplacez cette ligne dans votre template literal :
+<td data-label="Date"><b>${dateEnglish || ""}</b></td>
                 <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisation">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
