@@ -552,8 +552,8 @@ const monthTranslations = {
             if (!row[1]) continue;
             const tr = document.createElement('tr');
             // --- LOGIQUE DE DATE (AJOUT) ---
-        // --- LOGIQUE DE DATE & TRADUCTION ---
-// --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
+
+        // --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 let dateRaw = row[0] ? String(row[0]).trim() : ""; // ex: "14-22 fév." 
@@ -589,6 +589,7 @@ if (dateRaw) {
         }
     }
 }
+
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
