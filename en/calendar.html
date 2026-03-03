@@ -185,7 +185,7 @@
     /* --- MOBILE --- */
     /* --- OPTIMISATION MOBILE FINALE : BOUTONS IDENTIQUES --- */
 @media (max-width: 768px) {
-    header { height: 70px; }
+    header { height: 80px; }
     .logo img { height: 40px !important; }
     .region-mention { display: none; }
     
@@ -195,12 +195,30 @@
     /* NAVIGATION MOBILE */
     #navMenu { 
         display: none; flex-direction: column; position: absolute; 
-        top: 70px; left: 0; width: 100%; background-color: var(--primary); 
-        padding: 10px 0; z-index: 1300; box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        top: 80px; left: 0; width: 100%; background-color: var(--primary); 
+        padding: 0; z-index: 1400; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     #navMenu.active { display: flex !important; }
-    #navMenu li { display: block !important; width: 100%; text-align: center; }
-    #navMenu li a { display: block; padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); color: white !important; font-size: 1rem; }
+    #navMenu li { margin: 0 !important;; width: 100%; text-align: center; }
+    #navMenu li a { 
+    display: block; 
+    /* On force la ligne de texte à n'occuper que sa propre hauteur */
+    line-height: 1; 
+    
+    /* On réduit drastiquement le padding du haut */
+    padding-top: 5px !important; 
+    padding-bottom: 15px; 
+    padding-left: 15px;
+    padding-right: 15px;
+
+    border-bottom: 1px solid rgba(255,255,255,0.1); 
+    color: white !important; 
+    font-size: 1.1rem; 
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
 
   /* --- AMÉLIORATION LÉGENDE MOBILE --- */
     .legend-container { 
@@ -443,6 +461,7 @@
         <li><a href="index.html#programme">Programs</a></li>
         <li><a href="calendar.html"style="color:var(--accent); font-weight: 800;">Calendar '26</a></li>
         <li><a href="index.html#contact" >Join Us</a></li>
+
                 </ul>
             </nav>
         </div>
