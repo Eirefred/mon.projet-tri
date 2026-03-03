@@ -594,7 +594,7 @@
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
                 <td data-label="Date"><b>${row[0] || ""}</b></td>
-                <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
+                <td data-label="Event         "><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisateur">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
                 <td data-label="Place"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
