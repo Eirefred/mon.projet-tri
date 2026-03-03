@@ -270,7 +270,7 @@
     /* --- SOLUTION : FUSION VISUELLE ET BOUTONS IDENTIQUES --- */
     
     /* Titre "LIENS" pour la première cellule */
-    td[data-label="Site web"]:before { content: "LIENS"; }
+    td[data-label="Site web"]:before { content: "Links"; }
 
     /* Largeur 50% pour Site et Contact */
     td[data-label="Site web"], 
@@ -572,7 +572,7 @@
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
             let badges = [];
             for (let j = 11; j <= 20; j++) {
                 if (row[j] === "X" || row[j] === "x") {
