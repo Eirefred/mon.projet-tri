@@ -306,9 +306,9 @@
     td:not([data-label="Site web"]):not([data-label="Contact"]) { clear: both; }
 
     /* EN-TÊTE DE CARTE */
-    td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
-    td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
-    td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
+    td[data-label="Event"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
+    td[data-label="Event"]:before { display: block; margin-bottom: 8px; width: 100%; }
+    td[data-label="Event"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); text-align: left; }
     td[data-label="Date"] { background: #f0f7ff; color: var(--primary); font-weight: bold; }
 
     /* MASQUER LES ÉVÉNEMENTS PASSÉS */
@@ -594,7 +594,7 @@
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
                 <td data-label="Date"><b>${row[0] || ""}</b></td>
-                <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
+                <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisateur">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
                 <td data-label="Place"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
