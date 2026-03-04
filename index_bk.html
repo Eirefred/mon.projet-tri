@@ -312,7 +312,103 @@
         }
         .footer-logo img { height: 60px; display: block; }
 
+
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: var(--primary);
+    cursor: pointer;
+    transform: translateY(20%);
+    
+}
+
+/* BOUTON RETOUR EN HAUT */
+    #backToTop {
+        display: none; /* Caché par défaut */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        background-color: var(--accent);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* AJOUTEZ CETTE RÈGLE ICI */
+    #backToTop.visible { 
+        display: flex !important; 
+    }
+
         @media (max-width: 768px) {
+            header { height: 80px; }
+    
+    .menu-toggle { 
+        display: block;      /* Pour l'afficher sur mobile */
+    font-size: 38px;     /* Taille conseillée */
+    cursor: pointer;
+    
+    /* Positionnement précis */
+    padding: 0px;        /* Augmente la zone de clic sans changer la taille visuelle */
+    margin-right: -5%;  /* Distance du bord droit */
+    
+    /* Centrage vertical parfait dans les 80px */
+    line-height: 1;      /* Évite les décalages dus aux polices */
+    display: flex;
+    align-items: center;
+    height: 0%;        /* Prend toute la hauteur du header pour centrer l'icône */
+}
+
+    /* Style du menu mobile déroulant */
+    #navMenu {
+        display: none; /* Caché par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: white;
+        padding: 0;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        z-index: 1400;
+    }
+
+    /* Affichage quand actif */
+    #navMenu.active {
+        display: flex !important;
+    }
+
+    #navMenu li {
+        margin: 0 !important;
+        width: 100%;
+        text-align: center;
+    }
+
+    #navMenu li a {
+        display: block;
+        padding: 10px 15px;
+        border-bottom: 1px solid #eee;
+        font-size: 1.1rem;
+    }
+
+    /* Centrer le toggle de langue dans le menu mobile */
+    .lang-selector {
+        justify-content: center;
+        padding: 20px 0;
+        border-bottom: none;
+    }
+
+    /* On s'assure que les liens ne sont pas cachés par l'ancienne règle */
+    nav ul li:not(.lang-selector) {
+        display: block !important;
+    }
             .nav-container {
                 flex-direction: row !important;
                 justify-content: space-between !important;
@@ -363,10 +459,18 @@
 
             .labels { font-size: 8px !important; }
 
-            /* CACHE LES LIENS UNIQUEMENT SUR MOBILE */
-            nav ul li:not(.lang-selector) {
-                display: none !important;
-            }
+            /* Cache les liens par défaut sur mobile quand le menu est fermé */
+nav ul:not(.active) li:not(.lang-selector) {
+    display: none;
+}
+
+/* Affiche TOUS les liens (y compris le toggle) quand le menu est actif */
+nav ul.active li {
+    display: block !important;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0;
+}
 
             h1 { font-size: 2.2rem !important; }
 
@@ -424,23 +528,27 @@
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
                 <div class="region-mention">Partout au Québec</div>
             </div>
+            
+            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+            
             <nav>
-    <ul>
-        <li><a href="decouvrir.html">L'OBNL</a></li>
+            <ul id="navMenu">
+                <li><a href="decouvrir.html">L'OBNL</a></li>
         <li><a href="#vision">Notre vision</a></li>
         <li><a href="#programme">Les programmes</a></li>
-        <li><a href="calendrier.html">Calendrier</a></li>
+        <li><a href="calendrier.html">Calendrier '26</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Rejoignez-nous</a></li>
-        <li class="lang-selector">
-    <label class="switch">
-        <input type="checkbox" id="lang-toggle" onchange="toggleLang()">
-        <span class="slider">
-            <span class="labels" data-on="EN" data-off="FR"></span>
-        </span>
-    </label>
-</li>
-    </ul>
-</nav>
+                <li class="lang-selector">
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
+                        <span class="slider" data-on="EN" data-off="FR">
+                            <span class="labels" data-on="EN" data-off="FR"></span>
+                        </span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
+
         </div>
     </header>
 
@@ -772,6 +880,8 @@
                 </form>
             </div>
         </div>
+            <button id="backToTop" title="Retour en haut">↑</button>
+
     </section>
 
    <footer>
@@ -969,20 +1079,58 @@ function toggleLang() {
     }
 }
 
-// Synchronisation au chargement
-window.addEventListener('DOMContentLoaded', () => {
+// On attend que le document soit prêt
+document.addEventListener('DOMContentLoaded', () => {
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('navMenu');
+
+    // Gestion du clic sur le hamburger
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation(); // Empêche des bugs de propagation
+            navMenu.classList.toggle('active');
+            
+            // Change l'icône
+            if (navMenu.classList.contains('active')) {
+                this.textContent = '✕';
+            } else {
+                this.textContent = '☰';
+            }
+        });
+    }
+
+    // Fermer le menu si on clique sur un lien
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            if (menuBtn) menuBtn.textContent = '☰';
+        });
+    });
+
+    // Synchronisation du toggle de langue au chargement
     const toggle = document.getElementById('lang-toggle');
-    // Si on est dans le dossier /en/, on coche le bouton
-    if (window.location.pathname.includes('/en/')) {
+    if (toggle && window.location.pathname.includes('/en/')) {
         toggle.checked = true;
     }
 });
 
-// Au chargement, on vérifie si on doit cocher le bouton (si on est dans le dossier /en/)
-if (window.location.pathname.includes('/en/')) {
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
+// La fonction toggleLang reste en dehors
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (isChecked) {
+        window.location.href = "en/index.html";
+    } else {
+        window.location.href = "index.html?lang=fr";
+    }
 }
+const backToTopBtn = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (window.innerWidth <= 768) {
+            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
+            else backToTopBtn.classList.remove("visible");
+        }
+    };
+    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
 </script>
 </body>
 </html>

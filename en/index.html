@@ -276,13 +276,12 @@ input:checked + .slider .labels::after {
     .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
     
-/* CACHER LE HAMBURGER SUR ORDINATEUR */
 .menu-toggle {
     display: none;
     font-size: 30px;
-    cursor: pointer;
     color: var(--primary);
-    transform: translateY(20%);
+    cursor: pointer;
+    /* Supprimez le transform: translateY(20%) qui était ici */
 }
 
 /* BOUTON RETOUR EN HAUT */
@@ -311,29 +310,32 @@ input:checked + .slider .labels::after {
     }
     @media (max-width: 768px) {
         header { height: 80px; }
+    
     .nav-container {
+        display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: center !important;
-        padding: 10px 15px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 80px !important;
+        padding: 0 20px !important; /* C'est ce 20px qui définit la position finale du hamburger */
+        box-sizing: border-box !important;
     }
-
+    
     /* AFFICHER LE HAMBURGER SUR MOBILE */
-     .menu-toggle { 
-        display: block;      /* Pour l'afficher sur mobile */
-    font-size: 38px;     /* Taille conseillée */
-    cursor: pointer;
-    
-    /* Positionnement précis */
-    padding: 0px;        /* Augmente la zone de clic sans changer la taille visuelle */
-    margin-right: -5%;  /* Distance du bord droit */
-    
-    /* Centrage vertical parfait dans les 80px */
-    line-height: 1;      /* Évite les décalages dus aux polices */
-    display: flex;
-    align-items: center;
-    height: 0%;        /* Prend toute la hauteur du header pour centrer l'icône */
-}
+     .menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;  /* Largeur fixe pour l'icône */
+        height: 80px !important;
+        margin: 0 !important;    /* On annule toutes les marges parasites */
+        padding: 0 !important;
+        font-size: 32px !important;
+        line-height: 1 !important;
+        z-index: 2000 !important;
+    }
 
     /* 1. Cache TOUS les éléments du menu (y compris le toggle) quand il n'est pas actif */
 nav ul:not(.active) li {
@@ -385,9 +387,13 @@ nav ul:not(.active) li {
 
     .region-mention {
         display: block !important;
-        white-space: normal !important;
-        max-width: 80px;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
         font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
     }
 
     .switch {
@@ -431,8 +437,7 @@ nav ul:not(.active) li {
         <img src="../mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Home">
     </a>
 </div>
-                <div class="region-mention">Across Quebec</div>
-            </div>
+                <span class="region-mention">Across<br>Quebec</span>            </div>
 
             <div class="menu-toggle" id="mobile-menu-btn">☰</div>
 

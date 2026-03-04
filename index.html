@@ -317,9 +317,7 @@
     display: none;
     font-size: 30px;
     color: var(--primary);
-    cursor: pointer;
-    transform: translateY(20%);
-    
+    cursor: pointer;    
 }
 
 /* BOUTON RETOUR EN HAUT */
@@ -350,21 +348,18 @@
         @media (max-width: 768px) {
             header { height: 80px; }
     
-    .menu-toggle { 
-        display: block;      /* Pour l'afficher sur mobile */
-    font-size: 38px;     /* Taille conseillée */
-    cursor: pointer;
-    
-    /* Positionnement précis */
-    padding: 0px;        /* Augmente la zone de clic sans changer la taille visuelle */
-    margin-right: -5%;  /* Distance du bord droit */
-    
-    /* Centrage vertical parfait dans les 80px */
-    line-height: 1;      /* Évite les décalages dus aux polices */
-    display: flex;
-    align-items: center;
-    height: 0%;        /* Prend toute la hauteur du header pour centrer l'icône */
-}
+    .menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;  /* Largeur fixe pour l'icône */
+        height: 80px !important;
+        margin: 0 !important;    /* On annule toutes les marges parasites */
+        padding: 0 !important;
+        font-size: 32px !important;
+        line-height: 1 !important;
+        z-index: 2000 !important;
+    }
 
     /* Style du menu mobile déroulant */
     #navMenu {
@@ -410,11 +405,17 @@
         display: block !important;
     }
             .nav-container {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 80px !important;
+        padding: 0 20px !important; /* C'est ce 20px qui définit la position finale du hamburger */
+        box-sizing: border-box !important;
+    }
+    
 
             .header-left {
                 display: flex !important;
@@ -426,12 +427,15 @@
             .logo img { height: 35px !important; }
 
             .region-mention {
-                display: block !important;
-                white-space: normal !important;
-                max-width: 80px;
-                font-size: 10px;
-                line-height: 1.1;
-            }
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+    }
             .footer-container {
                 flex-direction: column;
                 text-align: center;
@@ -526,7 +530,7 @@ nav ul.active li {
         <div class="nav-container">
             <div class="header-left">
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
-                <div class="region-mention">Partout au Québec</div>
+                <span class="region-mention">Partout au<br>Québec</span>
             </div>
             
             <div class="menu-toggle" id="mobile-menu-btn">☰</div>

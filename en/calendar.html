@@ -187,10 +187,41 @@
 @media (max-width: 768px) {
     header { height: 80px; }
     .logo img { height: 40px !important; }
-    .region-mention { display: none; }
+   
+
+    .region-mention {
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+    }
+
+    /* Assurez-vous que le container n'écrase pas le texte */
+    .nav-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+        height: 80px;
+    }
+
     
     /* BOUTON HAMBURGER */
-    .menu-toggle { display: block; cursor: pointer; z-index: 1500; font-size: 38px; display: flex; margin-right: -5%; margin-right: -5%;}
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        width: 44px;          /* On définit une largeur fixe pour l'icône */
+        height: 80px;         /* Même hauteur que le header */
+        margin-right: 0;      /* Aligné sur le bord du padding */
+        cursor: pointer;
+    }
+
 
     /* NAVIGATION MOBILE */
     #navMenu { 
@@ -346,11 +377,13 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        height: 80px;
+        padding: 0 20px !important; /* Marge fixe de 20px de chaque côté */
+    }
 
             .header-left {
                 display: flex !important;
@@ -433,7 +466,7 @@
 
 
 
-                <div class="region-mention">Across Québec</div>
+                <span class="region-mention">Across<br>Quebec</span>
             </div>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>

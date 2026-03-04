@@ -190,7 +190,7 @@
     .region-mention { display: none; }
     
     /* BOUTON HAMBURGER */
-    .menu-toggle { display: block; cursor: pointer; z-index: 1500; }
+    .menu-toggle { display: block; cursor: pointer; z-index: 1500; font-size: 38px; display: flex; margin-right: -5%; margin-right: -5%;}
 
     /* NAVIGATION MOBILE */
     #navMenu { 
@@ -527,6 +527,11 @@
     document.getElementById('navMenu').classList.toggle('active'); 
 }
 
+const monthTranslations = {
+    "janv.": "Jan.", "fév.": "Feb.", "mars": "March", "avril": "April", 
+    "mai": "May", "juin": "June", "juil.": "July", "août": "Aug.", 
+    "sept.": "Sept.", "oct.": "Oct.", "nov.": "Nov.", "déc.": "Dec."
+};
     async function loadExcel() {
         try {
             const response = await fetch(EXCEL_FILE);
@@ -547,27 +552,44 @@
             if (!row[1]) continue;
             const tr = document.createElement('tr');
             // --- LOGIQUE DE DATE (AJOUT) ---
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        const dateRaw = row[0] ? String(row[0]).trim() : "";
+
+        // --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+let dateRaw = row[0] ? String(row[0]).trim() : ""; 
+let dateDisplay = dateRaw; // C'est cette variable qu'on affichera
+
+if (dateRaw) {
+    let dayPart = "";
+    let monthPartFr = "";
+
+    // 1. Séparer les chiffres (ex: "14" ou "14-22") du texte (ex: "fév.")
+    const match = dateRaw.match(/^([\d-]+)\s+(.*)$/);
+    if (match) {
+        dayPart = match[1];      
+        monthPartFr = match[2].toLowerCase(); 
         
-        if (dateRaw) {
-            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-            // On prend la date de fin si c'est une plage (ex: "14-22 fév.")
-            const dateFin = dateRaw.includes("-") ? dateRaw.split("-")[0].split(" ")[0] + " " + dateRaw.split(" ").pop() : dateRaw;
-            // Pour "11-13 sept.", on extrait "13 sept."
-            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-            
-            const jour = parseInt(dateRef.match(/\d+/));
-            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
-            
-            if (jour && indexMois !== -1) {
-                const dateEpreuve = new Date(2026, indexMois, jour);
-                if (dateEpreuve < today) {
-                    tr.classList.add('past-event'); // On ajoute juste une classe, on ne change pas le contenu
-                }
-            }
+        // 2. Traduire le mois via le dictionnaire monthTranslations
+        let monthEnglish = monthTranslations[monthPartFr] || monthPartFr;
+
+        // 3. Inverser pour le format Nord-Américain : "Feb. 14-22"
+        dateDisplay = `${monthEnglish} ${dayPart}`;
+    }
+
+    // 4. Logique pour griser les événements passés
+    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+    const jour = parseInt(dateRef.match(/\d+/));
+    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+    
+    if (jour && indexMois !== -1) {
+        const dateEpreuve = new Date(2026, indexMois, jour);
+        if (dateEpreuve < today) {
+            tr.classList.add('past-event');
         }
+    }
+}
+
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
             const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
@@ -593,7 +615,7 @@
             }
             tr.setAttribute('data-categories', rowCats.join(','));
             tr.innerHTML = `
-                <td data-label="Date"><b>${row[0] || ""}</b></td>
+                <td data-label="Date"><b>${dateDisplay || ""}</b></td>
                 <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
                 <td data-label="Organisation">${row[6] || "-"}</td>
                 <td data-label="Region">${row[2] || ""}</td>
