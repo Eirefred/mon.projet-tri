@@ -195,10 +195,12 @@
         align-items: center;
         justify-content: center;
         font-size: 32px;
-        width: 44px;          /* On définit une largeur fixe pour l'icône */
-        height: 80px;         /* Même hauteur que le header */
-        margin-right: 0;      /* Aligné sur le bord du padding */
+        width: 44px;      /* Largeur fixe */
+        height: 80px;
+        margin-right: 0 !important; /* Force le retrait de toute marge qui pousserait à droite */
+        padding: 0 !important;
         cursor: pointer;
+        flex-shrink: 0;   /* Empêche l'icône de se déformer */
     }
 
     /* NAVIGATION MOBILE */
