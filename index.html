@@ -351,9 +351,20 @@
             header { height: 80px; }
     
     .menu-toggle { 
-        display: block; 
-        z-index: 1500;
-    }
+        display: block;      /* Pour l'afficher sur mobile */
+    font-size: 38px;     /* Taille conseillée */
+    cursor: pointer;
+    
+    /* Positionnement précis */
+    padding: -5%;        /* Augmente la zone de clic sans changer la taille visuelle */
+    margin-right: -5%;  /* Distance du bord droit */
+    
+    /* Centrage vertical parfait dans les 80px */
+    line-height: 1;      /* Évite les décalages dus aux polices */
+    display: flex;
+    align-items: center;
+    height: 0%;        /* Prend toute la hauteur du header pour centrer l'icône */
+}
 
     /* Style du menu mobile déroulant */
     #navMenu {
