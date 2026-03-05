@@ -108,44 +108,6 @@
             line-height: 1.6;
         }
 
-
-/* Le conteneur qui empile les deux lignes */
-.region-stack {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* On reprend exactement les mesures de votre ancien border-left */
-    border-left: 1px solid rgba(0, 51, 102, 0.2);
-    margin-left: 8px;
-    padding-left: 10px;
-    height: 40px;
-    flex-shrink: 0;
-}
-
-/* On réinitialise la classe originale pour qu'elle n'ait plus son propre trait */
-.region-mention {
-    border-left: none !important;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 0.85rem !important;
-    font-weight: 600 !important;
-    color: #555 !important;
-    line-height: 1.2 !important;
-    display: block !important;
-    white-space: nowrap !important;
-}
-
-/* La ligne du prix */
-.price-tag-new {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
-    color: var(--accent); /* Votre orange */
-    font-weight: 600;
-    line-height: 1;
-    margin-top: 2px;
-    display: block;
-}
         /* Cette classe rend le texte invisible pour les visiteurs mais lisible pour Google */
     .sr-only {
     position: absolute;
@@ -385,23 +347,6 @@
 
         @media (max-width: 768px) {
             header { height: 80px; }
-
-           .region-stack {
-        margin-left: 5px;
-        padding-left: 10px;
-        /* Empêche le bloc de prendre trop de place */
-        border-left: 1px solid rgba(0, 51, 102, 0.2);
-    }
-    
-    .region-mention {
-        /* Taille réduite au maximum pour mobile pour que ça tienne */
-        font-size: 10px !important; 
-        letter-spacing: -0.2px !important; /* On resserre un peu les lettres */
-    }
-
-    .price-tag-new {
-        font-size: 9px !important;
-    }
     
     .menu-toggle {
         display: flex !important;
@@ -471,10 +416,11 @@
     
 
             .header-left {
-        /* On s'assure que le logo et le texte ne se poussent pas */
-        display: flex !important;
-        align-items: center !important;
-    }
+                display: flex !important;
+                flex-direction: row !important;
+                align-items: center !important;
+                max-width: 70%;
+            }
 
             .logo img { height: 35px !important; }
 
@@ -582,10 +528,7 @@ nav ul.active li {
         <div class="nav-container">
             <div class="header-left">
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
-                <div class="region-stack">
-        <span class="region-mention">Partout au Québec</span>
-        <span class="price-tag-new">Dès 99$/mois</span>
-    </div>
+                <span class="region-mention">Partout au<br>Québec</span>
             </div>
             
             <div class="menu-toggle" id="mobile-menu-btn">☰</div>

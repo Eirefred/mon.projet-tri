@@ -56,6 +56,44 @@
             line-height: 1.6;
         }
 
+        /* Conteneur aligné et rapproché du logo */
+.region-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 8px; /* Rapproché du logo */
+    padding-left: 10px;
+    border-left: 1px solid rgba(0, 51, 102, 0.2);
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* Texte "Across Quebec" - Style fin et non-gras */
+.region-mention {
+    border-left: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #555 !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    white-space: nowrap !important; /* Force une seule ligne */
+}
+
+/* Texte du prix en Orange */
+.price-tag-new {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 2px;
+    display: block;
+    white-space: nowrap !important;
+}
+
     .sr-only {
         position: absolute;
         width: 1px;
@@ -310,6 +348,22 @@ input:checked + .slider .labels::after {
     }
     @media (max-width: 768px) {
         header { height: 80px; }
+
+        .header-left {
+        display: flex !important;
+        align-items: center !important;
+    }
+    .region-stack {
+        margin-left: 5px;
+        padding-left: 8px;
+    }
+    .region-mention {
+        font-size: 10px !important;
+        letter-spacing: -0.2px !important; /* Resserre les lettres pour gagner de l'espace */
+    }
+    .price-tag-new {
+        font-size: 9px !important;
+    }
     
     .nav-container {
         display: flex !important;
@@ -434,7 +488,11 @@ nav ul:not(.active) li {
         <img src="../mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Home">
     </a>
 </div>
-                <span class="region-mention">Across<br>Quebec</span>            </div>
+                <div class="region-stack">
+        <span class="region-mention">Across Quebec</span>
+        <span class="price-tag-new">From $99/mo</span>
+    </div>
+    </div>
 
             <div class="menu-toggle" id="mobile-menu-btn">☰</div>
 

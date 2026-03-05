@@ -101,7 +101,7 @@
     .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
     .header-left { display: flex; align-items: center; gap: 25px; }
     .logo img { height: 55px; display: block; width: auto; }
-    .region-mention { font-size: 1.15rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
+    .region-mention { font-size: 1rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
     
     nav ul { 
         display: flex !important; /* Force l'affichage horizontal sur PC */
@@ -184,9 +184,12 @@
 
      /* --- TOGGLE VISIBLE FR/EN --- */
 .lang-selector {
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
+    display: flex !important; /* Force l'alignement vertical */
+    justify-content: center;
+    align-items: center;      /* Centre parfaitement le bouton */
+    padding: 20px;          /* Même espace que les liens <a> */
+    border-bottom: none;
+    margin: 0 !important;
 }
 
 .switch {
@@ -273,63 +276,150 @@ input:checked + .slider .labels::after {
     .quiz-question-text { font-size: 1.4rem !important; font-weight: 800; color: var(--primary); margin-bottom: 25px; line-height: 1.2; text-align: left; display: block; }
 
     
+.menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: var(--primary);
+    cursor: pointer;
+    /* Supprimez le transform: translateY(20%) qui était ici */
+}
+
+/* BOUTON RETOUR EN HAUT */
+    #backToTop {
+        display: none; /* Caché par défaut */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        background-color: var(--accent);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* AJOUTEZ CETTE RÈGLE ICI */
+    #backToTop.visible { 
+        display: flex !important; 
+    }
     @media (max-width: 768px) {
-        .nav-container {
-            flex-direction: row !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            padding: 10px 15px !important;
-        }
+        header { height: 80px; }
+    
+    .nav-container {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+        height: 80px;
+        width: 100% !important;
+    }
+    
+    /* AFFICHER LE HAMBURGER SUR MOBILE */
+     .menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;  /* Largeur fixe pour l'icône */
+        height: 80px !important;
+        margin: 0 !important;    /* On annule toutes les marges parasites */
+        padding: 0 !important;
+        font-size: 32px !important;
+        line-height: 1 !important;
+        z-index: 2000 !important;
+    }
 
-        /* 1. CACHE TOUS LES LIENS TEXTUELS SUR MOBILE */
-        nav ul li {
-            display: none !important;
-        }
+    /* 1. Cache TOUS les éléments du menu (y compris le toggle) quand il n'est pas actif */
+nav ul:not(.active) li {
+    display: none !important;
+}
 
-        /* 2. FORCE L'AFFICHAGE DU SELECTEUR DE LANGUE SEULEMENT */
-        nav ul li.lang-selector {
-            display: block !important;
-            margin-left: 0 !important;
-        }
+    /* 2. Style du menu déroulant quand il est actif */
+    nav ul.active {
+        display: flex !important;
+        flex-direction: column !important;
+        position: absolute;
+        top: 80px; /* Ajustez selon la hauteur réelle de votre header mobile */
+        left: 0;
+        width: 100%;
+        background-color: white !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
 
-        .header-left {
-            display: flex !important;
-            max-width: 75%;
-        }
+    /* 3. FORCE l'affichage de chaque item dans le menu ouvert */
+    nav ul.active li {
+        display: block !important; 
+        width: 100%;
+        text-align: center;
+        margin: 0 !important; /* On met 0 pour que la bordure colle bien */
+        border-bottom: 1px solid #eee;
+    }
 
-        .logo img { height: 35px !important; }
+    nav ul.active li:last-child {
+        border-bottom: none;
+    }
 
-        .region-mention {
-            display: block !important;
-            white-space: normal !important;
-            max-width: 80px;
-            font-size: 10px;
-        }
+    nav ul.active li a {
+        display: block;
+        padding: 10px 15px; /* Plus d'espace pour cliquer avec le doigt */
+        color: var(--primary) !important;
+        font-size: 1.1rem;
+        text-decoration: none;
+        box-sizing: border-box; 
+    }
 
-        .switch {
-            width: 44px !important;
-            height: 22px !important;
-        }
+    /* Reste de vos styles de mise en page */
+    .header-left {
+        display: flex !important;
+        max-width: 75%;
+    }
 
-        .footer-container {
-            flex-direction: column;
-            text-align: center;
-            gap: 20px;
-        }
+    .logo img { height: 35px !important; }
 
-        /* Ajustement final du slider à droite */
-        input:checked + .slider:before {
-            transform: translateX(20px) !important;
-        }
+    .region-mention {
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+    }
 
-        h1 { font-size: 2.2rem !important; }
+    .switch {
+        width: 44px !important;
+        height: 22px !important;
+    }
 
-         /* Empiler les champs du formulaire sur mobile pour éviter le chevauchement */
-        .form-row {
-            flex-direction: column !important;
-            gap: 10px !important;
-        }
-    } /* --- FIN DU BLOC MOBILE --- */
+    input:checked + .slider:before {
+        transform: translateX(20px) !important;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    h1 { font-size: 2.2rem !important; }
+
+    .form-row {
+        flex-direction: column !important;
+        gap: 10px !important;
+    }
+
+    /* Style spécifique pour le bouton Back to Top sur mobile */
+    #backToTop.visible {
+        display: block !important;
+    }
+} /* --- FIN DU BLOC MOBILE --- */
 
 
     </style>
@@ -344,13 +434,18 @@ input:checked + .slider .labels::after {
         <img src="../mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Home">
     </a>
 </div>
-                <div class="region-mention">Across Quebec</div>
-            </div>
+                <span class="region-mention">Across<br>Quebec</span>            </div>
+
+            <div class="menu-toggle" id="mobile-menu-btn">☰</div>
+
             <nav>
-       <ul>
+
+                <ul id="navMenu">
+                
         <li><a href="discover.html">About Us</a></li> 
         <li><a href="#vision">Our Vision</a></li>
         <li><a href="#programme">Programs</a></li>
+        <li><a href="calendar.html">Calendar '26</a></li>
         <li><a href="#contact" style="color:var(--accent); font-weight: 800;">Join Us</a></li>
         <li class="lang-selector">
     <label class="switch">
@@ -695,6 +790,7 @@ input:checked + .slider .labels::after {
                 </form>
             </div>
         </div>
+        <button id="backToTop" title="Retour en haut">↑</button>
     </section>
 
    <footer>
@@ -890,17 +986,58 @@ function toggleLang() {
 
 // Initialisation au chargement
 window.addEventListener('DOMContentLoaded', () => {
-    // 1. Forcer le bouton sur "ON" (EN)
-    const toggle = document.getElementById('lang-toggle');
-    if (toggle) toggle.checked = true;
+    // --- 1. GESTION DU HAMBURGER ---
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navMenu = document.getElementById('navMenu');
 
-    // 2. Dates minimum pour le formulaire
-    const today = new Date().toISOString().split('T')[0];
-    document.querySelectorAll('input[type="date"]').forEach(input => { 
-        input.setAttribute('min', today); 
+    if (menuBtn && navMenu) {
+        menuBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            navMenu.classList.toggle('active');
+            menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+        });
+    }
+
+    // Fermer le menu si on clique sur un lien
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu) navMenu.classList.remove('active');
+            if (menuBtn) menuBtn.textContent = '☰';
+        });
     });
+
+    // --- 2. GESTION DU BOUTON BACK TO TOP ---
+    const backToTopBtn = document.getElementById("backToTop");
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    }
+
+    // --- 3. SYNCHRO LANGUE (EN version) ---
+    const toggle = document.getElementById('lang-toggle');
+    if (toggle) toggle.checked = true; // On force à TRUE car on est dans le dossier /en/
 });
 
+// Fonction de bascule (hors du DOMContentLoaded)
+function toggleLang() {
+    const isChecked = document.getElementById('lang-toggle').checked;
+    if (!isChecked) {
+        window.location.href = "../index.html?lang=fr";
+    }
+}
 </script>
 </body>
 </html>
