@@ -108,6 +108,44 @@
             line-height: 1.6;
         }
 
+
+/* Le conteneur qui empile les deux lignes */
+.region-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* On reprend exactement les mesures de votre ancien border-left */
+    border-left: 1px solid rgba(0, 51, 102, 0.2);
+    margin-left: 8px;
+    padding-left: 10px;
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* On réinitialise la classe originale pour qu'elle n'ait plus son propre trait */
+.region-mention {
+    border-left: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #555 !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    white-space: nowrap !important;
+}
+
+/* La ligne du prix */
+.price-tag-new {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: var(--accent); /* Votre orange */
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 2px;
+    display: block;
+}
         /* Cette classe rend le texte invisible pour les visiteurs mais lisible pour Google */
     .sr-only {
     position: absolute;
@@ -159,7 +197,7 @@
         /* MODIFICATION ICI : Taille du logo réduite */
         .logo img { height: 55px; display: block; width: auto; }
         
-        .region-mention { font-size: 1.15rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
+        .region-mention { font-size: 1rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
         nav ul { display: flex; list-style: none; align-items: center; }
         nav ul li { margin-left: 25px; }
         nav ul li a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
@@ -317,9 +355,7 @@
     display: none;
     font-size: 30px;
     color: var(--primary);
-    cursor: pointer;
-    transform: translateY(20%);
-    
+    cursor: pointer;    
 }
 
 /* BOUTON RETOUR EN HAUT */
@@ -349,22 +385,49 @@
 
         @media (max-width: 768px) {
             header { height: 80px; }
+
+            .hero-content {
+                padding-top: 40px !important;
+                justify-content: flex-start !important;
+                margin-top: 0px !important;
+                }
+
+                .hero {
+        /* On s'assure que la section hero n'impose pas un centrage forcé */
+        display: flex;
+        align-items: flex-start; /* Aligne le contenu vers le haut */
+        min-height: 400px; /* Ajustez selon la hauteur voulue de votre bannière mobile */
+    }
+
+           .region-stack {
+        margin-left: -5px;
+        padding-left: 10px;
+        /* Empêche le bloc de prendre trop de place */
+        border-left: 1px solid rgba(0, 51, 102, 0.2);
+    }
     
-    .menu-toggle { 
-        display: block;      /* Pour l'afficher sur mobile */
-    font-size: 38px;     /* Taille conseillée */
-    cursor: pointer;
+    .region-mention {
+        /* Taille réduite au maximum pour mobile pour que ça tienne */
+        font-size: 10px !important; 
+        letter-spacing: -0.2px !important; /* On resserre un peu les lettres */
+    }
+
+    .price-tag-new {
+        font-size: 9px !important;
+    }
     
-    /* Positionnement précis */
-    padding: 0px;        /* Augmente la zone de clic sans changer la taille visuelle */
-    margin-right: -5%;  /* Distance du bord droit */
-    
-    /* Centrage vertical parfait dans les 80px */
-    line-height: 1;      /* Évite les décalages dus aux polices */
-    display: flex;
-    align-items: center;
-    height: 0%;        /* Prend toute la hauteur du header pour centrer l'icône */
-}
+    .menu-toggle {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 44px !important;  /* Largeur fixe pour l'icône */
+        height: 80px !important;
+        margin: 0 !important;    /* On annule toutes les marges parasites */
+        padding: 0 !important;
+        font-size: 32px !important;
+        line-height: 1 !important;
+        z-index: 2000 !important;
+    }
 
     /* Style du menu mobile déroulant */
     #navMenu {
@@ -410,28 +473,35 @@
         display: block !important;
     }
             .nav-container {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+        height: 80px;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
 
             .header-left {
-                display: flex !important;
-                flex-direction: row !important;
-                align-items: center !important;
-                max-width: 70%;
-            }
+        /* On s'assure que le logo et le texte ne se poussent pas */
+        display: flex !important;
+        align-items: center !important;
+    }
 
             .logo img { height: 35px !important; }
 
             .region-mention {
-                display: block !important;
-                white-space: normal !important;
-                max-width: 80px;
-                font-size: 10px;
-                line-height: 1.1;
-            }
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+        white-space: nowrap !important; /* LA RÈGLE D'OR POUR UNE SEULE LIGNE */
+    }
             .footer-container {
                 flex-direction: column;
                 text-align: center;
@@ -526,7 +596,10 @@ nav ul.active li {
         <div class="nav-container">
             <div class="header-left">
                 <div class="logo"><a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a></div>
-                <div class="region-mention">Partout au Québec</div>
+                <div class="region-stack">
+        <span class="region-mention">Partout au Québec</span>
+        <span class="price-tag-new">Dès 99$/mois</span>
+    </div>
             </div>
             
             <div class="menu-toggle" id="mobile-menu-btn">☰</div>
@@ -765,13 +838,13 @@ nav ul.active li {
                 <div class="price-box" style="margin: 0;">
                     <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement semi-autonome</span><br>
                     <span style="color: var(--accent);">Option Standard :</span> 299$ / 3 mois
-                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~99$/mois +tx)<br>Plan d'entraînement + <strong>3 séances</strong> de mentorat de 40min</small>
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~99$/mois)<br>Plan d'entraînement + <strong>3 séances</strong> de mentorat de 40min</small>
                 </div>
 
                 <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
                     <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Encadrement complet</span><br>
                     <span style="color: var(--brand-blue);">Option Accompagnée :</span> 399$ / 3 mois
-                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit 133$/mois +tx)<br>Plan d'entraînement + <strong>5 séances</strong> de mentorat de 40min</small>
+                    <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit 133$/mois)<br>Plan d'entraînement + <strong>5 séances</strong> de mentorat de 40min</small>
                 </div>
             </div>
 
@@ -804,13 +877,13 @@ nav ul.active li {
         <div style="display: grid; gap: 15px;">
             <div class="price-box" style="margin: 0;">
                 <span style="color: var(--accent); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Saison (6 mois)</span><br>
-                <span style="color: var(--accent);">Option Standard :</span> 449$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~149$/mois +tx)</small>
+                <span style="color: var(--accent);">Option Standard :</span> 449$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~149$/mois)</small>
                 <br><small style="font-size: 0.85rem; font-weight: 400;">Idéal pour progresser avec structure et motivation.</small>
             </div>
             
             <div class="price-box" style="margin: 0; border-left-color: var(--brand-blue);">
                 <span style="color: var(--brand-blue); font-size: 0.8rem; text-transform: uppercase; font-weight: 700;">Engagement Annuel (12 mois)</span><br>
-                <span style="color: var(--brand-blue);">Option Performance :</span> 499$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~166$/mois +tx)</small>
+                <span style="color: var(--brand-blue);">Option Performance :</span> 499$ / 3 mois <small style="font-size: 0.85rem; font-weight: 400; opacity: 0.8;">(soit ~166$/mois)</small>
                 <br><small style="font-size: 0.85rem; font-weight: 400;">Analyse de données poussée et stratégie avancée (70.3 et Ironman).</small>
             </div>
         </div>
