@@ -38,4 +38,22 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html"/>
   </url>
 
+  <url>
+    <loc>https://mon.projet-tri.org/calendrier.html</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html"/>
+  </url>
+
+  <url>
+    <loc>https://mon.projet-tri.org/en/calendar.html</loc>
+    <lastmod>2026-03-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html"/>
+  </url>
+
 </urlset>
