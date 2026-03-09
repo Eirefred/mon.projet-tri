@@ -54,6 +54,33 @@
             line-height: 1.6;
         }
 
+
+        /* Zeffy */
+    .btn-zeffy-en {
+        background-color: #FF6600; /* Orange plein */
+        color: #ffffff !important;
+        padding: 5px 12px;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        display: inline-block;
+        border: 1px solid #FF6600;
+        transition: 0.3s;
+        cursor: pointer;
+        font-family: 'Montserrat', sans-serif;
+        /* Espace entre le bouton et le bas de la page */
+        margin-bottom: 25px; 
+    }
+
+    /* Effet au survol : fond blanc, texte orange */
+    .btn-zeffy-en:hover {
+        background-color: #ffffff !important;
+        color: #FF6600 !important;
+        text-decoration: none;
+    }
+
         /* Conteneur aligné et rapproché du logo */
 .region-stack {
     display: flex;
@@ -488,6 +515,7 @@ nav ul:not(.active) li {
 } /* --- FIN DU BLOC MOBILE --- */
 
 
+
     </style>
 </head>
 <body>
@@ -872,11 +900,17 @@ nav ul:not(.active) li {
             </a>
         </div>
         
-        <div class="footer-text" style="margin-bottom: 15px; color: #ffffff !important; opacity: 1;">
-            <a href="index.html" style="color: #ffffff; text-decoration: none;">
-                &copy; 2026 Mon Projet Tri (My Tri Project) - Non-profit dedicated to triathlon in Quebec
-            </a>
-        </div>
+        <div class="footer-text">
+    <p style="margin-bottom: 12px; margin-top: 0;">
+        &copy; 2026 Mon Projet Tri - NPO dedicated to triathlon in Quebec
+    </p>
+
+    <a href="https://www.zeffy.com/en-CA/ticketing/programmes-de-mon-projet-tri" 
+       target="_blank" 
+       class="btn-zeffy-en">
+       Make my registration contribution
+    </a>
+</div>
 
         <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
             <p style="font-size: 0.8rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">

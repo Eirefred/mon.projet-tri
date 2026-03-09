@@ -108,6 +108,32 @@
         }
 
 
+/* Style du bouton Zeffy pour le footer FR */
+.btn-zeffy-fr {
+    background-color: #FF6600; /* Orange plein */
+    color: #ffffff !important;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid #FF6600;
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px; /* Espace entre le bouton et le bas de page */
+}
+
+/* Effet au survol : inversion des couleurs */
+.btn-zeffy-fr:hover {
+    background-color: #ffffff !important;
+    color: #FF6600 !important;
+    text-decoration: none;
+}
+
+
 /* Le conteneur qui empile les deux lignes */
 .region-stack {
     display: flex;
@@ -611,9 +637,8 @@ nav ul.active li {
         background-color: #ffffff !important;
         color: #FF6600 !important;
     }
-    
+
     </style>
-<script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>
 </head>
 <body>
 
@@ -991,14 +1016,14 @@ nav ul.active li {
             </a>
         </div>
         
-        <div class="footer-text">
+       <div class="footer-text">
     <p style="margin-bottom: 12px; margin-top: 0;">
         &copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec
     </p>
 
-    <a href="https://www.zeffy.com/embed/ticketing/programmes-de-mon-projet-tri?modal=true" 
-       zeffy-form-link="https://www.zeffy.com/embed/ticketing/programmes-de-mon-projet-tri?modal=true"
-       class="btn-zeffy-final">
+    <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" 
+       target="_blank" 
+       class="btn-zeffy-fr">
        Faire ma contribution à l'inscription
     </a>
 </div>
