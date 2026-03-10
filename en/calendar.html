@@ -584,59 +584,38 @@ const monthTranslations = {
     }
 
     function renderTable(rows) {
-        const body = document.getElementById('calBody');
-        const headers = rows[0].map(h => h ? String(h).trim() : "");
-        for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            if (!row[1]) continue;
-            const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (AJOUT) ---
-
-        // --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-let dateRaw = row[0] ? String(row[0]).trim() : ""; 
-let dateDisplay = dateRaw; // C'est cette variable qu'on affichera
-
-if (dateRaw) {
-    let dayPart = "";
-    let monthPartFr = "";
-
-    // 1. Séparer les chiffres (ex: "14" ou "14-22") du texte (ex: "fév.")
-    const match = dateRaw.match(/^([\d-]+)\s+(.*)$/);
-    if (match) {
-        dayPart = match[1];      
-        monthPartFr = match[2].toLowerCase(); 
-        
-        // 2. Traduire le mois via le dictionnaire monthTranslations
-        let monthEnglish = monthTranslations[monthPartFr] || monthPartFr;
-
-        // 3. Inverser pour le format Nord-Américain : "Feb. 14-22"
-        dateDisplay = `${monthEnglish} ${dayPart}`;
-    }
-
-    // 4. Logique pour griser les événements passés
-    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-    const jour = parseInt(dateRef.match(/\d+/));
-    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+    const body = document.getElementById('calBody');
+    body.innerHTML = ""; 
     
-    if (jour && indexMois !== -1) {
-        const dateEpreuve = new Date(2026, indexMois, jour);
-        if (dateEpreuve < today) {
-            tr.classList.add('past-event');
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row[1]) continue; 
+
+        const tr = document.createElement('tr');
+        
+        // --- DATE LOGIC ---
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dateRaw = row[0] ? String(row[0]).trim() : "";
+        if (dateRaw) {
+            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+            const jour = parseInt(dateRef.match(/\d+/));
+            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+            if (jour && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jour);
+                if (dateEpreuve < today) tr.classList.add('past-event');
+            }
         }
-    }
-}
 
         // --- BADGE MANAGEMENT ---
         let rowCats = [];
         let badges = [];
 
-        // 1. Pool Badge (Column I -> Index 8)
+        // 1. Pool Badge (Index 8)
         if (row[8] === "X" || row[8] === "x") {
-            badges.push(`<span class="badge cat-piscine" title="Pool Swim">PI</span>`);
-            rowCats.push("PI"); // Essential for the filter
+            badges.push('<span class="badge cat-piscine" title="Pool Swim">PI</span>');
+            rowCats.push("PI");
         }
 
         // 2. Events Mapping (Index 9 to 18)
@@ -656,27 +635,32 @@ if (dateRaw) {
         for (let idx in mappingEpreuves) {
             if (row[idx] === "X" || row[idx] === "x") {
                 const ep = mappingEpreuves[idx];
-                badges.push(`<span class="badge ${ep.cat}" title="${ep.nom}">${ep.code}</span>`);
+                badges.push('<span class="badge ' + ep.cat + '" title="' + ep.nom + '">' + ep.code + '</span>');
                 rowCats.push(ep.code);
-            
-        }
             }
-            tr.setAttribute('data-categories', rowCats.join(','));
-            tr.innerHTML = `
+        }
+
+        // --- ROW CONSTRUCTION ---
+        const isTQ = row[5] === "TQ" ? '<img src="' + TQ_LOGO + '" alt="TQ" style="width:16px;margin-right:5px;vertical-align:middle;">' : "";
+        const lieuComplet = row[7] ? String(row[7]).trim() : "";
+        let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
+
+        tr.setAttribute('data-categories', rowCats.join(','));
+        tr.innerHTML = `
             <td data-label="Date"><b>${row[0] || ""}</b></td>
             <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
             <td data-label="Organizer">${row[6] || "-"}</td>
             <td data-label="Region">${row[2] || ""}</td>
             <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
             <td data-label="Website">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-<td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
             <td data-label="Events"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
         `;
-            body.appendChild(tr);
-        }
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('calTable').style.display = 'table';
+        body.appendChild(tr);
     }
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('calTable').style.display = 'table';
+}
 
     function setupFilters() {
     const items = document.querySelectorAll('.clickable-cat');
