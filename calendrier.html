@@ -111,7 +111,7 @@
     }
     .cta-link:hover { color: var(--accent); }
 
-    .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-size: 0.85rem; }
+    .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
 
     @media (max-width: 768px) {
         .cta-accompagnement { 
@@ -477,7 +477,7 @@
              style="width:18px">
         <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
     </div>
-    <div class="legend-item" style="cursor: default;"><span class="badge cat-piscine">PI</span> Piscine</div>
+    <div class="legend-item clickable-cat" data-cat="PI"><span class="badge cat-piscine">PI</span> Piscine</div>
     <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
     <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
     <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
@@ -591,10 +591,10 @@
         let rowCats = [];
         let badges = [];
 
-        // 1. Badge Piscine (Index 8)
+        // 1. Badge Piscine (Colonne I -> Index 8)
         if (row[8] === "X" || row[8] === "x") {
             badges.push(`<span class="badge cat-piscine" title="Natation en piscine">PI</span>`);
-            rowCats.push("PI"); // ON AJOUTE PI ICI POUR LE FILTRE
+            rowCats.push("PI"); // <-- CETTE LIGNE MANQUAIT POUR LE FILTRE
         }
 
         // 2. Mapping des épreuves (Index 9 à 18)
