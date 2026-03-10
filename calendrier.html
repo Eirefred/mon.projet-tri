@@ -248,6 +248,15 @@
         /* L'animation ci-dessous fait bouger la légende au départ */
         animation: scrollHint 2.5s ease-in-out;
     }
+    .desktop-title {
+        display: none; /* Cache le long titre */
+    }
+    .mobile-title {
+        display: inline; /* Affiche le titre court */
+    }
+    .main-title {
+        font-size: 1.5rem; /* Optionnel : ajuste la taille pour mobile */
+    }
 
     /* Animation qui fait un petit "va-et-vient" pour montrer que c'est scrollable */
     @keyframes scrollHint {
@@ -423,6 +432,9 @@
             flex-direction: column !important;
             gap: 10px !important;
         }
+        .mobile-title {
+    display: none;
+}
 
         } 
     </style>
@@ -494,8 +506,10 @@
 </div>
     </div>
 
-    <div class="main-content">
-        <h1>Calendrier des compétitions de Triathlon (et +) au Québec en 2026</h1>
+    <h1 class="main-title">
+    <span class="desktop-title">Calendrier des compétitions de Triathlon (et +) au Québec en 2026</span>
+    <span class="mobile-title">Calendrier provincial 2026</span>
+</h1>
 
         <div class="cta-accompagnement" title="Accompagnement et coaching pour les courses du calendrier triathlon Québec 2026">
     <img src="favicon.png" alt="Icon" class="cta-icon-img">
