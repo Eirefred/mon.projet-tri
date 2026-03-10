@@ -249,13 +249,16 @@
         animation: scrollHint 2.5s ease-in-out;
     }
     .desktop-title {
-        display: none; /* Cache le long titre */
+        display: none; /* Cache le long titre sur mobile */
     }
     .mobile-title {
-        display: inline; /* Affiche le titre court */
+        display: block; /* Affiche le titre court sur mobile */
+        font-size: 1.6rem;
+        line-height: 1.2;
     }
-    .main-title {
-        font-size: 1.5rem; /* Optionnel : ajuste la taille pour mobile */
+    h1.main-title {
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 
     /* Animation qui fait un petit "va-et-vient" pour montrer que c'est scrollable */
