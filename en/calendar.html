@@ -669,7 +669,7 @@ if (dateRaw) {
             <td data-label="Region">${row[2] || ""}</td>
             <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
             <td data-label="Website">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+<td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
             <td data-label="Events"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
         `;
             body.appendChild(tr);
