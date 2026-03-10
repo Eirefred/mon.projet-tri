@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendrier Triathlon & Duathlon Québec 2026 | Mon Projet Tri</title>
-<meta name="description" content="Consultez le calendrier complet des compétitions de triathlon, duathlon et aquathlon au Québec pour 2026. Planifiez votre saison avec l'OBNL Mon Projet Tri.">
+    <title>Calendrier Triathlon Duathlon Québec 2026 : Dates et Inscriptions | Mon Projet Tri</title>
+<meta name="description" content="Trouvez toutes les dates des triathlons, duathlons et aquathlons au Québec pour 2026. Calendrier complet, lieux et liens d'inscription. Planifiez votre saison !">
 <meta name="keywords" content="calendrier triathlon Québec 2026, courses triathlon Québec, duathlon Québec, compétition triathlon 2026, Mon Projet Tri, Frédéric Hadi">
 
-    <link rel="canonical" href="https://mon.projet-tri.org/" />
+    <link rel="canonical" href="https://mon.projet-tri.org/calendrier.html" />
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="apple-touch-icon.png">
-    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
-    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
-    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html" />
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
     <meta name="apple-mobile-web-app-title" content="Calendrier Tri">
     <meta property="og:title" content="Mon Projet Tri" />
     <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
@@ -190,7 +189,19 @@
     .region-mention { display: none; }
     
     /* BOUTON HAMBURGER */
-    .menu-toggle { display: block; cursor: pointer; z-index: 1500; font-size: 38px; display: flex; margin-right: -5%;  }
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        width: 44px;      /* Largeur fixe */
+        height: 80px;
+        margin-right: 0 !important; /* Force le retrait de toute marge qui pousserait à droite */
+        padding: 0 !important;
+        cursor: pointer;
+        flex-shrink: 0;   /* Empêche l'icône de se déformer */
+    }
+
     /* NAVIGATION MOBILE */
     #navMenu { 
         display: none; flex-direction: column; position: absolute; 
@@ -344,12 +355,16 @@
         .footer-logo img { height: 60px; display: block; }
 
         @media (max-width: 768px) {
+            
             .nav-container {
-                flex-direction: row !important;
-                justify-content: space-between !important;
-                align-items: center !important;
-                padding: 10px 15px !important;
-            }
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0 20px !important;
+        height: 80px;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
 
             .header-left {
                 display: flex !important;
@@ -361,12 +376,16 @@
             .logo img { height: 35px !important; }
 
             .region-mention {
-                display: block !important;
-                white-space: normal !important;
-                max-width: 80px;
-                font-size: 10px;
-                line-height: 1.1;
-            }
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
+        margin-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+    }
+
             .footer-container {
                 flex-direction: column;
                 text-align: center;
@@ -405,21 +424,21 @@
 
         } 
     </style>
-    <script type="application/ld+json">
+   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "EventSeries",
-  "name": "Calendrier Triathlon Québec 2026",
-  "description": "Calendrier complet des triathlon et duathlon au Québec pour la saison 2026.",
-  "organizer": {
+  "@type": "Dataset",
+  "name": "Calendrier des compétitions de triathlon au Québec - Saison 2026",
+  "description": "Répertoire complet et dates des triathlons, duathlons et aquathlons au Québec pour l'année 2026. Inclut les courses affiliées à Triathlon Québec.",
+  "keywords": ["Triathlon Québec", "Calendrier 2026", "Course à pied", "Cyclisme", "Natation"],
+  "creator": {
     "@type": "NGO",
     "name": "Mon Projet Tri",
     "url": "https://mon.projet-tri.org"
   },
-  "location": {
-    "@type": "Place",
-    "name": "Province de Québec, Canada"
-  }
+  "spatialCoverage": "Quebec, Canada",
+  "temporalCoverage": "2026-01-01/2026-12-31",
+  "license": "https://creativecommons.org/licenses/by/4.0/"
 }
 </script>
 </head>
@@ -432,7 +451,7 @@
 
 
 
-                <div class="region-mention">Partout au Québec</div>
+                <span class="region-mention">Partout au<br>Québec</span>
             </div>
             <div class="menu-toggle" onclick="toggleMenu()">☰</div>
             <nav>
@@ -440,7 +459,7 @@
                     <li><a href="decouvrir.html">L'OBNL</a></li>
                     <li><a href="index.html#vision">Notre vision</a></li>
                     <li><a href="index.html#programme">Les programmes</a></li>
-                    <li><a href="calendrier.html" style="color:var(--accent); font-weight: 800;">Calendrier '26</a></li>
+                    <li><a href="calendrier.html" style="color:var(--accent) !important; font-weight: 800;">Calendrier '26</a></li>
                     <li><a href="index.html#contact">Rejoignez-nous</a></li>
                 </ul>
             </nav>
@@ -471,9 +490,9 @@
     </div>
 
     <div class="main-content">
-        <h1>Calendrier Provincial 2026</h1>
+        <h1>Calendrier des compétitions de Triathlon (et +) au Québec en 2026</h1>
 
-        <div class="cta-accompagnement">
+        <div class="cta-accompagnement" title="Accompagnement et coaching pour les courses du calendrier triathlon Québec 2026">
     <img src="favicon.png" alt="Icon" class="cta-icon-img">
     <div class="cta-content">
         <p class="cta-main-text">
@@ -569,7 +588,7 @@
         }
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="Course sanctionnée Triathlon Québec" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
             let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
             let badges = [];
