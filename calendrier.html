@@ -124,8 +124,14 @@
         .cta-content { text-align: center; }
         .cta-main-text { font-size: 1.15rem; }
         .cta-icon-img {
-        width: 40px !important; /* Au lieu de 80px ou 100px */
-        margin-right: 10px !important;
+        margin-top: -15px !important;    /* Réduit la marge du haut */
+        margin-bottom: -15px !important; /* Réduit la marge du bas */
+        width: 40px !important;        /* Comme discuté précédemment pour la taille */
+    }
+    /* Supprime les marges par défaut sur le texte pour resserrer le tout */
+    .cta-text h2 {
+        margin-top: 0 !important;
+        margin-bottom: 2px !important;
     }
     }
 
