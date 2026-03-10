@@ -487,7 +487,7 @@
     <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
     <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
     <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-    <div class="legend-item" style="cursor: default;"><span class="badge cat-piscine">🏊</span> Piscine</div>
+    <div class="legend-item" style="cursor: default;"><span class="badge cat-piscine">PI</span> Piscine</div>
     
     <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
 </div>
@@ -590,9 +590,10 @@
         let rowCats = [];
         let badges = [];
 
-        // 1. Badge Piscine (Colonne I -> Index 8)
+        // 1. Badge Piscine (Index 8)
         if (row[8] === "X" || row[8] === "x") {
-            badges.push(`<span class="badge cat-piscine" title="Natation en piscine">🏊</span>`);
+            badges.push(`<span class="badge cat-piscine" title="Natation en piscine">PI</span>`);
+            rowCats.push("PI"); // ON AJOUTE PI ICI POUR LE FILTRE
         }
 
         // 2. Mapping des épreuves (Index 9 à 18)
