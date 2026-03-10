@@ -111,7 +111,7 @@
     }
     .cta-link:hover { color: var(--accent); }
 
-    .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; }
+    .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-size: 0.85rem; }
 
     @media (max-width: 768px) {
         .cta-accompagnement { 
@@ -470,25 +470,27 @@
 
     <div class="legend-container">
         <div class="legend">
-           <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
-    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
-         alt="Affiliation Triathlon Québec" 
-         title="Courses affiliées à Triathlon Québec"
-         style="width:18px">
-    <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
+    <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
+        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
+             alt="Affiliation Triathlon Québec" 
+             title="Courses affiliées à Triathlon Québec"
+             style="width:18px">
+        <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
+    </div>
+    <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
+    <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
+    <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
+    <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
+    <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
+    <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
+    <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
+    <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
+    <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
+    <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
+    <div class="legend-item" style="cursor: default;"><span class="badge cat-piscine">🏊</span> Piscine</div>
+    
+    <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
 </div>
-            <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
-            <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
-            <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
-            <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
-            <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
-            <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
-            <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
-            <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
-            <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
-            <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-            <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
-        </div>
     </div>
 
     <div class="main-content">
@@ -569,7 +571,7 @@
 
         const tr = document.createElement('tr');
         
-        // --- LOGIQUE DE DATE (Inchangée) ---
+        // --- LOGIQUE DE DATE ---
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const dateRaw = row[0] ? String(row[0]).trim() : "";
@@ -593,7 +595,7 @@
             badges.push(`<span class="badge cat-piscine" title="Natation en piscine">🏊</span>`);
         }
 
-        // 2. Mapping des épreuves avec noms complets (Index 9 à 18)
+        // 2. Mapping des épreuves (Index 9 à 18)
         const mappingEpreuves = {
             9:  { nom: "Triathlon Initiation",     code: "TI", cat: "cat-init" },
             10: { nom: "Triathlon Sprint",         code: "TS", cat: "cat-tri" },
