@@ -113,6 +113,7 @@
 
     .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
 
+
     @media (max-width: 768px) {
         .cta-accompagnement { 
             margin: 0 15px 30px; 
@@ -134,8 +135,11 @@
         margin-top: 0 !important;
         margin-bottom: 2px !important;
     }
+    .btn-text {
+        display: none !important;
     }
 
+}
     /* --- LÉGENDE --- */
     .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1100; padding: 12px 0; border-bottom: 1px solid #ddd; height: 40px; display: flex; align-items: center; }
     .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 0 auto; white-space: nowrap; }
@@ -523,8 +527,8 @@
     <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
     <a href="javascript:void(0)" 
        onclick="alert('Note on TQ sanction: Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
-       style="color: inherit; text-decoration: underline; margin-left: 5px;"><br>
-       See more...
+       style="color: inherit; text-decoration: underline; margin-left: 5px;">
+       See more
     </a>
 </div>
     <div class="main-content">
@@ -669,8 +673,8 @@ const monthTranslations = {
             <td data-label="Organizer">${row[6] || "-"}</td>
             <td data-label="Region">${row[2] || ""}</td>
             <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
-            <td data-label="Website">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
-            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+            <td data-label="Website">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action"><i class="fas fa-external-link-alt"></i> <span class="btn-text">Link</span></a>` : "-"}</td>
+<td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action"><i class="fas fa-envelope"></i> <span class="btn-text">Link</span></a>` : "-"}</td>
             <td data-label="Events"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
         `;
         body.appendChild(tr);
