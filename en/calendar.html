@@ -134,7 +134,7 @@
         margin-top: 0 !important;
         margin-bottom: 2px !important;
     }
-    
+
     }
 
     /* --- LÉGENDE --- */
@@ -237,6 +237,41 @@
         flex-shrink: 0;   /* Empêche l'icône de se déformer */
     }
 
+td[data-label="Links"], 
+    td[data-label="Contact"] {
+        display: inline-flex !important;
+        width: 50% !important;
+        float: left; /* Permet l'alignement côte à côte */
+        border-bottom: 1px solid #f5f5f5;
+        min-height: 55px;
+        padding: 10px;
+        box-sizing: border-box; /* Crucial pour que 50% + 50% = 100% */
+        justify-content: center; /* Centre le contenu horizontalement */
+        align-items: center;
+    }
+
+    /* 2. On cache le label "Links" et "Contact" pour gagner de l'espace */
+    td[data-label="Links"]:before,
+    td[data-label="Contact"]:before { 
+        display: none !important; 
+    }
+
+    /* 3. On force les boutons à avoir une taille fixe et identique */
+    .btn-action { 
+        padding: 8px 0 !important;
+        font-size: 0.75rem !important;
+        width: 90% !important; /* Prend presque toute la place des 50% alloués */
+        max-width: 120px;
+        border-radius: 4px;
+        display: block !important;
+        text-align: center;
+    }
+
+    /* 4. On nettoie le flux APRES les deux boutons pour que la cellule suivante (Events) passe en dessous */
+    td[data-label="Events"] { 
+        clear: both !important; 
+        display: flex !important;
+    }
 
     /* NAVIGATION MOBILE */
     #navMenu { 
@@ -289,6 +324,10 @@
         25% { transform: translateX(-30px); }
         50% { transform: translateX(0); }
     }
+
+
+
+
 
     /* STRUCTURE DES CARTES */
     .main-content { padding: 10px; }
