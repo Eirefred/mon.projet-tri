@@ -631,7 +631,7 @@
         }
 
         // --- CONSTRUCTION DE LA LIGNE ---
-        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Événement sanctionné par Triathlon Québec : gage de sécurité et de qualité organisationnelle." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
         const lieuComplet = row[7] ? String(row[7]).trim() : "";
         let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
 
