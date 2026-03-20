@@ -440,38 +440,7 @@
             gap: 10px !important;
         }
 
-        /* Custom Modal Style */
-.custom-modal {
-    display: none; 
-    position: fixed; 
-    z-index: 9999; 
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
-}
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 25px;
-    border-radius: 8px;
-    width: 85%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-.close-modal {
-    position: absolute;
-    right: 15px; top: 10px;
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-.close-modal:hover { color: #000; }
-
-        }
+        } 
     </style>
    <script type="application/ld+json">
 {
@@ -489,8 +458,6 @@
   "temporalCoverage": "2026-01-01/2026-12-31",
   "license": "https://creativecommons.org/licenses/by/4.0/"
 }
-
-
 </script>
 </head>
 <body>
@@ -521,9 +488,9 @@
         <div class="legend">
            <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
-         alt="TQ Sanction" 
-         title="Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality."
-         style="width:18px; cursor: default;">
+         alt="Affiliation Triathlon Québec" 
+         title="Courses affiliées à Triathlon Québec"
+         style="width:18px">
     <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
 </div>
             <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
@@ -539,19 +506,6 @@
             <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Map</button>
         </div>
     </div>
-
-    <div style="margin-top: 15px; font-size: 0.8rem; color: #444; text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-    <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
-    <a href="javascript:void(0)" 
-       onclick="openTQModal('Note on TQ sanction: Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
-       style="color: inherit; text-decoration: underline; margin-left: 5px;">
-       See more
-    </a>
-</div>
-
-
-
-</html>
 
     <div class="main-content">
         <h1>Triathlon (and More) Competition Calendar in Quebec for 2026</h1>
@@ -764,28 +718,6 @@ if (dateRaw) {
     });
 }
 
-function openTQModal(text) {
-    document.getElementById('modalText').innerText = text;
-    document.getElementById('tqModal').style.display = 'block';
-}
-
-function closeTQModal() {
-    document.getElementById('tqModal').style.display = 'none';
-}
-
-// Fonction unique pour gérer tous les clics extérieurs (Modale TQ et Carte)
-window.onclick = function(event) {
-    const tqModal = document.getElementById('tqModal');
-    const mapModal = document.getElementById('mapModal');
-    
-    if (event.target == tqModal) { 
-        closeTQModal(); 
-    }
-    if (event.target == mapModal) { 
-        closeMap(); 
-    }
-}
-
     function openMap(lieu, name) {
     document.getElementById('modalTitle').innerText = name;
     // Utilisation de google.com/maps avec le paramètre q et force du zoom via output=embed
@@ -846,13 +778,5 @@ function openGlobalMap() {
         </div>
     </div>
 </footer>
-<div id="tqModal" class="custom-modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeTQModal()">&times;</span>
-            <h3 style="color: #004c97; margin-top: 0;">Note on TQ sanction</h3>
-            <p id="modalText" style="line-height: 1.6; color: #333;"></p>
-            <button onclick="closeTQModal()" style="background: #004c97; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px;">Close</button>
-        </div>
-    </div>
 </body>
 </html>
