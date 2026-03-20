@@ -111,6 +111,8 @@
     }
     .cta-link:hover { color: var(--accent); }
 
+    .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
+
     @media (max-width: 768px) {
         .cta-accompagnement { 
             margin: 0 15px 30px; 
@@ -121,7 +123,17 @@
         }
         .cta-content { text-align: center; }
         .cta-main-text { font-size: 1.15rem; }
-        .cta-icon-img { width: 50px; height: 50px; }
+        /* Réduit l'espace autour de l'icône */
+    .cta-icon-img {
+        margin-top: -15px !important;    /* Réduit la marge du haut */
+        margin-bottom: -15px !important; /* Réduit la marge du bas */
+        width: 40px !important;        /* Comme discuté précédemment pour la taille */
+    }
+    /* Supprime les marges par défaut sur le texte pour resserrer le tout */
+    .cta-text h2 {
+        margin-top: 0 !important;
+        margin-bottom: 2px !important;
+    }
     }
 
     /* --- LÉGENDE --- */
@@ -488,11 +500,12 @@
         <div class="legend">
            <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
-         alt="Affiliation Triathlon Québec" 
-         title="Courses affiliées à Triathlon Québec"
-         style="width:18px">
+     alt="Triathlon Québec Sanction" 
+     title="Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules."
+     style="width:18px; cursor: help;">
     <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
-</div>
+</div>      
+            <div class="legend-item clickable-cat" data-cat="PI"><span class="badge cat-piscine">PI</span> Pool</div>
             <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
@@ -506,9 +519,16 @@
             <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Map</button>
         </div>
     </div>
-
+<div style="margin-top: 15px; font-size: 0.8rem; color: #444; line-height: 1.4; max-width: 1000px; text-align: center; margin-left: auto; margin-right: auto;">
+    <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
+    <a href="javascript:void(0)" 
+       onclick="alert('Note on TQ sanction: Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
+       style="color: inherit; text-decoration: underline; margin-left: 5px;">
+       See more
+    </a>
+</div>
     <div class="main-content">
-        <h1>Triathlon (and More) Competition Calendar in Quebec for 2026</h1>
+        <h1>Triathlon provincial calendar 2026</h1>
 
         <div class="cta-accompagnement">
     <img src="../favicon.png" alt="Icon" class="cta-icon-img">
@@ -581,90 +601,83 @@ const monthTranslations = {
     }
 
     function renderTable(rows) {
-        const body = document.getElementById('calBody');
-        const headers = rows[0].map(h => h ? String(h).trim() : "");
-        for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            if (!row[1]) continue;
-            const tr = document.createElement('tr');
-            // --- LOGIQUE DE DATE (AJOUT) ---
-
-        // --- LOGIQUE DE DATE & TRADUCTION FORMATÉE ---
-const today = new Date();
-today.setHours(0, 0, 0, 0);
-let dateRaw = row[0] ? String(row[0]).trim() : ""; 
-let dateDisplay = dateRaw; // C'est cette variable qu'on affichera
-
-if (dateRaw) {
-    let dayPart = "";
-    let monthPartFr = "";
-
-    // 1. Séparer les chiffres (ex: "14" ou "14-22") du texte (ex: "fév.")
-    const match = dateRaw.match(/^([\d-]+)\s+(.*)$/);
-    if (match) {
-        dayPart = match[1];      
-        monthPartFr = match[2].toLowerCase(); 
-        
-        // 2. Traduire le mois via le dictionnaire monthTranslations
-        let monthEnglish = monthTranslations[monthPartFr] || monthPartFr;
-
-        // 3. Inverser pour le format Nord-Américain : "Feb. 14-22"
-        dateDisplay = `${monthEnglish} ${dayPart}`;
-    }
-
-    // 4. Logique pour griser les événements passés
-    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
-    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
-    const jour = parseInt(dateRef.match(/\d+/));
-    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+    const body = document.getElementById('calBody');
+    body.innerHTML = ""; 
     
-    if (jour && indexMois !== -1) {
-        const dateEpreuve = new Date(2026, indexMois, jour);
-        if (dateEpreuve < today) {
-            tr.classList.add('past-event');
-        }
-    }
-}
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        if (!row[1]) continue; 
 
-        // --- FIN DE L'AJOUT ---
-            let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
-            const lieuComplet = row[9] ? String(row[9]).trim() : "";
-            let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
-            let badges = [];
-            for (let j = 11; j <= 20; j++) {
-                if (row[j] === "X" || row[j] === "x") {
-                    const info = {
-                        "Triathlon Initiation": { code: "TI", cat: "cat-init" },
-                        "Triathlon Sprint": { code: "TS", cat: "cat-tri" },
-                        "Triathlon Olympique": { code: "TO", cat: "cat-tri" },
-                        "Triathlon demi distance": { code: "T½", cat: "cat-tri" },
-                        "Triathlon longue distance": { code: "TC", cat: "cat-tri" },
-                        "Duathlon Sprint": { code: "DS", cat: "cat-dua" },
-                        "Duathlon Olympique": { code: "DO", cat: "cat-dua" },
-                        "Duathlon Long": { code: "DL", cat: "cat-dual-long" },
-                        "Aquavelo": { code: "AV", cat: "cat-multi" },
-                        "Aquathlon": { code: "AQ", cat: "cat-multi" }
-                    }[headers[j]] || { code: "?", cat: "" };
-                    if(info.code !== "?") { badges.push(`<span class="badge ${info.cat}">${info.code}</span>`); rowCats.push(info.code); }
-                }
+        const tr = document.createElement('tr');
+        
+        // --- DATE LOGIC ---
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const dateRaw = row[0] ? String(row[0]).trim() : "";
+        if (dateRaw) {
+            const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+            const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+            const jour = parseInt(dateRef.match(/\d+/));
+            const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+            if (jour && indexMois !== -1) {
+                const dateEpreuve = new Date(2026, indexMois, jour);
+                if (dateEpreuve < today) tr.classList.add('past-event');
             }
-            tr.setAttribute('data-categories', rowCats.join(','));
-            tr.innerHTML = `
-                <td data-label="Date"><b>${dateDisplay || ""}</b></td>
-                <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
-                <td data-label="Organisation">${row[6] || "-"}</td>
-                <td data-label="Region">${row[2] || ""}</td>
-                <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\'")}')">📍 ${ville}</span></td>
-                <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Web Site</a>` : "-"}</td>
-                <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
-                <td data-label="Races"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
-            `;
-            body.appendChild(tr);
         }
-        document.getElementById('status').style.display = 'none';
-        document.getElementById('calTable').style.display = 'table';
+
+        // --- BADGE MANAGEMENT ---
+        let rowCats = [];
+        let badges = [];
+
+        // 1. Pool Badge (Index 8)
+        if (row[8] === "X" || row[8] === "x") {
+            badges.push('<span class="badge cat-piscine" title="Pool Swim">PI</span>');
+            rowCats.push("PI");
+        }
+
+        // 2. Events Mapping (Index 9 to 18)
+        const mappingEpreuves = {
+            9:  { nom: "Initiation Triathlon",   code: "TI", cat: "cat-init" },
+            10: { nom: "Sprint Triathlon",       code: "TS", cat: "cat-tri" },
+            11: { nom: "Olympic Triathlon",      code: "TO", cat: "cat-tri" },
+            12: { nom: "Half Distance Tri",      code: "T½", cat: "cat-tri" },
+            13: { nom: "Full Distance Tri",      code: "TC", cat: "cat-tri" },
+            14: { nom: "Sprint Duathlon",        code: "DS", cat: "cat-dua" },
+            15: { nom: "Olympic Duathlon",       code: "DO", cat: "cat-dua" },
+            16: { nom: "Long Distance Duathlon", code: "DL", cat: "cat-dual-long" },
+            17: { nom: "Aquabike",               code: "AV", cat: "cat-multi" },
+            18: { nom: "Aquathlon",              code: "AQ", cat: "cat-multi" }
+        };
+
+        for (let idx in mappingEpreuves) {
+            if (row[idx] === "X" || row[idx] === "x") {
+                const ep = mappingEpreuves[idx];
+                badges.push('<span class="badge ' + ep.cat + '" title="' + ep.nom + '">' + ep.code + '</span>');
+                rowCats.push(ep.code);
+            }
+        }
+
+        // --- ROW CONSTRUCTION ---
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a mark of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
+        const lieuComplet = row[7] ? String(row[7]).trim() : "";
+        let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
+
+        tr.setAttribute('data-categories', rowCats.join(','));
+        tr.innerHTML = `
+            <td data-label="Date"><b>${row[0] || ""}</b></td>
+            <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
+            <td data-label="Organizer">${row[6] || "-"}</td>
+            <td data-label="Region">${row[2] || ""}</td>
+            <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
+            <td data-label="Website">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
+            <td data-label="Events"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+        `;
+        body.appendChild(tr);
     }
+    document.getElementById('status').style.display = 'none';
+    document.getElementById('calTable').style.display = 'table';
+}
 
     function setupFilters() {
     const items = document.querySelectorAll('.clickable-cat');
