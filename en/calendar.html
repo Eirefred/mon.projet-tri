@@ -447,19 +447,18 @@
     z-index: 9999; 
     left: 0; top: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0,0,0,0.6);
 }
-.modal-content {
+.modal-content-tq {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 25px;
-    border-radius: 8px;
+    border-radius: 12px;
     width: 85%;
     max-width: 500px;
     position: relative;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 .close-modal {
     position: absolute;
@@ -471,7 +470,7 @@
 }
 .close-modal:hover { color: #000; }
 
-        }
+        } 
     </style>
    <script type="application/ld+json">
 {
@@ -489,8 +488,6 @@
   "temporalCoverage": "2026-01-01/2026-12-31",
   "license": "https://creativecommons.org/licenses/by/4.0/"
 }
-
-
 </script>
 </head>
 <body>
@@ -519,13 +516,15 @@
 
     <div class="legend-container">
         <div class="legend">
-           <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
-    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
-         alt="TQ Sanction" 
-         title="Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality."
-         style="width:18px; cursor: default;">
-    <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
-</div>
+            <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
+                <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" 
+                     alt="TQ Sanction" 
+                     title="Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality."
+                     onclick="openTQModal('Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')"
+                     style="width:18px; cursor: pointer;">
+                <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
+            </div>
+
             <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
             <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
             <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
@@ -541,17 +540,13 @@
     </div>
 
     <div style="margin-top: 15px; font-size: 0.8rem; color: #444; text-align: center; max-width: 1000px; margin-left: auto; margin-right: auto;">
-    <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
-    <a href="javascript:void(0)" 
-       onclick="openTQModal('Note on TQ sanction: Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
-       style="color: inherit; text-decoration: underline; margin-left: 5px;">
-       See more
-    </a>
-</div>
-
-
-
-</html>
+        <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
+        <a href="javascript:void(0)" 
+           onclick="openTQModal('Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
+           style="color: inherit; text-decoration: underline; margin-left: 5px; font-weight: bold;">
+           See more
+        </a>
+    </div>
 
     <div class="main-content">
         <h1>Triathlon (and More) Competition Calendar in Quebec for 2026</h1>
@@ -764,28 +759,6 @@ if (dateRaw) {
     });
 }
 
-function openTQModal(text) {
-    document.getElementById('modalText').innerText = text;
-    document.getElementById('tqModal').style.display = 'block';
-}
-
-function closeTQModal() {
-    document.getElementById('tqModal').style.display = 'none';
-}
-
-// Fonction unique pour gérer tous les clics extérieurs (Modale TQ et Carte)
-window.onclick = function(event) {
-    const tqModal = document.getElementById('tqModal');
-    const mapModal = document.getElementById('mapModal');
-    
-    if (event.target == tqModal) { 
-        closeTQModal(); 
-    }
-    if (event.target == mapModal) { 
-        closeMap(); 
-    }
-}
-
     function openMap(lieu, name) {
     document.getElementById('modalTitle').innerText = name;
     // Utilisation de google.com/maps avec le paramètre q et force du zoom via output=embed
@@ -811,7 +784,43 @@ function openGlobalMap() {
             else backToTopBtn.classList.remove("visible");
         }
     };
-    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
+
+    function openTQModal(text) {
+        document.getElementById('modalTextTQ').innerText = text;
+        document.getElementById('tqModal').style.display = 'block';
+    }
+
+    function closeTQModal() {
+        document.getElementById('tqModal').style.display = 'none';
+    }
+
+    function openMap(lieu, name) {
+        document.getElementById('modalTitle').innerText = name;
+        const url = `https://www.google.com/maps?q=${encodeURIComponent(lieu)}&output=embed`;
+        document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+        document.getElementById('mapModal').style.display = "block";
+    }
+
+    function closeMap() { document.getElementById('mapModal').style.display = "none"; }
+
+    // GESTIONNAIRE DE CLICS UNIQUE (Fusionné pour Modale TQ + Cartes)
+    window.onclick = function(event) {
+        const tqModal = document.getElementById('tqModal');
+        const mapModal = document.getElementById('mapModal');
+        
+        // Si on clique sur le fond de la modale TQ
+        if (event.target == tqModal) { 
+            closeTQModal(); 
+        }
+        // Si on clique sur le fond de la modale de Carte
+        if (event.target == mapModal) { 
+            closeMap(); 
+        }
+    };
+
+    backToTopBtn.onclick = function() { 
+        window.scrollTo({top: 0, behavior: "smooth"}); 
+    };
 
     window.onload = loadExcel;
     window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
@@ -847,11 +856,11 @@ function openGlobalMap() {
     </div>
 </footer>
 <div id="tqModal" class="custom-modal">
-        <div class="modal-content">
+        <div class="modal-content-tq">
             <span class="close-modal" onclick="closeTQModal()">&times;</span>
             <h3 style="color: #004c97; margin-top: 0;">Note on TQ sanction</h3>
-            <p id="modalText" style="line-height: 1.6; color: #333;"></p>
-            <button onclick="closeTQModal()" style="background: #004c97; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px;">Close</button>
+            <p id="modalTextTQ" style="line-height: 1.6; color: #333; font-size: 0.9rem; text-align: left;"></p>
+            <button onclick="closeTQModal()" style="background: #004c97; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin-top: 15px; font-weight: bold;">Close</button>
         </div>
     </div>
 </body>
