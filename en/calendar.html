@@ -658,7 +658,7 @@ const monthTranslations = {
         }
 
         // --- ROW CONSTRUCTION ---
-        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a guarantee of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:default;">` : "";
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a guarantee of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
         const lieuComplet = row[7] ? String(row[7]).trim() : "";
         let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
 
