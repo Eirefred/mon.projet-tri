@@ -669,7 +669,7 @@ if (dateRaw) {
 
         // --- FIN DE L'AJOUT ---
             let rowCats = [];
-            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" style="width:16px;margin-right:5px;vertical-align:middle;">` : "";
+            const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a mark of safety and quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:default;">` : "";
             const lieuComplet = row[9] ? String(row[9]).trim() : "";
             let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
             let badges = [];
@@ -823,7 +823,6 @@ function openGlobalMap() {
     };
 
     window.onload = loadExcel;
-    window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 </script>
    <footer>
     <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
