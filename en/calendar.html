@@ -521,7 +521,7 @@
                      alt="TQ Sanction" 
                      title="Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality."
                      onclick="openTQModal('Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')"
-                     style="width:18px; cursor: pointer;">
+                     style="width:18px; cursor: help;">
                 <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
             </div>
 
@@ -757,14 +757,6 @@ if (dateRaw) {
             }, 100);
         });
     });
-}
-
-    function openMap(lieu, name) {
-    document.getElementById('modalTitle').innerText = name;
-    // Utilisation de google.com/maps avec le paramètre q et force du zoom via output=embed
-    const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=10&output=embed`;
-    document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
-    document.getElementById('mapModal').style.display = "block";
 }
 
 function openGlobalMap() {
