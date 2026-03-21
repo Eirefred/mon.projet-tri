@@ -685,13 +685,24 @@ const monthTranslations = {
         }
 
         // --- ROW CONSTRUCTION ---
-        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a mark of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
-        const lieuComplet = row[7] ? String(row[7]).trim() : "";
-        let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec..." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
 
-        tr.setAttribute('data-categories', rowCats.join(','));
-        tr.innerHTML = `
-            <td data-label="Date"><b>${row[0] || ""}</b></td>
+// --- AJOUT DE LA LOGIQUE DE TRADUCTION ---
+let dateDisplay = row[0] || "";
+// On parcourt notre dictionnaire de traduction pour remplacer le mois français par l'anglais
+Object.keys(monthTranslations).forEach(monthFr => {
+    if (dateDisplay.toLowerCase().includes(monthFr.toLowerCase())) {
+        const regex = new RegExp(monthFr, 'gi');
+        dateDisplay = dateDisplay.replace(regex, monthTranslations[monthFr]);
+    }
+});
+
+const lieuComplet = row[7] ? String(row[7]).trim() : "";
+let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
+
+tr.setAttribute('data-categories', rowCats.join(','));
+tr.innerHTML = `
+    <td data-label="Date"><b>${dateDisplay}</b></td>
             <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
             <td data-label="Organizer">${row[6] || "-"}</td>
             <td data-label="Region">${row[2] || ""}</td>
