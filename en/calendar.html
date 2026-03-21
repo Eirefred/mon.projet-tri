@@ -520,7 +520,7 @@
         </div>
     </div>
 <div style="margin-top: 15px; font-size: 0.8rem; color: #444; line-height: 1.4; max-width: 1000px; text-align: center; margin-left: auto; margin-right: auto;">
-    <strong>Note on TQ sanction:</strong> a mark of safety and organizational quality. 
+    <strong>Note on TQ sanction:</strong> a guarantee of safety and organizational quality. 
     <a href="javascript:void(0)" 
        onclick="alert('Note on TQ sanction: Events sanctioned by Triathlon Québec meet rigorous standards for safety, supervision, and organizational quality. This recognition ensures participants a reliable, fair sporting experience in compliance with official triathlon rules.')" 
        style="color: inherit; text-decoration: underline; margin-left: 5px;">
@@ -658,7 +658,7 @@ const monthTranslations = {
         }
 
         // --- ROW CONSTRUCTION ---
-        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a mark of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
+        const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Event sanctioned by Triathlon Québec: a guarantee of safety and organizational quality." style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
         const lieuComplet = row[7] ? String(row[7]).trim() : "";
         let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
 
