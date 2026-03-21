@@ -692,8 +692,15 @@ let dateDisplay = row[0] || "";
 // On parcourt notre dictionnaire de traduction pour remplacer le mois français par l'anglais
 Object.keys(monthTranslations).forEach(monthFr => {
     if (dateDisplay.toLowerCase().includes(monthFr.toLowerCase())) {
-        const regex = new RegExp(monthFr, 'gi');
-        dateDisplay = dateDisplay.replace(regex, monthTranslations[monthFr]);
+        // 1. On extrait le numéro du jour (ex: "15")
+        const dayMatch = dateDisplay.match(/\d+/);
+        const day = dayMatch ? dayMatch[0] : "";
+        
+        // 2. On récupère le mois traduit (ex: "June")
+        const monthEn = monthTranslations[monthFr];
+        
+        // 3. On reconstruit : MOIS + JOUR (ex: "June 15")
+        dateDisplay = `${monthEn} ${day}`;
     }
 });
 
