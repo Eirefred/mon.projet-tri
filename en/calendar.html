@@ -167,7 +167,7 @@
     .cat-multi { background: #f3e5f5; color: #7b1fa2; }
     .cat-init { background: #e8f5e9; color: #2e7d32; }
     .lieu-link { color: var(--accent); cursor: pointer; text-decoration: underline; font-weight: bold; }
-  .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; box-sizing: border-box; }
+    .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; box-sizing: border-box; }
 
     /* BOUTON RETOUR EN HAUT */
     #backToTop {
@@ -674,9 +674,9 @@ const monthTranslations = {
             <td data-label="Organizer">${row[6] || "-"}</td>
             <td data-label="Region">${row[2] || ""}</td>
             <td data-label="Location"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
-            <td data-label="Links">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Website</a>` : "-"}</td>
-            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Email</a>` : "-"}</td>
-            <td data-label="Events"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+            <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+            <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
+            <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
         `;
         body.appendChild(tr);
     }
