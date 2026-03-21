@@ -114,19 +114,42 @@
     .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
 
     @media (max-width: 768px) {
-        .cta-accompagnement { 
-            margin: 0 15px 30px; 
-            padding: 20px; 
-            flex-direction: column; /* Repasse en colonne sur mobile pour l'espace */
-            text-align: center;
-            gap: 15px;
-        }
-        .cta-content { text-align: center; }
-        .cta-main-text { font-size: 1.15rem; }
-        .cta-icon-img {
-        margin-top: -15px !important;    /* Réduit la marge du haut */
-        margin-bottom: -15px !important; /* Réduit la marge du bas */
-        width: 40px !important;        /* Comme discuté précédemment pour la taille */
+        .cta-accompagnement {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        padding: 15px 20px !important; /* Padding réduit en haut/droite */
+    }
+
+    .cta-icon-img {
+        width: 40px !important;
+        height: 40px !important;
+        margin-right: 15px !important;
+        flex: 0 0 auto !important;
+    }
+
+    .cta-content {
+        display: contents !important; /* Garde le titre à côté du favicon */
+    }
+
+    .cta-main-text {
+        flex: 1 !important;
+        font-size: 1.15rem !important;
+        text-align: left !important;
+        margin: 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .cta-sub-text {
+        flex: 0 0 100% !important;     /* Prend toute la largeur en dessous */
+        width: 100% !important;
+        margin-top: -10px !important;    /* ESPACE RÉDUIT entre le titre et ce texte */
+        text-align: center !important; /* TEXTE CENTRÉ */
+        font-size: 0.95rem !important;
+        display: block !important;
+        line-height: 1.3 !important;
     }
     /* Supprime les marges par défaut sur le texte pour resserrer le tout */
     .cta-text h2 {
