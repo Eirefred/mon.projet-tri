@@ -92,7 +92,7 @@
         .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; }
         .hero-partner { margin-top: 50px; opacity: 0.9; }
         .hero-partner p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .partner-logo { height: 40px; }
+        .partner-logo { height: 40px;}
 
         /* --- PRÉSENTATION --- */
         .presentation { padding: 100px 0; background: var(--white); text-align: center; }
@@ -112,11 +112,14 @@
             flex: 1;
             min-width: 320px;
             max-width: 450px;
-            text-align: center;
+            text-align: center; /* Centrage global du texte */
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             box-shadow: var(--shadow-punchy);
             position: relative;
             border: 1px solid rgba(0, 76, 151, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrage des éléments flex */
         }
         .programme-card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0, 76, 151, 0.2); }
         
@@ -131,9 +134,9 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 20px 0;
         }
 
-        .features-list { text-align: left; list-style: none; padding: 0; margin-bottom: 35px; }
+        .features-list { text-align: center; list-style: none; padding: 0; margin-bottom: 35px; width: 100%; }
         .features-list li { margin-bottom: 12px; color: var(--text-light); font-size: 1rem; }
-        .features-list li::before { content: "✓"; color: #D65F3A; font-weight: bold; margin-right: 10px; }
+        .features-list li strong { color: var(--text-dark); }
 
         .card-button {
             display: inline-block; background: var(--secondary-gradient); color: white;
@@ -150,7 +153,7 @@
             display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow-punchy);
         }
 
-        /* --- CONTACT AVEC BOUTON DÉGRADÉ --- */
+        /* --- CONTACT --- */
         .contact-section { padding: 100px 0; background: white; }
         .contact-card {
             background: #f0f7ff; padding: 60px; border-radius: 40px;
@@ -162,9 +165,8 @@
             width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit;
         }
         
-        /* LE BOUTON PUNCHY */
         .submit-btn {
-            background: var(--combined-gradient); /* Dégradé Bleu vers Orange */
+            background: var(--combined-gradient);
             color: white; 
             border: none;
             padding: 20px; 
@@ -264,8 +266,9 @@
                     <p style="font-style: italic; color: #D65F3A; font-weight: 700;">5km, 10km, 21km ou Marathon</p>
                     <div class="price">79$ <span style="font-size: 1rem; color: #667085;">/ mois</span></div>
                     <ul class="features-list">
-                        <li><strong>1 Plan d'entraînement</strong> personnalisé</li>
-                        <li><strong>1 Appel vision (40 min)</strong> avec le mentor</li>
+                        <li><strong>1 Plan d'entraînement mensuel</strong></li>
+                        <li>Personnalisé selon votre objectif</li>
+                        <li><strong>1 Appel vision (40 min)</strong></li>
                         <li>Analyse de vos besoins spécifiques</li>
                         <li>Accès plateforme de suivi</li>
                     </ul>
@@ -273,12 +276,12 @@
                 </div>
 
                 <div class="programme-card">
-                    <div class="card-badge" style="background: var(--secondary-gradient);">Élite</div>
-                    <h3>Continu</h3>
+                    <h3>Accompagnement continu</h3>
                     <p style="font-style: italic; color: #D65F3A; font-weight: 700;">S'entraîner toute l'année</p>
                     <div class="price">99$ <span style="font-size: 1rem; color: #667085;">/ mois</span></div>
                     <ul class="features-list">
-                        <li><strong>Suivi régulier</strong> et ajustements</li>
+                        <li><strong>Plan d'entraînement adaptable</strong></li>
+                        <li>Ajustements illimités en continu</li>
                         <li><strong>Appels stratégiques</strong> mensuels</li>
                         <li>Conseils techniques et motivation</li>
                         <li>Planification annuelle complète</li>
