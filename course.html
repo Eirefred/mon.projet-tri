@@ -185,6 +185,43 @@
             .nav-links { display: none; }
             .hero-content h1 { font-size: 2.5rem; }
         }
+
+        /* --- STYLE DU FOOTER (copié de index.html) --- */
+footer { 
+    background: #0481fb; 
+    color: white; 
+    padding: 40px 0; 
+    text-align: center; 
+    border-top: 4px solid #FF6600; /* La ligne orange */
+}
+
+.btn-zeffy-fr {
+    background-color: #FF6600; /* Orange plein */
+    color: #ffffff !important;
+    padding: 5px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid #FF6600;
+    transition: 0.3s;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 25px;
+}
+
+.btn-zeffy-fr:hover {
+    background-color: #ffffff !important;
+    color: #FF6600 !important;
+}
+
+.footer-container { 
+    width: 90%; 
+    max-width: 1100px; 
+    margin: 0 auto; 
+}
     </style>
 </head>
 <body>
@@ -295,22 +332,42 @@
         </div>
     </section>
 
-    <footer class="main-footer">
-        <div class="container">
-            <div class="footer-logo">
-                <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Tri Logo">
-            </div>
-            <div class="footer-info">
-                <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
-                <p>Organisme à but non lucratif (OBNL)</p>
-                <p>Dédié aux sportifs d'endurance au Québec</p>
-                <p><a href="mailto:info@mon.projet-tri.org" style="color: white; text-decoration: none;">info@mon.projet-tri.org</a></p>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Tous droits réservés</p>
-            </div>
+    <footer>
+    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+        
+        <div class="footer-logo" style="margin-bottom: 10px;">
+            <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
+                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo mon.projet(tri) - Retour à l'accueil" style="height: 60px; display: block;">
+            </a>
         </div>
-    </footer>
+        
+       <div class="footer-text">
+            <p style="margin-bottom: 12px; margin-top: 0; color: white;">
+                &copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec
+            </p>
+
+            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" 
+               target="_blank" 
+               class="btn-zeffy-fr">
+               Faire ma contribution
+            </a>
+        </div>
+
+        <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
+            <p style="font-size: 0.85rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">
+                Notre mentorat connecté apporte une expertise de haut niveau aux triathlètes de toutes les régions. 
+                Nous sommes fiers d'accompagner des athlètes à :
+            </p>
+            
+            <details style="font-size: 0.75rem; color: #ffffff; opacity: 0.6; cursor: pointer;">
+                <summary style="list-style: none; text-decoration: underline; outline: none;">Voir toutes les zones de service couvertes</summary>
+                <p style="margin-top: 10px; font-style: italic; line-height: 1.5;">
+                    Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que les régions d'Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Nord-du-Québec et l'Outaouais.
+                </p>
+            </details>
+        </div>
+    </div>
+</footer>
 
     <script>
         function toggleLang() {
