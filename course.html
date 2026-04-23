@@ -49,7 +49,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER (Structure index.html) --- */
+        /* --- HEADER --- */
         header {
             background-color: var(--white);
             padding: 15px 0;
@@ -93,7 +93,7 @@
         }
         .hero-content h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- PROGRAMMES (CENTRES) --- */
+        /* --- PROGRAMMES --- */
         .programme-section { padding: 80px 0; background-color: var(--white); }
         .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
         
@@ -106,7 +106,7 @@
             max-width: 420px;
             border: 1px solid #eee;
             position: relative;
-            text-align: center; /* Texte centré */
+            text-align: center; /* Centrage du texte */
             transition: 0.3s;
             display: flex;
             flex-direction: column;
@@ -153,36 +153,33 @@
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); text-align: left; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
-        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; }
+        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; transition: 0.3s; }
+        .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
 
-        /* --- FOOTER (index.html) --- */
-        footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
+        /* --- FOOTER --- */
         .main-footer {
-    background-color: var(--secondary-color);
-    color: white;
-    padding: 60px 0 20px 0;
-    text-align: center;
-}
-
-.footer-logo img {
-    height: 65px;
-    margin-bottom: 25px;
-    filter: brightness(0) invert(1); /* Pour mettre le logo en blanc sur fond bleu */
-}
-
-.footer-info p {
-    margin: 5px 0;
-    font-size: 0.95rem;
-    opacity: 0.9;
-}
-
-.footer-bottom {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    font-size: 0.8rem;
-    opacity: 0.6;
-}
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+        .footer-logo img {
+            height: 65px;
+            margin-bottom: 25px;
+            filter: brightness(0) invert(1);
+        }
+        .footer-info p {
+            margin: 5px 0;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -299,21 +296,21 @@
     </section>
 
     <footer class="main-footer">
-    <div class="container">
-        <div class="footer-logo">
-            <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Tri Logo">
+        <div class="container">
+            <div class="footer-logo">
+                <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Tri Logo">
+            </div>
+            <div class="footer-info">
+                <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
+                <p>Organisme à but non lucratif (OBNL)</p>
+                <p>Dédié aux sportifs d'endurance au Québec</p>
+                <p><a href="mailto:info@mon.projet-tri.org" style="color: white; text-decoration: none;">info@mon.projet-tri.org</a></p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Tous droits réservés</p>
+            </div>
         </div>
-        <div class="footer-info">
-            <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
-            <p>Organisme à but non lucratif (OBNL)</p>
-            <p>Dédié aux sportifs d'endurance au Québec</p>
-            <p><a href="mailto:info@mon.projet-tri.org" style="color: white; text-decoration: none;">info@mon.projet-tri.org</a></p>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Tous droits réservés</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         function toggleLang() {
