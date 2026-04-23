@@ -103,22 +103,26 @@
 
         /* --- PROGRAMMES --- */
         .programme-section { padding: 100px 0; background-color: #f0f7ff; }
-        .programme-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px; }
+        .programme-grid {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Augmenté de 40px à 50px pour aérer le design */
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
         
         .programme-card {
     background: var(--white);
-    padding: 60px 40px;
+    padding: 50px 30px; /* Réduit de 60px 40px à 50px 30px */
     border-radius: 30px;
     flex: 1;
-    min-width: 320px;
-    max-width: 450px;
+    min-width: 300px;
+    max-width: 380px; /* Réduit de 450px à 380px pour un look plus compact */
     text-align: center;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: var(--shadow-punchy);
     position: relative;
-    /* On ajoute la bordure orange ici */
     border-left: 6px solid #D65F3A; 
-    /* On ajuste la bordure existante pour les 3 autres côtés */
     border-top: 1px solid rgba(0, 76, 151, 0.05);
     border-right: 1px solid rgba(0, 76, 151, 0.05);
     border-bottom: 1px solid rgba(0, 76, 151, 0.05);
