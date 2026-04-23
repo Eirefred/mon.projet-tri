@@ -33,6 +33,7 @@
         :root {
             --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #FF9068 100%);
             --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
             --bg-fresh: #f4f7fa;
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -70,7 +71,6 @@
         nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: #D65F3A; }
 
-        /* --- TOGGLE LANGUE --- */
         .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
         .switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
@@ -92,7 +92,7 @@
         .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; }
         .hero-partner { margin-top: 50px; opacity: 0.9; }
         .hero-partner p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .partner-logo { height: 40px; filter: brightness(0) invert(1); }
+        .partner-logo { height: 40px; }
 
         /* --- PRÉSENTATION --- */
         .presentation { padding: 100px 0; background: var(--white); text-align: center; }
@@ -142,7 +142,7 @@
         }
         .card-button:hover { background: var(--primary-gradient); transform: scale(1.05); }
 
-        /* --- INFO BOX GLASS --- */
+        /* --- INFO BOX --- */
         .info-box-glass {
             max-width: 800px; margin: 80px auto 0;
             background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px);
@@ -150,7 +150,7 @@
             display: flex; align-items: center; gap: 20px; box-shadow: var(--shadow-punchy);
         }
 
-        /* --- CONTACT --- */
+        /* --- CONTACT AVEC BOUTON DÉGRADÉ --- */
         .contact-section { padding: 100px 0; background: white; }
         .contact-card {
             background: #f0f7ff; padding: 60px; border-radius: 40px;
@@ -161,14 +161,30 @@
         .form-group input, .form-group select, .form-group textarea {
             width: 100%; padding: 15px; border-radius: 12px; border: 1px solid #ddd; font-family: inherit;
         }
+        
+        /* LE BOUTON PUNCHY */
         .submit-btn {
-            background: var(--secondary-gradient); color: white; border: none;
-            padding: 20px; border-radius: 50px; font-weight: 900; text-transform: uppercase;
-            width: 100%; cursor: pointer; transition: 0.4s; font-size: 1.1rem;
+            background: var(--combined-gradient); /* Dégradé Bleu vers Orange */
+            color: white; 
+            border: none;
+            padding: 20px; 
+            border-radius: 50px; 
+            font-weight: 900; 
+            text-transform: uppercase;
+            width: 100%; 
+            cursor: pointer; 
+            transition: 0.4s; 
+            font-size: 1.1rem;
+            box-shadow: 0 10px 20px rgba(214, 95, 58, 0.2);
         }
-        .submit-btn:hover { background: var(--primary-gradient); letter-spacing: 2px; }
+        .submit-btn:hover { 
+            filter: brightness(1.1); 
+            transform: scale(1.02);
+            letter-spacing: 1px;
+            box-shadow: 0 15px 30px rgba(214, 95, 58, 0.3);
+        }
 
-        /* --- FOOTER (RÉFÉRENCE INDEX) --- */
+        /* --- FOOTER --- */
         footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
         .footer-logo img { height: 60px; filter: brightness(0) invert(1); margin-bottom: 20px; }
         .btn-zeffy-fr { 
@@ -222,7 +238,7 @@
             <p style="font-size: 1.4rem; font-weight: 300;">Le mentorat de course à pied réinventé.</p>
             <div class="hero-partner">
                 <p>En partenariat avec</p>
-                <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
+                <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Coaching Québec" class="partner-logo">
             </div>
         </div>
     </section>
