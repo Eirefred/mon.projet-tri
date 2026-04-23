@@ -31,14 +31,14 @@
         html { scroll-behavior: smooth; }
 
         :root {
-            --primary-color: #D65F3A; 
-            --secondary-color: #004c97; 
-            --bg-warm: #F9F5F0; 
-            --text-dark: #3D2B1F;
-            --text-light: #5A5A5A;
-            --white: #ffffff;
-            --shadow: 0 4px 20px rgba(61, 43, 31, 0.08);
-        }
+        --primary-color: #D65F3A; 
+        --secondary-color: #004c97; 
+        --bg-warm: #f0f7ff; /* REMPLACÉ : Un bleu très clair, frais et dynamique au lieu du beige */
+        --text-dark: #1a2b3c; /* Un bleu-noir plus moderne que le brun café */
+        --text-light: #5A6A7A;
+        --white: #ffffff;
+        --shadow: 0 10px 30px rgba(0, 76, 151, 0.08); /* Ombre bleutée plus légère */
+    }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -110,9 +110,27 @@
         .presentation a { color: var(--primary-color); text-decoration: underline; font-weight: bold; }
 
         /* --- PROGRAMMES --- */
-        .programme-section { padding: 90px 0; scroll-margin-top: 80px; }
+        .programme-section { 
+        padding: 90px 0; 
+        background-color: var(--bg-warm); /* Fond bleu frais */
+        scroll-margin-top: 80px; 
+    }
         .programme-grid { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-top: 50px; }
-        .programme-card { background: var(--white); padding: 50px 35px; border-radius: 25px; flex: 1; min-width: 300px; max-width: 450px; text-align: center; box-shadow: var(--shadow); transition: 0.4s; display: flex; flex-direction: column; align-items: center;}
+        .programme-card { 
+        background: var(--white); /* Blanc pur pour les cartes : effet propre et pro */
+        padding: 50px 35px; 
+        border-radius: 25px; 
+        flex: 1; 
+        min-width: 300px; 
+        max-width: 450px; 
+        text-align: center; 
+        box-shadow: var(--shadow); 
+        transition: 0.4s; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        border: 1px solid rgba(0, 76, 151, 0.05); /* Bordure très fine pour définir la carte */
+    }
         .programme-card:hover { transform: translateY(-10px); }
         .programme-card h3 { color: var(--secondary-color); font-size: 1.6rem; margin-bottom: 10px; }
         .target { font-style: italic; color: var(--primary-color); font-size: 0.95rem; margin-bottom: 15px; }
@@ -126,8 +144,20 @@
         .info-box-blue { max-width: 750px; margin: 60px auto 0; background: #eef6ff; border: 1px solid rgba(0, 76, 151, 0.2); padding: 25px; border-radius: 20px; display: flex; align-items: center; gap: 20px; }
 
         /* --- CONTACT --- */
-        .contact-section { padding: 90px 0; background-color: var(--white); }
-        .contact-card { background: var(--bg-warm); padding: 50px; border-radius: 30px; max-width: 650px; margin: 0 auto; box-shadow: var(--shadow); }
+        .contact-section { 
+        padding: 90px 0; 
+        background-color: var(--white); /* On alterne avec du blanc pour le rythme */
+    }
+
+    .contact-card { 
+        background: var(--bg-warm); /* Le bleu frais entoure le formulaire */
+        padding: 50px; 
+        border-radius: 30px; 
+        max-width: 650px; 
+        margin: 0 auto; 
+        box-shadow: var(--shadow);
+        border: 2px solid var(--white); /* "Frame" blanche pour le style */
+    }
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; box-sizing: border-box; }
