@@ -22,7 +22,7 @@
     </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet Run | OBNL de mentorat en course à pied</title>
+    <title>Mon Projet Run | Mentorat Haute Performance</title>
     
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
@@ -31,21 +31,21 @@
         html { scroll-behavior: smooth; }
 
         :root {
-        --primary-color: #D65F3A; 
-        --secondary-color: #004c97; 
-        --bg-warm: #f0f7ff; /* REMPLACÉ : Un bleu très clair, frais et dynamique au lieu du beige */
-        --text-dark: #1a2b3c; /* Un bleu-noir plus moderne que le brun café */
-        --text-light: #5A6A7A;
-        --white: #ffffff;
-        --shadow: 0 10px 30px rgba(0, 76, 151, 0.08); /* Ombre bleutée plus légère */
-    }
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #FF9068 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --bg-light: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --shadow-punchy: 0 20px 40px rgba(0, 76, 151, 0.15);
+        }
 
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
             line-height: 1.6;
             color: var(--text-dark);
-            background-color: var(--bg-warm);
+            background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
             overflow-x: hidden;
         }
 
@@ -53,164 +53,167 @@
 
         /* --- HEADER --- */
         header {
-            background-color: var(--white);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo img { height: 55px; }
-        
-        .region-mention { border-left: 1px solid #ddd; padding-left: 15px; }
-        .region-mention p { margin: 0; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--secondary-color); line-height: 1.2; }
-        .region-mention span { color: var(--primary-color); font-size: 0.85rem; }
+        .region-mention p { margin: 0; font-size: 0.75rem; text-transform: uppercase; font-weight: 800; color: #004c97; }
+        .region-mention span { color: #D65F3A; }
 
-        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; align-items: center; }
-        nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
-        nav a:hover { color: var(--primary-color); }
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; }
 
-        /* --- TOGGLE LANGUE --- */
-        .lang-selector { display: flex; align-items: center; gap: 8px; margin-left: 15px; }
-        .lang-label { font-size: 0.75rem; font-weight: bold; color: var(--secondary-color); }
-        .switch { position: relative; display: inline-block; width: 34px; height: 20px; }
-        .switch input { opacity: 0; width: 0; height: 0; }
-        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
-        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
-        input:checked + .slider { background-color: var(--primary-color); }
-        input:checked + .slider:before { transform: translateX(14px); }
-
-        /* --- HERO (STYLE INDEX LUMINEUX) --- */
+        /* --- HERO --- */
         .hero {
-            position: relative;
-            background: linear-gradient(rgba(0, 76, 151, 0.6), rgba(0, 76, 151, 0.6)), url('banniere-run.jpg') center/cover no-repeat;
-            height: 85vh;
+            height: 80vh;
+            background: linear-gradient(rgba(0, 40, 80, 0.7), rgba(0, 40, 80, 0.3)), url('banniere-run.jpg') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            clip-path: ellipse(150% 100% at 50% 0%); /* Effet incurvé punchy */
         }
-        .hero-content { z-index: 2; max-width: 900px; }
-        .hero-main-logo { height: 100px; margin-bottom: 30px; filter: brightness(0) invert(1); }
-        .hero h1 { font-size: 3.8rem; line-height: 1.4; margin-bottom: 40px; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; text-shadow: 0 4px 15px rgba(0,0,0,0.4); }
-        .cta-button-hero { background-color: var(--primary-color); padding: 18px 45px; font-size: 1.1rem; border-radius: 50px; text-decoration: none; font-weight: bold; color: white; display: inline-block; transition: 0.3s; }
-        .cta-button-hero:hover { transform: scale(1.05); background-color: #b54d2e; }
+        .hero h1 { 
+            font-size: 4.5rem; 
+            font-weight: 900; 
+            line-height: 1.1; 
+            text-transform: uppercase; 
+            letter-spacing: -2px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* --- SECTION PROGRAMMES --- */
+        .programme-section { padding: 100px 0; position: relative; }
+        .programme-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px; }
         
-        .hero-partner { margin-top: 60px; opacity: 0.8; }
-        .hero-partner p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .partner-logo { height: 35px; }
-
-        /* --- PRÉSENTATION (TEXTE CENTRAL) --- */
-        .presentation { padding: 100px 0; background: var(--white); text-align: center; }
-        .presentation h2 { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 25px; }
-        .presentation p { max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: var(--text-light); line-height: 1.8; }
-        .presentation a { color: var(--primary-color); text-decoration: underline; font-weight: bold; }
-
-        /* --- PROGRAMMES --- */
-        .programme-section { 
-        padding: 90px 0; 
-        background-color: var(--bg-warm); /* Fond bleu frais */
-        scroll-margin-top: 80px; 
-    }
-        .programme-grid { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-top: 50px; }
         .programme-card {
-        background: var(--white);
-        padding: 50px 35px;
-        border-radius: 25px;
-        flex: 1;
-        min-width: 300px;
-        max-width: 450px;
-        text-align: center;
-        /* Ombre plus profonde pour le relief */
-        box-shadow: 0 15px 35px rgba(0, 76, 151, 0.12); 
-        transition: 0.4s;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Ajout d'une bordure subtile pour les faire ressortir du fond bleu */
-        border: 1px solid rgba(214, 95, 58, 0.15); 
-        position: relative;
-        overflow: hidden;
-    }
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: 30px;
+            flex: 1;
+            min-width: 320px;
+            max-width: 450px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-punchy);
+            border: 1px solid rgba(0, 76, 151, 0.05);
+            position: relative;
+        }
 
-    /* Petite touche : une barre de couleur en haut de chaque carte */
-    .programme-card::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0;
-        height: 5px;
-        background: var(--primary-color);
-    }
         .programme-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 20px 40px rgba(0, 76, 151, 0.18);
-        border-color: var(--primary-color);
-    }
-        .programme-card h3 { color: var(--secondary-color); font-size: 1.6rem; margin-bottom: 10px; }
-        .target { font-style: italic; color: var(--primary-color); font-size: 0.95rem; margin-bottom: 15px; }
-        .price { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; }
-        .price span { font-size: 1rem; font-weight: 400; color: var(--text-light); }
-        .features { list-style: none; padding: 0; margin-bottom: 30px; flex-grow: 1; text-align: left; }
-        .features li { margin-bottom: 10px; color: var(--text-light); }
-        .card-button { display: inline-block; background-color: var(--secondary-color); color: white; padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
-        .card-button:hover { background-color: var(--primary-color); }
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0, 76, 151, 0.25);
+        }
 
-        .info-box-blue {
-        max-width: 750px;
-        margin: 60px auto 0;
-        background: var(--white); /* Fond blanc pour trancher avec le bleu de la section */
-        border: 1px solid rgba(0, 76, 151, 0.1);
-        border-left: 6px solid var(--secondary-color); /* Barre bleue sur le côté pour le style */
-        padding: 25px 35px;
-        border-radius: 12px; /* Plus carré/moderne */
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        box-shadow: 0 8px 20px rgba(0, 76, 151, 0.05);
-    }
+        /* Badge dégradé sur la carte */
+        .card-badge {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-gradient);
+            color: white;
+            padding: 8px 25px;
+            border-radius: 50px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(214, 95, 58, 0.3);
+        }
 
-    .info-box-blue p {
-        margin: 0;
-        color: var(--text-dark);
-        font-weight: 500;
-        text-align: left;
-        line-height: 1.5;
-    }
+        .price { 
+            font-size: 3rem; 
+            font-weight: 900; 
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 20px 0;
+        }
 
-        /* --- CONTACT --- */
-        .contact-section { 
-        padding: 90px 0; 
-        background-color: var(--white); /* On alterne avec du blanc pour le rythme */
-    }
+        .card-button {
+            display: inline-block;
+            background: var(--secondary-gradient);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 76, 151, 0.2);
+        }
+        .card-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(0, 76, 151, 0.4);
+            background: var(--primary-gradient);
+        }
 
-    .contact-card { 
-        background: var(--bg-warm); /* Le bleu frais entoure le formulaire */
-        padding: 50px; 
-        border-radius: 30px; 
-        max-width: 650px; 
-        margin: 0 auto; 
-        box-shadow: var(--shadow);
-        border: 2px solid var(--white); /* "Frame" blanche pour le style */
-    }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-family: inherit; box-sizing: border-box; }
-        .submit-btn { background: var(--secondary-color); color: white; border: none; padding: 16px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; transition: 0.3s; }
-        .submit-btn:hover { background: var(--primary-color); }
+        /* --- INFO BOX GLASSMORPHISM --- */
+        .info-box-punchy {
+            max-width: 800px;
+            margin: 80px auto 0;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--white);
+            padding: 30px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            box-shadow: var(--shadow-punchy);
+        }
+        .info-icon {
+            font-size: 2.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* --- FOOTER (STYLE RÉFÉRENCE INDEX) --- */
-        footer { background: #0481fb; color: white; padding: 40px 0; text-align: center; border-top: 4px solid #FF6600; margin-top: 50px;}
-        .footer-logo img { height: 60px; filter: brightness(0) invert(1); margin-bottom: 10px; }
-        .btn-zeffy-fr { background-color: #FF6600; color: #ffffff !important; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 25px; border: 1px solid #FF6600; }
-        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 10px auto 0; }
-        .footer-zones details { font-size: 0.75rem; color: #ffffff; opacity: 0.8; cursor: pointer; }
+        /* --- FORMULAIRE --- */
+        .contact-card {
+            background: var(--white);
+            padding: 60px;
+            border-radius: 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .submit-btn {
+            background: var(--combined-gradient);
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 50px;
+            font-weight: 900;
+            text-transform: uppercase;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            transition: 0.4s;
+        }
+        .submit-btn:hover { letter-spacing: 3px; filter: brightness(1.1); }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #004c97; 
+            padding: 60px 0; 
+            border-top: 8px solid #D65F3A; 
+            color: white;
+            text-align: center;
+        }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
-            .info-box-blue { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 2.5rem; }
+            .programme-grid { gap: 20px; }
         }
     </style>
 </head>
@@ -218,7 +221,7 @@
 
     <header>
         <div class="container nav-container">
-            <div class="logo-area">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 20px;">
                 <div class="logo">
                     <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
                 </div>
@@ -226,135 +229,99 @@
                     <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
                 </div>
             </div>
-            <div class="nav-links">
-                <nav>
-                    <ul id="navMenu">
-                        <li><a href="#propos">À PROPOS</a></li>
-                        <li><a href="#programme">PROGRAMMES</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                        <li class="lang-selector">
-                            <span class="lang-label">FR</span>
-                            <label class="switch">
-                                <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
-                                <span class="slider"></span>
-                            </label>
-                            <span class="lang-label">EN</span>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+            <nav>
+                <ul>
+                    <li><a href="#programme">Programmes</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li style="display: flex; align-items: center; gap: 10px;">
+                        <span style="font-weight: 900; font-size: 0.7rem;">FR</span>
+                        <div style="width: 30px; height: 15px; background: #ddd; border-radius: 15px; position: relative; cursor: pointer;" onclick="window.location.href='en/course.html'">
+                            <div style="width: 13px; height: 13px; background: white; border-radius: 50%; position: absolute; top: 1px; left: 1px;"></div>
+                        </div>
+                        <span style="font-weight: 900; font-size: 0.7rem; opacity: 0.5;">EN</span>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-        
-            <h1>Le mentorat connecté<br>Pour vos projets<br>De course à pied.</h1>
-            <a href="#programme" class="cta-button-hero">Découvrir nos programmes</a>
-            <div class="hero-partner">
-                <p>En partenariat avec</p>
-                <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
-            </div>
-        </div>
-    </section>
-
-    <section id="propos" class="presentation">
-        <div class="container">
-            <h2>L'accompagnement qui vous fait courir</h2>
-            <p>
-                <strong>Mon Projet Run</strong> est une extension de <a href="index.html">Mon Projet Tri</a>. 
-                Nous avons conçu ce volet spécifiquement pour répondre aux besoins de ceux qui ont la <strong>course à pied</strong> comme projet principal. 
-                Qu'il s'agisse d'un premier pas ou d'un défi de performance, nous offrons un mentorat connecté et humain pour vous aider à atteindre vos objectifs, peu importe où vous êtes au Québec.
-            </p>
+            <h1>Dépassez vos<br><span style="color: #FF9068;">limites.</span></h1>
+            <p style="font-size: 1.5rem; font-weight: 300; margin-bottom: 40px;">Le mentorat de course à pied réinventé.</p>
+            <a href="#programme" class="card-button" style="background: var(--white); color: #004c97;">Voir les plans</a>
         </div>
     </section>
 
     <section id="programme" class="programme-section">
         <div class="container">
             <div class="programme-grid">
+                
                 <div class="programme-card">
-                    <h3>Projet Unique</h3>
-                    <p class="target">5km, 10km, 21km ou Marathon.</p>
-                    <div class="price">79$ <span>/ mois</span></div>
-                    <ul class="features">
-                        <li><strong>1 Plan d'entraînement</strong> personnalisé</li>
-                        <li><strong>1 Appel vision (40 min)</strong> avec le mentor</li>
-                        <li>Analyse de vos besoins spécifiques</li>
+                    <div class="card-badge">Populaire</div>
+                    <h3 style="text-transform: uppercase; letter-spacing: 1px;">Projet Unique</h3>
+                    <p style="color: var(--primary-color); font-weight: 800;">Objectif 5km à Marathon</p>
+                    <div class="price">79$ <span style="font-size: 1rem; color: #667085;">/ mois</span></div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px;">
+                        <li style="margin-bottom: 15px;">🚀 <strong>Plan personnalisé</strong></li>
+                        <li style="margin-bottom: 15px;">📞 <strong>Appel vision</strong> (40 min)</li>
+                        <li style="margin-bottom: 15px;">📊 Analyse de performance</li>
                     </ul>
-                    <a href="#contact" class="card-button">CHOISIR CE PLAN</a>
+                    <a href="#contact" class="card-button">Démarrer</a>
                 </div>
+
                 <div class="programme-card">
-                    <h3>Accompagnement Continu</h3>
-                    <p class="target">S'entraîner toute l'année.</p>
-                    <div class="price">99$ <span>/ mois</span></div>
-                    <ul class="features">
-                        <li><strong>Suivi régulier</strong> et ajustements</li>
-                        <li><strong>Appels stratégiques</strong> mensuels</li>
-                        <li>Conseils techniques et motivation</li>
+                    <div class="card-badge" style="background: var(--secondary-gradient);">Elite</div>
+                    <h3 style="text-transform: uppercase; letter-spacing: 1px;">Accompagnement</h3>
+                    <p style="color: var(--primary-color); font-weight: 800;">Soutien Illimité</p>
+                    <div class="price">99$ <span style="font-size: 1rem; color: #667085;">/ mois</span></div>
+                    <ul style="text-align: left; list-style: none; padding: 0; margin-bottom: 40px;">
+                        <li style="margin-bottom: 15px;">🔥 <strong>Ajustements continus</strong></li>
+                        <li style="margin-bottom: 15px;">🧠 <strong>Coaching mental</strong></li>
+                        <li style="margin-bottom: 15px;">📱 Accès direct au mentor</li>
                     </ul>
-                    <a href="#contact" class="card-button">S'INSCRIRE À L'ANNÉE</a>
+                    <a href="#contact" class="card-button">S'inscrire</a>
                 </div>
+
             </div>
-            <div class="info-box-blue">
-                <div style="font-size: 2rem;">💡</div>
-                <p>Note : Des entraînements et consultations <strong>One-to-One</strong> sont disponibles pour nos membres au tarif de <strong>60$/h</strong>.</p>
+
+            <div class="info-box-punchy">
+                <div class="info-icon">⚡</div>
+                <p style="margin: 0; font-weight: 700; font-size: 1.1rem;">
+                    Besoin de plus ? Consultations <span style="color: #D65F3A;">One-to-One</span> disponibles à 60$/h pour nos membres.
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="contact-section">
+    <section id="contact" style="padding: 100px 0;">
         <div class="container">
             <div class="contact-card">
-                <h2>Contactez votre mentor</h2>
-                <form action="https://formspree.io/f/mgolvwnq" method="POST">
-                    <div class="form-group">
-                        <label>Nom complet</label>
-                        <input type="text" name="name" required>
+                <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; font-weight: 900;">Prêt à courir ?</h2>
+                <form>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                        <input type="text" placeholder="Nom" style="padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                        <input type="email" placeholder="Email" style="padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
                     </div>
-                    <div class="form-group">
-                        <label>Courriel</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Formule souhaitée</label>
-                        <select name="formule">
-                            <option value="projet-unique">Projet Unique (79$/mois)</option>
-                            <option value="accompagnement-continu">Accompagnement Continu (99$/mois)</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Votre message ou projet de course</label>
-                        <textarea name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">ENVOYER MA DEMANDE</button>
+                    <select style="width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 20px;">
+                        <option>Choisir mon plan</option>
+                        <option>Projet Unique</option>
+                        <option>Accompagnement Continu</option>
+                    </select>
+                    <textarea placeholder="Votre message..." rows="5" style="width: 100%; padding: 15px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 30px;"></textarea>
+                    <button class="submit-btn">Envoyer ma demande</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-container" style="display: flex; flex-direction: column; align-items: center;">
-            <div class="footer-logo">
-                <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
-            </div>
-            <div class="footer-text">
-                <p>&copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec</p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
-            </div>
-            <div class="footer-zones">
-                <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 10px; font-style: italic;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
-                </details>
-            </div>
+        <img src="mon-projet-tri-logo-coaching-quebec.jpg" style="height: 70px; filter: brightness(0) invert(1); margin-bottom: 30px;">
+        <p>&copy; 2026 Mon Projet Tri. Tous droits réservés.</p>
+        <div style="margin-top: 20px;">
+            <a href="#" style="color: white; text-decoration: underline;">Zones de service</a>
         </div>
     </footer>
 
-    <script>
-    function toggleLang() {
-        const isChecked = document.getElementById('lang-toggle').checked;
-        window.location.href = isChecked ? "en/course.html" : "course.html?lang=fr";
-    }
-    </script>
 </body>
 </html>
