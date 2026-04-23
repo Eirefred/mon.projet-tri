@@ -28,13 +28,14 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <style>
+        /* ACTIVATION DU DÉFILEMENT FLUIDE */
         html {
-    scroll-behavior: smooth; /* Rend le défilement vers #programme très fluide et pro */
-}
+            scroll-behavior: smooth;
+        }
+
         :root {
             --primary-color: #D65F3A; /* Orange Terre Cuite (Chaleur) */
             --secondary-color: #004c97; /* Bleu OBNL (Confiance) */
-            --accent-color: #f39200; /* Orange index */
             --bg-warm: #F9F5F0; /* Beige Sable doux */
             --text-dark: #3D2B1F; /* Brun Café */
             --text-light: #5A5A5A;
@@ -74,40 +75,30 @@
         nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--primary-color); }
 
-        /* --- HERO (STYLE INDEX) --- */
-        /* Remplacez votre règle .hero actuelle par celle-ci */
-.hero {
-    position: relative;
-    /* Utilisation du bleu #004c97 avec une transparence de 60% pour donner ce côté lumineux et "bonne humeur" */
-    background: linear-gradient(rgba(0, 76, 151, 0.6), rgba(0, 76, 151, 0.6)), url('banniere-run.jpg') center/cover no-repeat;
-    height: 85vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: white;
-}
-
-        .hero-content {
-            max-width: 900px;
-            padding: 0 20px;
-            z-index: 2;
+        /* --- HERO (STYLE INDEX AVEC FILTRE BLEU) --- */
+        .hero {
+            position: relative;
+            background: linear-gradient(rgba(0, 76, 151, 0.6), rgba(0, 76, 151, 0.6)), url('banniere-run.jpg') center/cover no-repeat;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
         }
 
-        .hero-main-logo {
-            height: 100px;
-            margin-bottom: 30px;
-        }
+        .hero-content { max-width: 900px; padding: 0 20px; z-index: 2; }
+        .hero-main-logo { height: 100px; margin-bottom: 30px; }
 
         .hero h1 {
-    font-size: 3.8rem;
-    line-height: 1.4; /* Augmente l'espace vertical entre les phrases */
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-weight: 900;
-    letter-spacing: -1px;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-}
+            font-size: 3.8rem;
+            line-height: 1.4; /* Espace augmenté entre les lignes */
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+        }
 
         .hero-buttons .cta-button {
             background-color: var(--primary-color);
@@ -121,13 +112,12 @@
             transition: 0.3s;
             display: inline-block;
         }
-
-        .hero-buttons .cta-button:hover { transform: scale(1.05); background-color: var(--secondary-color); }
+        .hero-buttons .cta-button:hover { transform: scale(1.05); background-color: #b54d2e; }
 
         .hero-partner { margin-top: 60px; }
         .hero-partner p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; opacity: 0.8; }
         .partner-logo { height: 35px; }
-
+        .filter-white { filter: brightness(0) invert(1); }
 
         /* --- PRÉSENTATION --- */
         .presentation { padding: 100px 0; background: var(--white); text-align: center; }
@@ -136,7 +126,7 @@
         .presentation a { color: var(--primary-color); text-decoration: underline; font-weight: bold; }
 
         /* --- PROGRAMMES --- */
-        .programme-section { padding: 90px 0; background-color: var(--bg-warm); }
+        .programme-section { padding: 90px 0; background-color: var(--bg-warm); scroll-margin-top: 80px; }
         .programme-grid { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-top: 50px; }
         
         .programme-card {
@@ -164,19 +154,37 @@
         .features { list-style: none; padding: 0; margin: 0 0 40px 0; flex-grow: 1; }
         .features li { margin-bottom: 12px; color: var(--text-light); }
 
-        /* ENCADRÉ ASTUCE */
-        .info-box {
-            max-width: 700px;
-            margin: 50px auto 0;
-            background: #fff9f3;
-            border: 1px dashed var(--primary-color);
-            padding: 20px 30px;
-            border-radius: 15px;
+        /* BOUTONS DES CARTES (CORRIGÉS) */
+        .card-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: none;
+        }
+        .card-button:hover { background-color: var(--primary-color); transform: translateY(-2px); }
+
+        /* ENCADRÉ ASTUCE BLEU (NOUVEAU) */
+        .info-box-blue {
+            max-width: 750px;
+            margin: 60px auto 0;
+            background: #eef6ff; /* Bleu très clair et frais */
+            border: 1px solid rgba(0, 76, 151, 0.2);
+            padding: 25px 35px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             gap: 20px;
             text-align: left;
+            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
         }
+        .info-box-blue .icon { font-size: 2rem; flex-shrink: 0; }
+        .info-box-blue p { margin: 0; font-size: 1.05rem; color: var(--secondary-color); font-weight: 500; }
 
         /* --- CONTACT --- */
         .contact-section { padding: 90px 0; background-color: var(--white); }
@@ -185,14 +193,16 @@
         .form-group label { display: block; margin-bottom: 10px; font-weight: bold; color: var(--secondary-color); }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px; border: 1px solid #ddd; border-radius: 12px; font-family: inherit; background: var(--white); }
         .submit-btn { background: var(--secondary-color); color: white; border: none; padding: 16px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1.1rem; transition: 0.3s; }
+        .submit-btn:hover { background: var(--primary-color); }
 
         /* --- FOOTER --- */
         footer { background: #0481fb; color: white; padding: 40px 0; text-align: center; border-top: 4px solid #FF6600; }
         .btn-zeffy-fr { background-color: #FF6600; color: #ffffff !important; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 25px; border: 1px solid #FF6600; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.2rem; line-height: 1.3; }
             .hero { height: 75vh; }
+            .info-box-blue { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
@@ -223,9 +233,11 @@
 
     <section class="hero">
         <div class="hero-content">
-           
+            <div class="hero-logo-container">
+                <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Run" class="hero-main-logo filter-white">
+            </div>
             
-            <h1>Le mentorat connecté<br>Pour vos projets<br>De course à pied.</h1>
+            <h1>Le mentorat connecté.<br>Pour vos projets.<br>De course à pied.</h1>
             
             <div class="hero-buttons">
                 <a href="#programme" class="cta-button">Découvrir nos programmes</a>
@@ -233,7 +245,7 @@
 
             <div class="hero-partner">
                 <p>En partenariat avec</p>
-                <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
+                <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Coaching Québec" class="partner-logo filter-white">
             </div>
         </div>
     </section>
@@ -259,8 +271,9 @@
                     <ul class="features">
                         <li><strong>1 Plan d'entraînement</strong> mensuel personnalisé</li>
                         <li><strong>Appel vision (40 min)</strong> avec le coach-mentor</li>
+                        <li>Analyse de vos besoins spécifiques</li>
                     </ul>
-                    <a href="#contact" class="cta-button">CHOISIR CE PLAN</a>
+                    <a href="#contact" class="card-button">CHOISIR CE PLAN</a>
                 </div>
 
                 <div class="programme-card">
@@ -270,14 +283,15 @@
                     <ul class="features">
                         <li><strong>Suivi régulier</strong> et ajustements continus</li>
                         <li><strong>Appels visio stratégiques</strong> selon la saison</li>
+                        <li>Conseils techniques et motivation</li>
                     </ul>
-                    <a href="#contact" class="cta-button">S'INSCRIRE À L'ANNÉE</a>
+                    <a href="#contact" class="card-button">S'INSCRIRE À L'ANNÉE</a>
                 </div>
             </div>
 
-            <div class="info-box">
-                <div style="font-size: 2rem;">💡</div>
-                <p><strong>Note :</strong> Des entraînements et consultations <strong>One-to-One</strong> sont disponibles pour nos membres (60$/h).</p>
+            <div class="info-box-blue">
+                <div class="icon">💡</div>
+                <p>Note : Des entraînements et consultations <strong>One-to-One</strong> sont disponibles pour nos membres au tarif de <strong>60$/h</strong>.</p>
             </div>
         </div>
     </section>
@@ -303,7 +317,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Message</label>
+                        <label>Parlez-nous de votre projet de course</label>
                         <textarea name="message" rows="4" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">ENVOYER MA DEMANDE</button>
