@@ -49,7 +49,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER --- */
+        /* --- HEADER & NAV (Identique index.html) --- */
         header {
             background-color: var(--white);
             padding: 15px 0;
@@ -65,6 +65,15 @@
         nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--primary-color); }
 
+        /* --- LANGUE TOGGLE (Code index.html) --- */
+        .lang-switch { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 0.8rem; color: var(--secondary-color); }
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary-color); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
         /* --- HERO --- */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banniere-run.jpg') center/cover;
@@ -79,15 +88,14 @@
         .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-content p { font-size: 1.4rem; font-weight: 300; }
 
-        /* --- VISION --- */
+        /* --- VISION OBNL --- */
         .vision { padding: 80px 0; text-align: center; background: white; }
         .vision h2 { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 20px; }
         .vision p { max-width: 900px; margin: 0 auto; font-size: 1.15rem; color: #555; }
 
-        /* --- PROGRAMMES (CARDS) --- */
+        /* --- PROGRAMMES --- */
         .programme-section { padding: 60px 0; background-color: var(--white); }
         .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
-        
         .programme-card {
             background: var(--light-bg);
             padding: 45px 35px;
@@ -104,44 +112,18 @@
         }
         .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
         .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
-        
         .badge-populaire { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 6px 20px; border-radius: 25px; font-weight: bold; font-size: 0.8rem; }
-        
         .features { list-style: none; padding: 0; text-align: left; margin: 25px 0; flex-grow: 1; }
         .features li { margin-bottom: 12px; display: flex; align-items: flex-start; }
         .features li::before { content: "✓"; color: var(--primary-color); margin-right: 12px; font-weight: bold; }
 
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .cta-button:hover { background: var(--secondary-color); }
-
-        /* --- FORMULAIRE CONTACT --- */
+        /* --- FORMULAIRE --- */
         .contact-section { padding: 80px 0; background-color: var(--light-bg); }
-        .contact-card {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .contact-card { background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow); max-width: 600px; margin: 0 auto; }
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box;
-        }
-        .submit-btn {
-            background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px;
-            font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.3s; width: 100%;
-        }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
+        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
         .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
 
         /* --- FOOTER --- */
@@ -154,7 +136,6 @@
             .menu-btn { display: block; }
             nav ul { display: none; flex-direction: column; position: absolute; top: 85px; left: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
             nav ul.active { display: flex; }
-            .hero-content h1 { font-size: 2.2rem; }
         }
 
         #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 999; border: none; }
@@ -172,11 +153,19 @@
                 <div class="menu-btn" id="menuBtn">☰</div>
                 <nav>
                     <ul id="navMenu">
-                        <li><a href="#vision">NOTRE VISION</a></li>
+                        <li><a href="#vision">L'OBNL</a></li>
                         <li><a href="#programme">PROGRAMMES</a></li>
                         <li><a href="#contact">CONTACT</a></li>
                     </ul>
                 </nav>
+                <div class="lang-switch">
+                    <span>FR</span>
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
+                        <span class="slider"></span>
+                    </label>
+                    <span>EN</span>
+                </div>
             </div>
         </div>
     </header>
@@ -201,7 +190,6 @@
         <div class="container">
             <h2 style="text-align:center; color: var(--secondary-color); font-size: 2.2rem;">Nos Formules Course</h2>
             <div class="programme-grid">
-                
                 <div class="programme-card">
                     <h3>Projet Unique</h3>
                     <p style="color: var(--primary-color); font-weight: bold;">Objectif Précis</p>
@@ -226,7 +214,6 @@
                     </ul>
                     <a href="#contact" class="cta-button">M'ABONNER</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -235,7 +222,7 @@
         <div class="container">
             <div class="contact-card">
                 <h2 style="color: var(--secondary-color); text-align: center;">Contactez un mentor</h2>
-                <p style="text-align: center; margin-bottom: 30px; color: #666;">Prêt à lancer votre projet ? Remplissez ce formulaire.</p>
+                <p style="text-align: center; margin-bottom: 30px; color: #666;">Prêt à lacer vos chaussures ?</p>
                 
                 <form action="https://formspree.io/f/votre_ID_ici" method="POST">
                     <div class="form-group">
@@ -249,8 +236,8 @@
                     <div class="form-group">
                         <label>Objectif</label>
                         <select name="objectif">
-                            <option value="projet-unique">Projet Unique (Objectif précis)</option>
-                            <option value="accompagnement-continu">Accompagnement Continu (Saison/Année)</option>
+                            <option value="projet-unique">Projet Unique</option>
+                            <option value="accompagnement-continu">Accompagnement Continu</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -280,6 +267,17 @@
     <button id="backToTop">↑</button>
 
     <script>
+        // Traduction (Logique index.html)
+        function toggleLang() {
+            const isChecked = document.getElementById('lang-toggle').checked;
+            if (isChecked) {
+                window.location.href = "en/course.html";
+            } else {
+                window.location.href = "course.html?lang=fr";
+            }
+        }
+
+        // Menu Mobile
         const menuBtn = document.getElementById('menuBtn');
         const navMenu = document.getElementById('navMenu');
         if(menuBtn) {
@@ -288,6 +286,8 @@
                 menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
             });
         }
+
+        // Back to Top
         const backToTopBtn = document.getElementById("backToTop");
         window.onscroll = function() {
             if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
