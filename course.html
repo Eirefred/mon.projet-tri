@@ -49,7 +49,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER & NAV --- */
+        /* --- HEADER --- */
         header {
             background-color: var(--white);
             padding: 15px 0;
@@ -79,12 +79,51 @@
         .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-content p { font-size: 1.4rem; font-weight: 300; }
 
-        /* --- VISION OBNL --- */
+        /* --- VISION --- */
         .vision { padding: 80px 0; text-align: center; background: white; }
         .vision h2 { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 20px; }
         .vision p { max-width: 900px; margin: 0 auto; font-size: 1.15rem; color: #555; }
 
-        /* --- FORMULAIRE FORMSPREE --- */
+        /* --- PROGRAMMES (CARDS) --- */
+        .programme-section { padding: 60px 0; background-color: var(--white); }
+        .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        
+        .programme-card {
+            background: var(--light-bg);
+            padding: 45px 35px;
+            border-radius: 20px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            border: 1px solid #eee;
+            position: relative;
+            text-align: center;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
+        
+        .badge-populaire { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 6px 20px; border-radius: 25px; font-weight: bold; font-size: 0.8rem; }
+        
+        .features { list-style: none; padding: 0; text-align: left; margin: 25px 0; flex-grow: 1; }
+        .features li { margin-bottom: 12px; display: flex; align-items: flex-start; }
+        .features li::before { content: "✓"; color: var(--primary-color); margin-right: 12px; font-weight: bold; }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .cta-button:hover { background: var(--secondary-color); }
+
+        /* --- FORMULAIRE CONTACT --- */
         .contact-section { padding: 80px 0; background-color: var(--light-bg); }
         .contact-card {
             background: white;
@@ -105,10 +144,9 @@
         }
         .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
 
-        /* --- FOOTER (IDENTIQUE À INDEX.HTML) --- */
+        /* --- FOOTER --- */
         footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
         .footer-logo { height: 65px; margin-bottom: 25px; filter: brightness(0) invert(1); }
-        .footer-info p { margin: 5px 0; opacity: 0.9; }
 
         /* --- MOBILE --- */
         .menu-btn { display: none; font-size: 28px; cursor: pointer; color: var(--secondary-color); }
@@ -146,7 +184,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>MON PROJET RUN</h1>
-            <p>L'accompagnement OBNL pour vos objectifs de course à pied</p>
+            <p>Le volet course à pied de votre OBNL de sport d'endurance</p>
         </div>
     </section>
 
@@ -154,8 +192,42 @@
         <div class="container">
             <h2>Une extension de Mon Projet Tri</h2>
             <p>
-                <strong>Mon Projet Run</strong> est le volet course à pied de notre OBNL multisport. Nous appliquons la même rigueur scientifique et le même mentorat humain qui font le succès de <strong>Mon Projet Tri</strong> pour accompagner les coureurs québécois vers leurs sommets personnels.
+                <strong>Mon Projet Run</strong> est fier de porter les valeurs de notre OBNL multisport. Nous utilisons la même expertise scientifique et le même mentorat humain qui ont fait le succès de <strong>Mon Projet Tri</strong> pour accompagner les coureurs québécois.
             </p>
+        </div>
+    </section>
+
+    <section id="programme" class="programme-section">
+        <div class="container">
+            <h2 style="text-align:center; color: var(--secondary-color); font-size: 2.2rem;">Nos Formules Course</h2>
+            <div class="programme-grid">
+                
+                <div class="programme-card">
+                    <h3>Projet Unique</h3>
+                    <p style="color: var(--primary-color); font-weight: bold;">Objectif Précis</p>
+                    <ul class="features">
+                        <li>Planification vers une course spécifique</li>
+                        <li>Ajustements selon votre progression</li>
+                        <li>Analyse de votre profil sportif</li>
+                        <li>Mentorat direct avec votre coach</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">PRÉPARER MON DÉFI</a>
+                </div>
+
+                <div class="programme-card highlight">
+                    <div class="badge-populaire">LE PLUS POPULAIRE</div>
+                    <h3>Accompagnement Continu</h3>
+                    <p style="color: var(--primary-color); font-weight: bold;">Saison ou Année</p>
+                    <ul class="features">
+                        <li>Progression durable et saine</li>
+                        <li>Focus sur la prévention des blessures</li>
+                        <li>Gestion de multiples objectifs annuels</li>
+                        <li>Accès illimité à votre mentor</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">M'ABONNER</a>
+                </div>
+
+            </div>
         </div>
     </section>
 
