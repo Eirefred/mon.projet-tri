@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="preload" as="image" href="banniere-run.jpg">
+    <meta charset="UTF-8">
+    <script>
+    (function() {
+        if (sessionStorage.getItem('lang_checked')) return;
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('lang') === 'fr') {
+            sessionStorage.setItem('lang_checked', 'true');
+            return;
+        }
+        const userLang = navigator.language || navigator.userLanguage;
+        if (!userLang.startsWith('fr')) {
+            sessionStorage.setItem('lang_checked', 'true');
+            window.location.href = "./en/course.html";
+        } else {
+            sessionStorage.setItem('lang_checked', 'true');
+        }
+    })();
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon Projet Run | Entrainement et mentorat connecté</title>
+    <meta name="description" content="OBNL dédiée aux coureurs au Québec. Coaching et mentorat pour 5km, marathon et trail.">
+    
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --primary-color: #0481fb;
+            --secondary-color: #004c97;
+            --accent-color: #f39200;
+            --text-color: #333;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER & NAV --- */
+        header {
+            background-color: var(--white);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; transition: transform 0.3s; }
+        
+        .nav-links { display: flex; align-items: center; gap: 25px; }
+        nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
+        nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
+        nav a:hover { color: var(--primary-color); }
+
+        /* --- LANGUE TOGGLE --- */
+        .lang-switch { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 0.8rem; color: var(--secondary-color); }
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--primary-color); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banniere-run.jpg') center/cover;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-content p { font-size: 1.4rem; margin-bottom: 30px; font-weight: 300; }
+
+        /* --- PROGRAMMES (GRID 2 COLONNES) --- */
+        .programme { padding: 80px 0; background-color: var(--white); }
+        .programme-grid { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            flex-wrap: wrap; 
+            margin-top: 40px;
+        }
+
+        .programme-card {
+            background: var(--light-bg);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
+        .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
+
+        .badge-populaire {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary-color);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .programme-card h3 { color: var(--secondary-color); font-size: 2rem; margin-bottom: 10px; }
+        .price-info { color: var(--primary-color); font-weight: bold; margin-bottom: 25px; display: block; }
+
+        .features { list-style: none; padding: 0; text-align: left; margin: 25px 0; flex-grow: 1; }
+        .features li { margin-bottom: 15px; display: flex; align-items: flex-start; }
+        .features li::before { content: "✓"; color: var(--primary-color); margin-right: 12px; font-weight: bold; }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .cta-button:hover { background: var(--primary-color); transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
+        .footer-logo { height: 60px; margin-bottom: 30px; filter: brightness(0) invert(1); }
+
+        /* --- MOBILE --- */
+        .menu-btn { display: none; font-size: 28px; cursor: pointer; color: var(--secondary-color); }
+
+        @media (max-width: 768px) {
+            .menu-btn { display: block; }
+            nav ul { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 85px; 
+                left: 0; 
+                width: 100%; 
+                background: white; 
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+            }
+            nav ul.active { display: flex; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .programme-grid { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
+            </div>
+            <div class="nav-links">
+                <div class="menu-btn" id="menuBtn">☰</div>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#vision">NOTRE VISION</a></li>
+                        <li><a href="#programme">PROGRAMMES</a></li>
+                        <li><a href="calendrier.html">CALENDRIER</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switch">
+                    <span>FR</span>
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
+                        <span class="slider"></span>
+                    </label>
+                    <span>EN</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>MON PROJET RUN</h1>
+            <p>Le mentorat connecté pour vos objectifs de course à pied.</p>
+            <a href="#programme" class="cta-button">DÉCOUVRIR LES PLANS</a>
+        </div>
+    </section>
+
+    <section id="vision" style="padding: 80px 0; text-align: center; background: white;">
+        <div class="container" style="max-width: 800px;">
+            <h2 style="color: var(--secondary-color); font-size: 2.2rem;">L'OBNL au service de votre foulée</h2>
+            <p style="font-size: 1.15rem; color: #555;">Que vous prépariez votre premier 5km ou un marathon, Mon Projet Run vous offre un accompagnement humain, accessible et basé sur la science du sport. Notre mission est votre progression, sans blessure.</p>
+        </div>
+    </section>
+
+    <section id="programme" class="programme">
+        <div class="container">
+            <h2 style="text-align:center; color: var(--secondary-color); margin-bottom:40px; font-size: 2.5rem;">Nos Formules Course</h2>
+            <div class="programme-grid">
+                
+                <div class="programme-card">
+                    <h3>Projet Unique</h3>
+                    <span class="price-info">Objectif Spécifique</span>
+                    <ul class="features">
+                        <li><strong>Ciblez une épreuve :</strong> 5km, 10km, Semi ou Marathon.</li>
+                        <li>Planification personnalisée jusqu'au jour de la course.</li>
+                        <li>Analyse de votre passé sportif et de votre profil.</li>
+                        <li>Ajustements hebdomadaires selon votre progression.</li>
+                        <li>Communication directe avec votre mentor.</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">PRÉPARER MA COURSE</a>
+                </div>
+
+                <div class="programme-card highlight">
+                    <div class="badge-populaire">RECOMMANDÉ</div>
+                    <h3>Accompagnement Continu</h3>
+                    <span class="price-info">Saison ou Année</span>
+                    <ul class="features">
+                        <li><strong>Progression durable :</strong> Bâtir une base solide et saine.</li>
+                        <li>Programmation évolutive adaptée à votre vie.</li>
+                        <li>Focus majeur sur la <strong>prévention des blessures</strong>.</li>
+                        <li>Gestion de multiples objectifs (Route & Trail).</li>
+                        <li>Accès illimité à votre mentor via l'application.</li>
+                    </ul>
+                    <a href="#contact" class="cta-button">S'ENTRAÎNER À L'ANNÉE</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo" class="footer-logo">
+            <p style="font-size: 1.2rem; margin-bottom: 10px;">Prêt à lacer vos chaussures ?</p>
+            <p><strong>Email :</strong> info@mon.projet-tri.org</p>
+            <div style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
+                &copy; 2026 Mon Projet Run - OBNL dédiée au sport d'endurance au Québec.<br>
+                Montréal, Québec, Canada.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        const menuBtn = document.getElementById('menuBtn');
+        const navMenu = document.getElementById('navMenu');
+
+        if(menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+        }
+
+        // Traduction
+        function toggleLang() {
+            const isChecked = document.getElementById('lang-toggle').checked;
+            if (isChecked) {
+                window.location.href = "en/course.html";
+            } else {
+                window.location.href = "course.html?lang=fr";
+            }
+        }
+    </script>
+</body>
+</html>
