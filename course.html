@@ -157,7 +157,32 @@
 
         /* --- FOOTER (index.html) --- */
         footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
-        .footer-logo { height: 65px; margin-bottom: 25px; filter: brightness(0) invert(1); }
+        .main-footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 60px 0 20px 0;
+    text-align: center;
+}
+
+.footer-logo img {
+    height: 65px;
+    margin-bottom: 25px;
+    filter: brightness(0) invert(1); /* Pour mettre le logo en blanc sur fond bleu */
+}
+
+.footer-info p {
+    margin: 5px 0;
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -273,15 +298,22 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo" class="footer-logo">
-            <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
-            <p>OBNL de sport d'endurance au Québec</p>
-            <p>info@mon.projet-tri.org</p>
-            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 - Tous droits réservés.</p>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="footer-logo">
+            <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Tri Logo">
         </div>
-    </footer>
+        <div class="footer-info">
+            <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
+            <p>Organisme à but non lucratif (OBNL)</p>
+            <p>Dédié aux sportifs d'endurance au Québec</p>
+            <p><a href="mailto:info@mon.projet-tri.org" style="color: white; text-decoration: none;">info@mon.projet-tri.org</a></p>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Tous droits réservés</p>
+        </div>
+    </div>
+</footer>
 
     <script>
         function toggleLang() {
