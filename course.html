@@ -49,7 +49,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER & NAV (Identique index.html) --- */
+        /* --- HEADER (Structure index.html) --- */
         header {
             background-color: var(--white);
             padding: 15px 0;
@@ -59,13 +59,20 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-area { display: flex; align-items: center; gap: 15px; }
         .logo img { height: 55px; }
+        
+        .region-mention { border-left: 1px solid #ddd; padding-left: 15px; }
+        .region-mention p { margin: 0; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; line-height: 1.2; color: var(--secondary-color); }
+        .region-mention span { color: var(--accent-color); font-size: 0.85rem; }
+
         .nav-links { display: flex; align-items: center; gap: 25px; }
         nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
         nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--primary-color); }
 
-        /* --- LANGUE TOGGLE (Code index.html) --- */
+        /* --- LANGUE TOGGLE --- */
         .lang-switch { display: flex; align-items: center; gap: 8px; font-weight: bold; font-size: 0.8rem; color: var(--secondary-color); }
         .switch { position: relative; display: inline-block; width: 34px; height: 20px; }
         .switch input { opacity: 0; width: 0; height: 0; }
@@ -77,268 +84,210 @@
         /* --- HERO --- */
         .hero {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('banniere-run.jpg') center/cover;
-            height: 60vh;
+            height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 0 20px;
         }
-        .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
-        .hero-content p { font-size: 1.4rem; font-weight: 300; }
+        .hero-content h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* --- VISION OBNL --- */
-        .vision { padding: 80px 0; text-align: center; background: white; }
-        .vision h2 { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 20px; }
-        .vision p { max-width: 900px; margin: 0 auto; font-size: 1.15rem; color: #555; }
-
-        /* --- PROGRAMMES --- */
-        .programme-section { padding: 60px 0; background-color: var(--white); }
+        /* --- PROGRAMMES (CENTRES) --- */
+        .programme-section { padding: 80px 0; background-color: var(--white); }
         .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
+        
         .programme-card {
             background: var(--light-bg);
             padding: 45px 35px;
             border-radius: 20px;
             flex: 1;
             min-width: 300px;
-            max-width: 450px;
+            max-width: 420px;
             border: 1px solid #eee;
             position: relative;
-            text-align: center;
+            text-align: center; /* Texte centré */
             transition: 0.3s;
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
         .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
+        
         .badge-populaire { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 6px 20px; border-radius: 25px; font-weight: bold; font-size: 0.8rem; }
-        .features { list-style: none; padding: 0; text-align: left; margin: 25px 0; flex-grow: 1; }
-        .features li { margin-bottom: 12px; display: flex; align-items: flex-start; }
-        .features li::before { content: "✓"; color: var(--primary-color); margin-right: 12px; font-weight: bold; }
+        
+        .price { font-size: 2rem; font-weight: 800; color: var(--secondary-color); margin: 15px 0; }
+        .price span { font-size: 1rem; font-weight: 400; }
 
-        /* --- FORMULAIRE --- */
+        .features { list-style: none; padding: 0; margin: 20px 0; flex-grow: 1; }
+        .features li { margin-bottom: 12px; font-size: 1rem; color: #555; }
+        
+        .one-to-one-mention {
+            margin-top: 40px;
+            text-align: center;
+            font-style: italic;
+            color: var(--secondary-color);
+            background: #eef6ff;
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            width: fit-content;
+        }
+        .cta-button:hover { background: var(--secondary-color); }
+
+        /* --- CONTACT --- */
         .contact-section { padding: 80px 0; background-color: var(--light-bg); }
         .contact-card { background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow); max-width: 600px; margin: 0 auto; }
-        .form-group { margin-bottom: 20px; text-align: left; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); text-align: left; }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
-        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; }
-        .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
+        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; }
 
-        /* --- FOOTER --- */
+        /* --- FOOTER (index.html) --- */
         footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
         .footer-logo { height: 65px; margin-bottom: 25px; filter: brightness(0) invert(1); }
 
-        /* --- MOBILE --- */
-        .menu-btn { display: none; font-size: 28px; cursor: pointer; color: var(--secondary-color); }
         @media (max-width: 768px) {
-            .menu-btn { display: block; }
-            nav ul { display: none; flex-direction: column; position: absolute; top: 85px; left: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
-            nav ul.active { display: flex; }
+            .nav-links { display: none; }
+            .hero-content h1 { font-size: 2.5rem; }
         }
-
-        #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 999; border: none; }
-        #backToTop.visible { visibility: visible; opacity: 1; }
-
-        /* Alignement du logo et de la mention */
-.logo-area {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.region-mention {
-    border-left: 1px solid #ddd;
-    padding-left: 15px;
-}
-
-.region-mention p {
-    margin: 0;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--secondary-color);
-}
-
-.region-mention span {
-    color: var(--accent-color); /* Le orange #f39200 */
-    font-size: 0.85rem;
-}
-
-/* Ajustement pour mobile */
-@media (max-width: 480px) {
-    .region-mention {
-        display: none; /* On cache souvent la mention sur très petit écran pour laisser la place au logo */
-    }
-}
     </style>
 </head>
 <body>
 
     <header>
-    <div class="container nav-container">
-        <div class="logo-area">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo">
-                </a>
+        <div class="container nav-container">
+            <div class="logo-area">
+                <div class="logo">
+                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
+                </div>
+                <div class="region-mention">
+                    <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
+                </div>
             </div>
-            <div class="region-mention">
-                <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
-            </div>
-        </div>
-
-        <div class="nav-links">
-            <div class="menu-btn" id="menuBtn">☰</div>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="https://mon.projet-tri.org/decouvrir.html">L'OBNL</a></li>
-                    <li><a href="#programme">PROGRAMMES</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
-            </nav>
-            <div class="lang-switch">
-                <span>FR</span>
-                <label class="switch">
-                    <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
-                    <span class="slider"></span>
-                </label>
-                <span>EN</span>
+            <div class="nav-links">
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="https://mon.projet-tri.org/decouvrir.html">L'OBNL</a></li>
+                        <li><a href="#programme">PROGRAMMES</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </nav>
+                <div class="lang-switch">
+                    <span>FR</span>
+                    <label class="switch">
+                        <input type="checkbox" id="lang-toggle" onclick="toggleLang()">
+                        <span class="slider"></span>
+                    </label>
+                    <span>EN</span>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>MON PROJET RUN</h1>
-            <p>Le volet course à pied de votre OBNL de sport d'endurance</p>
-        </div>
-    </section>
-
-    <section class="region-mention">
-    <div class="container">
-        <p>Partout au Québec — <span>Dès 79$/mois</span></p>
-    </div>
-</section>
-
-    <section id="vision" class="vision">
-        <div class="container">
-            <h2>Une extension de Mon Projet Tri</h2>
-            <p>
-                <strong>Mon Projet Run</strong> est fier de porter les valeurs de notre OBNL multisport. Nous utilisons la même expertise scientifique et le même mentorat humain qui ont fait le succès de <strong>Mon Projet Tri</strong> pour accompagner les coureurs québécois.
-            </p>
         </div>
     </section>
 
     <section id="programme" class="programme-section">
         <div class="container">
-            <h2 style="text-align:center; color: var(--secondary-color); font-size: 2.2rem;">Nos Formules Course</h2>
+            <h2 style="text-align:center; color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 10px;">Nos Formules Course</h2>
+            <p style="text-align:center; margin-bottom: 40px; color: #666;">Un mentorat de sport d'endurance accessible partout au Québec.</p>
+            
             <div class="programme-grid">
                 <div class="programme-card">
                     <h3>Projet Unique</h3>
-                    <p style="color: var(--primary-color); font-weight: bold;">Objectif Précis</p>
+                    <div class="price">79$ <span>/ mois</span></div>
                     <ul class="features">
-                        <li>Planification vers une course spécifique</li>
-                        <li>Ajustements selon votre progression</li>
+                        <li><strong>1 Plan d'entraînement mensuel</strong></li>
+                        <li><strong>Appel vision (40 min)</strong> avec votre coach-mentor</li>
                         <li>Analyse de votre profil sportif</li>
-                        <li>Mentorat direct avec votre coach</li>
+                        <li>Cible un objectif ou événement précis</li>
                     </ul>
-                    <a href="#contact" class="cta-button">PRÉPARER MON DÉFI</a>
+                    <a href="#contact" class="cta-button">DÉBUTER MON PROJET</a>
                 </div>
 
                 <div class="programme-card highlight">
                     <div class="badge-populaire">LE PLUS POPULAIRE</div>
                     <h3>Accompagnement Continu</h3>
-                    <p style="color: var(--primary-color); font-weight: bold;">Saison ou Année</p>
+                    <div class="price">99$ <span>/ mois</span></div>
                     <ul class="features">
+                        <li><strong>Suivi régulier</strong> avec votre coach-mentor</li>
+                        <li><strong>Appels visio stratégiques</strong> selon la saison</li>
                         <li>Progression durable et saine</li>
-                        <li>Focus sur la prévention des blessures</li>
                         <li>Gestion de multiples objectifs annuels</li>
-                        <li>Accès illimité à votre mentor</li>
                     </ul>
-                    <a href="#contact" class="cta-button">M'ABONNER</a>
+                    <a href="#contact" class="cta-button">M'ENTRAÎNER À L'ANNÉE</a>
                 </div>
+            </div>
+
+            <div class="one-to-one-mention">
+                💡 Besoin d'un boost supplémentaire ? <br> 
+                Des consultations ou entraînements <strong>One-to-One</strong> sont disponibles pour <strong>60$/heure</strong> pour nos membres.
             </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
-    <div class="container">
-        <div class="contact-card">
-            <h2 style="color: var(--secondary-color); text-align: center;">Contactez un mentor</h2>
-            <form action="https://formspree.io/f/votre_ID_ici" method="POST">
-                <div class="form-group">
-                    <label>Nom complet</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label>Courriel</label>
-                    <input type="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label>Objectif</label>
-                    <select name="objectif">
-                        <option value="projet-unique">Projet Unique</option>
-                        <option value="accompagnement-continu">Accompagnement Continu</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Message</label>
-                    <textarea name="message" rows="4" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">ENVOYER</button>
-            </form>
+        <div class="container">
+            <div class="contact-card">
+                <h2 style="color: var(--secondary-color); text-align: center; margin-bottom: 30px;">Contactez un mentor</h2>
+                <form action="https://formspree.io/f/votre_ID_ici" method="POST">
+                    <div class="form-group">
+                        <label>Nom complet</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Courriel</label>
+                        <input type="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Formule souhaitée</label>
+                        <select name="formule">
+                            <option value="projet-unique">Projet Unique (79$/mois)</option>
+                            <option value="accompagnement-continu">Accompagnement Continu (99$/mois)</option>
+                            <option value="one-to-one">Entraînement One-to-One (60$/h)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea name="message" rows="4" placeholder="Parlez-nous de vos objectifs de course..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">ENVOYER MA DEMANDE</button>
+                </form>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <footer>
         <div class="container">
             <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo" class="footer-logo">
-            <div class="footer-info">
-                <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
-                <p>OBNL de sport d'endurance au Québec</p>
-                <p>info@mon.projet-tri.org</p>
-                <div style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">
-                    &copy; 2026 - Tous droits réservés.
-                </div>
-            </div>
+            <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
+            <p>OBNL de sport d'endurance au Québec</p>
+            <p>info@mon.projet-tri.org</p>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.7;">&copy; 2026 - Tous droits réservés.</p>
         </div>
     </footer>
 
-    <button id="backToTop">↑</button>
-
     <script>
-        // Traduction (Logique index.html)
         function toggleLang() {
             const isChecked = document.getElementById('lang-toggle').checked;
-            if (isChecked) {
-                window.location.href = "en/course.html";
-            } else {
-                window.location.href = "course.html?lang=fr";
-            }
+            window.location.href = isChecked ? "en/course.html" : "course.html?lang=fr";
         }
-
-        // Menu Mobile
-        const menuBtn = document.getElementById('menuBtn');
-        const navMenu = document.getElementById('navMenu');
-        if(menuBtn) {
-            menuBtn.addEventListener('click', () => {
-                navMenu.classList.toggle('active');
-                menuBtn.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-            });
-        }
-
-        // Back to Top
-        const backToTopBtn = document.getElementById("backToTop");
-        window.onscroll = function() {
-            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
-            else backToTopBtn.classList.remove("visible");
-        };
-        backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
     </script>
 </body>
 </html>
