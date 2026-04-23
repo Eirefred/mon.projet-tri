@@ -60,7 +60,6 @@
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
-        .nav-links { display: flex; align-items: center; gap: 25px; }
         nav ul { list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; }
         nav a { text-decoration: none; color: var(--secondary-color); font-weight: 700; font-size: 0.9rem; transition: 0.3s; }
         nav a:hover { color: var(--primary-color); }
@@ -74,76 +73,60 @@
             justify-content: center;
             text-align: center;
             color: white;
+            padding: 0 20px;
         }
         .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-content p { font-size: 1.4rem; font-weight: 300; }
 
-        /* --- SECTION VISION OBNL --- */
+        /* --- VISION --- */
         .vision { padding: 80px 0; text-align: center; background: white; }
         .vision h2 { color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 20px; }
         .vision p { max-width: 900px; margin: 0 auto; font-size: 1.15rem; color: #555; }
 
-        /* --- PROGRAMMES --- */
-        .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; padding: 40px 0; }
-        .programme-card {
-            background: var(--light-bg);
-            padding: 45px 35px;
-            border-radius: 20px;
-            flex: 1;
-            min-width: 300px;
-            max-width: 450px;
-            border: 1px solid #eee;
-            position: relative;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-        .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
-        .badge-populaire { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 6px 20px; border-radius: 25px; font-weight: bold; font-size: 0.8rem; }
-        
-        .features { list-style: none; padding: 0; text-align: left; margin: 25px 0; }
-        .features li { margin-bottom: 12px; display: flex; align-items: flex-start; }
-        .features li::before { content: "✓"; color: var(--primary-color); margin-right: 12px; font-weight: bold; }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .cta-button:hover { background: var(--secondary-color); transform: scale(1.05); }
-
-        /* --- CONTACT (COPIÉ DE INDEX.HTML) --- */
+        /* --- FORMULAIRE STYLE (Design Mon Projet Tri) --- */
         .contact-section { padding: 80px 0; background-color: var(--light-bg); }
         .contact-card {
             background: white;
             padding: 40px;
             border-radius: 20px;
             box-shadow: var(--shadow);
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
-            text-align: center;
         }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Important pour le padding */
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
 
         /* --- FOOTER --- */
         footer { background: var(--secondary-color); color: white; padding: 60px 0; text-align: center; }
         .footer-logo { height: 60px; margin-bottom: 25px; filter: brightness(0) invert(1); }
 
-        /* --- MOBILE --- */
-        .menu-btn { display: none; font-size: 28px; cursor: pointer; color: var(--secondary-color); }
         @media (max-width: 768px) {
-            .menu-btn { display: block; }
-            nav ul { display: none; flex-direction: column; position: absolute; top: 85px; left: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 10px rgba(0,0,0,0.1); }
-            nav ul.active { display: flex; }
             .hero-content h1 { font-size: 2.2rem; }
+            nav { display: none; }
         }
-
-        #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 999; border: none; }
-        #backToTop.visible { visibility: visible; opacity: 1; }
     </style>
 </head>
 <body>
@@ -151,25 +134,22 @@
     <header>
         <div class="container nav-container">
             <div class="logo">
-                <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Mon Projet Run Logo"></a>
+                <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
             </div>
-            <div class="nav-links">
-                <div class="menu-btn" id="menuBtn">☰</div>
-                <nav>
-                    <ul id="navMenu">
-                        <li><a href="#vision">NOTRE VISION</a></li>
-                        <li><a href="#programme">PROGRAMMES</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                    </ul>
-                </nav>
-            </div>
+            <nav>
+                <ul>
+                    <li><a href="#vision">NOTRE VISION</a></li>
+                    <li><a href="#programme">PROGRAMMES</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <h1>MON PROJET RUN</h1>
-            <p>Le volet course à pied de votre OBNL de sport d'endurance</p>
+            <p>L'expertise d'une OBNL de sport au service de votre course</p>
         </div>
     </section>
 
@@ -177,55 +157,43 @@
         <div class="container">
             <h2>Une extension de Mon Projet Tri</h2>
             <p>
-                <strong>Mon Projet Run</strong> est fier de porter les valeurs de notre OBNL multisport. Nous utilisons la même expertise scientifique et le même modèle de mentorat humain qui ont fait la renommée de <strong>Mon Projet Tri</strong> pour accompagner les coureurs québécois. Que vous soyez débutant ou marathonien, bénéficiez de la force d'une communauté dédiée au sport sain et accessible.
+                <strong>Mon Projet Run</strong> est le volet course à pied de notre OBNL multisport. Nous appliquons la même rigueur scientifique et le même mentorat humain que pour le triathlon pour accompagner les coureurs québécois.
             </p>
-        </div>
-    </section>
-
-    <section id="programme" class="container">
-        <div class="programme-grid">
-            <div class="programme-card">
-                <h3>Projet Unique</h3>
-                <p style="color: var(--primary-color); font-weight: bold;">Ciblez un événement</p>
-                <ul class="features">
-                    <li>Planification vers une course spécifique</li>
-                    <li>Ajustements selon votre progression</li>
-                    <li>Analyse de votre profil sportif</li>
-                    <li>Mentorat direct avec votre coach</li>
-                </ul>
-                <a href="#contact" class="cta-button">PRÉPARER MON DÉFI</a>
-            </div>
-
-            <div class="programme-card highlight">
-                <div class="badge-populaire">LE PLUS POPULAIRE</div>
-                <h3>Accompagnement Continu</h3>
-                <p style="color: var(--primary-color); font-weight: bold;">Saison ou Année</p>
-                <ul class="features">
-                    <li>Progression durable et saine</li>
-                    <li>Focus sur la prévention des blessures</li>
-                    <li>Gestion de multiples objectifs annuels</li>
-                    <li>Accès illimité à votre mentor</li>
-                </ul>
-                <a href="#contact" class="cta-button">M'ABONNER</a>
-            </div>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-card">
-                <h2 style="color: var(--secondary-color); margin-bottom: 10px;">Lancez votre projet run</h2>
-                <p style="margin-bottom: 30px;">Prêt à courir ? Remplissez le formulaire et un mentor communiquera avec vous.</p>
+                <h2 style="color: var(--secondary-color); text-align: center;">Contactez un mentor</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: #666;">Prêt à lancer votre projet de course ?</p>
                 
-                <iframe
-                  id="JotFormIFrame-240424346061245"
-                  title="Contact Mon Projet Run"
-                  onload="window.parent.scrollTo(0,0)"
-                  allowtransparency="true"
-                  src="https://form.jotform.com/240424346061245"
-                  style="min-width:100%; height:520px; border:none;"
-                  scrolling="no">
-                </iframe>
+                <form action="https://formspree.io/f/votre_ID_ici" method="POST">
+                    <div class="form-group">
+                        <label>Nom complet</label>
+                        <input type="text" name="name" placeholder="Votre nom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Courriel</label>
+                        <input type="email" name="email" placeholder="votre@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Programme souhaité</label>
+                        <select name="programme">
+                            <option value="projet-unique">Projet Unique (Objectif précis)</option>
+                            <option value="accompagnement-continu">Accompagnement Continu (Saison/Année)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message / Objectifs</label>
+                        <textarea name="message" rows="4" placeholder="Parlez-nous de vos objectifs..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">ENVOYER MA DEMANDE</button>
+                </form>
             </div>
         </div>
     </section>
@@ -234,32 +202,11 @@
         <div class="container">
             <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo" class="footer-logo">
             <p><strong>Mon Projet Tri / Mon Projet Run</strong></p>
-            <p>OBNL dédiée aux sportifs d'endurance au Québec</p>
+            <p>OBNL de sport d'endurance au Québec</p>
             <p>info@mon.projet-tri.org</p>
-            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 Tous droits réservés</p>
+            <p style="margin-top: 30px; font-size: 0.8rem; opacity: 0.6;">&copy; 2026 - Tous droits réservés</p>
         </div>
     </footer>
 
-    <button id="backToTop">↑</button>
-
-    <script>
-        // Menu Mobile
-        const menuBtn = document.getElementById('menuBtn');
-        const navMenu = document.getElementById('navMenu');
-        if(menuBtn) {
-            menuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
-            });
-        }
-
-        // Back to Top (comme index.html)
-        const backToTopBtn = document.getElementById("backToTop");
-        window.onscroll = function() {
-            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
-            else backToTopBtn.classList.remove("visible");
-        };
-        backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
-    </script>
 </body>
 </html>
