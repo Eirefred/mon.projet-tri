@@ -93,12 +93,17 @@
         }
         .hero-content h1 { font-size: 3.5rem; margin: 0; text-transform: uppercase; letter-spacing: 2px; }
 
+        /* --- PRÉSENTATION --- */
+        .presentation-section { padding: 60px 0; background: var(--white); text-align: center; border-bottom: 1px solid #eee; }
+        .presentation-section h2 { color: var(--secondary-color); margin-bottom: 20px; }
+        .presentation-section p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+
         /* --- PROGRAMMES --- */
-        .programme-section { padding: 80px 0; background-color: var(--white); }
+        .programme-section { padding: 80px 0; background-color: var(--light-bg); }
         .programme-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 40px; }
         
         .programme-card {
-            background: var(--light-bg);
+            background: var(--white);
             padding: 45px 35px;
             border-radius: 20px;
             flex: 1;
@@ -106,16 +111,14 @@
             max-width: 420px;
             border: 1px solid #eee;
             position: relative;
-            text-align: center; /* Centrage du texte */
+            text-align: center;
             transition: 0.3s;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .programme-card:hover { transform: translateY(-10px); box-shadow: var(--shadow); }
-        .programme-card.highlight { border: 2px solid var(--primary-color); background: #f0f7ff; }
-        
-        .badge-populaire { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--accent-color); color: white; padding: 6px 20px; border-radius: 25px; font-weight: bold; font-size: 0.8rem; }
+        .programme-card.highlight { border: 2px solid var(--primary-color); }
         
         .price { font-size: 2rem; font-weight: 800; color: var(--secondary-color); margin: 15px 0; }
         .price span { font-size: 1rem; font-weight: 400; }
@@ -123,105 +126,35 @@
         .features { list-style: none; padding: 0; margin: 20px 0; flex-grow: 1; }
         .features li { margin-bottom: 12px; font-size: 1rem; color: #555; }
         
-        .one-to-one-mention {
-            margin-top: 40px;
-            text-align: center;
-            font-style: italic;
-            color: var(--secondary-color);
-            background: #eef6ff;
-            padding: 15px;
-            border-radius: 10px;
-            font-weight: 500;
-        }
-
         .cta-button {
             display: inline-block;
             background: var(--primary-color);
             color: white;
-            padding: 15px 35px;
+            padding: 12px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: 0.3s;
-            width: fit-content;
         }
         .cta-button:hover { background: var(--secondary-color); }
 
         /* --- CONTACT --- */
-        .contact-section { padding: 80px 0; background-color: var(--light-bg); }
-        .contact-card { background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow); max-width: 600px; margin: 0 auto; }
+        .contact-section { padding: 80px 0; background-color: var(--white); }
+        .contact-card { background: var(--light-bg); padding: 40px; border-radius: 20px; max-width: 600px; margin: 0 auto; }
         .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); text-align: left; }
-        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 1rem; box-sizing: border-box; }
-        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; transition: 0.3s; }
-        .submit-btn:hover { background: var(--secondary-color); transform: scale(1.02); }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: bold; color: var(--secondary-color); }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        .submit-btn { background: var(--primary-color); color: white; border: none; padding: 15px 40px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; }
 
-        /* --- FOOTER --- */
-        .main-footer {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 60px 0 20px 0;
-            text-align: center;
-        }
-        .footer-logo img {
-            height: 65px;
-            margin-bottom: 25px;
-            filter: brightness(0) invert(1);
-        }
-        .footer-info p {
-            margin: 5px 0;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        .footer-bottom {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.8rem;
-            opacity: 0.6;
-        }
+        /* --- FOOTER (STYLE INDEX) --- */
+        footer { background: #0481fb; color: white; padding: 40px 0; text-align: center; border-top: 4px solid #FF6600; }
+        .btn-zeffy-fr { background-color: #FF6600; color: #ffffff !important; padding: 5px 12px; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: bold; text-transform: uppercase; display: inline-block; margin-bottom: 25px; transition: 0.3s; }
+        .btn-zeffy-fr:hover { background-color: #ffffff !important; color: #FF6600 !important; }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .hero-content h1 { font-size: 2.5rem; }
         }
-
-        /* --- STYLE DU FOOTER (copié de index.html) --- */
-footer { 
-    background: #0481fb; 
-    color: white; 
-    padding: 40px 0; 
-    text-align: center; 
-    border-top: 4px solid #FF6600; /* La ligne orange */
-}
-
-.btn-zeffy-fr {
-    background-color: #FF6600; /* Orange plein */
-    color: #ffffff !important;
-    padding: 5px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: bold;
-    text-transform: uppercase;
-    display: inline-block;
-    border: 1px solid #FF6600;
-    transition: 0.3s;
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    margin-bottom: 25px;
-}
-
-.btn-zeffy-fr:hover {
-    background-color: #ffffff !important;
-    color: #FF6600 !important;
-}
-
-.footer-container { 
-    width: 90%; 
-    max-width: 1100px; 
-    margin: 0 auto; 
-}
     </style>
 </head>
 <body>
@@ -239,6 +172,7 @@ footer {
             <div class="nav-links">
                 <nav>
                     <ul id="navMenu">
+                        <li><a href="#propos">À PROPOS</a></li>
                         <li><a href="https://mon.projet-tri.org/decouvrir.html">L'OBNL</a></li>
                         <li><a href="#programme">PROGRAMMES</a></li>
                         <li><a href="#contact">CONTACT</a></li>
@@ -262,52 +196,54 @@ footer {
         </div>
     </section>
 
+    <section id="propos" class="presentation-section">
+        <div class="container">
+            <h2>Qu'est-ce que Mon Projet Run ?</h2>
+            <p>
+                <strong>Mon Projet Run</strong> est une extension de <a href="index.html" style="color: var(--primary-color); font-weight: bold; text-decoration: none;">Mon Projet Tri</a>. 
+                Notre mission est de dédier une structure de mentorat et d'accompagnement spécifique à ceux qui placent la course à pied au cœur de leur projet sportif. 
+                Que vous soyez débutant ou coureur aguerri, nous vous accompagnons vers vos objectifs avec la même rigueur et passion que pour le triathlon.
+            </p>
+        </div>
+    </section>
+
     <section id="programme" class="programme-section">
         <div class="container">
-            <h2 style="text-align:center; color: var(--secondary-color); font-size: 2.2rem; margin-bottom: 10px;">Nos Formules Course</h2>
-            <p style="text-align:center; margin-bottom: 40px; color: #666;">Un mentorat de sport d'endurance accessible partout au Québec.</p>
-            
+            <h2 style="text-align:center; color: var(--secondary-color);">Nos Formules</h2>
             <div class="programme-grid">
                 <div class="programme-card">
                     <h3>Projet Unique</h3>
                     <div class="price">79$ <span>/ mois</span></div>
+                    <p><em>Pour les projets de 5km, 10km, 21km ou Marathon.</em></p>
                     <ul class="features">
-                        <li><strong>1 Plan d'entraînement mensuel</strong></li>
-                        <li><strong>Appel vision (40 min)</strong> avec votre coach-mentor</li>
-                        <li>Analyse de votre profil sportif</li>
-                        <li>Cible un objectif ou événement précis</li>
+                        <li>1 Plan d'entraînement mensuel</li>
+                        <li>Appel vision (40 min) avec le mentor</li>
                     </ul>
-                    <a href="#contact" class="cta-button">DÉBUTER MON PROJET</a>
+                    <a href="#contact" class="cta-button">CHOISIR</a>
                 </div>
 
                 <div class="programme-card highlight">
-                    <div class="badge-populaire">LE PLUS POPULAIRE</div>
                     <h3>Accompagnement Continu</h3>
                     <div class="price">99$ <span>/ mois</span></div>
+                    <p><em>Pour s'entraîner sur le long terme ou toute l'année.</em></p>
                     <ul class="features">
-                        <li><strong>Suivi régulier</strong> avec votre coach-mentor</li>
-                        <li><strong>Appels visio stratégiques</strong> selon la saison</li>
-                        <li>Progression durable et saine</li>
-                        <li>Gestion de multiples objectifs annuels</li>
+                        <li>Suivi régulier avec le coach-mentor</li>
+                        <li>Appels visio selon les besoins saisonniers</li>
                     </ul>
-                    <a href="#contact" class="cta-button">M'ENTRAÎNER À L'ANNÉE</a>
+                    <a href="#contact" class="cta-button">S'INSCRIRE</a>
                 </div>
             </div>
-
-            <div class="one-to-one-mention">
-                💡 Besoin d'un boost supplémentaire ? <br> 
-                Des consultations ou entraînements <strong>One-to-One</strong> sont disponibles pour <strong>60$/heure</strong> pour nos membres.
-            </div>
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">Des consultations One-to-One sont disponibles sur demande pour nos membres (60$/h).</p>
         </div>
     </section>
 
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-card">
-                <h2 style="color: var(--secondary-color); text-align: center; margin-bottom: 30px;">Contactez un mentor</h2>
+                <h2 style="text-align: center; color: var(--secondary-color);">Contactez un mentor</h2>
                 <form action="https://formspree.io/f/votre_ID_ici" method="POST">
                     <div class="form-group">
-                        <label>Nom complet</label>
+                        <label>Nom</label>
                         <input type="text" name="name" required>
                     </div>
                     <div class="form-group">
@@ -315,59 +251,41 @@ footer {
                         <input type="email" name="email" required>
                     </div>
                     <div class="form-group">
-                        <label>Formule souhaitée</label>
+                        <label>Formule</label>
                         <select name="formule">
                             <option value="projet-unique">Projet Unique (79$/mois)</option>
                             <option value="accompagnement-continu">Accompagnement Continu (99$/mois)</option>
-                            <option value="one-to-one">Entraînement One-to-One (60$/h)</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>Message</label>
-                        <textarea name="message" rows="4" placeholder="Parlez-nous de vos objectifs de course..." required></textarea>
+                        <textarea name="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">ENVOYER MA DEMANDE</button>
+                    <button type="submit" class="submit-btn">ENVOYER</button>
                 </form>
             </div>
         </div>
     </section>
 
     <footer>
-    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        
-        <div class="footer-logo" style="margin-bottom: 10px;">
-            <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
-                <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo mon.projet(tri) - Retour à l'accueil" style="height: 60px; display: block;">
-            </a>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="mon-projet-tri-logo-coaching-quebec_white.jpg" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="color: white; margin-bottom: 12px;">&copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec</p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; max-width: 850px; margin: 0 auto;">
+                <details style="font-size: 0.75rem; color: white; opacity: 0.8; cursor: pointer;">
+                    <summary>Voir les zones de service couvertes</summary>
+                    <p style="margin-top: 10px;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Abitibi, Bas-Saint-Laurent, Estrie, Gaspésie, Laurentides, etc.</p>
+                </details>
+            </div>
         </div>
-        
-       <div class="footer-text">
-            <p style="margin-bottom: 12px; margin-top: 0; color: white;">
-                &copy; 2026 Mon Projet Tri - OBNL dédiée au triathlon au Québec
-            </p>
-
-            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" 
-               target="_blank" 
-               class="btn-zeffy-fr">
-               Faire ma contribution
-            </a>
-        </div>
-
-        <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
-            <p style="font-size: 0.85rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">
-                Notre mentorat connecté apporte une expertise de haut niveau aux triathlètes de toutes les régions. 
-                Nous sommes fiers d'accompagner des athlètes à :
-            </p>
-            
-            <details style="font-size: 0.75rem; color: #ffffff; opacity: 0.6; cursor: pointer;">
-                <summary style="list-style: none; text-decoration: underline; outline: none;">Voir toutes les zones de service couvertes</summary>
-                <p style="margin-top: 10px; font-style: italic; line-height: 1.5;">
-                    Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que les régions d'Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Nord-du-Québec et l'Outaouais.
-                </p>
-            </details>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
         function toggleLang() {
