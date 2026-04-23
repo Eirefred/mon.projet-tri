@@ -141,20 +141,37 @@
         #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 999; border: none; }
         #backToTop.visible { visibility: visible; opacity: 1; }
 
-        .region-mention {
-    background-color: var(--secondary-color); /* Le bleu foncé de l'index */
-    color: white;
-    padding: 10px 0;
-    text-align: center;
-    font-weight: 500;
-    letter-spacing: 1px;
+        /* Alignement du logo et de la mention */
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.region-mention {
+    border-left: 1px solid #ddd;
+    padding-left: 15px;
+}
+
+.region-mention p {
+    margin: 0;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--secondary-color);
 }
 
 .region-mention span {
     color: var(--accent-color); /* Le orange #f39200 */
-    font-weight: 800;
+    font-size: 0.85rem;
+}
+
+/* Ajustement pour mobile */
+@media (max-width: 480px) {
+    .region-mention {
+        display: none; /* On cache souvent la mention sur très petit écran pour laisser la place au logo */
+    }
 }
     </style>
 </head>
@@ -162,9 +179,17 @@
 
     <header>
     <div class="container nav-container">
-        <div class="logo">
-            <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo"></a>
+        <div class="logo-area">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="mon-projet-tri-logo-coaching-quebec.jpg" alt="Logo">
+                </a>
+            </div>
+            <div class="region-mention">
+                <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
+            </div>
         </div>
+
         <div class="nav-links">
             <div class="menu-btn" id="menuBtn">☰</div>
             <nav>
