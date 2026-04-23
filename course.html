@@ -19,7 +19,7 @@
             sessionStorage.setItem('lang_checked', 'true');
         }
     })();
-</script>
+    </script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet Run | Entrainement et mentorat connecté</title>
@@ -30,8 +30,8 @@
 
     <style>
         :root {
-            --primary-color: #0481fb;
-            --secondary-color: #004c97;
+            --primary-color: #0481fb; /* Bleu Mon Projet Tri */
+            --secondary-color: #004c97; /* Bleu foncé Mon Projet Tri */
             --accent-color: #f39200;
             --text-color: #333;
             --light-bg: #f8f9fa;
@@ -50,7 +50,7 @@
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        /* --- HEADER & NAV --- */
+        /* --- HEADER & NAV (Identique index.html) --- */
         header {
             background-color: var(--white);
             padding: 15px 0;
@@ -92,7 +92,7 @@
         .hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
         .hero-content p { font-size: 1.4rem; margin-bottom: 30px; font-weight: 300; }
 
-        /* --- PROGRAMMES (GRID 2 COLONNES) --- */
+        /* --- PROGRAMMES (2 COLONNES) --- */
         .programme { padding: 80px 0; background-color: var(--white); }
         .programme-grid { 
             display: flex; 
@@ -176,6 +176,28 @@
             .hero-content h1 { font-size: 2.2rem; }
             .programme-grid { flex-direction: column; align-items: center; }
         }
+
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary-color);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            visibility: hidden;
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 999;
+            border: none;
+            box-shadow: var(--shadow);
+        }
+        #backToTop.visible { visibility: visible; opacity: 1; }
     </style>
 </head>
 <body>
@@ -210,15 +232,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>MON PROJET RUN</h1>
-            <p>Le mentorat connecté pour vos objectifs de course à pied.</p>
-            <a href="#programme" class="cta-button">DÉCOUVRIR LES PLANS</a>
+            <p>L'accompagnement OBNL pour vos objectifs de course à pied.</p>
+            <a href="#programme" class="cta-button">CHOISIR MON PLAN</a>
         </div>
     </section>
 
     <section id="vision" style="padding: 80px 0; text-align: center; background: white;">
         <div class="container" style="max-width: 800px;">
             <h2 style="color: var(--secondary-color); font-size: 2.2rem;">L'OBNL au service de votre foulée</h2>
-            <p style="font-size: 1.15rem; color: #555;">Que vous prépariez votre premier 5km ou un marathon, Mon Projet Run vous offre un accompagnement humain, accessible et basé sur la science du sport. Notre mission est votre progression, sans blessure.</p>
+            <p style="font-size: 1.15rem; color: #555;">Mon Projet Run est une extension de notre mission communautaire. Que vous visiez un premier 5km ou un marathon, nous offrons un mentorat humain, accessible et rigoureux pour progresser sans blessure.</p>
         </div>
     </section>
 
@@ -233,7 +255,7 @@
                     <ul class="features">
                         <li><strong>Ciblez une épreuve :</strong> 5km, 10km, Semi ou Marathon.</li>
                         <li>Planification personnalisée jusqu'au jour de la course.</li>
-                        <li>Analyse de votre passé sportif et de votre profil.</li>
+                        <li>Analyse de votre profil et de votre passé sportif.</li>
                         <li>Ajustements hebdomadaires selon votre progression.</li>
                         <li>Communication directe avec votre mentor.</li>
                     </ul>
@@ -264,14 +286,15 @@
             <p style="font-size: 1.2rem; margin-bottom: 10px;">Prêt à lacer vos chaussures ?</p>
             <p><strong>Email :</strong> info@mon.projet-tri.org</p>
             <div style="margin-top: 40px; font-size: 0.8rem; opacity: 0.6;">
-                &copy; 2026 Mon Projet Run - OBNL dédiée au sport d'endurance au Québec.<br>
-                Montréal, Québec, Canada.
+                &copy; 2026 Mon Projet Run - OBNL dédiée au sport d'endurance au Québec.
             </div>
         </div>
     </footer>
 
+    <button id="backToTop">↑</button>
+
     <script>
-        // Menu Mobile
+        // Menu Mobile interactif
         const menuBtn = document.getElementById('menuBtn');
         const navMenu = document.getElementById('navMenu');
 
@@ -281,6 +304,22 @@
                 this.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
             });
         }
+
+        // Fermeture auto du menu au clic sur un lien
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                if (menuBtn) menuBtn.textContent = '☰';
+            });
+        });
+
+        // Gestion du bouton Back to Top (comme index.html)
+        const backToTopBtn = document.getElementById("backToTop");
+        window.onscroll = function() {
+            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
+            else backToTopBtn.classList.remove("visible");
+        };
+        backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: 'smooth'}); };
 
         // Traduction
         function toggleLang() {
