@@ -116,22 +116,39 @@
         scroll-margin-top: 80px; 
     }
         .programme-grid { display: flex; justify-content: center; gap: 35px; flex-wrap: wrap; margin-top: 50px; }
-        .programme-card { 
-        background: var(--white); /* Blanc pur pour les cartes : effet propre et pro */
-        padding: 50px 35px; 
-        border-radius: 25px; 
-        flex: 1; 
-        min-width: 300px; 
-        max-width: 450px; 
-        text-align: center; 
-        box-shadow: var(--shadow); 
-        transition: 0.4s; 
-        display: flex; 
-        flex-direction: column; 
+        .programme-card {
+        background: var(--white);
+        padding: 50px 35px;
+        border-radius: 25px;
+        flex: 1;
+        min-width: 300px;
+        max-width: 450px;
+        text-align: center;
+        /* Ombre plus profonde pour le relief */
+        box-shadow: 0 15px 35px rgba(0, 76, 151, 0.12); 
+        transition: 0.4s;
+        display: flex;
+        flex-direction: column;
         align-items: center;
-        border: 1px solid rgba(0, 76, 151, 0.05); /* Bordure très fine pour définir la carte */
+        /* Ajout d'une bordure subtile pour les faire ressortir du fond bleu */
+        border: 1px solid rgba(214, 95, 58, 0.15); 
+        position: relative;
+        overflow: hidden;
     }
-        .programme-card:hover { transform: translateY(-10px); }
+
+    /* Petite touche : une barre de couleur en haut de chaque carte */
+    .programme-card::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 5px;
+        background: var(--primary-color);
+    }
+        .programme-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 76, 151, 0.18);
+        border-color: var(--primary-color);
+    }
         .programme-card h3 { color: var(--secondary-color); font-size: 1.6rem; margin-bottom: 10px; }
         .target { font-style: italic; color: var(--primary-color); font-size: 0.95rem; margin-bottom: 15px; }
         .price { font-size: 2.2rem; font-weight: 800; color: var(--text-dark); margin-bottom: 25px; }
@@ -141,7 +158,27 @@
         .card-button { display: inline-block; background-color: var(--secondary-color); color: white; padding: 12px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
         .card-button:hover { background-color: var(--primary-color); }
 
-        .info-box-blue { max-width: 750px; margin: 60px auto 0; background: #eef6ff; border: 1px solid rgba(0, 76, 151, 0.2); padding: 25px; border-radius: 20px; display: flex; align-items: center; gap: 20px; }
+        .info-box-blue {
+        max-width: 750px;
+        margin: 60px auto 0;
+        background: var(--white); /* Fond blanc pour trancher avec le bleu de la section */
+        border: 1px solid rgba(0, 76, 151, 0.1);
+        border-left: 6px solid var(--secondary-color); /* Barre bleue sur le côté pour le style */
+        padding: 25px 35px;
+        border-radius: 12px; /* Plus carré/moderne */
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        box-shadow: 0 8px 20px rgba(0, 76, 151, 0.05);
+    }
+
+    .info-box-blue p {
+        margin: 0;
+        color: var(--text-dark);
+        font-weight: 500;
+        text-align: left;
+        line-height: 1.5;
+    }
 
         /* --- CONTACT --- */
         .contact-section { 
