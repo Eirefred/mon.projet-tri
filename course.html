@@ -140,6 +140,22 @@
 
         #backToTop { position: fixed; bottom: 20px; right: 20px; background: var(--primary-color); color: white; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; visibility: hidden; opacity: 0; transition: 0.3s; z-index: 999; border: none; }
         #backToTop.visible { visibility: visible; opacity: 1; }
+
+        .region-mention {
+    background-color: var(--secondary-color); /* Le bleu foncé de l'index */
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.region-mention span {
+    color: var(--accent-color); /* Le orange #f39200 */
+    font-weight: 800;
+}
     </style>
 </head>
 <body>
@@ -171,15 +187,15 @@
 </header>
 
     <section class="hero">
-    <div class="hero-content">
-        <h1>MON PROJET RUN</h1>
-        <p style="font-size: 1.5rem; font-weight: bold; margin-bottom: 20px;">
-            Partout au Québec <br>
-            <span style="color: var(--accent-color); background: rgba(255,255,255,0.1); padding: 5px 15px; border-radius: 50px; display: inline-block; margin-top: 10px;">
-                Dès 79$/mois
-            </span>
-        </p>
-        <a href="#programme" class="cta-button">CHOISIR MON PLAN</a>
+        <div class="hero-content">
+            <h1>MON PROJET RUN</h1>
+            <p>Le volet course à pied de votre OBNL de sport d'endurance</p>
+        </div>
+    </section>
+
+    <section class="region-mention">
+    <div class="container">
+        <p>Partout au Québec — <span>Dès 79$/mois</span></p>
     </div>
 </section>
 
@@ -225,36 +241,34 @@
     </section>
 
     <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="contact-card">
-                <h2 style="color: var(--secondary-color); text-align: center;">Contactez un mentor</h2>
-                <p style="text-align: center; margin-bottom: 30px; color: #666;">Prêt à lacer vos chaussures ?</p>
-                
-                <form action="https://formspree.io/f/votre_ID_ici" method="POST">
-                    <div class="form-group">
-                        <label>Nom complet</label>
-                        <input type="text" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Courriel</label>
-                        <input type="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Objectif</label>
-                        <select name="objectif">
-                            <option value="projet-unique">Projet Unique</option>
-                            <option value="accompagnement-continu">Accompagnement Continu</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Message</label>
-                        <textarea name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn">ENVOYER</button>
-                </form>
-            </div>
+    <div class="container">
+        <div class="contact-card">
+            <h2 style="color: var(--secondary-color); text-align: center;">Contactez un mentor</h2>
+            <form action="https://formspree.io/f/votre_ID_ici" method="POST">
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Courriel</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Objectif</label>
+                    <select name="objectif">
+                        <option value="projet-unique">Projet Unique</option>
+                        <option value="accompagnement-continu">Accompagnement Continu</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">ENVOYER</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer>
         <div class="container">
