@@ -78,6 +78,15 @@
         input:checked + .slider { background: var(--primary-gradient); }
         input:checked + .slider:before { transform: translateX(14px); }
 
+/* Cache le bouton hamburger sur PC */
+.menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+/* Ajustement pour le sélecteur de langue dans la liste */
+.lang-switcher { display: flex; align-items: center; gap: 8px; }
+.lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+
         /* --- HERO --- */
         .hero {
             height: 85vh;
@@ -212,7 +221,40 @@
         font-size: 1.8rem; /* Ajustez cette valeur selon votre préférence */
     }
             .contact-card { padding: 30px; }
+
+
+            .menu-icon { display: flex; z-index: 1001; }
+
+    /* Transforme la liste en menu plein écran/overlay */
+    .nav-links {
+        display: none; /* Caché par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* Affiche le menu quand la case est cochée */
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Animation du hamburger en "X" quand ouvert */
+    #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+}
         }
+
+
+
+
     </style>
 </head>
 <body>
@@ -228,21 +270,28 @@
                 </div>
             </div>
             <nav>
-                <ul>
-                <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OBNL</a></li> 
-                <li><a href="#propos">À Propos</a></li>                    
-                <li><a href="#programme">Programmes</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li style="display: flex; align-items: center; gap: 8px;">
-                        <span style="font-weight: 900; font-size: 0.7rem; color: #004c97;">FR</span>
-                        <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/course.html'">
-                            <span class="slider"></span>
-                        </label>
-                        <span style="font-weight: 900; font-size: 0.7rem; color: #ccc;">EN</span>
-                    </li>
-                </ul>
-            </nav>
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <label for="menu-toggle" class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <ul class="nav-links">
+        <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OBNL</a></li> 
+        <li><a href="#propos">À Propos</a></li>                    
+        <li><a href="#programme">Programmes</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li class="lang-switcher">
+            <span class="lang-label">FR</span>
+            <label class="switch">
+                <input type="checkbox" onclick="window.location.href='en/course.html'">
+                <span class="slider"></span>
+            </label>
+            <span class="lang-label" style="color: #ccc;">EN</span>
+        </li>
+    </ul>
+</nav>
         </div>
     </header>
 
