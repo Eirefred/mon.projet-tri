@@ -206,35 +206,37 @@
         }
 
         /* --- AJOUTS RÉGLAGES MOBILES (COHÉRENCE INDEX.HTML) --- */
+/* --- RÉGLAGES MOBILES FINAUX --- */
 @media (max-width: 768px) {
-    /* Correction du titre qui dépasse */
+    /* 1. Correction du texte qui dépasse */
     .hero h1 {
-        font-size: 1.6rem !important; /* Taille réduite pour le mot "L'accompagnement" */
+        font-size: 1.7rem !important; /* Réduit pour "L'accompagnement" */
         line-height: 1.2;
-        padding: 0 15px;
+        padding: 0 10px;
     }
 
-    /* Header et Menu */
-    header { padding: 10px 0; height: auto; }
+    /* 2. Header et Logo */
+    header { height: auto; padding: 10px 0; }
     .logo img { height: 35px !important; }
     
     .menu-toggle { display: flex !important; }
 
+    /* 3. Menu déroulant */
     nav ul {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 100%; /* S'affiche juste sous le header */
+        top: 100%; 
         left: 0;
         width: 100%;
         background: white;
         padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
     }
-
     nav ul.active { display: flex; }
 
-    /* Correction du formulaire de contact (Empilement vertical) */
+    /* 4. Formulaire (Empilement des champs) */
     .form-row {
         flex-direction: column !important;
         gap: 0 !important;
@@ -244,8 +246,14 @@
         margin-bottom: 15px;
     }
 
-    /* Grille de programmes */
-    .programme-grid { grid-template-columns: 1fr; }
+    /* 5. Grille de programmes */
+    .programme-grid {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+    .programme-card {
+        min-width: unset;
+    }
 }
 
 /* FIN SECTION MOBILE */
