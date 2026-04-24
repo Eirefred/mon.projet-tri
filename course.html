@@ -586,5 +586,28 @@
         </div>
     </footer>
 <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
+
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            // On affiche le bouton après 300px de scroll sur mobile uniquement
+            if (window.innerWidth <= 768) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        // Action de remontée fluide
+        backToTopBtn.onclick = function() {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        };
+    </script>
 </body>
 </html>
