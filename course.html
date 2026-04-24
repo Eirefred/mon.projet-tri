@@ -209,11 +209,15 @@
 /* --- RÉGLAGES MOBILES FINAUX --- */
 @media (max-width: 768px) {
     /* 1. Correction du texte qui dépasse */
-    .hero h1 {
-        font-size: 1.7rem !important; /* Réduit pour "L'accompagnement" */
-        line-height: 1.2;
+    .hero-content h2, 
+    h2 {
+        font-size: 1.6rem !important; /* On baisse la taille pour le mot 'L'accompagnement' */
+        line-height: 1.3;
+        word-wrap: break-word; /* Force la coupure si le téléphone est vraiment très petit */
+        margin-bottom: 15px;
         padding: 0 10px;
     }
+}
 
     /* 2. Header et Logo */
     header { height: auto; padding: 10px 0; }
