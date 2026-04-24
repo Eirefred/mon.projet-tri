@@ -110,6 +110,13 @@
         .presentation strong { color: var(--text-dark); }
         .presentation a { color: #D65F3A; font-weight: 800; text-decoration: underline; }
 
+        .subtitle-intro {
+    font-size: 2.2rem;
+    font-weight: 400;
+    max-width: 800px;
+    margin: 0 auto 2rem auto; /* Centre le bloc et ajoute de l'espace en bas */
+}
+
         /* --- PROGRAMMES --- */
         .programme-section { padding: 100px 0; background-color: #f0f7ff; }
         .programme-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px; }
@@ -219,12 +226,14 @@
 
 @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
-            .presentation h2 {
-        font-size: 1.8rem;    /* Taille réduite comme vu précédemment */
-        max-width: 60%;       /* Force le texte à ne pas dépasser 80% de la largeur de l'écran */
-        margin-left: auto;    /* Centre le bloc horizontalement */
+            .subtitle-intro {
+        font-size: 1.4rem;  /* On réduit un peu la taille pour mobile */
+        max-width: 75%;     /* Largeur réduite à 75% de l'écran */
+        margin-left: auto;  /* Centrage horizontal */
         margin-right: auto;
-        line-height: 1.2;     /* Ajuste l'interligne si le texte passe sur plusieurs lignes */
+    }
+            .presentation h2 {
+        font-size: 1.8rem; /* Ajustez cette valeur selon votre préférence */
     }
             .contact-card { padding: 30px; }
 
@@ -304,7 +313,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Sentez-vous<br><span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">accomplis.</span></h1>
-            <p style="font-size: 1.8rem; font-weight: 400;">Le coaching de course à pied soutenu <br> par du mentorat individualisé.</p>
+            <p class="subtitle-intro">Le coaching de course à pied soutenu par du mentorat individualisé.</p>
             <div class="hero-partner">
                 <p>En partenariat avec</p>
                 <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
