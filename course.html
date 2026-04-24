@@ -207,82 +207,45 @@
 
         /* --- AJOUTS RÉGLAGES MOBILES (COHÉRENCE INDEX.HTML) --- */
 @media (max-width: 768px) {
-    /* Header & Logo */
-    header { padding: 10px 0; height: 80px; }
-    .nav-container { padding: 0 20px; }
-    .logo img { height: 35px !important; }
-    
-    /* Menu Hamburger */
-    .menu-toggle {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        width: 44px;
-        height: 44px;
-        font-size: 32px;
-        color: #004c97;
-        cursor: pointer;
-        z-index: 2000;
+    /* Correction du titre qui dépasse */
+    .hero h1 {
+        font-size: 1.8rem !important; /* Taille réduite pour le mot "L'accompagnement" */
+        line-height: 1.2;
+        padding: 0 15px;
     }
 
+    /* Header et Menu */
+    header { padding: 10px 0; height: auto; }
+    .logo img { height: 35px !important; }
+    
+    .menu-toggle { display: flex !important; }
+
     nav ul {
-        display: none; /* Caché par défaut */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 80px;
+        top: 100%; /* S'affiche juste sous le header */
         left: 0;
         width: 100%;
         background: white;
         padding: 20px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        gap: 15px;
     }
 
-    nav ul.active { display: flex; } /* Affiché au clic */
+    nav ul.active { display: flex; }
 
-    /* Hero Section */
-    .hero { height: 70vh; clip-path: none; } /* On simplifie le clip-path sur mobile */
-    .hero h1 {
-        font-size: 1.8rem !important; /* Réduit la taille pour que le long mot tienne */
-        line-height: 1.2;
-        padding: 0 15px;
-        word-wrap: break-word; /* Sécurité supplémentaire */
-    }
-    
-    /* Optionnel : tu peux aussi réduire un peu le sous-titre si besoin */
-    .hero p {
-        font-size: 1rem !important;
-    }
-    .partner-logo { height: 30px; }
-
-    /* Grille de programmes */
-    .programme-grid { gap: 20px; }
-    .programme-card {
-        margin: 10px 0;
-        padding: 30px 20px;
-    }
-
-    /* Empilement des champs du formulaire sur mobile */
+    /* Correction du formulaire de contact (Empilement vertical) */
     .form-row {
         flex-direction: column !important;
         gap: 0 !important;
     }
     .form-group {
         width: 100% !important;
+        margin-bottom: 15px;
     }
-    .contact-form-container {
-        padding: 20px;
-        margin: 10px;
-    }
-    
-    /* Formulaire de contact */
-    .form-row { flex-direction: column !important; gap: 0 !important; }
-    .contact-form-container { padding: 25px; margin: 0 15px; }
-    
-    /* Footer */
-    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
 
-    
+    /* Grille de programmes */
+    .programme-grid { grid-template-columns: 1fr; }
 }
 
 /* FIN SECTION MOBILE */
