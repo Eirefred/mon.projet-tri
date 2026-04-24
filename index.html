@@ -215,21 +215,7 @@
         }
 
             /* --- HEADER --- */
-        header { 
-    background: var(--white); 
-    /* On enlève height: 95px pour plus de flexibilité */
-    min-height: 70px; 
-    display: flex; 
-    flex-direction: column; /* Pour empiler la mention de région et le menu */
-    align-items: center; 
-    justify-content: center;
-    border-bottom: 1px solid #eaeaea; 
-    position: sticky; 
-    top: 0; 
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* Ajout du flou comme sur course.html */
-    background-color: rgba(255, 255, 255, 0.95);
-}
+        header { background: var(--white); height: 95px; display: flex; align-items: center; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 1000; }
         .nav-container { width: 90%; max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         .header-left { display: flex; align-items: center; gap: 25px; }
         
@@ -399,44 +385,31 @@
 
 /* BOUTON RETOUR EN HAUT */
     #backToTop {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    background: var(--primary-gradient);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    text-decoration: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.3s;
-}
+        display: none; /* Caché par défaut */
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 2000;
+        background-color: var(--accent);
+        color: white;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        align-items: center;
+        justify-content: center;
+    }
+
     /* AJOUTEZ CETTE RÈGLE ICI */
     #backToTop.visible { 
         display: flex !important; 
     }
 
         @media (max-width: 768px) {
-            header {
-        padding: 8px 0;
-    }
-
-    header p {
-        font-size: 0.7rem; /* Même taille que course.html */
-        margin-bottom: 5px;
-        padding: 0 15px;
-    }
-
-    .logo-container img {
-        height: 40px; /* Taille optimisée pour libérer de l'espace */
-    }
+            header { height: 80px; }
 
             .hero-content {
                 padding-top: 40px !important;
