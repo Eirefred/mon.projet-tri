@@ -20,14 +20,44 @@
             background: #000;
         }
 
+        /* --- HEADER --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px 0;
+            text-align: center;
+        }
+
+        header p {
+            color: var(--white);
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 300;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        header strong {
+    font-weight: 900; /* Gras maximum pour ressortir */
+    color: #ffffff;   /* Blanc pur */
+    text-shadow: 0 0 10px rgba(0,0,0,0.3); /* Optionnel : une légère ombre pour garantir la lisibilité sur les zones claires */
+}
+
+        /* --- CONTAINER SPLIT --- */
         .splash-container {
             display: flex;
             height: 100vh;
             width: 100vw;
-            position: relative;
         }
 
-        /* Division de l'écran */
         .side {
             flex: 1;
             display: flex;
@@ -41,7 +71,7 @@
             overflow: hidden;
         }
 
-        /* Image de fond (votre bannière split) */
+        /* IMAGE DE FOND */
         .side::before {
             content: "";
             position: absolute;
@@ -49,114 +79,97 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('banniere-split.jpg'); /* Remplacez par votre fichier */
+            background-image: url('banniere-split.jpg'); /* Ton nouveau nom de fichier */
             background-size: cover;
-            background-position: center;
-            filter: grayscale(30%) brightness(0.5);
-            transition: all 0.7s ease;
+            filter: grayscale(20%) brightness(0.45);
+            transition: all 0.8s ease;
             z-index: 1;
         }
 
         .side-tri::before { background-position: left center; }
         .side-run::before { background-position: right center; }
 
-        /* Contenu textuel et Logos */
+        /* CONTENU */
         .content {
             position: relative;
             z-index: 2;
             color: var(--white);
             padding: 40px;
             width: 100%;
-            max-width: 400px;
+            max-width: 320px;
             transition: transform 0.5s ease;
         }
 
         .logo-img {
             width: 100%;
-            max-width: 300px; /* Taille basée sur vos fichiers */
             height: auto;
-            margin-bottom: 10px;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+            margin-bottom: 15px;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.4));
         }
 
         .content p {
-            font-size: 1.1rem;
-            margin-top: 5px;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 0.95rem;
+            margin-top: 0;
+            opacity: 0.8;
+            font-weight: 400;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* Boutons */
         .btn {
             display: inline-block;
-            margin-top: 35px;
-            padding: 12px 35px;
+            margin-top: 30px;
+            padding: 14px 40px;
             border-radius: 50px;
             font-weight: 800;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             border: 2px solid var(--white);
             color: var(--white);
             transition: all 0.3s ease;
             letter-spacing: 1px;
         }
 
-        /* Effets au survol */
+        /* INTERACTIONS SURVOL */
         .side:hover { flex: 1.4; }
         .side:hover::before { filter: grayscale(0%) brightness(0.7) scale(1.05); }
         .side:hover .content { transform: scale(1.05); }
 
-        /* Couleurs au survol pour les boutons */
         .side-tri:hover .btn { background: var(--tri-color); border-color: var(--tri-color); }
         .side-run:hover .btn { background: var(--run-color); border-color: var(--run-color); }
 
-        /* Mobile */
+        /* OPTIMISATION MOBILE */
         @media (max-width: 768px) {
-    .splash-container { 
-        flex-direction: column; 
-    }
-    .side {
-        flex: 1; /* Chaque section prend exactement 50% de la hauteur de l'écran */
-        width: 100vw;
-    }
-    .side::before {
-        background-position: center !important; /* Recentrer l'image sur chaque sport */
-    }
-    .logo-img { 
-        max-width: 180px; /* Plus petit pour laisser de la place au bouton */
-    }
-    .content { 
-        padding: 10px; 
-    }
-    .btn {
-        margin-top: 15px;
-        padding: 10px 25px;
-        font-size: 0.75rem;
-    }
-}
-
-
-
+            header p { font-size: 0.75rem; padding: 0 20px; line-height: 1.4; }
+            .splash-container { flex-direction: column; }
+            .side:hover { flex: 1; }
+            .side-tri::before, .side-run::before { background-position: center; }
+            .logo-img { max-width: 220px; }
+            .content { padding: 20px; }
+            .btn { margin-top: 20px; padding: 12px 30px; }
+        }
     </style>
 </head>
 <body>
+
+    <header>
+    <p>Organisme spécialisé en <strong>Coaching & Mentorat Sportif</strong> au Québec</p>
+</header>
 
     <div class="splash-container">
         <a href="index.html" class="side side-tri">
             <div class="content">
                 <img src="MPT_Logo_White_text_300.png" alt="Mon Projet Tri" class="logo-img">
                 <p>Natation • Vélo • Course</p>
-                <div class="btn">Entrer sur le site</div>
+                <div class="btn">Accéder au site</div>
             </div>
         </a>
 
         <a href="course.html" class="side side-run">
             <div class="content">
                 <img src="MPR_Logo_White_text_300.png" alt="Mon Projet Run" class="logo-img">
-                <p>Performance • Accompagnement</p>
-                <div class="btn">Entrer sur le site</div>
+                <p>Spécialiste Course à pied</p>
+                <div class="btn">Accéder au site</div>
             </div>
         </a>
     </div>
