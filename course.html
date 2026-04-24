@@ -235,7 +235,18 @@
             .presentation h2 {
         font-size: 1.8rem; /* Ajustez cette valeur selon votre préférence */
     }
-            .contact-card { padding: 30px; }
+
+* {
+        box-sizing: border-box; /* Crucial pour éviter le débordement */
+    }
+
+    .contact-card, .programme-card {
+        width: 95% !important;  /* On laisse une petite marge de sécurité */
+        max-width: none;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;          /* On réduit le padding interne sur mobile */
+    }
 
 
             .menu-icon { display: flex; z-index: 1001; }
