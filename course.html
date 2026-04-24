@@ -252,11 +252,22 @@
 
     /* 5. Grille de programmes */
     .programme-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
         padding: 0 15px;
     }
+
     .programme-card {
+        display: flex;
+        flex-direction: column;
+        /* Force toutes les cartes à avoir la même hauteur si elles sont dans un flex container */
+        height: 100%; 
         min-width: unset;
+        margin: 0;
+        padding: 30px 20px;
+        /* Optionnel : aligner le bouton en bas si le texte varie */
+        justify-content: space-between; 
     }
 }
 
