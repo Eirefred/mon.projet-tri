@@ -118,14 +118,7 @@
         /* --- PROGRAMMES --- */
         .programme-section { padding: 100px 0; background-color: #f0f7ff; }
         /* Le conteneur doit forcer l'alignement horizontal */
-/* Style par défaut (Mobile d'abord) */
-.programme-grid {
-    display: flex;
-    flex-direction: column; /* L'un sous l'autre par défaut */
-    gap: 20px;
-    padding: 0 15px;
-    width: 100%;
-}
+
 
 /* --- VERSION ORDINATEUR (uniquement si l'écran est large) --- */
 @media screen and (min-width: 769px) {
@@ -310,22 +303,24 @@
 
     /* 5. Grille de programmes */
     .programme-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 15px;
+        display: flex !important;
+        flex-direction: column !important; 
+        align-items: center !important;
+        gap: 25px !important;
+        padding: 0 20px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin: 30px 0 !important;
     }
 
     .programme-card {
-        display: flex;
-        flex-direction: column;
-        /* Force toutes les cartes à avoir la même hauteur si elles sont dans un flex container */
-        height: 100%; 
-        min-width: unset;
-        margin: 0;
-        padding: 30px 20px;
-        /* Optionnel : aligner le bouton en bas si le texte varie */
-        justify-content: space-between; 
+        /* On écrase les règles "Ordinateur" ici */
+        flex: none !important; 
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important; /* CRUCIAL : annule le min-width qui cause le scroll */
+        margin: 0 !important;
+        box-sizing: border-box !important;
     }
 }
 
