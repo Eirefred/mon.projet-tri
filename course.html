@@ -4,22 +4,46 @@
     <link rel="preload" as="image" href="banniere-run.jpg">
     <meta charset="UTF-8">
     <script>
-    (function() {
-        if (sessionStorage.getItem('lang_checked')) return;
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('lang') === 'fr') {
-            sessionStorage.setItem('lang_checked', 'true');
-            return;
-        }
-        const userLang = navigator.language || navigator.userLanguage;
-        if (!userLang.startsWith('fr')) {
-            sessionStorage.setItem('lang_checked', 'true');
-            window.location.href = "./en/course.html";
+    let lastScroll = 0;
+    const header = document.querySelector("header");
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener('scroll', function() {
+        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+        // Gestion du Header (Mobile seulement)
+        if (window.innerWidth <= 768) {
+            // Si on scroll vers le bas et qu'on a dépassé 80px
+            if (currentScroll > lastScroll && currentScroll > 80) {
+                header.classList.add("header-hidden");
+            } else {
+                // Si on remonte
+                header.classList.remove("header-hidden");
+            }
         } else {
-            sessionStorage.setItem('lang_checked', 'true');
+            header.classList.remove("header-hidden");
         }
-    })();
-    </script>
+
+        // Gestion de l'ascenseur (Mobile seulement comme index.html)
+        if (window.innerWidth <= 768) {
+            if (currentScroll > 300) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Action du clic pour remonter
+    backToTopBtn.onclick = function() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    };
+</script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet Run | Mentorat et Coaching</title>
