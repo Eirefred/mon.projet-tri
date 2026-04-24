@@ -226,6 +226,14 @@
 
 @media (max-width: 768px) {
             .hero h1 { font-size: 2.8rem; }
+            .hero {
+        /* "right" décale l'image pour montrer la partie droite, 
+           "center" garde l'alignement vertical au milieu */
+        background-position: right center; 
+        
+        /* Optionnel : si "right" est trop extrême, vous pouvez utiliser un pourcentage */
+        /* background-position: 80% center; */
+    }
             .subtitle-intro {
         font-size: 1.6rem;  /* On réduit un peu la taille pour mobile */
         max-width: 85%;     /* Largeur réduite à 75% de l'écran */
