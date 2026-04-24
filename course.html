@@ -90,6 +90,20 @@
             clip-path: ellipse(150% 100% at 50% 0%);
         }
         .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; }
+        .hero-subtitle {
+    /* --- Conservation du style original --- */
+    font-size: 2.2rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+    
+    /* --- Maîtrise des deux lignes --- */
+    max-width: 40ch;      /* Force la coupure pour créer 2 lignes */
+    margin-left: auto;    /* Centre le bloc */
+    margin-right: auto;   /* Centre le bloc */
+    display: block;       /* Nécessaire pour le centrage auto */
+    line-height: 1.4;     /* Espace propre entre les deux lignes */
+}
         .hero-partner { margin-top: 50px; opacity: 0.9; }
         .hero-partner p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
         .partner-logo { height: 40px;}
@@ -216,6 +230,11 @@
         word-wrap: break-word; /* Force la coupure si le téléphone est vraiment très petit */
         margin-bottom: 15px;
         padding: 0 10px;
+    }
+    .hero-subtitle {
+        max-width: 100% !important; /* Libère la contrainte sur mobile */
+        font-size: 1.1rem;           /* Ajuste légèrement la taille */
+        padding: 0 20px;
     }
 }
 
@@ -348,7 +367,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Sentez-vous<br><span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">accomplis.</span></h1>
-            <p style="font-size: 1.8rem; font-weight: 400;">Le coaching de course à pied soutenu <br> par du mentorat individualisé.</p>
+            <p class="hero-subtitle">Le coaching de course à pied soutenu par du mentorat individualisé.</p>
             <div class="hero-partner">
                 <p>En partenariat avec</p>
                 <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
