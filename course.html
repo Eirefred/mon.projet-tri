@@ -205,6 +205,90 @@
             box-shadow: 0 15px 30px rgba(214, 95, 58, 0.3);
         }
 
+        /* --- AJOUTS RÉGLAGES MOBILES (COHÉRENCE INDEX.HTML) --- */
+@media (max-width: 768px) {
+    /* Header & Logo */
+    header { padding: 10px 0; height: 80px; }
+    .nav-container { padding: 0 20px; }
+    .logo img { height: 35px !important; }
+    
+    /* Menu Hamburger */
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        font-size: 32px;
+        color: #004c97;
+        cursor: pointer;
+        z-index: 2000;
+    }
+
+    nav ul {
+        display: none; /* Caché par défaut */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
+    }
+
+    nav ul.active { display: flex; } /* Affiché au clic */
+
+    /* Hero Section */
+    .hero { height: 70vh; clip-path: none; } /* On simplifie le clip-path sur mobile */
+    .hero h1 { font-size: 2.2rem !important; padding: 0 10px; }
+    .partner-logo { height: 30px; }
+
+    /* Grille de programmes */
+    .programme-grid { gap: 20px; }
+    .programme-card {
+        margin: 10px 0;
+        padding: 30px 20px;
+    }
+
+    .form-row {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+    
+    .form-group {
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+    
+    /* Formulaire de contact */
+    .form-row { flex-direction: column !important; gap: 0 !important; }
+    .contact-form-container { padding: 25px; margin: 0 15px; }
+    
+    /* Footer */
+    .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+}
+
+/* Bouton Retour en haut (identique à index) */
+#backToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background: #D65F3A;
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+#backToTop.visible { display: flex; align-items: center; justify-content: center; }
+
         /* --- FOOTER --- */
         footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
         .footer-logo img { height: 60px; margin-bottom: 20px; }
@@ -235,6 +319,9 @@
                     <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
                 </div>
             </div>
+
+            <div class="menu-toggle" id="mobile-menu">☰</div>
+
             <nav>
                 <ul>
                 <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OBNL</a></li> 
@@ -377,5 +464,49 @@
         </div>
     </footer>
 
+<button id="backToTop">↑</button>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.querySelector('nav ul');
+        const backToTopBtn = document.getElementById("backToTop");
+
+        // Toggle Menu Mobile
+        if (menuBtn) {
+            menuBtn.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                if (navMenu.classList.contains('active')) {
+                    this.textContent = '✕';
+                } else {
+                    this.textContent = '☰';
+                }
+            });
+        }
+
+        // Fermer le menu si on clique sur un lien
+        document.querySelectorAll('nav ul a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                if (menuBtn) menuBtn.textContent = '☰';
+            });
+        });
+
+        // Gestion du bouton Back to Top
+        window.onscroll = function() {
+            if (window.innerWidth <= 768) {
+                if (document.documentElement.scrollTop > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        };
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        };
+    });
+    </script>
 </body>
 </html>
