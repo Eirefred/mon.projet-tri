@@ -139,15 +139,65 @@
         .side-run:hover .btn { background: var(--run-color); border-color: var(--run-color); }
 
         /* OPTIMISATION MOBILE */
-        @media (max-width: 768px) {
-            header p { font-size: 0.75rem; padding: 0 20px; line-height: 1.4; }
-            .splash-container { flex-direction: column; }
-            .side:hover { flex: 1; }
-            .side-tri::before, .side-run::before { background-position: center; }
-            .logo-img { max-width: 220px; }
-            .content { padding: 20px; }
-            .btn { margin-top: 20px; padding: 12px 30px; }
-        }
+        /* OPTIMISATION MOBILE */
+@media (max-width: 768px) {
+    /* Le header n'est plus absolu, il prend sa place naturelle en haut */
+    header {
+        position: relative; /* Change d'absolute à relative */
+        background: #000;   /* Fond noir solide pour une séparation nette */
+        padding: 15px 0;
+        backdrop-filter: none;
+        border-bottom: 2px solid #333;
+    }
+
+    header p { 
+        font-size: 0.7rem; 
+        padding: 0 15px; 
+        line-height: 1.4; 
+    }
+    
+    /* La splash-container ne fait plus 100vh pour laisser la place au header sans scroll */
+    .splash-container { 
+        flex-direction: column;
+        height: calc(100vh - 60px); /* 100% de la hauteur moins la taille du header */
+    }
+    
+    .side {
+        flex: 1;
+        width: 100vw;
+    }
+
+    /* Reset des ajustements de padding précédents car il n'y a plus d'overlap */
+    .side-tri {
+        padding-top: 0; 
+    }
+
+    /* Focus sur les sujets sportifs */
+    .side-tri::before { 
+        background-position: 20% center !important; 
+        height: 100%;
+        top: 0;
+    }
+
+    .side-run::before { 
+        background-position: 85% center !important; 
+    }
+
+    /* Ajustement des logos et boutons pour petits écrans */
+    .logo-img { 
+        max-width: 190px; 
+    }
+    
+    .content { 
+        padding: 20px; 
+    }
+    
+    .btn { 
+        margin-top: 15px; 
+        padding: 10px 25px; 
+        font-size: 0.75rem;
+    }
+}
     </style>
 </head>
 <body>
