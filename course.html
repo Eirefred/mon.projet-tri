@@ -67,6 +67,40 @@
         .region-mention p { margin: 0; font-size: 0.75rem; text-transform: none; font-weight: 800; color: #004c97; }
         .region-mention span { color: #D65F3A; }
 
+        /* Le conteneur qui crée la barre verticale */
+.region-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid rgba(0, 51, 102, 0.2); /* La barre verticale */
+    margin-left: 15px; /* Espace entre le logo et la barre */
+    padding-left: 15px; /* Espace entre la barre et le texte */
+    height: 40px;
+    flex-shrink: 0;
+}
+
+/* Style de la première ligne (Région) */
+.region-mention {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.2;
+    display: block;
+    white-space: nowrap;
+}
+
+/* Style de la deuxième ligne (Prix) */
+.price-tag-new {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.75rem;
+    color: #D65F3A; /* Votre couleur orange de course.html */
+    font-weight: 600;
+    line-height: 1;
+    margin-top: 2px;
+    display: block;
+}
+
         nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
         nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
         nav a:hover { color: #D65F3A; }
@@ -319,9 +353,10 @@
                 <div class="logo">
                     <a href="index.html"><img src="mon-projet-run-logo-coaching-quebec.jpg" alt="Logo"></a>
                 </div>
-                <div class="region-mention">
-                    <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
-                </div>
+                <div class="region-stack">
+        <span class="region-mention">Partout au Québec</span>
+        <span class="price-tag-new">Dès 99$/mois</span>
+        </div>
             </div>
             <nav>
     <input type="checkbox" id="menu-toggle" style="display: none;">
