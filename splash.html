@@ -227,16 +227,21 @@
 </div>
 <script>
 function redirectProject(project) {
-    // Détection de la langue du navigateur
-    const userLang = navigator.language || navigator.userLanguage;
-    const isEn = userLang.startsWith('en');
+    // On regarde toutes les langues préférées de l'utilisateur
+    const languages = navigator.languages || [navigator.language || navigator.userLanguage];
+    
+    // On vérifie si le français est présent n'importe où dans la liste
+    const hasFrench = languages.some(lang => lang.toLowerCase().startsWith('fr'));
+    
+    // On ne redirige vers l'anglais QUE si le français n'est pas là 
+    // ET que l'anglais est présent.
+    const hasEnglish = languages.some(lang => lang.toLowerCase().startsWith('en'));
+    const shouldGoToEn = !hasFrench && hasEnglish;
 
     if (project === 'tri') {
-        // Redirection Tri : /en/index.html ou index.html
-        window.location.href = isEn ? 'en/index.html' : 'index.html';
+        window.location.href = shouldGoToEn ? 'en/index.html' : 'index.html';
     } else if (project === 'run') {
-        // Redirection Run : /en/run.html ou course.html
-        window.location.href = isEn ? 'en/run.html' : 'course.html';
+        window.location.href = shouldGoToEn ? 'en/run.html' : 'course.html';
     }
 }
 </script>
