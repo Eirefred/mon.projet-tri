@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
+    <script>
+    (function() {
+        // Vérifie si l'utilisateur a déjà choisi une langue manuellement (optionnel)
+        // Sinon, on regarde la langue du navigateur
+        const userLang = navigator.language || navigator.userLanguage; 
+        const currentPath = window.location.pathname;
+
+        // Si la langue commence par 'en' et qu'on n'est pas déjà dans le dossier /en/
+        if (userLang.startsWith('en') && !currentPath.includes('/en/')) {
+            // Redirige vers la version anglaise correspondante
+            if (currentPath.endsWith('course.html')) {
+                window.location.href = 'en/run.html';
+            } else if (currentPath.endsWith('index.html') || currentPath === '/') {
+                window.location.href = 'en/index.html';
+            }
+        }
+    })();
+</script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet | Choisissez votre défi</title>
