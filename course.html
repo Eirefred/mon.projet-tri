@@ -121,22 +121,42 @@
         .programme-section { padding: 100px 0; background-color: #f0f7ff; }
         .programme-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px; }
         
-        .programme-card {
-            background: var(--white);
-            padding: 60px 40px;
-            border-radius: 30px;
-            flex: 1;
-            min-width: 320px;
-            max-width: 450px;
-            text-align: center; /* Centrage global du texte */
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: var(--shadow-punchy);
-            position: relative;
-            border: 1px solid rgba(0, 76, 151, 0.05);
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Centrage des éléments flex */
-        }
+       .programme-card {
+    background: var(--white);
+    padding: 60px 40px;
+    border-radius: 30px; /* Votre arrondi actuel */
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow-punchy);
+    position: relative; /* Indispensable pour positionner la bordure */
+    border: 1px solid rgba(0, 76, 151, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: visible; /* On laisse visible pour ne pas couper la bulle POPULAIRE */
+}
+
+/* La bordure colorée personnalisée */
+.programme-card::before, .info-box-glass::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10px;
+    height: 100%;
+    
+    /* DÉGRADÉ DU BLEU VERS L'ORANGE */
+    background: linear-gradient(to bottom, #004c97, #D65F3A); 
+    
+    /* ARRONDIS (30px pour les cards, à ajuster pour la note) */
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    
+    z-index: 1;
+}
         .programme-card h3 {
     font-size: 1.8rem; /* Augmentez cette valeur (auparavant autour de 1.6rem) */
     text-transform: uppercase;
@@ -398,11 +418,17 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="contact-card">
-                <h2 style="text-align: center; font-size: 2.2rem; font-weight: 900; color: #004c97; margin-bottom: 10px; text-transform: uppercase;">Ça commence ici</h2>
+            <div class="contact-card" style="padding-top: 30px;">
+                <h2 style="text-align: center; font-size: 2.5rem; font-weight: 900; color: #004c97; margin-bottom: 25px;">
+        Parlons de votre projet
+    </h2>
     
-    <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 1.1rem;">
-        Prêt à lacer vos chaussures ? Écrivez-nous pour discuter de vos objectifs et définir ensemble le plan qui vous mènera à la ligne d'arrivée.
+    <p style="text-align: center; font-size: 1.3rem; color: #5A6A7A; margin-bottom: 10px;">
+        Vous avez un objectif en tête ? <span style="color: #D65F3A; font-weight: 700;">Échangeons ensemble.</span>
+    </p>
+    
+    <p style="text-align: center; font-size: 1.1rem; color: #5A6A7A; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.4;">
+        Remplissez ce formulaire et votre mentor vous contactera pour définir la meilleure approche pour votre saison.
     </p>
                 <form action="https://formspree.io/f/votre_id" method="POST">
                     <div class="form-group">
