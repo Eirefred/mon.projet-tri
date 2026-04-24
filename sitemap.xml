@@ -3,6 +3,13 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
+    <loc>https://mon.projet-tri.org/splash.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
     <loc>https://mon.projet-tri.org/</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -18,6 +25,24 @@
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html"/>
+  </url>
+
+  <url>
+    <loc>https://mon.projet-tri.org/course.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/run.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html"/>
+  </url>
+
+  <url>
+    <loc>https://mon.projet-tri.org/en/run.html</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/run.html"/>
   </url>
 
   <url>
