@@ -242,7 +242,18 @@
     header { height: auto; padding: 10px 0; }
     .logo img { height: 35px !important; }
     
-    .menu-toggle { display: flex !important; }
+    .menu-toggle {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        width: 44px;      /* Largeur standard index.html */
+        height: 80px;     /* Hauteur calée sur le header de l'index */
+        font-size: 28px;  /* Taille exacte des barres du hamburger */
+        color: #004c97;   /* Ta couleur bleue */
+        cursor: pointer;
+        z-index: 2000;
+        user-select: none;
+    }
 
     /* 3. Menu déroulant */
     nav ul {
