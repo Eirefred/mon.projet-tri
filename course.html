@@ -271,7 +271,22 @@
     
     /* Footer */
     .footer-container { flex-direction: column; gap: 30px; text-align: center; }
+
+    .hero h1 {
+        font-size: 1.8rem !important; /* Réduit la taille pour que le long mot tienne */
+        line-height: 1.2;
+        padding: 0 15px;
+        word-wrap: break-word; /* Sécurité supplémentaire */
+    }
+    
+    /* Optionnel : tu peux aussi réduire un peu le sous-titre si besoin */
+    .hero p {
+        font-size: 1rem !important;
+    }
 }
+
+/* FIN SECTION MOBILE */
+
 
 /* Bouton Retour en haut (identique à index) */
 #backToTop {
