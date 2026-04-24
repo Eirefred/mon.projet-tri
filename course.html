@@ -90,20 +90,6 @@
             clip-path: ellipse(150% 100% at 50% 0%);
         }
         .hero h1 { font-size: 4rem; font-weight: 900; line-height: 1.1; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 20px; }
-        .hero-subtitle {
-    /* --- Conservation du style original --- */
-    font-size: 2.2rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-    margin-bottom: 30px;
-    
-    /* --- Maîtrise des deux lignes --- */
-    max-width: 40ch;      /* Force la coupure pour créer 2 lignes */
-    margin-left: auto;    /* Centre le bloc */
-    margin-right: auto;   /* Centre le bloc */
-    display: block;       /* Nécessaire pour le centrage auto */
-    line-height: 1.4;     /* Espace propre entre les deux lignes */
-}
         .hero-partner { margin-top: 50px; opacity: 0.9; }
         .hero-partner p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
         .partner-logo { height: 40px;}
@@ -117,48 +103,24 @@
 
         /* --- PROGRAMMES --- */
         .programme-section { padding: 100px 0; background-color: #f0f7ff; }
-        /* Le conteneur doit forcer l'alignement horizontal */
-
-
-/* --- VERSION ORDINATEUR (uniquement si l'écran est large) --- */
-@media screen and (min-width: 769px) {
-    .programme-grid {
-        display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: nowrap !important;
-        justify-content: center !important;
-        align-items: stretch !important;
-        gap: 30px !important;
-        width: 100% !important;
-        max-width: 1100px !important;
-        margin: 50px auto !important;
-    }
-
-    .programme-card {
-        flex: 1 1 0px !important;
-        min-width: 0 !important;
-        max-width: 500px !important;
-    }
-}
-
-/* Les cartes doivent accepter de rétrécir pour tenir côte à côte */
-.programme-card {
-    background: var(--white);
-    padding: 40px 30px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: var(--shadow-punchy);
-    border-left: 6px solid #D65F3A;
-    display: flex;
-    flex-direction: column;
-    position: relative; /* Pour le badge "Populaire" */
-    transition: transform 0.3s ease;
-}
-
-/* AJOUT : Pour forcer le bouton en bas de la carte */
-.programme-card p {
-    flex-grow: 1; /* Le texte prend tout l'espace disponible, poussant le bouton vers le bas */
-}
+        .programme-grid { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 50px; }
+        
+        .programme-card {
+            background: var(--white);
+            padding: 60px 40px;
+            border-radius: 30px;
+            flex: 1;
+            min-width: 320px;
+            max-width: 450px;
+            text-align: center; /* Centrage global du texte */
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: var(--shadow-punchy);
+            position: relative;
+            border: 1px solid rgba(0, 76, 151, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centrage des éléments flex */
+        }
         .programme-card h3 {
     font-size: 1.8rem; /* Augmentez cette valeur (auparavant autour de 1.6rem) */
     text-transform: uppercase;
@@ -191,8 +153,6 @@
         }
         .card-button:hover { background: var(--primary-gradient); transform: scale(1.05); }
 
-
-
         /* --- INFO BOX --- */
         .info-box-glass {
             max-width: 800px; margin: 80px auto 0;
@@ -204,15 +164,9 @@
         /* --- CONTACT --- */
         .contact-section { padding: 100px 0; background: white; }
         .contact-card {
-    background: #f0f7ff;
-    padding: 60px;
-    border-radius: 40px;
-    max-width: 700px;
-    margin: 0 auto;
-    box-shadow: var(--shadow-punchy);
-    /* On ajoute le liseré orange ici aussi */
-    border-left: 8px solid #D65F3A; 
-}
+            background: #f0f7ff; padding: 60px; border-radius: 40px;
+            max-width: 700px; margin: 0 auto; box-shadow: var(--shadow-punchy);
+        }
         .form-group { margin-bottom: 20px; text-align: left; }
         .form-group label { display: block; font-weight: 800; margin-bottom: 8px; color: #004c97; text-transform: uppercase; font-size: 0.8rem; }
         .form-group input, .form-group select, .form-group textarea {
@@ -239,112 +193,6 @@
             letter-spacing: 1px;
             box-shadow: 0 15px 30px rgba(214, 95, 58, 0.3);
         }
-
-
-
-        /* --- AJOUTS RÉGLAGES MOBILES (COHÉRENCE INDEX.HTML) --- */
-/* --- RÉGLAGES MOBILES FINAUX --- */
-@media (max-width: 768px) {
-    /* 1. Correction du texte qui dépasse */
-    .hero-content h2, 
-    h2 {
-        font-size: 1.6rem !important; /* On baisse la taille pour le mot 'L'accompagnement' */
-        line-height: 1.3;
-        word-wrap: break-word; /* Force la coupure si le téléphone est vraiment très petit */
-        margin-bottom: 15px;
-        padding: 0 10px;
-    }
-    .hero-subtitle {
-        max-width: 100% !important; /* Libère la contrainte sur mobile */
-        font-size: 1.6rem;           /* Ajuste légèrement la taille */
-        padding: 0 20px;
-    }
-}
-
-    /* 2. Header et Logo */
-    header { height: auto; padding: 10px 0; }
-    .logo img { height: 35px !important; }
-    
-    .menu-toggle {
-        display: flex !important;
-        align-items: center;
-        justify-content: center;
-        width: 44px;      /* Largeur standard index.html */
-        height: 80px;     /* Hauteur calée sur le header de l'index */
-        font-size: 28px;  /* Taille exacte des barres du hamburger */
-        color: #004c97;   /* Ta couleur bleue */
-        cursor: pointer;
-        z-index: 2000;
-        user-select: none;
-    }
-
-    /* 3. Menu déroulant */
-    nav ul {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 100%; 
-        left: 0;
-        width: 100%;
-        background: white;
-        padding: 20px 0;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        gap: 15px;
-    }
-    nav ul.active { display: flex; }
-
-    /* 4. Formulaire (Empilement des champs) */
-    .form-row {
-        flex-direction: column !important;
-        gap: 0 !important;
-    }
-    .form-group {
-        width: 100% !important;
-        margin-bottom: 15px;
-    }
-
-    /* 5. Grille de programmes */
-    .programme-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        padding: 0 15px;
-    }
-
-    .programme-card {
-        display: flex;
-        flex-direction: column;
-        /* Force toutes les cartes à avoir la même hauteur si elles sont dans un flex container */
-        height: 100%; 
-        min-width: unset;
-        margin: 0;
-        padding: 30px 20px;
-        /* Optionnel : aligner le bouton en bas si le texte varie */
-        justify-content: space-between; 
-    }
-}
-
-/* FIN SECTION MOBILE */
-
-
-/* Bouton Retour en haut (identique à index) */
-#backToTop {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-    background: #D65F3A;
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
-#backToTop.visible { display: flex; align-items: center; justify-content: center; }
 
         /* --- FOOTER --- */
         footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
@@ -376,9 +224,6 @@
                     <p>Partout au Québec<br><span>Dès 79$/mois</span></p>
                 </div>
             </div>
-
-            <div class="menu-toggle" id="mobile-menu">☰</div>
-
             <nav>
                 <ul>
                 <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OBNL</a></li> 
@@ -401,7 +246,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Sentez-vous<br><span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">accomplis.</span></h1>
-            <p class="hero-subtitle">Le coaching de course à pied soutenu par du mentorat individualisé.</p>
+            <p style="font-size: 1.8rem; font-weight: 400;">Le coaching de course à pied soutenu <br> par du mentorat individualisé.</p>
             <div class="hero-partner">
                 <p>En partenariat avec</p>
                 <img src="MPT_Logo_White_text.png" alt="Coaching Québec" class="partner-logo">
@@ -467,13 +312,10 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-card">
-    <h2 style="text-align: center; font-size: 2.2rem; font-weight: 800; color: #004c97; margin-bottom: 15px; letter-spacing: -0.5px;">
-        Parlons de votre projet
-    </h2>
+                <h2 style="text-align: center; font-size: 2.2rem; font-weight: 900; color: #004c97; margin-bottom: 10px; text-transform: uppercase;">Ça commence ici</h2>
     
-    <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 1.15rem; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Vous avez un objectif en tête ? <span style="color: #D65F3A; font-weight: 700;">Échangeons ensemble.</span><br> 
-        Remplissez ce formulaire et votre mentor vous contactera pour définir la meilleure approche pour votre saison.
+    <p style="text-align: center; color: var(--text-light); margin-bottom: 40px; font-size: 1.1rem;">
+        Prêt à lacer vos chaussures ? Écrivez-nous pour discuter de vos objectifs et définir ensemble le plan qui vous mènera à la ligne d'arrivée.
     </p>
                 <form action="https://formspree.io/f/votre_id" method="POST">
                     <div class="form-group">
@@ -521,49 +363,5 @@
         </div>
     </footer>
 
-<button id="backToTop">↑</button>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuBtn = document.getElementById('mobile-menu');
-        const navMenu = document.querySelector('nav ul');
-        const backToTopBtn = document.getElementById("backToTop");
-
-        // Toggle Menu Mobile
-        if (menuBtn) {
-            menuBtn.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-                if (navMenu.classList.contains('active')) {
-                    this.textContent = '✕';
-                } else {
-                    this.textContent = '☰';
-                }
-            });
-        }
-
-        // Fermer le menu si on clique sur un lien
-        document.querySelectorAll('nav ul a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                if (menuBtn) menuBtn.textContent = '☰';
-            });
-        });
-
-        // Gestion du bouton Back to Top
-        window.onscroll = function() {
-            if (window.innerWidth <= 768) {
-                if (document.documentElement.scrollTop > 300) {
-                    backToTopBtn.classList.add("visible");
-                } else {
-                    backToTopBtn.classList.remove("visible");
-                }
-            }
-        };
-
-        backToTopBtn.onclick = function() {
-            window.scrollTo({top: 0, behavior: 'smooth'});
-        };
-    });
-    </script>
 </body>
 </html>
