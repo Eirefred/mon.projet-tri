@@ -251,7 +251,17 @@
             .hero { background-position: 85% center; }
             .subtitle-intro { font-size: 1.6rem; max-width: 85%; }
             .presentation h2 { font-size: 1.8rem; }
-            .contact-card, .programme-card { width: 95% !important; padding: 20px; }
+            * {
+    box-sizing: border-box; /* Crucial pour éviter le débordement */
+}
+
+.contact-card, .programme-card {
+    width: 95% !important;  /* On laisse une petite marge de sécurité */
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;          /* On réduit le padding interne sur mobile */
+}
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
                 display: none; flex-direction: column; position: absolute;
