@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-<title>Mon Projet Tri & Run | Coaching Sportif et Mentorat au Québec</title>
-<meta name="description" content="Découvrez Mon Projet Tri et Mon Projet Run. Mentorat sportif et plans d'entraînement personnalisés pour le triathlon et la course à pied partout au Québec.">
-
-<meta property="og:title" content="Mon Projet Tri & Run | Coaching Sportif">
-<meta property="og:description" content="Atteignez vos objectifs en triathlon ou en course à pied avec notre accompagnement personnalisé.">
-<meta property="og:image" content="https://mon.projet-tri.org/banniere-run.jpg">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon Projet | Choisissez votre défi</title>
@@ -211,46 +203,26 @@
 <body>
 
     <header>
-    <h1>Coaching & Mentorat Sportif au Québec | <span>Mon Projet Tri & Run</span></h1>
-    <p>Organisme spécialisé en triathlon et course à pied</p>
+    <p>Organisme spécialisé en <strong>Coaching & Mentorat Sportif</strong> au Québec</p>
 </header>
 
-   <div class="splash-container">
-    <a href="javascript:void(0)" onclick="redirectProject('tri')" class="side side-tri">
-        <div class="content">
-            <img src="MPT_Logo_White_text_300.png" alt="Coaching et club de triathlon Québec - Mon Projet Tri" class="logo-img">
-            <p>Natation • Vélo • Course</p>
-            <div class="btn">Accéder au site</div>
-        </div>
-    </a>
+    <div class="splash-container">
+        <a href="index.html" class="side side-tri">
+            <div class="content">
+                <img src="MPT_Logo_White_text_300.png" alt="Mon Projet Tri" class="logo-img">
+                <p>Natation • Vélo • Course</p>
+                <div class="btn">Accéder au site</div>
+            </div>
+        </a>
 
-    <a href="javascript:void(0)" onclick="redirectProject('run')" class="side side-run">
-        <div class="content">
-            <img src="MPR_Logo_White_text_300.png" alt="Programme d'entraînement course à pied - Mon Projet Run" class="logo-img">
-            <p>Spécialiste Course à pied</p>
-            <div class="btn">Accéder au site</div>
-        </div>
-    </a>
-</div>
-<script>
-function redirectProject(project) {
-    // On regarde toutes les langues préférées de l'utilisateur
-    const languages = navigator.languages || [navigator.language || navigator.userLanguage];
-    
-    // On vérifie si le français est présent n'importe où dans la liste
-    const hasFrench = languages.some(lang => lang.toLowerCase().startsWith('fr'));
-    
-    // On ne redirige vers l'anglais QUE si le français n'est pas là 
-    // ET que l'anglais est présent.
-    const hasEnglish = languages.some(lang => lang.toLowerCase().startsWith('en'));
-    const shouldGoToEn = !hasFrench && hasEnglish;
+        <a href="course.html" class="side side-run">
+            <div class="content">
+                <img src="MPR_Logo_White_text_300.png" alt="Mon Projet Run" class="logo-img">
+                <p>Spécialiste Course à pied</p>
+                <div class="btn">Accéder au site</div>
+            </div>
+        </a>
+    </div>
 
-    if (project === 'tri') {
-        window.location.href = shouldGoToEn ? 'en/index.html' : 'index.html';
-    } else if (project === 'run') {
-        window.location.href = shouldGoToEn ? 'en/run.html' : 'course.html';
-    }
-}
-</script>
 </body>
 </html>
