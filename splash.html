@@ -2,30 +2,7 @@
 <html lang="fr">
 <head>
 
-<script>
-(function() {
-    // 1. On vérifie si on a déjà vérifié la langue pour cette session (évite les boucles)
-    if (sessionStorage.getItem('lang_checked')) return;
 
-    // 2. Si l'URL contient déjà un paramètre lang=fr, on ne redirige pas
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('lang') === 'fr') {
-        sessionStorage.setItem('lang_checked', 'true');
-        return;
-    }
-
-    // 3. On détecte la langue du navigateur
-    const userLang = navigator.language || navigator.userLanguage;
-    
-    // 4. Si ce n'est PAS du français, on redirige vers la version anglaise
-    if (!userLang.startsWith('fr')) {
-        sessionStorage.setItem('lang_checked', 'true');
-        window.location.href = "./en/run.html"; // Redirection vers ton nouveau fichier
-    } else {
-        sessionStorage.setItem('lang_checked', 'true');
-    }
-})();
-</script>
 
 
     <meta charset="UTF-8">
