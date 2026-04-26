@@ -229,6 +229,7 @@
         /* MODIFICATION ICI : Taille du logo réduite */
         .logo img { height: 55px; display: block; width: auto; }
         
+        .region-mention { font-size: 1rem; color: #444; font-style: italic; border-left: 2px solid #ddd; padding-left: 20px; white-space: nowrap; }
         nav ul { display: flex; list-style: none; align-items: center; }
         nav ul li { margin-left: 25px; }
         nav ul li a { text-decoration: none; color: var(--primary); font-weight: 600; transition: 0.3s; }
@@ -452,7 +453,7 @@
     }
 
         @media (max-width: 768px) {
-            header { height: 70px; }
+            header { height: 80px; }
 
             .hero-content {
                 padding-top: 40px !important;
@@ -467,7 +468,22 @@
         min-height: 400px; /* Ajustez selon la hauteur voulue de votre bannière mobile */
     }
 
-           
+           .region-stack {
+        margin-left: -5px;
+        padding-left: 10px;
+        /* Empêche le bloc de prendre trop de place */
+        border-left: 1px solid rgba(0, 51, 102, 0.2);
+    }
+    
+    .region-mention {
+        /* Taille réduite au maximum pour mobile pour que ça tienne */
+        font-size: 10px !important; 
+        letter-spacing: -0.2px !important; /* On resserre un peu les lettres */
+    }
+
+    .price-tag-new {
+        font-size: 9px !important;
+    }
     
     .menu-toggle {
         display: flex !important;
@@ -542,26 +558,19 @@
         align-items: center !important;
     }
 
-            .logo img { height: 55px; }
+            .logo img { height: 35px !important; }
 
-            .region-stack {
-        height: 30px;
+            .region-mention {
+        display: block !important;
+        white-space: normal !important; /* Autorise le retour à la ligne */
+        width: 85px;                   /* Largeur réduite pour forcer les 2 lignes */
+        text-align: left;
+        font-size: 10px;
+        line-height: 1.1;
         margin-left: 10px;
-        padding-left: 10px;
+        flex-shrink: 0;                /* Empêche le bloc de se comprimer par flexbox */
+        white-space: nowrap !important; /* LA RÈGLE D'OR POUR UNE SEULE LIGNE */
     }
-
-.region-mention {
-    font-size: 0.7rem;
-}
-
-.header-left img {
-        height: 40px !important; /* Au lieu de 50px ou 60px */
-    }
-    
-.price-tag-new {
-    font-size: 0.65rem;
-}
-            
             .footer-container {
                 flex-direction: column;
                 text-align: center;
