@@ -101,6 +101,9 @@
             --white: #ffffff;
             --light-bg: #f9f9f9;
             --brand-blue: #0481fb; /* Ta couleur exacte */
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #FF9068 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -270,8 +273,26 @@
 
         .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.5rem; font-weight: 800; text-align: center; width: 100%; }
         .card p { text-align: center; }
-        .btn-card { display: inline-block; margin-top: 25px; padding: 12px 20px; background-color: var(--primary); color: var(--white); text-decoration: none; border-radius: 4px; font-weight: bold; text-transform: none; font-size: 0.9rem; text-align: center; border: none; cursor: pointer; transition: 0.3s; }
-        .btn-card:hover { background-color: var(--accent); }
+        .btn-card {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 25px; /* Réduit de 20px à 15px pour la largeur */
+    background: var(--secondary-gradient);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-card:hover {
+    background: var(--primary-gradient);
+    transform: scale(1.05);
+}
 
         /* --- MODALES --- */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 2000; justify-content: center; align-items: center; backdrop-filter: blur(5px); padding: 20px; }
@@ -354,8 +375,27 @@
         .form-row .form-group { flex: 1; }
         input, select, textarea { width: 100%; padding: 12px 15px; border: 1px solid #ddd; border-radius: 6px; font-size: 1rem; font-family: inherit; }
         input[type="tel"].invalid { border: 2px solid #ff0000; background-color: #fff2f2; }
-        .btn-submit { display: block;margin: 20px auto 0;width: 100%; max-width: 400px; background: var(--accent); color: var(--white); padding: 16px; border: none; border-radius: 6px; font-size: 1rem; font-weight: 800; text-transform: uppercase; cursor: pointer; transition: 0.3s; }
-        .btn-submit:hover { background: #e65c00; transform: scale(1.02); }
+        .btn-submit {
+    display: block;
+    margin: 20px auto 0;
+    width: 100%;
+    max-width: 380px; /* Largeur limitée pour être moins long */
+    background: var(--combined-gradient);
+    color: white;
+    padding: 12px; 
+    border: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.btn-submit:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
 
         /* --- FOOTER --- */
         footer { 
@@ -585,24 +625,23 @@ nav ul.active li {
         /* Styles spécifiques au Toggle (communs PC/Mobile) */
         .btn-diagnostic-large {
     display: block;
-    width: 90%;
-    max-width: 450px;
-    margin: 40px auto;
-    background-color: var(--primary); /* Bleu comme vos boutons de cartes */
-    color: var(--white);
-    padding: 18px 25px;
-    border: none;
-    border-radius: 4px; /* Même arrondi que les boutons "C'est moi" */
-    font-weight: bold;
-    font-size: 1rem;
+    width: fit-content;
+    margin: 30px auto;
+    background: white;
+    color: #004c97;
+    padding: 18px 25px; /* Augmenté de 10px à 18px pour la hauteur */
+    border: 2px solid #004c97;
+    border-radius: 50px;
+    font-weight: 900;
+    font-size: 0.85rem;
     cursor: pointer;
-    text-transform: none; /* Reste simple comme les autres */
-    transition: 0.3s ease; /* Même vitesse de transition que vos cartes */
+    text-transform: uppercase;
+    transition: 0.3s ease;
 }
 
 .btn-diagnostic-large:hover {
-    background-color: var(--accent); /* Change en orange au survol */
-    transform: translateY(-3px); /* Petit effet de soulèvement pour le distinguer */
+    background: #f0f7ff;
+    transform: translateY(-2px);
 }
 
         .lang-selector { margin-left: 20px; display: flex; align-items: center; }
@@ -794,13 +833,13 @@ nav ul.active li {
     <div class="card card-premier-pas" onclick="openModal('m1')" role="img" aria-label="Débuter le triathlon au Québec" style="cursor: pointer;">
         <h3>Premier Pas</h3>
         <p>Pour ceux qui n'ont jamais osé se placer sur la ligne de départ, par crainte ou manque de connaissance. Un encadrement sécurisant de A à Z pour votre premier triathlon avec des mentors qui sont déjà passés par là.</p>
-        <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+        <button class="btn-card">C'EST MOI<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus..)</small></button>
     </div>
 
     <div class="card card-mentorat" onclick="openModal('m2-fusion')" role="img" aria-label="Mentorat et performance triathlon personnalisé" style="cursor: pointer;">
         <h3>Ma Saison <br> et Performance</h3>
         <p>Que vous visiez d'être en forme pour la saison de triathlon, ou que vous soyez en quête du défi ultime comme faire un Ironman, bénéficiez d'un mentorat expert et connecté.</p>
-        <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus)</small></button>
+        <button class="btn-card">JE ME RECONNAIS<br><small style="font-size: 0.75em; font-weight: 400; opacity: 0.8;">(voir plus...)</small></button>
     </div>
 </div>
 
