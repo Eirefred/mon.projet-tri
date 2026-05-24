@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grand Concours | Mon Projet Tri</title>
+    
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --accent-gradient: linear-gradient(135deg, #D65F3A 0%, #FF9068 100%);
+            --bg-fresh: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+            --shadow-punchy: 0 20px 40px rgba(0, 76, 151, 0.08);
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            background-color: var(--bg-fresh);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        header p {
+            margin: 0;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #333;
+        }
+
+        header img {
+            height: 45px;
+            vertical-align: middle;
+        }
+
+        .hero {
+            height: 35vh;
+            background: linear-gradient(rgba(0, 76, 151, 0.5), rgba(0, 0, 0, 0.3)), url('banniere.jpg');
+            background-size: cover;
+            /* Modifié pour afficher la partie supérieure de l'image */
+            background-position: 50% 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            padding: 60px 20px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-punchy);
+        }
+
+        .form-group { 
+            margin-bottom: 22px; 
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .address-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 22px;
+        }
+
+        .address-grid-3 {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #004c97;
+            box-shadow: 0 0 0 3px rgba(0, 76, 151, 0.1);
+        }
+
+        .opt-in-box {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            margin-top: 25px;
+        }
+
+        .opt-in-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .radio-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .radio-label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .radio-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
+        .radio-option input {
+            width: auto;
+            cursor: pointer;
+        }
+
+        .file-label {
+            display: block;
+            padding: 20px;
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .file-label:hover {
+            background: #e2e8f0;
+            border-color: #004c97;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .submit-btn {
+            background: var(--accent-gradient);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(214, 95, 58, 0.3);
+        }
+
+        footer {
+            background: #1a202c;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            header p { font-size: 0.7rem; }
+            header img { height: 35px; }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .form-section { padding: 40px 15px; margin-top: -30px; }
+            .form-card { padding: 25px; }
+            .form-row, .address-grid, .address-grid-3 { display: flex; flex-direction: column; gap: 0; }
+            #backToTop.visible { opacity: 1; visibility: visible; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <p>Jeu concours organisé par</p>
+        <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri">
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Jeu Concours</h1>
+            <p>Partagez votre zone de transition et courez la chance de gagner !</p>
+        </div>
+    </section>
+
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                
+                <form action="https://forminit.com/f/r5jzcuvafml" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" id="prenom" name="fi-text-prenom" required placeholder="Votre prénom">
+                        </div>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" id="nom" name="fi-text-nom" required placeholder="Votre nom">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Âge</label>
+                            <input type="number" id="age" name="fi-text-age" required min="1" max="120" placeholder="Ex: 34">
+                        </div>
+                        <div class="form-group">
+                            <label for="courriel">Adresse courriel</label>
+                            <input type="email" id="courriel" name="fi-sender-email" required placeholder="nom@exemple.com">
+                        </div>
+                    </div>
+
+                    <div class="address-grid">
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="adresse">Adresse (numéro et rue)</label>
+                            <input type="text" id="adresse" name="fi-text-adresse-rue" required placeholder="Ex: 123 rue des Cerisiers">
+                        </div>
+                        <div class="form-group" style="margin-bottom: 0;">
+                            <label for="appartement">Appartement / Suite</label>
+                            <input type="text" id="appartement" name="fi-text-adresse-app" placeholder="Ex: App 4 (Optionnel)">
+                        </div>
+                    </div>
+
+                    <div class="address-grid-3">
+                        <div class="form-group">
+                            <label for="ville">Ville</label>
+                            <input type="text" id="ville" name="fi-text-adresse-ville" required placeholder="Ex: Beloeil">
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Province</label>
+                            <input type="text" id="province" name="fi-text-adresse-province" required value="QC" placeholder="Ex: QC">
+                        </div>
+                        <div class="form-group">
+                            <label for="postal">Code postal</label>
+                            <input type="text" id="postal" name="fi-text-adresse-code-postal" required placeholder="Ex: J3G 4S5" pattern="[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label>Photo de votre zone de transition</label>
+                        <label for="photo" class="file-label">
+                            <span id="file-status">📷 Sélectionner ou glisser votre photo ici</span>
+                            <input type="file" id="photo" name="fi-file-zone-transition" accept="image/*" class="file-input" required onchange="updateFileStatus()">
+                        </label>
+                    </div>
+
+                    <div class="opt-in-box">
+                        <div class="opt-in-title">Autorisations de communication</div>
+                        
+                        <div class="radio-group">
+                            <div style="flex: 1;">
+                                <span class="radio-label">J'autorise l'utilisation de mon courriel pour recevoir l'infolettre de <strong>Mon Projet Tri</strong>.</span>
+                            </div>
+                            <div class="radio-options">
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-projet-tri" value="Oui" required> Oui</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-projet-tri" value="Non"> Non</label>
+                            </div>
+                        </div>
+
+                        <div class="radio-group" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                            <div style="flex: 1;">
+                                <span class="radio-label">J'autorise l'utilisation de mon courriel pour recevoir l'infolettre du <strong>Triathlon de la Vallée-du-Richelieu Rouville</strong>.</span>
+                            </div>
+                            <div class="radio-options">
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-vallee-richelieu" value="Oui" required> Oui</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-vallee-richelieu" value="Non"> Non</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Soumettre ma participation</button>
+                </form>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mon Projet Tri — Tous droits réservés.</p>
+    </footer>
+
+    <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
+
+    <script>
+        function updateFileStatus() {
+            const fileInput = document.getElementById('photo');
+            const fileStatus = document.getElementById('file-status');
+            if (fileInput.files.length > 0) {
+                fileStatus.innerText = "✅ Image ajoutée : " + fileInput.files[0].name;
+                fileStatus.style.color = "#004c97";
+                fileStatus.style.fontWeight = "bold";
+            }
+        }
+
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 768) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+</body>
+</html>
