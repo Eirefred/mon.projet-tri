@@ -312,7 +312,7 @@
         <div class="container">
             <div class="form-card">
                 
-                <form action="https://forminit.com/f/ridt11igvvl" method="POST" enctype="multipart/form-data" onsubmit="return validerFormulaire(event)">
+                <form id="contestForm" action="https://forminit.com/f/ridt11igvvl" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-row">
                         <div class="form-group">
@@ -366,7 +366,7 @@
                         <label>Photo de votre zone de transition</label>
                         <label for="photo" class="file-label" id="file-label-zone">
                             <span id="file-status">📷 Sélectionner ou glisser votre photo ici</span>
-                            <input type="file" id="photo" name="photo_zone_transition" accept="image/*" class="file-input" required onchange="updateFileStatus()">
+                            <input type="file" id="photo" name="photo_zone_transition" accept="image/*" class="file-input" onchange="updateFileStatus()">
                         </label>
                     </div>
 
@@ -404,7 +404,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="submit-btn">Soumettre ma participation</button>
+                    <button type="submit" id="submit-btn" class="submit-btn">Soumettre ma participation</button>
                 </form>
 
             </div>
@@ -418,21 +418,33 @@
     <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
 
     <script>
-        function validerFormulaire(event) {
+        // Interception ultra-prioritaire lors du clic sur le bouton de soumission
+        document.getElementById('submit-btn').addEventListener('click', function(event) {
             const fileInput = document.getElementById('photo');
             const fileLabelZone = document.getElementById('file-label-zone');
+            const form = document.getElementById('contestForm');
             
+            // Si aucune photo n'est sélectionnée
             if (fileInput.files.length === 0) {
-                event.preventDefault(); // Bloque la soumission
+                event.preventDefault(); // Annule le clic et empêche TOUT envoi immédiatement
+                event.stopPropagation(); // Bloque la propagation vers d'éventuels scripts tiers
+                
                 alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
+                
                 fileLabelZone.classList.add('error-flash');
                 setTimeout(() => {
                     fileLabelZone.classList.remove('error-flash');
                 }, 500);
-                return false; 
+                
+                return false;
             }
-            return true; 
-        }
+            
+            // Si le navigateur supporte la validation native des autres champs (HTML5)
+            if (!form.checkValidity()) {
+                // On laisse les messages natifs du navigateur s'afficher pour les autres champs requis
+                return;
+            }
+        });
 
         function updateFileStatus() {
             const fileInput = document.getElementById('photo');
