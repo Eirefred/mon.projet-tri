@@ -596,9 +596,9 @@ nav ul.active li {
         }
 
         /* Masquer UNIQUEMENT le bouton blanc "Découvrir en 60s" sur mobile */
-            .hero-content .cta-group button:not(.btn-primary) {
-                display: none !important;
-            }
+        .hero-content div button[onclick*="video-modal"] {
+            display: none !important;
+        }
 
         } 
 
