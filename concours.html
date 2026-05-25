@@ -277,26 +277,7 @@
             margin-top: 40px;
         }
 
-        #backToTop {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            background: var(--accent-gradient);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: 0.3s;
-        }
+       
 
         @media (max-width: 768px) {
             header p { font-size: 0.7rem; }
@@ -308,7 +289,6 @@
             .form-section { padding: 40px 15px; margin-top: -20px; }
             .form-card { padding: 25px; }
             .form-row, .address-grid, .address-grid-3 { display: flex; flex-direction: column; gap: 0; }
-            #backToTop.visible { opacity: 1; visibility: visible; }
         }
     </style>
 </head>
