@@ -439,34 +439,46 @@
     <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
 
     <script>
-        document.getElementById('submit-btn').addEventListener('click', function(event) {
+        document.getElementById('contestForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // On bloque l'envoi HTML classique d'abord
+            
             const fileInput = document.getElementById('photo');
             const fileLabelZone = document.getElementById('file-label-zone');
-            const form = document.getElementById('contestForm');
+            const form = event.target;
             
+            // 1. Validation de la présence du fichier
             if (fileInput.files.length === 0) {
-                event.preventDefault(); 
-                event.stopPropagation(); 
-                
                 alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
-                
                 fileLabelZone.classList.add('error-flash');
-                setTimeout(() => {
-                    fileLabelZone.classList.remove('error-flash');
-                }, 500);
-                
+                setTimeout(() => fileLabelZone.classList.remove('error-flash'), 500);
                 return false;
             }
-            
-            if (!form.checkValidity()) {
-                return; 
-            }
 
-            event.preventDefault(); 
+            // 2. Génération du jeton reCAPTCHA v3 puis envoi Ajax structuré
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
                     document.getElementById('g-recaptcha-response').value = token;
-                    form.submit(); 
+                    
+                    // On construit un objet d'envoi moderne (FormData) qui fusionne fichiers + textes
+                    const formData = new FormData(form);
+                    
+                    // Envoi asynchrone direct vers Forminit
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            // Redirection ou message de succès (Forminit gère la redirection par défaut s'il y en a une configurée)
+                            window.location.href = response.url || window.location.href;
+                        } else {
+                            alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        alert("Erreur de connexion. Veuillez valider vos informations.");
+                    });
                 });
             });
         });
