@@ -1082,16 +1082,20 @@ nav ul.active li {
 
 <script>
    // --- LOGIQUE GLOBALE DU QUIZ ---
+// --- LOGIQUE GLOBALE DU QUIZ & MODALES ---
 let scores = { securite: 0, autonomie: 0, social: 0 };
 let progRes = "";
 
 function openModal(id) {
     const modal = document.getElementById(id);
-    const iframe = document.getElementById('youtube-iframe');
-    
-    // On définit l'URL seulement à l'ouverture pour éviter les erreurs de chargement en arrière-plan
-    if (iframe) {
-        iframe.src = "https://www.youtube.com/embed/3_Rh3rHNYL8?autoplay=1&rel=0&modestbranding=1";
+    if (!modal) return;
+
+    // SÉCURITÉ : On charge l'iframe UNIQUELEMENT si c'est la modale de la vidéo
+    if (id === 'video-modal') {
+        const iframe = document.getElementById('youtube-iframe');
+        if (iframe) {
+            iframe.src = "https://www.youtube.com/embed/3_Rh3rHNYL8?autoplay=1&rel=0&modestbranding=1";
+        }
     }
     
     modal.style.display = 'flex';
@@ -1099,18 +1103,23 @@ function openModal(id) {
 
 function closeModal(id) {
     const modal = document.getElementById(id);
-    const iframe = document.getElementById('youtube-iframe');
-    
+    if (!modal) return;
+
     modal.style.display = 'none';
     
-    // On vide la source pour couper le son et réinitialiser le lecteur
-    if (iframe) {
-        iframe.src = "";
+    // SÉCURITÉ : On coupe le son UNIQUEMENT si on ferme la modale de la vidéo
+    if (id === 'video-modal') {
+        const iframe = document.getElementById('youtube-iframe');
+        if (iframe) {
+            iframe.src = "";
+        }
     }
 }
 
+// Gestion globale de la fermeture en cliquant à l'extérieur de la modale
 window.onclick = function(event) {
     if (event.target.classList.contains('modal-overlay')) {
+        // Récupère l'ID exact de la modale sur laquelle on a cliqué en arrière-plan
         closeModal(event.target.id);
     }
 };
