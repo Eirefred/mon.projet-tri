@@ -8,6 +8,8 @@
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
 
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De"></script>
+
     <style>
         html { scroll-behavior: smooth; }
 
@@ -58,7 +60,7 @@
         }
 
         .hero {
-            height: 45vh; /* Augmenté légèrement pour accueillir le logo et le texte plus gros */
+            height: 45vh;
             background: linear-gradient(rgba(0, 76, 151, 0.5), rgba(0, 0, 0, 0.3)), url('banniere.jpg');
             background-size: cover;
             background-position: 50% 15%; 
@@ -79,17 +81,15 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* Style pour le logo sous le titre */
         .hero-logo {
-            height: 80px;
+            height: 60px;
             margin: 15px auto;
             display: block;
             filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.3));
         }
 
-        /* Texte agrandi selon votre demande */
         .hero-content p {
-            font-size: 1.7rem; /* Augmenté de 1.2rem à 1.5rem */
+            font-size: 2rem;
             font-weight: 500;
             margin-top: 15px;
             opacity: 0.95;
@@ -322,7 +322,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Jeu Concours</h1>
-            <img src="mon-projet-tri-logo-coaching-quebec_white.png" alt="Mon Projet Tri" class="hero-logo">
+            <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" class="hero-logo">
             <p>Partagez votre zone de transition et courez la chance de gagner !</p>
         </div>
     </section>
@@ -389,6 +389,8 @@
                         </label>
                     </div>
 
+                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+
                     <div class="opt-in-box">
                         <div class="opt-in-title">Autorisations de communication</div>
                         
@@ -442,6 +444,7 @@
             const fileLabelZone = document.getElementById('file-label-zone');
             const form = document.getElementById('contestForm');
             
+            // 1. Blocage si pas de photo
             if (fileInput.files.length === 0) {
                 event.preventDefault(); 
                 event.stopPropagation(); 
@@ -457,8 +460,17 @@
             }
             
             if (!form.checkValidity()) {
-                return;
+                return; 
             }
+
+            // 2. Génération automatique du jeton de sécurité invisible Google reCAPTCHA v3
+            event.preventDefault(); 
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    form.submit(); 
+                });
+            });
         });
 
         function updateFileStatus() {
