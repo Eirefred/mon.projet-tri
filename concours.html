@@ -89,7 +89,7 @@
         }
 
         .hero-content p {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 500;
             margin-top: 15px;
             opacity: 0.95;
@@ -331,7 +331,7 @@
         <div class="container">
             <div class="form-card">
                 
-                <form id="contestForm" action="https://forminit.com/f/kawt43rv2cq" method="POST" enctype="multipart/form-data">
+                <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-row">
                         <div class="form-group">
@@ -440,45 +440,33 @@
 
     <script>
         document.getElementById('contestForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // On bloque l'envoi HTML classique d'abord
-            
             const fileInput = document.getElementById('photo');
             const fileLabelZone = document.getElementById('file-label-zone');
-            const form = event.target;
+            const form = this;
             
-            // 1. Validation de la présence du fichier
+            // 1. Validation de sécurité pour la photo
             if (fileInput.files.length === 0) {
+                event.preventDefault(); 
                 alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
                 fileLabelZone.classList.add('error-flash');
                 setTimeout(() => fileLabelZone.classList.remove('error-flash'), 500);
                 return false;
             }
 
-            // 2. Génération du jeton reCAPTCHA v3 puis envoi Ajax structuré
+            // 2. Si le jeton captcha existe déjà dans l'input masqué, on laisse le formulaire partir normalement
+            if (document.getElementById('g-recaptcha-response').value) {
+                return true;
+            }
+
+            // 3. Sinon, on bloque temporairement pour aller chercher la clé Google
+            event.preventDefault();
+
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
+                    // On injecte le jeton obtenu de Google
                     document.getElementById('g-recaptcha-response').value = token;
-                    
-                    // On construit un objet d'envoi moderne (FormData) qui fusionne fichiers + textes
-                    const formData = new FormData(form);
-                    
-                    // Envoi asynchrone direct vers Forminit
-                    fetch(form.action, {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Redirection ou message de succès (Forminit gère la redirection par défaut s'il y en a une configurée)
-                            window.location.href = response.url || window.location.href;
-                        } else {
-                            alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Erreur:', error);
-                        alert("Erreur de connexion. Veuillez valider vos informations.");
-                    });
+                    // On relance la soumission native et synchrone propre à Forminit
+                    form.submit();
                 });
             });
         });
