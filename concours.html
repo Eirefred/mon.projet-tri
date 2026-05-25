@@ -331,53 +331,53 @@
         <div class="container">
             <div class="form-card">
                 
-                <form id="contestForm" action="https://forminit.com/f/ridt11igvvl" method="POST" enctype="multipart/form-data">
+                <form id="contestForm" action="https://forminit.com/f/kawt43rv2cq" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
+                            <input type="text" id="prenom" name="fi-text-prenom" required placeholder="Votre prénom">
                         </div>
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+                            <input type="text" id="nom" name="fi-sender-fullName" required placeholder="Votre nom">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="age">Âge</label>
-                            <input type="number" id="age" name="age" required min="1" max="120" placeholder="Ex: 34">
+                            <input type="number" id="age" name="fi-text-age" required min="1" max="120" placeholder="Ex: 34">
                         </div>
                         <div class="form-group">
                             <label for="courriel">Adresse courriel</label>
-                            <input type="email" id="courriel" name="email" required placeholder="nom@exemple.com">
+                            <input type="email" id="courriel" name="fi-sender-email" required placeholder="nom@exemple.com">
                         </div>
                     </div>
 
                     <div class="address-grid">
                         <div class="form-group" style="margin-bottom: 0;">
                             <label for="adresse">Adresse (numéro et rue)</label>
-                            <input type="text" id="adresse" name="adresse_rue" required placeholder="Ex: 123 rue des Cerisiers">
+                            <input type="text" id="adresse" name="fi-text-adresse-rue" required placeholder="Ex: 123 rue des Cerisiers">
                         </div>
                         <div class="form-group" style="margin-bottom: 0;">
                             <label for="appartement">Appartement / Suite</label>
-                            <input type="text" id="appartement" name="adresse_app" placeholder="Ex: App 4 (Optionnel)">
+                            <input type="text" id="appartement" name="fi-text-adresse-app" placeholder="Ex: App 4 (Optionnel)">
                         </div>
                     </div>
 
                     <div class="address-grid-3">
                         <div class="form-group">
                             <label for="ville">Ville</label>
-                            <input type="text" id="ville" name="adresse_ville" required placeholder="Ex: Beloeil">
+                            <input type="text" id="ville" name="fi-text-adresse-ville" required placeholder="Ex: Beloeil">
                         </div>
                         <div class="form-group">
                             <label for="province">Province</label>
-                            <input type="text" id="province" name="adresse_province" required value="QC" placeholder="Ex: QC">
+                            <input type="text" id="province" name="fi-text-adresse-province" required value="QC" placeholder="Ex: QC">
                         </div>
                         <div class="form-group">
                             <label for="postal">Code postal</label>
-                            <input type="text" id="postal" name="adresse_code_postal" required placeholder="Ex: J3G 4S5" pattern="[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]">
+                            <input type="text" id="postal" name="fi-text-adresse-code-postal" required placeholder="Ex: J3G 4S5" pattern="[A-Za-z][0-9][A-Za-z]\s?[0-9][A-Za-z][0-9]">
                         </div>
                     </div>
 
@@ -385,7 +385,7 @@
                         <label>Photo de votre zone de transition</label>
                         <label for="photo" class="file-label" id="file-label-zone">
                             <span id="file-status">📷 Sélectionner ou glisser votre photo ici</span>
-                            <input type="file" id="photo" name="photo_zone_transition" accept="image/*" class="file-input" onchange="updateFileStatus()">
+                            <input type="file" id="photo" name="fi-file-zone-transition" accept="image/*" class="file-input" onchange="updateFileStatus()">
                         </label>
                     </div>
 
@@ -399,8 +399,8 @@
                                 <span class="radio-label">J'autorise l'utilisation de mon courriel pour recevoir l'infolettre de <strong>Mon Projet Tri</strong>.</span>
                             </div>
                             <div class="radio-options">
-                                <label class="radio-option"><input type="radio" name="infolettre_projet_tri" value="Oui" required> Oui</label>
-                                <label class="radio-option"><input type="radio" name="infolettre_projet_tri" value="Non"> Non</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-projet-tri" value="Oui" required> Oui</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-projet-tri" value="Non"> Non</label>
                             </div>
                         </div>
 
@@ -409,8 +409,8 @@
                                 <span class="radio-label">J'autorise l'utilisation de mon courriel pour recevoir l'infolettre du <strong>Triathlon de la Vallée-du-Richelieu Rouville</strong>.</span>
                             </div>
                             <div class="radio-options">
-                                <label class="radio-option"><input type="radio" name="infolettre_vallee_richelieu" value="Oui" required> Oui</label>
-                                <label class="radio-option"><input type="radio" name="infolettre_vallee_richelieu" value="Non"> Non</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-vallee-richelieu" value="Oui" required> Oui</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-vallee-richelieu" value="Non"> Non</label>
                             </div>
                         </div>
 
@@ -419,8 +419,8 @@
                                 <span class="radio-label">J'autorise l'utilisation de mon courriel pour recevoir l'infolettre du <strong>Triathlon/Duathlon de Saint-Lambert</strong>.</span>
                             </div>
                             <div class="radio-options">
-                                <label class="radio-option"><input type="radio" name="infolettre_saint_lambert" value="Oui" required> Oui</label>
-                                <label class="radio-option"><input type="radio" name="infolettre_saint_lambert" value="Non"> Non</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-saint-lambert" value="Oui" required> Oui</label>
+                                <label class="radio-option"><input type="radio" name="fi-text-infolettre-saint-lambert" value="Non"> Non</label>
                             </div>
                         </div>
                     </div>
@@ -444,7 +444,6 @@
             const fileLabelZone = document.getElementById('file-label-zone');
             const form = document.getElementById('contestForm');
             
-            // 1. Blocage si pas de photo
             if (fileInput.files.length === 0) {
                 event.preventDefault(); 
                 event.stopPropagation(); 
@@ -463,7 +462,6 @@
                 return; 
             }
 
-            // 2. Génération automatique du jeton de sécurité invisible Google reCAPTCHA v3
             event.preventDefault(); 
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
