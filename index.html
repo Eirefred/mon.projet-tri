@@ -595,12 +595,8 @@ nav ul.active li {
             gap: 10px !important;
         }
 
-        /* Cacher bouton video dans le menu */
-        .hero-content button {
-                display: none !important;
-            }
-            
-            #video-trigger {
+        /* Masquer UNIQUEMENT le bouton blanc "Découvrir en 60s" sur mobile */
+            .hero-content .cta-group button:not(.btn-primary) {
                 display: none !important;
             }
 
