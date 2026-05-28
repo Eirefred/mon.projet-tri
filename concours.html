@@ -46,6 +46,15 @@
             gap: 15px;
         }
 
+        header a img {
+    transition: all 0.3s ease;
+}
+
+header a:hover img {
+    transform: scale(1.04); /* Très léger zoom */
+    filter: drop-shadow(0 0 8px rgba(0, 131, 254, 0.6)); /* Halo lumineux bleu */
+}
+
         header p {
             margin: 0;
             font-size: 0.85rem;
@@ -301,9 +310,11 @@
 <body>
 
     <header>
-        <p>Jeu concours organisé par</p>
-        <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri">
-    </header>
+    <p>Jeu concours organisé par</p>
+    <a href="https://mon.projet-tri.org/splash.html" target="_blank">
+        <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" style="cursor: pointer;">
+    </a>
+</header>
 
     <section class="hero">
         <div class="hero-content">
