@@ -162,6 +162,12 @@
             box-sizing: border-box;
         }
 
+        textarea {
+          font-family: inherit;
+          resize: vertical;
+          min-height: 100px;
+        }
+
         input:focus, select:focus, textarea:focus {
             outline: none;
             border-color: #004c97;
@@ -367,6 +373,11 @@
                             <span id="file-status">📷 Sélectionner ou glisser votre photo ici</span>
                             <input type="file" id="photo" name="fi-file-zone-transition" accept="image/*" class="file-input" onchange="updateFileStatus()">
                         </label>
+                    </div>
+
+                    <div class="form-group" style="margin-top: 20px;">
+                     <label for="commentaire">Laissez un commentaire ou une description (Optionnel)</label>
+                       <textarea id="commentaire" name="fi-text-commentaire" rows="4" placeholder="Racontez-nous l'histoire de votre zone de transition ou ajoutez des précisions..."></textarea>
                     </div>
 
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
