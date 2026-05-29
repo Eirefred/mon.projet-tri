@@ -292,22 +292,7 @@ header a:hover img {
             margin-top: 40px;
         }
 
-       /* Style de la zone des prix par défaut (Ordinateur) */
-        .prizes-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .prizes-logos {
-            border-left: 2px dashed #cbd5e1;
-            padding-left: 25px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
+       
 
         @media (max-width: 768px) {
             header p { font-size: 0.7rem; }
@@ -319,30 +304,6 @@ header a:hover img {
             .form-section { padding: 40px 15px; margin-top: -20px; }
             .form-card { padding: 25px; }
             .form-row, .address-grid, .address-grid-3 { display: flex; flex-direction: column; gap: 0; }
-            /* Instructions à ajouter à l'intérieur de @media (max-width: 768px) */
-        .prizes-card {
-            padding: 15px !important;
-            margin-top: 25px !important;
-            margin-bottom: 25px !important;
-        }
-        .prizes-container {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        .prizes-logos {
-            border-left: none;
-            border-top: 2px dashed #cbd5e1;
-            padding-left: 0;
-            padding-top: 20px;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .prizes-logos img {
-            max-width: 80px !important; /* Réduction uniforme de tous les logos sur mobile */
-            height: auto;
-        }
         }
     </style>
 </head>
@@ -374,26 +335,31 @@ header a:hover img {
                     <p>Pour être valide, votre installation doit regrouper tout le matériel requis pour compléter vos deux transitions (T1 et T2) et respecter scrupuleusement <a href="https://www.triathlonquebec.org/series-evenements/regles-competition/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">les règlements de Triathlon Québec</a>.</p>
                     <p style="font-weight: 600; color: #D65F3A;">📸 Prenez une photo de votre aménagement et soumettez-la via le formulaire ci-dessous pour courir la chance de gagner !</p>
                     
-                    <div class="prizes-card" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 45px; margin-bottom: 45px;">
+                    <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 45px; margin-bottom: 45px;">
 
-                        <h3 style="color: #004c97; font-size: 1.2rem; margin-top: 0; margin-bottom: 25px;">🎁 Les prix à gagner</h3>
+    <h3 style="color: #004c97; font-size: 1.2rem; margin-top: 0; margin-bottom: 25px;">🎁 Les prix à gagner</h3>
 
-                        <div class="prizes-container">
-                            
-                            <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.95rem;">
-                                <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥇 <strong>1er prix :</strong> Une inscription au <a href="https://www.triathlondeverdun.com/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">Triathlon de Verdun</a> + un accompagnement sportif par <strong><em>mon</em> Projet Tri</strong>.</li>
-                                <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥈🥉 <strong>2e & 3e prix :</strong> 1 mois d'accompagnement sportif par <strong><em>mon</em> Projet Tri</strong>.</li>
-                                <li style="margin-bottom: 0; padding-left: 25px; text-indent: -25px;">🏅 <strong>4e au 8e prix :</strong> Une trousse d'hydratation <a href="https://krononutrition.com/fr-ca" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO Nutrition</a> (8 sachets de <a href="https://krononutrition.com/fr-ca/collections/electrolytes" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO LYTES</a> + <a href="https://krononutrition.com/fr-ca/collections/bouteilles-deau" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">une bouteille sport</a>).</li>
-                            </ul>
+    <div class="prizes-container" style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: center;">
+        
+        <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.95rem;">
+            <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥇 <strong>1er prix :</strong> Une inscription au <a href="https://www.triathlondeverdun.com/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">Triathlon de Verdun</a> + un accompagnement sportif par <strong><em>mon</em> Projet Tri</strong>.</li>
+            <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥈🥉 <strong>2e & 3e prix :</strong> 1 mois d'accompagnement sportif par <strong><em>mon</em> Projet Tri</strong>.</li>
+            <li style="margin-bottom: 0; padding-left: 25px; text-indent: -25px;">🏅 <strong>4e au 8e prix :</strong> Une trousse d'hydratation <a href="https://krononutrition.com/fr-ca" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO Nutrition</a> (8 sachets de <a href="https://krononutrition.com/fr-ca/collections/electrolytes" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO LYTES</a> + <a href="https://krononutrition.com/fr-ca/collections/bouteilles-deau" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">une bouteille sport</a>).</li>
+        </ul>
 
-                            <div class="prizes-logos">
-                                <img src="Triathlon_de_Verdun.png" alt="Triathlon de Verdun" style="max-width: 155px; height: auto; border-radius: 4px;">
-                                <img src="https://krononutrition.com/cdn/shop/files/Krono-Nutrition-Logo-noir.png?v=1737145972&width=220" alt="Krono Nutrition" style="max-width: 75px; height: auto;">
-                                <img src="https://mon.projet-tri.org/mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" style="max-width: 75px; height: auto;">
-                            </div>
-                            
-                        </div>
-                    </div>
+        <div class="prizes-logos" style="border-left: 2px dashed #cbd5e1; padding-left: 25px; display: flex; flex-direction: column; align-items: center; gap: 12px;">
+            
+            <img src="Triathlon_de_Verdun.png" alt="Triathlon de Verdun" style="max-width: 110px; height: auto; border-radius: 4px;">
+
+            <img src="https://krononutrition.com/cdn/shop/files/Krono-Nutrition-Logo-noir.png?v=1737145972&width=220" alt="Krono Nutrition" style="max-width: 75px; height: auto; margin-top: 2px;">
+
+            <img src="https://mon.projet-tri.org/mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" style="max-width: 75px; height: auto; margin-top: 2px;">
+        </div>
+        
+    </div>
+</div>
+
+                <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
                 
                 <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
                     
