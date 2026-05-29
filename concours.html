@@ -47,13 +47,13 @@
         }
 
         header a img {
-    transition: all 0.3s ease;
-}
+            transition: all 0.3s ease;
+        }
 
-header a:hover img {
-    transform: scale(1.04); /* Très léger zoom */
-    filter: drop-shadow(0 0 8px rgba(0, 131, 254, 0.6)); /* Halo lumineux bleu */
-}
+        header a:hover img {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 8px rgba(0, 131, 254, 0.6));
+        }
 
         header p {
             margin: 0;
@@ -292,21 +292,31 @@ header a:hover img {
             margin-top: 40px;
         }
 
-       /* Style de la zone des prix par défaut (Ordinateur) */
+        /* Zone des prix unifiée (Ordinateur et Mobile) en une seule colonne */
         .prizes-container {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 30px;
-            align-items: center;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
         }
 
         .prizes-logos {
-            border-left: 2px dashed #cbd5e1;
-            padding-left: 25px;
+            border-top: 2px dashed #cbd5e1;
+            padding-top: 20px;
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
             align-items: center;
-            gap: 15px;
+            gap: 30px;
+        }
+
+        .prizes-logos a {
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .prizes-logos a:hover {
+            transform: scale(1.05);
         }
 
         @media (max-width: 768px) {
@@ -321,44 +331,35 @@ header a:hover img {
             .form-row, .address-grid, .address-grid-3 { display: flex; flex-direction: column; gap: 0; }
 
             .section-title {
-    font-size: 1.3rem !important;
-    white-space: nowrap;
-}
-            /* Instructions à ajouter à l'intérieur de @media (max-width: 768px) */
-        .prizes-card {
-            padding: 15px !important;
-            margin-top: 25px !important;
-            margin-bottom: 25px !important;
-        }
-        .prizes-container {
-            grid-template-columns: 1fr;
-            gap: 25px;
-        }
-        .prizes-logos {
-            border-left: none;
-            border-top: 2px dashed #cbd5e1;
-            padding-left: 0;
-            padding-top: 20px;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-        }
-        .prizes-logos img {
-            max-width: 80px !important; /* Réduction uniforme de tous les logos sur mobile */
-            height: auto;
-        }
+                font-size: 1.3rem !important;
+                white-space: nowrap;
+            }
+
+            .prizes-card {
+                padding: 15px !important;
+                margin-top: 25px !important;
+                margin-bottom: 25px !important;
+            }
+
+            .prizes-logos {
+                gap: 20px;
+            }
+
+            .prizes-logos img {
+                max-width: 80px !important; /* Taille d'affichage harmonieuse sur mobile */
+                height: auto;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-    <p>Jeu concours organisé par</p>
-    <a href="https://mon.projet-tri.org/splash.html" target="_blank">
-        <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" style="cursor: pointer;">
-    </a>
-</header>
+        <p>Jeu concours organisé par</p>
+        <a href="https://mon.projet-tri.org/splash.html" target="_blank">
+            <img src="mon-projet-tri-logo-coaching-quebec_blue.png" alt="Mon Projet Tri" style="cursor: pointer;">
+        </a>
+    </header>
 
     <section class="hero">
         <div class="hero-content">
@@ -372,41 +373,60 @@ header a:hover img {
         <div class="container">
             <div class="form-card">
 
-                
                 <div style="margin-bottom: 40px; border-bottom: 2px dashed #cbd5e1; padding-bottom: 30px;">
                     <h2 class="section-title" style="color: #004c97; margin-top: 0; font-size: 1.6rem; text-transform: uppercase; text-align: center;">Comment participer ?</h2>
                     <p>Installez votre espace de transition à l'aide du matériel mis à votre disposition par <strong><em>mon</em> Projet Tri</strong>. Vous êtes libre d'utiliser l'ensemble des équipements fournis ou de vous limiter au strict minimum.</p>
                     <p>Pour être valide, votre installation doit regrouper tout le matériel requis pour compléter vos deux transitions (T1 et T2) et respecter scrupuleusement <a href="https://www.triathlonquebec.org/series-evenements/regles-competition/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">les règlements de Triathlon Québec</a>.</p>
                     <p style="font-weight: 600; color: #D65F3A;">📸 Prenez une photo de votre aménagement et soumettez-la via le formulaire ci-dessous pour courir la chance de gagner !</p>
                     
-                    <div class="prizes-card" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-top: 45px; margin-bottom: 45px;">
+                    <div class="prizes-card" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: 30px; margin-top: 45px; margin-bottom: 45px; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);">
 
-                        <h3 style="color: #004c97; font-size: 1.2rem; margin-top: 0; margin-bottom: 25px;">🎁 Les prix à gagner</h3>
+                        <h3 style="color: #004c97; font-size: 1.3rem; margin-top: 0; margin-bottom: 25px; text-align: center; text-transform: uppercase; letter-spacing: 0.5px;">🎁 Les prix à gagner</h3>
 
-                        <div class="prizes-container">
+                        <div class="prizes-container" style="display: flex; flex-direction: column; gap: 25px;">
                             
-                            <ul style="list-style: none; padding-left: 0; margin: 0; font-size: 0.95rem;">
-                                <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥇 <strong>1er prix :</strong> Une inscription au <a href="https://www.triathlondeverdun.com/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">Triathlon de Verdun</a> + un accompagnement sportif par <a href="https://www.projet-tri.org/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;"><strong><em>mon</em> Projet Tri</strong></a>.</li>
-                                <li style="margin-bottom: 12px; padding-left: 25px; text-indent: -25px;">🥈🥉 <strong>2e & 3e prix :</strong> 1 mois d'accompagnement sportif par <a href="https://www.projet-tri.org/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;"><strong><em>mon</em> Projet Tri</strong></a>.</li>
-                                <li style="margin-bottom: 0; padding-left: 25px; text-indent: -25px;">🏅 <strong>4e au 8e prix :</strong> Une trousse d'hydratation <a href="https://krononutrition.com/fr-ca" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO Nutrition</a> (8 sachets de <a href="https://krononutrition.com/fr-ca/collections/electrolytes" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO LYTES</a> + <a href="https://krononutrition.com/fr-ca/collections/bouteilles-deau" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">une bouteille sport</a>).</li>
-                            </ul>
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                
+                                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #ffd700; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 15px;">
+                                    <span style="font-size: 1.8rem; line-height: 1; min-width: 55px; display: flex; justify-content: center; text-align: center;">🥇</span>
+                                    <div style="font-size: 0.95rem; color: #0f172a;">
+                                        <strong>1er prix :</strong> Une inscription au <a href="https://www.triathlondeverdun.com/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">Triathlon de Verdun</a> <strong>+</strong> l'accompagnement sportif par <a href="https://www.projet-tri.org/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;"><strong><em>mon</em> Projet Tri</strong></a>.
+                                    </div>
+                                </div>
+
+                                <div style="background: #ffffff; border: 1px solid #e2e8f0; background-image: linear-gradient(to bottom, #c0c0c0, #cd7f32); background-size: 5px 100%; background-repeat: no-repeat; background-position: left; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 15px;">
+                                    <span style="font-size: 1.8rem; line-height: 1; min-width: 55px; display: flex; justify-content: center; flex-direction: row; gap: 4px; white-space: nowrap;">🥈🥉</span>
+                                    <div style="font-size: 0.95rem; color: #0f172a; padding-left: 5px;">
+                                        <strong>2e et 3e places :</strong> Un accompagnement sportif de <strong>1 mois</strong> par <a href="https://www.projet-tri.org/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;"><strong><em>mon</em> Projet Tri</strong></a> pour chacun des deux gagnants !
+                                    </div>
+                                </div>
+
+                                <div style="background: #ffffff; border: 1px solid #e2e8f0; border-left: 5px solid #0481fb; padding: 15px 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04); display: flex; align-items: center; gap: 15px;">
+                                    <span style="font-size: 1.8rem; line-height: 1; min-width: 55px; display: flex; justify-content: center; text-align: center;">🏅</span>
+                                    <div style="font-size: 0.95rem; color: #0f172a;">
+                                        <strong>4e au 8e prix :</strong> Une trousse d'hydratation <a href="https://krononutrition.com/fr-ca" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO Nutrition</a> (8 sachets de <a href="https://krononutrition.com/fr-ca/collections/electrolytes" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">KRONO LYTES</a> + <a href="https://krononutrition.com/fr-ca/collections/bouteilles-deau" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">une bouteille sport</a>).
+                                    </div>
+                                </div>
+
+                            </div>
 
                             <div class="prizes-logos">
-                                <a href="https://www.triathlondeverdun.com/" target="_blank" style="display: block; transition: transform 0.2s;">
-                                    <img src="Triathlon_de_Verdun.png" style="max-width: 100px; height: auto; border-radius: 4px; display: block;">
+                                <a href="https://www.triathlondeverdun.com/" target="_blank">
+                                    <img src="Triathlon_de_Verdun.png" alt="Triathlon de Verdun" style="max-width: 155px; height: auto; border-radius: 4px; display: block;">
                                 </a>
                                 
-                                <a href="https://krononutrition.com/fr-ca" target="_blank" style="display: block; transition: transform 0.2s;">
+                                <a href="https://krononutrition.com/fr-ca" target="_blank">
                                     <img src="https://krononutrition.com/cdn/shop/files/Krono-Nutrition-Logo-noir.png?v=1737145972&width=220" alt="Krono Nutrition" style="max-width: 75px; height: auto; display: block;">
                                 </a>
                                 
-                                <a href="https://www.projet-tri.org/" target="_blank" style="display: block; transition: transform 0.2s;">
+                                <a href="https://www.projet-tri.org/" target="_blank">
                                     <img src="https://mon.projet-tri.org/mon-projet-tri-logo-coaching-quebec_blue.png" alt="mon Projet Tri" style="max-width: 75px; height: auto; display: block;">
                                 </a>
                             </div>
                             
                         </div>
                     </div>
+                </div>
                 
                 <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
                     
@@ -467,8 +487,8 @@ header a:hover img {
                     </div>
 
                     <div class="form-group" style="margin-top: 20px;">
-                     <label for="commentaire">Laissez un commentaire ou une description (Optionnel)</label>
-                       <textarea id="commentaire" name="fi-text-commentaire" rows="4" placeholder="Racontez-nous l'histoire de votre zone de transition ou ajoutez des précisions..."></textarea>
+                        <label for="commentaire">Laissez un commentaire ou une description (Optionnel)</label>
+                        <textarea id="commentaire" name="fi-text-commentaire" rows="4" placeholder="Racontez-nous l'histoire de votre zone de transition ou ajoutez des précisions..."></textarea>
                     </div>
 
                     <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
@@ -526,7 +546,6 @@ header a:hover img {
             const fileLabelZone = document.getElementById('file-label-zone');
             const form = this;
             
-            // 1. Validation de sécurité pour la photo
             if (fileInput.files.length === 0) {
                 event.preventDefault(); 
                 alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
@@ -535,19 +554,15 @@ header a:hover img {
                 return false;
             }
 
-            // 2. Si le jeton captcha existe déjà dans l'input masqué, on laisse le formulaire partir normalement
             if (document.getElementById('g-recaptcha-response').value) {
                 return true;
             }
 
-            // 3. Sinon, on bloque temporairement pour aller chercher la clé Google
             event.preventDefault();
 
             grecaptcha.ready(function() {
                 grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
-                    // On injecte le jeton obtenu de Google
                     document.getElementById('g-recaptcha-response').value = token;
-                    // On relance la soumission native et synchrone propre à Forminit
                     form.submit();
                 });
             });
