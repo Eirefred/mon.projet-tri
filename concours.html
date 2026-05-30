@@ -647,8 +647,8 @@
             }
         }
 
-        // --- LOGIQUE DE LA BULLE VIDÉO YOUTUBE ---
-        const videoBubble = document.getElementById('youtube-bubble');
+        // --- LOGIQUE DE LA BULLE VIDÉO YOUTUBE (ATTENTE DU CHARGEMENT) ---
+        window.addEventListener('DOMContentLoaded', () => {
         let isDragging = false;
         let startX, startY;
         let initialX, initialY;
@@ -709,7 +709,7 @@
                 }
             });
         }
-
+});
         function openVideoModal() {
             const modal = document.getElementById('video-modal');
             const iframe = document.getElementById('youtube-iframe');
@@ -729,6 +729,7 @@
                 iframe.src = ""; 
             }
         }
+        });
     </script>
     <div id="youtube-bubble" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease; touch-action: none;">
     <div style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #D65F3A; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden; position: relative;">
@@ -740,7 +741,7 @@
     <span style="display: block; font-size: 10px; font-weight: bold; color: #D65F3A; background: white; padding: 3px 8px; border-radius: 10px; margin-top: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); white-space: nowrap;">LE CONCOURS</span>
 </div>
 
-<div id="video-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8); z-index: 10000; align-items: center; justify-content: center;" onclick="closeVideoModal()">
+<div id="video-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); z-index: 10000; align-items: center; justify-content: center;">
     <div style="position: relative; width: 90%; max-width: 380px; margin: auto;" onclick="event.stopPropagation()">
         
         <span onclick="closeVideoModal()" style="color: white; position: absolute; right: 10px; top: -45px; font-size: 40px; cursor: pointer; user-select: none;">&times;</span>
