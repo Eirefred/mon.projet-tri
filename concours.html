@@ -353,7 +353,7 @@
     .grecaptcha-badge { 
         visibility: hidden !important; 
     }
-        } /* FIN BLOC */
+        } /* FIN DU BLOC MOBILE */
 
     </style>
 </head>
@@ -648,12 +648,65 @@
         }
 
         const videoBubble = document.getElementById('youtube-bubble');
+        let isDragging = false;
+        let startX, startY;
+        let initialX, initialY;
+
         if (videoBubble) {
-            videoBubble.addEventListener('mouseenter', () => { videoBubble.style.transform = 'scale(1.1)'; });
+            // Effets visuels ordinateur
+            videoBubble.addEventListener('mouseenter', () => { if(!isDragging) videoBubble.style.transform = 'scale(1.1)'; });
             videoBubble.addEventListener('mouseleave', () => { videoBubble.style.transform = 'scale(1)'; });
+            
+            // Clic sur Ordinateur
+            videoBubble.addEventListener('click', (e) => {
+                if (e.pointerType !== 'touch') { openVideoModal(); }
+            });
+
+            // Détection du touché sur Mobile
+            videoBubble.addEventListener('touchstart', (e) => {
+                isDragging = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                
+                const rect = videoBubble.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+            }, { passive: true });
+
+            // Mouvement du doigt
+            videoBubble.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+
+                // Si le doigt bouge de plus de 5px, on active le glissement
+                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+                    isDragging = true;
+                    
+                    videoBubble.style.right = 'auto';
+                    videoBubble.style.bottom = 'auto';
+                    
+                    let newLeft = initialX + deltaX;
+                    let newTop = initialY + deltaY;
+                    
+                    // Garder la bulle à l'intérieur de l'écran (marges de sécurité)
+                    newLeft = Math.max(10, Math.min(newLeft, window.innerWidth - 80));
+                    newTop = Math.max(10, Math.min(newTop, window.innerHeight - 100));
+
+                    videoBubble.style.left = newLeft + 'px';
+                    videoBubble.style.top = newTop + 'px';
+                }
+            }, { passive: true });
+
+            // Fin du touché
+            videoBubble.addEventListener('touchend', () => {
+                // Si l'usager a juste tapoté sans bouger, on ouvre la vidéo
+                if (!isDragging) { openVideoModal(); }
+            });
         }
     </script>
-    <div id="youtube-bubble" onclick="openVideoModal()" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease;">
+    <div id="youtube-bubble" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease; touch-action: none;">
     <div style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #D65F3A; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden; position: relative;">
         <img src="https://img.youtube.com/vi/umQH6qEpBKc/0.jpg" alt="Miniature Vidéo" style="width: 100%; height: 100%; object-fit: cover;">
         <div style="position: absolute; top: 0; left: 0; background: rgba(0,0,0,0.2); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
