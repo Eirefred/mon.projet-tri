@@ -349,7 +349,12 @@
                 max-width: 80px !important; /* Taille d'affichage harmonieuse sur mobile */
                 height: auto;
             }
-        }
+            /* Masque le badge reCAPTCHA uniquement sur mobile */
+    .grecaptcha-badge { 
+        visibility: hidden !important; 
+    }
+        } /* FIN BLOC MOBILE */
+
     </style>
 </head>
 <body>
@@ -372,8 +377,6 @@
     <section class="form-section">
         <div class="container">
             <div class="form-card">
-
-                <div style="margin-bottom: 40px; border-bottom: 2px dashed #cbd5e1; padding-bottom: 30px;">
                     <h2 class="section-title" style="color: #004c97; margin-top: 0; font-size: 1.6rem; text-transform: uppercase; text-align: center;">Comment participer ?</h2>
                     <p>Installez un espace de transition à l'aide du matériel mis à votre disposition par <strong><em>mon</em> Projet Tri</strong>. Vous êtes libre d'utiliser l'ensemble des équipements fournis ou de vous limiter au strict minimum.</p>
                     <p>Pour être valide, votre installation doit regrouper tout le matériel requis pour compléter vos deux transitions (T1 et T2) et respecter scrupuleusement <a href="https://www.triathlonquebec.org/series-evenements/regles-competition/" target="_blank" style="color: #004c97; font-weight: 600; text-decoration: underline;">les règlements de Triathlon Québec</a>.</p>
@@ -426,8 +429,9 @@
                             
                         </div>
                     </div>
-                </div>
-                
+                </div> <div style="margin-bottom: 20px; padding-bottom: 10px;"></div> 
+                <div style="margin-top: 40px;"></div>
+
                 <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
                     
                     <div class="form-row">
