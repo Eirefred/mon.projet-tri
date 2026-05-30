@@ -353,7 +353,7 @@
     .grecaptcha-badge { 
         visibility: hidden !important; 
     }
-        } /* FIN DU BLOC */
+        } /* FIN DU BLOC MOBILE */
 
     </style>
 </head>
@@ -647,10 +647,87 @@
             }
         }
 
+        // --- LOGIQUE DE LA BULLE VIDÉO YOUTUBE ---
         const videoBubble = document.getElementById('youtube-bubble');
+        let isDragging = false;
+        let startX, startY;
+        let initialX, initialY;
+
         if (videoBubble) {
-            videoBubble.addEventListener('mouseenter', () => { videoBubble.style.transform = 'scale(1.1)'; });
+            // Effets de survol (Ordinateur)
+            videoBubble.addEventListener('mouseenter', () => { if (!isDragging) videoBubble.style.transform = 'scale(1.1)'; });
             videoBubble.addEventListener('mouseleave', () => { videoBubble.style.transform = 'scale(1)'; });
+
+            // Détection du toucher (Mobile)
+            videoBubble.addEventListener('touchstart', (e) => {
+                isDragging = false;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                
+                const rect = videoBubble.getBoundingClientRect();
+                initialX = rect.left;
+                initialY = rect.top;
+                
+                // Désactive l'animation pour que le mouvement suive le doigt en temps réel
+                videoBubble.style.transition = 'none';
+            }, { passive: true });
+
+            // Déplacement du doigt (Mobile)
+            videoBubble.addEventListener('touchmove', (e) => {
+                const touch = e.touches[0];
+                const deltaX = touch.clientX - startX;
+                const deltaY = touch.clientY - startY;
+
+                // Si le doigt bouge de plus de 5 pixels, c'est qu'on glisse la bulle
+                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+                    isDragging = true;
+                    
+                    videoBubble.style.right = 'auto';
+                    videoBubble.style.bottom = 'auto';
+                    
+                    let newLeft = initialX + deltaX;
+                    let newTop = initialY + deltaY;
+                    
+                    // Empêche la bulle de sortir de l'écran
+                    newLeft = Math.max(10, Math.min(newLeft, window.innerWidth - 80));
+                    newTop = Math.max(10, Math.min(newTop, window.innerHeight - 100));
+
+                    videoBubble.style.left = newLeft + 'px';
+                    videoBubble.style.top = newTop + 'px';
+                }
+            }, { passive: true });
+
+            // Fin du toucher (Mobile)
+            videoBubble.addEventListener('touchend', () => {
+                // Remet l'animation de survol d'origine
+                videoBubble.style.transition = 'transform 0.3s ease';
+                
+                // SI l'usager a juste tapoté sans glisser, on ouvre la vidéo
+                if (!isDragging) {
+                    openVideoModal();
+                }
+            });
+        }
+
+        function openVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            
+            if (modal && iframe) {
+                iframe.src = "https://www.youtube.com/embed/umQH6qEpBKc?autoplay=1&rel=0&modestbranding=1";
+                modal.style.display = 'flex';
+            }
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            
+            if (modal && iframe) {
+                modal.style.display = 'none';
+                iframe.src = ""; 
+            }
         }
     </script>
     <div id="youtube-bubble" onclick="openVideoModal()" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease;">
