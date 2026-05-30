@@ -235,18 +235,24 @@
 
         .file-label {
             display: block;
-            padding: 20px;
-            background: #f1f5f9;
-            border: 2px dashed #cbd5e1;
-            border-radius: 10px;
+            padding: 35px 20px;
+            background: linear-gradient(to bottom, #ffffff, #f0f7ff);
+            border: 2px dashed #0083fe;
+            border-radius: 12px;
             text-align: center;
+            color: #004c97;
+            font-weight: 600;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 131, 254, 0.06);
         }
 
         .file-label:hover {
-            background: #e2e8f0;
-            border-color: #004c97;
+            background: linear-gradient(to bottom, #f0f7ff, #e1f0ff);
+            border-color: #0481fb;
+            color: #0481fb;
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(4, 129, 251, 0.15);
         }
 
         .file-label.error-flash {
