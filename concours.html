@@ -647,9 +647,8 @@
             }
         }
 
-        // Active les commandes tactiles dès que la page est prête
-        window.addEventListener('DOMContentLoaded', () => {
-            const videoBubble = document.getElementById('youtube-bubble');
+        // Active les commandes tactiles directement
+        const videoBubble = document.getElementById('youtube-bubble');
             let isDragging = false;
             let startX, startY;
             let initialX, initialY;
@@ -710,7 +709,7 @@
                     }
                 });
             }
-        });
+      
     </script>
     <div id="youtube-bubble" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease; touch-action: none;">
     <div style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #D65F3A; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden; position: relative;">
