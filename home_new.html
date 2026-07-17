@@ -380,24 +380,26 @@
                 position: static;
                 transform: none;
                 box-shadow: none;
-                background-color: #f8fafc;
-                margin: 10px auto 0 auto;
-                border-radius: 8px;
+                background-color: transparent; /* Suppression du fond gris */
+                margin: 5px auto 0 auto;
+                border-radius: 0;
                 border: none;
                 min-width: unset;
-                width: 80%;
-                padding: 5px 0;
+                width: 100%;
+                padding: 0;
             }
             .dropdown-menu::before {
                 display: none;
             }
             .dropdown-menu a {
                 text-align: center;
-                padding: 8px 15px;
+                padding: 10px 15px;
+                font-size: 0.95rem; /* Aligné sur la taille de vos autres liens mobiles */
             }
             .dropdown-menu a:hover {
                 padding-left: 15px;
-                background-color: #e2e8f0;
+                background-color: transparent; /* Optionnel : supprime aussi le gris au clic/survol mobile */
+                color: #D65F3A !important;
             }
 
             .decision-flow {
