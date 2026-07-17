@@ -46,7 +46,23 @@
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-
+#backToTop {
+    display: none; /* Caché par défaut sur PC */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background: var(--autonome-gradient); /* À la place de background-color: var(--accent); */    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
 
@@ -261,11 +277,15 @@
 
         /* Version Mobile sans conflit avec le bouton hamburger */
         @media (max-width: 768px) {
-
+#backToTop.visible { 
+        display: flex !important; 
+    }
             .content-section {
                 clip-path: none !important;
                 padding: 40px 0 60px 0;
             }
+            
+
             .dropdown-menu {
                 display: block; 
                 position: static;
@@ -684,5 +704,23 @@
         </div>
     </footer>
 
+<button id="backToTop">↑</button>
+<script>
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", function() {
+        // Active le bouton sur mobile après 300px de scroll
+        if (window.innerWidth <= 768 && window.scrollY > 300) {
+            backToTopBtn.classList.add("visible");
+        } else {
+            backToTopBtn.classList.remove("visible");
+        }
+    });
+
+    // Remonte en haut de page en douceur au clic
+    backToTopBtn.addEventListener("click", function() { 
+        window.scrollTo({ top: 0, behavior: "smooth" }); 
+    });
+</script>
 </body>
 </html>
