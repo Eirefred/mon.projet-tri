@@ -17,7 +17,7 @@
         :root {
             --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
             --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
-            /* Dégradé spécifique au bouton Club (Bleu vers Orange) basé sur home_new.html */
+            /* Dégradé Club (Bleu vers Orange) */
             --club-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -112,7 +112,6 @@
             clip-path: ellipse(150% 100% at 50% 100%); 
         }
 
-        /* Titre avec dégradé bleu/orange "Club" */
         .content-section h1 {
             font-size: 2.8rem;
             font-weight: 900;
@@ -124,7 +123,6 @@
             display: inline-block;
         }
 
-        /* Boîte de contenu principale avec bordure orange et ombre légère */
         .main-card-club {
             background: #ffffff; 
             padding: 40px; 
@@ -133,28 +131,22 @@
             box-shadow: 0 10px 25px rgba(214, 95, 58, 0.08);
         }
 
-        /* Style de la liste des actions pour l'athlète */
-        .steps-list {
-            list-style: none;
-            padding: 0;
-            margin: 25px 0;
+        /* Organisation avantages / inconvénients */
+        .pros-cons-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
         }
-        .steps-list li {
-            position: relative;
-            padding-left: 35px;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-        }
-        .steps-list li::before {
-            content: "➔";
-            position: absolute;
-            left: 5px;
-            color: #D65F3A;
-            font-weight: bold;
-        }
+        .pros-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 15px; border-radius: 4px 12px 12px 4px; }
+        .cons-box { background: #fef2f2; border-left: 4px solid #dc2626; padding: 15px; border-radius: 4px 12px 12px 4px; }
+        .pros-cons-container ul { margin: 0; padding-left: 20px; }
+        .pros-cons-container li { margin-bottom: 8px; font-size: 0.95rem; }
 
-        /* Bouton Contactez-nous grand format */
+        .steps-list { list-style: none; padding: 0; margin: 25px 0; }
+        .steps-list li { position: relative; padding-left: 35px; margin-bottom: 20px; font-size: 1.1rem; color: var(--text-dark); }
+        .steps-list li::before { content: "➔"; position: absolute; left: 5px; color: #D65F3A; font-weight: bold; }
+
         .btn-contact-submit {
             display: inline-block;
             background: var(--club-gradient);
@@ -174,25 +166,6 @@
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(214, 95, 58, 0.4);
             opacity: 0.95;
-        }
-
-        /* Classes utilitaires pour la charte graphique de la marque */
-        .brand-mon {
-            font-family: 'Oooh Baby', cursive;
-            font-size: 1.4em;
-            font-weight: normal;
-            text-transform: lowercase;
-            vertical-align: baseline;
-            position: relative;
-        }
-        .brand-projet {
-            font-family: 'Inclusive Sans', sans-serif;
-            font-weight: bold;
-        }
-        .brand-tri {
-            font-family: 'Inclusive Sans', sans-serif;
-            font-weight: bold;
-            font-style: italic;
         }
 
         /* --- FOOTER --- */
@@ -277,6 +250,7 @@
         @media (max-width: 768px) {
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .pros-cons-container { grid-template-columns: 1fr; }
             .dropdown-menu {
                 display: block; 
                 position: static;
@@ -324,7 +298,7 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a>
+                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri"></a>
                 </div>
                 <div class="region-stack">
                     <span class="region-mention">Partout au Québec</span>
@@ -364,60 +338,83 @@
         </div>
     </header>
 
-    <!-- ZONE DE CONTENU PRINCIPAL -->
     <main class="content-section">
         <div class="container">
             
             <div style="text-align: center; margin-bottom: 50px;">
                 <h1>Trouver et intégrer un club</h1>
                 <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
-                    Rejoindre un groupe, c'est accélérer sa progression, partager l'effort et trouver une motivation au quotidien.
+                    Rejoindre un groupe, c'est intégrer une communauté dynamique pour s'entraîner, progresser et partager une aventure humaine.
                 </p>
             </div>
 
-            <!-- BLOC 1 : QU'EST-CE QU'UN CLUB ET SES AVANTAGES -->
+            <!-- BLOC 1 : L'ESPRIT CLUB, SOCIAL ET STRUCTURE (AVANTAGES / INCONVÉNIENTS) -->
             <div class="main-card-club" style="margin-bottom: 40px;">
                 <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-                    👥 Qu'est-ce qu'un club de triathlon ?
+                    👥 L'expérience d'un club de triathlon
                 </h2>
                 
                 <div style="margin-left: 15px; line-height: 1.7;">
                     <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0;">
-                        Un club rassemble des passionnés de tous les niveaux autour d'entraînements encadrés par des entraîneurs certifiés. C'est l'environnement idéal pour briser la routine de l'entraînement en solo.
+                        Un club de triathlon, c'est avant tout un puissant vecteur de motivation sociale. En vous entraînant en groupe, vous sortez de l'isolement, vous rencontrez des partenaires qui partagent la même passion et vous intégrez une véritable communauté d'entraide. C'est l'environnement idéal pour transformer les séances de natation, de vélo ou de course en moments de plaisir partagé.
                     </p>
                     
-                    <h3 style="color: #D65F3A; font-size: 1.3rem; margin-top: 25px; margin-bottom: 15px;">Les avantages de nous rejoindre :</h3>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 15px;">
-                        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.05);">
-                            <strong style="color: #004c97; display: block; margin-bottom: 8px; font-size: 1.1rem;">🚀 Progression technique</strong>
-                            Profitez des conseils des coachs pour perfectionner votre nage, vos transitions et vos techniques cyclistes.
+                    <h3 style="color: #D65F3A; font-size: 1.3rem; margin-top: 25px; margin-bottom: 10px;">Le cadre des entraînements (Emplacement & Horaires fixes)</h3>
+                    <p style="color: var(--text-light); margin-top: 0;">
+                        S'entraîner dans un club implique d'adhérer à une structure géographique et temporelle bien précise. Cela comporte des bénéfices évidents, mais aussi quelques contraintes selon votre mode de vie :
+                    </p>
+
+                    <div class="pros-cons-container">
+                        <div class="pros-box">
+                            <h4 style="margin: 0 0 10px 0; color: #16a34a; font-size: 1.1rem;">👍 Les avantages</h4>
+                            <ul>
+                                <li><strong>Routine solide</strong> : Avoir un rendez-vous fixe simplifie la discipline personnelle.</li>
+                                <li><strong>Installations réservées</strong> : Accès garanti à des couloirs de piscine ou pistes d'athlétisme.</li>
+                                <li><strong>Présence du coach</strong> : Conseils techniques en temps réel sur place.</li>
+                                <li><strong>Sécurité accrue</strong> : Rouler et courir en peloton est plus sécuritaire et visible.</li>
+                            </ul>
                         </div>
-                        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.05);">
-                            <strong style="color: #004c97; display: block; margin-bottom: 8px; font-size: 1.1rem;">🔥 Effet de groupe</strong>
-                            L'énergie collective vous pousse à vous dépasser tout en rendant les séances exigeantes beaucoup plus l'fun.
-                        </div>
-                        <div style="background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.05);">
-                            <strong style="color: #004c97; display: block; margin-bottom: 8px; font-size: 1.1rem;">🔒 Sécurité & Structure</strong>
-                            Des couloirs de natation réservés et des sorties de vélo planifiées pour pratiquer en toute sérénité.
+                        <div class="cons-box">
+                            <h4 style="margin: 0 0 10px 0; color: #dc2626; font-size: 1.1rem;">👎 Les inconvénients</h4>
+                            <ul>
+                                <li><strong>Manque de flexibilité</strong> : Impossible de décaler l'entraînement en cas d'imprévu professionnel ou familial.</li>
+                                <li><strong>Contrainte de transport</strong> : Obligation de vous déplacer à un lieu précis (parfois aux heures de pointe).</li>
+                                <li><strong>Rythme imposé</strong> : Devoir composer avec l'agenda et les périodes d'ouverture/fermeture fixés par la structure.</li>
+                            </ul>
                         </div>
                     </div>
+
+                    <!-- NOTE : REDIRECTION ACCOMPAGNEMENT -->
+                    <p style="font-size: 1.05rem; color: var(--text-dark); background: #f8fafc; padding: 15px 20px; border-radius: 12px; border: 1px dashed rgba(214, 95, 58, 0.3); margin-top: 25px;">
+                        💡 <strong>Note importante :</strong> Si les contraintes horaires ou géographiques ne correspondent pas à votre réalité, ou si vous préférez tout simplement vous entraîner seul en toute liberté, découvrez nos programmes sur mesure dans la section <a href="accompagnement.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">Accompagnement</a>.
+                    </p>
                 </div>
             </div>
 
-            <!-- BLOC 2 : NOTRE ACCOMPAGNEMENT POUR L'ATHLÈTE -->
+            <!-- BLOC 2 : NOTRE DÉMARCHE AVEC HIGHLIGHT -->
             <div class="main-card-club" style="margin-bottom: 50px;">
                 <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
                     🤝 Notre démarche pour vous trouver le club idéal
                 </h2>
-                <p style="color: var(--text-light); margin-bottom: 15px; font-size: 1.05rem;">
-                    Vous cherchez une structure mais vous ne savez pas par où commencer ? Voici précisément ce que nous faisons pour chaque athlète qui nous contacte :
+                
+                <!-- Bloc de surbrillance (Highlight) -->
+                <!-- Bloc de surbrillance (Highlight) avec texte centré et séparé -->
+                <div style="background: #f8fafc; border-left: 4px solid #D65F3A; padding: 20px; border-radius: 4px 12px 12px 4px; margin-bottom: 25px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);">
+                    <p style="color: var(--text-dark); margin: 0; font-size: 1.15rem; font-weight: 600; line-height: 1.6; text-align: center;">
+                        <span style="display: block; margin-bottom: 8px;">Comment savoir si un club vous correspond ?</span>
+                        <span style="font-weight: 500; font-size: 1.1rem; color: var(--text-light); display: block;">Chaque structure a son ADN, et pour ne pas vous tromper, nous allons en discuter ensemble.</span>
+                    </p>
+                </div>
+
+                <p style="color: var(--text-light); margin-bottom: 20px; font-size: 1.05rem;">
+                    Prenez contact avec nous : nous prendrons le temps de jaser pour faire le point sur vos besoins. À la suite de cet échange humain, nous analyserons les options de votre région pour vous guider vers le choix parfait. Voici notre plan d'action :
                 </p>
 
                 <ul class="steps-list">
-                    <li><strong>On évalue vos objectifs et votre philosophie</strong> : Compétition, pur plaisir, conciliation travail-famille... nous ciblerons l'esprit de club qui vous ressemble.</li>
-                    <li><strong>On évalue vos disponibilités et votre localisation</strong> : Nous trouvons les options logiques à proximité de chez vous ou de votre lieu de travail selon vos plages horaires.</li>
-                    <li><strong>On communique avec des clubs potentiels</strong> : Nous faisons les premières démarches et vérifions la disponibilité des places ou des groupes de niveau pour vous.</li>
-                    <li><strong>On vous introduit aux coachs ou responsables choisis</strong> : Nous facilitons le premier contact pour assurer une intégration naturelle et chaleureuse.</li>
+                    <li><strong>On évalue votre philosophie</strong> : Que vous visiez la performance ou le pur plaisir de bouger en bonne compagnie, nous ciblons l'esprit de club qui matche avec vos valeurs.</li>
+                    <li><strong>On valide votre réalité logistique</strong> : Nous regardons vos disponibilités et votre localisation pour trouver les options logiques près de chez vous ou de votre travail.</li>
+                    <li><strong>On vérifie les places et les services</strong> : Nous contactons directement les clubs potentiels pour valider la disponibilité des groupes de niveau et des infrastructures.</li>
+                    <li><strong>On vous introduit personnellement</strong> : Une fois le bon club identifié, nous facilitons le premier contact avec les coachs ou responsables pour assurer une intégration chaleureuse.</li>
                 </ul>
             </div>
 
