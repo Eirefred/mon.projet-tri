@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonome | Mon Projet Run</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            /* Dégradé spécifique au bouton Autonome (Bleu vers Vert) */
+            --autonome-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        .content-section {
+            padding: 80px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        /* Titre avec dégradé vert/bleu "Autonome" */
+        .content-section h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--autonome-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* Boîte de contenu principale avec bordure verte et ombre légère */
+        .main-card-autonome {
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 2px solid #10b981; 
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.08);
+        }
+
+        /* Style des boutons de liens internet (format capsule) */
+        .btn-ressource {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #004c97 !important;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 50px; 
+            border: 1px solid rgba(0, 76, 151, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .btn-ressource:hover {
+            background: var(--autonome-gradient); 
+            color: #ffffff !important;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transform: translateY(-1px);
+        }
+
+        /* Classes utilitaires pour la charte graphique de la marque */
+        .brand-mon {
+            font-family: 'Oooh Baby', cursive;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-transform: lowercase;
+            vertical-align: baseline;
+            position: relative;
+        }
+        .brand-projet {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+        }
+        .brand-tri {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* --- FOOTER (RETOUR AUX COULEURS INITIALES EXACTES) --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT DESKTOP & MOBILE --- */
+        nav ul li.has-dropdown {
+            position: relative;
+        }
+
+        .arrow-down {
+            font-size: 0.65rem;
+            margin-left: 4px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        /* Style du sous-menu sur Ordinateur */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        /* Triangle esthétique */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        /* Déclenchement au survol sur ordinateur */
+        nav ul li.has-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        nav ul li.has-dropdown:hover .arrow-down {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        /* Version Mobile sans conflit avec le bouton hamburger */
+        @media (max-width: 768px) {
+            .dropdown-menu {
+                display: block; /* Toujours visible à l'intérieur du volet mobile */
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: #f8fafc;
+                margin: 10px auto 0 auto;
+                border-radius: 8px;
+                border: none;
+                min-width: unset;
+                width: 80%;
+                padding: 5px 0;
+            }
+            .dropdown-menu::before {
+                display: none;
+            }
+            .dropdown-menu a {
+                text-align: center;
+                padding: 8px 15px;
+            }
+            .dropdown-menu a:hover {
+                padding-left: 15px;
+                background-color: #e2e8f0;
+            }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Partout au Québec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="autonome.html">Autonome</a></li>
+                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#programme">Partenaires</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" onclick="window.location.href='en/run.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label" style="color: #ccc;">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ZONE DE CONTENU PRINCIPAL -->
+    <main class="content-section">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1>Se lancer de façon autonome</h1>
+                <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
+                    Vous débutez en triathlon ? Retrouvez ici toutes les ressources, liens officiels et conseils pour vous organiser et progresser à votre rythme.
+                </p>
+                <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 750px; margin: 0 auto; line-height: 1.7; background: #f8fafc; padding: 15px 20px; border-radius: 12px; border: 1px dashed rgba(0, 76, 151, 0.15);">
+                    Si vous vous sentez perdu ou que vous souhaitez aller plus loin, 
+                    <span style="display: inline-block; white-space: nowrap; vertical-align: middle;">
+                        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.3em; color: #0481fb !important; margin-right: 4px;">mon</span>
+                        <span style="font-family: 'Inclusive Sans', sans-serif; font-weight: bold; color: #0481fb !important;">Projet</span>
+                        <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #0481fb !important;">Tri</span>
+                    </span> 
+                    propose des <a href="accompagnement.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">programmes d'accompagnement sur mesure</a> pour vous guider pas à pas.
+                </p>
+            </div>
+
+            <!-- SUJET 1 : INTRODUCTION -->
+            <div class="main-card-autonome" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    🏁 Le triathlon, c'est quoi au juste ?
+                </h2>
+                
+                <div style="margin-left: 15px; margin-bottom: 25px; line-height: 1.7;">
+                    <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0;">
+                        C'est tout simplement le plaisir de combiner trois sports super l'fun : la natation, le vélo et la course à pied, un à la suite de l'autre ! 
+                    </p>
+                    <p style="font-size: 1.05rem; color: var(--text-light);">
+                        Pas besoin d'être un grand sportif pour tripper et s'y mettre. Il existe des formats très courts, parfaits pour essayer à son rythme et sans se casser la tête. En bougeant juste un petit peu chaque semaine dans chaque discipline, on développe vite sa forme de manière variée. Traverser sa première ligne d'arrivée, c'est un moment magique et pleinement accessible à tout le monde !
+                    </p>
+                </div>
+
+                <!-- Ressource Triathlon Québec -->
+                <div style="margin-left: 15px;">
+                    <h4 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; border-radius: 3px;">
+                        <span style="font-weight: bold;">Triathlon Québec</span>
+                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Les disciplines du triathlon)</span>
+                    </h4>
+                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light);">Découvrez les différentes variantes et enchaînements officiels reconnus par la fédération :</p>
+                    <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="btn-ressource">
+                        Explorer les disciplines ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- SUJET 1 : RÈGLEMENTS -->
+            <div class="main-card-autonome" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    📚 Les règlements de triathlon
+                </h2>
+                <p style="color: var(--text-light); margin-bottom: 25px;">
+                    Pour éviter les surprises et courir en toute sécurité, familiarisez-vous avec les règles de chaque circuit.
+                </p>
+
+                <!-- Sous-section Triathlon Québec & Challenge Family -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="color: #0055b8 !important; font-weight: bold;">Triathlon Québec</span> 
+                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem;">&</span> 
+                        <img src="https://challengefamily.com/favicon.ico" alt="Logo Challenge Family" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="color: #0f193c !important; font-weight: bold;">Challenge Family</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem; display: inline-flex; align-items: center; gap: 4px;">
+                            (
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; border-radius: 1px; vertical-align: middle;">
+                            )
+                        </span>
+                    </h3>
+                    <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="btn-ressource">
+                        Compétitions au Québec ↗
+                    </a>
+                </div>
+
+                <!-- Sous-section Ironman -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://www.ironman.com/favicon.ico" alt="Logo Ironman" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: #231f20 !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; font-size: 1.1rem;">
+                            IRONMAN
+                        </span>
+                    </h3>
+                    <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="btn-ressource">
+                        Règlement international IRONMAN ↗
+                    </a>
+                </div>
+
+                <!-- Sous-section mon Projet Tri -->
+                <div style="margin-left: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://mon.projet-tri.org/favicon.png" alt="Logo mon Projet Tri" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='favicon.png';">
+                        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; color: #0481fb !important; margin-right: 6px;">mon</span> 
+                        <span style="white-space: nowrap;">
+                            <span style="font-family: 'Inclusive Sans', sans-serif; color: #0481fb !important; font-weight: bold;">Projet</span> 
+                            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; color: #0481fb !important; font-weight: bold;">Tri</span>
+                        </span>
+                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Vidéos explicatives)</span>
+                    </h3>
+                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light);">Nos conseils en format vidéo pour tout comprendre rapidement :</p>
+                    <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="btn-ressource">
+                        Regarder les vidéos explicatives ↗
+                    </a>
+                </div>
+
+                <!-- Sous-section World Triathlon (Fédération Internationale) -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://triathlon.org/favicon.ico" alt="Logo World Triathlon" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='https://www.triathlon.org/favicon.ico';">
+                        <span style="color: #0055b8 !important; font-weight: 800; letter-spacing: 0.3px;">World Triathlon</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Fédération Internationale)</span>
+                    </h3>
+                    <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="btn-ressource">
+                        Consulter les règles mondiales 2026 ↗
+                    </a>
+                </div>
+
+                <!-- Sous-section USA Triathlon (USAT) -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.4rem; line-height: 1; display: inline-block; vertical-align: middle;">🇺🇸</span>
+                        <span style="color: #0a2240 !important; font-weight: 800; letter-spacing: 0.3px;">USA Triathlon</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(États-Unis)</span>
+                    </h3>
+                    <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="btn-ressource">
+                        Compétitions aux USA ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- SUJET 2 : CALENDRIER -->
+            <div class="main-card-autonome" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    📅 Calendrier des courses
+                </h2>
+                <p style="color: var(--text-light); margin-bottom: 25px;">
+                    Planifiez votre saison et trouvez les événements adaptés à vos objectifs partout au Québec et à l'international[cite: 1].
+                </p>
+
+                <!-- Sous-section mon Projet Tri (Québec) -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://mon.projet-tri.org/favicon.png" alt="Logo mon Projet Tri" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='favicon.png';">
+                        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; color: #0481fb !important; margin-right: 6px;">mon</span> 
+                        <span style="white-space: nowrap;">
+                            <span style="font-family: 'Inclusive Sans', sans-serif; color: #0481fb !important; font-weight: bold;">Projet</span> 
+                            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; color: #0481fb !important; font-weight: bold;">Tri</span>
+                        </span>
+                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Saison provinciale)</span>
+                    </h3>
+                    <a href="https://mon.projet-tri-org/calendrier.html" target="_blank" class="btn-ressource">
+                        Le calendrier de la saison 2026 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 20px; height: auto; border-radius: 2px; display: inline-block; vertical-align: middle; margin: 0 4px;"> ↗
+                    </a>
+                </div>
+
+                <!-- LIGNE 1 : SÉPARATION - INTERNATIONAUX (IRONMAN) -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://www.ironman.com/favicon.ico" alt="Logo Ironman" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: #231f20 !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; font-size: 1.1rem;">IRONMAN</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Mondial)</span>
+                    </h3>
+                    <a href="https://www.ironman.com/races" target="_blank" class="btn-ressource">
+                        Le calendrier mondial IRONMAN ↗
+                    </a>
+                </div>
+
+                <!-- LIGNE 2 : SÉPARATION - INTERNATIONAUX (CHALLENGE FAMILY) -->
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://challengefamily.com/favicon.ico" alt="Logo Challenge Family" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="color: #0f193c !important; font-weight: bold;">Challenge Family</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Mondial)</span>
+                    </h3>
+                    <a href="https://challengefamily.com/races/" target="_blank" class="btn-ressource">
+                        Le calendrier mondial Challenge Family ↗
+                    </a>
+                </div>
+
+                <!-- LIGNE 3 : SÉPARATION - USA TRIATHLON (USAT) -->
+                <div style="margin-left: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 1.4rem; line-height: 1; display: inline-block; vertical-align: middle;">🇺🇸</span>
+                        <span style="color: #0a2240 !important; font-weight: 800; letter-spacing: 0.3px;">USA Triathlon</span>
+                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(États-Unis)</span>
+                    </h3>
+                    <a href="https://member.usatriathlon.org/events" target="_blank" class="btn-ressource">
+                        Le calendrier officiel USAT ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- SUJET 3 : ENTRAÎNEMENT -->
+            <div class="main-card-autonome" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    🏊 Où s'entraîner ?
+                </h2>
+                <p style="color: var(--text-light); margin-bottom: 25px;">
+                    Trouvez les meilleurs sites, clubs et plans d'eau sécurisés pour vos séances de natation, vélo et course.
+                </p>
+
+                <div style="margin-left: 15px; margin-bottom: 20px;">
+                    <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px;">• En eau libre</h3>
+                    
+                    <div style="margin-left: 20px; margin-bottom: 15px; border-left: 3px solid #f1f5f9; padding-left: 15px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; border-radius: 3px;">
+    <span style="font-weight: bold;">Triathlon Québec</span>
+    <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Emplacements référencés)</span>
+</h4>
+                        <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="btn-ressource">
+                            Visiter la page ↗
+                        </a>
+                    </div>
+
+                    <div style="margin-left: 20px; border-left: 3px solid #f1f5f9; padding-left: 15px;">
+                        <h4 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+    <img src="https://www.nageeneaulibre.ca/favicon.ico" alt="Logo Moi j'nage" style="width: 16px; height: 16px; border-radius: 3px;" onerror="this.src='favicon.png';">
+    <span style="font-weight: bold;">MOI J'NAGE</span>
+    <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Emplacements référencés)</span>
+</h4>
+                        <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="btn-ressource">
+                            Visiter le site Moi j'nage ↗
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUJET 4 : COMMUNAUTAIRE -->
+            <div class="main-card-autonome" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    👥 Communautaire
+                </h2>
+                
+                <!-- Communauté et entraide -->
+                <div style="margin-left: 15px; margin-bottom: 25px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                        <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 20px; height: 20px; border-radius: 4px;">
+                        <span style="font-weight: bold;">Triathlon au Québec</span>
+                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe Facebook)</span>
+                    </h3>
+                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light);">Le groupe d'entraide principal de la communauté de triathlon de la province pour poser vos questions :</p>
+                    <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="btn-ressource">
+                        Rejoindre le groupe ↗
+                    </a>
+                </div>
+
+                <!-- Revente d'équipement -->
+                <div style="margin-left: 15px;">
+                    <h3 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--text-dark);">
+                        🛒 Revente d'équipement usagé
+                    </h3>
+                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">Trouvez votre vélo ou votre matériel de seconde main sur ces plateformes incontournables :</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-left: 10px;">
+                        <div>
+                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
+                                <span style="font-weight: bold;">Facebook Marketplace</span>
+                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Petites annonces)</span>
+                            </h4>
+                            <a href="https://www.facebook.com/marketplace/" target="_blank" class="btn-ressource">
+                                Visiter Marketplace ↗
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 5px;">
+                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
+                                <span style="font-weight: bold;">Vente-Achat Route & Triathlon Québec</span>
+                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe spécialisé)</span>
+                            </h4>
+                            <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="btn-ressource">
+                                Voir les annonces ↗
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 5px;">
+                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
+                                <span style="font-weight: bold;">Triathlon : achat/vente/échange (Montréal et Québec)</span>
+                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe spécialisé)</span>
+                            </h4>
+                            <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="btn-ressource">
+                                Voir les annonces ↗
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - OSBL dédiée au triathlon au Québec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>Voir toutes les zones de service couvertes</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
