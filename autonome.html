@@ -46,13 +46,16 @@
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
-#backToTop {
+
+/* --- BOUTON BACK TO TOP --- */
+        #backToTop {
     display: none; /* Caché par défaut sur PC */
     position: fixed;
     bottom: 20px;
     right: 20px;
     z-index: 2000;
-    background: var(--autonome-gradient); /* À la place de background-color: var(--accent); */    color: white;
+    background-color: var(--accent);
+    color: white;
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -63,6 +66,7 @@
     align-items: center;
     justify-content: center;
 }
+
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
 
@@ -907,7 +911,13 @@
         </div>
     </footer>
 
-<button id="backToTop">↑</button>
+    <!-- BOUTON RETOUR EN HAUT -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
 <script>
     const backToTopBtn = document.getElementById("backToTop");
 
