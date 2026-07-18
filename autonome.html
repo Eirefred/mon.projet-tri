@@ -757,7 +757,69 @@
                     </div>
                 </div>
             </div>
+<!-- SUJET 5 : CONTRIBUTION GLOBALE PAGE AUTONOME (FORMSPREE) -->
+            <div class="main-card-autonome" style="margin-bottom: 40px; border-color: #004c97; box-shadow: 0 10px 25px rgba(0, 76, 151, 0.05);">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    🤝 Contribuez à cette boîte à outils autonome
+                </h2>
+                <p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;">
+                    Vous avez déniché un nouveau site d'entraînement, un règlement mis à jour, ou une astuce incontournable pour débuter ? Partagez vos idées et vos bons coups pour enrichir la page et aider toute la communauté autonome au Québec !
+                </p>
 
+                <form action="https://formspree.io/f/VOTRE_ID_FORMSPREE" method="POST" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin-left: 15px;">
+                    
+                    <!-- Champ Sujet de la contribution -->
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Que souhaitez-vous ajouter ou améliorer ?</span>
+                        <div style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.95rem;">
+                            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                <input type="radio" name="secteur_contribution" value="Lieu entrainement" required> 📍 Lieu d'entraînement
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                <input type="radio" name="secteur_contribution" value="Lien officiel / Reglement"> 📚 Règlements ou liens officiels
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                <input type="radio" name="secteur_contribution" value="Communaute / Astuce"> 👥 Communauté ou astuces d'achat
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                <input type="radio" name="secteur_contribution" value="Autre idee"> 💡 Autre bonne idée
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Champ Détails sur l'emplacement / la ressource -->
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="nom-ressource" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Nom de la ressource, du site ou du lieu :</label>
+                        <input type="text" id="nom-ressource" name="nom_ressource_ou_lieu" required placeholder="Ex: Circuit Gilles-Villeneuve, Guide USAT, Nouveau groupe d'achat..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                    </div>
+
+                    <!-- Champ Région / Portée géographique -->
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="portee-geo" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Région concernée ou portée :</label>
+                        <input type="text" id="portee-geo" name="region_ou_portee" required placeholder="Ex: Laurentides, Provincial, International, Montréal..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                    </div>
+
+                    <!-- Champ Lien internet -->
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="lien-internet" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Lien internet, site officiel ou URL de référence :</label>
+                        <input type="url" id="lien-internet" name="lien_internet" placeholder="https://www.exemple.ca/ma-ressource" style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                    </div>
+
+                    <!-- Champ Explication / Astuces / Pratique -->
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <label for="explication" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Pourquoi est-ce pratique ? Expliquez votre astuce ou bon coup :</label>
+                        <textarea id="explication" name="explication_et_astuces" rows="4" required placeholder="Décrivez les détails : qualité de la route, gratuité, pourquoi c'est pertinent pour un triathlète autonome..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
+                    </div>
+
+                    <!-- Bouton de soumission (Capsule de la marque) -->
+                    <div style="margin-top: 5px;">
+                        <button type="submit" class="btn-ressource" style="background: var(--autonome-gradient); color: #ffffff !important; border: none; cursor: pointer; font-size: 1rem; padding: 12px 30px;">
+                            Soumettre ma contribution 🚀
+                        </button>
+                    </div>
+
+                </form>
+            </div>
         </div>
     </main>
 
