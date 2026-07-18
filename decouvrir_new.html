@@ -56,23 +56,25 @@
 
         /* --- BOUTON BACK TO TOP --- */
         #backToTop {
-    display: none; /* Caché par défaut sur PC */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-    background-color: var(--accent);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    align-items: center;
-    justify-content: center;
-}
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background-color: #004c97;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            z-index: 2000;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
         
         #backToTop:hover {
             background-color: #D65F3A;
