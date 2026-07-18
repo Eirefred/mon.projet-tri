@@ -54,7 +54,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        /* --- CONFIGURATION DU BOUTON BACK TO TOP HARMONISÉ --- */
+        /* --- BOUTON BACK TO TOP --- */
         #backToTop {
             position: fixed;
             bottom: 30px;
@@ -82,16 +82,8 @@
             box-shadow: 0 6px 15px rgba(214, 95, 58, 0.3);
         }
 
-        #backToTop.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        #backToTop svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop svg { width: 18px; height: 18px; fill: currentColor; }
         
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -134,11 +126,8 @@
         .lang-switcher { display: flex; align-items: center; gap: 8px; }
         .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
 
-        /* --- HERO PAGES SECONDAIRES --- */
-        .page-header-wrapper {
-            background-color: #f1f5f9;
-        }
-
+        /* --- HERO PAGES --- */
+        .page-header-wrapper { background-color: #f1f5f9; }
         .page-header {
             padding: 80px 0;
             background: linear-gradient(rgba(0, 30, 60, 0.75), rgba(0, 30, 60, 0.75)), url('banniere_new.jpg') center/cover no-repeat;
@@ -146,33 +135,16 @@
             color: white;
             clip-path: ellipse(150% 100% at 50% 0%);
         }
-
-        .page-header h1 { 
-            font-size: 2.8rem; 
-            font-weight: 900; 
-            margin: 0 0 15px 0; 
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
+        .page-header h1 { font-size: 2.8rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px; }
+        .page-header p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
 
         /* --- SECTIONS DE CONTENU --- */
-        .content-section {
-            padding: 80px 0;
-        }
-
+        .content-section { padding: 80px 0; }
         .content-section.gray-bg {
             background-color: #f1f5f9;
             clip-path: ellipse(150% 100% at 50% 0%);
             padding-bottom: 120px;
         }
-
         .section-title {
             color: #004c97;
             font-size: 2.3rem;
@@ -182,119 +154,180 @@
             border-left: 6px solid #D65F3A;
             padding-left: 15px;
         }
+        .sub-header { color: #004c97; font-weight: 600; font-size: 1.15rem; margin-top: 0; margin-bottom: 35px; }
 
-        .sub-header {
-            color: #004c97;
-            font-weight: 600;
-            font-size: 1.15rem;
-            margin-top: 0;
-            margin-bottom: 35px;
-        }
-
-        /* --- STYLE LA GENÈSE (FOUNDER) --- */
-        .founder-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 1.5rem;
-        }
-
-        .founder-content p {
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        .founder-aside {
-            flex-shrink: 0;
-            text-align: center;
-            width: 240px;
-        }
-
-        .founder-photo {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #f1f5f9;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-        }
-
-        .founder-caption strong {
-            font-size: 1.2rem; 
-            color: #004c97;
-            font-weight: 800;
-            display: block;
-            line-height: 1.2;
-        }
-
-        .founder-title {
-            font-size: 0.9rem; 
-            color: #D65F3A;
-            font-weight: 700;
-            display: block;
-            margin: 4px 0;
-        }
-
-        .founder-details {
-            font-size: 0.8rem; 
-            font-weight: 400;
-            color: var(--text-light);
-            display: block;
-        }
-
-        .mission-highlight {
-            background: rgba(0, 76, 151, 0.05);
-            border-left: 6px solid #004c97;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 0 15px 15px 0;
-        }
+        /* --- STYLE LA GENÈSE --- */
+        .founder-container { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 1.5rem; }
+        .founder-content p { font-size: 1.05rem; line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .founder-aside { flex-shrink: 0; text-align: center; width: 240px; }
+        .founder-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .founder-caption strong { font-size: 1.2rem; color: #004c97; font-weight: 800; display: block; line-height: 1.2; }
+        .founder-title { font-size: 0.9rem; color: #D65F3A; font-weight: 700; display: block; margin: 4px 0; }
+        .founder-details { font-size: 0.8rem; font-weight: 400; color: var(--text-light); display: block; }
+        .mission-highlight { background: rgba(0, 76, 151, 0.05); border-left: 6px solid #004c97; padding: 25px; margin: 30px 0; border-radius: 0 15px 15px 0; }
 
         /* --- CARDS ADRESSÉ À --- */
-        .profile-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
         .profile-card {
             background: #ffffff;
             border: 2px solid #004c97;
             border-radius: 15px;
             padding: 35px;
             box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
-
         .profile-card:hover {
             transform: translateY(-5px);
             border-color: #D65F3A;
             box-shadow: 0 10px 25px rgba(214, 95, 58, 0.1);
         }
+        .profile-card h3 { color: #004c97; margin-top: 0; font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; }
+        .profile-card p { color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; margin-bottom: 0; }
 
-        .profile-card h3 {
-            color: #004c97;
-            margin-top: 0;
-            font-size: 1.5rem;
-            font-weight: 900;
+        /* --- ECOSYSTÈME DES FORCES VIVES --- */
+        .ecosystem-container {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .eco-nodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .eco-node-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .eco-node-card:hover, .eco-node-card.highlighted {
+            transform: translateX(5px);
+            border-color: #D65F3A;
+            box-shadow: 0 6px 18px rgba(214, 95, 58, 0.1);
+            background: rgba(214, 95, 58, 0.02);
+        }
+
+        .eco-node-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 1.15rem;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: -0.5px;
+            transition: color 0.3s ease;
+        }
+        .eco-node-card:hover h4, .eco-node-card.highlighted h4 { color: #D65F3A; }
+
+        /* --- LOGO INTERACTIF --- */
+        .ecosystem-view {
+            position: relative;
+            width: 100%;
+            height: 520px; 
+            margin: 0 auto;
         }
 
-        .profile-card p {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 0;
+        .eco-img-asset {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            transition: transform 0.4s ease;
         }
 
-        .profile-card strong {
-            color: #004c97;
+        /* Pastilles interactives de l'image */
+        .eco-trigger {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            top: 50%;
+            left: 50%;
+        }
+
+        /* Positions recalibrées au centre */
+        .tg-top          { transform: translate(-50%, -85px); }
+        .tg-right        { transform: translate(60px, -70%); }
+        .tg-bottom-right { transform: translate(32px, 55px); }
+        .tg-bottom-left  { transform: translate(-58px, 55px); }
+        .tg-left         { transform: translate(-95px, -90%); }
+
+        .eco-trigger:hover, .eco-trigger.active {
+            background-image: url('icon.png');
+            background-size: 555%;
+            box-shadow: 0 0 0 3px #ffffff, 0 0 15px rgba(214, 95, 58, 0.6);
+        }
+
+        /* Mapping des sprites pour l'état actif */
+        .tg-top:hover, .tg-top.active                   { background-position: 50% 0%; }
+        .tg-right:hover, .tg-right.active               { background-position: 100% 48%; }
+        .tg-bottom-right:hover, .tg-bottom-right.active { background-position: 81% 97%; }
+        .tg-bottom-left:hover, .tg-bottom-left.active   { background-position: 19% 97%; }
+        .tg-left:hover, .tg-left.active                 { background-position: 0% 48%; }
+
+        /* --- POPOVERS AVEC FONDS LÉGERS (RGBA) --- */
+        .eco-popover {
+            position: absolute;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            width: 145px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+            line-height: 1.3;
+            color: #1e293b; /* Texte foncé pour lisibilité optimale sur fond clair */
+        }
+
+        .eco-popover strong { display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.75rem; }
+
+        /* Positionnement spatial fixe */
+        .tg-top .eco-popover          { bottom: 50px; left: 50%; transform: translateX(-50%); width: 160px; }
+        .tg-right .eco-popover        { left: 55px; top: 50%; transform: translateY(-50%); }
+        .tg-bottom-right .eco-popover { left: 45px; top: 35px; }
+        .tg-bottom-left .eco-popover  { right: 45px; top: 35px; }
+        .tg-left .eco-popover         { right: 55px; top: 50%; transform: translateY(-50%); }
+
+        /* --- CORRESPONDANCE ET COLORATION DES FONDS LÉGERS --- */
+        
+        /* 1. Haut : Pratiquants (#efd15b -> opacity 15%) */
+        .tg-top .eco-popover { background: rgba(239, 209, 91, 0.15); border: 1px solid #efd15b; }
+        .tg-top .eco-popover strong { color: #c4a11b; }
+        
+        /* 2. Droite : Encadrement (#f1a62f -> opacity 15%) */
+        .tg-right .eco-popover { background: rgba(241, 166, 47, 0.15); border: 1px solid #f1a62f; }
+        .tg-right .eco-popover strong { color: #c98216; }
+        
+        /* 3. Bas Droite : Compétitions (#f08922 -> opacity 15%) */
+        .tg-bottom-right .eco-popover { background: rgba(240, 137, 34, 0.15); border: 1px solid #f08922; }
+        .tg-bottom-right .eco-popover strong { color: #d06d15; }
+        
+        /* 4. Bas Gauche : Équipementiers (#4daad4 -> opacity 15%) */
+        .tg-bottom-left .eco-popover { background: rgba(77, 170, 212, 0.15); border: 1px solid #4daad4; }
+        .tg-bottom-left .eco-popover strong { color: #2e86aa; }
+        
+        /* 5. Gauche : Corps Médical (#a5e1e1 -> opacity 15%) */
+        .tg-left .eco-popover { background: rgba(165, 225, 225, 0.18); border: 1px solid #a5e1e1; }
+        .tg-left .eco-popover strong { color: #52b1b1; }
+
+        /* Accentuation légère au survol */
+        .eco-trigger:hover .eco-popover, .eco-trigger.active .eco-popover {
+            background-color: #ffffff; /* Passe sur fond blanc pur au focus pour maximiser le contraste */
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
         }
 
         /* --- CTA BANNER --- */
@@ -307,20 +340,8 @@
             margin-top: 20px;
             box-shadow: var(--shadow-punchy);
         }
-
-        .cta-banner h2 {
-            font-size: 2.2rem;
-            margin-top: 0;
-            font-weight: 900;
-        }
-
-        .cta-banner p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 30px auto;
-            opacity: 0.95;
-        }
-
+        .cta-banner h2 { font-size: 2.2rem; margin-top: 0; font-weight: 900; }
+        .cta-banner p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; opacity: 0.95; }
         .btn-cta {
             display: inline-block;
             background: #ffffff;
@@ -333,12 +354,7 @@
             transition: 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        .btn-cta:hover {
-            transform: translateY(-3px);
-            color: #D65F3A;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-        }
+        .btn-cta:hover { transform: translateY(-3px); color: #D65F3A; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
         /* --- FOOTER --- */
         footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
@@ -361,13 +377,17 @@
         .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
         .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             .page-header h1 { font-size: 2rem; }
             .founder-container { flex-direction: column-reverse; align-items: center; gap: 30px; }
             .founder-aside { width: 100%; }
             .section-title { font-size: 1.8rem; }
             
+            .ecosystem-container { grid-template-columns: 1fr; }
+            .ecosystem-view { display: none; }
+            .eco-node-card { transform: none !important; }
+
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
                 display: none;
@@ -438,7 +458,7 @@
         </section>
     </div>
 
-    <!-- SECTION LA GENÈSE DU PROJET (CONTENU ENTIÈREMENT PRÉSERVÉ) -->
+    <!-- SECTION LA GENÈSE DU PROJET -->
     <section class="content-section">
         <div class="container">
             <h2 class="section-title">La genèse du projet</h2>
@@ -471,17 +491,17 @@
         </div>
     </section>
 
-    <!-- SECTION : À QUI S'ADRESSE MON PROJET TRI ? -->
+    <!-- SECTION : L'ÉCOSYSTÈME -->
     <section class="content-section gray-bg">
         <div class="container">
             <h2 class="section-title" style="border-left-color: #D65F3A;">L'Écosystème du Triathlon Québécois</h2>
-            <p class="sub-header">Une structure interconnectée où chaque actor collabore pour dynamiser et faire grandir le sport au Québec.</p>
+            <p class="sub-header">Une structure interconnectée où chaque acteur collabore pour dynamiser et faire grandir le sport au Québec.</p>
             
             <div class="profile-grid" style="grid-template-columns: 1fr;">
                 
                 <!-- LE PILIER CENTRAL : LES ATHLÈTES -->
                 <div class="profile-card" style="border-color: #004c97; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 40px;">
-                    <div style="display: inline-block; background: #004c97; color: white; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">
+                    <div style="display: inline-block; background: rgba(239, 209, 91, 0.2); border: 1px solid #efd15b; color: #b59210; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">
                         Le cœur du projet
                     </div>
                     <h3 style="color: #004c97; font-size: 1.8rem; margin-bottom: 20px;">L'Athlète, au centre de notre univers</h3>
@@ -489,204 +509,103 @@
                     
                     <ul style="margin: 20px 0 0 0; padding-left: 20px; color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; list-style-type: square;">
                         <li><strong>Les Novices & Débutants :</strong> Pour ceux qui se lancent. Nous rendons la préparation accessible en adaptant l'entraînement à votre réalité quotidienne (travail, famille, loisirs) plutôt que l'inverse. Notre encadrement simplifie chaque étape pour vous guider sereinement jusqu'à votre première ligne d'arrivée.</li>
-                        <li><strong>Les Athlètes Solos & Experts :</strong> Pour ceux qui s'entraînent seuls, par préférence ou par isolement, mais refusent de plafonner. Nous offrons un encadrement de coachs et mentors québécois reconnus pour vous accompagner du niveau intermédiaire jusqu'aux exigences des experts afin de vous aider à atteindre votre meilleur niveau.</li>
+                        <li><strong>Les Athlètes Solos & Experts :</strong> Pour ceux qui s'entraînement seuls, par préférence ou par isolement, mais refusent de plafonner. Nous offrons un encadrement de coachs et mentors québécois reconnus pour vous accompagner du niveau intermédiaire jusqu'aux exigences des experts afin de vous aider à atteindre votre meilleur niveau.</li>
                     </ul>
                 </div>
 
-                <!-- LES AUTRES COMPOSANTES DE L'ÉCOSYSTÈME -->
-                <div class="profile-card" style="border-color: #D65F3A; background: #ffffff; padding: 40px; margin-top: 10px;">
+                <!-- LES AUTRES COMPOSANTES -->
+                <div class="profile-card" style="border-color: #D65F3A; background: #ffffff; padding: 35px; margin-top: 10px;">
                     <h3 style="color: #D65F3A; font-size: 1.6rem; margin-bottom: 20px;">Les Forces vives de la Communauté</h3>
                     <p>Autour de l'athlète gravite un réseau complet de professionnels et d'organisations. 
                         <span style="font-family: 'Oooh Baby', cursive; font-size: 1.5rem; color: #004c97; font-weight: 800; position: relative; margin-right: 2px; vertical-align: middle;">mon</span><span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-size: 1.15rem; color: #004c97; font-weight: 800; vertical-align: middle;">Projet Tri</span> 
                         agit comme le carrefour connectant ces composantes essentielles pour propulser la discipline :
                     </p>
                     
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 40px;">
-                        <div class="eco-node" data-target="right">
-                            <h4 style="color: #004c97; margin: 0 0 8px 0; font-size: 1.1rem; text-transform: uppercase;">⏱️ Coachs & Clubs</h4>
-                            <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Gardiens de l'expertise technique et moteurs du développement local, ils guident la progression des sportifs.</p>
-                        </div>
-                        <div class="eco-node" data-target="bottom-right">
-                            <h4 style="color: #004c97; margin: 0 0 8px 0; font-size: 1.1rem; text-transform: uppercase;">🏁 Événements</h4>
-                            <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Rassemblements et compétitions qui concrétisent les objectifs et célèbrent le dépassement de soi.</p>
-                        </div>
-                        <div class="eco-node" data-target="left">
-                            <h4 style="color: #004c97; margin: 0 0 8px 0; font-size: 1.1rem; text-transform: uppercase;">🩺 Santé & Thérapeutes</h4>
-                            <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Dédiés à la prévention des blessures, aux soins cliniques, à la récupération et au bien-être global.</p>
-                        </div>
-                        <div class="eco-node" data-target="bottom-left">
-                            <h4 style="color: #004c97; margin: 0 0 8px 0; font-size: 1.1rem; text-transform: uppercase;">🚴 Commerces & Marques</h4>
-                            <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Boutiques spécialisées et manufacturiers qui fournissent l'équipement de pointe adapté.</p>
-                        </div>
-                    </div>
-
-                    <!-- INFOGRAPHIE INTERACTIVE : FOCUS ET MASQUE D'OPACITÉ -->
-                    <style>
-                        .ecosystem-view {
-                            position: relative;
-                            width: 100%;
-                            max-width: 450px;
-                            margin: 0 auto;
-                            aspect-ratio: 1 / 1;
-                        }
-
-                        /* L'image de base réagit globalement si une branche est ciblée */
-                        .eco-img-asset {
-                            width: 100%;
-                            height: 100%;
-                            object-fit: contain;
-                            display: block;
-                            transition: filter 0.3s ease, opacity 0.3s ease;
-                        }
-
-                        /* Mode focus : lorsque le conteneur est survolé par l'intermédiaire d'un hotspot */
-                        .ecosystem-view.has-focus .eco-img-asset {
-                            filter: grayscale(40%) brightness(85%);
-                            opacity: 0.55;
-                        }
-
-                        /* Les points d'activation positionnés sur les extrémités */
-                        .eco-trigger {
-                            position: absolute;
-                            width: 18%;
-                            height: 18%;
-                            border-radius: 50%;
-                            cursor: pointer;
-                            z-index: 10;
-                            box-sizing: border-box;
-                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-                        }
-
-                        /* Création de l'effet d'optique : la branche active retrouve 100% de sa visibilité et s'entoure d'une bordure nette */
-                        .eco-trigger:hover, .eco-trigger.active {
-                            background-image: url('icon.png');
-                            background-size: 555%; /* Équivalent réciproque de la taille (100 / 18) pour réaligner l'image */
-                            box-shadow: 0 0 0 4px #ffffff, 0 0 20px rgba(15, 23, 42, 0.25);
-                            transform: scale(1.12);
-                        }
-
-                        /* Réalignements précis du background-position pour chaque branche (trompe-l'œil) */
-                        .tg-top          { top: 1%;   left: 41%; background-position: 50% 0%; }
-                        .tg-right        { top: 40%;  right: 0%; background-position: 100% 48%; }
-                        .tg-bottom-right { bottom: 3%; right: 16%; background-position: 81% 97%; }
-                        .tg-bottom-left  { bottom: 3%; left: 16%; background-position: 19% 97%; }
-                        .tg-left         { top: 40%;  left: 0%; background-position: 0% 48%; }
-
-                        /* Boîtes d'informations contextuelles (Tooltips) */
-                        .eco-popover {
-                            position: absolute;
-                            background: #0f172a;
-                            color: #ffffff;
-                            padding: 12px 16px;
-                            border-radius: 8px;
-                            font-size: 0.85rem;
-                            width: 200px;
-                            opacity: 0;
-                            visibility: hidden;
-                            transition: all 0.2s ease;
-                            z-index: 20;
-                            pointer-events: none;
-                            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-                        }
-
-                        .eco-popover strong {
-                            display: block;
-                            color: #D65F3A;
-                            margin-bottom: 4px;
-                            text-transform: uppercase;
-                        }
-
-                        /* Placement dynamique des boîtes */
-                        .tg-top .eco-popover          { top: 115%; left: 50%; transform: translateX(-50%); }
-                        .tg-right .eco-popover        { top: 50%; right: 120%; transform: translateY(-50%); }
-                        .tg-bottom-right .eco-popover { bottom: 120%; right: 0; }
-                        .tg-bottom-left .eco-popover  { bottom: 120%; left: 0; }
-                        .tg-left .eco-popover         { top: 50%; left: 120%; transform: translateY(-50%); }
-
-                        .eco-trigger:hover .eco-popover, .eco-trigger.active .eco-popover {
-                            opacity: 1;
-                            visibility: visible;
-                        }
-
-                        /* Surlignage des paragraphes de texte sous l'image */
-                        .eco-node {
-                            transition: all 0.3s ease;
-                            padding: 15px;
-                            border-radius: 8px;
-                        }
-                        .eco-node.highlighted {
-                            background: rgba(214, 95, 58, 0.06);
-                            box-shadow: inset 4px 0 0 #D65F3A;
-                        }
-
-                        @media (max-width: 600px) {
-                            .eco-popover { width: 150px; font-size: 0.75rem; }
-                        }
-                    </style>
-
-                    <div class="ecosystem-view" id="ecoView">
-                        <img src="icon.png" alt="Écosystème Global" class="eco-img-asset" id="baseAsset">
-
-                        <!-- Branche Haut : Athlètes -->
-                        <div class="eco-trigger tg-top" data-ref="top">
-                            <div class="eco-popover">
-                                <strong>🥇 Pratiquants</strong>
-                                Les athlètes guident l'orientation globale de nos initiatives et programmes d'apprentissage.
+                    <div class="ecosystem-container">
+                        
+                        <!-- COLONNE GAUCHE : LES CARDS INTERACTIVES (2/5) -->
+                        <div class="eco-nodes-list">
+                            <div class="eco-node-card" data-target="right">
+                                <h4 style="color: #f1a62f;">⏱️ Encadrement & Clubs</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Gardiens de l'expertise technique et moteurs du développement local, ils guident la progression des sportifs.</p>
+                            </div>
+                            <div class="eco-node-card" data-target="bottom-right">
+                                <h4 style="color: #f08922;">🏁 Compétitions & Événements</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Rassemblements et compétitions qui concrétisent les objectifs et célèbrent le dépassement de soi.</p>
+                            </div>
+                            <div class="eco-node-card" data-target="left">
+                                <h4 style="color: #a5e1e1; text-shadow: 0 1px 1px rgba(0,0,0,0.1);">🩺 Corps Médical & Santé</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Dédiés à la prévention des blessures, aux soins cliniques, à la récupération et au bien-être global.</p>
+                            </div>
+                            <div class="eco-node-card" data-target="bottom-left">
+                                <h4 style="color: #4daad4;">🚴 Équipementiers & Marques</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Boutiques spécialisées et manufacturiers qui fournissent l'équipement de pointe adapté.</p>
                             </div>
                         </div>
 
-                        <!-- Branche Droite : Coachs / Clubs -->
-                        <div class="eco-trigger tg-right" data-ref="right">
-                            <div class="eco-popover">
-                                <strong>⏱️ Encadrement</strong>
-                                Les structures d'entraînement locales qui partagent les meilleures approches techniques.
+                        <!-- COLONNE DROITE : LOGO AVEC ENCADRÉS FIXES (3/5) -->
+                        <div class="ecosystem-view" id="ecoView">
+                            <img src="icon.png" alt="Écosystème Global" class="eco-img-asset" id="baseAsset">
+
+                            <!-- Branche Haut : Pratiquants (#efd15b) -->
+                            <div class="eco-trigger tg-top" data-ref="top">
+                                <div class="eco-popover">
+                                    <strong>🥇 Pratiquants</strong>
+                                    Les athlètes guident l'orientation globale de nos initiatives et programmes.
+                                </div>
+                            </div>
+
+                            <!-- Branche Droite : Encadrement (#f1a62f) -->
+                            <div class="eco-trigger tg-right" data-ref="right">
+                                <div class="eco-popover">
+                                    <strong>⏱️ Encadrement</strong>
+                                    Les structures d'entraînement locales qui partagent l'expertise.
+                                </div>
+                            </div>
+
+                            <!-- Branche Bas Droite : Compétitions (#f08922) -->
+                            <div class="eco-trigger tg-bottom-right" data-ref="bottom-right">
+                                <div class="eco-popover">
+                                    <strong>🏁 Compétitions</strong>
+                                    Les rendez-vous régionaux où se concrétisent les efforts.
+                                </div>
+                            </div>
+
+                            <!-- Branche Bas Gauche : Équipementiers (#4daad4) -->
+                            <div class="eco-trigger tg-bottom-left" data-ref="bottom-left">
+                                <div class="eco-popover">
+                                    <strong>🚴 Équipementiers</strong>
+                                    Les boutiques de proximité qui outillent les athlètes.
+                                </div>
+                            </div>
+
+                            <!-- Branche Gauche : Corps Médical (#a5e1e1) -->
+                            <div class="eco-trigger tg-left" data-ref="left">
+                                <div class="eco-popover">
+                                    <strong>🩺 Corps Médical</strong>
+                                    Experts cliniques assurant la longévité de la pratique.
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Branche Bas Droite : Événements -->
-                        <div class="eco-trigger tg-bottom-right" data-ref="bottom-right">
-                            <div class="eco-popover">
-                                <strong>🏁 Compétitions</strong>
-                                Les rendez-vous sportifs régionaux où s'expriment la persévérance et le dépassement.
-                            </div>
-                        </div>
-
-                        <!-- Branche Bas Gauche : Commerçants -->
-                        <div class="eco-trigger tg-bottom-left" data-ref="bottom-left">
-                            <div class="eco-popover">
-                                <strong>🚴 Équipementiers</strong>
-                                Les boutiques de proximité qui outillent adéquatement les membres du réseau.
-                            </div>
-                        </div>
-
-                        <!-- Branche Gauche : Professionnels Santé -->
-                        <div class="eco-trigger tg-left" data-ref="left">
-                            <div class="eco-popover">
-                                <strong>🩺 Corps Médical</strong>
-                                Experts cliniques assurant la longévité de la pratique par le soin et la prévention.
-                            </div>
-                        </div>
                     </div>
 
                     <script>
                         document.addEventListener('DOMContentLoaded', function () {
-                            const view = document.getElementById('ecoView');
                             const triggers = document.querySelectorAll('.eco-trigger');
-                            const nodes = document.querySelectorAll('.eco-node');
+                            const cards = document.querySelectorAll('.eco-node-card');
 
                             function setFocus(key) {
-                                view.classList.add('has-focus');
                                 const activeTrigger = document.querySelector(`.eco-trigger[data-ref="${key}"]`);
-                                const activeNode = document.querySelector(`.eco-node[data-target="${key}"]`);
+                                const activeCard = document.querySelector(`.eco-node-card[data-target="${key}"]`);
                                 
                                 if (activeTrigger) activeTrigger.classList.add('active');
-                                if (activeNode) activeNode.classList.add('highlighted');
+                                if (activeCard) activeCard.classList.add('highlighted');
                             }
 
                             function clearFocus() {
-                                view.classList.remove('has-focus');
                                 triggers.forEach(t => t.classList.remove('active'));
-                                nodes.forEach(n => n.classList.remove('highlighted'));
+                                cards.forEach(c => c.classList.remove('highlighted'));
                             }
 
                             triggers.forEach(trigger => {
@@ -695,10 +614,14 @@
                                 trigger.addEventListener('mouseleave', clearFocus);
                             });
 
-                            nodes.forEach(node => {
-                                const target = node.getAttribute('data-target');
-                                node.addEventListener('mouseenter', () => setFocus(target));
-                                node.addEventListener('mouseleave', clearFocus);
+                            cards.forEach(card => {
+                                const target = card.getAttribute('data-target');
+                                card.addEventListener('mouseenter', () => setFocus(target));
+                                card.addEventListener('mouseleave', clearFocus);
+                                card.addEventListener('click', () => {
+                                    clearFocus();
+                                    setFocus(target);
+                                });
                             });
                         });
                     </script>
@@ -722,9 +645,7 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <a href="index.html">
-                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
-                </a>
+                <a href="index.html"><img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;"></a>
             </div>
             <div class="footer-text">
                 <p style="margin-bottom: 12px; margin-top: 0;">
@@ -744,7 +665,7 @@
         </div>
     </footer>
     
-    <!-- STRUCTURE HARMONISÉE DU BOUTON RETOUR EN HAUT -->
+    <!-- BOUTON RETOUR EN HAUT -->
     <button id="backToTop" title="Retour en haut">
         <svg viewBox="0 0 24 24">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
@@ -755,7 +676,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const backToTopBtn = document.getElementById("backToTop");
 
-            // Gestion de l'affichage du bouton lors du défilement
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 300) {
                     backToTopBtn.classList.add("visible");
@@ -764,12 +684,8 @@
                 }
             });
 
-            // Transition de défilement fluide au clic
             backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth"
-                });
+                window.scrollTo({ top: 0, behavior: "smooth" });
             });
         });
     </script>
