@@ -459,7 +459,7 @@
         }
 
 
-        /* --- RESPONSIVE MOBILE --- */
+
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             #backToTop.visible { display: flex !important; }
@@ -468,28 +468,58 @@
             .founder-aside { width: 100%; }
             .section-title { font-size: 1.8rem; }
             
-            /* Ajustement des paddings des cartes pour éviter le débordement */
-            .profile-card { 
-                padding: 20px !important; 
-                box-sizing: border-box;
-            }
-            
-            .ecosystem-container { 
-                grid-template-columns: 1fr; 
-                gap: 15px;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .eco-nodes-list {
-                width: 100%;
-                box-sizing: border-box;
-            }
-            .eco-node-card { 
-                transform: none !important; 
-                box-sizing: border-box;
+            /* Permet au texte de la marque de revenir à la ligne sur mobile */
+            .profile-card span[style*="white-space: nowrap"] {
+                white-space: normal !important;
             }
 
-            .ecosystem-view { display: none; }
+            /* Supprime l'ellipse et ajuste le padding du fond gris sur mobile */
+            .content-section.gray-bg {
+                clip-path: none !important;
+                padding-bottom: 60px !important;
+            }
+
+            /* Ajustement et isolation des cartes pour stopper le débordement horizontal */
+            .profile-card { 
+                padding: 20px !important; 
+                box-sizing: border-box !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+            
+            /* Passage de l'écosystème sur une seule colonne propre */
+            .ecosystem-container { 
+                grid-template-columns: 1fr !important; 
+                gap: 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .eco-nodes-list {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .eco-node-card { 
+                transform: none !important; 
+                box-sizing: border-box !important;
+                width: 100% !important;
+            }
+
+            /* MASQUAGE ABSOLU DU LOGO, DES PASTILLES ET DES POPOVERS */
+            .ecosystem-view, 
+            .eco-img-asset, 
+            .eco-trigger, 
+            .eco-popover { 
+                display: none !important; 
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                width: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
 
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
