@@ -74,6 +74,15 @@
     justify-content: center;
 }
         
+        #backToTop:hover {
+            background-color: #D65F3A;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(214, 95, 58, 0.3);
+        }
+
+        #backToTop.visible { opacity: 1; visibility: visible; }
+        #backToTop svg { width: 18px; height: 18px; fill: currentColor; }
+        
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
 
@@ -368,10 +377,6 @@
 
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-
-            #backToTop.visible { 
-        display: flex !important; 
-    }
             .page-header h1 { font-size: 2rem; }
             .founder-container { flex-direction: column-reverse; align-items: center; gap: 30px; }
             .founder-aside { width: 100%; }
@@ -657,8 +662,6 @@
             </div>
         </div>
     </footer>
-
-        <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
     
     <!-- BOUTON RETOUR EN HAUT -->
     <button id="backToTop" title="Retour en haut">
@@ -668,24 +671,21 @@
     </button>
 
     <script>
-        const backToTopBtn = document.getElementById("backToTop");
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById("backToTop");
 
-        window.addEventListener('scroll', function() {
-            if (window.innerWidth <= 768) {
-                if (window.pageYOffset > 300) {
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
                     backToTopBtn.classList.add("visible");
                 } else {
                     backToTopBtn.classList.remove("visible");
                 }
-            }
-        });
-
-        backToTopBtn.onclick = function() {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
             });
-        };
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        });
     </script>
 </body>
 </html>
