@@ -366,6 +366,80 @@
         .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
         .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
 
+        /* --- MENU DÉROULANT DESKTOP & MOBILE --- */
+        nav ul li.has-dropdown {
+            position: relative;
+        }
+
+        .arrow-down {
+            font-size: 0.65rem;
+            margin-left: 4px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        /* Style du sous-menu sur Ordinateur */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        /* Triangle esthétique */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        /* Déclenchement au survol sur ordinateur */
+        nav ul li.has-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        nav ul li.has-dropdown:hover .arrow-down {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu li {
+            width: 100%;
+            padding: 0;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             #backToTop.visible { display: flex !important; }
@@ -406,7 +480,7 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Mon Projet Tri - Coaching et mentorat de triathlon au Québec"></a>
+                    <a href="index.html"><img src="mon-projet-tri-logo-coaching-quebec_blue.jpg" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a>
                 </div>
                 <div class="region-stack">
                     <span class="region-mention">Partout au Québec</span>
@@ -421,15 +495,22 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="decouvrir.html" style="color: #D65F3A;">L'OSBL</a></li> 
-                    <li><a href="index.html#athlètes">Athlètes</a></li>                    
-                    <li><a href="index.html#partenaires">Partenaires</a></li>
+                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="autonome.html">Autonome</a></li>
+                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#programme">Partenaires</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="calendrier.html" target="_blank">Calendrier'26</a></li> 
+                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
                     <li class="lang-switcher">
                         <span class="lang-label">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/discover.html'">
+                            <input type="checkbox" onclick="window.location.href='en/run.html'">
                             <span class="slider"></span>
                         </label>
                         <span class="lang-label" style="color: #ccc;">EN</span>
