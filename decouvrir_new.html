@@ -460,6 +460,7 @@
 
 
         /* --- RESPONSIVE MOBILE --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             #backToTop.visible { display: flex !important; }
             .page-header h1 { font-size: 2rem; }
@@ -467,9 +468,28 @@
             .founder-aside { width: 100%; }
             .section-title { font-size: 1.8rem; }
             
-            .ecosystem-container { grid-template-columns: 1fr; }
+            /* Ajustement des paddings des cartes pour éviter le débordement */
+            .profile-card { 
+                padding: 20px !important; 
+                box-sizing: border-box;
+            }
+            
+            .ecosystem-container { 
+                grid-template-columns: 1fr; 
+                gap: 15px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .eco-nodes-list {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .eco-node-card { 
+                transform: none !important; 
+                box-sizing: border-box;
+            }
+
             .ecosystem-view { display: none; }
-            .eco-node-card { transform: none !important; }
 
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
