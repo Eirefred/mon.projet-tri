@@ -2,7 +2,6 @@
 <html lang="fr">
 <head>
 
-    <link rel="preload" as="image" href="banniere_new.jpg">
     <meta charset="UTF-8">
     <meta name="description" content="Découvrez le triathlon partout au Québec avec Mon Projet Tri. Organisme sans but lucratif offrant du mentorat, des ressources et un accès simplifié au sport.">
 
@@ -150,15 +149,56 @@
             background-color: #f1f5f9;
         }
 
+        /* --- NOUVEAU STYLE HERO AVEC VIDÉO --- */
         .hero {
             height: 85vh;
-            background: linear-gradient(rgba(0, 30, 60, 0.65), rgba(0, 30, 60, 0.65)), url('banniere_new.jpg') center/cover no-repeat;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
             clip-path: ellipse(150% 100% at 50% 0%);
+            overflow: hidden;
+        }
+
+        /* Conteneur de l'iframe pour masquer les bords YouTube */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none; /* Empêche les clics sur la vidéo */
+        }
+
+        .video-background iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 56.25vw; /* Ratio 16:9 */
+            min-height: 100vh;
+            min-width: 177.77vh; /* Ratio 16:9 */
+            transform: translate(-50%, -50%);
+        }
+
+        /* Superposition sombre pour garder le texte lisible */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 30, 60, 0.80);
+            z-index: 2;
+        }
+
+        /* Force le contenu textuel à passer au-dessus de la vidéo */
+        .hero-content {
+            position: relative;
+            z-index: 3;
         }
 
         .hero h1 { font-size: 3rem; font-weight: 900; line-height: 1.1; letter-spacing: -2px; margin-bottom: 20px; }
@@ -842,34 +882,46 @@
     <!-- WRAPPER : Il fournit la couleur de fond #f1f5f9 à l'ellipse coupée de la section Hero -->
     <div class="hero-wrapper">
         <section class="hero">
-    <!-- Le bloc reste remonté vers le haut -->
-    <div class="hero-content" style="margin-top: -70px;">
-        
-        <div style="margin-bottom: 35px;">
-            <span style="font-family: 'Oooh Baby', cursive; font-size: 2.2rem; color: #ffffff; vertical-align: baseline; margin-right: 4px;">mon</span>
-            <span style="font-family: 'Inclusive Sans', sans-serif; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Projet</span>
-            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Tri</span>
-            <span style="font-size: 1.1rem; opacity: 0.85; display: block; margin-top: -10px;">L'organisme sans but lucratif qui vous aide à vous lancer.</span>
-        </div>
+            <!-- Conteneur de la vidéo YouTube en arrière-plan -->
+            <div class="video-background">
+                <!-- Identifiant de la nouvelle vidéo : izYixQp-i5A -->
+                <iframe src="https://www.youtube.com/embed/izYixQp-i5A?autoplay=1&mute=1&loop=1&playlist=izYixQp-i5A&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                </iframe>
+            </div>
+            
+            <!-- Voile sombre pour la lisibilité -->
+            <div class="hero-overlay"></div>
 
-        <!-- ESPACE AUGMENTÉ À 100px POUR BASSER LE RESTE DU CONTENU -->
-        <h1 style="font-size: 3rem; margin-top: 70px; margin-bottom: 35px;">
-            Développement du <br>
-            <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2em;">Triathlon</span><br>au Québec.
-        </h1>
-        <p class="subtitle-intro" style="margin-bottom: 15px;">
-            Notre <span style="color: #D65F3A; font-weight: bold;">aide</span> est <span style="color: #D65F3A; font-weight: bold;">gratuite</span>, et nous encadrons les tarifs de coaching.
-        </p>
+            <!-- Le bloc reste remonté vers le haut -->
+            <div class="hero-content" style="margin-top: -70px;">
+                <div style="margin-bottom: 35px;">
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 2.2rem; color: #ffffff; vertical-align: baseline; margin-right: 4px;">mon</span>
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Projet</span>
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Tri</span>
+                    <span style="font-size: 1.1rem; opacity: 0.85; display: block; margin-top: -10px;">L'organisme sans but lucratif qui vous aide à vous lancer.</span>
+                </div>
 
-        <!-- BOUTON AVEC EFFET DE SURVOL (HOVER) INTÉGRÉ -->
-        <a href="#athlètes" 
-           onmouseover="this.style.transform='scale(1.05)'; this.style.background='var(--primary-gradient)';" 
-           onmouseout="this.style.transform='scale(1)'; this.style.background='var(--secondary-gradient)';" 
-           style="display: inline-block; background: var(--secondary-gradient); color: white; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 900; text-transform: uppercase; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
-            Découvrir
-        </a>
-    </div>
-</section>
+                <!-- ESPACE AUGMENTÉ À 100px POUR BASSER LE RESTE DU CONTENU -->
+                <h1 style="font-size: 3rem; margin-top: 70px; margin-bottom: 35px;">
+                    Développement du <br>
+                    <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2em;">Triathlon</span><br>au Québec.
+                </h1>
+                <p class="subtitle-intro" style="margin-bottom: 15px;">
+                    Notre <span style="color: #D65F3A; font-weight: bold;">aide</span> est <span style="color: #D65F3A; font-weight: bold;">gratuite</span>, et nous encadrons les tarifs de coaching.
+                </p>
+
+                <!-- BOUTON AVEC EFFET DE SURVOL (HOVER) INTÉGRÉ -->
+                <a href="#athlètes" 
+                   onmouseover="this.style.transform='scale(1.05)'; this.style.background='var(--primary-gradient)';" 
+                   onmouseout="this.style.transform='scale(1)'; this.style.background='var(--secondary-gradient)';" 
+                   style="display: inline-block; background: var(--secondary-gradient); color: white; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 900; text-transform: uppercase; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
+                    Découvrir
+                </a>
+            </div>
+        </section>
     </div>
 
     <!-- SECTION ATHLÈTES -->
