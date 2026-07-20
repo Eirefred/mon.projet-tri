@@ -218,19 +218,19 @@
             top: 95px; 
             background: var(--bg); 
             z-index: 1010; 
-            padding: 12px 0; 
+            padding: 10px 0; 
             border-bottom: 1px solid #ddd; 
-            height: 40px; 
+            height: 38px; 
             display: flex; 
             align-items: center; 
         }
 
         .legend { 
             background: white; 
-            padding: 6px 12px; 
+            padding: 4px 10px; 
             border-radius: 30px; 
             display: flex; 
-            gap: 4px; 
+            gap: 2px; 
             align-items: center; 
             box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
             margin: 0 auto; 
@@ -239,11 +239,11 @@
         .legend-item { 
             display: flex; 
             align-items: center; 
-            gap: 3px; 
+            gap: 2px; 
             cursor: pointer; 
-            padding: 3px 6px; 
+            padding: 2px 4px; 
             border-radius: 20px; 
-            font-size: 0.72rem; 
+            font-size: 0.7rem; 
         }
         .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
         .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
@@ -261,7 +261,7 @@
         table { width: 100%; border-collapse: collapse; table-layout: fixed; }
         thead th { 
             position: sticky; 
-            top: 159px; 
+            top: 155px; 
             background: var(--dark-blue); 
             color: white; 
             padding: 15px 10px; 
@@ -293,7 +293,7 @@
         tr.past-event { opacity: 0.5; filter: grayscale(0.8); background-color: #f9f9f9; }
 
         /* --- BADGES CORRESPONDANTS TR --- */
-        .badge { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 5px; font-weight: bold; font-size: 0.65rem; margin: 1px; border: 1px solid rgba(0,0,0,0.1); }
+        .badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 5px; font-weight: bold; font-size: 0.62rem; margin: 1px; border: 1px solid rgba(0,0,0,0.1); }
         .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
         .cat-tri { background: #e3f2fd; color: #1976d2; }
         .cat-dua { background: #fff3e0; color: #e65100; }
@@ -503,29 +503,29 @@
             
             <h1>Calendrier provincial 2026</h1>
 
-            <!-- FILTRE LÉGENDE STICKY -->
+            <!-- FILTRE LÉGENDE STICKY CONTENU RÉDUIT -->
             <div class="legend-container">
                 <div class="legend">
-                    <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 10px;">
-                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Affiliation TQ" style="width:18px; cursor: help;" title="Événements sanctionnés par Triathlon Québec">
-                        <strong style="margin-left:5px; font-size: 0.72rem;">TQ</strong>
+                    <div class="legend-item" style="cursor: default; border-right: 1px solid #eee; padding-right: 6px;">
+                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Affiliation TQ" style="width:16px; cursor: help;" title="Événements sanctionnés par Triathlon Québec">
+                        <strong style="margin-left:3px; font-size: 0.7rem;">TQ</strong>
                     </div>
                     <div class="legend-item clickable-cat" data-cat="PI"><span class="badge cat-piscine">PI</span> Piscine</div>
-                    <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Initiation</div>
+                    <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Init.</div>
                     <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
                     <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
                     <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
-                    <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Complet</div>
-                    <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. S</div>
-                    <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. O</div>
-                    <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. L</div>
+                    <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Compl.</div>
+                    <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Duath. Sprint</div>
+                    <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Duath. Olymp.</div>
+                    <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
                     <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
                     <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-                    <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:5px 12px; border-radius:20px; cursor:pointer; font-size:0.7rem; font-weight:bold; margin-left:10px;">🌎 Carte</button>
+                    <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">🌎 Carte</button>
                 </div>
             </div>
 
-            <!-- NOTE D'INFORMATION (Z-INDEX CORRIGÉ) -->
+            <!-- NOTE D'INFORMATION -->
             <div style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center;">
                 <strong>Note sur la mention TQ :</strong> gage de sécurité et de qualité organisationnelle.
                 <a href="javascript:void(0)" onclick="alert('Les événements sanctionnés par Triathlon Québec répondent à des standards rigoureux en matière de sécurité, d’encadrement et de qualité organisationnelle.')" style="color: inherit; text-decoration: underline; margin-left: 5px;">Voir plus</a>
