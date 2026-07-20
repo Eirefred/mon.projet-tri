@@ -260,10 +260,36 @@
         .main-content { padding: 20px 0; width: 100%; box-sizing: border-box; }
         .table-outer { width: 100%; box-sizing: border-box; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
         table { width: 100%; border-collapse: collapse; table-layout: fixed; }
-        thead th { position: sticky; top: 0px; background: var(--dark-blue); color: white; padding: 15px 10px; z-index: 1000; text-align: left; font-size: 0.85rem; border: none; }
-        
-        .col-date { width: 85px; } .col-event { width: 240px; } .col-org { width: 130px; } .col-reg { width: 120px; } .col-lieu { width: 130px; } .col-site { width: 80px; } .col-mail { width: 85px; } .col-epreuves { width: 150px; }
-        td { padding: 12px 10px; border-bottom: 1px solid #eee; font-size: 0.85rem; vertical-align: middle; overflow: hidden; word-wrap: break-word; }
+        thead th { 
+    position: sticky; 
+    top: 145px; /* Ajusté pour se coller sous la légende */
+    background: var(--dark-blue); 
+    color: white; 
+    padding: 12px 8px; /* Padding réduit pour maximiser l'espace textuel */
+    z-index: 1000; 
+    text-align: left; 
+    font-size: 0.82rem; 
+    border: none; 
+}
+
+/* Redéfinition précise des largeurs pour un total de 100% dans 1100px */
+.col-date { width: 9%; }      /* ~100px */
+.col-event { width: 25%; }    /* ~275px */
+.col-org { width: 15%; }      /* ~165px */
+.col-reg { width: 11%; }      /* ~120px */
+.col-lieu { width: 14%; }     /* ~155px */
+.col-site { width: 7%; }      /* ~75px */
+.col-mail { width: 8%; }      /* ~90px */
+.col-epreuves { width: 11%; }  /* ~120px */
+
+td { 
+    padding: 10px 8px; /* Moins de vide vertical et horizontal */
+    border-bottom: 1px solid #eee; 
+    font-size: 0.82rem; /* Légèrement plus petit pour éviter les retours à la ligne brusques */
+    vertical-align: middle; 
+    overflow: hidden; 
+    word-wrap: break-word; 
+}
         tr:hover { background: #f8fbff; }
         tr.hidden { display: none; }
         tr.past-event { opacity: 0.5; filter: grayscale(0.8); background-color: #f9f9f9; }
@@ -277,7 +303,20 @@
         .cat-multi { background: #f3e5f5; color: #7b1fa2; }
         .cat-init { background: #e8f5e9; color: #2e7d32; }
         .lieu-link { color: #D65F3A; cursor: pointer; text-decoration: underline; font-weight: bold; }
-        .btn-action { background: var(--dark-blue); color: white; text-decoration: none; padding: 5px 10px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; display: inline-block; text-align: center; width: 100%; box-sizing: border-box; transition: 0.2s; }
+        .btn-action { 
+    background: var(--dark-blue); 
+    color: white; 
+    text-decoration: none; 
+    padding: 5px 4px; /* Plus compact pour s'insérer proprement */
+    border-radius: 4px; 
+    font-size: 0.7rem; 
+    font-weight: bold; 
+    display: inline-block; 
+    text-align: center; 
+    width: 100%; 
+    box-sizing: border-box; 
+    transition: 0.2s; 
+}
         .btn-action:hover { background: #D65F3A; }
 
         /* --- MODAL --- */
