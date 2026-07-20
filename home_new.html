@@ -173,6 +173,7 @@
             pointer-events: none; /* Empêche les clics sur la vidéo */
         }
 
+        /* 1. Modifiez la règle existante de l'iframe */
         .video-background iframe {
             position: absolute;
             top: 50%;
@@ -182,6 +183,13 @@
             min-height: 100vh;
             min-width: 177.77vh; /* Ratio 16:9 */
             transform: translate(-50%, -50%);
+            opacity: 0; /* Caché au départ pour masquer le flash des contrôles */
+            animation: fadeInVideo 0.5s ease-in-out 1.5s forwards; /* Apparaît après 1.5 seconde */
+        }
+
+        /* 2. Ajoutez cette nouvelle règle d'animation juste en dessous */
+        @keyframes fadeInVideo {
+            to { opacity: 1; }
         }
 
         /* Superposition sombre pour garder le texte lisible */
