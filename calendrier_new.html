@@ -424,7 +424,16 @@
             .content-section h1 { font-size: 1.8rem; }
 
             /* Légende Mobile */
-            .legend-container { top: 65px; overflow-x: auto; white-space: nowrap; display: block; width: 100vw; -webkit-overflow-scrolling: touch; }
+            .legend-container { 
+                top: 65px; 
+                overflow-x: auto; 
+                overflow-y: hidden; /* Bloque le défilement vertical */
+                white-space: nowrap; 
+                display: block; 
+                width: 100vw; 
+                height: 38px; /* Force une hauteur stricte pour éviter les sauts */
+                -webkit-overflow-scrolling: touch; 
+            }
             .legend { display: inline-flex; margin: 0 15px; }
 
             /* Transformation du tableau en cartes */
