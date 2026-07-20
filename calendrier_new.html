@@ -226,6 +226,19 @@
                 width: 100%; /* Force la description à passer à la ligne en dessous */
                 margin-top: 2px;
             }
+
+            /* Animation de rebond horizontal pour la légende mobile */
+@keyframes bounceLeftRight {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-15px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(2px); }
+}
+
+.bounce-hint {
+    animation: bounceLeftRight 1.2s ease-in-out;
+}
         }
 
         /* --- LÉGENDE --- */
@@ -834,7 +847,23 @@ function closeTqModal() {
             window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
 
-        window.onload = loadExcel;
+        window.onload = () => {
+    // 1. Charge d'abord le fichier Excel existant
+    loadExcel();
+    
+    // 2. Déclenche l'effet visuel sur mobile après 1 seconde
+    setTimeout(() => {
+        const legendContainer = document.querySelector('.legend-container');
+        if (legendContainer && window.innerWidth <= 768) {
+            legendContainer.classList.add('bounce-hint');
+            
+            // Nettoie la classe après l'animation pour éviter les effets de bord
+            setTimeout(() => {
+                legendContainer.classList.remove('bounce-hint');
+            }, 1200);
+        }
+    }, 1000);
+};
         window.onclick = (e) => { 
     if (e.target.id === 'mapModal') closeMap(); 
     if (e.target.id === 'tqModal') closeTqModal(); 
