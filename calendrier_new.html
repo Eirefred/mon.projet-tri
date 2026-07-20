@@ -435,7 +435,15 @@
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             header { padding: 5px 0 !important; height: auto; }
-            .region-stack { display: none; }
+            .region-stack {
+                height: 30px;
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+
+            .region-mention {
+                font-size: 0.7rem;
+            }
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
                 display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1); gap: 20px; text-align: center;
