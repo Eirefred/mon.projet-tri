@@ -523,7 +523,6 @@
         <div class="container">
             
             <h1>Calendrier provincial 2026</h1>
-
 <div id="calendarSubtitle" style="text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text-light); margin-top: -15px; margin-bottom: 25px; text-transform: uppercase;">Épreuves à venir</div>
 
             <!-- FILTRE LÉGENDE STICKY CONTENU RÉDUIT -->
@@ -844,16 +843,15 @@ function togglePastEvents() {
     
     if (showPast) {
         table.classList.remove('hide-past');
-        if (subtitle) subtitle.innerText = "Toutes les épreuves 2026";
+        if (subtitle) subtitle.innerText = "TOUTES LES ÉPREUVES 2026";
     } else {
         table.classList.add('hide-past');
-        if (subtitle) subtitle.innerText = "Épreuves à venir";
+        if (subtitle) subtitle.innerText = "ÉPREUVES À VENIR";
     }
 
-    // Astuce pour forcer Mobile Safari / Chrome Mobile à rafraîchir le tableau immédiatement
+    // Force le rafraîchissement visuel du tableau (ordinateur et mobile)
     const catActive = document.querySelector('.legend-item.active');
     if (catActive) {
-        // Relance le filtrage des catégories existant pour réaligner le tout
         catActive.click(); 
     }
 }
