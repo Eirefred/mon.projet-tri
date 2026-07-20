@@ -449,7 +449,6 @@
             td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); }
             td[data-label="Date"] { background: #f0f7ff; color: #0481fb; font-weight: bold; }
             
-            tr.past-event { display: none !important; }
         }
     </style>
 
@@ -741,7 +740,7 @@
                 body.appendChild(tr);
             }
             document.getElementById('status').style.display = 'none';
-            document.getElementById('calTable').style.display = 'table';
+            document.getElementById('calTable').style.display = (window.innerWidth <= 768) ? 'block' : 'table';
         }
 
         function setupFilters() {
@@ -849,10 +848,18 @@ function togglePastEvents() {
         if (subtitle) subtitle.innerText = "ÉPREUVES À VENIR";
     }
 
-    // Force le rafraîchissement visuel du tableau (ordinateur et mobile)
+    // Ré-appliquer manuellement les filtres si une catégorie est active
+    const rows = document.querySelectorAll('#calBody tr');
     const catActive = document.querySelector('.legend-item.active');
+    
     if (catActive) {
-        catActive.click(); 
+        const cat = catActive.getAttribute('data-cat');
+        rows.forEach(row => {
+            const rowCats = row.getAttribute('data-categories').split(',');
+            if (!rowCats.includes(cat)) {
+                row.classList.add('hidden');
+            }
+        });
     }
 }
 
