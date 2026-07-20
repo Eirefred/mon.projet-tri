@@ -159,6 +159,27 @@
             transform: translateY(-1px);
         }
 
+/* NOUVEAU : Effet Hover du bouton Soumettre */
+.btn-submit-autonome {
+    display: inline-block;
+    background: var(--autonome-gradient);
+    color: #ffffff !important;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+.btn-submit-autonome:hover {
+    background: var(--primary-gradient);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(214, 95, 58, 0.3);
+}
+
+
         /* Classes utilitaires pour la charte graphique de la marque */
         .brand-mon {
             font-family: 'Oooh Baby', cursive;
@@ -177,6 +198,89 @@
             font-weight: bold;
             font-style: italic;
         }
+
+        /* Container de la liste de liens */
+.links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+/* Ligne unique style tableau moderne */
+.link-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 76, 151, 0.05);
+    transition: all 0.2s ease;
+}
+
+.link-row:hover {
+    background: #f1f5f9;
+    transform: translateX(4px);
+}
+
+/* Infos à gauche (Logo + Noms) */
+.link-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.link-info img {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.link-title {
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.link-desc {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+/* Lien d'action à droite */
+.link-action {
+    color: #004c97;
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.link-action:hover {
+    color: #D65F3A;
+    text-decoration: underline;
+}
+
+/* Responsive mobile : passe en colonne proprement */
+@media (max-width: 600px) {
+    .link-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .link-desc {
+        display: block;
+        margin-left: 0;
+        margin-top: 2px;
+    }
+    .link-action {
+        align-self: flex-end;
+    }
+}
 
         /* --- FOOTER (RETOUR AUX COULEURS INITIALES EXACTES) --- */
         footer { 
@@ -339,6 +443,8 @@
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
+
+
     </style>
 </head>
 <body>
@@ -458,18 +564,19 @@
                 </div>
 
                 <!-- Ressource Triathlon Québec -->
-                <div style="margin-left: 15px;">
-                    <h4 style="margin: 0 0 8px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; border-radius: 3px;">
-                        <span style="font-weight: bold;">Triathlon Québec</span>
-                        <span style="color: var(--text-dark); font-weight: normal; font-size: 0.95rem; margin-left: 5px;">(Les disciplines du triathlon)</span>
-                    </h4>
-                    <p style="margin-top: 0; margin-bottom: 12px; font-size: 0.9rem; color: var(--text-light);">Découvrez les différentes variantes et enchaînements officiels reconnus par la fédération :</p>
-                    <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="btn-ressource">
-                        Explorer les disciplines ↗
-                    </a>
-                </div>
+<div class="links-list">
+    <div class="link-row">
+        <div class="link-info">
+            <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+            <div class="link-text-block">
+                <span class="link-title">Triathlon Québec</span>
+                <span class="link-desc">(Découvrez les variantes et enchaînements officiels reconnus par la fédération)</span>
             </div>
+        </div>
+        <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="link-action">Explorer les disciplines ↗</a>
+    </div>
+</div>
+</div>
 
             <!-- SUJET 1 : RÈGLEMENTS -->
             <div class="main-card-autonome" style="margin-bottom: 40px;">
@@ -480,77 +587,75 @@
                     Pour éviter les surprises et courir en toute sécurité, familiarisez-vous avec les règles de chaque circuit.
                 </p>
 
-                <!-- Sous-section Triathlon Québec & Challenge Family -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
-                        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="color: #0055b8 !important; font-weight: bold;">Triathlon Québec</span> 
-                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem;">&</span> 
-                        <img src="https://challengefamily.com/favicon.ico" alt="Logo Challenge Family" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="color: #0f193c !important; font-weight: bold;">Challenge Family</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem; display: inline-flex; align-items: center; gap: 4px;">
-                            (
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; border-radius: 1px; vertical-align: middle;">
-                            )
-                        </span>
-                    </h3>
-                    <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="btn-ressource">
-                        Compétitions au Québec ↗
-                    </a>
-                </div>
+                <div class="links-list">
+                    <!-- Ligne 1 Corrigée (Drapeaux bien rectangulaires) -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+                            <div class="link-text-block">
+                                <span class="link-title">
+                                    Triathlon Québec 
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 20px; height: 13px; vertical-align: middle; margin: 0 4px 2px 2px; display: inline-block; border: 1px solid #e2e8f0; border-radius: 0px !important; object-fit: fill !important;">
+                                    & 
+                                    <img src="https://challengefamily.com/favicon.ico" alt="Challenge Family" style="width: 18px; height: 18px; vertical-align: middle; margin: 0 4px 2px 4px; display: inline-block;"> 
+                                    Challenge Family
+                                </span>
+                                <span class="link-desc">
+                                    (Compétitions au Québec 
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                                </span>
+                            </div>
+                        </div>
+                        <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+                    </div>
 
-                <!-- Sous-section Ironman -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://www.ironman.com/favicon.ico" alt="Logo Ironman" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: #231f20 !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; font-size: 1.1rem;">
-                            IRONMAN
-                        </span>
-                    </h3>
-                    <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="btn-ressource">
-                        Règlement international IRONMAN ↗
-                    </a>
-                </div>
+                    <!-- Ligne 2 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
+                            <div class="link-text-block">
+                                <span class="link-title">IRONMAN</span>
+                                <span class="link-desc">(Règlement international)</span>
+                            </div>
+                        </div>
+                        <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+                    </div>
 
-                <!-- Sous-section mon Projet Tri -->
-                <div style="margin-left: 15px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://mon.projet-tri.org/favicon.png" alt="Logo mon Projet Tri" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='favicon.png';">
-                        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; color: #0481fb !important; margin-right: 6px;">mon</span> 
-                        <span style="white-space: nowrap;">
-                            <span style="font-family: 'Inclusive Sans', sans-serif; color: #0481fb !important; font-weight: bold;">Projet</span> 
-                            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; color: #0481fb !important; font-weight: bold;">Tri</span>
-                        </span>
-                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Vidéos explicatives)</span>
-                    </h3>
-                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light);">Nos conseils en format vidéo pour tout comprendre rapidement :</p>
-                    <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="btn-ressource">
-                        Regarder les vidéos explicatives ↗
-                    </a>
-                </div>
+                    <!-- Ligne 3 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://mon.projet-tri.org/favicon.png" alt="mon Projet Tri" onerror="this.src='favicon.png';">
+                            <div class="link-text-block">
+                                <span class="link-title">mon Projet Tri</span>
+                                <span class="link-desc">(Nos conseils en format vidéo pour tout comprendre)</span>
+                            </div>
+                        </div>
+                        <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="link-action">Regarder les vidéos ↗</a>
+                    </div>
 
-                <!-- Sous-section World Triathlon (Fédération Internationale) -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://triathlon.org/favicon.ico" alt="Logo World Triathlon" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='https://www.triathlon.org/favicon.ico';">
-                        <span style="color: #0055b8 !important; font-weight: 800; letter-spacing: 0.3px;">World Triathlon</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Fédération Internationale)</span>
-                    </h3>
-                    <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="btn-ressource">
-                        Consulter les règles mondiales 2026 ↗
-                    </a>
-                </div>
+                    <!-- Ligne 4 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://triathlon.org/favicon.ico" alt="World Triathlon">
+                            <div class="link-text-block">
+                                <span class="link-title">World Triathlon</span>
+                                <span class="link-desc">(Fédération Internationale)</span>
+                            </div>
+                        </div>
+                        <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="link-action">Consulter les règles ↗</a>
+                    </div>
 
-                <!-- Sous-section USA Triathlon (USAT) -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <span style="font-size: 1.4rem; line-height: 1; display: inline-block; vertical-align: middle;">🇺🇸</span>
-                        <span style="color: #0a2240 !important; font-weight: 800; letter-spacing: 0.3px;">USA Triathlon</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(États-Unis)</span>
-                    </h3>
-                    <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="btn-ressource">
-                        Compétitions aux USA ↗
-                    </a>
+                    <!-- Ligne 5 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <span class="emoji-icon">🇺🇸</span>
+                            <div class="link-text-block">
+                                <span class="link-title">USA Triathlon</span>
+                                <span class="link-desc">(Compétitions aux États-Unis)</span>
+                            </div>
+                        </div>
+                        <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+                    </div>
                 </div>
             </div>
 
@@ -560,63 +665,64 @@
                     📅 Calendrier des évènements
                 </h2>
                 <p style="color: var(--text-light); margin-bottom: 25px;">
-                    Planifiez votre saison et trouvez les événements adaptés à vos objectifs partout au Québec et à l'international[cite: 5].
+                    Planifiez votre saison et trouvez les événements adaptés à vos objectifs partout au Québec et à l'international.
                 </p>
 
-                <!-- Sous-section mon Projet Tri (Québec) -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://mon.projet-tri.org/favicon.png" alt="Logo mon Projet Tri" style="width: 20px; height: 20px; border-radius: 4px;" onerror="this.src='favicon.png';">
-                        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; color: #0481fb !important; margin-right: 6px;">mon</span> 
-                        <span style="white-space: nowrap;">
-                            <span style="font-family: 'Inclusive Sans', sans-serif; color: #0481fb !important; font-weight: bold;">Projet</span> 
-                            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; color: #0481fb !important; font-weight: bold;">Tri</span>
-                        </span>
-                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Saison provinciale)</span>
-                    </h3>
-                    <a href="https://mon.projet-tri.org/calendrier.html" target="_blank" class="btn-ressource">
-                        Le calendrier de la saison 2026 <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 20px; height: auto; border-radius: 2px; display: inline-block; vertical-align: middle; margin: 0 4px;"> ↗
-                    </a>
-                </div>
+                <div class="links-list">
+                    <!-- Ligne 1  -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://mon.projet-tri.org/favicon.png" alt="mon Projet Tri" onerror="this.src='favicon.png';">
+                            <div class="link-text-block">
+                                <span class="link-title">mon Projet Tri</span>
+                                <span class="link-desc">
+                                    (Saison provinciale au Québec 
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                                </span>
+                            </div>
+                        </div>
+                        <a href="https://mon.projet-tri.org/calendrier.html" target="_blank" class="link-action">Voir le calendrier 2026 ↗</a>
+                    </div>
 
-                <!-- LIGNE 1 : SÉPARATION - INTERNATIONAUX (IRONMAN) -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://www.ironman.com/favicon.ico" alt="Logo Ironman" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif; color: #231f20 !important; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; font-size: 1.1rem;">IRONMAN</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Mondial)</span>
-                    </h3>
-                    <a href="https://www.ironman.com/races" target="_blank" class="btn-ressource">
-                        Le calendrier mondial IRONMAN ↗
-                    </a>
-                </div>
+                    <!-- Ligne 2 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
+                            <div class="link-text-block">
+                                <span class="link-title">IRONMAN</span>
+                                <span class="link-desc">(Circuit mondial longue distance)</span>
+                            </div>
+                        </div>
+                        <a href="https://www.ironman.com/races" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                    </div>
 
-                <!-- LIGNE 2 : SÉPARATION - INTERNATIONAUX (CHALLENGE FAMILY) -->
-                <div style="margin-left: 15px; margin-bottom: 20px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://challengefamily.com/favicon.ico" alt="Logo Challenge Family" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="color: #0f193c !important; font-weight: bold;">Challenge Family</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(Mondial)</span>
-                    </h3>
-                    <a href="https://challengefamily.com/races/" target="_blank" class="btn-ressource">
-                        Le calendrier mondial Challenge Family ↗
-                    </a>
-                </div>
+                    <!-- Ligne 3 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://challengefamily.com/favicon.ico" alt="Challenge Family">
+                            <div class="link-text-block">
+                                <span class="link-title">Challenge Family</span>
+                                <span class="link-desc">(Circuit mondial)</span>
+                            </div>
+                        </div>
+                        <a href="https://challengefamily.com/races/" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                    </div>
 
-                <!-- LIGNE 3 : SÉPARATION - USA TRIATHLON (USAT) -->
-                <div style="margin-left: 15px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <span style="font-size: 1.4rem; line-height: 1; display: inline-block; vertical-align: middle;">🇺🇸</span>
-                        <span style="color: #0a2240 !important; font-weight: 800; letter-spacing: 0.3px;">USA Triathlon</span>
-                        <span style="color: var(--text-light); font-weight: normal; font-size: 1rem;">(États-Unis)</span>
-                    </h3>
-                    <a href="https://member.usatriathlon.org/events" target="_blank" class="btn-ressource">
-                        Le calendrier officiel USAT ↗
-                    </a>
+                    <!-- Ligne 4 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <span class="emoji-icon">🇺🇸</span>
+                            <div class="link-text-block">
+                                <span class="link-title">USA Triathlon</span>
+                                <span class="link-desc">(Calendrier officiel des événements aux États-Unis)</span>
+                            </div>
+                        </div>
+                        <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- SUJET 3 : ENTRAÎNEMENT (MIS À JOUR) -->
+            <!-- SUJET 3 : ENTRAÎNEMENT -->
             <div class="main-card-autonome" style="margin-bottom: 40px;">
                 <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
                     🏊 Où s'entraîner ?
@@ -630,27 +736,27 @@
                     <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                         🏊‍♂️ En eau libre
                     </h3>
-                    
-                    <div style="margin-left: 20px; margin-bottom: 15px; border-left: 3px solid #f1f5f9; padding-left: 15px;">
-                        <h4 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                            <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; border-radius: 3px;">
-                            <span style="font-weight: bold;">Triathlon Québec</span>
-                            <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Emplacements référencés)</span>
-                        </h4>
-                        <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="btn-ressource">
-                            Visiter la page ↗
-                        </a>
-                    </div>
-
-                    <div style="margin-left: 20px; border-left: 3px solid #f1f5f9; padding-left: 15px;">
-                        <h4 style="margin: 0 0 10px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                            <img src="https://www.nageeneaulibre.ca/favicon.ico" alt="Logo Moi j'nage" style="width: 16px; height: 16px; border-radius: 3px;" onerror="this.src='favicon.png';">
-                            <span style="font-weight: bold;">MOI J'NAGE</span>
-                            <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Emplacements référencés)</span>
-                        </h4>
-                        <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="btn-ressource">
-                            Visiter le site Moi j'nage ↗
-                        </a>
+                    <div class="links-list" style="margin-left: 10px;">
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+                                <div class="link-text-block">
+                                    <span class="link-title">Triathlon Québec</span>
+                                    <span class="link-desc">(Emplacements et sites sécurisés référencés)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="link-action">Visiter la page ↗</a>
+                        </div>
+                        <div class="link-row">
+                            <div class="link-info">
+                                <span class="emoji-icon">🏊</span>
+                                <div class="link-text-block">
+                                    <span class="link-title">MOI J'NAGE</span>
+                                    <span class="link-desc">(Carte interactive des sites de nage en eau libre)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="link-action">Ouvrir la carte ↗</a>
+                        </div>
                     </div>
                 </div>
 
@@ -659,45 +765,50 @@
                     <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                         🚴‍♂️ En vélo
                     </h3>
-                    
                     <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Sélectionnez une région pour découvrir les parcours :</p>
 
-                    <!-- Région : Montréal -->
                     <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
                         <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
                             📍 Région de Montréal
                         </summary>
-                        <div style="margin-top: 15px; padding-left: 10px; border-left: 3px solid #004c97;">
-                            <p style="margin: 0 0 10px 0; font-size: 0.95rem; color: var(--text-dark); font-weight: 600;">
-                                Le Parc Jean-Drapeau
-                            </p>
-                            <p style="margin: 0 0 15px 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.5;">
-                                Un lieu d'entraînement incontournable et sécurisé pour cumuler les kilomètres sans intersection au cœur du fleuve Saint-Laurent :
-                            </p>
-                            <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
-                                <a href="https://www.parcjeandrapeau.com/fr/circuit-gilles-villeneuve-piste-multifonctionnelle-provelo-entrainement-sportif-montreal/" target="_blank" class="btn-ressource" style="margin-bottom: 5px;">
-                                    Circuit Gilles-Villeneuve (Piste d'entraînement) ↗
-                                </a>
-                                <a href="https://www.parcjeandrapeau.com/fr/promenade-fluviale-grand-montreal-pistes-parcours-cyclistes-velo-familles-traverse-ecluses-fleuve-saint-laurent/" target="_blank" class="btn-ressource">
-                                    Promenade fluviale (La Voie maritime) ↗
-                                </a>
+                        <div class="links-list" style="margin-top: 15px;">
+                            <div class="link-row" style="background: #fff;">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🚴</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">Circuit Gilles-Villeneuve</span>
+                                        <span class="link-desc">Piste fermée idéale pour l'entraînement intensif</span>
+                                    </div>
+                                </div>
+                                <a href="https://www.parcjeandrapeau.com/fr/circuit-gilles-villeneuve-piste-multifonctionnelle-provelo-entrainement-sportif-montreal/" target="_blank" class="link-action">Accéder au site ↗</a>
+                            </div>
+                            <div class="link-row" style="background: #fff;">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🌊</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">Promenade fluviale (La Voie maritime)</span>
+                                        <span class="link-desc">Long parcours en ligne droite le long du Saint-Laurent</span>
+                                    </div>
+                                </div>
+                                <a href="https://www.parcjeandrapeau.com/fr/promenade-fluviale-grand-montreal-pistes-parcours-cyclistes-velo-familles-traverse-ecluses-fleuve-saint-laurent/" target="_blank" class="link-action">Accéder au site ↗</a>
                             </div>
                         </div>
                     </details>
 
-                    <!-- Région : Laurentides (Vélo) -->
                     <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
                         <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
                             📍 Région des Laurentides
                         </summary>
-                        <div style="margin-top: 15px; padding-left: 10px; border-left: 3px solid #004c97;">
-                            <p style="margin: 0 0 15px 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.5;">
-                                Idéal pour les longues sorties cyclistes rythmées sur un parcours linéaire en pleine nature :
-                            </p>
-                            <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
-                                <a href="https://ptittraindunord.com/" target="_blank" class="btn-ressource">
-                                    Le P'tit Train du Nord ↗
-                                </a>
+                        <div class="links-list" style="margin-top: 15px;">
+                            <div class="link-row" style="background: #fff;">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🌲</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">Le P'tit Train du Nord</span>
+                                        <span class="link-desc">Piste linéaire traversant la nature des Laurentides</span>
+                                    </div>
+                                </div>
+                                <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Découvrir la piste ↗</a>
                             </div>
                         </div>
                     </details>
@@ -708,30 +819,36 @@
                     <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
                         🏃‍♂️ En course à pied
                     </h3>
-                    
                     <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Sélectionnez une région pour découvrir les sites de course :</p>
 
-                    <!-- Région : Laurentides (Course) -->
                     <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
                         <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
                             📍 Région des Laurentides
                         </summary>
-                        <div style="margin-top: 15px; padding-left: 10px; border-left: 3px solid #004c97;">
-                            <p style="margin: 0 0 15px 0; font-size: 0.95rem; color: var(--text-light); line-height: 1.5;">
-                                Des pistes d'entraînement parfaites pour le travail d'endurance sur des surfaces souples et sécuritaires :
-                            </p>
-                            <div style="display: flex; flex-direction: column; gap: 5px; align-items: flex-start;">
-                                <a href="https://corridoraerobique.ca/" target="_blank" class="btn-ressource" style="margin-bottom: 5px;">
-                                    Parc du Corridor Aérobique ↗
-                                </a>
-                                <a href="https://ptittraindunord.com/" target="_blank" class="btn-ressource">
-                                    Le P'tit Train du Nord ↗
-                                </a>
+                        <div class="links-list" style="margin-top: 15px;">
+                            <div class="link-row" style="background: #fff;">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🏃</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">Parc du Corridor Aérobique</span>
+                                        <span class="link-desc">Piste en pleine nature, idéale pour le trail et l'endurance</span>
+                                    </div>
+                                </div>
+                                <a href="https://corridoraerobique.ca/" target="_blank" class="link-action">Découvrir le parc ↗</a>
+                            </div>
+                            <div class="link-row" style="background: #fff;">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🌲</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">Le P'tit Train du Nord</span>
+                                        <span class="link-desc">Idéal pour vos sorties longues sur surface stabilisée</span>
+                                    </div>
+                                </div>
+                                <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Découvrir la piste ↗</a>
                             </div>
                         </div>
                     </details>
                 </div>
-
             </div>
 
             <!-- SUJET 4 : COMMUNAUTAIRE -->
@@ -740,62 +857,61 @@
                     👥 Communautaire
                 </h2>
                 
-                <!-- Communauté et entraide -->
-                <div style="margin-left: 15px; margin-bottom: 25px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
-                        <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 20px; height: 20px; border-radius: 4px;">
-                        <span style="font-weight: bold;">Triathlon au Québec</span>
-                        <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe Facebook)</span>
-                    </h3>
-                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light);">Le groupe d'entraide principal de la communauté de triathlon au Québec pour poser vos questions :</p>
-                    <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="btn-ressource">
-                        Rejoindre le groupe ↗
-                    </a>
-                </div>
+                <p style="color: var(--text-light); margin-bottom: 25px;">
+                    Connectez-vous avec d'autres passionnés et trouvez votre équipement au meilleur prix auprès de la communauté.
+                </p>
 
-                <!-- Revente d'équipement -->
-                <div style="margin-left: 15px;">
-                    <h3 style="font-size: 1.2rem; margin-bottom: 5px; color: var(--text-dark);">
-                        🛒 Revente d'équipement usagé
-                    </h3>
-                    <p style="margin-top: 0; font-size: 0.95rem; color: var(--text-light); margin-bottom: 15px;">Trouvez votre vélo ou votre matériel de seconde main sur ces plateformes incontournables :</p>
-                    
-                    <div style="display: flex; flex-direction: column; gap: 10px; align-items: flex-start; margin-left: 10px;">
-                        <div>
-                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
-                                <span style="font-weight: bold;">Facebook Marketplace</span>
-                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Petites annonces)</span>
-                            </h4>
-                            <a href="https://www.facebook.com/marketplace/" target="_blank" class="btn-ressource">
-                                Visiter Marketplace ↗
-                            </a>
+                <div class="links-list">
+                    <!-- Ligne 1 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                            <div class="link-text-block">
+                                <span class="link-title">Triathlon au Québec</span>
+                                <span class="link-desc">(Groupe Facebook principal d'entraide et d'échange)</span>
+                            </div>
                         </div>
+                        <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="link-action">Rejoindre le groupe ↗</a>
+                    </div>
 
-                        <div style="margin-top: 5px;">
-                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
-                                <span style="font-weight: bold;">Vente-Achat Route & Triathlon Québec</span>
-                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe spécialisé)</span>
-                            </h4>
-                            <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="btn-ressource">
-                                Voir les annonces ↗
-                            </a>
+                    <!-- Ligne 2 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                            <div class="link-text-block">
+                                <span class="link-title">Facebook Marketplace</span>
+                                <span class="link-desc">(Petites annonces générales pour le matériel usagé)</span>
+                            </div>
                         </div>
+                        <a href="https://www.facebook.com/marketplace/" target="_blank" class="link-action">Visiter Marketplace ↗</a>
+                    </div>
 
-                        <div style="margin-top: 5px;">
-                            <h4 style="margin: 0 0 5px 0; font-size: 1.05rem; color: var(--text-dark); display: flex; align-items: center; gap: 6px;">
-                                <img src="https://www.facebook.com/favicon.ico" alt="Logo Facebook" style="width: 16px; height: 16px; border-radius: 3px;">
-                                <span style="font-weight: bold;">Triathlon : achat/vente/échange (Montréal et Québec)</span>
-                                <span style="color: var(--text-dark); font-weight: normal; font-size: 1rem; margin-left: 5px;">(Groupe spécialisé)</span>
-                            </h4>
-                            <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="btn-ressource">
-                                Voir les annonces ↗
-                            </a>
+                    <!-- Ligne 3 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                            <div class="link-text-block">
+                                <span class="link-title">Vente-Achat Route & Triathlon Québec</span>
+                                <span class="link-desc">(Groupe spécialisé route et matériel de tri)</span>
+                            </div>
                         </div>
+                        <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="link-action">Voir les annonces ↗</a>
+                    </div>
+
+                    <!-- Ligne 4 -->
+                    <div class="link-row">
+                        <div class="link-info">
+                            <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                            <div class="link-text-block">
+                                <span class="link-title">Triathlon : achat/vente/échange</span>
+                                <span class="link-desc">(Communauté ciblée Montréal et Québec)</span>
+                            </div>
+                        </div>
+                        <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="link-action">Voir les annonces ↗</a>
                     </div>
                 </div>
             </div>
+
 <!-- SUJET 5 : CONTRIBUTION GLOBALE PAGE AUTONOME (FORMSPREE) -->
             <div class="main-card-autonome" style="margin-bottom: 40px; border-color: #004c97; box-shadow: 0 10px 25px rgba(0, 76, 151, 0.05);">
                 <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
@@ -876,10 +992,10 @@
 
                     <!-- Bouton de soumission -->
                     <div style="margin-top: 5px;">
-                        <button type="submit" class="btn-ressource" style="background: var(--autonome-gradient); color: #ffffff !important; border: none; cursor: pointer; font-size: 1rem; padding: 12px 30px;">
-                            Soumettre ma contribution 🚀
-                        </button>
-                    </div>
+    <button type="submit" class="btn-submit-autonome">
+        Soumettre ma contribution 🚀
+    </button>
+</div>
 
                 </form>
             </div>
