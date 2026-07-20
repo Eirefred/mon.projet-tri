@@ -521,7 +521,8 @@
                     <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
                     <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
                     <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-                    <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">🌎 Carte</button>
+<button id="togglePastBtn" onclick="togglePastEvents()" style="background:#5A6A7A; color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">Masquer passés</button>
+<button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">🌎 Carte</button>
                 </div>
             </div>
 
@@ -765,6 +766,25 @@
 
         window.onload = loadExcel;
         window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
+
+        let showPast = true; // Par défaut, on affiche les événements passés (grisés)
+
+function togglePastEvents() {
+    const table = document.getElementById('calTable');
+    const btn = document.getElementById('togglePastBtn');
+    
+    showPast = !showPast;
+    
+    if (showPast) {
+        table.classList.remove('hide-past');
+        btn.innerText = "Masquer passés";
+        btn.style.background = "#5A6A7A";
+    } else {
+        table.classList.add('hide-past');
+        btn.innerText = "Afficher passés";
+        btn.style.background = "#D65F3A";
+    }
+}
     </script>
 </body>
 </html>
