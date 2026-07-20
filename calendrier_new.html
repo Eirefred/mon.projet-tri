@@ -210,6 +210,22 @@
                 text-align: center !important;
                 font-size: 0.95rem !important;
             }
+            /* Ajustement de la note TQ sur mobile (2 lignes) */
+            .tq-note-container {
+                flex-direction: column !important;
+                gap: 2px !important;
+                padding: 0 15px;
+            }
+            .tq-note-container img {
+                display: none; /* Cache le favicon sur mobile pour épurer la ligne du titre */
+            }
+            .tq-label {
+                display: block;
+                width: 100%;
+            }
+            .tq-desc {
+                display: inline;
+            }
         }
 
         /* --- LÉGENDE --- */
@@ -536,11 +552,12 @@
                 </div>
             </div>
 
-            <!-- Note d'information modernisée -->
-<div style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            <!-- Note d'information optimisée pour l'affichage sur deux lignes -->
+<div class="tq-note-container" style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; vertical-align: middle;">
-    <span><strong>Note sur la mention TQ :</strong> gage de sécurité et de qualité organisationnelle.</span>
-    <a href="javascript:void(0)" onclick="openTqModal()" style="color: inherit; text-decoration: underline; margin-left: 5px; font-weight: bold;">Voir plus</a>
+    <span class="tq-label"><strong>Note sur la mention TQ :</strong></span>
+    <span class="tq-desc">gage de sécurité et de qualité organisationnelle.</span>
+    <a href="javascript:void(0)" onclick="openTqModal()" style="color: inherit; text-decoration: underline; margin-left: 2px; font-weight: bold; white-space: nowrap;">Voir plus</a>
 </div>
 
             <!-- TABLEAU DES COURSES -->
@@ -577,7 +594,7 @@
         </div>
     </div>
 
-    <!-- Pop-up TQ centré au milieu de la page avec logos mis à jour -->
+    <!-- Pop-up TQ centré au milieu de la page avec logos mis à jour et lien de sécurité -->
 <div id="tqModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2500; background: rgba(0,0,0,0.6); align-items: center; justify-content: center;">
     <div class="modal-content" style="background: white; max-width: 450px; text-align: center; padding: 25px; border-radius: 12px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 0 15px;">
         <span class="close" onclick="closeTqModal()" style="position: absolute; top: 10px; right: 15px; font-size: 30px; cursor: pointer;">&times;</span>
@@ -592,7 +609,7 @@
         </div>
         
         <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 20px; text-align: center;">
-            Les événements sanctionnés par <strong>Triathlon Québec</strong> répondent à des standards rigoureux en matière de sécurité, d’encadrement technique et de qualité organisationnelle.
+            Les événements sanctionnés par <strong>Triathlon Québec</strong> répondent à des standards rigoureux en matière de <a href="https://www.triathlonquebec.org/wp-content/uploads/2025/07/Reglements-de-securite_TriathlonQuebec_2025.pdf" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">sécurité</a>, d’encadrement technique et de qualité organisationnelle.
         </p>
         <button onclick="closeTqModal()" style="background: var(--dark-blue); color: white; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8rem; transition: 0.2s;">Fermer</button>
     </div>
