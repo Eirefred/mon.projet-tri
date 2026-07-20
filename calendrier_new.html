@@ -837,18 +837,24 @@ function closeTqModal() {
 
 function togglePastEvents() {
     const table = document.getElementById('calTable');
-    const btn = document.getElementById('togglePastBtn');
+    const toggle = document.getElementById('pastToggle');
+    const subtitle = document.getElementById('calendarSubtitle');
     
-    showPast = !showPast;
+    showPast = toggle.checked;
     
     if (showPast) {
         table.classList.remove('hide-past');
-        btn.innerText = "Masquer passés";
-        btn.style.background = "#5A6A7A";
+        if (subtitle) subtitle.innerText = "Toutes les épreuves 2026";
     } else {
         table.classList.add('hide-past');
-        btn.innerText = "Afficher passés";
-        btn.style.background = "#D65F3A";
+        if (subtitle) subtitle.innerText = "Épreuves à venir";
+    }
+
+    // Astuce pour forcer Mobile Safari / Chrome Mobile à rafraîchir le tableau immédiatement
+    const catActive = document.querySelector('.legend-item.active');
+    if (catActive) {
+        // Relance le filtrage des catégories existant pour réaligner le tout
+        catActive.click(); 
     }
 }
 
