@@ -44,7 +44,7 @@
             overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .container { max-width: 1600px; margin: 0 auto; padding: 0 20px; }
 
         /* --- HEADER --- */
         header {
@@ -220,7 +220,17 @@
 
         /* --- LÉGENDE --- */
             /* --- LÉGENDE --- */
-    .legend-container { position: sticky; top: 80px; background: var(--bg); z-index: 1100; padding: 12px 0; border-bottom: 1px solid #ddd; height: 40px; display: flex; align-items: center; }
+    .legend-container { 
+    position: sticky; 
+    top: 85px; /* S'aligne parfaitement sous le header */
+    background: var(--bg); 
+    z-index: 1010; /* Priorité inférieure à l'en-tête principal, mais supérieure au tableau */
+    padding: 12px 0; 
+    border-bottom: 1px solid #ddd; 
+    height: 40px; 
+    display: flex; 
+    align-items: center; 
+}
     .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 0 auto; white-space: nowrap; }
     .legend-item { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 3px 8px; border-radius: 20px; font-size: 0.72rem; }
     .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
