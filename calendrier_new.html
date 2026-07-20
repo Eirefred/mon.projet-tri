@@ -224,17 +224,35 @@
             /* --- LÉGENDE --- */
     .legend-container { 
     position: sticky; 
-    top: 85px; /* S'aligne parfaitement sous le header */
+    top: 85px; /* S'aligne sous le header */
     background: var(--bg); 
-    z-index: 1010; /* Priorité inférieure à l'en-tête principal, mais supérieure au tableau */
-    padding: 12px 0; 
+    z-index: 1010; 
+    padding: 10px 0; 
     border-bottom: 1px solid #ddd; 
-    height: 40px; 
+    display: flex; 
+    justify-content: center; /* Centre parfaitement la légende dans les 1100px */
+}
+
+.legend { 
+    background: white; 
+    padding: 6px 12px; /* Réduit pour gagner de la place */
+    border-radius: 30px; 
+    display: flex; 
+    gap: 4px; /* Rapproche légèrement les badges */
+    align-items: center; 
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+    margin: 0 auto; 
+}
+
+.legend-item { 
     display: flex; 
     align-items: center; 
+    gap: 3px; 
+    cursor: pointer; 
+    padding: 3px 6px; /* Moins d'espace interne par badge */
+    border-radius: 20px; 
+    font-size: 0.72rem; 
 }
-    .legend { background: white; padding: 5px 15px; border-radius: 30px; display: flex; gap: 8px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); margin: 0 auto; white-space: nowrap; }
-    .legend-item { display: flex; align-items: center; gap: 4px; cursor: pointer; padding: 3px 8px; border-radius: 20px; font-size: 0.72rem; }
     .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
     .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
 
