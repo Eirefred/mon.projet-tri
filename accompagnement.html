@@ -160,15 +160,25 @@
             box-shadow: 0 10px 25px rgba(0, 76, 151, 0.08);
         }
 
-        /* --- STYLES ACCORDÉONS --- */
+        /* Styles Spécifiques aux Accordéons */
         .pricing-card details {
-            width: 100%;
+            margin-top: 15px;
         }
+        
         .pricing-card details summary {
             list-style: none;
-            outline: none;
             cursor: pointer;
+            padding: 10px 0;
+            font-weight: 800;
+            color: #004c97;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            outline: none;
         }
+
         .pricing-card details summary::-webkit-details-marker {
             display: none;
         }
@@ -454,95 +464,90 @@
                     
                     <!-- FORFAIT 1 : PREMIER PAS -->
                     <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
-                        <details open>
-                            <summary>
-                                <span style="color: #D65F3A; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Débutant</span>
-                                <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2; display: flex; justify-content: space-between; align-items: center;">
-                                    Premier Pas <span style="font-size: 0.9rem; color: var(--text-light);">▼</span>
-                                </h3>
-                                <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
-                                    « Un jour, je vais en faire un... »
-                                </p>
-                            </summary>
-                            
-                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 20px; margin-top: 10px;">
+                        <div>
+                            <span style="color: #D65F3A; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Débutant</span>
+                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">Premier Pas</h3>
+                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
+                                « Un jour, je vais en faire un... »
+                            </p>
+                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
                                 Pour celles et ceux qui n'ont jamais osé s'aligner sur un départ par crainte ou manque de repères. Profitez d'un cadre sécurisant de A à Z avec des mentors qui sont déjà passés par là. <strong>Ce programme est le cœur de notre mission : franchir votre première ligne d'arrivée !</strong>
                             </p>
                             
-                            <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px;">
-                            
-                            <ul class="features-list">
-                                <li>Assignation d'un mentor dédié selon vos objectifs.</li>
-                                <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
-                                <li>Plan d'entraînement de 12 semaines adapté à votre niveau.</li>
-                                <li>Ajustement flexible du plan à votre mode de vie.</li>
-                                <li>Explications détaillées du déroulement et des règlements.</li>
-                                <li>Soutien moral et psychologique complet pour le jour J.</li>
-                            </ul>
-                        </details>
+                            <!-- L'ACCORDÉON COMMENCE ICI POUR NE CACHER QUE LES TARIFS / DÉTAILS -->
+                            <details class="program-details">
+                                <summary>Voir les tarifs et détails <span class="toggle-arrow">▼</span></summary>
+                                
+                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
+                                
+                                <ul class="features-list">
+                                    <li>Assignation d'un mentor dédié selon vos objectifs.</li>
+                                    <li>Accompagnement complet pour l'achat de votre premier équipement.</li>
+                                    <li>Plan d'entraînement de 12 semaines adapté à votre niveau.</li>
+                                    <li>Ajustement flexible du plan à votre mode de vie.</li>
+                                    <li>Explications détaillées du déroulement et des règlements.</li>
+                                    <li>Soutien moral et psychologique complet pour le jour J.</li>
+                                </ul>
 
-                        <div>
-                            <div class="option-box">
-                                <strong style="color: #004c97; display: block; font-size: 0.9rem; text-transform: uppercase;">Encadrement Semi-Autonome</strong>
-                                <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Standard : 299$ / 3 mois</span>
-                                <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(soit environ 99$/mois)</span>
-                                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Plan d'entraînement + 3 séances de mentorat de 40 min.</p>
-                            </div>
-                            
-                            <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
-                                <strong style="color: #D65F3A; display: block; font-size: 0.9rem; text-transform: uppercase;">Encadrement Complet</strong>
-                                <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Accompagnée : 399$ / 3 mois</span>
-                                <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(soit environ 133$/mois)</span>
-                                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Plan d'entraînement + 5 séances de mentorat de 40 min.</p>
-                            </div>
+                                <div class="option-box">
+                                    <strong style="color: #004c97; display: block; font-size: 0.9rem; text-transform: uppercase;">Encadrement Semi-Autonome</strong>
+                                    <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Standard : 299$ / 3 mois</span>
+                                    <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(soit environ 99$/mois)</span>
+                                    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Plan d'entraînement + 3 séances de mentorat de 40 min.</p>
+                                </div>
+                                
+                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
+                                    <strong style="color: #D65F3A; display: block; font-size: 0.9rem; text-transform: uppercase;">Encadrement Complet</strong>
+                                    <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Accompagnée : 399$ / 3 mois</span>
+                                    <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(soit environ 133$/mois)</span>
+                                    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Plan d'entraînement + 5 séances de mentorat de 40 min.</p>
+                                </div>
+                            </details>
                         </div>
                     </div>
 
                     <!-- FORFAIT 2 : PERFORMANCE -->
                     <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
-                        <details open>
-                            <summary>
-                                <span style="color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Intermédiaire & Avancé</span>
-                                <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2; display: flex; justify-content: space-between; align-items: center;">
-                                    Performance <span style="font-size: 0.9rem; color: var(--text-light);">▼</span>
-                                </h3>
-                                <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
-                                    « Je veux structurer ma progression et performer. »
-                                </p>
-                            </summary>
-                            
-                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 20px; margin-top: 10px;">
+                        <div>
+                            <span style="color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Intermédiaire & Avancé</span>
+                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">Performance</h3>
+                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
+                                « Je veux structurer ma progression et performer. »
+                            </p>
+                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
                                 Que vous souhaitiez optimiser votre forme pour la saison locale ou relever le défi ultime d'un Ironman, bénéficiez d'un mentorat d'expert hautement connecté. Un accompagnement complet qui s'adapte précisément à vos ambitions de saison.
                             </p>
                             
-                            <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px;">
-                            
-                            <ul class="features-list">
-                                <li>Assignation d'un mentor dédié selon vos objectifs (Sprint à Ironman).</li>
-                                <li>Plan d'entraînement personnalisé et évolutif.</li>
-                                <li>Ajustements bi-mensuels selon vos dispo et votre état de forme.</li>
-                                <li>Appels vidéo individuels réguliers pour valider la progression.</li>
-                                <li>Analyse fine de vos données (TrainingPeaks*) pour optimiser l'effort.</li>
-                                <li>Stratégie pointue de nutrition de course et de gestion d'effort.</li>
-                                <li>Accès direct à notre réseau de spécialistes (thérapeutes, nutritionnistes).</li>
-                            </ul>
-                        </details>
+                            <!-- L'ACCORDÉON COMMENCE ICI POUR NE CACHER QUE LES TARIFS / DÉTAILS -->
+                            <details class="program-details">
+                                <summary>Voir les tarifs et détails <span class="toggle-arrow">▼</span></summary>
+                                
+                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
+                                
+                                <ul class="features-list">
+                                    <li>Assignation d'un mentor dédié selon vos objectifs (Sprint à Ironman).</li>
+                                    <li>Plan d'entraînement personnalisé et évolutif.</li>
+                                    <li>Ajustements bi-mensuels selon vos dispo et votre état de forme.</li>
+                                    <li>Appels vidéo individuels réguliers pour valider la progression.</li>
+                                    <li>Analyse fine de vos données (TrainingPeaks*) pour optimiser l'effort.</li>
+                                    <li>Stratégie pointue de nutrition de course et de gestion d'effort.</li>
+                                    <li>Accès direct à notre réseau de spécialistes (thérapeutes, nutritionnistes).</li>
+                                </ul>
 
-                        <div>
-                            <div class="option-box">
-                                <strong style="color: #004c97; display: block; font-size: 0.9rem; text-transform: uppercase;">Engagement Saison (6 mois)</strong>
-                                <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Standard : 149$ / mois</span>
-                                <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(3 mois minimum)</span>
-                                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Idéal pour progresser avec structure, rigueur et motivation.</p>
-                            </div>
-                            
-                            <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
-                                <strong style="color: #D65F3A; display: block; font-size: 0.9rem; text-transform: uppercase;">Engagement Annuel (12 mois)</strong>
-                                <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Performance : 165$ / mois</span>
-                                <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(3 mois minimum)</span>
-                                <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Analyse de données poussée et stratégie avancée (70.3 & Ironman).</p>
-                            </div>
-                           
+                                <div class="option-box">
+                                    <strong style="color: #004c97; display: block; font-size: 0.9rem; text-transform: uppercase;">Engagement Saison (6 mois)</strong>
+                                    <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Standard : 149$ / mois</span>
+                                    <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(3 mois minimum)</span>
+                                    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Idéal pour progresser avec structure, rigueur et motivation.</p>
+                                </div>
+                                
+                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
+                                    <strong style="color: #D65F3A; display: block; font-size: 0.9rem; text-transform: uppercase;">Engagement Annuel (12 mois)</strong>
+                                    <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">Option Performance : 165$ / mois</span>
+                                    <span style="display: block; font-size: 0.85rem; color: var(--text-light);">(3 mois minimum)</span>
+                                    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Analyse de données poussée et stratégie avancée (70.3 & Ironman).</p>
+                                </div>
+                            </details>
                         </div>
                     </div>
 
@@ -621,6 +626,18 @@
 
         backToTopBtn.addEventListener("click", function() { 
             window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+
+        // Script pour modifier le sens de la flèche (▼ / ▲) au clic
+        document.querySelectorAll('.program-details').forEach(detail => {
+            detail.addEventListener('toggle', (e) => {
+                const arrow = detail.querySelector('.toggle-arrow');
+                if (detail.open) {
+                    arrow.textContent = '▲';
+                } else {
+                    arrow.textContent = '▼';
+                }
+            });
         });
     </script>
 </body>
