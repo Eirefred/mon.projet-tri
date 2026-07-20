@@ -383,6 +383,11 @@
         .dropdown-menu a { display: block; padding: 10px 20px; color: #004c97 !important; font-weight: 700; font-size: 0.85rem; text-transform: none; text-align: left; }
         .dropdown-menu a:hover { background-color: #f1f5f9; color: #D65F3A !important; }
 
+        /* Règle dynamique pour masquer les événements passés */
+        table.hide-past tr.past-event {
+            display: none !important;
+        }
+
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             header { padding: 5px 0 !important; height: auto; }
