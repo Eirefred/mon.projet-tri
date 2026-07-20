@@ -210,21 +210,21 @@
                 text-align: center !important;
                 font-size: 0.95rem !important;
             }
-            /* Ajustement de la note TQ sur mobile (2 lignes) */
+            /* Ajustement de la note TQ sur mobile (2 lignes avec logo) */
             .tq-note-container {
-                flex-direction: column !important;
-                gap: 2px !important;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 5px !important;
                 padding: 0 15px;
             }
-            .tq-note-container img {
-                display: none; /* <-- C'est cette ligne qui le masquait */
-            }
             .tq-label {
-                display: block;
-                width: 100%;
+                display: inline-block;
             }
             .tq-desc {
-                display: inline;
+                display: block;
+                width: 100%; /* Force la description à passer à la ligne en dessous */
+                margin-top: 2px;
             }
         }
 
