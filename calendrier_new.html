@@ -526,7 +526,7 @@
                     <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Duath. Long</div>
                     <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
                     <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
-<button id="togglePastBtn" onclick="togglePastEvents()" style="background:#5A6A7A; color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">Masquer passés</button>
+<button id="togglePastBtn" onclick="togglePastEvents()" style="background:#D65F3A; color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">Afficher passés</button>
 <button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">🌎 Carte</button>
                 </div>
             </div>
@@ -541,7 +541,7 @@
             <div class="main-content">
                 <div id="status" style="text-align:center; padding: 20px; font-weight: bold;">Chargement du calendrier...</div>
                 <div class="table-outer">
-                    <table id="calTable" style="display:none;">
+                    <table id="calTable" class="hide-past" style="display:none;">
                         <thead>
                             <tr>
                                 <th class="col-date">Date</th>
@@ -778,7 +778,7 @@
         window.onload = loadExcel;
         window.onclick = (e) => { if (e.target.className === 'modal') closeMap(); }
 
-        let showPast = true; // Par défaut, on affiche les événements passés (grisés)
+        let showPast = false; // Par défaut, les événements passés sont cachés
 
 function togglePastEvents() {
     const table = document.getElementById('calTable');
