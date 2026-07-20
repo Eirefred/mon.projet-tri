@@ -181,7 +181,7 @@
         @media (max-width: 768px) {
 
             #backToTop.visible { display: flex !important; }
-            
+
             .cta-accompagnement {
                 display: flex !important;
                 flex-direction: column !important; 
@@ -374,7 +374,7 @@
     align-items: center;
     justify-content: center;
 }
-        #backToTop.visible { display: flex !important; }
+
 
         /* --- FOOTER --- */
         footer { 
@@ -840,17 +840,19 @@ function closeTqModal() {
         // --- BACK TO TOP SCRIPT ---
         const backToTopBtn = document.getElementById("backToTop");
 
-        window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 768 && window.scrollY > 300) {
-                backToTopBtn.classList.add("visible");
-            } else {
-                backToTopBtn.classList.remove("visible");
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 768) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
             }
         });
 
-        backToTopBtn.addEventListener("click", function() { 
-            window.scrollTo({ top: 0, behavior: "smooth" }); 
-        });
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
 
         window.onload = () => {
     // 1. Charge d'abord le fichier Excel existant
