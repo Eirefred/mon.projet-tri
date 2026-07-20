@@ -224,13 +224,14 @@
             /* --- LÉGENDE --- */
     .legend-container { 
     position: sticky; 
-    top: 85px; /* S'aligne sous le header */
+    top: 95px; /* S'aligne parfaitement sous le header qui fait 95px de haut */
     background: var(--bg); 
-    z-index: 1010; 
-    padding: 10px 0; 
+    z-index: 1010; /* Priorité supérieure au tableau */
+    padding: 12px 0; 
     border-bottom: 1px solid #ddd; 
+    height: 40px; 
     display: flex; 
-    justify-content: center; /* Centre parfaitement la légende dans les 1100px */
+    align-items: center; 
 }
 
 .legend { 
@@ -263,21 +264,20 @@
     box-sizing: border-box; 
     background: white; 
     border-radius: 12px; 
-    overflow: visible; /* Permet au bandeau sticky de suivre le défilement */
+    overflow: visible; /* REMPLACE 'hidden' pour permettre à l'entête de rester collée */
     box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
 }
         table { width: 100%; border-collapse: collapse; table-layout: fixed; }
         thead th { 
     position: sticky; 
-    top: 0px; 
+    top: 159px; /* Somme exacte du header (95px) + hauteur totale de la légende (64px) */
     background: var(--dark-blue); 
     color: white; 
-    padding: 12px 8px; 
-    z-index: 1000; /* Reste au-dessus des lignes du tableau lors du défilement */
+    padding: 15px 10px; 
+    z-index: 1000; /* Reste sous la légende mais au-dessus des lignes qui défilent */
     text-align: left; 
-    font-size: 0.82rem; 
+    font-size: 0.85rem; 
     border: none; 
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 /* Redéfinition précise des largeurs pour un total de 100% dans 1100px */
@@ -729,17 +729,19 @@ td {
                     }
 
                     // Alignement automatique après filtrage
-                    setTimeout(() => {
-                        const legend = document.querySelector('.legend-container');
-                        const table = document.getElementById('calTable');
-                        if (table && legend) {
-                            const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
-                            const legendHeight = legend.offsetHeight;
-                            const headerHeight = document.querySelector('header').offsetHeight;
-                            const finalScrollTarget = tableTop - (legendHeight + headerHeight) - 5;
-                            window.scrollTo({ top: finalScrollTarget, behavior: 'smooth' });
-                        }
-                    }, 100);
+                    // Alignement automatique après filtrage
+setTimeout(() => {
+    const legend = document.querySelector('.legend-container');
+    const table = document.getElementById('calTable');
+    if (table && legend) {
+        const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
+        const legendHeight = legend.offsetHeight;
+        const headerHeight = document.querySelector('header').offsetHeight;
+        // Ajustement précis pour caler le tableau pile au ras de l'entête sticky
+        const finalScrollTarget = tableTop - (legendHeight + headerHeight) - 2;
+        window.scrollTo({ top: finalScrollTarget, behavior: 'smooth' });
+    }
+}, 100);
                 });
             });
         }
