@@ -715,9 +715,15 @@
                             i.classList.toggle('inactive', i.getAttribute('data-cat') !== cat);
                         });
                         rows.forEach(row => {
-                            const rowCats = row.getAttribute('data-categories').split(',');
-                            row.classList.toggle('hidden', !rowCats.includes(cat));
-                        });
+    const rowCats = row.getAttribute('data-categories').split(',');
+    
+    // Remplacement ici pour éviter les conflits avec le bouton des événements passés
+    if (!rowCats.includes(cat)) {
+        row.classList.add('hidden');
+    } else {
+        row.classList.remove('hidden');
+    }
+});
                     }
 
                     // Alignement automatique après filtrage
