@@ -682,6 +682,21 @@
         }
         .card-button:hover { background: var(--primary-gradient); transform: scale(1.05); }
 
+        /* Réduit l'espace sous la phrase entre guillemets */
+.flow-step em {
+    margin-bottom: 5px !important;
+}
+
+/* Réduit l'espace sous le texte principal */
+.flow-step p {
+    margin-bottom: 8px !important;
+}
+
+/* Force le bouton "Découvrir" à se rapprocher du texte */
+.flow-step div[style*="margin-top: 20px"] {
+    margin-top: 8px !important;
+}
+
         /* --- INFO BOX --- */
         .info-box-glass {
             max-width: 800px; 
