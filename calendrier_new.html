@@ -490,28 +490,7 @@
                 font-size: 1.1rem !important;
             }
 
-            /* Remplacement/Correction pour la légende sur Mobile */
-.legende, .legend, #legende { 
-    max-width: 100%;
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap; /* Force les éléments de la légende à passer à la ligne s'ils manquent de place */
-    gap: 10px; /* Espace proprement les éléments */
-}
-
-/* Si les éléments internes de la légende ont des tailles fixes */
-.legende-item, .legend-item {
-    font-size: 14px; /* Réduit un peu le texte sur mobile si nécessaire */
-    white-space: normal; /* Autorise le texte de la légende à s'écrire sur deux lignes */
-}
-table, .grid, .calendar-container {
-    max-width: 100%;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-html, body {
+            html, body {
     max-width: 100%;
     overflow-x: hidden; /* Bloque le défilement horizontal global */
 }
