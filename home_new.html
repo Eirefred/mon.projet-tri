@@ -221,6 +221,36 @@
             margin-bottom: 10px; 
             text-transform: uppercase; 
         }
+
+        /* --- NOUVEAUX STYLES : MISE EN VALEUR DE L'ENCADRÉ DES PROFILS ATHLÈTES --- */
+        .profiles-showcase {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 50px rgba(0, 76, 151, 0.08);
+            max-width: 1050px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 76, 151, 0.05);
+        }
+        
+        .showcase-header {
+            margin-bottom: 40px;
+        }
+        
+        .showcase-header h3 {
+            color: #D65F3A;
+            font-size: 1.6rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin: 0 0 10px 0;
+            letter-spacing: 0.5px;
+        }
+        
+        .showcase-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin: 0;
+        }
         
         /* --- SECTION PARTENAIRES --- */
         .programme-section {
@@ -474,6 +504,17 @@
             }
             .flow-step {
                 width: 100%;
+            }
+
+            /* Adaptation mobile de l'encadré des profils */
+            .profiles-showcase {
+                padding: 30px 15px;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+            }
+            .showcase-header h3 {
+                font-size: 1.4rem;
             }
         }
 
@@ -928,38 +969,48 @@
     <section id="athlètes" class="presentation">
         <div class="container">
             <h2>Pour les Athlètes</h2>
-            <p style="font-size: 1.3rem; color: var(--text-light); margin-bottom: 50px;">Comment pouvons-nous vous aider ?</p>
+            <p style="font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto 50px auto; line-height: 1.5;">
+                Notre mission est de <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">développer le triathlon au Québec</span>. Que vous soyez un sportif <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">autodidacte</span>, que vous souhaitiez un <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">encadrement</span> ou que vous vouliez <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">rejoindre un club</span>, nous sommes là pour vous guider, <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">gratuitement</span>.
+            </p>
             
-            <div class="decision-flow">
-                <a href="autonome.html" class="flow-step">
-                    <div class="step-number step-autonome">Autonome</div>
-                    <em>"Je veux me lancer seul dans le triathlon"</em>
-                    Voici nos ressources pour vous aider à vous lancer vous-même.
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                        <span>Découvrir</span>
-                        <div class="step-arrow">➔</div>
-                    </div>
-                </a>
+            <!-- AJOUT : Encadré de mise en valeur global autour des types d'accompagnement -->
+            <div class="profiles-showcase">
+                <div class="showcase-header">
+                    <h3>Nos types d'accompagnement</h3>
+                    <p>Découvrez la formule idéale selon votre profil et vos objectifs</p>
+                </div>
+                
+                <div class="decision-flow">
+                    <a href="autonome.html" class="flow-step">
+                        <div class="step-number step-autonome">Autonome</div>
+                        <em>"Je veux me lancer seul dans le triathlon"</em>
+                        Voici nos ressources pour vous aider à vous lancer vous-même.
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
+                            <span>Découvrir</span>
+                            <div class="step-arrow">➔</div>
+                        </div>
+                    </a>
 
-                <a href="accompagnement.html" class="flow-step">
-                    <div class="step-number step-accompagnement">Accompagnement</div>
-                    <em>"Je veux un accompagnement sportif"</em>
-                    Voyez comment nous pouvons vous jumeller avec un coach-mentor.
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                        <span>Découvrir</span>
-                        <div class="step-arrow">➔</div>
-                    </div>
-                </a>
+                    <a href="accompagnement.html" class="flow-step">
+                        <div class="step-number step-accompagnement">Accompagnement</div>
+                        <em>"Je veux un accompagnement sportif"</em>
+                        Voyez comment nous pouvons vous jumeller avec un coach-mentor.
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
+                            <span>Découvrir</span>
+                            <div class="step-arrow">➔</div>
+                        </div>
+                    </a>
 
-                <a href="club.html" class="flow-step">
-                    <div class="step-number step-club">Club</div>
-                    <em>"Je veux rejoindre un club"</em>
-                    Voyez comment nous pouvons trouver le club qui vous correspond.
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                        <span>Découvrir</span>
-                        <div class="step-arrow">➔</div>
-                    </div>
-                </a>
+                    <a href="club.html" class="flow-step">
+                        <div class="step-number step-club">Club</div>
+                        <em>"Je veux rejoindre un club"</em>
+                        Voyez comment nous pouvons trouver le club qui vous correspond.
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
+                            <span>Découvrir</span>
+                            <div class="step-arrow">➔</div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
