@@ -357,23 +357,43 @@
 
         /* --- BOUTON BACK TO TOP --- */
         #backToTop {
-    display: none; /* Caché par défaut sur PC */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-    background-color: var(--accent);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    align-items: center;
-    justify-content: center;
-}
+            display: none; /* Caché par défaut sur PC */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: rgba(255, 255, 255, 0.2); /* Fond très légèrement blanc et transparent */
+            backdrop-filter: blur(8px); /* Floute l'arrière-plan pour une finition premium */
+            -webkit-backdrop-filter: blur(8px);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 1px solid rgba(0, 76, 151, 0.2); /* Fine bordure bleue transparente */
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Ombre douce */
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Effet au survol ou clic */
+        #backToTop:hover {
+            background-color: rgba(4, 129, 251, 0.1); /* Devient légèrement bleu au survol */
+            border-color: rgba(4, 129, 251, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Style pour l'icône flèche (SVG) à l'intérieur du bouton */
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #004c97; /* Couleur de la flèche (bleu de votre charte) */
+            transition: fill 0.3s ease;
+        }
+
+        #backToTop:hover svg {
+            fill: #D65F3A; /* La flèche devient orange au survol */
+        }
 
 
         /* --- FOOTER --- */
