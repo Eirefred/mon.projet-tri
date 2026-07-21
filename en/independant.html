@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Independent | mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/independent.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/autonome.html" />
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            /* Specific gradient for the Independent button (Blue to Green) */
+            --autonome-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        /* --- BACK TO TOP BUTTON --- */
+        #backToTop {
+            display: none; /* Hidden by default on PC */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: black;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #backToTop:hover {
+            background-color: #D65F3A;
+            transform: translateY(-3px);
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- PAGE CONTENT AREA --- */
+        .content-section {
+            padding: 80px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        /* Title with green/blue "Independent" gradient */
+        .content-section h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--autonome-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* --- TABS STYLE ON MOBILE AND PC --- */
+
+        /* 1. On ALL SCREENS (including mobile): horizontal alignment */
+        .browser-tabs-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;          
+            gap: 6px !important;                   
+            overflow-x: auto !important; /* Enables horizontal scrolling on mobile */
+            box-sizing: border-box !important;     
+            padding: 4px 4px 0 4px !important;    
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhone */
+            scrollbar-width: none; /* Hides scrollbar */
+        }
+
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none; /* Hides scrollbar on Chrome/Safari */
+        }
+
+        /* 2. On MOBILE: prevents tabs from squeezing */
+        .tab-button {
+            flex-shrink: 0 !important; /* Keeps natural text width */
+            white-space: nowrap !important;
+        }
+
+        /* 3. On DESKTOP (screen > 768px): distributes tabs evenly */
+        @media (min-width: 769px) {
+            .browser-tabs-container {
+                overflow-x: hidden !important;
+            }
+
+            .tab-button {
+                flex: 1 1 0px !important;              
+                min-width: 0 !important;               
+                text-align: center;
+                justify-content: center;
+            }
+
+            .browser-tabs-wrapper::after {
+                display: none !important;
+                content: none !important;
+            }
+        }
+
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #cbd5e1;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            user-select: none;
+        }
+
+        .tab-button:hover {
+            background: #e2e8f0;
+            color: #004c97;
+        }
+
+        .tab-button.active {
+            background: #ffffff;
+            color: #004c97;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .tab-content-wrapper {
+            background: #ffffff;
+            padding: 40px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            min-height: 400px;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- FAQ SEARCH & FILTERS --- */
+        .faq-search-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .faq-search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .faq-search-box input {
+            width: 100%;
+            padding: 14px 45px 14px 45px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+        }
+
+        .faq-search-box input:focus {
+            border-color: #004c97;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 76, 151, 0.1);
+        }
+
+        .faq-search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .faq-clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .faq-clear-btn:hover {
+            color: #0f172a;
+        }
+
+        /* FAQ Filter Buttons */
+        .faq-filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .faq-filter-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .faq-filter-btn:hover {
+            background: #e2e8f0;
+            color: #004c97;
+        }
+
+        .faq-filter-btn.active {
+            background: #004c97;
+            color: #ffffff;
+            border-color: #004c97;
+            box-shadow: 0 2px 6px rgba(0, 76, 151, 0.2);
+        }
+
+        /* Search Highlight */
+        mark.faq-highlight {
+            background-color: #fef08a;
+            color: #0f172a;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* No Results Message */
+        .faq-no-results {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        /* Buttons & Brand Classes */
+        .btn-ressource {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #004c97 !important;
+            padding: 10px 22px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            border-radius: 50px; 
+            border: 1px solid rgba(0, 76, 151, 0.15);
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+        }
+        .btn-ressource:hover {
+            background: var(--autonome-gradient); 
+            color: #ffffff !important;
+            border-color: transparent;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .btn-submit-autonome {
+            display: inline-block;
+            background: var(--autonome-gradient);
+            color: #ffffff !important;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+        }
+        .btn-submit-autonome:hover {
+            background: var(--primary-gradient);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(214, 95, 58, 0.3);
+        }
+
+        .brand-mon {
+            font-family: 'Oooh Baby', cursive;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-transform: lowercase;
+            vertical-align: baseline;
+            position: relative;
+        }
+        .brand-projet {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+        }
+        .brand-tri {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .links-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .link-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8fafc;
+            padding: 12px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 76, 151, 0.05);
+            transition: all 0.2s ease;
+        }
+
+        .link-row:hover {
+            background: #f1f5f9;
+            transform: translateX(4px);
+        }
+
+        .link-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .link-info img {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            object-fit: contain;
+        }
+
+        .link-title {
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .link-desc {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-left: 8px;
+        }
+
+        .link-action {
+            color: #004c97;
+            font-weight: 800;
+            font-size: 0.9rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .link-action:hover {
+            color: #D65F3A;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .tab-button {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+            .tab-content-wrapper {
+                padding: 20px;
+            }
+            .link-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .link-desc {
+                display: block;
+                margin-left: 0;
+                margin-top: 2px;
+            }
+            .link-action {
+                align-self: flex-end;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- DROPDOWN MENU --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        @media (max-width: 768px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
+
+        @media (max-width: 768px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
+        }
+
+        /* --- FAQ & ACCORDIONS --- */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 15px 0;
+            transition: opacity 0.2s ease;
+        }
+        .faq-item:last-child { border-bottom: none; }
+
+        .faq-header {
+            list-style: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            outline: none;
+            user-select: none;
+        }
+        .faq-header::-webkit-details-marker { display: none; }
+
+        .faq-title {
+            font-weight: 800;
+            font-size: 1.05rem;
+            color: #004c97;
+            transition: color 0.2s ease;
+        }
+        .faq-header:hover .faq-title { color: #10B981; }
+
+        .faq-subtopics-preview {
+            margin-top: 6px;
+            padding-left: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .faq-subtopic-item {
+            font-size: 0.88rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .faq-arrow {
+            color: #004c97;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+            margin-left: 15px;
+            margin-top: 3px;
+        }
+        details[open] .faq-arrow { transform: rotate(180deg); }
+
+        .faq-answer {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-dark, #334155);
+            line-height: 1.6;
+            padding-left: 14px;
+            border-left: 2px solid #e2e8f0;
+        }
+
+        .browser-tabs-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .browser-tabs-wrapper {
+                position: relative;
+            }
+
+            .browser-tabs-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                /* Limits the gradient to the exact height of the buttons (~45px) */
+                height: 45px; 
+                width: 30px;
+                top: 3px;
+                /* Gradient towards pure white (#ffffff) */
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                pointer-events: none; 
+                z-index: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="Logo Mon Projet Tri - Remote Triathlon Coaching in Quebec and Montreal"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Across Quebec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="discover.html" target="_blank">About Us</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="independent.html">Independent</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#programme">Partners</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendar'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label" style="color: #ccc;">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" checked onclick="window.location.href='../autonome.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="content-section">
+        <div class="container">
+            
+            <!-- HERO SECTION -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1>Starting independently</h1>
+                <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
+                    New to triathlon? Find all the resources, official links, and advice here to organize yourself and progress at your own pace.
+                </p>
+                
+                <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 750px; margin: 0 auto; line-height: 1.7; background: #f8fafc; padding: 18px 25px; border-radius: 12px; border: 1px dashed rgba(0, 76, 151, 0.15);">
+                    🛠️ Welcome to the <strong>toolbox</strong> 🧰 of 
+                    <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin-right: 4px;">
+                        <span class="brand-mon" style="color: #0481fb !important; margin-right: 4px;"><strong>mon</strong></span>
+                        <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
+                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
+                    </span> ! 
+                    <br>If you feel lost or want to go further, we also offer 
+                    <a href="coaching.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">tailored coaching programs</a> to guide you step-by-step.
+                </p>
+            </div>
+
+            <!-- BROWSER-STYLE TABS -->
+            <div class="browser-tabs-wrapper">
+                <div class="browser-tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 The Basics</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ Beginners FAQ</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Rules</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendar</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Training</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Community</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribute</button>
+                </div>
+            </div>
+
+            <!-- TAB CONTENT CONTAINER -->
+            <div class="tab-content-wrapper">
+
+                <!-- TAB 1: THE BASICS -->
+                <div id="tab-bases" class="tab-panel active">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        🏁 What exactly is triathlon?
+                    </h2>
+                    
+                    <div style="margin-left: 15px; margin-bottom: 20px; line-height: 1.6;">
+                        <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0; margin-bottom: 10px; line-height: 1.7;">
+                            Triathlon was born in the early <strong style="color: #004c97;">1970s in California 🇺🇸</strong>, where a few enthusiasts had the idea of combining a <strong style="color: #004c97;">swim 🏊, bike 🚴, and run 🏃</strong> to take on a new challenge. This simple concept quickly gained popularity before spreading worldwide and becoming an <strong style="color: #004c97;">Olympic sport<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/500px-Olympic_rings_without_rims.svg.png" alt="Olympic rings" style="height: 0.8em; vertical-align: middle; margin-left: 4px; transform: translateY(-2px);"></strong> in 2000.
+                        </p>
+
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            Over the years, triathlon built a reputation as an extreme sport, mainly due to long distances like the Ironman<img src="https://www.ironman.com/favicon.ico" alt="Ironman" style="height: 1.1em; vertical-align: middle; margin-left: 4px; transform: translateY(-3.5px); collapse: inline;">. However, that image is only a small part of reality. The vast majority of triathlons are designed to be <strong style="color: #004c97;">accessible to beginners</strong>, with distances suited for all levels.
+                        </p>
+
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            Yes, you need to be in decent physical shape and plan a bit of training, but <strong style="color: #004c97;">you don't need to be an elite athlete</strong> to enjoy the experience. What makes triathlon so special is the joy of stringing together three different disciplines, <strong style="color: #004c97;">taking on a personal challenge at your own pace</strong>, and crossing a finish line 🏁 you will remember for a long time.
+                        </p>
+
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            With a bit of preparation, <strong style="color: #004c97;">anyone can do it</strong> 🏅!
+                        </p>
+                        <p style="font-size: 1rem; color: var(--text-light); margin-bottom: 20px;">
+                            There are several formats tailored to everyone's goals:
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
+                            <div style="background: #f0f7ff; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #10b981;">
+                                <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1.05rem; font-weight: bold;">🌱 Getting started: Discovery / Try-a-Tri</h4>
+                                <p style="margin: 0 0 6px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
+                                    🏊 375m • 🚴 10km • 🏃 2.5km
+                                </p>
+                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
+                                    The perfect format to give it a try hassle-free, at your own pace, and in a welcoming atmosphere.
+                                </p>
+                            </div>
+
+                            <div style="background: #f8fafc; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #004c97;">
+                                <h4 style="margin: 0 0 4px 0; color: #004c97; font-size: 1.05rem; font-weight: bold;">🚀 Once comfortable: Sprint & Olympic</h4>
+                                <p style="margin: 0 0 6px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
+                                    ⏱️ Sprint: 750m / 20km / 5km &nbsp;|&nbsp; 🏅 Olympic: 1500m / 40km / 10km
+                                </p>
+                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
+                                    Two classic formats ideal as soon as you gain confidence to structure your progression.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.9rem; color: var(--text-light); font-style: italic; background: #f8fafc; padding: 10px 14px; border-radius: 8px; border: 1px dashed rgba(0, 76, 151, 0.1); margin-bottom: 20px; line-height: 1.4;">
+                            ℹ️ <strong>For your curiosity:</strong> There are also (very) long distance formats (Half-Ironman and full Ironman). While they impress the general public, they only represent a fraction of triathlon. Each distance has its own charm!
+                        </p>
+                    </div>
+
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+                                <div class="link-text-block">
+                                    <span class="link-title">Triathlon Québec</span>
+                                    <span class="link-desc">(Discover official variations and multisport events recognized by the federation)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="link-action">Explore disciplines ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 2: SEARCHABLE AND FILTERABLE FAQ -->
+                <div id="tab-faq" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
+                        ❓ Frequently asked questions for beginners
+                    </h2>
+                    <p style="font-size: 1rem; color: var(--text-light); margin-top: 0; margin-bottom: 20px;">
+                        Search for a topic, use category filters, or click on a question to reveal the answer.
+                    </p>
+
+                    <!-- SEARCH BLOCK & CATEGORY FILTERS -->
+                    <div class="faq-search-wrapper">
+                        <div class="faq-search-box">
+                            <span class="faq-search-icon">🔍</span>
+                            <input type="text" id="faqSearchInput" placeholder="Search a question or keyword (e.g., wetsuit, bike, time...)" oninput="filterFAQ()">
+                            <button class="faq-clear-btn" id="faqClearBtn" onclick="clearFAQSearch()" title="Clear search">✕</button>
+                        </div>
+
+                        <!-- Category Filter Buttons -->
+                        <div class="faq-filter-container">
+                            <button class="faq-filter-btn active" data-category="all" onclick="setFAQCategory('all')">All</button>
+                            <button class="faq-filter-btn" data-category="distances" onclick="setFAQCategory('distances')">📏 Distances & Time</button>
+                            <button class="faq-filter-btn" data-category="equipement" onclick="setFAQCategory('equipement')">🚴 Gear & Bike</button>
+                            <button class="faq-filter-btn" data-category="regles" onclick="setFAQCategory('regles')">🏊 Wetsuit & Safety</button>
+                            <button class="faq-filter-btn" data-category="entrainement" onclick="setFAQCategory('entrainement')">⏱️ Training</button>
+                        </div>
+                    </div>
+
+                    <div class="faq-list" id="faqList">
+                        <details class="faq-item" data-categories="distances">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">1. What are the distances in triathlon?</div>
+                                    <div class="faq-subtopics-preview">
+                                        <span class="faq-subtopic-item">↳ How long does it take?</span>
+                                        <span class="faq-subtopic-item">↳ Is there a time limit?</span>
+                                    </div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p><strong>The different distances:</strong></p>
+                                <ul>
+                                    <li><strong>Try-a-Tri / Discovery:</strong> ~375 m swim • 10 km bike • 2.5 km run <em>(ideal for beginners)</em></li>
+                                    <li><strong>Sprint:</strong> 750 m swim • 20 km bike • 5 km run</li>
+                                    <li><strong>Olympic (Standard):</strong> 1.5 km swim • 40 km bike • 10 km run</li>
+                                    <li><strong>Half-Ironman (70.3):</strong> 1.9 km swim • 90 km bike • 21.1 km run</li>
+                                    <li><strong>Ironman (140.6):</strong> 3.8 km swim • 180 km bike • 42.2 km run</li>
+                                </ul>
+
+                                <p style="margin-top: 15px;"><strong>How long does it take?</strong></p>
+                                <ul>
+                                    <li><strong>Discovery:</strong> Between 45 min and 1 h 15</li>
+                                    <li><strong>Sprint:</strong> Between 1 h 15 and 2 h 00</li>
+                                    <li><strong>Olympic:</strong> Between 2 h 30 and 3 h 45</li>
+                                </ul>
+
+                                <p style="margin-top: 15px;"><strong>Time limits (cut-offs):</strong></p>
+                                <p>Most events enforce time limits (<em>cut-offs</em>) for safety reasons. However, on Discovery and Sprint formats, these limits are very generous and allow you to walk if needed.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" data-categories="regles equipement">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">2. When can I wear a wetsuit? Is it mandatory?</div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p>A neoprene wetsuit is <strong>not mandatory</strong>, unless the water temperature is below 15.9 °C (60.8 °F).</p>
+                                <p>Usually, it is permitted up to 22 °C (71.6 °F), depending on your age category, distance, and air temperature. Above that threshold, it becomes prohibited to prevent overheating.</p>
+                                <p style="background: #f0f7ff; padding: 10px; border-left: 3px solid #004c97; border-radius: 4px; margin-top: 10px;">
+                                    💡 <strong>Good to know:</strong> The official decision regarding wetsuit rules is made by race officials <strong>exactly 1 hour before the start</strong>.
+                                </p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" data-categories="regles">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">3. I am less comfortable swimming, can I receive help?</div>
+                                    <div class="faq-subtopics-preview">
+                                        <span class="faq-subtopic-item">↳ Am I allowed to wear a swim buoy?</span>
+                                    </div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p><strong>Support and safety:</strong></p>
+                                <ul>
+                                    <li><strong>Distinctive swim cap:</strong> Specially colored swim caps are often provided to beginners so lifeguards can keep a closer eye on them.</li>
+                                    <li><strong>Resting:</strong> You can hold onto a lifeguard's kayak to catch your breath. As long as the vessel does not move you forward, you are not disqualified.</li>
+                                </ul>
+
+                                <p style="margin-top: 15px;"><strong>Rules on swim buoys:</strong></p>
+                                <p>Deployed open-water buoys are <strong>prohibited</strong>. Only compact emergency buoys (manually inflatable at the waist) are permitted, but deploying them ends your race.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" data-categories="equipement regles">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">4. What is the mandatory equipment for a triathlon?</div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p>The rules dictate a minimum set of safety and identification gear for each leg:</p>
+                                
+                                <p style="margin-top: 10px;"><strong>🏊‍♂️ Swim:</strong></p>
+                                <ul>
+                                    <li><strong>Swim cap:</strong> Mandatory, usually provided by the event organizers.</li>
+                                    <li><strong>Swimsuit or trisuit:</strong> Mandatory.</li>
+                                </ul>
+
+                                <p style="margin-top: 10px;"><strong>🚴‍♂️ Bike:</strong></p>
+                                <ul>
+                                    <li><strong>Certified helmet:</strong> Mandatory and must be buckled <em>before</em> removing the bike from the rack.</li>
+                                    <li><strong>Compliant bike:</strong> Working brakes, plugged handlebar ends (mandatory for safety reasons).</li>
+                                    <li><strong>Shirt/Trisuit:</strong> Torso must remain covered throughout the leg.</li>
+                                </ul>
+
+                                <p style="margin-top: 10px;"><strong>🏃‍♂️ Run:</strong></p>
+                                <ul>
+                                    <li><strong>Running shoes:</strong> Mandatory.</li>
+                                    <li><strong>Bib number:</strong> Worn on the front of the body, clearly visible.</li>
+                                    <li><strong>Covered torso:</strong> Shirt or zipped-up trisuit.</li>
+                                </ul>
+
+                                <div style="border: 2px solid #e74c3c; background-color: #fdf2e9; padding: 12px 16px; border-radius: 8px; margin: 15px 0;">
+                                  <p style="margin: 0; color: #c0392b; font-weight: bold; display: flex; align-items: center; gap: 8px;">
+                                    <span>❗</span> <span>SAFETY REMINDER</span>
+                                  </p>
+                                  <p style="margin: 6px 0 0 0; color: #2c3e50; font-size: 0.95em;">
+                                    Headphones, earphones, mobile phones, and glass containers are strictly prohibited under penalty of immediate disqualification.
+                                  </p>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" data-categories="equipement">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">5. What type of bike do I need to participate?</div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p>Any traditional bike works: road bike, hybrid, mountain bike, or city bike. The only rule is that the bike must be powered <strong>solely by human force</strong>.</p>
+                                <p style="color: #dc2626; font-weight: bold; margin-top: 5px;">❌ Electric-assist bikes (E-bikes) are prohibited.</p>
+                            </div>
+                        </details>
+
+                        <details class="faq-item" data-categories="entrainement distances">
+                            <summary class="faq-header">
+                                <div>
+                                    <div class="faq-title">6. Do I need to train a lot for my first triathlon?</div>
+                                </div>
+                                <span class="faq-arrow">▼</span>
+                            </summary>
+                            <div class="faq-answer">
+                                <p>For a first <strong>Discovery</strong> triathlon, about <strong>1 month of training</strong> consisting of <strong>one 30-minute session per sport per week</strong> (3 short sessions/week) is more than enough to cross the finish line with a smile!</p>
+                                <div style="background: #f0f7ff; padding: 12px 18px; border-radius: 10px; border-left: 4px solid #10b981; margin-top: 15px;">
+                                    <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1rem; font-weight: bold;">🌱 Getting started: Discovery / Try-a-Tri</h4>
+                                    <p style="margin: 0 0 4px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
+                                        🏊 375m • 🚴 10km • 🏃 2.5km
+                                    </p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
+                                        The perfect format to try without complications, at your pace, and in a supportive environment.
+                                    </p>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-no-results" id="faqNoResults">
+                        🔍 No questions match your search query or selected filter.
+                    </div>
+                </div>
+
+                <!-- TAB 3: RULES -->
+                <div id="tab-reglements" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        📚 Triathlon Rules
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">
+                        To avoid surprises and race safely, familiarize yourself with the rules of each organization.
+                    </p>
+
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+                                <div class="link-text-block">
+                                    <span class="link-title">
+                                        Triathlon Québec & 
+                                        <img src="https://challengefamily.com/favicon.ico" alt="Challenge Family" style="width: 18px; height: 18px; vertical-align: middle; margin: 0 4px 2px 4px; display: inline-block;"> 
+                                        Challenge Family
+                                    </span>
+                                    <span class="link-desc">
+                                        (Competitions in Quebec 
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Flag of Quebec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="link-action">View rules ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
+                                <div class="link-text-block">
+                                    <span class="link-title">IRONMAN</span>
+                                    <span class="link-desc">(International rules)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="link-action">View rules ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="../favicon.png" alt="mon Projet Tri">
+                                <div class="link-text-block">
+                                    <span class="link-title">
+                                        <span class="brand-mon" style="color: #0481fb !important; margin-right: 2px;">mon</span>
+                                        <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
+                                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
+                                    </span>
+                                    <span class="link-desc">(Our video tips to understand everything)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="link-action">Watch videos ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://triathlon.org/favicon.ico" alt="World Triathlon">
+                                <div class="link-text-block">
+                                    <span class="link-title">World Triathlon</span>
+                                    <span class="link-desc">(International Federation)</span>
+                                </div>
+                            </div>
+                            <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="link-action">View rules ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <span class="emoji-icon">🇺🇸</span>
+                                <div class="link-text-block">
+                                    <span class="link-title">USA Triathlon</span>
+                                    <span class="link-desc">(Competitions in the USA)</span>
+                                </div>
+                            </div>
+                            <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="link-action">View rules ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 4: CALENDAR -->
+                <div id="tab-calendrier" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        📅 Event Calendar
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">
+                        Plan your season and find events suited to your goals across Quebec and internationally.
+                    </p>
+
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="../favicon.png" alt="mon Projet Tri">
+                                <div class="link-text-block">
+                                    <span class="link-title">
+                                        <span class="brand-mon" style="color: #0481fb !important; margin-right: 2px;">mon</span>
+                                        <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
+                                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
+                                    </span>
+                                    <span class="link-desc">
+                                        (Provincial season in Quebec 
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Flag of Quebec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://mon.projet-tri.org/calendrier.html" target="_blank" class="link-action">View 2026 calendar ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
+                                <div class="link-text-block">
+                                    <span class="link-title">IRONMAN</span>
+                                    <span class="link-desc">(Global long-distance circuit)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.ironman.com/races" target="_blank" class="link-action">View calendar ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://challengefamily.com/favicon.ico" alt="Challenge Family">
+                                <div class="link-text-block">
+                                    <span class="link-title">Challenge Family</span>
+                                    <span class="link-desc">(Global circuit)</span>
+                                </div>
+                            </div>
+                            <a href="https://challengefamily.com/races/" target="_blank" class="link-action">View calendar ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <span class="emoji-icon">🇺🇸</span>
+                                <div class="link-text-block">
+                                    <span class="link-title">USA Triathlon</span>
+                                    <span class="link-desc">(Official event calendar in the USA)</span>
+                                </div>
+                            </div>
+                            <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">View calendar ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 5: TRAINING -->
+                <div id="tab-entrainement" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        🏊 Where to train?
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">
+                        Find recognized training sites, popular routes, and safe open water locations for your specific workouts.
+                    </p>
+
+                    <!-- OPEN WATER -->
+                    <div style="margin-left: 15px; margin-bottom: 30px;">
+                        <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            🏊‍♂️ Open Water
+                        </h3>
+                        <div class="links-list" style="margin-left: 10px;">
+                            <div class="link-row">
+                                <div class="link-info">
+                                    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
+                                    <div class="link-text-block">
+                                        <span class="link-title">Triathlon Québec</span>
+                                        <span class="link-desc">(Referenced safe training locations and sites)</span>
+                                    </div>
+                                </div>
+                                <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="link-action">Visit page ↗</a>
+                            </div>
+                            <div class="link-row">
+                                <div class="link-info">
+                                    <span class="emoji-icon">🏊</span>
+                                    <div class="link-text-block">
+                                        <span class="link-title">MOI J'NAGE</span>
+                                        <span class="link-desc">(Interactive map of open water swimming sites)</span>
+                                    </div>
+                                </div>
+                                <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="link-action">Open map ↗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BIKE -->
+                    <div style="margin-left: 15px; margin-bottom: 30px;">
+                        <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            🚴‍♂️ Cycling
+                        </h3>
+                        <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Select a region to discover routes:</p>
+
+                        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+                            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+                                📍 Montreal Region
+                            </summary>
+                            <div class="links-list" style="margin-top: 15px;">
+                                <div class="link-row" style="background: #fff;">
+                                    <div class="link-info">
+                                        <span class="emoji-icon">🚴</span>
+                                        <div class="link-text-block">
+                                            <span class="link-title">Gilles-Villeneuve Circuit</span>
+                                            <span class="link-desc">Closed track ideal for high-intensity training</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://www.parcjeandrapeau.com/fr/circuit-gilles-villeneuve-piste-multifonctionnelle-provelo-entrainement-sportif-montreal/" target="_blank" class="link-action">Visit site ↗</a>
+                                </div>
+                                <div class="link-row" style="background: #fff;">
+                                    <div class="link-info">
+                                        <span class="emoji-icon">🌊</span>
+                                        <div class="link-text-block">
+                                            <span class="link-title">Riverfront Promenade (Seaway)</span>
+                                            <span class="link-desc">Long straight path along the St. Lawrence River</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://www.parcjeandrapeau.com/fr/promenade-fluviale-grand-montreal-pistes-parcours-cyclistes-velo-familles-traverse-ecluses-fleuve-saint-laurent/" target="_blank" class="link-action">Visit site ↗</a>
+                                </div>
+                            </div>
+                        </details>
+
+                        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+                            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+                                📍 Laurentians Region
+                            </summary>
+                            <div class="links-list" style="margin-top: 15px;">
+                                <div class="link-row" style="background: #fff;">
+                                    <div class="link-info">
+                                        <span class="emoji-icon">🌲</span>
+                                        <div class="link-text-block">
+                                            <span class="link-title">Le P'tit Train du Nord</span>
+                                            <span class="link-desc">Linear park running through the Laurentian nature</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Discover path ↗</a>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+
+                    <!-- RUNNING -->
+                    <div style="margin-left: 15px;">
+                        <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            🏃‍♂️ Running
+                        </h3>
+                        <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Select a region to discover running locations:</p>
+
+                        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+                            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+                                📍 Laurentians Region
+                            </summary>
+                            <div class="links-list" style="margin-top: 15px;">
+                                <div class="link-row" style="background: #fff;">
+                                    <div class="link-info">
+                                        <span class="emoji-icon">🏃</span>
+                                        <div class="link-text-block">
+                                            <span class="link-title">Aerobic Corridor Park</span>
+                                            <span class="link-desc">Nature trail ideal for trail running and endurance</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://corridoraerobique.ca/" target="_blank" class="link-action">Discover park ↗</a>
+                                </div>
+                                <div class="link-row" style="background: #fff;">
+                                    <div class="link-info">
+                                        <span class="emoji-icon">🌲</span>
+                                        <div class="link-text-block">
+                                            <span class="link-title">Le P'tit Train du Nord</span>
+                                            <span class="link-desc">Ideal for long runs on crushed gravel surfaces</span>
+                                        </div>
+                                    </div>
+                                    <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Discover path ↗</a>
+                                </div>
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- TAB 6: COMMUNITY -->
+                <div id="tab-communaute" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        👥 Community
+                    </h2>
+                    
+                    <p style="color: var(--text-light); margin-bottom: 25px;">
+                        Connect with fellow athletes and find your gear at the best price from the community.
+                    </p>
+
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                                <div class="link-text-block">
+                                    <span class="link-title">Triathlon au Québec</span>
+                                    <span class="link-desc">(Main Facebook group for support and discussion)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="link-action">Join group ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                                <div class="link-text-block">
+                                    <span class="link-title">Facebook Marketplace</span>
+                                    <span class="link-desc">(General classifieds for used gear)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/marketplace/" target="_blank" class="link-action">Visit Marketplace ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                                <div class="link-text-block">
+                                    <span class="link-title">Vente-Achat Route & Triathlon Québec</span>
+                                    <span class="link-desc">(Specialized road and tri gear group)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="link-action">See listings ↗</a>
+                        </div>
+
+                        <div class="link-row">
+                            <div class="link-info">
+                                <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
+                                <div class="link-text-block">
+                                    <span class="link-title">Triathlon : achat/vente/échange</span>
+                                    <span class="link-desc">(Targeted Montreal and Quebec community)</span>
+                                </div>
+                            </div>
+                            <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="link-action">See listings ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TAB 7: CONTRIBUTE -->
+                <div id="tab-contribuer" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        💡 Contribute to this toolbox
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;">
+                        Found a new training spot, updated rule, or must-know tip for beginners? Share your ideas and recommendations to enrich this page and help the entire independent community in Quebec!
+                    </p>
+
+                    <form action="https://formspree.io/f/maqroyzd" method="POST" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin-left: 15px;">
+                        
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">What would you like to add or improve?</span>
+                            <div style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.95rem;">
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                    <input type="radio" name="secteur_contribution" value="Lieu entrainement" required> 📍 Training Location
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                    <input type="radio" name="secteur_contribution" value="Lien officiel / Reglement"> 📚 Rules or Official Links
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                    <input type="radio" name="secteur_contribution" value="Communaute / Astuce"> 👥 Community or Buying Tips
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                                    <input type="radio" name="secteur_contribution" value="Autre idee"> 💡 Other Great Idea
+                                </label>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="nom-ressource" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Name of resource, site, or location:</label>
+                            <input type="text" id="nom-ressource" name="nom_ressource_ou_lieu" required placeholder="Ex: Gilles-Villeneuve Circuit, USAT Guide, New buy/sell group..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="portee-geo" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Relevant region or scope:</label>
+                            <input type="text" id="portee-geo" name="region_ou_portee" required placeholder="Ex: Laurentians, Provincial, International, Montreal..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="lien-internet" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Website, official link, or reference URL:</label>
+                            <input type="url" id="lien-internet" name="lien_internet" value="https://" 
+                                placeholder="https://example.com" 
+                                style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;"
+                                oninput="
+                                    let val = this.value.trim();
+                                    if (val === '') {
+                                        this.value = 'https://';
+                                        return;
+                                    }
+                                    if (val.includes('https://') || val.includes('http://')) {
+                                        if (val.endsWith('https://') && val !== 'https://') {
+                                            val = val.slice(0, -8);
+                                        }
+                                        val = val.replace(/https?:\/\//g, '');
+                                        this.value = 'https://' + val;
+                                    }
+                                ">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="explication" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Why is this useful? Explain your tip or recommendation:</label>
+                            <textarea id="explication" name="explication_et_astuces" rows="4" required placeholder="Describe the details: road quality, free access, why it's relevant for an independent triathlete..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
+                        </div>
+
+                        <div style="margin-top: 5px;">
+                            <button type="submit" class="btn-submit-autonome">
+                                Submit my contribution 🚀
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - Nonprofit dedicated to triathlon in Quebec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>View all covered service zones</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, as well as all regions across Quebec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+<script>
+    // --- BACK TO TOP BUTTON ---
+    const backToTopBtn = document.getElementById("backToTop");
+
+    window.addEventListener("scroll", function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add("visible");
+        } else {
+            backToTopBtn.classList.remove("visible");
+        }
+    });
+
+    backToTopBtn.addEventListener("click", function() { 
+        window.scrollTo({ top: 0, behavior: "smooth" }); 
+    });
+
+    // --- TAB MANAGEMENT ---
+    function openTab(evt, tabName) {
+        let tabPanels = document.getElementsByClassName("tab-panel");
+        for (let i = 0; i < tabPanels.length; i++) {
+            tabPanels[i].classList.remove("active");
+        }
+
+        let tabButtons = document.getElementsByClassName("tab-button");
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabsContainer = document.querySelector('.browser-tabs-container');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 768) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
+
+        // Save initial FAQ HTML state for highlighting
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.setAttribute('data-original-html', item.innerHTML);
+        });
+    });
+
+    // --- FAQ SEARCH AND FILTER LOGIC ---
+    let currentFAQCategory = 'all';
+
+    function setFAQCategory(category) {
+        currentFAQCategory = category;
+        
+        // Update visual state of filter buttons
+        const filterBtns = document.querySelectorAll('.faq-filter-btn');
+        filterBtns.forEach(btn => {
+            if (btn.getAttribute('data-category') === category) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        filterFAQ();
+    }
+
+    function clearFAQSearch() {
+        const input = document.getElementById('faqSearchInput');
+        input.value = '';
+        filterFAQ();
+        input.focus();
+    }
+
+    function filterFAQ() {
+        const input = document.getElementById('faqSearchInput');
+        const clearBtn = document.getElementById('faqClearBtn');
+        const filterTerm = input.value.trim().toLowerCase();
+        const faqItems = document.querySelectorAll('.faq-item');
+        const noResults = document.getElementById('faqNoResults');
+        let visibleCount = 0;
+
+        // Show/Hide clear button
+        clearBtn.style.display = filterTerm.length > 0 ? 'block' : 'none';
+
+        faqItems.forEach(item => {
+            const categories = item.getAttribute('data-categories') || '';
+            const matchesCategory = (currentFAQCategory === 'all') || categories.includes(currentFAQCategory);
+            
+            // Restore original HTML before filtering/highlighting
+            const originalHTML = item.getAttribute('data-original-html');
+            item.innerHTML = originalHTML;
+
+            const textContent = item.textContent.toLowerCase();
+            const matchesText = filterTerm === '' || textContent.includes(filterTerm);
+
+            if (matchesCategory && matchesText) {
+                item.style.display = 'block';
+                visibleCount++;
+
+                if (filterTerm.length > 1) {
+                    item.open = true; // Open accordion if search is active
+                    highlightText(item, filterTerm);
+                } else if (filterTerm === '') {
+                    item.open = false; // Close by default without search
+                }
+            } else {
+                item.style.display = 'none';
+                item.open = false;
+            }
+        });
+
+        // Manage "no results" message
+        noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
+
+    // Dynamic text highlighting
+    function highlightText(element, term) {
+        const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const nodesToReplace = [];
+
+        while (walk.nextNode()) {
+            const node = walk.currentNode;
+            if (node.parentNode.nodeName !== 'SCRIPT' && 
+                node.parentNode.nodeName !== 'STYLE' && 
+                !node.parentNode.classList.contains('faq-arrow')) {
+                if (node.nodeValue.toLowerCase().includes(term)) {
+                    nodesToReplace.push(node);
+                }
+            }
+        }
+
+        nodesToReplace.forEach(node => {
+            const parent = node.parentNode;
+            const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
+            const span = document.createElement('span');
+            span.innerHTML = node.nodeValue.replace(regex, '<mark class="faq-highlight">$1</mark>');
+            parent.replaceChild(span, node);
+        });
+    }
+
+    function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+</script>
+</body>
+</html>
