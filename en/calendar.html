@@ -592,36 +592,35 @@
     <!-- EXCEL & FILTERS LOGIC SCRIPTS -->
     <script>
         // Dictionnaires pour convertir le français vers l'anglais
-const moisFrToEn = {
-    "janv.": "Jan.", "janvier": "January",
-    "fév.": "Feb.", "février": "February",
-    "mars": "March",
-    "avril": "April",
-    "mai": "May",
-    "juin": "June",
-    "juil.": "July", "juillet": "July",
-    "août": "Aug.",
-    "sept.": "Sept.", "septembre": "September",
-    "oct.": "Oct.", "octobre": "October",
-    "nov.": "Nov.", "novembre": "November",
-    "déc.": "Dec.", "décembre": "December"
-};
-
 function formatDateToEnglish(dateStr) {
     if (!dateStr) return "";
-    let str = dateStr.trim();
+    // Nettoie et normalise les espaces (gère les espaces insécables d'Excel)
+    let str = String(dateStr).trim().replace(/\s+/g, ' ');
 
-    // Remplace les mois français par les mois anglais
-    for (const [fr, en] of Object.entries(moisFrToEn)) {
-        const regex = new RegExp(`\\b${fr}\\b`, 'gi');
+    // Dictionnaire avec les points échappés (\. ou \?) et variantes courantes
+    const moisFrToEn = {
+        "janv\\.?": "Jan.", "janvier": "January",
+        "fév\\.?|févr\\.?": "Feb.", "février": "February",
+        "mars": "March",
+        "avril": "April",
+        "mai": "May",
+        "juin": "June",
+        "juil\\.?|juill\\.?": "July", "juillet": "July",
+        "août": "Aug.",
+        "sept\\.?": "Sept.", "septembre": "September",
+        "oct\\.?": "Oct.", "octobre": "October",
+        "nov\\.?": "Nov.", "novembre": "November",
+        "déc\\.?": "Dec.", "décembre": "December"
+    };
+
+    for (const [pattern, enMonth] of Object.entries(moisFrToEn)) {
+        const regex = new RegExp(pattern, 'i');
         if (regex.test(str)) {
-            // Extrait les chiffres (ex: "15" ou "12-13")
             const jour = str.replace(regex, '').trim();
-            // Retourne au format anglophone : "Mois Jour"
-            return `${en} ${jour}`;
+            return `${enMonth} ${jour}`;
         }
     }
-    return str; // Retourne le texte original si aucun mois n'est détecté
+    return str; // Retourne la chaîne d'origine si aucun mois n'est trouvé
 }
         const EXCEL_FILE = '../Calendrier-2026.xlsx';
         const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
