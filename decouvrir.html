@@ -2,285 +2,608 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Découvrez l'histoire, la mission et les profils d'athlètes de Mon Projet Tri, l'organisme sans but lucratif qui démocratise le triathlon partout au Québec.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notre Histoire & Mission | Coaching Triathlon Québec | Mon Projet Tri</title>
-<meta name="description" content="Découvrez Mon Projet Tri, l'OSBL dédiée au triathlon au Québec. Mentorat pour novices, accompagnement pour athlètes solos et coaching par des experts certifiés.">
-<meta name="keywords" content="triathlon Québec, coach triathlon, entraînement triathlon, OSBL triathlon, Frédéric Hadi, mentorat triathlon">
+    <title>À propos de l'OSBL | mon Projet Tri</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&display=swap" rel="stylesheet">
-
-    <link rel="canonical" href="https://mon.projet-tri.org/decouvrir.html" />
-    <link rel="icon" href="../favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="../favicon.png">
-    <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="../apple-touch-icon.png">
-    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html" />
-    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
-    <meta name="apple-mobile-web-app-title" content="Projet(tri)">
-    <meta property="og:title" content="Mon Projet Tri" />
-    <meta property="og:image" content="https://mon.projet-tri.org/Open Graph_logo.jpg" />
-    <meta property="og:url" content="https://mon.projet-tri.org/" />
-
     
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/decouvrir.html" />
+
     <style>
+        html { scroll-behavior: smooth; }
+
         :root {
-            --primary-blue: #003366;
-            --accent: #FF6600;
-            --text-dark: #333333;
-            --light-bg: #f4f7f9;
-            --secondary: #ff6600;
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --bg-fresh: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-blue: #0481fb;
+            --text-light: #5A6A7A;
+            --shadow-punchy: 0 20px 40px rgba(0, 76, 151, 0.12);
         }
-
+        
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-dark);
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
-            background-color: var(--light-bg);
-        }
-
-        .hero-about {
-            background: linear-gradient(rgba(0, 51, 102, 0.6), rgba(0, 51, 102, 0.6)), url('banniere.jpg');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 20px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent);
-        }
-
-        .btn-back {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: white;
-            background-color: var(--accent);
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary-blue);
-            font-size: 1.6rem;
-            border-left: 5px solid var(--accent);
-            padding-left: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .sub-header {
-            color: var(--primary-blue);
-            font-weight: 600;
-            font-size: 1.15rem;
-            margin-top: -10px;
-            margin-bottom: 25px;
-        }
-
-        p {
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        .founder-container {
-            display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            margin-bottom: 1.5rem;
-        }
-
-        .founder-aside {
-            flex-shrink: 0;
-            text-align: center;
-            width: 220px;
-        }
-
-        .founder-photo {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--light-bg);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
-        }
-
-        .founder-caption {
-            font-size: 1.1rem; 
-            color: var(--primary-blue);
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .founder-title {
-            font-size: 0.85rem; 
-            color: var(--accent);
-            font-weight: 700;
-            display: block;
-            margin: 2px 0;
-        }
-
-        .founder-details {
-            font-size: 0.75rem; 
-            font-weight: 400;
+            line-height: 1.6;
             color: var(--text-dark);
-            opacity: 0.8;
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        /* --- BOUTON BACK TO TOP --- */
+        #backToTop {
+            display: none; 
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--accent);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- HERO PAGES --- */
+        .page-header-wrapper { background-color: #f1f5f9; }
+        .page-header {
+            padding: 80px 0;
+            background: linear-gradient(rgba(0, 30, 60, 0.75), rgba(0, 30, 60, 0.75)), url('banniere_new.jpg') center/cover no-repeat;
+            text-align: center;
+            color: white;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+        .page-header h1 { font-size: 2.8rem; font-weight: 900; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: -1px; }
+        .page-header p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; opacity: 0.9; }
+
+        /* --- SECTIONS DE CONTENU --- */
+        .content-section { padding: 80px 0; }
+        .content-section.gray-bg {
+            background-color: #f1f5f9;
+            clip-path: ellipse(150% 100% at 50% 0%);
+            padding-bottom: 120px;
+        }
+        .section-title {
+            color: #004c97;
+            font-size: 2.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            border-left: 6px solid #D65F3A;
+            padding-left: 15px;
+        }
+        .sub-header { color: #004c97; font-weight: 600; font-size: 1.15rem; margin-top: 0; margin-bottom: 35px; }
+
+        /* --- STYLE LA GENÈSE --- */
+        .founder-container { display: flex; align-items: flex-start; gap: 40px; margin-bottom: 1.5rem; }
+        .founder-content p { font-size: 1.05rem; line-height: 1.7; margin-top: 0; margin-bottom: 1.5rem; color: var(--text-dark); }
+        .founder-aside { flex-shrink: 0; text-align: center; width: 240px; }
+        .founder-photo { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 4px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        .founder-caption strong { font-size: 1.2rem; color: #004c97; font-weight: 800; display: block; line-height: 1.2; }
+        .founder-title { font-size: 0.9rem; color: #D65F3A; font-weight: 700; display: block; margin: 4px 0; }
+        .founder-details { font-size: 0.8rem; font-weight: 400; color: var(--text-light); display: block; }
+        .mission-highlight { background: rgba(0, 76, 151, 0.05); border-left: 6px solid #004c97; padding: 25px; margin: 30px 0; border-radius: 0 15px 15px 0; }
+
+        /* --- CARDS ADRESSÉ À --- */
+        .profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .profile-card {
+            background: #ffffff;
+            border: 2px solid #004c97;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-card:hover {
+            transform: translateY(-5px);
+            border-color: #D65F3A;
+            box-shadow: 0 10px 25px rgba(214, 95, 58, 0.1);
+        }
+        .profile-card h3 { color: #004c97; margin-top: 0; font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; }
+        .profile-card p { color: var(--text-dark); font-size: 1.05rem; line-height: 1.6; margin-bottom: 0; }
+
+        /* --- ECOSYSTÈME DES FORCES VIVES --- */
+        .ecosystem-container {
+            display: grid;
+            grid-template-columns: 2fr 3fr;
+            gap: 30px;
+            align-items: center;
+            margin-top: 25px;
+        }
+
+        .eco-nodes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .eco-node-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .eco-node-card:hover, .eco-node-card.highlighted {
+            transform: translateX(5px);
+            border-color: #D65F3A;
+            box-shadow: 0 6px 18px rgba(214, 95, 58, 0.1);
+            background: rgba(214, 95, 58, 0.02);
+        }
+
+        .eco-node-card h4 {
+            margin: 0 0 6px 0;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+        .eco-node-card:hover h4, .eco-node-card.highlighted h4 { color: #D65F3A; }
+
+        /* --- LOGO INTERACTIF --- */
+        .ecosystem-view {
+            position: relative;
+            width: 100%;
+            height: 520px; 
+            margin: 0 auto;
+        }
+
+        .eco-img-asset {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        /* Pastilles interactives de l'image */
+        .eco-trigger {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            top: 50%;
+            left: 50%;
+        }
+
+        /* Positions spatiales */
+        .tg-top          { transform: translate(-50%, -85px); }
+        .tg-right        { transform: translate(60px, -70%); }
+        .tg-bottom-right { transform: translate(32px, 55px); }
+        .tg-bottom-left  { transform: translate(-58px, 55px); }
+        .tg-left         { transform: translate(-95px, -90%); }
+
+        .eco-trigger:hover, .eco-trigger.active {
+            background-image: url('icon.png');
+            background-size: 555%;
+            box-shadow: 0 0 0 3px #ffffff, 0 0 15px rgba(214, 95, 58, 0.6);
+        }
+
+        /* Mapping des sprites pour l'état actif */
+        .tg-top:hover, .tg-top.active                   { background-position: 50% 0%; }
+        .tg-right:hover, .tg-right.active               { background-position: 100% 48%; }
+        .tg-bottom-right:hover, .tg-bottom-right.active { background-position: 81% 97%; }
+        .tg-bottom-left:hover, .tg-bottom-left.active   { background-position: 19% 97%; }
+        .tg-left:hover, .tg-left.active                 { background-position: 0% 48%; }
+
+        /* --- POPOVERS --- */
+        .eco-popover {
+            position: absolute;
+            padding: 8px 10px;
+            border-radius: 8px;
+            font-size: 0.72rem;
+            width: 145px;
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: auto;
+            line-height: 1.3;
+            color: #1e293b; 
+        }
+
+        .eco-popover strong { display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.75rem; }
+
+        /* Positionnement spatial fixe */
+        .tg-top .eco-popover          { bottom: 50px; left: 50%; transform: translateX(-50%); width: 160px; }
+        .tg-right .eco-popover        { left: 55px; top: 50%; transform: translateY(-50%); }
+        .tg-bottom-right .eco-popover { left: 45px; top: 35px; }
+        .tg-bottom-left .eco-popover  { right: 45px; top: 35px; }
+        .tg-left .eco-popover         { right: 55px; top: 50%; transform: translateY(-50%); }
+
+        /* --- CORRESPONDANCE ET COLORATION DES FONDS LÉGERS --- */
+        
+        /* 1. Haut : Athlètes (#efd15b) */
+        .tg-top .eco-popover { background: rgba(239, 209, 91, 0.15); border: 1px solid #efd15b; }
+        .tg-top .eco-popover strong { color: #c4a11b; }
+        
+        /* [INVERSÉ] 2. Droite (Santé & Soins) : Reçoit la couleur de Coachs & Clubs (#f1a62f) */
+        .tg-right .eco-popover { background: rgba(241, 166, 47, 0.15); border: 1px solid #f1a62f; }
+        .tg-right .eco-popover strong { color: #c98216; }
+        
+        /* 3. Bas Droite : Compétitions & Événements (#f08922) */
+        .tg-bottom-right .eco-popover { background: rgba(240, 137, 34, 0.15); border: 1px solid #f08922; }
+        .tg-bottom-right .eco-popover strong { color: #d06d15; }
+        
+        /* 4. Bas Gauche : Équipementiers (#4daad4) */
+        .tg-bottom-left .eco-popover { background: rgba(77, 170, 212, 0.15); border: 1px solid #4daad4; }
+        .tg-bottom-left .eco-popover strong { color: #2e86aa; }
+        
+        /* [INVERSÉ] 5. Gauche (Coachs & Clubs) : Reçoit la couleur de Santé & Soins (#a5e1e1) */
+        .tg-left .eco-popover { background: rgba(165, 225, 225, 0.18); border: 1px solid #a5e1e1; }
+        .tg-left .eco-popover strong { color: #52b1b1; }
+
+        /* Accentuation au survol */
+        .eco-trigger:hover .eco-popover, .eco-trigger.active .eco-popover {
+            background-color: #ffffff; 
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+        }
+
+        /* --- CTA BANNER --- */
+        .cta-banner {
+            background: var(--combined-gradient);
+            color: white;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: 40px;
+            margin-top: 20px;
+            box-shadow: var(--shadow-punchy);
+        }
+        .cta-banner h2 { font-size: 2.2rem; margin-top: 0; font-weight: 900; }
+        .cta-banner p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 30px auto; opacity: 0.95; }
+        .btn-cta {
+            display: inline-block;
+            background: #ffffff;
+            color: #004c97;
+            padding: 16px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .btn-cta:hover { transform: translateY(-3px); color: #D65F3A; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+/* Classes utilitaires pour la charte graphique de la marque */
+        .brand-mon {
+            font-family: 'Oooh Baby', cursive;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-transform: lowercase;
+            vertical-align: baseline;
+            position: relative;
+        }
+        .brand-projet {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+        }
+        .brand-tri {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT DESKTOP & MOBILE --- */
+        nav ul li.has-dropdown {
+            position: relative;
+        }
+
+        .arrow-down {
+            font-size: 0.65rem;
+            margin-left: 4px;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+
+        /* Style du sous-menu sur Ordinateur */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        /* Triangle esthétique */
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        /* Déclenchement au survol sur ordinateur */
+        nav ul li.has-dropdown:hover .dropdown-menu {
             display: block;
         }
-
-        .grid-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin: 30px 0;
+        
+        nav ul li.has-dropdown:hover .arrow-down {
+            transform: rotate(180deg);
         }
 
-        .card {
-            padding: 30px;
-            border: 1px solid #e1e8ed;
-            border-radius: 8px;
-            background: #fff;
-            transition: 0.3s;
-            position: relative; /* Indispensable pour le voile */
-            z-index: 1;         /* Indispensable pour le voile */
-            overflow: hidden;   /* Pour que l'image ne dépasse pas des arrondis */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+        .dropdown-menu li {
+            width: 100%;
+            padding: 0;
         }
 
-        .card h3 {
-            color: var(--primary-blue);
-            margin-top: 0;
-        }
-        .card::before {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        /* Ce voile blanc rend le texte lisible tout en laissant voir l'image derrière */
-        background: rgba(255, 255, 255, 0.85); 
-        z-index: -1;
-        }
-
-        .mission-highlight {
-            background: rgba(0, 51, 102, 0.05);
-            border-left: 5px solid var(--primary-blue);
-            padding: 25px;
-            margin: 30px 0;
-        }
-
-        .tag {
-            background: var(--accent);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 4px;
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
             font-size: 0.85rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 10px;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
         }
 
-        footer {
-            background: #0481fb;
-            border-top: 4px solid #FF6600; 
-            padding: 40px 0;
-        }
-        .footer-text {
-         text-align: center;
-         flex: 1; /* Permet au texte de prendre l'espace central */
-}
-
-        .footer-container { 
-            width: 90%; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
         }
 
-        /* BOUTON RETOUR EN HAUT */
-    #backToTop {
-        display: none; /* Caché par défaut */
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 2000;
-        background-color: var(--accent);
-        color: white;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        border: none;
-        font-size: 24px;
-        cursor: pointer;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        align-items: center;
-        justify-content: center;
-    }
 
-    /* AJOUTEZ CETTE RÈGLE ICI */
-    #backToTop.visible { 
-        display: flex !important; 
-    }
 
-        /* --- SECTION MOBILE --- */
+        /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
-            .container {
-                margin: 15px;
-                padding: 20px;
+            #backToTop.visible { display: flex !important; }
+            .page-header h1 { font-size: 2rem; }
+            .founder-container { flex-direction: column-reverse; align-items: center; gap: 30px; }
+            .founder-aside { width: 100%; }
+            .section-title { font-size: 1.8rem; }
+            
+            /* Permet au texte de la marque de revenir à la ligne sur mobile */
+            .profile-card span[style*="white-space: nowrap"] {
+                white-space: normal !important;
             }
 
-            .founder-container {
-                flex-direction: column-reverse;
-                align-items: center;
-                text-align: center;
+            /* Supprime l'ellipse et ajuste le padding du fond gris sur mobile */
+            .content-section.gray-bg {
+                clip-path: none !important;
+                padding-bottom: 60px !important;
             }
 
-            .grid-cards {
-                grid-template-columns: 1fr !important; /* Force l'empilement 1 par 1 */
-                gap: 20px;
+            /* Ajustement et isolation des cartes pour stopper le débordement horizontal */
+            .profile-card { 
+                padding: 20px !important; 
+                box-sizing: border-box !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow: hidden !important;
+            }
+            
+            /* Passage de l'écosystème sur une seule colonne propre */
+            .ecosystem-container { 
+                grid-template-columns: 1fr !important; 
+                gap: 15px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .eco-nodes-list {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            .eco-node-card { 
+                transform: none !important; 
+                box-sizing: border-box !important;
+                width: 100% !important;
             }
 
-            .card {
-                width: 100%;
-                box-sizing: border-box;
+            /* MASQUAGE ABSOLU DU LOGO, DES PASTILLES ET DES POPOVERS */
+            .ecosystem-view, 
+            .eco-img-asset, 
+            .eco-trigger, 
+            .eco-popover { 
+                display: none !important; 
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                width: 0 !important;
+                padding: 0 !important;
+                margin: 0 !important;
             }
 
-            .footer-container {
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
                 flex-direction: column;
-                text-align: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
                 gap: 20px;
+                text-align: center;
             }
+
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero-about">
-        <a href="javascript:history.back()" class="btn-back">← Page précédente</a>
-        <h1>L'ADN de <span style="font-family: 'Oooh Baby', cursive; font-size: 2.2rem; position: relative; margin-right: 2px;">mon</span>
-        
-        <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> </h1>
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Partout au Québec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="autonome.html">Autonome</a></li>
+                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#programme">Partenaires</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" onclick="window.location.href='en/run.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label" style="color: #ccc;">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <section>
-            <h2>La genèse du projet</h2>
+    <div class="page-header-wrapper">
+        <section class="page-header">
+            <div class="container">
+                <h1>L'ADN de <span style="color: #D65F3A; font-weight: bold;">notre OSBL</span></h1>
+                <p>Découvrez l'histoire, les valeurs fondamentales et l'engagement citoyen derrière <span style="font-family: 'Oooh Baby', cursive; font-size: 2.2rem; color: #ffffff; vertical-align: baseline; margin-right: 4px;">mon</span>
+            <span style="font-family: 'Inclusive Sans', sans-serif; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Projet</span>
+            <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Tri</span></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- SECTION LA GENÈSE DU PROJET -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">La genèse du projet</h2>
             <p class="sub-header">Transformer la passion et l'expérience terrain en une structure d'accompagnement professionnelle.</p>
             
             <div class="founder-container">
@@ -302,107 +625,215 @@
                 </aside>
             </div>
 
-            <div class="mission-highlight" style="margin-top: -10px;">
-                <p style="margin: 0; font-weight: 500;">
+            <div class="mission-highlight">
+                <p style="margin: 0; font-weight: 500; font-size: 1.1rem; color: #0f172a;">
                     L'objectif : permettre aux passionnés d'atteindre leurs objectifs en s'appuyant sur une structure qui valorise l'humain, la rigueur technique et l'accessibilité.
                 </p>
             </div>
-            <button id="backToTop" title="Retour en haut">↑</button>
-        </section>
-
-        <section>
-            <h2>À qui s'adresse l'OSBL?</h2>
-            <div class="grid-cards">
-                <div class="card" style="background-image: url('triathlon-debutant-quebec.jpg');" role="img" aria-label="Groupe de triathlètes débutants s'exerçant à la nage en eau libre au Québec">
-                <h3>Profil : Le novice</h3>
-                <p>Pour ceux qui se lancent. Nous rendons la préparation accessible en <strong>adaptant l'entraînement à votre réalité quotidienne</strong> (travail, famille, loisirs), plutôt que l'inverse. Notre encadrement <strong>simplifie chaque étape</strong> pour vous guider sereinement à travers toutes les phases de votre projet, jusqu'à votre première ligne d'arrivée.</p>
-                </div>
-                <div class="card" style="background-image: url('entrainement-triathlon-solo.jpg');" role="img" aria-label="Athlète de triathlon s'entraînant seul à vélo sur une route de campagne">
-                <h3>Profil : L'Athlète solo</h3>
-                    <p>Pour ceux qui s'entraînent seuls, par <strong>préférence ou par isolement</strong>, mais ne veulent pas plafonner. Nous fournissons un <strong>encadrement de coachs et mentors Québécois</strong> qui ont déjà fait leurs preuves, pour vous aider à atteindre votre <strong>meilleur niveau</strong>.</p>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Qui sont nos coachs ?</h2>
-            <p>
-        Nos coachs ne sont pas seulement des guides ; ce sont des <strong>architectes de votre entraînement</strong>. 
-        Notre équipe est une alliance unique de mentors : vous y trouverez aussi bien des <strong>entraîneurs renommés au Québec</strong>, 
-        forts de décennies d'expérience, que de <strong>jeunes coachs passionnés</strong> animés par une énergie nouvelle. 
-        Ils ont tous choisi de mettre leur dynamisme au service de la mission de <strong><em>mon</em> Projet Tri</strong> pour offrir un encadrement moderne et inspirant. 
-        Sous notre encadrement, ils assurent la <strong>programmation, le suivi technique et le mentorat</strong> nécessaire à votre réussite.
-    </p>
-
-            <div class="grid-cards">
-                <div class="card" 
-                style="background-image: url('Entraineurs_Professionels.jpg');" 
-                role="img" 
-                aria-label="Entraîneur de triathlon certifié au Québec utilisant une tablette pour l'analyse de performance">
-                <span class="tag">Experts Certifiés</span>
-             <h3>Entraîneurs de métier</h3>
-                <p>Possédant des certifications reconnues, ils apportent une expertise pointue en biomécanique, physiologie et planification sportive pour maximiser votre potentiel.</p>
-            </div>
-                <div class="card" style="background-image: url('Athletes_Confirmes.jpg');" role="img" aria-label="Athlète de haut niveau en compétition de triathlon longue distance au Québec">
-                    <span class="tag">Expérience Élite</span>
-                    <h3>Athlètes de haut niveau</h3>
-                    <p>Anciens athlètes ou compétiteurs de pointe, ils ont une expérience prouvée du coaching et de la compétition. Ils programment votre saison en y intégrant les subtilités stratégiques que seul le haut niveau enseigne.</p>
-                </div>
-            </div>
-
-            <div class="mission-highlight" style="border-left-color: var(--accent);">
-                <p style="margin: 0; font-weight: 500;">
-                    <strong>Une sélection rigoureuse :</strong> Nous choisissons chaque coach pour son expertise technique, ses certifications et, surtout, pour ses qualités humaines et sa capacité à bâtir une relation de mentorat constructive.
-                </p>
-            </div>
-        </section>
-
-    </div>
-
-<footer>
-    <div class="footer-container" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-        
-        <div class="footer-logo" style="margin-bottom: 10px;">
-            <a href="index.html" style="border: none; display: inline-block; text-decoration: none;">
-                <img src="mon-projet-tri-logo-coaching-quebec_white.png" alt="Logo mon.projet(tri) - Retour à l'accueil" style="height: 60px; display: block;">
-            </a>
         </div>
-        
-        <div class="footer-text" style="margin-bottom: 12px;">
-    <a href="index.html" style="color: #ffffff; text-decoration: none; font-size: 1rem; opacity: 1;">
-        &copy; 2026 
-        <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4rem; position: relative; margin-right: 2px;">mon</span>
-        
-        <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-        
-        - OSBL dédiée au triathlon au Québec
-    </a>
-</div>
+    </section>
 
-        <div style="width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px;">
-            <p style="font-size: 0.85rem; color: #ffffff; opacity: 0.8; font-weight: 300; line-height: 1.4; margin: 0 auto 10px;">
-                Notre mentorat connecté apporte une expertise de haut niveau aux triathlètes de toutes les régions. 
-                Nous sommes fiers d'accompagner des athlètes à :
-            </p>
+    <!-- SECTION : L'ÉCOSYSTÈME -->
+    <section class="content-section gray-bg">
+        <div class="container">
+            <h2 class="section-title" style="border-left-color: #D65F3A;">L'Écosystème du Triathlon Québécois</h2>
+            <p class="sub-header">Une structure interconnectée où chaque acteur collabore pour dynamiser et faire grandir le sport au Québec.</p>
             
-            <details style="font-size: 0.75rem; color: #ffffff; opacity: 0.6; cursor: pointer;">
-                <summary style="list-style: none; text-decoration: underline; outline: none;">Voir toutes les zones de service couvertes</summary>
-                <p style="margin-top: 10px; font-style: italic; line-height: 1.5;">
-                    Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que les régions d'Abitibi, Bas-Saint-Laurent, Capitale-Nationale, Centre-du-Québec, Chaudière-Appalaches, Côte-Nord, Estrie, Gaspésie, Lanaudière, Laurentides, Laval, Mauricie, Montérégie, Nord-du-Québec et l'Outaouais.
-                </p>
-            </details>
+            <div class="profile-grid" style="grid-template-columns: 1fr;">
+                
+                <!-- LE PILIER CENTRAL : LES ATHLÈTES -->
+                <div class="profile-card" style="border-color: #004c97; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 40px;">
+                    <div style="display: inline-block; background: rgba(239, 209, 91, 0.2); border: 1px solid #efd15b; color: #b59210; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">
+                        Le cœur du projet
+                    </div>
+                    <h3 style="color: #004c97; font-size: 1.8rem; margin-bottom: 20px;">L'Athlète, au centre de notre univers</h3>
+                    <p>Le triathlon québécois s'organise d'abord et avant tout autour de ses pratiquants. Qu'ils soient issus d'autres disciplines et curieux de s'initier, ou déjà passionnés de triple effort, nous plaçons les athlètes au centre de toutes nos actions en répondant à leurs réalités spécifiques :</p>
+                    
+                    <ul style="margin: 20px 0 0 0; padding-left: 20px; color: var(--text-dark); font-size: 1.05rem; line-height: 1.8; list-style-type: square;">
+                        <li><strong>Les Novices & Débutants :</strong> Pour ceux qui se lancent. Nous rendons la préparation accessible en adaptant l'entraînement à votre réalité quotidienne (travail, famille, loisirs) plutôt que l'inverse. Notre encadrement simplifie chaque étape pour vous guider sereinement jusqu'à votre première ligne d'arrivée.</li>
+                        <li><strong>Les Athlètes Solos & Experts :</strong> Pour ceux qui s'entraînement seuls, par préférence ou par isolement, mais refusent de plafonner. Nous offrons un encadrement de coachs et mentors québécois reconnus pour vous accompagner du niveau intermédiaire jusqu'aux exigences des experts afin de vous aider à atteindre votre meilleur niveau.</li>
+                    </ul>
+                </div>
+
+                <!-- LES AUTRES COMPOSANTES -->
+                <div class="profile-card" style="border-color: #D65F3A; background: #ffffff; padding: 35px; margin-top: 10px;">
+                    <h3 style="color: #D65F3A; font-size: 1.6rem; margin-bottom: 20px;">Les Forces vives de la Communauté</h3>
+                    <p>Autour de l'athlète gravite un réseau complet de professionnels et d'organisations. <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin-right: 4px;">
+                        <span class="brand-mon" style="color: #0481fb !important; margin-right: 4px;"><strong>mon</strong></span>
+                        <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
+                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span> 
+                        agit comme le carrefour connectant ces composantes essentielles pour propulser la discipline :
+                    </p>
+                    
+                    <div class="ecosystem-container">
+                        
+                        <!-- COLONNE GAUCHE : LES CARDS INTERACTIVES -->
+                        <div class="eco-nodes-list">
+                            <!-- [INVERSÉ] Coachs & Clubs reçoit la couleur turquoise (#a5e1e1) -->
+                            <div class="eco-node-card" data-target="left">
+                                <h4 style="color: #52b1b1; text-shadow: 0 1px 1px rgba(0,0,0,0.1);">⏱️ Coachs & Clubs</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Gardiens de l'expertise technique et moteurs du développement local, ils guident la progression des sportifs.</p>
+                            </div>
+                            <div class="eco-node-card" data-target="bottom-right">
+                                <h4 style="color: #d06d14;">🏁 Compétitions & Événements</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Rassemblements et compétitions qui concrétisent les objectifs et célèbrent le dépassement de soi.</p>
+                            </div>
+                            <!-- [INVERSÉ] Santé & Soins reçoit la couleur orange/jaune (#f1a62f) -->
+                            <div class="eco-node-card" data-target="right">
+                                <h4 style="color: #c98216;">🩺 Santé & Soins</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Dédiés à la prévention des blessures, aux soins cliniques, à la récupération et au bien-être global.</p>
+                            </div>
+                            <div class="eco-node-card" data-target="bottom-left">
+                                <h4 style="color: #2e86ab;">🚴 Équipementiers</h4>
+                                <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Boutiques spécialisées et manufacturiers qui fournissent l'équipement de pointe adapté.</p>
+                            </div>
+                        </div>
+
+                        <!-- COLONNE DROITE : LOGO AVEC ENCADRÉS FIXES -->
+                        <div class="ecosystem-view" id="ecoView">
+                            <img src="icon.png" alt="Écosystème Global" class="eco-img-asset" id="baseAsset">
+
+                            <!-- Branche Haut : Athlètes -->
+                            <div class="eco-trigger tg-top" data-ref="top">
+                                <div class="eco-popover">
+                                    <strong>🥇 Athlètes</strong>
+                                    Les athlètes guident l'orientation globale de nos initiatives et programmes.
+                                </div>
+                            </div>
+
+                            <!-- Branche Droite : Santé & Soins (Couleur gérée dans le CSS ci-dessus pour la classe .tg-right) -->
+                            <div class="eco-trigger tg-right" data-ref="right">
+                                <div class="eco-popover">
+                                    <strong>🩺 Santé & Soins</strong>
+                                    Experts cliniques assurant la longévité de la pratique.
+                                </div>
+                            </div>
+
+                            <!-- Branche Bas Droite : Compétitions & Événements -->
+                            <div class="eco-trigger tg-bottom-right" data-ref="bottom-right">
+                                <div class="eco-popover">
+                                    <strong>🏁 Compétitions & Événements</strong>
+                                    Les rendez-vous régionaux où se concrétisent les efforts.
+                                </div>
+                            </div>
+
+                            <!-- Branche Bas Gauche : Équipementiers -->
+                            <div class="eco-trigger tg-bottom-left" data-ref="bottom-left">
+                                <div class="eco-popover">
+                                    <strong>🚴 Équipementiers</strong>
+                                    Les boutiques de proximité qui outillent les athlètes.
+                                </div>
+                            </div>
+
+                            <!-- Branche Gauche : Coachs & Clubs (Couleur gérée dans le CSS ci-dessus pour la classe .tg-left) -->
+                            <div class="eco-trigger tg-left" data-ref="left">
+                                <div class="eco-popover">
+                                    <strong>⏱️ Coachs & Clubs</strong>
+                                    Les structures d'entraînement locales qui partagent l'expertise.
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const triggers = document.querySelectorAll('.eco-trigger');
+                            const cards = document.querySelectorAll('.eco-node-card');
+
+                            function setFocus(key) {
+                                const activeTrigger = document.querySelector(`.eco-trigger[data-ref="${key}"]`);
+                                const activeCard = document.querySelector(`.eco-node-card[data-target="${key}"]`);
+                                
+                                if (activeTrigger) activeTrigger.classList.add('active');
+                                if (activeCard) activeCard.classList.add('highlighted');
+                            }
+
+                            function clearFocus() {
+                                triggers.forEach(t => t.classList.remove('active'));
+                                cards.forEach(c => c.classList.remove('highlighted'));
+                            }
+
+                            triggers.forEach(trigger => {
+                                const ref = trigger.getAttribute('data-ref');
+                                trigger.addEventListener('mouseenter', () => setFocus(ref));
+                                trigger.addEventListener('mouseleave', clearFocus);
+                            });
+
+                            cards.forEach(card => {
+                                const target = card.getAttribute('data-target');
+                                card.addEventListener('mouseenter', () => setFocus(target));
+                                card.addEventListener('mouseleave', clearFocus);
+                                card.addEventListener('click', () => {
+                                    clearFocus();
+                                    setFocus(target);
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+
+            </div>
         </div>
-    </div>
-</footer>
-<script>
-const backToTopBtn = document.getElementById("backToTop");
-    window.onscroll = function() {
-        if (window.innerWidth <= 768) {
-            if (document.documentElement.scrollTop > 300) backToTopBtn.classList.add("visible");
-            else backToTopBtn.classList.remove("visible");
-        }
-    };
-    backToTopBtn.onclick = function() { window.scrollTo({top: 0, behavior: "smooth"}); };
-</script>
+    </section>
+
+    <!-- SECTION APPEL À L'ACTION -->
+    <section class="content-section" style="padding-top: 40px;">
+        <div class="container">
+            <div class="cta-banner">
+                <h2>Prêt à donner vie à votre défi ?</h2>
+                <p>Que vous soyez athlète ou un futur partenaire désireux d'aider la communauté, discutons ensemble de votre approche de la saison.</p>
+                <a href="index.html#contact" class="btn-cta">Planifier mon appel gratuit</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html"><img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;"></a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - OSBL dédiée au triathlon au Québec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>Voir toutes les zones de service couvertes</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- BOUTON RETOUR EN HAUT -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopBtn = document.getElementById("backToTop");
+
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            });
+
+            backToTopBtn.addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        });
+    </script>
 </body>
 </html>
