@@ -49,12 +49,12 @@
 
         /* --- BOUTON BACK TO TOP --- */
         #backToTop {
-            display: none; /* Caché par défaut sur PC */
+            display: none; /* Caché par défaut */
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 2000;
-            background-color: var(--accent);
+            background-color: #004c97;
             color: white;
             width: 45px;
             height: 45px;
@@ -65,6 +65,12 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             align-items: center;
             justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        #backToTop:hover {
+            background-color: #D65F3A;
+            transform: translateY(-3px);
         }
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
@@ -128,36 +134,51 @@
             display: inline-block;
         }
 
-        /* --- STYLE DES ONGLETS TYPE NAVIGATEUR WEB --- */
-        /* FIX ORDINATEUR (PC/Mac) : Safari, Firefox & Chrome */
-/* FIX ORDINATEUR (PC/Mac) : Aligné, espaces préservés, 0 dépassement sur Safari */
+        /* --- STYLE DES ONGLETS SUR MOBILE ET PC --- */
+
+/* 1. Sur TOUS LES ÉCRANS (y compris mobile) : alignement horizontal */
+.browser-tabs-container {
+    display: flex !important;
+    flex-wrap: nowrap !important;          
+    gap: 6px !important;                   
+    overflow-x: auto !important; /* Active le défilement horizontal sur mobile */
+    box-sizing: border-box !important;     
+    padding: 4px 4px 0 4px !important;    
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iPhone */
+    scrollbar-width: none; /* Cache la barre de défilement */
+}
+
+.browser-tabs-container::-webkit-scrollbar {
+    display: none; /* Cache la barre de défilement sur Chrome/Safari */
+}
+
+/* 2. Sur MOBILE : empêche les onglets de s'écraser */
+.tab-button {
+    flex-shrink: 0 !important; /* Garde la largeur naturelle du texte */
+    white-space: nowrap !important;
+}
+
+/* 3. Sur ORDINATEUR (écran > 768px) : répartit équitablement les onglets */
 @media (min-width: 769px) {
     .browser-tabs-container {
-        display: flex !important;
-        flex-wrap: nowrap !important;          /* Force les onglets sur la MÊME ligne */
-        gap: 4px !important;                   /* Espace entre les onglets */
-        overflow: hidden !important;          /* Verrouille le contenu dans la largeur exacte */
-        box-sizing: border-box !important;     /* Force le respect strict des dimensions */
-        padding: 2px 2px 0 2px !important;    /* Micro-padding pour laisser respirer les bordures/ombres */
-        overscroll-behavior-x: none !important;/* Empêche le rebond Safari/Firefox */
-        touch-action: pan-y !important;        /* Bloque le swipe horizontal au trackpad */
+        overflow-x: hidden !important;
     }
 
     .tab-button {
-        flex: 1 1 0px !important;              /* Force tous les onglets à se partager équitablement l'espace */
-        min-width: 0 !important;               /* Empêche Safari de forcer une largeur minimale qui ferait déborder */
+        flex: 1 1 0px !important;              
+        min-width: 0 !important;               
         text-align: center;
         justify-content: center;
     }
 
-    /* Cache le fondu grisé sur grand écran */
     .browser-tabs-wrapper::after {
         display: none !important;
         content: none !important;
     }
 }
+
         .browser-tabs-container::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
+            display: none;
         }
 
         .tab-button {
@@ -190,7 +211,6 @@
             position: relative;
         }
 
-        /* Boîte de contenu principale reliée aux onglets */
         .tab-content-wrapper {
             background: #ffffff;
             padding: 40px;
@@ -214,7 +234,117 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Style des boutons de liens internet (format capsule) */
+        /* --- FAQ SEARCH & FILTERS --- */
+        .faq-search-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .faq-search-box {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .faq-search-box input {
+            width: 100%;
+            padding: 14px 45px 14px 45px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+            outline: none;
+            transition: all 0.2s ease;
+            background: #f8fafc;
+        }
+
+        .faq-search-box input:focus {
+            border-color: #004c97;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 76, 151, 0.1);
+        }
+
+        .faq-search-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #64748b;
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        .faq-clear-btn {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: none;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .faq-clear-btn:hover {
+            color: #0f172a;
+        }
+
+        /* Boutons de Filtres FAQ */
+        .faq-filter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .faq-filter-btn {
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        .faq-filter-btn:hover {
+            background: #e2e8f0;
+            color: #004c97;
+        }
+
+        .faq-filter-btn.active {
+            background: #004c97;
+            color: #ffffff;
+            border-color: #004c97;
+            box-shadow: 0 2px 6px rgba(0, 76, 151, 0.2);
+        }
+
+        /* Highlight de recherche */
+        mark.faq-highlight {
+            background-color: #fef08a;
+            color: #0f172a;
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        /* Message aucun résultat */
+        .faq-no-results {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            color: var(--text-light);
+            margin-top: 15px;
+        }
+
+        /* Buttons & Brand Classes */
         .btn-ressource {
             display: inline-block;
             background-color: #f1f5f9;
@@ -236,7 +366,6 @@
             transform: translateY(-1px);
         }
 
-        /* Effet Hover du bouton Soumettre */
         .btn-submit-autonome {
             display: inline-block;
             background: var(--autonome-gradient);
@@ -256,7 +385,6 @@
             box-shadow: 0 6px 15px rgba(214, 95, 58, 0.3);
         }
 
-        /* Classes utilitaires pour la charte graphique de la marque */
         .brand-mon {
             font-family: 'Oooh Baby', cursive;
             font-size: 1.4em;
@@ -275,7 +403,6 @@
             font-style: italic;
         }
 
-        /* Container de la liste de liens */
         .links-list {
             display: flex;
             flex-direction: column;
@@ -283,7 +410,6 @@
             margin-top: 15px;
         }
 
-        /* Ligne unique style tableau moderne */
         .link-row {
             display: flex;
             align-items: center;
@@ -300,7 +426,6 @@
             transform: translateX(4px);
         }
 
-        /* Infos à gauche (Logo + Noms) */
         .link-info {
             display: flex;
             align-items: center;
@@ -325,7 +450,6 @@
             margin-left: 8px;
         }
 
-        /* Lien d'action à droite */
         .link-action {
             color: #004c97;
             font-weight: 800;
@@ -341,7 +465,6 @@
             text-decoration: underline;
         }
 
-        /* Responsive mobile : passe en colonne proprement */
         @media (max-width: 600px) {
             .tab-button {
                 padding: 10px 14px;
@@ -393,19 +516,10 @@
         .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
         .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
 
-        /* --- MENU DÉROULANT DESKTOP & MOBILE --- */
-        nav ul li.has-dropdown {
-            position: relative;
-        }
+        /* --- MENU DÉROULANT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
 
-        .arrow-down {
-            font-size: 0.65rem;
-            margin-left: 4px;
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-
-        /* Style du sous-menu sur Ordinateur */
         .dropdown-menu {
             display: none;
             position: absolute;
@@ -423,7 +537,6 @@
             border: 1px solid rgba(0, 76, 151, 0.08);
         }
 
-        /* Triangle esthétique */
         .dropdown-menu::before {
             content: '';
             position: absolute;
@@ -435,20 +548,9 @@
             border-color: transparent transparent #ffffff transparent;
         }
 
-        /* Déclenchement au survol sur ordinateur */
-        nav ul li.has-dropdown:hover .dropdown-menu {
-            display: block;
-        }
-        
-        nav ul li.has-dropdown:hover .arrow-down {
-            transform: rotate(180deg);
-        }
-
-        .dropdown-menu li {
-            width: 100%;
-            padding: 0;
-        }
-
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+        .dropdown-menu li { width: 100%; padding: 0; }
         .dropdown-menu a {
             display: block;
             padding: 10px 20px;
@@ -459,23 +561,15 @@
             text-align: left;
             transition: all 0.2s ease;
         }
-
         .dropdown-menu a:hover {
             background-color: #f1f5f9;
             color: #D65F3A !important;
             padding-left: 24px;
         }
 
-        /* Version Mobile */
         @media (max-width: 768px) {
-            #backToTop.visible { 
-                display: flex !important; 
-            }
-            .content-section {
-                clip-path: none !important;
-                padding: 40px 0 60px 0;
-            }
-
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .dropdown-menu {
                 display: block; 
                 position: static;
@@ -489,19 +583,9 @@
                 width: 100%;
                 padding: 0;
             }
-            .dropdown-menu::before {
-                display: none;
-            }
-            .dropdown-menu a {
-                text-align: center;
-                padding: 10px 15px;
-                font-size: 0.95rem;
-            }
-            .dropdown-menu a:hover {
-                padding-left: 15px;
-                background-color: transparent;
-                color: #D65F3A !important;
-            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
 
             header { padding: 5px 0 !important; }
             .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
@@ -526,30 +610,27 @@
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        /* Définition du rebond horizontal */
-@keyframes bounceLeftRight {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-15px); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(-5px); }
-    80% { transform: translateX(2px); }
-}
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
 
-/* On applique le rebond uniquement via la classe ajoutée par le JS sur mobile */
-@media (max-width: 768px) {
-    .browser-tabs-container.animate-bounce {
-        animation: bounceLeftRight 1.2s ease-in-out;
-    }
-}
+        @media (max-width: 768px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
+        }
 
         /* --- FAQ & ACCORDÉONS --- */
         .faq-item {
             border-bottom: 1px solid #e2e8f0;
             padding: 15px 0;
+            transition: opacity 0.2s ease;
         }
-        .faq-item:last-child {
-            border-bottom: none;
-        }
+        .faq-item:last-child { border-bottom: none; }
 
         .faq-header {
             list-style: none;
@@ -560,9 +641,7 @@
             outline: none;
             user-select: none;
         }
-        .faq-header::-webkit-details-marker {
-            display: none;
-        }
+        .faq-header::-webkit-details-marker { display: none; }
 
         .faq-title {
             font-weight: 800;
@@ -570,9 +649,7 @@
             color: #004c97;
             transition: color 0.2s ease;
         }
-        .faq-header:hover .faq-title {
-            color: #10B981;
-        }
+        .faq-header:hover .faq-title { color: #10B981; }
 
         .faq-subtopics-preview {
             margin-top: 6px;
@@ -594,9 +671,7 @@
             margin-left: 15px;
             margin-top: 3px;
         }
-        details[open] .faq-arrow {
-            transform: rotate(180deg);
-        }
+        details[open] .faq-arrow { transform: rotate(180deg); }
 
         .faq-answer {
             margin-top: 15px;
@@ -607,31 +682,29 @@
             border-left: 2px solid #e2e8f0;
         }
 
-        /* Le conteneur parent doit être en position relative */
-.browser-tabs-wrapper {
-    position: relative;
-    overflow: hidden; /* Évite que le fondu ne dépasse */
-}
+        .browser-tabs-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
 
-/* Effet de fondu grisé uniquement sur Mobile */
-@media (max-width: 768px) {
-    .browser-tabs-wrapper {
-        position: relative;
-        overflow: hidden;
-    }
+        @media (max-width: 768px) {
+            .browser-tabs-wrapper {
+                position: relative;
+                overflow: hidden;
+            }
 
-    .browser-tabs-wrapper::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: 40px;
-        background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
-        pointer-events: none; 
-        transition: opacity 0.3s ease;
-    }
-}
+            .browser-tabs-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 40px;
+                background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
+                pointer-events: none; 
+                transition: opacity 0.3s ease;
+            }
+        }
     </style>
 </head>
 <body>
@@ -684,14 +757,13 @@
     <main class="content-section">
         <div class="container">
             
-            <!-- SECTION HERO conservée au-dessus -->
+            <!-- SECTION HERO -->
             <div style="text-align: center; margin-bottom: 40px;">
                 <h1>Se lancer de façon autonome</h1>
                 <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
                     Vous débutez en triathlon ? Retrouvez ici toutes les ressources, liens officiels et conseils pour vous organiser et progresser à votre rythme.
                 </p>
                 
-                <!-- BLOC MIS EN FORME -->
                 <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 750px; margin: 0 auto; line-height: 1.7; background: #f8fafc; padding: 18px 25px; border-radius: 12px; border: 1px dashed rgba(0, 76, 151, 0.15);">
                     🛠️ Bienvenue dans <strong>la boîte à outils</strong> 🧰 de 
                     <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin-right: 4px;">
@@ -704,15 +776,17 @@
                 </p>
             </div>
 
-            <!-- ONGLETS DE STYLE NAVIGATEUR WEB -->
-            <div class="browser-tabs-container">
-                <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 Les Bases</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
-                <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
+            <!-- ONGLETS TYPE NAVIGATEUR WEB -->
+            <div class="browser-tabs-wrapper">
+                <div class="browser-tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 Les Bases</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
+                </div>
             </div>
 
             <!-- CONTENEUR DU CONTENU DES ONGLETS -->
@@ -726,19 +800,20 @@
                     
                     <div style="margin-left: 15px; margin-bottom: 20px; line-height: 1.6;">
                         <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0; margin-bottom: 10px; line-height: 1.7;">
-    Le triathlon est né au début des <strong style="color: #004c97;">années 1970, en Californie 🇺🇸</strong>, où quelques passionnés ont eu l'idée d'enchaîner une épreuve de <strong style="color: #004c97;">natation 🏊, de vélo 🚴 et de course à pied 🏃</strong> pour relever un nouveau défi. Ce concept simple a rapidement gagné en popularité avant de se répandre partout dans le monde et de devenir un <strong style="color: #004c97;">sport olympique<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/500px-Olympic_rings_without_rims.svg.png" alt="Anneaux olympiques" style="height: 0.8em; vertical-align: middle; margin-left: 4px; transform: translateY(-2px);"></strong> en 2000 .
-</p>
+                            Le triathlon est né au début des <strong style="color: #004c97;">années 1970, en Californie 🇺🇸</strong>, où quelques passionnés ont eu l'idée d'enchaîner une épreuve de <strong style="color: #004c97;">natation 🏊, de vélo 🚴 et de course à pied 🏃</strong> pour relever un nouveau défi. Ce concept simple a rapidement gagné en popularité avant de se répandre partout dans le monde et de devenir un <strong style="color: #004c97;">sport olympique<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/500px-Olympic_rings_without_rims.svg.png" alt="Anneaux olympiques" style="height: 0.8em; vertical-align: middle; margin-left: 4px; transform: translateY(-2px);"></strong> en 2000 .
+                        </p>
 
-<p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-    Au fil des ans, le triathlon a fini par se forger une réputation de sport extrême, notamment à cause des longues distances comme l'Ironman<img src="https://www.ironman.com/favicon.ico" alt="Ironman" style="height: 1.1em; vertical-align: middle; margin-left: 4px; transform: translateY(-3.5px);">. Pourtant, cette image ne représente qu'une petite partie de la réalité. La grande majorité des triathlons sont conçus pour être <strong style="color: #004c97;">accessibles aux débutants</strong>, avec des distances adaptées à tous les niveaux.
-</p>
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            Au fil des ans, le triathlon a fini par se forger une réputation de sport extrême, notamment à cause des longues distances comme l'Ironman<img src="https://www.ironman.com/favicon.ico" alt="Ironman" style="height: 1.1em; vertical-align: middle; margin-left: 4px; transform: translateY(-3.5px);">. Pourtant, cette image ne représente qu'une petite partie de la réalité. La grande majorité des triathlons sont conçus pour être <strong style="color: #004c97;">accessibles aux débutants</strong>, avec des distances adaptées à tous les niveaux.
+                        </p>
 
-<p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-    Oui, il faut être en bonne condition physique et prévoir un peu d'entraînement, mais <strong style="color: #004c97;">il n'est pas nécessaire d'être un athlète d'élite</strong> pour vivre l'expérience. Ce qui rend le triathlon si spécial, c'est le plaisir d'enchaîner trois disciplines différentes, de <strong style="color: #004c97;">relever un défi personnel à son rythme</strong> et de franchir une ligne d'arrivée 🏁 dont on se souviendra longtemps. </p>
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            Oui, il faut être en bonne condition physique et prévoir un peu d'entraînement, mais <strong style="color: #004c97;">il n'est pas nécessaire d'être un athlète d'élite</strong> pour vivre l'expérience. Ce qui rend le triathlon si spécial, c'est le plaisir d'enchaîner trois disciplines différentes, de <strong style="color: #004c97;">relever un défi personnel à son rythme</strong> et de franchir une ligne d'arrivée 🏁 dont on se souviendra longtemps.
+                        </p>
 
-<p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-    Avec un peu de préparation, <strong style="color: #004c97;"> tout le monde peut y arriver</strong> 🏅 !
-</p>
+                        <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
+                            Avec un peu de préparation, <strong style="color: #004c97;"> tout le monde peut y arriver</strong> 🏅 !
+                        </p>
                         <p style="font-size: 1rem; color: var(--text-light); margin-bottom: 20px;">
                             Il existe plusieurs formats adaptés aux envies de chacun :
                         </p>
@@ -784,17 +859,35 @@
                     </div>
                 </div>
 
-                <!-- ONGLET 2 : FAQ -->
+                <!-- ONGLET 2 : FAQ RECHERCHABLE ET FILTRABLE -->
                 <div id="tab-faq" class="tab-panel">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
                         ❓ Questions fréquentes des débutants
                     </h2>
-                    <p style="font-size: 1rem; color: var(--text-light); margin-top: 0; margin-bottom: 25px;">
-                        Cliquez sur une question pour afficher les réponses détaillées.
+                    <p style="font-size: 1rem; color: var(--text-light); margin-top: 0; margin-bottom: 20px;">
+                        Recherchez une thématique, utilisez les filtres par catégorie ou cliquez sur une question pour afficher la réponse.
                     </p>
 
-                    <div class="faq-list">
-                        <details class="faq-item">
+                    <!-- BLOC RECHERCHE & FILTRES DES CATÉGORIES -->
+                    <div class="faq-search-wrapper">
+                        <div class="faq-search-box">
+                            <span class="faq-search-icon">🔍</span>
+                            <input type="text" id="faqSearchInput" placeholder="Rechercher une question ou un mot-clé (ex: wetsuit, vélo, temps...)" oninput="filterFAQ()">
+                            <button class="faq-clear-btn" id="faqClearBtn" onclick="clearFAQSearch()" title="Effacer la recherche">✕</button>
+                        </div>
+
+                        <!-- Boutons de filtre par catégorie -->
+                        <div class="faq-filter-container">
+                            <button class="faq-filter-btn active" data-category="all" onclick="setFAQCategory('all')">Tous</button>
+                            <button class="faq-filter-btn" data-category="distances" onclick="setFAQCategory('distances')">📏 Distances & Temps</button>
+                            <button class="faq-filter-btn" data-category="equipement" onclick="setFAQCategory('equipement')">🚴 Équipement & Vélo</button>
+                            <button class="faq-filter-btn" data-category="regles" onclick="setFAQCategory('regles')">🏊 Wetsuit & Sécurité</button>
+                            <button class="faq-filter-btn" data-category="entrainement" onclick="setFAQCategory('entrainement')">⏱️ Entraînement</button>
+                        </div>
+                    </div>
+
+                    <div class="faq-list" id="faqList">
+                        <details class="faq-item" data-categories="distances">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">1. Quelles sont les distances en triathlon ?</div>
@@ -827,7 +920,7 @@
                             </div>
                         </details>
 
-                        <details class="faq-item">
+                        <details class="faq-item" data-categories="regles equipement">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">2. Quand puis-je porter une combinaison isotherme (wetsuit) ? Est-ce obligatoire ?</div>
@@ -843,7 +936,7 @@
                             </div>
                         </details>
 
-                        <details class="faq-item">
+                        <details class="faq-item" data-categories="regles">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">3. Je suis moins à l'aise en natation, puis-je recevoir de l'aide ?</div>
@@ -865,7 +958,7 @@
                             </div>
                         </details>
 
-                        <details class="faq-item">
+                        <details class="faq-item" data-categories="equipement regles">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">4. Quel est le matériel obligatoire pour un triathlon ?</div>
@@ -900,13 +993,13 @@
                                     <span>❗</span> <span>RAPPEL SÉCURITÉ</span>
                                   </p>
                                   <p style="margin: 6px 0 0 0; color: #2c3e50; font-size: 0.95em;">
-                                    Les écouteurs, casques audio, téléphones portables et récipients en verre sont strictly interdits sous peine de disqualification immédiate.
+                                    Les écouteurs, casques audio, téléphones portables et récipients en verre sont strictement interdits sous peine de disqualification immédiate.
                                   </p>
                                 </div>
                             </div>
                         </details>
 
-                        <details class="faq-item">
+                        <details class="faq-item" data-categories="equipement">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">5. Quel type de vélo dois-je avoir pour participer ?</div>
@@ -919,7 +1012,7 @@
                             </div>
                         </details>
 
-                        <details class="faq-item">
+                        <details class="faq-item" data-categories="entrainement distances">
                             <summary class="faq-header">
                                 <div>
                                     <div class="faq-title">6. Dois-je m'entraîner beaucoup pour mon premier triathlon ?</div>
@@ -928,20 +1021,21 @@
                             </summary>
                             <div class="faq-answer">
                                 <p>Pour un premier triathlon <strong>Initiation</strong>, environ <strong>1 mois d'entraînement</strong> à raison de <strong>1 séance de 30 minutes par sport par semaine</strong> (3 courtes séances/semaine) suffit amplement pour croiser la ligne d'arrivée avec le sourire !</p>
-                            </div>
-
-                            <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-                            <div style="background: #f0f7ff; padding: 8px 18px; border-radius: 10px; border-left: 4px solid #10b981; margin: 0 40px;">
-                                <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1.05rem; font-weight: bold;">🌱 Pour se lancer : Découverte / Initiation</h4>
-                                <p style="margin: 0 0 4px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
-                                    🏊 375m • 🚴 10km • 🏃 2.5km
-                                </p>
-                                <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
-                                    Le format parfait pour essayer sans se casser la tête, à votre rythme et dans une ambiance ultra-bienveillante.
-                                </p>
-                            </div>
+                                <div style="background: #f0f7ff; padding: 12px 18px; border-radius: 10px; border-left: 4px solid #10b981; margin-top: 15px;">
+                                    <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1rem; font-weight: bold;">🌱 Pour se lancer : Découverte / Initiation</h4>
+                                    <p style="margin: 0 0 4px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
+                                        🏊 375m • 🚴 10km • 🏃 2.5km
+                                    </p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
+                                        Le format parfait pour essayer sans se casser la tête, à votre rythme et dans une ambiance ultra-bienveillante.
+                                    </p>
+                                </div>
                             </div>
                         </details>
+                    </div>
+
+                    <div class="faq-no-results" id="faqNoResults">
+                        🔍 Aucune question ne correspond à votre recherche ou au filtre sélectionné.
                     </div>
                 </div>
 
@@ -1377,20 +1471,17 @@
 
     <!-- BOUTON RETOUR EN HAUT -->
     <button id="backToTop" title="Retour en haut">
-        <svg viewBox="0 0 24 24">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
         </svg>
     </button>
 
 <script>
-    // GESTION DES ONGLETS TYPE NAVIGATEUR WEB
-    
-
-    // BOUTON RETOUR EN HAUT
+    // --- BOUTON RETOUR EN HAUT ---
     const backToTopBtn = document.getElementById("backToTop");
 
     window.addEventListener("scroll", function() {
-        if (window.innerWidth <= 768 && window.scrollY > 300) {
+        if (window.scrollY > 300) {
             backToTopBtn.classList.add("visible");
         } else {
             backToTopBtn.classList.remove("visible");
@@ -1401,54 +1492,148 @@
         window.scrollTo({ top: 0, behavior: "smooth" }); 
     });
 
+    // --- GESTION DES ONGLETS ---
     function openTab(evt, tabName) {
-    let tabPanels = document.getElementsByClassName("tab-panel");
-    for (let i = 0; i < tabPanels.length; i++) {
-        tabPanels[i].classList.remove("active");
+        let tabPanels = document.getElementsByClassName("tab-panel");
+        for (let i = 0; i < tabPanels.length; i++) {
+            tabPanels[i].classList.remove("active");
+        }
+
+        let tabButtons = document.getElementsByClassName("tab-button");
+        for (let i = 0; i < tabButtons.length; i++) {
+            tabButtons[i].classList.remove("active");
+        }
+
+        document.getElementById(tabName).classList.add("active");
+        evt.currentTarget.classList.add("active");
+
+        if (window.innerWidth <= 768) {
+            const container = document.querySelector('.browser-tabs-container');
+            if (container) {
+                container.style.animation = 'none';
+                void container.offsetWidth; 
+                container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
+            }
+        }
     }
 
-    let tabButtons = document.getElementsByClassName("tab-button");
-    for (let i = 0; i < tabButtons.length; i++) {
-        tabButtons[i].classList.remove("active");
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabsContainer = document.querySelector('.browser-tabs-container');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 768) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
 
-    document.getElementById(tabName).classList.add("active");
-    evt.currentTarget.classList.add("active");
+        // Sauvegarde de l'état initial HTML de la FAQ pour les highlights
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.setAttribute('data-original-html', item.innerHTML);
+        });
+    });
 
-    // Déclenche à nouveau le rebond en version mobile
-    if (window.innerWidth <= 768) {
-        const container = document.querySelector('.browser-tabs-container');
-        container.style.animation = 'none';
-        // Astuce pour forcer le reflow et rejouer l'animation CSS
-        void container.offsetWidth; 
-        container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
-    }
-}
+    // --- LOGIQUE DE RECHERCHE ET FILTRAGE FAQ ---
+    let currentFAQCategory = 'all';
 
-document.addEventListener("DOMContentLoaded", function() {
-    const tabsContainer = document.querySelector('.browser-tabs-container');
-
-    if (tabsContainer) {
-        // On crée l'observateur d'intersection
-        const observer = new IntersectionObserver((entries, observerInstance) => {
-            entries.forEach(entry => {
-                // Si le conteneur devient visible à l'écran (et qu'on est sur mobile)
-                if (entry.isIntersecting && window.innerWidth <= 768) {
-                    // On ajoute la classe qui lance l'animation
-                    tabsContainer.classList.add('animate-bounce');
-                    
-                    // Optionnel : on arrête d'observer pour ne jouer le rebond qu'une seule fois
-                    observerInstance.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.5 // L'animation se déclenche quand au moins 50% des onglets sont visibles
+    function setFAQCategory(category) {
+        currentFAQCategory = category;
+        
+        // Mise à jour visuelle des boutons de catégorie
+        const filterBtns = document.querySelectorAll('.faq-filter-btn');
+        filterBtns.forEach(btn => {
+            if (btn.getAttribute('data-category') === category) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
         });
 
-        // On lance la surveillance sur le conteneur d'onglets
-        observer.observe(tabsContainer);
+        filterFAQ();
     }
-});
+
+    function clearFAQSearch() {
+        const input = document.getElementById('faqSearchInput');
+        input.value = '';
+        filterFAQ();
+        input.focus();
+    }
+
+    function filterFAQ() {
+        const input = document.getElementById('faqSearchInput');
+        const clearBtn = document.getElementById('faqClearBtn');
+        const filterTerm = input.value.trim().toLowerCase();
+        const faqItems = document.querySelectorAll('.faq-item');
+        const noResults = document.getElementById('faqNoResults');
+        let visibleCount = 0;
+
+        // Afficher/Cacher le bouton d'effacement
+        clearBtn.style.display = filterTerm.length > 0 ? 'block' : 'none';
+
+        faqItems.forEach(item => {
+            const categories = item.getAttribute('data-categories') || '';
+            const matchesCategory = (currentFAQCategory === 'all') || categories.includes(currentFAQCategory);
+            
+            // Restauration du HTML d'origine avant filtrage/surlignage
+            const originalHTML = item.getAttribute('data-original-html');
+            item.innerHTML = originalHTML;
+
+            const textContent = item.textContent.toLowerCase();
+            const matchesText = filterTerm === '' || textContent.includes(filterTerm);
+
+            if (matchesCategory && matchesText) {
+                item.style.display = 'block';
+                visibleCount++;
+
+                if (filterTerm.length > 1) {
+                    item.open = true; // Ouvre l'accordéon si recherche active
+                    highlightText(item, filterTerm);
+                } else if (filterTerm === '') {
+                    item.open = false; // Ferme par défaut sans recherche
+                }
+            } else {
+                item.style.display = 'none';
+                item.open = false;
+            }
+        });
+
+        // Gestion du message "aucun résultat"
+        noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
+
+    // Surlignage dynamique
+    function highlightText(element, term) {
+        const walk = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
+        const nodesToReplace = [];
+
+        while (walk.nextNode()) {
+            const node = walk.currentNode;
+            if (node.parentNode.nodeName !== 'SCRIPT' && 
+                node.parentNode.nodeName !== 'STYLE' && 
+                !node.parentNode.classList.contains('faq-arrow')) {
+                if (node.nodeValue.toLowerCase().includes(term)) {
+                    nodesToReplace.push(node);
+                }
+            }
+        }
+
+        nodesToReplace.forEach(node => {
+            const parent = node.parentNode;
+            const regex = new RegExp(`(${escapeRegExp(term)})`, 'gi');
+            const span = document.createElement('span');
+            span.innerHTML = node.nodeValue.replace(regex, '<mark class="faq-highlight">$1</mark>');
+            parent.replaceChild(span, node);
+        });
+    }
+
+    function escapeRegExp(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
 </script>
 </body>
 </html>
