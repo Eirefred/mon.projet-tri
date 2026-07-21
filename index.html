@@ -1146,19 +1146,22 @@
 
                     <!-- Ligne 2 : Profil (Toujours visible) + Courriel (Dynamique) -->
                     <div class="form-row">
-                        <div class="form-group flex-1-5">
-                            <label>Vous êtes :</label>
-                            <div class="radio-container-box">
-                                <label class="radio-option">
-                                    <input type="radio" name="profil" value="athlete" required>
-                                    <span>Athlète</span>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="profil" value="partenaire">
-                                    <span>Partenaire</span>
-                                </label>
-                            </div>
-                        </div>
+    <div class="form-group flex-1-5" id="bloc-profil">
+        <label>Vous êtes :</label>
+        <div class="radio-container-box" id="profil-box">
+            <label class="radio-option">
+                <input type="radio" name="profil" value="athlete" required>
+                <span>Athlète</span>
+            </label>
+            <label class="radio-option">
+                <input type="radio" name="profil" value="partenaire">
+                <span>Partenaire</span>
+            </label>
+        </div>
+        <span id="profil-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
+            Veuillez sélectionner votre profil (Athlète ou Partenaire).
+        </span>
+    </div>
 
                         <!-- BLOC COURRIEL : Contient le champ et le message d'erreur uniforme -->
                         <div class="form-group flex-2" id="bloc-courriel">
@@ -1343,6 +1346,21 @@
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
+            // =========================================================
+            // 2. RÉINITIALISATION DE L'ERREUR PROFIL LORS D'UN CLIC
+            // =========================================================
+            const profilRadios = document.querySelectorAll('input[name="profil"]');
+            const profilError = document.getElementById('profil-error');
+
+            profilRadios.forEach(radio => {
+                radio.addEventListener('change', () => {
+                    if (profilError) profilError.style.display = 'none';
+                    const profilBox = document.getElementById('profil-box');
+                    if (profilBox) profilBox.style.border = 'none';
+                });
+            });
+            // =========================================================
+
             // Validation courriel
             if (emailInput) {
                 emailInput.addEventListener('input', () => {
@@ -1391,6 +1409,19 @@
                     const typeContact = document.querySelector('input[name="type_contact"]:checked').value;
                     let isValid = true;
 
+                    // Vérification du Profil
+                    const profilSelected = document.querySelector('input[name="profil"]:checked');
+                    if (!profilSelected) {
+                        isValid = false;
+                        if (profilError) profilError.style.display = 'block';
+                        const profilBox = document.getElementById('profil-box');
+                        if (profilBox) {
+                            profilBox.style.border = '1px solid #e3342f';
+                            profilBox.style.borderRadius = '8px';
+                            profilBox.style.padding = '5px';
+                        }
+                    }
+
                     // Vérification du nom
                     const nomInput = document.querySelector('input[name="nom"]');
                     if (nomInput && nomInput.value.trim() === "") {
@@ -1402,11 +1433,10 @@
                     if (typeContact === 'appel' && phoneInput) {
                         const numbersOnly = phoneInput.value.replace(/\D/g, '');
                         if (numbersOnly.length < 10) {
-                            e.preventDefault();
                             phoneInput.style.borderColor = '#e3342f';
                             phoneInput.style.backgroundColor = '#fcebeb';
                             phoneError.style.display = 'block';
-                            phoneInput.focus();
+                            if (isValid) phoneInput.focus();
                             isValid = false;
                         }
                     } 
@@ -1415,11 +1445,10 @@
                     if (typeContact === 'message' && emailInput) {
                         const value = emailInput.value.trim();
                         if (!emailRegex.test(value)) {
-                            e.preventDefault();
                             emailInput.style.borderColor = '#e3342f';
                             emailInput.style.backgroundColor = '#fcebeb';
                             emailError.style.display = 'block';
-                            emailInput.focus();
+                            if (isValid) emailInput.focus();
                             isValid = false;
                         }
                     }
