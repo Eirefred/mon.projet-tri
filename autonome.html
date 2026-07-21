@@ -509,7 +509,7 @@
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-        /* Animation de rebond horizontal */
+        /* Définition du rebond horizontal */
 @keyframes bounceLeftRight {
     0%, 100% { transform: translateX(0); }
     20% { transform: translateX(-15px); }
@@ -518,9 +518,9 @@
     80% { transform: translateX(2px); }
 }
 
-/* On applique l'animation aux onglets uniquement sur les écrans mobiles */
+/* On applique le rebond uniquement via la classe ajoutée par le JS sur mobile */
 @media (max-width: 768px) {
-    .browser-tabs-container {
+    .browser-tabs-container.animate-bounce {
         animation: bounceLeftRight 1.2s ease-in-out;
     }
 }
@@ -1383,6 +1383,31 @@
         container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    const tabsContainer = document.querySelector('.browser-tabs-container');
+
+    if (tabsContainer) {
+        // On crée l'observateur d'intersection
+        const observer = new IntersectionObserver((entries, observerInstance) => {
+            entries.forEach(entry => {
+                // Si le conteneur devient visible à l'écran (et qu'on est sur mobile)
+                if (entry.isIntersecting && window.innerWidth <= 768) {
+                    // On ajoute la classe qui lance l'animation
+                    tabsContainer.classList.add('animate-bounce');
+                    
+                    // Optionnel : on arrête d'observer pour ne jouer le rebond qu'une seule fois
+                    observerInstance.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.5 // L'animation se déclenche quand au moins 50% des onglets sont visibles
+        });
+
+        // On lance la surveillance sur le conteneur d'onglets
+        observer.observe(tabsContainer);
+    }
+});
 </script>
 </body>
 </html>
