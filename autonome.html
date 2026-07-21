@@ -129,16 +129,33 @@
         }
 
         /* --- STYLE DES ONGLETS TYPE NAVIGATEUR WEB --- */
-        .browser-tabs-container {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding: 10px 10px 0 10px;
-            background: #e2e8f0;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            scrollbar-width: none; /* Firefox */
-        }
+        /* FIX ORDINATEUR (PC/Mac) : Safari, Firefox & Chrome */
+/* FIX ORDINATEUR (PC/Mac) : Aligné, espaces préservés, 0 dépassement sur Safari */
+@media (min-width: 769px) {
+    .browser-tabs-container {
+        display: flex !important;
+        flex-wrap: nowrap !important;          /* Force les onglets sur la MÊME ligne */
+        gap: 4px !important;                   /* Espace entre les onglets */
+        overflow: hidden !important;          /* Verrouille le contenu dans la largeur exacte */
+        box-sizing: border-box !important;     /* Force le respect strict des dimensions */
+        padding: 2px 2px 0 2px !important;    /* Micro-padding pour laisser respirer les bordures/ombres */
+        overscroll-behavior-x: none !important;/* Empêche le rebond Safari/Firefox */
+        touch-action: pan-y !important;        /* Bloque le swipe horizontal au trackpad */
+    }
+
+    .tab-button {
+        flex: 1 1 0px !important;              /* Force tous les onglets à se partager équitablement l'espace */
+        min-width: 0 !important;               /* Empêche Safari de forcer une largeur minimale qui ferait déborder */
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* Cache le fondu grisé sur grand écran */
+    .browser-tabs-wrapper::after {
+        display: none !important;
+        content: none !important;
+    }
+}
         .browser-tabs-container::-webkit-scrollbar {
             display: none; /* Chrome/Safari */
         }
@@ -596,22 +613,24 @@
     overflow: hidden; /* Évite que le fondu ne dépasse */
 }
 
-/* Effet de fondu grisé/transparent sur le bord droit */
-.browser-tabs-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 40px; /* Largeur de la zone de fondu */
-    
-    /* Dégradé allant du transparent vers la couleur de ton fond (ajuste selon ta charte) */
-    background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
-    
-    /* Empêche le fondu d'interférer avec le clic sur le dernier onglet visible */
-    pointer-events: none; 
-    
-    transition: opacity 0.3s ease;
+/* Effet de fondu grisé uniquement sur Mobile */
+@media (max-width: 768px) {
+    .browser-tabs-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .browser-tabs-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 40px;
+        background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
+        pointer-events: none; 
+        transition: opacity 0.3s ease;
+    }
 }
     </style>
 </head>
@@ -1354,20 +1373,7 @@
 
 <script>
     // GESTION DES ONGLETS TYPE NAVIGATEUR WEB
-    function openTab(evt, tabName) {
-        let tabPanels = document.getElementsByClassName("tab-panel");
-        for (let i = 0; i < tabPanels.length; i++) {
-            tabPanels[i].classList.remove("active");
-        }
-
-        let tabButtons = document.getElementsByClassName("tab-button");
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].classList.remove("active");
-        }
-
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
+    
 
     // BOUTON RETOUR EN HAUT
     const backToTopBtn = document.getElementById("backToTop");
