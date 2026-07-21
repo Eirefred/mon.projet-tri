@@ -1508,14 +1508,6 @@
         document.getElementById(tabName).classList.add("active");
         evt.currentTarget.classList.add("active");
 
-        if (window.innerWidth <= 768) {
-            const container = document.querySelector('.browser-tabs-container');
-            if (container) {
-                container.style.animation = 'none';
-                void container.offsetWidth; 
-                container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
-            }
-        }
     }
 
     document.addEventListener("DOMContentLoaded", function() {
