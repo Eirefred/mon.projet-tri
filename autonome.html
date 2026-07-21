@@ -590,10 +590,10 @@
             border-left: 2px solid #e2e8f0;
         }
 
-        /* Remplace l'ancien .browser-tabs-wrapper */
+        /* Le conteneur parent doit être en position relative */
 .browser-tabs-wrapper {
     position: relative;
-    width: 100%;
+    overflow: hidden; /* Évite que le fondu ne dépasse */
 }
 
 /* Effet de fondu grisé/transparent sur le bord droit */
@@ -603,14 +603,15 @@
     top: 0;
     right: 0;
     bottom: 0;
-    width: 50px; /* Un peu plus large pour un effet plus doux */
+    width: 40px; /* Largeur de la zone de fondu */
     
-    /* Dégradé fluide vers la couleur du fond (#f1f5f9) */
-    background: linear-gradient(to right, rgba(241, 245, 249, 0) 0%, rgba(241, 245, 249, 1) 100%);
+    /* Dégradé allant du transparent vers la couleur de ton fond (ajuste selon ta charte) */
+    background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
     
-    pointer-events: none; /* Permet de cliquer à travers les onglets en dessous */
-    border-top-right-radius: 16px;
-    z-index: 10;
+    /* Empêche le fondu d'interférer avec le clic sur le dernier onglet visible */
+    pointer-events: none; 
+    
+    transition: opacity 0.3s ease;
 }
     </style>
 </head>
@@ -684,17 +685,15 @@
                 </p>
             </div>
 
-            <!-- ONGLETS DE STYLE NAVIGATEUR WEB (AVEC WRAPPER POUR EFFET DE FONDU) -->
-            <div class="browser-tabs-wrapper">
-                <div class="browser-tabs-container">
-                    <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 Les Bases</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
-                </div>
+            <!-- ONGLETS DE STYLE NAVIGATEUR WEB -->
+            <div class="browser-tabs-container">
+                <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 Les Bases</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
             </div>
 
             <!-- CONTENEUR DU CONTENU DES ONGLETS -->
