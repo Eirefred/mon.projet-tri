@@ -130,15 +130,15 @@
 
         /* --- STYLE DES ONGLETS TYPE NAVIGATEUR WEB --- */
         .browser-tabs-container {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            padding: 10px 10px 0 10px;
-            background: #e2e8f0;
-            border-top-left-radius: 16px;
-            border-top-right-radius: 16px;
-            scrollbar-width: none; /* Firefox */
-        }
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 10px 50px 0 10px; /* 50px à droite pour laisser de la place sous le fondu */
+    background: #e2e8f0;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    scrollbar-width: none; /* Firefox */
+}
         .browser-tabs-container::-webkit-scrollbar {
             display: none; /* Chrome/Safari */
         }
@@ -1354,21 +1354,7 @@
     </button>
 
 <script>
-    // GESTION DES ONGLETS TYPE NAVIGATEUR WEB
-    function openTab(evt, tabName) {
-        let tabPanels = document.getElementsByClassName("tab-panel");
-        for (let i = 0; i < tabPanels.length; i++) {
-            tabPanels[i].classList.remove("active");
-        }
 
-        let tabButtons = document.getElementsByClassName("tab-button");
-        for (let i = 0; i < tabButtons.length; i++) {
-            tabButtons[i].classList.remove("active");
-        }
-
-        document.getElementById(tabName).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
 
     // BOUTON RETOUR EN HAUT
     const backToTopBtn = document.getElementById("backToTop");
