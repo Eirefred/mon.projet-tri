@@ -1385,12 +1385,13 @@
     document.getElementById(tabName).classList.add("active");
     evt.currentTarget.classList.add("active");
 
-    // Déclenche le rebond UNIQUEMENT sur mobile lors du changement d'onglet
+    // Déclenche à nouveau le rebond en version mobile
     if (window.innerWidth <= 768) {
         const container = document.querySelector('.browser-tabs-container');
-        container.classList.remove('animate-bounce');
-        void container.offsetWidth; // Forcer le reflow
-        container.classList.add('animate-bounce');
+        container.style.animation = 'none';
+        // Astuce pour forcer le reflow et rejouer l'animation CSS
+        void container.offsetWidth; 
+        container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
     }
 }
 
