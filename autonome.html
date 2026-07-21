@@ -688,23 +688,25 @@
         }
 
         @media (max-width: 768px) {
-            .browser-tabs-wrapper {
-                position: relative;
-                overflow: hidden;
-            }
+    .browser-tabs-wrapper {
+        position: relative;
+    }
 
-            .browser-tabs-wrapper::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                width: 40px;
-                background: linear-gradient(to right, rgba(240, 240, 240, 0), rgba(200, 200, 200, 0.9));
-                pointer-events: none; 
-                transition: opacity 0.3s ease;
-            }
-        }
+    .browser-tabs-wrapper::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        /* Limite le dégradé à la hauteur exacte des boutons (~45px) */
+        height: 45px; 
+        width: 30px;
+        top: 3px;
+        /* Dégradé vers le blanc pur (#ffffff) */
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+        pointer-events: none; 
+        z-index: 2;
+    }
+}
     </style>
 </head>
 <body>
