@@ -509,6 +509,22 @@
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
+        /* Animation de rebond horizontal */
+@keyframes bounceLeftRight {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-15px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(2px); }
+}
+
+/* On applique l'animation aux onglets uniquement sur les écrans mobiles */
+@media (max-width: 768px) {
+    .browser-tabs-container {
+        animation: bounceLeftRight 1.2s ease-in-out;
+    }
+}
+
         /* --- FAQ & ACCORDÉONS --- */
         .faq-item {
             border-bottom: 1px solid #e2e8f0;
@@ -1343,6 +1359,30 @@
     backToTopBtn.addEventListener("click", function() { 
         window.scrollTo({ top: 0, behavior: "smooth" }); 
     });
+
+    function openTab(evt, tabName) {
+    let tabPanels = document.getElementsByClassName("tab-panel");
+    for (let i = 0; i < tabPanels.length; i++) {
+        tabPanels[i].classList.remove("active");
+    }
+
+    let tabButtons = document.getElementsByClassName("tab-button");
+    for (let i = 0; i < tabButtons.length; i++) {
+        tabButtons[i].classList.remove("active");
+    }
+
+    document.getElementById(tabName).classList.add("active");
+    evt.currentTarget.classList.add("active");
+
+    // Déclenche à nouveau le rebond en version mobile
+    if (window.innerWidth <= 768) {
+        const container = document.querySelector('.browser-tabs-container');
+        container.style.animation = 'none';
+        // Astuce pour forcer le reflow et rejouer l'animation CSS
+        void container.offsetWidth; 
+        container.style.animation = 'bounceLeftRight 1.2s ease-in-out';
+    }
+}
 </script>
 </body>
 </html>
