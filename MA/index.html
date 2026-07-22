@@ -9,13 +9,12 @@
     <style>
         /* Palette de couleurs */
         :root {
-            --primary-blue: #1a67b3;       /* Bleu principal (Structure) */
-            --action-orange: #f97316;      /* Orange (Boutons d'action) */
-            --orange-hover: #ea580c;       /* Orange foncé au survol */
+            --primary-blue: #1a67b3;       /* Bleu principal */
+            --action-orange: #f97316;      /* Orange (Action) */
+            --orange-hover: #ea580c;       
             
-            /* Couleurs secondaires du logo (Ponctuation) */
-            --accent-red: #fa4222;         /* Rouge ponctuation */
-            --accent-turquoise: #48a1cb;   /* Turquoise ponctuation */
+            --accent-red: #fa4222;         
+            --accent-turquoise: #48a1cb;   
             
             --bg-light: #f8fafc;
             --text-color: #334155;
@@ -53,49 +52,48 @@
             align-items: center;
         }
 
-        /* Groupe Logo + Localisation/Tel */
         .brand-group {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
-        /* --- LOGO : TAILLE D'ORIGINE DE LA PREMIÈRE IMAGE CONSERVÉE --- */
+        /* --- STYLES LOGO ET TRANSITION EN FADE-IN / FADE-OUT --- */
         .logo {
             position: relative;
             display: inline-block;
             flex-shrink: 0;
         }
 
-        /* Image 1 (De référence : définit la taille naturelle) */
+        /* Image 1 : Définit la hauteur globale mais gère son opacité */
         .logo img.logo-ref {
             display: block;
-            height: 64px;       /* Hauteur exacte PC d'origine */
+            height: 64px;       /* Hauteur fixe ordinateur */
             width: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            opacity: 0;         /* Invisible par défaut */
+            transition: opacity 1s ease-in-out; /* Fondu Entrée/Sortie de 1s */
         }
 
-        /* Image 2 (Superposée, ajustée à la hauteur de la référence) */
+        /* Image 2 : Superposée et ajustée */
         .logo img.logo-fit {
             position: absolute;
             top: 0;
             left: 50%;
-            transform: translateX(-50%); /* Centré horizontalement */
+            transform: translateX(-50%);
             height: 100%;
             width: auto;
             max-width: 100%;
             object-fit: contain;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            opacity: 0;         /* Invisible par défaut */
+            transition: opacity 1s ease-in-out; /* Fondu Entrée/Sortie de 1s */
         }
 
-        /* Affichage au changement */
+        /* Classe active partagée pour le fade-in */
         .logo img.active {
-            opacity: 1;
+            opacity: 1;         /* Visible quand actif */
         }
 
-        /* Bloc à droite du logo (2 lignes compactes) */
+        /* Informations bloc à droite du logo */
         .header-info-block {
             display: flex;
             flex-direction: column;
@@ -127,7 +125,7 @@
             color: var(--orange-hover);
         }
 
-        /* Navigation Ordinateur */
+        /* Navigation */
         nav ul {
             display: flex;
             list-style: none;
@@ -146,7 +144,7 @@
             color: var(--accent-turquoise);
         }
 
-        /* Bouton Hamburger (Caché sur ordinateur) */
+        /* Hamburger */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -169,7 +167,6 @@
             transition: all 0.3s linear;
         }
 
-        /* Animation du bouton Hamburger en X */
         .hamburger.active span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
         }
@@ -182,7 +179,7 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* Section Banner / Présentation */
+        /* Hero */
         .hero {
             background: linear-gradient(135deg, var(--primary-blue), #114b85);
             color: white;
@@ -237,7 +234,6 @@
             flex-shrink: 0;
         }
 
-        /* Bouton Appeler avec bordure blanche fine */
         .btn-call {
             background-color: var(--action-orange);
             color: white;
@@ -251,7 +247,6 @@
             transform: translateY(-2px);
         }
 
-        /* Bouton Zone avec flou opaque */
         .btn-zone {
             background-color: rgba(255, 255, 255, 0.70);
             color: var(--primary-blue);
@@ -269,7 +264,7 @@
             transform: translateY(-2px);
         }
 
-        /* Section Contenu Principal */
+        /* Contenu */
         .main-content {
             max-width: 1200px;
             margin: 3rem auto;
@@ -312,7 +307,6 @@
             font-size: 1.2rem;
         }
 
-        /* Section Zone d'intervention dans la page */
         .zone-card {
             background: white;
             padding: 1.5rem;
@@ -360,7 +354,6 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* Section Facebook Widget */
         .facebook-section {
             background: white;
             padding: 1rem;
@@ -386,7 +379,7 @@
             min-height: 500px;
         }
 
-        /* POP-UP (Modal) Styles */
+        /* Pop-up Modal */
         .modal {
             display: none;
             position: fixed;
@@ -445,7 +438,7 @@
             border: 1px solid #cbd5e1;
         }
 
-        /* --- STYLES BACK TO TOP --- */
+        /* Back To Top */
         #backToTop {
             display: none;
             position: fixed;
@@ -474,7 +467,6 @@
             fill: #000000;
         }
 
-        /* Pied de page */
         footer {
             background-color: var(--primary-blue);
             color: white;
@@ -508,12 +500,11 @@
                 max-width: calc(100% - 40px);
             }
 
-            /* Logo version MOBILE (Hauteur d'origine mobile 46px) */
+            /* Redimensionnement de la référence sur mobile */
             .logo img.logo-ref {
                 height: 46px;
             }
 
-            /* Adaptation des textes d'en-tête sur mobile */
             .header-info-block {
                 height: auto;
                 padding-left: 0.5rem;
@@ -528,14 +519,12 @@
                 font-size: 0.75rem;
             }
 
-            /* Bouton Hamburger */
             .hamburger {
                 display: flex;
                 margin-left: auto;
                 align-self: center;
             }
 
-            /* Menu déroulant mobile */
             nav ul {
                 display: none;
                 flex-direction: column;
@@ -588,14 +577,14 @@
 </head>
 <body>
 
-    <!-- En-tête / Navigation -->
+    <!-- En-tête -->
     <header>
         <div class="header-container">
             <div class="brand-group">
                 <a href="index.html" class="logo" id="logo-slider">
-                    <!-- Logo 1 (Champs de référence pour la structure & la taille) -->
+                    <!-- Logo 1 : Actif par défaut -->
                     <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" class="logo-ref active" width="325" height="96">
-                    <!-- Logo 2 (S'adapte strictement à la hauteur imprimée par le premier) -->
+                    <!-- Logo 2 : Inactif au départ -->
                     <img src="matthieu-artisan2.png" alt="Matthieu Artisan - Plomberie Logo 2" class="logo-fit" width="1140" height="449">
                 </a>
                 <div class="header-info-block">
@@ -604,7 +593,7 @@
                 </div>
             </div>
 
-            <!-- Bouton Hamburger (Mobile) -->
+            <!-- Bouton Hamburger -->
             <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
                 <span></span>
                 <span></span>
@@ -622,7 +611,7 @@
         </div>
     </header>
 
-    <!-- Présentation rapide -->
+    <!-- Banner -->
     <section class="hero">
         <h1>Plomberie & Chauffage à votre service</h1>
         <p class="location-tag">Basé dans la Vallée d’Azergues & secteurs limitrophes</p>
@@ -638,10 +627,8 @@
         </div>
     </section>
 
-    <!-- Contenu Principal + Widget Facebook -->
+    <!-- Main -->
     <main class="main-content">
-        
-        <!-- Colonne Gauche : Présentation & Carte -->
         <div>
             <article class="about">
                 <h2>Bienvenue chez Matthieu Artisan</h2>
@@ -656,7 +643,6 @@
                 </ul>
             </article>
 
-            <!-- Bloc Zone d'intervention direct -->
             <section class="zone-card">
                 <h2>Zone d'intervention & Secteur</h2>
                 <p>Basés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous intervenons dans un secteur encadré par :</p>
@@ -679,7 +665,6 @@
             </section>
         </div>
 
-        <!-- Section Facebook Widget -->
         <aside class="facebook-section">
             <h3>Suivez notre actualité</h3>
             <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=2000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
@@ -690,10 +675,9 @@
                     allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
             </iframe>
         </aside>
-
     </main>
 
-    <!-- FENÊTRE POP-UP (MODALE) -->
+    <!-- Modal -->
     <div id="zoneModal" class="modal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -718,32 +702,30 @@
         </div>
     </div>
 
-    <!-- BOUTON BACK TO TOP -->
+    <!-- Back To Top -->
     <button id="backToTop" title="Retour en haut">
         <svg viewBox="0 0 24 24">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
         </svg>
     </button>
 
-    <!-- Pied de page -->
+    <!-- Footer -->
     <footer>
         <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
         <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
     </footer>
 
-    <!-- Scripts Pop-Up, Hamburger, BackToTop & Alternance Logo -->
+    <!-- JavaScript mis à jour pour basculer la classe active proprement -->
     <script>
-        /* Alternance fluide des logos toutes les 5 secondes */
         const logoImages = document.querySelectorAll('#logo-slider img');
-        let currentLogoIndex = 0;
 
         setInterval(() => {
-            logoImages[currentLogoIndex].classList.remove('active');
-            currentLogoIndex = (currentLogoIndex + 1) % logoImages.length;
-            logoImages[currentLogoIndex].classList.add('active');
+            // Retire .active de l'image actuellement affichée (déclenche le fade-out)
+            // et l'ajoute à l'autre (déclenche le fade-in)
+            logoImages.forEach(img => img.classList.toggle('active'));
         }, 5000);
 
-        /* Gestion Pop-Up */
+        /* Pop-Up */
         function openModal() {
             document.getElementById('zoneModal').style.display = 'flex';
         }
@@ -758,7 +740,7 @@
             }
         }
 
-        /* Gestion Menu Hamburger Mobile */
+        /* Hamburger */
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');
 
@@ -767,7 +749,6 @@
             navMenu.classList.toggle('active');
         });
 
-        // Ferme le menu au clic sur un lien
         document.querySelectorAll('#nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 hamburgerBtn.classList.remove('active');
@@ -775,7 +756,7 @@
             });
         });
 
-        /* Gestion Back to Top */
+        /* Back to Top */
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener('scroll', function() {
