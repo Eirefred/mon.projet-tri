@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthieu Artisan | Plomberie & Chauffage</title>
+    <meta name="description" content="Entreprise de plomberie Matthieu Artisan - Dépannage, installation et rénovation.">
+    
+    <style>
+        /* Palette de couleurs */
+        :root {
+            --primary-blue: #1a67b3;       /* Bleu principal (Structure) */
+            --action-orange: #f97316;      /* Orange (Boutons d'action) */
+            --orange-hover: #ea580c;       /* Orange foncé au survol */
+            
+            /* Couleurs secondaires du logo (Ponctuation) */
+            --accent-red: #fa4222;         /* Rouge ponctuation */
+            --accent-turquoise: #48a1cb;   /* Turquoise ponctuation */
+            
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+            max-height: 60px;
+            display: block;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--accent-turquoise);
+        }
+
+        /* Section Banner / Présentation */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto;
+            opacity: 0.95;
+        }
+
+        /* Bouton d'action principal Orange */
+        .btn-call {
+            display: inline-block;
+            background-color: var(--action-orange);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+        }
+
+        .btn-call:hover {
+            background-color: var(--orange-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Section Contenu Principal */
+        .main-content {
+            max-width: 1100px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 2.5rem;
+        }
+
+        .about h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            border-left: 4px solid var(--accent-red);
+            padding-left: 0.8rem;
+        }
+
+        .about p {
+            margin-bottom: 1rem;
+        }
+
+        .services-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .services-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .services-list li::before {
+            content: "✓";
+            color: var(--accent-turquoise);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Section Facebook Widget */
+        .facebook-section {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-top: 3px solid var(--accent-red);
+        }
+
+        .facebook-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SDK Facebook -->
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v18.0"></script>
+
+    <!-- En-tête / Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="index.html" class="logo">
+                <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" width="196" height="48">
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="specialites.html">Nos Spécialités</a></li>
+                    <li><a href="certifications.html">Nos Certifications</a></li>
+                    <li><a href="partenaires.html">Nos Partenaires</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Présentation rapide -->
+    <section class="hero">
+        <h1>Plomberie & Chauffage à votre service</h1>
+        <p>Intervention rapide, installation et entretien de vos équipements sanitaires avec le savoir-faire d'un artisan local.</p>
+        <a href="tel:0600000000" class="btn-call">📞 Appeler le 06 00 00 00 00</a>
+    </section>
+
+    <!-- Contenu Principal + Widget Facebook -->
+    <main class="main-content">
+        
+        <!-- Bloc Présentation -->
+        <article class="about">
+            <h2>Bienvenue chez Matthieu Artisan</h2>
+            <p>Fort de plusieurs années d'expérience, je mets mon expertise au service de vos projets de plomberie, de rénovation de salle de bain et de chauffage.</p>
+            <p>Que ce soit pour un dépannage en urgence ou une installation complète, je m'engage à fournir un travail soigné, respectueux des normes et de votre budget.</p>
+            
+            <ul class="services-list">
+                <li>Dépannage d'urgence & recherche de fuites</li>
+                <li>Rénovation complète de salles de bains</li>
+                <li>Installation de robinetterie et chauffe-eau</li>
+                <li>Entretien et pose de systèmes de chauffage</li>
+            </ul>
+        </article>
+
+        <!-- Bloc Flux Facebook (Version iframe directe) -->
+        <aside class="facebook-section">
+            <h3>Suivez mon actualité</h3>
+            
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fchauffage2000&tabs=timeline&width=300&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false" 
+                    width="300" 
+                    height="500" 
+                    style="border:none; overflow:hidden; border-radius:6px;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </aside>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+        <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
+    </footer>
+
+</body>
+</html>
