@@ -467,14 +467,36 @@
             fill: #000000;
         }
 
+        /* Pied de page */
         footer {
             background-color: var(--primary-blue);
             color: white;
             text-align: center;
-            padding: 1.5rem;
+            padding: 2rem 1.5rem;
             margin-top: 3rem;
             font-size: 0.9rem;
             border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
         }
 
         footer a {
@@ -711,17 +733,21 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-        <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
+        <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Notre secteur d'intervention :</strong>
+                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+            </div>
+            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;"><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
+        </div>
     </footer>
 
-    <!-- JavaScript mis à jour pour basculer la classe active proprement -->
+    <!-- JavaScript -->
     <script>
         const logoImages = document.querySelectorAll('#logo-slider img');
 
         setInterval(() => {
-            // Retire .active de l'image actuellement affichée (déclenche le fade-out)
-            // et l'ajoute à l'autre (déclenche le fade-in)
             logoImages.forEach(img => img.classList.toggle('active'));
         }, 5000);
 
