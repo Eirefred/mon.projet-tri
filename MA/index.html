@@ -211,29 +211,33 @@
             flex-shrink: 0;
         }
 
-        .btn-call {
-            background-color: var(--action-orange);
-            color: white;
-            border: none;
-            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
-        }
+        /* Bouton Appeler avec bordure blanche fine */
+.btn-call {
+    background-color: var(--action-orange);
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.9); /* Même bordure blanche que le bouton zone */
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+}
 
-        .btn-call:hover {
-            background-color: var(--orange-hover);
-            transform: translateY(-2px);
-        }
+.btn-call:hover {
+    background-color: var(--orange-hover);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
 
-        .btn-zone {
-    background-color: rgba(255, 255, 255, 0.70); /* Fond blanc opaque à 70% */
-    color: var(--primary-blue);                   /* Texte bleu pour un meilleur contraste sur fond blanc */
-    border: 1.5px solid rgba(255, 255, 255, 0.9);  /* Bordure blanche bien définie */
+/* Bouton Zone avec flou opaque */
+.btn-zone {
+    background-color: rgba(255, 255, 255, 0.70);
+    color: var(--primary-blue);
+    border: 1.5px solid rgba(255, 255, 255, 0.9); /* Même bordure blanche */
     cursor: pointer;
-    backdrop-filter: blur(12px);                  /* Flou renforcé */
-    -webkit-backdrop-filter: blur(12px);          /* Compatibilité Safari / iOS */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
 }
 
 .btn-zone:hover {
-    background-color: rgba(255, 255, 255, 0.88); /* Encore plus blanc au survol */
+    background-color: rgba(255, 255, 255, 0.88);
     color: var(--primary-blue);
     border-color: #ffffff;
     transform: translateY(-2px);
