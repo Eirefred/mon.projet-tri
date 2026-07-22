@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-
-
-
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet | Choisissez votre défi</title>
+    
+    <!-- Meta SEO Essentielles -->
+    <title>Mon Projet | Triathlon & Course à pied au Québec</title>
+    <meta name="description" content="Organisme spécialisé en coaching et mentorat sportif au Québec. Choisissez votre défi : Mon Projet Tri (Triathlon) ou Mon Projet Run (Course à pied).">
+    <link rel="canonical" href="https://mon.projet-tri.org/splash.html" />
+
+    <!-- Open Graph (Réseaux Sociaux) -->
+    <meta property="og:title" content="Mon Projet | Triathlon & Course à pied au Québec">
+    <meta property="og:description" content="Organisme spécialisé en coaching et mentorat sportif au Québec. Choisissez votre défi.">
+    <meta property="og:url" content="https://mon.projet-tri.org/splash.html">
+    <meta property="og:type" content="website">
+
     <style>
         :root {
             --tri-color: #004c97;
@@ -50,10 +57,10 @@
         }
 
         header strong {
-    font-weight: 900; /* Gras maximum pour ressortir */
-    color: #ffffff;   /* Blanc pur */
-    text-shadow: 0 0 10px rgba(0,0,0,0.3); /* Optionnel : une légère ombre pour garantir la lisibilité sur les zones claires */
-}
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0,0,0,0.3);
+        }
 
         /* --- CONTAINER SPLIT --- */
         .splash-container {
@@ -83,7 +90,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('banniere-split.jpg'); /* Ton nouveau nom de fichier */
+            background-image: url('banniere-split.jpg');
             background-size: cover;
             filter: grayscale(20%) brightness(0.45);
             transition: all 0.8s ease;
@@ -143,101 +150,97 @@
         .side-run:hover .btn { background: var(--run-color); border-color: var(--run-color); }
 
         /* OPTIMISATION MOBILE */
-        /* OPTIMISATION MOBILE */
-@media (max-width: 834px) {
-    /* Le header n'est plus absolu, il prend sa place naturelle en haut */
-    header {
-        position: relative; /* Change d'absolute à relative */
-        background: #000;   /* Fond noir solide pour une séparation nette */
-        padding: 15px 0;
-        backdrop-filter: none;
-        border-bottom: 2px solid #333;
-    }
+        @media (max-width: 834px) {
+            header {
+                position: relative;
+                background: #000;
+                padding: 15px 0;
+                backdrop-filter: none;
+                border-bottom: 2px solid #333;
+            }
 
-    header p { 
-        font-size: 0.7rem; 
-        padding: 0 15px; 
-        line-height: 1.4; 
-    }
-    
-    /* La splash-container ne fait plus 100vh pour laisser la place au header sans scroll */
-    .splash-container { 
-        flex-direction: column;
-        height: calc(100vh - 60px); /* 100% de la hauteur moins la taille du header */
-    }
-    
-    .side {
-        flex: 1;
-        width: 100vw;
-    }
+            header p { 
+                font-size: 0.7rem; 
+                padding: 0 15px; 
+                line-height: 1.4; 
+            }
+            
+            .splash-container { 
+                flex-direction: column;
+                height: calc(100vh - 60px);
+            }
+            
+            .side {
+                flex: 1;
+                width: 100vw;
+            }
 
-    /* Reset des ajustements de padding précédents car il n'y a plus d'overlap */
-    .side-tri {
-        padding-top: 0; 
-    }
+            .side-tri {
+                padding-top: 0; 
+            }
 
-    /* Focus sur les sujets sportifs */
-    .side-tri::before { 
-        background-position: 20% center !important; 
-        height: 100%;
-        top: 0;
-    }
+            .side-tri::before { 
+                background-position: 20% center !important; 
+                height: 100%;
+                top: 0;
+            }
 
-    .side-run::before { 
-        background-position: 85% center !important; 
-    }
+            .side-run::before { 
+                background-position: 85% center !important; 
+            }
 
-    /* Ajustement des logos et boutons pour petits écrans */
-    .logo-img { 
-        max-width: 190px; 
-    }
-    
-    .content { 
-        padding: 20px; 
-    }
-    
-    .btn { 
-        margin-top: 15px; 
-        padding: 10px 25px; 
-        font-size: 0.75rem;
-    }
-}
+            .logo-img { 
+                max-width: 190px; 
+            }
+            
+            .content { 
+                padding: 20px; 
+            }
+            
+            .btn { 
+                margin-top: 15px; 
+                padding: 10px 25px; 
+                font-size: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
-    <p>Organisme spécialisé en <strong>Coaching & Mentorat Sportif</strong> au Québec</p>
-</header>
+        <p>Organisme spécialisé en <strong>Coaching & Mentorat Sportif</strong> au Québec</p>
+    </header>
 
     <div class="splash-container">
-    <a href="javascript:void(0)" onclick="redirectProject('tri')" class="side side-tri">
-        <div class="content">
-            <img src="MPT_New_logo_white.png" alt="Coaching et club de triathlon Québec - Mon Projet Tri" class="logo-img">
-            <p>Natation • Vélo • Course</p>
-            <div class="btn">Accéder au site</div>
-        </div>
-    </a>
+        <!-- Lien vers la version FR par défaut pour les robots, interception JS pour les humains -->
+        <a href="index.html" onclick="redirectProject(event, 'tri')" class="side side-tri">
+            <div class="content">
+                <img src="MPT_New_logo_white.png" alt="Coaching et club de triathlon Québec - Mon Projet Tri" class="logo-img">
+                <p>Natation • Vélo • Course</p>
+                <div class="btn">Accéder au site</div>
+            </div>
+        </a>
 
-    <a href="javascript:void(0)" onclick="redirectProject('run')" class="side side-run">
-        <div class="content">
-            <img src="MPR_New_logo_white.png" alt="Programme d'entraînement course à pied - Mon Projet Run" class="logo-img">
-            <p>Spécialiste Course à pied</p>
-            <div class="btn">Accéder au site</div>
-        </div>
-    </a>
-</div>
+        <!-- Lien vers la version FR par défaut pour les robots, interception JS pour les humains -->
+        <a href="course.html" onclick="redirectProject(event, 'run')" class="side side-run">
+            <div class="content">
+                <img src="MPR_New_logo_white.png" alt="Programme d'entraînement course à pied - Mon Projet Run" class="logo-img">
+                <p>Spécialiste Course à pied</p>
+                <div class="btn">Accéder au site</div>
+            </div>
+        </a>
+    </div>
 
 <script>
-function redirectProject(project) {
-    // On regarde toutes les langues préférées de l'utilisateur
+function redirectProject(event, project) {
+    // Empêche la redirection HTML par défaut pour exécuter la logique de détection de langue
+    if (event) {
+        event.preventDefault();
+    }
+
     const languages = navigator.languages || [navigator.language || navigator.userLanguage];
     
-    // On vérifie si le français est présent n'importe où dans la liste
     const hasFrench = languages.some(lang => lang.toLowerCase().startsWith('fr'));
-    
-    // On ne redirige vers l'anglais QUE si le français n'est pas là 
-    // ET que l'anglais est présent.
     const hasEnglish = languages.some(lang => lang.toLowerCase().startsWith('en'));
     const shouldGoToEn = !hasFrench && hasEnglish;
 
