@@ -57,14 +57,13 @@
         .brand-group {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 1rem;
         }
 
-        /* Logo préservé sans compression (325x96 d'origine) */
+        /* Logo version ORDINATEUR (Agrandi à 64px) */
         .logo img {
             max-width: 100%;
-            height: auto;
-            max-height: 96px;
+            height: 64px;
             width: auto;
             display: block;
             object-fit: contain;
@@ -75,21 +74,22 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            height: 64px; /* Égal à la nouvelle hauteur du logo PC */
             border-left: 2px solid var(--accent-turquoise);
             padding-left: 0.8rem;
             line-height: 1.25;
         }
 
         .header-location-tag {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary-blue);
             white-space: nowrap;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
 
         .header-phone-link {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: var(--action-orange);
             text-decoration: none;
@@ -224,17 +224,20 @@
         }
 
         .btn-zone {
-            background-color: transparent;
-            color: white;
-            border: 2px solid white;
-            cursor: pointer;
-        }
+    background-color: rgba(255, 255, 255, 0.70); /* Fond blanc opaque à 70% */
+    color: var(--primary-blue);                   /* Texte bleu pour un meilleur contraste sur fond blanc */
+    border: 1.5px solid rgba(255, 255, 255, 0.9);  /* Bordure blanche bien définie */
+    cursor: pointer;
+    backdrop-filter: blur(12px);                  /* Flou renforcé */
+    -webkit-backdrop-filter: blur(12px);          /* Compatibilité Safari / iOS */
+}
 
-        .btn-zone:hover {
-            background-color: white;
-            color: var(--primary-blue);
-            transform: translateY(-2px);
-        }
+.btn-zone:hover {
+    background-color: rgba(255, 255, 255, 0.88); /* Encore plus blanc au survol */
+    color: var(--primary-blue);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+}
 
         /* Section Contenu Principal */
         .main-content {
@@ -436,43 +439,43 @@
         /* Responsive Mobile */
         @media (max-width: 900px) {
             .header-container {
-        position: relative;
-        padding: 0.6rem 1rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* 👈 Garantit que le hamburger reste calé à droite */
-    }
+                position: relative;
+                padding: 0.6rem 1rem;
+                justify-content: space-between;
+            }
 
-    .brand-group {
-        gap: 0.5rem;
-        max-width: calc(100% - 40px); /* 👈 Marge de sécurité pour laisser la place au hamburger */
-    }
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px); /* Sécurité pour le bouton hamburger */
+            }
 
-    /* Logo réduit et fluide pour mobile */
-    .logo img {
-        max-height: 42px; 
-    }
+            /* Logo version MOBILE (Légèrement agrandi à 46px) */
+            .logo img {
+                height: 46px;
+                width: auto;
+            }
 
-    /* Textes réduits */
-    .header-info-block {
-        padding-left: 0.5rem;
-    }
+            /* Adaptation des textes d'en-tête sur mobile */
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
 
-    .header-location-tag {
-        font-size: 0.68rem;
-        margin-bottom: 2px;
-    }
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
 
-    .header-phone-link {
-        font-size: 0.72rem;
-    }
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
 
-    /* Ajustement précis du bouton Hamburger */
-    .hamburger {
-        display: flex;
-        margin-left: auto; /* 👈 Pousse le hamburger au bout à droite */
-        align-self: center; /* 👈 Le centre parfaitement sur la hauteur */
-    }
+            /* Bouton Hamburger */
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
 
             /* Menu déroulant mobile */
             nav ul {
