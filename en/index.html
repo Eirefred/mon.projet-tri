@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 
+
     <meta charset="UTF-8">
     <meta name="description" content="Discover triathlon across Quebec with mon Projet Tri (my Tri Project). Non-profit organization offering mentorship, resources, and simplified access to the sport.">
 
@@ -12,16 +13,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>mon Projet Tri | Triathlon Organization in Quebec</title>
 
+    <meta property="og:title" content="Triathlon Coaching & Resources in Quebec | mon Projet Tri" />
+    <meta property="og:description" content="Non-profit organization offering triathlon mentorship, club matching, and free resources across Quebec." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mon.projet-tri.org/en/index.html" />
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="en_CA">
     <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="canonical" href="https://mon.projet-tri.org/en/">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
 
-    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
-    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
-    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
+
+<link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
+<link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
+<link rel="alternate" hreflang="x-default" href="https://www.projet-tri.org/" />
 
     <!-- Flatpickr styles for a nice Quebec calendar -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -888,18 +897,35 @@
         }
 
     </style>
+
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "name": "Triathlon Coaching - mon Projet Tri (my Tri Project)",
-      "description": "Personalized training programs and mentorship for runners in Quebec.",
-      "provider": {
-        "@type": "LocalBusiness",
-        "name": "mon Projet Tri (my Tri Project)"
-      }
-    }
-    </script>
+{
+  "@context": "https://schema.org",
+  "@type": "SportsOrganization",
+  "name": "mon Projet Tri",
+  "alternateName": "my Tri Project",
+  "url": "https://mon.projet-tri.org/en/index.html",
+  "logo": "https://mon.projet-tri.org/MPT_New_logo_blue.png",
+  "description": "Non-profit organization promoting triathlon accessibility in Quebec through coaching, club pairing, and open resources.",
+  "address": {
+    "@type": "LocalBusiness",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "areaServed": [
+    "Montreal",
+    "Quebec City",
+    "Gatineau",
+    "Sherbrooke",
+    "Trois-Rivières",
+    "Saguenay"
+  ],
+  "sameAs": [
+    "https://www.facebook.com/mon.projet.tri",
+    "https://www.youtube.com/@monProjetTri"  
+    ]
+}
+</script>
 </head>
 <body>
 
@@ -1193,11 +1219,11 @@
                         <!-- Time slots -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label><img src="../calendrier.jpg" class="icon-small" alt=""> Date option 1</label>
+                                <label><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 1</label>
                                 <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Select a date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="../horloge.jpg" class="icon-small" alt=""> Preferred time (Day 1)</label>
+                                <label><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Day 1)</label>
                                 <select name="tranche_horaire_1" id="time_1" class="form-control placeholder-style">
                                     <option value="" disabled selected hidden>Choose a time slot...</option>
                                     <option value="matin">Morning (8am - 12pm)</option>
@@ -1209,11 +1235,11 @@
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label><img src="../calendrier.jpg" class="icon-small" alt=""> Date option 2</label>
+                                <label><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 2</label>
                                 <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Select a date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="../horloge.jpg" class="icon-small" alt=""> Preferred time (Day 2)</label>
+                                <label><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Day 2)</label>
                                 <select name="tranche_horaire_2" id="time_2" class="form-control placeholder-style">
                                     <option value="" disabled selected hidden>Choose a time slot...</option>
                                     <option value="matin">Morning (8am - 12pm)</option>
