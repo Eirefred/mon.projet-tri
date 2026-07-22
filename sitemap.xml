@@ -2,83 +2,112 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <url>
-    <loc>https://mon.projet-tri.org/splash.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
+  <!-- ACCUEIL -->
   <url>
     <loc>https://mon.projet-tri.org/</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
   </url>
-
   <url>
     <loc>https://mon.projet-tri.org/en/index.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html"/>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
   </url>
 
-  <url>
-    <loc>https://mon.projet-tri.org/course.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/run.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html"/>
-  </url>
-
-  <url>
-    <loc>https://mon.projet-tri.org/en/run.html</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/run.html"/>
-  </url>
-
+  <!-- DECOUVRIR / DISCOVER -->
   <url>
     <loc>https://mon.projet-tri.org/decouvrir.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html" />
   </url>
-
   <url>
     <loc>https://mon.projet-tri.org/en/discover.html</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/discover.html" />
   </url>
 
+  <!-- AUTONOME / INDEPENDANT -->
+  <url>
+    <loc>https://mon.projet-tri.org/autonome.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/independant.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/independant.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/independant.html" />
+  </url>
+
+  <!-- ACCOMPAGNEMENT / GUIDANCE -->
+  <url>
+    <loc>https://mon.projet-tri.org/accompagnement.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/accompagnement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/guidance.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/guidance.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/accompagnement.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/guidance.html" />
+  </url>
+
+  <!-- CLUB -->
+  <url>
+    <loc>https://mon.projet-tri.org/club.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/club.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/club.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/club.html</loc>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/club.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/club.html" />
+  </url>
+
+  <!-- CALENDRIER / CALENDAR -->
   <url>
     <loc>https://mon.projet-tri.org/calendrier.html</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html" />
   </url>
-
   <url>
     <loc>https://mon.projet-tri.org/en/calendar.html</loc>
-    <lastmod>2026-03-06</lastmod>
-    <changefreq>monthly</changefreq>
+    <lastmod>2026-07-22</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html" />
   </url>
 
 </urlset>
