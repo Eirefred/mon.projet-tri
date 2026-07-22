@@ -60,12 +60,14 @@
             gap: 0.8rem;
         }
 
-        /* Logo affiché à 48px de haut max */
+        /* Logo préservé sans compression (325x96 d'origine) */
         .logo img {
             max-width: 100%;
-            height: 48px;
+            height: auto;
+            max-height: 96px;
             width: auto;
             display: block;
+            object-fit: contain;
         }
 
         /* Bloc à droite du logo (2 lignes compactes) */
@@ -73,7 +75,6 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 48px; /* Égal à la hauteur du logo */
             border-left: 2px solid var(--accent-turquoise);
             padding-left: 0.8rem;
             line-height: 1.25;
@@ -84,7 +85,7 @@
             font-weight: 600;
             color: var(--primary-blue);
             white-space: nowrap;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .header-phone-link {
@@ -124,13 +125,14 @@
             display: none;
             flex-direction: column;
             justify-content: space-around;
-            width: 30px;
-            height: 25px;
+            width: 28px;
+            height: 24px;
             background: transparent;
             border: none;
             cursor: pointer;
             padding: 0;
             z-index: 101;
+            flex-shrink: 0;
         }
 
         .hamburger span {
@@ -141,9 +143,9 @@
             transition: all 0.3s linear;
         }
 
-        /* Animation du bouton Hamburger lorsqu'il est actif (transformé en X) */
+        /* Animation du bouton Hamburger en X */
         .hamburger.active span:nth-child(1) {
-            transform: translateY(8px) rotate(45deg);
+            transform: translateY(7px) rotate(45deg);
         }
 
         .hamburger.active span:nth-child(2) {
@@ -242,7 +244,7 @@
             display: grid;
             grid-template-columns: 1fr 500px;
             gap: 2.5rem;
-            align-items: stretch; /* Les 2 colonnes gardent la même hauteur */
+            align-items: stretch;
         }
 
         .about h2, .zone-section h2 {
@@ -335,7 +337,7 @@
             border-top: 3px solid var(--accent-red);
             display: flex;
             flex-direction: column;
-            height: 100%; /* S'étire dynamiquement avec le contenu de gauche */
+            height: 100%;
         }
 
         .facebook-section h3 {
@@ -434,22 +436,47 @@
         /* Responsive Mobile */
         @media (max-width: 900px) {
             .header-container {
-                position: relative;
-            }
+        position: relative;
+        padding: 0.6rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* 👈 Garantit que le hamburger reste calé à droite */
+    }
 
-            .brand-group {
-                flex-direction: row;
-                gap: 0.8rem;
-            }
+    .brand-group {
+        gap: 0.5rem;
+        max-width: calc(100% - 40px); /* 👈 Marge de sécurité pour laisser la place au hamburger */
+    }
 
-            /* Affichage du bouton Hamburger */
-            .hamburger {
-                display: flex;
-            }
+    /* Logo réduit et fluide pour mobile */
+    .logo img {
+        max-height: 42px; 
+    }
 
-            /* Transformation du menu en déroulant mobile */
+    /* Textes réduits */
+    .header-info-block {
+        padding-left: 0.5rem;
+    }
+
+    .header-location-tag {
+        font-size: 0.68rem;
+        margin-bottom: 2px;
+    }
+
+    .header-phone-link {
+        font-size: 0.72rem;
+    }
+
+    /* Ajustement précis du bouton Hamburger */
+    .hamburger {
+        display: flex;
+        margin-left: auto; /* 👈 Pousse le hamburger au bout à droite */
+        align-self: center; /* 👈 Le centre parfaitement sur la hauteur */
+    }
+
+            /* Menu déroulant mobile */
             nav ul {
-                display: none; /* Masqué par défaut */
+                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
@@ -457,12 +484,11 @@
                 width: 100%;
                 background-color: white;
                 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-                padding: 1rem 0;
+                padding: 0.5rem 0;
                 gap: 0;
                 border-top: 1px solid #e2e8f0;
             }
 
-            /* Affiché quand le JS ajoute la classe .active */
             nav ul.active {
                 display: flex;
             }
