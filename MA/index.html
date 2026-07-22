@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matthieu Artisan | Plomberie & Chauffage</title>
-    <meta name="description" content="Entreprise de plomberie Matthieu Artisan - Dépannage, installation et rénovation.">
+    <meta name="description" content="Entreprise de plomberie Matthieu Artisan - Dépannage, installation et rénovation dans la Vallée d'Azergues et ses environs.">
     
     <style>
         /* Palette de couleurs */
@@ -53,10 +53,11 @@
             align-items: center;
         }
 
+        /* Logo affiché 2 fois plus petit (48px de haut max) */
         .logo img {
             max-width: 100%;
             height: auto;
-            max-height: 60px;
+            max-height: 48px;
             display: block;
         }
 
@@ -84,22 +85,36 @@
             background: linear-gradient(135deg, var(--primary-blue), #114b85);
             color: white;
             text-align: center;
-            padding: 4rem 1.5rem;
+            padding: 3.5rem 1.5rem;
         }
 
         .hero h1 {
             font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .location-tag {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #9cdbfb;
             margin-bottom: 1rem;
         }
 
         .hero p {
-            font-size: 1.1rem;
-            max-width: 600px;
+            font-size: 1.05rem;
+            max-width: 650px;
             margin: 0 auto 1.5rem auto;
             opacity: 0.95;
         }
 
-        /* Bouton d'action principal Orange */
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Boutons */
         .btn-call {
             display: inline-block;
             background-color: var(--action-orange);
@@ -118,17 +133,36 @@
             transform: translateY(-2px);
         }
 
+        .btn-zone {
+            display: inline-block;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-zone:hover {
+            background-color: white;
+            color: var(--primary-blue);
+        }
+
         /* Section Contenu Principal */
         .main-content {
             max-width: 1200px;
             margin: 3rem auto;
             padding: 0 1.5rem;
             display: grid;
-            grid-template-columns: 1fr 500px; /* Colonne de droite élargie à 500px */
+            grid-template-columns: 1fr 500px;
             gap: 2.5rem;
         }
 
-        .about h2 {
+        .about h2, .zone-section h2 {
             color: var(--primary-blue);
             margin-bottom: 1rem;
             font-size: 1.6rem;
@@ -143,6 +177,7 @@
         .services-list {
             list-style: none;
             margin-top: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .services-list li {
@@ -157,6 +192,54 @@
             color: var(--accent-turquoise);
             font-weight: bold;
             font-size: 1.2rem;
+        }
+
+        /* Section Zone d'intervention dans la page */
+        .zone-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .zone-container {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .zone-text {
+            flex: 1;
+        }
+
+        .zone-text ul {
+            list-style: none;
+            margin: 0.8rem 0;
+        }
+
+        .zone-text ul li {
+            position: relative;
+            padding-left: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+
+        .zone-text ul li::before {
+            content: "•";
+            color: var(--accent-red);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .zone-img {
+            max-width: 220px;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
         }
 
         /* Section Facebook Widget */
@@ -178,6 +261,65 @@
         .facebook-section iframe {
             width: 100%;
             max-width: 500px;
+        }
+
+        /* POP-UP (Modal) Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: 750px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            border-top: 5px solid var(--accent-red);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #64748b;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close-btn:hover {
+            color: var(--accent-red);
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            align-items: center;
+        }
+
+        .modal-body img {
+            width: 320px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 6px;
+            border: 1px solid #cbd5e1;
         }
 
         /* Pied de page */
@@ -217,6 +359,17 @@
             .main-content {
                 grid-template-columns: 1fr;
             }
+
+            .modal-body, .zone-container {
+                flex-direction: column-reverse;
+                text-align: left;
+            }
+
+            .modal-body img, .zone-img {
+                width: 100%;
+                max-width: 280px;
+                margin: 0 auto;
+            }
         }
     </style>
 </head>
@@ -226,7 +379,7 @@
     <header>
         <div class="header-container">
             <a href="index.html" class="logo">
-                <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" width="392" height="96">
+                <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" width="196" height="48">
             </a>
             <nav>
                 <ul>
@@ -241,31 +394,58 @@
     <!-- Présentation rapide -->
     <section class="hero">
         <h1>Plomberie & Chauffage à votre service</h1>
+        <p class="location-tag">Basé dans la Vallée d’Azergues & secteurs limitrophes</p>
         <p>Intervention rapide, installation et entretien de vos équipements sanitaires avec le savoir-faire d'un artisan local.</p>
-        <a href="tel:0478470662" class="btn-call">📞 Appeler le 04 78 470 662</a>
+        <div class="hero-buttons">
+            <a href="tel:0478470662" class="btn-call">📞 Appelez 04 78 470 662</a>
+            <button class="btn-zone" onclick="openModal()">📍 Zone de couverture</button>
+        </div>
     </section>
 
     <!-- Contenu Principal + Widget Facebook -->
     <main class="main-content">
         
-        <!-- Bloc Présentation -->
-        <article class="about">
-            <h2>Bienvenue chez Matthieu Artisan</h2>
-            <p>Fort de plusieurs années d'expérience, je mets mon expertise au service de vos projets de plomberie, de rénovation de salle de bain et de chauffage.</p>
-            <p>Que ce soit pour un dépannage en urgence ou une installation complète, je m'engage à fournir un travail soigné, respectueux des normes et de votre budget.</p>
-            
-            <ul class="services-list">
-                <li>Dépannage d'urgence & recherche de fuites</li>
-                <li>Rénovation complète de salles de bains</li>
-                <li>Installation de robinetterie et chauffe-eau</li>
-                <li>Entretien et pose de systèmes de chauffage</li>
-            </ul>
-        </article>
+        <!-- Colonne Gauche : Présentation & Carte -->
+        <div>
+            <article class="about">
+                <h2>Bienvenue chez Matthieu Artisan</h2>
+                <p>Fort de plusieurs années d'expérience, je mets mon expertise au service de vos projets de plomberie, de rénovation de salle de bain et de chauffage.</p>
+                <p>Que ce soit pour un dépannage en urgence ou une installation complète, je m'engage à fournir un travail soigné, respectueux des normes et de votre budget.</p>
+                
+                <ul class="services-list">
+                    <li>Dépannage d'urgence & recherche de fuites</li>
+                    <li>Rénovation complète de salles de bains</li>
+                    <li>Installation de robinetterie et chauffe-eau</li>
+                    <li>Entretien et pose de systèmes de chauffage</li>
+                </ul>
+            </article>
 
-        <!-- Bloc Flux Facebook élargi (Version iframe directe) -->
+            <!-- Bloc Zone d'intervention direct -->
+            <section class="zone-card">
+                <h2>Zone d'intervention & Secteur</h2>
+                <p>Basés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous intervenons dans un secteur encadré par :</p>
+                
+                <div class="zone-container">
+                    <div class="zone-text">
+                        <ul>
+                            <li><strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
+                            <li><strong>Villefranche-sur-Saône</strong> & le pays des Pierres Dorées</li>
+                            <li><strong>L'Arbresle</strong>, l'Ouest Lyonnais / Porte de Lyon</li>
+                            <li><strong>Tarare</strong></li>
+                            <li><strong>Amplepuis</strong> et jusqu’à <strong>Chauffailles</strong></li>
+                        </ul>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #475569;">
+                            <em>Pour les <strong>poêles de masse</strong> et <strong>missions d'expertise</strong>, nous intervenons également plus loin (Auvergne, Isère...).</em>
+                        </p>
+                    </div>
+                    <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention Matthieu Artisan" class="zone-img" width="382" height="433">
+                </div>
+            </section>
+        </div>
+
+        <!-- Colonne Droite : Bloc Flux Facebook -->
         <aside class="facebook-section">
             <h3>Suivez notre actualité</h3>
-            
             <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false" 
                     height="500" 
                     style="border:none; overflow:hidden; border-radius:6px;" 
@@ -278,11 +458,53 @@
 
     </main>
 
+    <!-- FENÊTRE POP-UP (MODALE) -->
+    <div id="zoneModal" class="modal" onclick="closeModalOnOuterClick(event)">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 style="color: var(--primary-blue);">Zone d'intervention globale</h2>
+            <p>Situés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous ne nous limitons pas à la commune et intervenons sur un large secteur :</p>
+            
+            <div class="modal-body">
+                <div>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: 0.5rem;">• <strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Villefranche-sur-Saône</strong> & les Pierres Dorées</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>L'Arbresle</strong> & l'Ouest Lyonnais</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Tarare</strong></li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Amplepuis</strong> et secteur <strong>Chauffailles</strong></li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; background: #f1f5f9; padding: 0.8rem; border-radius: 6px;">
+                        🔥 <strong>Projets spécifiques :</strong> Nous nous déplaçons bien au-delà (Auvergne, Isère...) pour l'installation de <strong>poêles de masse</strong> et les <strong>missions d’expertises</strong> !
+                    </p>
+                </div>
+                <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention" width="382" height="433">
+            </div>
+        </div>
+    </div>
+
     <!-- Pied de page -->
     <footer>
         <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
         <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
     </footer>
+
+    <!-- Script Pop-Up -->
+    <script>
+        function openModal() {
+            document.getElementById('zoneModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('zoneModal').style.display = 'none';
+        }
+
+        function closeModalOnOuterClick(event) {
+            if (event.target.id === 'zoneModal') {
+                closeModal();
+            }
+        }
+    </script>
 
 </body>
 </html>
