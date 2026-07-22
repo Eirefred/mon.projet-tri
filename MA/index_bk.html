@@ -60,39 +60,13 @@
             gap: 1rem;
         }
 
-        /* --- LOGO : TAILLE D'ORIGINE DE LA PREMIÈRE IMAGE CONSERVÉE --- */
-        .logo {
-            position: relative;
-            display: inline-block;
-            flex-shrink: 0;
-        }
-
-        /* Image 1 (De référence : définit la taille naturelle) */
-        .logo img.logo-ref {
-            display: block;
-            height: 64px;       /* Hauteur exacte PC d'origine */
-            width: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        /* Image 2 (Superposée, ajustée à la hauteur de la référence) */
-        .logo img.logo-fit {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%); /* Centré horizontalement */
-            height: 100%;
-            width: auto;
+        /* Logo version ORDINATEUR (Agrandi à 64px) */
+        .logo img {
             max-width: 100%;
+            height: 64px;
+            width: auto;
+            display: block;
             object-fit: contain;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        /* Affichage au changement */
-        .logo img.active {
-            opacity: 1;
         }
 
         /* Bloc à droite du logo (2 lignes compactes) */
@@ -100,7 +74,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            height: 64px;
+            height: 64px; /* Égal à la nouvelle hauteur du logo PC */
             border-left: 2px solid var(--accent-turquoise);
             padding-left: 0.8rem;
             line-height: 1.25;
@@ -452,7 +426,7 @@
             bottom: 20px;
             right: 20px;
             z-index: 2000;
-            background-color: transparent;
+            background-color: transparent; /* Fond transparent */
             color: white;
             width: 45px;
             height: 45px;
@@ -471,7 +445,7 @@
         #backToTop svg {
             width: 24px;
             height: 24px;
-            fill: #000000;
+            fill: #000000; /* Flèche noire */
         }
 
         /* Pied de page */
@@ -508,9 +482,10 @@
                 max-width: calc(100% - 40px);
             }
 
-            /* Logo version MOBILE (Hauteur d'origine mobile 46px) */
-            .logo img.logo-ref {
+            /* Logo version MOBILE */
+            .logo img {
                 height: 46px;
+                width: auto;
             }
 
             /* Adaptation des textes d'en-tête sur mobile */
@@ -592,11 +567,8 @@
     <header>
         <div class="header-container">
             <div class="brand-group">
-                <a href="index.html" class="logo" id="logo-slider">
-                    <!-- Logo 1 (Champs de référence pour la structure & la taille) -->
-                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" class="logo-ref active" width="325" height="96">
-                    <!-- Logo 2 (S'adapte strictement à la hauteur imprimée par le premier) -->
-                    <img src="matthieu-artisan2.png" alt="Matthieu Artisan - Plomberie Logo 2" class="logo-fit" width="1140" height="449">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" width="325" height="96">
                 </a>
                 <div class="header-info-block">
                     <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
@@ -731,18 +703,8 @@
         <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
     </footer>
 
-    <!-- Scripts Pop-Up, Hamburger, BackToTop & Alternance Logo -->
+    <!-- Scripts Pop-Up, Hamburger & BackToTop -->
     <script>
-        /* Alternance fluide des logos toutes les 5 secondes */
-        const logoImages = document.querySelectorAll('#logo-slider img');
-        let currentLogoIndex = 0;
-
-        setInterval(() => {
-            logoImages[currentLogoIndex].classList.remove('active');
-            currentLogoIndex = (currentLogoIndex + 1) % logoImages.length;
-            logoImages[currentLogoIndex].classList.add('active');
-        }, 5000);
-
         /* Gestion Pop-Up */
         function openModal() {
             document.getElementById('zoneModal').style.display = 'flex';
@@ -779,6 +741,7 @@
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener('scroll', function() {
+            // S'affiche sur mobile (<= 834px) et après 300px de scroll
             if (window.innerWidth <= 834) {
                 if (window.pageYOffset > 300) {
                     backToTopBtn.classList.add("visible");
