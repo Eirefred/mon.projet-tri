@@ -161,8 +161,8 @@
             white-space: nowrap !important;
         }
 
-        /* 3. On DESKTOP (screen > 768px): distributes tabs evenly */
-        @media (min-width: 769px) {
+        /* 3. On DESKTOP (screen > 834px): distributes tabs evenly */
+        @media (min-width: 835px) {
             .browser-tabs-container {
                 overflow-x: hidden !important;
             }
@@ -570,7 +570,7 @@
             padding-left: 24px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 834px) {
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .dropdown-menu {
@@ -621,7 +621,7 @@
             80% { transform: translateX(2px); }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 834px) {
             .browser-tabs-container.animate-bounce {
                 animation: bounceLeftRight 1.2s ease-in-out;
             }
@@ -690,7 +690,7 @@
             overflow: hidden;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 834px) {
             .browser-tabs-wrapper {
                 position: relative;
             }
@@ -1539,7 +1539,7 @@
         if (tabsContainer) {
             const observer = new IntersectionObserver((entries, observerInstance) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting && window.innerWidth <= 768) {
+                    if (entry.isIntersecting && window.innerWidth <= 834) {
                         tabsContainer.classList.add('animate-bounce');
                         observerInstance.unobserve(entry.target);
                     }

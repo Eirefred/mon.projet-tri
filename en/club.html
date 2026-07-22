@@ -253,7 +253,7 @@
             padding-left: 24px;
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 834px) {
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .pros-cons-container { grid-template-columns: 1fr; }
@@ -481,7 +481,7 @@
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 768 && window.scrollY > 300) {
+            if (window.innerWidth <= 834 && window.scrollY > 300) {
                 backToTopBtn.classList.add("visible");
             } else {
                 backToTopBtn.classList.remove("visible");
