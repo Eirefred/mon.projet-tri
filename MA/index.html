@@ -212,36 +212,36 @@
         }
 
         /* Bouton Appeler avec bordure blanche fine */
-.btn-call {
-    background-color: var(--action-orange);
-    color: white;
-    border: 1.5px solid rgba(255, 255, 255, 0.9); /* Même bordure blanche que le bouton zone */
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
-}
+        .btn-call {
+            background-color: var(--action-orange);
+            color: white;
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+        }
 
-.btn-call:hover {
-    background-color: var(--orange-hover);
-    border-color: #ffffff;
-    transform: translateY(-2px);
-}
+        .btn-call:hover {
+            background-color: var(--orange-hover);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
 
-/* Bouton Zone avec flou opaque */
-.btn-zone {
-    background-color: rgba(255, 255, 255, 0.70);
-    color: var(--primary-blue);
-    border: 1.5px solid rgba(255, 255, 255, 0.9); /* Même bordure blanche */
-    cursor: pointer;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-}
+        /* Bouton Zone avec flou opaque */
+        .btn-zone {
+            background-color: rgba(255, 255, 255, 0.70);
+            color: var(--primary-blue);
+            border: 1.5px solid rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
 
-.btn-zone:hover {
-    background-color: rgba(255, 255, 255, 0.88);
-    color: var(--primary-blue);
-    border-color: #ffffff;
-    transform: translateY(-2px);
-}
+        .btn-zone:hover {
+            background-color: rgba(255, 255, 255, 0.88);
+            color: var(--primary-blue);
+            border-color: #ffffff;
+            transform: translateY(-2px);
+        }
 
         /* Section Contenu Principal */
         .main-content {
@@ -419,6 +419,35 @@
             border: 1px solid #cbd5e1;
         }
 
+        /* --- STYLES BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--primary-blue); /* Couleur ajustée au thème */
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
+
         /* Pied de page */
         footer {
             background-color: var(--primary-blue);
@@ -450,10 +479,10 @@
 
             .brand-group {
                 gap: 0.5rem;
-                max-width: calc(100% - 40px); /* Sécurité pour le bouton hamburger */
+                max-width: calc(100% - 40px);
             }
 
-            /* Logo version MOBILE (Légèrement agrandi à 46px) */
+            /* Logo version MOBILE */
             .logo img {
                 height: 46px;
                 width: auto;
@@ -661,13 +690,20 @@
         </div>
     </div>
 
+    <!-- BOUTON BACK TO TOP -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
     <!-- Pied de page -->
     <footer>
         <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
         <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
     </footer>
 
-    <!-- Scripts Pop-Up & Hamburger -->
+    <!-- Scripts Pop-Up, Hamburger & BackToTop -->
     <script>
         /* Gestion Pop-Up */
         function openModal() {
@@ -700,6 +736,24 @@
                 navMenu.classList.remove('active');
             });
         });
+
+        /* Gestion Back to Top */
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            // S'affiche sur mobile (<= 834px) et après 300px de scroll
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
     </script>
 
 </body>
