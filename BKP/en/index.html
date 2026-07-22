@@ -1,39 +1,29 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 
     <meta charset="UTF-8">
-    <meta name="description" content="Découvrez le triathlon partout au Québec avec mon Projet Tri. Organisme sans but lucratif offrant du mentorat, des ressources et un accès simplifié au sport.">
+    <meta name="description" content="Discover triathlon across Quebec with mon Projet Tri (my Tri Project). Non-profit organization offering mentorship, resources, and simplified access to the sport.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&display=swap" rel="stylesheet">
 
-        <title>mon Projet Tri | Organisme de Triathlon au Québec</title>
-
-<!-- Open Graph complet -->
-<meta property="og:type" content="website">
-<meta property="og:title" content="mon Projet Tri | Organisme de Triathlon au Québec">
-<meta property="og:description" content="Découvrez le triathlon partout au Québec avec mon Projet Tri. Organisme sans but lucratif offrant du mentorat, des ressources et un accès simplifié au sport.">
-<meta property="og:url" content="https://mon.projet-tri.org/">
-<meta property="og:site_name" content="mon Projet Tri">
-<meta property="og:locale" content="fr_CA">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mon Projet Tri | Triathlon Organization in Quebec</title>
 
     <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:see_also" content="https://www.youtube.com/@monProjetTri" />
     
-    <link rel="canonical" href="https://mon.projet-tri.org/">
     <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="../favicon.png">
 
     <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/index.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/index.html" />
 
-    <!-- Styles Flatpickr pour un beau calendrier québécois -->
+    <!-- Flatpickr styles for a nice Quebec calendar -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <style>
@@ -52,7 +42,7 @@
         }
         
 
-        /* --- CORRECTION ICI : Le body redevient blanc pour laisser les ellipses découper sur du blanc --- */
+        /* --- CORRECTION HERE: The body becomes white again to let the ellipses cut against white --- */
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             margin: 0;
@@ -61,11 +51,11 @@
             background: #ffffff; 
             overflow-x: hidden;
         }
-        /* Empêche le menu sticky de masquer le début des sections lors d'un clic sur une ancre */
+        /* Prevents sticky menu from hiding the beginning of sections when clicking an anchor */
 #athlètes, 
-#partenaires, 
+#partners, 
 #contact {
-    scroll-margin-top: 30px;
+    scroll-margin-top: 20px;
 }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
@@ -82,7 +72,7 @@
         }
 
         #backToTop {
-    display: none; /* Caché par défaut sur PC */
+    display: none; /* Hidden by default on desktop */
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -154,12 +144,12 @@
 
 
         /* --- HERO & WRAPPER --- */
-        /* CORRECTION : Ce wrapper englobe le Hero pour que le fond de l'ellipse coupée soit gris (#f1f5f9) */
+        /* CORRECTION: This wrapper encloses the Hero so that the background of the cut ellipse is gray (#f1f5f9) */
         .hero-wrapper {
             background-color: #f1f5f9;
         }
 
-        /* --- NOUVEAU STYLE HERO AVEC VIDÉO --- */
+        /* --- NEW HERO STYLE WITH VIDEO --- */
         .hero {
             height: 85vh;
             position: relative;
@@ -172,7 +162,7 @@
             overflow: hidden;
         }
 
-        /* Conteneur de l'iframe pour masquer les bords YouTube */
+        /* Container of the iframe to hide YouTube borders */
         .video-background {
             position: absolute;
             top: 0;
@@ -180,7 +170,7 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-            pointer-events: none; /* Empêche les clics sur la vidéo */
+            pointer-events: none; /* Prevents clicks on the video */
         }
 
         .video-background iframe {
@@ -188,13 +178,13 @@
             top: 50%;
             left: 50%;
             width: 100vw;
-            height: 56.25vw; /* Ratio 16:9 */
+            height: 56.25vw; /* 16:9 ratio */
             min-height: 100vh;
-            min-width: 177.77vh; /* Ratio 16:9 */
+            min-width: 177.77vh; /* 16:9 ratio */
             transform: translate(-50%, -50%);
         }
 
-        /* Superposition sombre pour garder le texte lisible */
+        /* Dark overlay to keep text readable */
         .hero-overlay {
             position: absolute;
             top: 0;
@@ -205,7 +195,7 @@
             z-index: 2;
         }
 
-        /* Force le contenu textuel à passer au-dessus de la vidéo */
+        /* Forces text content above video */
         .hero-content {
             position: relative;
             z-index: 3;
@@ -216,12 +206,12 @@
         .hero-partner p { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
         .partner-logo { height: 40px;}
 
-        /* --- PRÉSENTATION (ATHLÈTES) --- */
+        /* --- PRESENTATION (ATHLETES) --- */
         .presentation { 
             padding: 40px 0 140px 0; 
             background: #f1f5f9; 
             text-align: center; 
-            /* CORRECTION : L'ellipse découpe le bas de la section grise sur le blanc de la section suivante */
+            /* CORRECTION: The ellipse cuts the bottom of the gray section on the white of the following section */
             clip-path: ellipse(150% 100% at 50% 0%);
         }
         .presentation h2 { 
@@ -232,7 +222,7 @@
             text-transform: uppercase; 
         }
 
-        /* --- NOUVEAUX STYLES : MISE EN VALEUR DE L'ENCADRÉ DES PROFILS ATHLÈTES --- */
+        /* --- NEW STYLES: HIGHLIGHTING ATHLETE PROFILES BOX --- */
         .profiles-showcase {
             background: #ffffff;
             border-radius: 30px;
@@ -262,14 +252,14 @@
             margin: 0;
         }
         
-        /* --- SECTION PARTENAIRES --- */
+        /* --- PARTNERS SECTION --- */
         .programme-section {
     background: #ffffff; 
-    padding: 50px 0 140px 0; /* Augmenté pour laisser de l'espace à l'ellipse */
+    padding: 50px 0 140px 0; /* Increased to allow room for the ellipse */
     margin-top: 0; 
     position: relative;
     z-index: 1;
-    /* Ajout de l'ellipse en bas */
+    /* Added ellipse at the bottom */
     clip-path: ellipse(150% 100% at 50% 0%); 
 }
 
@@ -387,7 +377,7 @@
             box-shadow: 0 15px 30px rgba(214, 95, 58, 0.3);
             letter-spacing: 0.5px;
         }
-        /* --- MENU DÉROULANT ATHLÈTES --- */
+        /* --- ATHLETES DROPDOWN MENU --- */
         nav ul li.has-dropdown {
             position: relative;
         }
@@ -457,27 +447,27 @@
             padding-left: 24px;
         }
 
-        /* Version Mobile sans conflit avec le bouton hamburger de home_new */
+        /* Mobile version without conflict with hamburger button from home_new */
         @media (max-width: 834px) {
 
-            /* 1. Ajustement de la section globale du haut */
+            /* 1. Adjustment of the overall top section */
     .hero, .hero-section, .welcome-section {
-        padding-top: 100px !important; /* Laisse de la place sous le menu pour éviter que le titre sorte par le haut */
+        padding-top: 100px !important; /* Leaves room under the menu to prevent title from overflowing top */
         padding-bottom: 40px !important;
-        min-height: auto !important; /* Empêche une hauteur figée trop grande sur petit écran */
+        min-height: auto !important; /* Prevents a fixed height that is too large on small screens */
     }
 
-    /* 2. Réduction du nom du site "mon Projet Tri" s'il s'agit d'un sur-titre */
+    /* 2. Reduction of site name "mon Projet Tri" if it is a subtitle/overtitle */
     .hero h2, .hero .subtitle, .welcome-section h2 {
-        font-size: 1.2rem !important; /* Taille adaptée pour mobile */
+        font-size: 1.2rem !important; /* Adapted size for mobile */
         margin-top: 0 !important;
         margin-bottom: 10px !important;
     }
 
-    /* 3. Réduction du texte principal "Accessibilité du Triathlon" */
+    /* 3. Reduction of main text "Triathlon Accessibility" */
     .hero h1, .hero-section h1, .welcome-section h1 {
-        font-size: 1.8rem !important; /* Réduit la taille pour qu'il ne déborde pas */
-        line-height: 1.3 !important; /* Évite que les lignes de texte se chevauchent */
+        font-size: 1.8rem !important; /* Reduces size so it doesn't overflow */
+        line-height: 1.3 !important; /* Prevents text lines from overlapping */
         margin-bottom: 15px !important;
     }
             .dropdown-menu {
@@ -485,7 +475,7 @@
                 position: static;
                 transform: none;
                 box-shadow: none;
-                background-color: transparent; /* Suppression du fond gris */
+                background-color: transparent; /* Removes gray background */
                 margin: 5px auto 0 auto;
                 border-radius: 0;
                 border: none;
@@ -499,11 +489,11 @@
             .dropdown-menu a {
                 text-align: center;
                 padding: 10px 15px;
-                font-size: 0.95rem; /* Aligné sur la taille de vos autres liens mobiles */
+                font-size: 0.95rem; /* Aligned with your other mobile links size */
             }
             .dropdown-menu a:hover {
                 padding-left: 15px;
-                background-color: transparent; /* Optionnel : supprime aussi le gris au clic/survol mobile */
+                background-color: transparent; /* Optional: also removes gray on mobile click/hover */
                 color: #D65F3A !important;
             }
 
@@ -514,8 +504,8 @@
             }
             
             .flow-step {
-        padding: 22px 18px !important; /* Augmente l'espace interne global de la carte */
-        margin-bottom: 25px !important; /* Augmente l'espace entre les cartes sur mobile */
+        padding: 22px 18px !important; /* Increases overall card padding */
+        margin-bottom: 25px !important; /* Increases space between cards on mobile */
     }
 
     .flow-step p {
@@ -525,10 +515,10 @@
 
     .step-number {
         font-size: 1.1rem !important; 
-        margin-bottom: 15px !important; /* Augmente spécifiquement l'espace sous le titre encadré */
+        margin-bottom: 15px !important; /* Specifically increases space below boxed title */
     }
 
-            /* Adaptation mobile de l'encadré des profils */
+            /* Mobile adaptation of profiles box */
             .profiles-showcase {
                 padding: 30px 15px;
                 background: transparent;
@@ -548,7 +538,7 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        /* --- FORMULAIRE --- */
+        /* --- FORM --- */
         .form-row {
             display: flex;
             gap: 20px;
@@ -692,17 +682,17 @@
         }
         .card-button:hover { background: var(--primary-gradient); transform: scale(1.05); }
 
-        /* Réduit l'espace sous la phrase entre guillemets */
+        /* Reduces space under quote phrase */
 .flow-step em {
     margin-bottom: 5px !important;
 }
 
-/* Réduit l'espace sous le texte principal */
+/* Reduces space under main text */
 .flow-step p {
     margin-bottom: 8px !important;
 }
 
-/* Force le bouton "Découvrir" à se rapprocher du texte */
+/* Forces "Discover" button closer to text */
 .flow-step div[style*="margin-top: 20px"] {
     margin-top: 8px !important;
 }
@@ -900,25 +890,15 @@
     </style>
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@type": "SportsOrganization",
-  "name": "mon Projet Tri",
-  "url": "https://www.projet-tri.org/",
-  "logo": "https://www.projet-tri.org/MPT_New_logo_white.png",
-  "description": "Organisme à but non lucratif (OSBL) dédié à la promotion et l'accessibilité du triathlon au Québec, offrant également des services de coaching sportif.",
-  "knowsAbout": [
-    "Triathlon",
-    "Coaching de triathlon",
-    "Accessibilité du sport",
-    "Course à pied",
-    "Cyclisme",
-    "Natation"
-  ],
-  "sameAs": [
-    "https://www.facebook.com/mon.projet.tri",
-    "https://www.youtube.com/@monProjetTri"
-  ]
-}
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Triathlon Coaching - mon Projet Tri (my Tri Project)",
+      "description": "Personalized training programs and mentorship for runners in Quebec.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "mon Projet Tri (my Tri Project)"
+      }
+    }
     </script>
 </head>
 <body>
@@ -927,10 +907,10 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="mon Projet Tri - Coaching et mentorat de triathlon au Québec"></a>
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
                 </div>
                 <div class="region-stack">
-                    <span class="region-mention">Partout au Québec</span>
+                    <span class="region-mention">Across Quebec</span>
                 </div>
             </div>
             <nav>
@@ -942,215 +922,214 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li><a href="https://mon.projet-tri.org/en/discover.html" target="_blank">About Us</a></li> 
                     <li class="has-dropdown">
-                        <a href="#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <a href="#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="autonome.html">Autonome</a></li>
-                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
                             <li><a href="club.html">Club</a></li>
                         </ul>
                     </li>                    
-                    <li><a href="#partenaires">Partenaires</a></li>
+                    <li><a href="#partners">Partners</a></li>
                     <li><a href="#contact">Contact</a></li>
-                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
+                    <li><a href="https://mon.projet-tri.org/en/calendar.html" target="_blank">Calendar'26</a></li> 
                     <li class="lang-switcher">
-                        <span class="lang-label">FR</span>
+                        <span class="lang-label" style="color: #ccc;">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/index.html'">
+                            <input type="checkbox" checked onclick="window.location.href='../index.html'">
                             <span class="slider"></span>
                         </label>
-                        <span class="lang-label" style="color: #ccc;">EN</span>
+                        <span class="lang-label">EN</span>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- WRAPPER : Il fournit la couleur de fond #f1f5f9 à l'ellipse coupée de la section Hero -->
+    <!-- WRAPPER : Provides background color #f1f5f9 to the cut ellipse of the Hero section -->
     <div class="hero-wrapper">
         <section class="hero">
-            <!-- Conteneur de la vidéo YouTube en arrière-plan -->
+            <!-- Background YouTube Video Container -->
             <div class="video-background">
-                <!-- Identifiant de la nouvelle vidéo : NsGEj3Itu14 -->
+                <!-- New video ID: NsGEj3Itu14 -->
                 <iframe src="https://www.youtube-nocookie.com/embed/NsGEj3Itu14?autoplay=1&mute=1&loop=1&playlist=NsGEj3Itu14&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" 
-        loading="lazy"
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
         allowfullscreen>
 </iframe>
             </div>
             
-            <!-- Voile sombre pour la lisibilité -->
+            <!-- Dark overlay for readability -->
             <div class="hero-overlay"></div>
 
-            <!-- Le bloc reste remonté vers le haut -->
+            <!-- Block remains moved upwards -->
             <div class="hero-content" style="margin-top: -70px;">
                 <div style="margin-bottom: 35px;">
                     <span style="font-family: 'Oooh Baby', cursive; font-size: 2.2rem; color: #ffffff; vertical-align: baseline; margin-right: 4px;">mon</span>
                     <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #ffffff; font-size: 1.6rem; letter-spacing: 0.5px;">Projet Tri</span>
-                    <span style="font-size: 1.1rem; opacity: 0.85; display: block; margin-top: -10px;">L'organisme sans but lucratif qui vous aide à vous lancer.</span>
+                    <span style="font-size: 1.1rem; opacity: 0.85; display: block; margin-top: -10px;">The non-profit organization helping you get started.</span>
                 </div>
 
-                <!-- ESPACE AUGMENTÉ À 100px POUR BASSER LE RESTE DU CONTENU -->
+                <!-- SPACE INCREASED TO 100px TO LOWER REST OF CONTENT -->
                 <h1 style="font-size: 3rem; margin-top: 70px; margin-bottom: 35px;">
-                    <span style="font-size: 0.7em; display: block;">Promouvoir l'accessibilité du</span>
-                    <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2em;">Triathlon</span><br>au Québec.
-                </h1>
-                <p class="subtitle-intro" style="margin-top: 50px; margin-bottom: 15px;">
-                    Notre <span style="color: #D65F3A; font-weight: bold;">aide</span> est <span style="color: #D65F3A; font-weight: bold;">gratuite</span>, et nous encadrons les tarifs de coaching.
+    <span style="font-size: 0.7em; display: block;">Promoting Accessibility to</span>
+    <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-size: 2em;">Triathlon</span><br>in Quebec.
+</h1>
+                <p class="subtitle-intro" style="margin-top: 50px; margin-bottom: 12px;">
+                    Our <span style="color: #D65F3A; font-weight: bold;">help</span> is <span style="color: #D65F3A; font-weight: bold;">free</span>, and we cap coaching rates.
                 </p>
 
-                <!-- BOUTON AVEC EFFET DE SURVOL (HOVER) INTÉGRÉ -->
+                <!-- BUTTON WITH INTEGRATED HOVER EFFECT -->
                 <a href="#athlètes" 
                    onmouseover="this.style.transform='scale(1.05)'; this.style.background='var(--primary-gradient)';" 
                    onmouseout="this.style.transform='scale(1)'; this.style.background='var(--secondary-gradient)';" 
                    style="display: inline-block; background: var(--secondary-gradient); color: white; padding: 14px 40px; border-radius: 50px; text-decoration: none; font-weight: 900; text-transform: uppercase; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
-                    Découvrir
+                    Discover
                 </a>
             </div>
         </section>
     </div>
 
-    <!-- SECTION ATHLÈTES -->
+    <!-- ATHLETES SECTION -->
     <section id="athlètes" class="presentation">
         <div class="container">
-            <h2>Pour les Athlètes</h2>
+            <h2>For Athletes</h2>
             <p style="font-size: 1.2rem; color: var(--text-light); max-width: 800px; margin: 0 auto 50px auto; line-height: 1.5;">
-                Notre mission est de <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">développer le triathlon au Québec</span>. Que vous soyez un sportif <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">autodidacte</span>, que vous souhaitiez un <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">encadrement</span> ou que vous vouliez <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">rejoindre un club</span>, nous sommes là pour vous guider, <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">gratuitement</span>.
+                Our mission is to <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">grow triathlon in Quebec</span>. Whether you are a <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">independant</span> athlete, looking for <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">coaching</span>, or wanting to <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">join a club</span>, we are here to guide you, <span style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: bold;">free of charge</span>.
             </p>
             
-            <!-- AJOUT : Encadré de mise en valeur global autour des types d'accompagnement -->
+            <!-- ADDITION: Global showcase box around support types -->
             <div class="profiles-showcase">
                 <div class="showcase-header">
-                    <h3>Nos types de ressources à votre disposition</h3>
-                    <p>Trouvez le type de ressource en fonction de votre besoin.</p>
+                    <h3>Our types of resources at your disposal</h3>
+                    <p>Find the type of resource tailored to your needs.</p>
                 </div>
                 
                 <div class="decision-flow">
-                    <a href="autonome.html" class="flow-step">
-                        <div class="step-number step-autonome">Autonome</div>
-                        <em>"Je veux me lancer seul dans le triathlon"</em>
+                    <a href="independant.html" class="flow-step">
+                        <div class="step-number step-autonome">Self-Guided</div>
+                        <em>"I want to get into triathlon on my own"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
-                            Accédez à notre <span style="font-weight: bold; color: #004c97;">boîte à outils complète</span> pour débuter à votre rythme : présentation du triathlon, <span style="font-weight: bold; color: #004c97;">règlements officiels</span>, <span style="font-weight: bold; color: #004c97;">calendriers de la saison</span>, ainsi qu'une sélection de <span style="font-weight: bold; color: #004c97;">lieux sécurisés</span> pour vous entraîner en eau libre, à vélo ou à la course au Québec, et bien plus! Vous pouvez même y partager vos propres bons plans !
+                            Access our <span style="font-weight: bold; color: #004c97;">complete toolbox</span> to start at your own pace: triathlon introduction, <span style="font-weight: bold; color: #004c97;">official regulations</span>, <span style="font-weight: bold; color: #004c97;">season schedules</span>, as well as a selection of <span style="font-weight: bold; color: #004c97;">safe locations</span> to train in open water, cycling, or running in Quebec, and much more! You can even share your own tips!
                         </p>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                            <span>Découvrir</span>
+                            <span>Discover</span>
                             <div class="step-arrow">➔</div>
                         </div>
                     </a>
 
-                    <!-- CARTE ACCOMPAGNEMENT AVEC BADGE POPULAIRE ET BORDURE D'ORIGINE -->
-                    <a href="accompagnement.html" class="flow-step" style="position: relative;">
-                        <!-- Badge Populaire -->
+                    <!-- SUPPORT CARD WITH POPULAR BADGE AND ORIGINAL BORDER -->
+                    <a href="guidance.html" class="flow-step" style="position: relative;">
+                        <!-- Popular Badge -->
                         <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-gradient); color: white; padding: 4px 14px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
-                            Populaire
+                            Popular
                         </div>
                         
-                        <div class="step-number step-accompagnement">Accompagnement</div>
-                        <em>"Je veux un suivi personnalisé"</em>
+                        <div class="step-number step-accompagnement">Support</div>
+                        <em>"I want personalized guidance"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
-                            Nous pouvons vous prendre par la main, ou simplement vous guider quand vous en ressentez le besoin. Pour cela, nous vous jumelons avec un <span style="font-weight: bold; color: #004c97;">coach</span> qui sera avant tout un <span style="font-weight: bold; color: #004c97;">guide dédié</span> pour prendre soin de vous dans votre parcours triathlon. Nous sélectionnons le bon profil et veillons à offrir des <span style="font-weight: bold; color: #004c97;">tarifs encadrés</span>.
+                            We can guide you every step of the way or simply assist you when needed. To do so, we match you with a <span style="font-weight: bold; color: #004c97;">coach</span> who will primarily act as a <span style="font-weight: bold; color: #004c97;">dedicated guide</span> to support your triathlon journey. We select the right profile and ensure <span style="font-weight: bold; color: #004c97;">capped rates</span>.
                         </p>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                            <span>Découvrir</span>
+                            <span>Discover</span>
                             <div class="step-arrow">➔</div>
                         </div>
                     </a>
 
                     <a href="club.html" class="flow-step">
                         <div class="step-number step-club">Club</div>
-                        <em>"Je veux m'entraîner en groupe"</em>
+                        <em>"I want to train with a group"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
-                            Rejoindre un groupe, c'est intégrer une <span style="font-weight: bold; color: #004c97;">communauté dynamique</span> pour s'entraîner, progresser et partager une aventure humaine. Nous vous aidons à <span style="font-weight: bold; color: #004c97;">trouver un club</span> qui correspond le mieux à votre <span style="font-weight: bold; color: #004c97;">philosophie, objectifs et localisation</span>.
+                            Joining a group means becoming part of a <span style="font-weight: bold; color: #004c97;">vibrant community</span> to train, progress, and share a rewarding experience. We help you <span style="font-weight: bold; color: #004c97;">find a club</span> that best matches your <span style="font-weight: bold; color: #004c97;">philosophy, goals, and location</span>.
                         </p>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 20px; font-weight: bold; color: #004c97; font-size: 0.95rem;">
-                            <span>Découvrir</span>
+                            <span>Discover</span>
                             <div class="step-arrow">➔</div>
                         </div>
                     </a>
                 </div>
     </section>
 
-    <!-- SECTION PARTENAIRES -->
-    <section id="partenaires" class="programme-section" style="padding-bottom: 60px;"> <!-- Réduit de 140px à 60px -->
+    <!-- PARTNERS SECTION -->
+    <section id="partners" class="programme-section" style="padding-bottom: 60px;"> <!-- Reduced from 140px to 60px -->
         <div class="container">
-            <h2 style="text-align: center; color: #004c97; font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">Pour les Partenaires</h2>
-            <p style="text-align: center; font-size: 1.3rem; color: var(--text-light); margin-bottom: 50px;">Vous contribuez au dynamisme du triathlon au Québec tout en vous faisant connaître ? Allions-nous.</p>
+            <h2 style="text-align: center; color: #004c97; font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">For Partners</h2>
+            <p style="text-align: center; font-size: 1.3rem; color: var(--text-light); margin-bottom: 50px;">Do you contribute to the vitality of triathlon in Quebec while promoting your organization? Let's team up.</p>
             
             <div class="decision-flow">
                 <div class="flow-step">
-                    <div class="step-number step-autonome">Coachs & Club</div>
-                    <em>"Je gère un club" "J'entraîne des athlètes"</em>
+                    <div class="step-number step-autonome">Coaches & Clubs</div>
+                    <em>"I run a club" "I coach athletes"</em>
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        Faisons connaissance, définissons votre <span style="font-weight: bold; color: #004c97;">profil de coach</span> ou votre <span style="font-weight: bold; color: #004c97;">philosophie de club</span>. Nous allons vous <span style="font-weight: bold; color: #004c97;">connecter à des athlètes</span> qui vous correspondent.
+                        Let's connect and define your <span style="font-weight: bold; color: #004c97;">coaching profile</span> or <span style="font-weight: bold; color: #004c97;">club philosophy</span>. We will <span style="font-weight: bold; color: #004c97;">connect you with athletes</span> who fit your vision.
                     </p>
                 </div>
 
                 <div class="flow-step">
-                    <div class="step-number step-evenement">Événements</div>
-                    <em>"J'organise une course ou un triathlon"</em>
+                    <div class="step-number step-evenement">Events</div>
+                    <em>"I organize a race or triathlon"</em>
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        <span style="font-weight: bold; color: #004c97;">Dynamisez vos événements</span> de triathlon : nous prenons en charge l'<span style="font-weight: bold; color: #004c97;">accueil des athlètes débutants</span> et vous profitez d'<span style="font-weight: bold; color: #004c97;">animations exclusives</span> signées mon Projet Tri.
+                        <span style="font-weight: bold; color: #004c97;">Energize your events</span>: we manage the <span style="font-weight: bold; color: #004c97;">welcome process for beginner athletes</span>, and you benefit from <span style="font-weight: bold; color: #004c97;">exclusive activities</span> hosted by mon Projet Tri (my Tri Project).
                     </p>
                 </div>
 
                 <div class="flow-step">
-                    <div class="step-number step-accompagnement">Santé & Soins</div>
-                    <em>"Je suis thérapeute, kiné ou nutritionniste"</em>
+                    <div class="step-number step-accompagnement">Health & Care</div>
+                    <em>"I am a therapist, physio, or nutritionist"</em>
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        Devenez le <span style="font-weight: bold; color: #004c97;">praticien de référence</span> pour les triathlètes afin de les aider dans leur <span style="font-weight: bold; color: #004c97;">préparation</span>, leur <span style="font-weight: bold; color: #004c97;">récupération</span> ainsi que leurs traitements thérapeutiques.
+                        Become the <span style="font-weight: bold; color: #004c97;">go-to practitioner</span> for triathletes to assist them with their <span style="font-weight: bold; color: #004c97;">preparation</span>, <span style="font-weight: bold; color: #004c97;">recovery</span>, and therapeutic care.
                     </p>
                 </div>
 
                 <div class="flow-step">
-                    <div class="step-number step-club">Équipementiers</div>
-                    <em>"Je vends du matériel ou des produits sportifs"</em>
+                    <div class="step-number step-club">Equipment Providers</div>
+                    <em>"I sell gear or sports products"</em>
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        Vous vendez de l'équipement ou des produits pour triathlètes ? Participez à <span style="font-weight: bold; color: #004c97;">rendre le triathlon plus accessible</span> tout en vous faisant <span style="font-weight: bold; color: #004c97;">connaître</span>. Parlons-en.
+                        Do you sell equipment or products for triathletes? Help <span style="font-weight: bold; color: #004c97;">make triathlon more accessible</span> while gaining <span style="font-weight: bold; color: #004c97;">exposure</span>. Let's talk.
                     </p>
                 </div>
             </div>
 
-            <!-- margin-top réduit de 40px à 25px et suppression de la marge basse par défaut -->
+            <!-- margin-top reduced from 40px to 25px and removed default bottom margin -->
             <div class="partner-action-container" style="margin-top: 50px; margin-bottom: 0;">
-                <a href="#contact" class="btn-partner-global">Contactez-nous</a>
+                <a href="#contact" class="btn-partner-global">Contact Us</a>
             </div>
 
-            <!-- margin-top réduit de 80px à 25px et margin-bottom réduit à 0 -->
+            <!-- margin-top reduced from 80px to 25px and margin-bottom reduced to 0 -->
             <div class="info-box-glass" style="margin-top: 25px; margin-bottom: 0;">
                 <div style="font-size: 2.5rem; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));">🤝</div>
                 <p style="margin: 0; font-weight: 500; font-size: 1.15rem; color: #1e293b; line-height: 1.5;">
-                    En <span style="color: #004c97; font-weight: 800;">unissant nos forces</span>, nous créons un environnement dynamique et accessible qui encourage les sportifs à <span style="color: #D65F3A; font-weight: 800;">franchir le pas</span>, facilitant ainsi l'accueil de nouveaux passionnés au sein de la <span style="color: #D65F3A; font-weight: 800;">grande famille</span> du triathlon québécois.
+                    By <span style="color: #004c97; font-weight: 800;">joining forces</span>, we create a dynamic and accessible environment that encourages athletes to <span style="color: #D65F3A; font-weight: 800;">take the leap</span>, making it easier to welcome new enthusiasts into the <span style="color: #D65F3A; font-weight: 800;">extended family</span> of Quebec triathlon.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION CONTACT -->
+    <!-- CONTACT SECTION -->
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="contact-card" style="padding-top: 30px;">
                 <h2 style="text-align: center; font-size: 2.5rem; font-weight: 900; color: #004c97; margin-bottom: 25px;">
-                    Parlons de votre projet
+                    Let's discuss your project
                 </h2>
                 
                 <p style="text-align: center; font-size: 1.3rem; color: #5A6A7A; margin-bottom: 30px;">
-                    Vous avez un objectif en tête ? <span style="color: #D65F3A; font-weight: 700;">Discutons-en.</span>
+                    Have a goal in mind? <span style="color: #D65F3A; font-weight: 700;">Let's talk about it.</span>
                 </p>
 
-                <!-- L'attribut novalidate bloque les popups automatiques et anglais du navigateur -->
+                <!-- novalidate attribute prevents default browser popups -->
                 <form action="https://formspree.io/f/mgolvwnq" method="POST" novalidate>
                     
-                    <!-- Ligne 1 : Nom et Choix du contact -->
+                    <!-- Line 1: Name and Contact Preference -->
                     <div class="form-row">
                         <div class="form-group flex-2">
-                            <label>Nom complet</label>
-                            <input type="text" name="nom" placeholder="Votre nom" required>
+                            <label>Full Name</label>
+                            <input type="text" name="nom" placeholder="Your name" required>
                         </div>
                         
                         <div class="form-group flex-2">
-                            <label>Je préfère être contacté par :</label>
+                            <label>I prefer to be contacted by:</label>
                             <div class="radio-container-box">
                                 <label class="radio-option">
                                     <input type="radio" name="type_contact" value="message" checked onclick="toggleContactFields('message')">
@@ -1158,97 +1137,97 @@
                                 </label>
                                 <label class="radio-option">
                                     <input type="radio" name="type_contact" value="appel" onclick="toggleContactFields('appel')">
-                                    <span>Appel téléphonique gratuit</span>
+                                    <span>Free phone call</span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Ligne 2 : Profil (Toujours visible) + Courriel (Dynamique) -->
+                    <!-- Line 2: Profile (Always visible) + Email (Dynamic) -->
                     <div class="form-row">
     <div class="form-group flex-1-5" id="bloc-profil">
-        <label>Vous êtes :</label>
+        <label>You are:</label>
         <div class="radio-container-box" id="profil-box">
             <label class="radio-option">
                 <input type="radio" name="profil" value="athlete" required>
-                <span>Athlète</span>
+                <span>Athlete</span>
             </label>
             <label class="radio-option">
                 <input type="radio" name="profil" value="partenaire">
-                <span>Partenaire</span>
+                <span>Partner</span>
             </label>
         </div>
         <span id="profil-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-            Veuillez sélectionner votre profil (Athlète ou Partenaire).
+            Please select your profile (Athlete or Partner).
         </span>
     </div>
 
-                        <!-- BLOC COURRIEL : Contient le champ et le message d'erreur uniforme -->
+                        <!-- EMAIL BLOCK: Contains input and uniform error message -->
                         <div class="form-group flex-2" id="bloc-courriel">
-                            <label>Adresse courriel</label>
-                            <input type="email" id="email" name="email" placeholder="nom@exemple.com" required>
+                            <label>Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="name@example.com" required>
                             <span id="email-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-                                Veuillez entrer une adresse courriel valide (ex: nom@exemple.ca).
+                                Please enter a valid email address (e.g., name@example.ca).
                             </span>
                         </div>
                     </div>
 
-                    <!-- BLOC APPEL -->
+                    <!-- CALL BLOCK -->
                     <div id="bloc-appel" style="display: none; margin-top: 10px;">
                         <div class="form-row">
                             <div class="form-group flex-2">
-                                <label>Numéro de téléphone</label>
+                                <label>Phone Number</label>
                                 <input type="tel" id="phone" name="telephone" placeholder="( ___ ) ___-____">
                                 <span id="phone-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-                                    Veuillez entrer un numéro de téléphone valide à 10 chiffres.
+                                    Please enter a valid 10-digit phone number.
                                 </span>
                             </div>
                         </div>
                         
                         <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0 25px 0;">
                         
-                        <!-- Plages horaires -->
+                        <!-- Time slots -->
                         <div class="form-row">
                             <div class="form-group">
-                                <label><img src="calendrier.jpg" class="icon-small" alt=""> Option de date 1</label>
-                                <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Sélectionnez une date...">
+                                <label><img src="../calendrier.jpg" class="icon-small" alt=""> Date option 1</label>
+                                <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Select a date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="horloge.jpg" class="icon-small" alt=""> Préférence horaire (Jour 1)</label>
+                                <label><img src="../horloge.jpg" class="icon-small" alt=""> Preferred time (Day 1)</label>
                                 <select name="tranche_horaire_1" id="time_1" class="form-control placeholder-style">
-                                    <option value="" disabled selected hidden>Choisir une tranche horaire...</option>
-                                    <option value="matin">Le matin (8h - 12h)</option>
-                                    <option value="apres-midi">L'après-midi (12h - 17h)</option>
-                                    <option value="soir">Le soir (17h - 20h)</option>
+                                    <option value="" disabled selected hidden>Choose a time slot...</option>
+                                    <option value="matin">Morning (8am - 12pm)</option>
+                                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
+                                    <option value="soir">Evening (5pm - 8pm)</option>
                                 </select>
                             </div>
                         </div>
 
                         <div class="form-row">
                             <div class="form-group">
-                                <label><img src="calendrier.jpg" class="icon-small" alt=""> Option de date 2</label>
-                                <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Sélectionnez une date...">
+                                <label><img src="../calendrier.jpg" class="icon-small" alt=""> Date option 2</label>
+                                <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Select a date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="horloge.jpg" class="icon-small" alt=""> Préférence horaire (Jour 2)</label>
+                                <label><img src="../horloge.jpg" class="icon-small" alt=""> Preferred time (Day 2)</label>
                                 <select name="tranche_horaire_2" id="time_2" class="form-control placeholder-style">
-                                    <option value="" disabled selected hidden>Choisir une tranche horaire...</option>
-                                    <option value="matin">Le matin (8h - 12h)</option>
-                                    <option value="apres-midi">L'après-midi (12h - 17h)</option>
-                                    <option value="soir">Le soir (17h - 20h)</option>
+                                    <option value="" disabled selected hidden>Choose a time slot...</option>
+                                    <option value="matin">Morning (8am - 12pm)</option>
+                                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
+                                    <option value="soir">Evening (5pm - 8pm)</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     
-                    <!-- Message commun -->
+                    <!-- Common Message -->
                     <div class="form-group" style="margin-top: 15px;">
-                        <label id="label-message">Votre message</label>
-                        <textarea id="message-field" name="message" placeholder="Parlez-nous de vos objectifs..." required></textarea>
+                        <label id="label-message">Your message</label>
+                        <textarea id="message-field" name="message" placeholder="Tell us about your goals..." required></textarea>
                     </div>
                     
                     <div class="btn-container">
-                        <button type="submit" id="btn-submit-text" class="btn-submit">Envoyer mon message</button>
+                        <button type="submit" id="btn-submit-text" class="btn-submit">Send my message</button>
                     </div>
                 </form>
             </div>
@@ -1259,7 +1238,7 @@
         <div class="container">
             <div class="footer-logo">
                 <a href="index.html">
-                    <img src="MPT_New_logo_white.png" alt="mon Projet Tri - Organisme de triathlon au Québec" style="height: 60px;">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
                 </a>
             </div>
             <div class="footer-text">
@@ -1267,21 +1246,21 @@
                     &copy; 2026 
                     <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
                     <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-                    - OSBL dédiée au triathlon au Québec
+                    - Nonprofit dedicated to triathlon in Quebec
                 </p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
             </div>
             <div class="footer-zones">
                 <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                    <summary>View all service areas covered</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, as well as all regions across Quebec.</p>
                 </details>
             </div>
         </div>
     </footer>
     
-    <!-- BOUTON RETOUR EN HAUT -->
-    <button id="backToTop" title="Retour en haut">
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
         <svg viewBox="0 0 24 24">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
         </svg>
@@ -1289,7 +1268,7 @@
     
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/fr.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
 
     <script>
         const backToTopBtn = document.getElementById("backToTop");
@@ -1322,7 +1301,7 @@
             const date2 = document.getElementById('date_2');
             const time2 = document.getElementById('time_2');
 
-            // Reset des erreurs visuelles au changement d'onglet
+            // Reset visual errors on tab change
             document.getElementById('email-error').style.display = 'none';
             document.getElementById('phone-error').style.display = 'none';
             if(emailInput) { emailInput.style.borderColor = ''; emailInput.style.backgroundColor = ''; }
@@ -1331,8 +1310,8 @@
             if (type === 'appel') {
                 blocAppel.style.display = 'block';
                 blocCourriel.style.display = 'none';
-                btnSubmit.textContent = 'Planifier mon appel gratuit';
-                labelMessage.textContent = 'Un message pour nous ? (Optionnel)';
+                btnSubmit.textContent = 'Schedule my free call';
+                labelMessage.textContent = 'A message for us? (Optional)';
                 messageField.required = false;
                 
                 emailInput.required = false;
@@ -1344,8 +1323,8 @@
             } else {
                 blocAppel.style.display = 'none';
                 blocCourriel.style.display = 'block';
-                btnSubmit.textContent = 'Envoyer mon message';
-                labelMessage.textContent = 'Votre message';
+                btnSubmit.textContent = 'Send my message';
+                labelMessage.textContent = 'Your message';
                 messageField.required = true;
                 
                 emailInput.required = true;
@@ -1367,7 +1346,7 @@
             const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
             // =========================================================
-            // 2. RÉINITIALISATION DE L'ERREUR PROFIL LORS D'UN CLIC
+            // 2. RESET PROFILE ERROR ON CLICK
             // =========================================================
             const profilRadios = document.querySelectorAll('input[name="profil"]');
             const profilError = document.getElementById('profil-error');
@@ -1381,7 +1360,7 @@
             });
             // =========================================================
 
-            // Validation courriel
+            // Email validation
             if (emailInput) {
                 emailInput.addEventListener('input', () => {
                     emailInput.style.borderColor = '';
@@ -1399,7 +1378,7 @@
                 });
             }
 
-            // Masque téléphone
+            // Phone mask
             if (phoneInput) {
                 phoneInput.addEventListener('input', (e) => {
                     let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
@@ -1423,13 +1402,13 @@
                 });
             }
 
-            // Validation globale lors de la soumission du formulaire
+            // Global validation on form submit
             if (contactForm) {
                 contactForm.addEventListener('submit', (e) => {
                     const typeContact = document.querySelector('input[name="type_contact"]:checked').value;
                     let isValid = true;
 
-                    // Vérification du Profil
+                    // Profile check
                     const profilSelected = document.querySelector('input[name="profil"]:checked');
                     if (!profilSelected) {
                         isValid = false;
@@ -1442,14 +1421,14 @@
                         }
                     }
 
-                    // Vérification du nom
+                    // Name check
                     const nomInput = document.querySelector('input[name="nom"]');
                     if (nomInput && nomInput.value.trim() === "") {
                         isValid = false;
                         nomInput.style.borderColor = '#e3342f';
                     }
 
-                    // Validation appel
+                    // Call validation
                     if (typeContact === 'appel' && phoneInput) {
                         const numbersOnly = phoneInput.value.replace(/\D/g, '');
                         if (numbersOnly.length < 10) {
@@ -1461,7 +1440,7 @@
                         }
                     } 
                     
-                    // Validation message (Courriel)
+                    // Message validation (Email)
                     if (typeContact === 'message' && emailInput) {
                         const value = emailInput.value.trim();
                         if (!emailRegex.test(value)) {
@@ -1480,10 +1459,10 @@
             }
 
             flatpickr(".datepicker", {
-                locale: "fr",
+                locale: "en",
                 dateFormat: "Y-m-d", 
                 altInput: true,
-                altFormat: "j F Y", 
+                altFormat: "F j, Y", 
                 minDate: "today", 
                 disableMobile: "true" 
             });

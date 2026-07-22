@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guidance | mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/accompagnement.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/guidance.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/accompagnement.html" />
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --accompagnement-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        /* --- BACK TO TOP BUTTON --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--accent);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- CONTENT SECTION --- */
+        .content-section {
+            padding: 80px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        .content-section h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--accompagnement-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .main-card-accompagnement {
+            background: #ffffff; 
+            padding: 40px; 
+            border-radius: 20px; 
+            border: 2px solid #004c97; 
+            box-shadow: 0 10px 25px rgba(0, 76, 151, 0.08);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 76, 151, 0.15);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 76, 151, 0.08);
+        }
+
+        .pricing-card details {
+            margin-top: 15px;
+        }
+        
+        .pricing-card details summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 10px 0;
+            font-weight: 800;
+            color: #004c97;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            outline: none;
+        }
+
+        .pricing-card details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .features-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #004c97;
+            font-weight: bold;
+        }
+
+        .option-box {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            border-left: 3px solid #004c97;
+        }
+
+        .btn-contact-submit {
+            display: inline-block;
+            background: var(--accompagnement-gradient);
+            color: #ffffff !important;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-radius: 50px; 
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(0, 76, 151, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-contact-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 76, 151, 0.4);
+            opacity: 0.95;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- DROPDOWN MENU --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        @media (max-width: 834px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="Mon Projet Tri Logo"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Across Quebec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="discover.html" target="_blank">About US</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#partners">Partners</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="https://mon.projet-tri.org/en/calendar.html" target="_blank">Calendar'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label" style="color: #ccc;">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" checked onclick="window.location.href='../accompagnement.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="content-section">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h1>Coaching & Mentorship</h1>
+                <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
+                    A human, accessible, and personalized guidance to reach your goals with confidence.
+                </p>
+            </div>
+
+            <!-- SECTION 1: PHILOSOPHY & COACH SELECTION -->
+            <div class="main-card-accompagnement" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    Tailored & Connected Guidance 🤝
+                </h2>
+                <div style="line-height: 1.7;">
+                    <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0;">
+                        We offer a <span style="font-weight: bold; color: #004c97;">unique sports coaching service</span> that combines <span style="font-weight: bold; color: #004c97;">human mentorship</span> with <span style="font-weight: bold; color: #004c97;">rigorous coaching</span>. To guarantee the highest quality support, we exclusively collaborate with coaches who are <span style="font-weight: bold; color: #004c97;">NCCP certified</span> (National Coaching Certification Program) or officially recognized by <span style="font-weight: bold; color: #004c97;">Triathlon Québec</span>.
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--text-dark);">
+                        Our strength lies in customization: we conduct a <span style="font-weight: bold; color: #004c97;">rigorous coach selection process</span> based on their background and core philosophy. We then carefully <span style="font-weight: bold; color: #004c97;">pair the right coach with the right athlete</span> to ensure your goals, schedule, and personality match perfectly with your coach.
+                    </p>
+                    <br>
+                </div>
+
+                <!-- CALL TO COACHES BOX -->
+                <div style="background: #f0f7ff; border-left: 4px solid #004c97; padding: 15px 20px; border-radius: 4px 12px 12px 4px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="margin: 0 0 4px 0; color: #004c97; font-size: 1.1rem; font-weight: 800;">
+                            📢 Are you a coach or looking to become one?
+                        </h4>
+                        <p style="margin: 0; color: var(--text-dark); font-size: 0.9rem; line-height: 1.4;">
+                            Whether you're certified or ready to take your first steps into mentorship, join us to help grow the community!
+                        </p>
+                    </div>
+                    <div style="flex-shrink: 0;">
+                        <a href="index.html#contact" style="display: inline-block; background: #004c97; color: #ffffff !important; padding: 8px 18px; text-decoration: none; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; border-radius: 50px; transition: 0.3s;" onmouseover="this.style.backgroundColor='#0083fe'" onmouseout="this.style.backgroundColor='#004c97'">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2: PROGRAMS & PACKAGES -->
+            <div class="main-card-accompagnement" style="margin-bottom: 40px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
+                    🏆 Guidance Programs
+                </h2>
+                
+                <p style="font-size: 1.1rem; color: var(--text-dark); font-weight: 600; margin-top: 0; margin-bottom: 10px;">
+                    Relevant criteria and affordable rates.
+                </p>
+                <p style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6;">
+                    As a nonprofit organization, our mission is to make triathlon accessible to all. That's why <span style="color: #D65F3A; font-weight: bold;">we keep prices as low as possible</span>. We have carefully established coaching criteria focused on what is truly essential, especially when guiding and reassuring beginners.
+                </p>
+
+                <div class="pricing-grid">
+                    
+                    <!-- PACKAGE 1: FIRST STEPS -->
+                    <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
+                        <div>
+                            <span style="color: #D65F3A; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Beginner</span>
+                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">First Step</h3>
+                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
+                                "One day, I'll do one..."
+                            </p>
+                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
+                                For those who have never dared to stand at a starting line due to fear or lack of guidance. Enjoy a reassuring structure from start to finish with mentors who have been in your shoes. <strong>This program is at the core of our mission: getting you across your first finish line!</strong>
+                            </p>
+                            
+                            <!-- ACCORDION START -->
+                            <details class="program-details">
+                                <summary>View Pricing & Details <span class="toggle-arrow">▼</span></summary>
+                                
+                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
+                                
+                                <ul class="features-list">
+                                    <li>Dedicated mentor assigned based on your goals.</li>
+                                    <li>Full assistance when buying your first equipment.</li>
+                                    <li>12-week training plan adapted to your current fitness level.</li>
+                                    <li>Flexible plan adjustments to fit your lifestyle.</li>
+                                    <li>Detailed breakdown of race proceedings and rules.</li>
+                                    <li>Comprehensive moral and psychological support for race day.</li>
+                                </ul>
+
+                                <div class="option-box">
+    <span style="font-size: 1.25rem; font-weight: 800; color: #004c97; display: block;">
+        SEMI-SUPPORTED :
+    </span>
+    <div style="margin-top: 2px;">
+        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$299 / 3 months</span>
+        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(approx. $99/month)</span>
+    </div>
+    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Training plan + 3 mentorship sessions (40 min each).</p>
+</div>
+                                
+                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
+    <span style="font-size: 1.25rem; font-weight: 800; color: #D65F3A; display: block;">
+        FULLY SUPPORTED :
+    </span>
+    <div style="margin-top: 2px;">
+        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$399 / 3 months</span>
+        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">($133/month)</span>
+    </div>
+    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Training plan + 5 mentorship sessions (40 min each).</p>
+</div>
+                            </details>
+                        </div>
+                    </div>
+
+                    <!-- PACKAGE 2: PERFORMANCE -->
+                    <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
+                        <div>
+                            <span style="color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Intermediate & Advanced</span>
+                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">Performance</h3>
+                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
+                                "I want to structure my growth and perform."
+                            </p>
+                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
+                                Whether you're aiming to optimize your fitness for the local season or take on the ultimate challenge of an Ironman, benefit from expert, highly connected mentorship tailored precisely to your seasonal ambitions.
+                            </p>
+                            
+                            <!-- ACCORDION START -->
+                            <details class="program-details">
+                                <summary>View Pricing & Details <span class="toggle-arrow">▼</span></summary>
+                                
+                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
+                                
+                                <ul class="features-list">
+                                    <li>Dedicated mentor matched to your goals (Sprint to Ironman).</li>
+                                    <li>Personalized and evolving training plan.</li>
+                                    <li>Bi-weekly schedule adjustments based on availability and fitness.</li>
+                                    <li>Regular 1-on-1 video calls to track progress.</li>
+                                    <li>In-depth data analysis (TrainingPeaks*) to optimize performance.</li>
+                                    <li>Targeted race nutrition and pacing strategy.</li>
+                                    <li>Direct access to our network of specialists (therapists, nutritionists).</li>
+                                </ul>
+
+                                <div class="option-box">
+    <span style="font-size: 1.25rem; font-weight: 800; color: #004c97; display: block;">
+        FOR THE SEASON :
+    </span>
+    <div style="margin-top: 2px;">
+        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$149 / month</span>
+        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(6 months commitment)</span>
+    </div>
+    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Ideal to progress with structure, discipline, and motivation.</p>
+</div>
+                                
+                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
+    <span style="font-size: 1.25rem; font-weight: 800; color: #D65F3A; display: block;">
+        FULL YEAR :
+    </span>
+    <div style="margin-top: 2px;">
+        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$165 / month</span>
+        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(12 months commitment)</span>
+    </div>
+    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Advanced data analysis and strategy (70.3 & Ironman).</p>
+</div>
+<p style="font-size: 0.8rem; color: var(--text-light); margin: 10px 0 0 0; line-height: 1.4;">
+    <span style="font-style: italic; font-size: 0.75rem; display: block;">*TrainingPeaks Premium subscription required</span>
+    <span style="font-weight: 800; color: #004c97; font-size: 0.9rem; display: block; margin-top: 6px;">💡 Shorter-term projects can be discussed.</span>
+</p>
+
+                            </details>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- SECTION 3: CALL TO ACTION / MATCHING -->
+            <div class="main-card-accompagnement" style="margin-bottom: 50px;">
+                <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                    Let's start your project together 🤝
+                </h2>
+                
+                <!-- NO PRESSURE BOX -->
+                <div style="background: #f8fafc; border-left: 4px solid #004c97; padding: 20px; border-radius: 4px 12px 12px 4px; margin-bottom: 25px; box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);">
+                    <p style="color: var(--text-dark); margin: 0; font-size: 1.15rem; font-weight: 600; line-height: 1.6; text-align: center;">
+                        <span style="display: block; margin-bottom: 8px;">Wondering if this is right for you?</span>
+                        <span style="font-weight: 500; font-size: 1.1rem; color: var(--text-light); display: block;">Let's take the time to chat about your goals, with zero pressure.</span>
+                    </p>
+                </div>
+
+                <p style="margin-bottom: 30px; font-size: 1.05rem; line-height: 1.6;">
+                    Reach out to us today so we can <span style="font-weight: bold; color: #004c97;">define your exact needs together</span>. We will assess your athletic profile, check your availability, and <span style="font-weight: bold; color: #004c97;">match you with the perfect coach or mentor</span> to launch your project under the best conditions.
+                </p>
+
+                <div style="text-align: center; border-top: 1px solid #f1f5f9; padding-top: 25px;">
+                    <a href="index.html#contact" class="btn-contact-submit">Contact Us</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - Nonprofit organization dedicated to triathlon in Quebec
+                </p>
+                <a href="https://www.zeffy.com/en-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make a contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>View all covered service regions</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, and all regions across Quebec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            if (window.innerWidth <= 834 && window.scrollY > 300) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function() { 
+            window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+
+        // Script to toggle arrow icon on accordion click (▼ / ▲)
+        document.querySelectorAll('.program-details').forEach(detail => {
+            detail.addEventListener('toggle', (e) => {
+                const arrow = detail.querySelector('.toggle-arrow');
+                if (detail.open) {
+                    arrow.textContent = '▲';
+                } else {
+                    arrow.textContent = '▼';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

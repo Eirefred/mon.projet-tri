@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier Triathlon Duathlon Québec 2026 : Dates et Inscriptions | mon Projet Tri</title>
+    <meta name="description" content="Trouvez toutes les dates des triathlons, duathlons et aquathlons au Québec pour 2026. Calendrier complet, lieux et liens d'inscription. Planifiez votre saison !">
+    <meta name="keywords" content="calendrier triathlon Québec 2026, courses triathlon Québec, duathlon Québec, compétition triathlon 2026, Mon Projet Tri, Frédéric Hadi">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    
+    <link rel="canonical" href="https://mon.projet-tri.org/calendrier.html" />
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/calendrier.html" />
+
+    <!-- Librairie SheetJS -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --club-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+            --primary: #0481fb; 
+            --dark-blue: #003366; 
+            --accent: #f39200; 
+            --bg: #f8f9fa; 
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1200;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        .content-section {
+            padding: 40px 0 100px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--club-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+
+        /* BANDEAU ACCOMPAGNEMENT */
+        .cta-accompagnement {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark-blue) 100%);
+            max-width: 850px;
+            margin: 0 auto 40px;
+            padding: 25px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row; 
+            align-items: center;
+            justify-content: center; 
+            gap: 25px;
+            color: white;
+        }
+
+        .cta-icon-img {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
+        }
+
+        .cta-content {
+            text-align: left; 
+            z-index: 1;
+        }
+
+        .cta-main-text {
+            margin: 0;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: white;
+        }
+
+        .orange-letter {
+            color: var(--accent);
+            font-weight: 800;
+        }
+
+        .cta-sub-text {
+            display: block;
+            margin-top: 8px;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .cta-link {
+            color: white;
+            font-weight: bold;
+            text-decoration: underline;
+            transition: all 0.3s;
+        }
+        .cta-link:hover { color: var(--accent); }
+
+        .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
+
+        @media (max-width: 834px) {
+
+            #backToTop.visible { display: flex !important; }
+
+            .cta-accompagnement {
+                display: flex !important;
+                flex-direction: column !important; 
+                align-items: center !important;
+                text-align: center !important;
+                padding: 20px !important;
+                max-width: 90% !important; 
+                margin: 0 auto 30px !important;
+            }
+
+            .cta-icon-img {
+                width: 50px !important;
+                height: 50px !important;
+                margin-right: 0 !important;
+                margin-bottom: 10px !important;
+            }
+
+            .cta-content {
+                display: block !important; 
+            }
+
+            .cta-main-text {
+                font-size: 1.2rem !important;
+                text-align: center !important;
+            }
+
+            .cta-sub-text {
+                margin-top: 8px !important;
+                text-align: center !important;
+                font-size: 0.95rem !important;
+            }
+            /* Ajustement de la note TQ sur mobile (2 lignes avec logo) */
+            .tq-note-container {
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+                gap: 5px !important;
+                padding: 0 15px;
+            }
+            .tq-label {
+                display: inline-block;
+            }
+            .tq-desc {
+                display: block;
+                width: 100%; /* Force la description à passer à la ligne en dessous */
+                margin-top: 2px;
+            }
+
+            /* Animation de rebond horizontal pour la légende mobile */
+@keyframes bounceLeftRight {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-15px); }
+    40% { transform: translateX(10px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(2px); }
+}
+
+.bounce-hint {
+    animation: bounceLeftRight 1.2s ease-in-out;
+}
+        }
+
+        /* --- LÉGENDE --- */
+        .legend-container { 
+            position: sticky; 
+            top: 90px; 
+            background: var(--bg); 
+            z-index: 1010; 
+            padding: 10px 0; 
+            border-bottom: 1px solid #ddd; 
+            height: 38px; 
+            display: flex; 
+            align-items: center; 
+        }
+
+        .legend { 
+            background: white; 
+            padding: 4px 10px; 
+            border-radius: 30px; 
+            display: flex; 
+            gap: 2px; 
+            align-items: center; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05); 
+            margin: 0 auto; 
+        }
+
+        .legend-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 2px; 
+            cursor: pointer; 
+            padding: 2px 4px; 
+            border-radius: 20px; 
+            font-size: 0.7rem; 
+        }
+        .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
+        .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
+
+        /* --- TABLEAU --- */
+        .main-content { padding: 20px 0; width: 100%; box-sizing: border-box; }
+        .table-outer { 
+            width: 100%; 
+            box-sizing: border-box; 
+            background: white; 
+            border-radius: 12px; 
+            overflow: visible; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05); 
+        }
+        table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+        thead th { 
+            position: sticky; 
+            top: 147px; 
+            background: var(--dark-blue); 
+            color: white; 
+            padding: 15px 10px; 
+            z-index: 1000; 
+            text-align: left; 
+            font-size: 0.85rem; 
+            border: none; 
+        }
+
+        .col-date { width: 9%; }      
+        .col-event { width: 25%; }    
+        .col-org { width: 15%; }      
+        .col-reg { width: 11%; }      
+        .col-lieu { width: 14%; }     
+        .col-site { width: 7%; }      
+        .col-mail { width: 8%; }      
+        .col-epreuves { width: 11%; }  
+
+        td { 
+            padding: 10px 8px; 
+            border-bottom: 1px solid #eee; 
+            font-size: 0.82rem; 
+            vertical-align: middle; 
+            overflow: hidden; 
+            word-wrap: break-word; 
+        }
+        tr:hover { background: #f8fbff; }
+        tr.hidden { display: none; }
+        tr.past-event { opacity: 0.5; filter: grayscale(0.8); background-color: #f9f9f9; }
+
+        /* --- BADGES CORRESPONDANTS TR --- */
+        .badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 5px; font-weight: bold; font-size: 0.62rem; margin: 1px; border: 1px solid rgba(0,0,0,0.1); }
+        .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
+        .cat-tri { background: #e3f2fd; color: #1976d2; }
+        .cat-dua { background: #fff3e0; color: #e65100; }
+        .cat-dual-long { background: #ffe0b2; color: #bf360c; }
+        .cat-multi { background: #f3e5f5; color: #7b1fa2; }
+        .cat-init { background: #e8f5e9; color: #2e7d32; }
+        .lieu-link { color: #D65F3A; cursor: pointer; text-decoration: underline; font-weight: bold; }
+        .btn-action { 
+            background: var(--dark-blue); 
+            color: white; 
+            text-decoration: none; 
+            padding: 5px 4px; 
+            border-radius: 4px; 
+            font-size: 0.7rem; 
+            font-weight: bold; 
+            display: inline-block; 
+            text-align: center; 
+            width: 100%; 
+            box-sizing: border-box; 
+            transition: 0.2s; 
+        }
+        .btn-action:hover { background: #D65F3A; }
+
+        /* --- MODAL --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-content { background: white; margin: 2% auto; padding: 15px; width: 95%; max-width: 1000px; border-radius: 12px; position: relative; box-sizing: border-box; }
+        .close { position: absolute; right: 15px; top: 5px; font-size: 30px; cursor: pointer; }
+        iframe { width: 100%; height: 500px; border: none; border-radius: 8px; }
+
+        /* --- BOUTON BACK TO TOP --- */
+        #backToTop {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: transparent; /* Pas de fond */
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none; /* Pas de bordure */
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Règle indispensable pour que le bouton s'affiche quand on défile */
+#backToTop.visible { 
+    display: flex !important; 
+}
+
+/* Coloration de la flèche blanche pour qu'elle soit visible sur le fond du calendrier */
+#backToTop svg {
+    width: 24px;
+    height: 24px;
+    fill: #000000; 
+}
+
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT GABARIT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+        .dropdown-menu {
+            display: none; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); background-color: #ffffff; min-width: 180px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); border-radius: 12px; padding: 10px 0; margin: 0; list-style: none; z-index: 1100; border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+        .dropdown-menu a { display: block; padding: 10px 20px; color: #004c97 !important; font-weight: 700; font-size: 0.85rem; text-transform: none; text-align: left; }
+        .dropdown-menu a:hover { background-color: #f1f5f9; color: #D65F3A !important; }
+
+        /* Règle dynamique pour masquer les événements passés */
+        table.hide-past tr.past-event {
+            display: none !important;
+        }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 834px) {
+            header { padding: 5px 0 !important; height: auto; }
+            .region-stack {
+                height: 30px;
+                margin-left: 10px;
+                padding-left: 10px;
+            }
+
+            .region-mention {
+                font-size: 0.7rem;
+            }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: white; padding: 20px 0; box-shadow: 0 10px 20px rgba(0,0,0,0.1); gap: 20px; text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+            .dropdown-menu { display: block; position: static; transform: none; box-shadow: none; background-color: transparent; border: none; width: 100%; }
+            .dropdown-menu a { text-align: center; }
+
+            .content-section { padding: 20px 0 60px 0; }
+            .content-section h1 { font-size: 1.8rem; }
+
+            /* Légende Mobile */
+            .legend-container { 
+                top: 65px; 
+                overflow-x: auto; 
+                overflow-y: hidden; /* Bloque le défilement vertical */
+                white-space: nowrap; 
+                display: block; 
+                width: 100vw; 
+                height: 38px; /* Force une hauteur stricte pour éviter les sauts */
+                -webkit-overflow-scrolling: touch; 
+            }
+            .legend { display: inline-flex; margin: 0 15px; }
+
+            /* Transformation du tableau en cartes */
+            .table-outer { background: transparent; box-shadow: none; }
+            table, tbody, tr, td { display: block; width: 100% !important; }
+            thead { display: none; }
+            tr { margin-bottom: 20px; border: 1px solid #ddd; border-radius: 12px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.05); overflow: hidden; }
+            td { display: flex !important; justify-content: space-between; align-items: center; padding: 10px 12px; border-bottom: 1px solid #f5f5f5; min-height: 45px; box-sizing: border-box; }
+            td:before { content: attr(data-label); font-weight: bold; color: #888; font-size: 0.65rem; text-transform: uppercase; flex: 0 0 35%; text-align: left; }
+            
+            td[data-label="Site web"]:before { content: "LIENS"; }
+            td[data-label="Site web"], td[data-label="Contact"] { display: inline-flex !important; width: 50% !important; float: left; min-height: 55px; padding: 10px; border-bottom: 1px solid #f5f5f5; }
+            td[data-label="Contact"]:before { content: ""; flex: 0; }
+            
+            .btn-action { padding: 6px 0 !important; font-size: 0.7rem !important; width: 85px !important; display: inline-block !important; }
+            td[data-label="Site web"] a { margin-left: auto; margin-right: 4px; }
+            td[data-label="Contact"] a { margin-right: auto; margin-left: 4px; }
+            td:not([data-label="Site web"]):not([data-label="Contact"]) { clear: both; }
+
+            td[data-label="Événement"] { display: block !important; background: #fafafa; padding: 15px; text-align: left; }
+            td[data-label="Événement"]:before { display: block; margin-bottom: 8px; width: 100%; }
+            td[data-label="Événement"] b { display: block; font-size: 1.1rem; color: var(--dark-blue); }
+            td[data-label="Date"] { 
+    background: #f0f7ff; 
+    color: #0481fb; 
+    font-weight: bold; 
+    font-size: 1.1rem !important;
+}
+
+            html, body {
+    max-width: 100%;
+    overflow-x: hidden; /* Bloque le défilement horizontal global */
+}
+            
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Calendrier des compétitions de triathlon au Québec - Saison 2026",
+      "description": "Répertoire complet et dates des triathlons, duathlons et aquathlons au Québec pour l'année 2026. Inclut les courses affiliées à Triathlon Québec.",
+      "keywords": ["Triathlon Québec", "Calendrier 2026", "Course à pied", "Cyclisme", "Natation"],
+      "creator": {
+        "@type": "NGO",
+        "name": "Mon Projet Tri",
+        "url": "https://mon.projet-tri.org"
+      },
+      "spatialCoverage": "Quebec, Canada",
+      "temporalCoverage": "2026-01-01/2026-12-31",
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- HEADER GENERIQUE -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo Mon Projet Tri"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Partout au Québec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="autonome.html">Autonome</a></li>
+                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li><a href="index.html#programme">Partenaires</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="calendrier.html" style="color:#D65F3A !important;">Calendrier'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" onclick="window.location.href='en/calendar.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label" style="color: #ccc;">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ZONE CONTENU CALENDRIER -->
+    <section class="content-section">
+        <div class="container">
+            
+            <h1>Calendrier provincial 2026</h1>
+<div id="calendarSubtitle" style="text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text-light); margin-top: -15px; margin-bottom: 25px; text-transform: uppercase;">Épreuves à venir</div>
+
+            <!-- FILTRE LÉGENDE STICKY CONTENU RÉDUIT -->
+            <div class="legend-container">
+                <div class="legend">
+                    <div class="legend-item clickable-cat" data-cat="PI"><span class="badge cat-piscine">PI</span> Piscine</div>
+                    <div class="legend-item clickable-cat" data-cat="TI"><span class="badge cat-init">TI</span> Init.</div>
+                    <div class="legend-item clickable-cat" data-cat="TS"><span class="badge cat-tri">TS</span> Sprint</div>
+                    <div class="legend-item clickable-cat" data-cat="TO"><span class="badge cat-tri">TO</span> Olymp.</div>
+                    <div class="legend-item clickable-cat" data-cat="T½"><span class="badge cat-tri">T½</span> Demi</div>
+                    <div class="legend-item clickable-cat" data-cat="TC"><span class="badge cat-tri">TC</span> Compl.</div>
+                    <div class="legend-item clickable-cat" data-cat="DS"><span class="badge cat-dua">DS</span> Dua. Sprint</div>
+                    <div class="legend-item clickable-cat" data-cat="DO"><span class="badge cat-dua">DO</span> Dua. Olymp.</div>
+                    <div class="legend-item clickable-cat" data-cat="DL"><span class="badge cat-dual-long">DL</span> Dua. Long</div>
+                    <div class="legend-item clickable-cat" data-cat="AV"><span class="badge cat-multi">AV</span> Aquavélo</div>
+                    <div class="legend-item clickable-cat" data-cat="AQ"><span class="badge cat-multi">AQ</span> Aquathlon</div>
+<!-- Switch Événements Terminés Vertical à droite du texte -->
+<div class="lang-switcher" style="margin-left: 12px; margin-right: 5px; border-left: 1px solid #eee; padding-left: 12px; display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 6px; height: 32px;">
+    <span class="lang-label" style="font-size: 0.58rem; color: var(--text-light); line-height: 1.1; text-align: right; display: block;">ÉPREUVES<br>TERMINÉES</span>
+    <label class="switch" style="transform: scale(0.7) rotate(-90deg); margin: 0 -4px; width: 34px; height: 20px; display: block; flex-shrink: 0;">
+        <input type="checkbox" id="pastToggle" onclick="togglePastEvents()">
+        <span class="slider"></span>
+    </label>
+</div>
+<button onclick="openGlobalMap()" style="background:var(--accent); color:white; border:none; padding:4px 10px; border-radius:20px; cursor:pointer; font-size:0.68rem; font-weight:bold; margin-left:6px;">🌎 Carte</button>
+                </div>
+            </div>
+
+            <!-- Note d'information optimisée pour l'affichage sur deux lignes -->
+<div class="tq-note-container" style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap;">
+    <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; vertical-align: middle;">
+    <span class="tq-label"><strong>Note sur la mention TQ :</strong></span>
+    <span class="tq-desc">gage de sécurité et de qualité organisationnelle.</span>
+    <a href="javascript:void(0)" onclick="openTqModal()" style="color: inherit; text-decoration: underline; margin-left: 2px; font-weight: bold; white-space: nowrap;">Voir plus</a>
+</div>
+
+            <!-- TABLEAU DES COURSES -->
+            <div class="main-content">
+                <div id="status" style="text-align:center; padding: 20px; font-weight: bold;">Chargement du calendrier...</div>
+                <div class="table-outer">
+                    <table id="calTable" class="hide-past" style="display:none;">
+                        <thead>
+                            <tr>
+                                <th class="col-date">Date</th>
+                                <th class="col-event">Événement</th>
+                                <th class="col-org">Organisateur</th>
+                                <th class="col-reg">Région</th>
+                                <th class="col-lieu">Lieu</th>
+                                <th class="col-site">Internet</th>
+                                <th class="col-mail">Contact</th>
+                                <th class="col-epreuves">Épreuves</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FENÊTRE MODALE MAPS -->
+    <div id="mapModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeMap()">×</span>
+            <h3 id="modalTitle" style="margin-top: 0; color: var(--dark-blue);">Localisation</h3>
+            <div id="mapContainer"></div>
+        </div>
+    </div>
+
+    <!-- Pop-up TQ centré au milieu de la page avec logos mis à jour et lien de sécurité -->
+<div id="tqModal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 2500; background: rgba(0,0,0,0.6); align-items: center; justify-content: center;">
+    <div class="modal-content" style="background: white; max-width: 450px; text-align: center; padding: 25px; border-radius: 12px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin: 0 15px;">
+        <span class="close" onclick="closeTqModal()" style="position: absolute; top: 10px; right: 15px; font-size: 30px; cursor: pointer;">&times;</span>
+        
+        <!-- Logo officiel SVG au sommet -->
+        <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/Logo-triathlonQC.svg" alt="Logo officiel Triathlon Québec" style="height: 50px; width: auto; margin-bottom: 20px; object-fit: contain;">
+        
+        <!-- Titre avec favicon intégré à gauche -->
+        <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0 0 15px 0;">
+            <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Favicon TQ" style="width: 20px; height: 20px; flex-shrink: 0;">
+            <h3 style="margin: 0; color: var(--dark-blue); font-family: 'Montserrat', sans-serif; text-align: left;">Sanction Triathlon Québec</h3>
+        </div>
+        
+        <p style="font-size: 0.9rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 20px; text-align: center;">
+            Les événements sanctionnés par <strong>Triathlon Québec</strong> répondent à des standards rigoureux en matière de <a href="https://www.triathlonquebec.org/wp-content/uploads/2025/07/Reglements-de-securite_TriathlonQuebec_2025.pdf" target="_blank" style="color: var(--primary); font-weight: bold; text-decoration: underline;">sécurité</a>, d’encadrement technique et de qualité organisationnelle.
+        </p>
+        <button onclick="closeTqModal()" style="background: var(--dark-blue); color: white; border: none; padding: 8px 20px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 0.8rem; transition: 0.2s;">Fermer</button>
+    </div>
+</div>
+
+    <!-- FOOTER GENERIQUE PARFAITEMENT ALIGNÉ -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - OSBL dédiée au triathlon au Québec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>Voir toutes les zones de service couvertes</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOUTON RETOUR EN HAUT -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- SCRIPTS LOGIQUE EXCEL & FILTRES -->
+    <script>
+        const EXCEL_FILE = 'Calendrier-2026.xlsx';
+        const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
+        let activeFilter = null;
+
+        async function loadExcel() {
+            try {
+                const response = await fetch(EXCEL_FILE);
+                const arrayBuffer = await response.arrayBuffer();
+                const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
+                const sheet = workbook.Sheets[workbook.SheetNames[0]];
+                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                renderTable(rows);
+                setupFilters();
+            } catch (e) { 
+                document.getElementById('status').innerText = "Erreur lors du chargement du fichier Excel."; 
+            }
+        }
+
+        function renderTable(rows) {
+            const body = document.getElementById('calBody');
+            body.innerHTML = ""; 
+            
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row[1]) continue; 
+
+                const tr = document.createElement('tr');
+                
+                // --- MARQUAGE DES ÉVÉNEMENTS PASSÉS ---
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+                const dateRaw = row[0] ? String(row[0]).trim() : "";
+                if (dateRaw) {
+                    const moisFr = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+                    const dateRef = dateRaw.includes("-") ? dateRaw.split("-")[1] : dateRaw;
+                    const jour = parseInt(dateRef.match(/\d+/));
+                    const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
+                    if (jour && indexMois !== -1) {
+                        const dateEpreuve = new Date(2026, indexMois, jour);
+                        if (dateEpreuve < today) tr.classList.add('past-event');
+                    }
+                }
+
+                // --- GESTION DES BADGES ÉPREUVES ---
+                let rowCats = [];
+                let badges = [];
+
+                if (row[8] === "X" || row[8] === "x") {
+                    badges.push(`<span class="badge cat-piscine" title="Natation en piscine">PI</span>`);
+                    rowCats.push("PI");
+                }
+
+                const mappingEpreuves = {
+                    9:  { nom: "Triathlon Initiation",     code: "TI", cat: "cat-init" },
+                    10: { nom: "Triathlon Sprint",         code: "TS", cat: "cat-tri" },
+                    11: { nom: "Triathlon Olympique",      code: "TO", cat: "cat-tri" },
+                    12: { nom: "Triathlon demi distance",  code: "T½", cat: "cat-tri" },
+                    13: { nom: "Triathlon longue distance",code: "TC", cat: "cat-tri" },
+                    14: { nom: "Duathlon Sprint",          code: "DS", cat: "cat-dua" },
+                    15: { nom: "Duathlon Olympique",       code: "DO", cat: "cat-dua" },
+                    16: { nom: "Duathlon Long",            code: "DL", cat: "cat-dual-long" },
+                    17: { nom: "Aquavelo",                 code: "AV", cat: "cat-multi" },
+                    18: { nom: "Aquathlon",                code: "AQ", cat: "cat-multi" }
+                };
+
+                for (let idx in mappingEpreuves) {
+                    if (row[idx] === "X" || row[idx] === "x") {
+                        const ep = mappingEpreuves[idx];
+                        badges.push(`<span class="badge ${ep.cat}" title="${ep.nom}">${ep.code}</span>`);
+                        rowCats.push(ep.code);
+                    }
+                }
+
+                // --- CONSTRUCTION DU CONTENU DES CELLULES ---
+                const isTQ = row[5] === "TQ" ? `<img src="${TQ_LOGO}" alt="TQ" title="Événement sanctionné par Triathlon Québec" style="width:16px;margin-right:5px;vertical-align:middle;cursor:help;">` : "";
+                const lieuComplet = row[7] ? String(row[7]).trim() : "";
+                let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
+
+                tr.setAttribute('data-categories', rowCats.join(','));
+                tr.innerHTML = `
+                    <td data-label="Date"><b>${row[0] || ""}</b></td>
+                    <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
+                    <td data-label="Organisateur">${row[6] || "-"}</td>
+                    <td data-label="Région">${row[2] || ""}</td>
+                    <td data-label="Lieu"><span class="lieu-link" onclick="openMap('${lieuComplet.replace(/'/g, "\\'")}', '${row[1].replace(/'/g, "\\")}')">📍 ${ville}</span></td>
+                    <td data-label="Site web">${row[4] ? `<a href="${row[4]}" target="_blank" class="btn-action">Site</a>` : "-"}</td>
+                    <td data-label="Contact">${row[3] ? `<a href="mailto:${row[3]}" class="btn-action">Courriel</a>` : "-"}</td>
+                    <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
+                `;
+                body.appendChild(tr);
+            }
+            document.getElementById('status').style.display = 'none';
+            document.getElementById('calTable').style.display = (window.innerWidth <= 834) ? 'block' : 'table';
+        }
+
+        function setupFilters() {
+            const items = document.querySelectorAll('.clickable-cat');
+            const rows = document.querySelectorAll('#calBody tr');
+            
+            items.forEach(item => {
+                item.addEventListener('click', () => {
+                    const cat = item.getAttribute('data-cat');
+                    
+                    if (activeFilter === cat) {
+                        activeFilter = null;
+                        items.forEach(i => i.classList.remove('active', 'inactive'));
+                        rows.forEach(r => r.classList.remove('hidden'));
+                    } else {
+                        activeFilter = cat;
+                        items.forEach(i => {
+                            i.classList.toggle('active', i.getAttribute('data-cat') === cat);
+                            i.classList.toggle('inactive', i.getAttribute('data-cat') !== cat);
+                        });
+                        rows.forEach(row => {
+    const rowCats = row.getAttribute('data-categories').split(',');
+    
+    // Remplacement ici pour éviter les conflits avec le bouton des événements passés
+    if (!rowCats.includes(cat)) {
+        row.classList.add('hidden');
+    } else {
+        row.classList.remove('hidden');
+    }
+});
+                    }
+
+                    // Alignement automatique après filtrage
+                    setTimeout(() => {
+                        const legend = document.querySelector('.legend-container');
+                        const table = document.getElementById('calTable');
+                        if (table && legend) {
+                            const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
+                            const legendHeight = legend.offsetHeight;
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const finalScrollTarget = tableTop - (legendHeight + headerHeight) - 2;
+                            window.scrollTo({ top: finalScrollTarget, behavior: 'smooth' });
+                        }
+                    }, 100);
+                });
+            });
+        }
+
+        function openMap(lieu, name) {
+            document.getElementById('modalTitle').innerText = name;
+            const url = `https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=10&output=embed`;
+            document.getElementById('mapContainer').innerHTML = `<iframe src="${url}"></iframe>`;
+            document.getElementById('mapModal').style.display = "block";
+        }
+
+        function openGlobalMap() {
+            document.getElementById('modalTitle').innerText = "Carte Globale";
+            document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
+            document.getElementById('mapModal').style.display = "block";
+        }
+
+        function closeMap() { document.getElementById('mapModal').style.display = "none"; }
+
+        function openTqModal() {
+    document.getElementById('tqModal').style.display = "flex";
+}
+
+function closeTqModal() {
+    document.getElementById('tqModal').style.display = "none";
+}
+
+        // --- BACK TO TOP SCRIPT ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+
+        window.onload = () => {
+    // 1. Charge d'abord le fichier Excel existant
+    loadExcel();
+    
+    // 2. Déclenche l'effet visuel sur mobile après 1 seconde
+    setTimeout(() => {
+        const legendContainer = document.querySelector('.legend-container');
+        if (legendContainer && window.innerWidth <= 834) {
+            legendContainer.classList.add('bounce-hint');
+            
+            // Nettoie la classe après l'animation pour éviter les effets de bord
+            setTimeout(() => {
+                legendContainer.classList.remove('bounce-hint');
+            }, 1200);
+        }
+    }, 1000);
+};
+        window.onclick = (e) => { 
+    if (e.target.classList.contains('modal')) {
+        e.target.style.display = 'none';
+    }
+};
+
+        let showPast = false; // Par défaut, les événements passés sont cachés
+
+function togglePastEvents() {
+    const table = document.getElementById('calTable');
+    const toggle = document.getElementById('pastToggle');
+    const subtitle = document.getElementById('calendarSubtitle');
+    
+    showPast = toggle.checked;
+    
+    if (showPast) {
+        table.classList.remove('hide-past');
+        if (subtitle) subtitle.innerText = "TOUTES LES ÉPREUVES 2026";
+    } else {
+        table.classList.add('hide-past');
+        if (subtitle) subtitle.innerText = "ÉPREUVES À VENIR";
+    }
+
+    // Ré-appliquer manuellement les filtres si une catégorie est active
+    const rows = document.querySelectorAll('#calBody tr');
+    const catActive = document.querySelector('.legend-item.active');
+    
+    if (catActive) {
+        const cat = catActive.getAttribute('data-cat');
+        rows.forEach(row => {
+            const rowCats = row.getAttribute('data-categories').split(',');
+            if (!rowCats.includes(cat)) {
+                row.classList.add('hidden');
+            }
+        });
+    }
+}
+
+
+    </script>
+</body>
+</html>
