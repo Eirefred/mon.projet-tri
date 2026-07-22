@@ -100,7 +100,7 @@
             color: var(--orange-hover);
         }
 
-        /* Navigation */
+        /* Navigation Ordinateur */
         nav ul {
             display: flex;
             list-style: none;
@@ -117,6 +117,41 @@
 
         nav a:hover {
             color: var(--accent-turquoise);
+        }
+
+        /* Bouton Hamburger (Caché sur ordinateur) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        /* Animation du bouton Hamburger lorsqu'il est actif (transformé en X) */
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Section Banner / Présentation */
@@ -154,7 +189,6 @@
             flex-wrap: wrap;
         }
 
-        /* Style commun pour harmoniser la taille des 2 boutons */
         .btn-hero {
             display: inline-flex;
             align-items: center;
@@ -202,14 +236,14 @@
 
         /* Section Contenu Principal */
         .main-content {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 1.5rem;
-    display: grid;
-    grid-template-columns: 1fr 500px;
-    gap: 2.5rem;
-    align-items: stretch; /* 👈 Étire les deux colonnes sur toute la hauteur */
-}
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 2.5rem;
+            align-items: stretch; /* Les 2 colonnes gardent la même hauteur */
+        }
 
         .about h2, .zone-section h2 {
             color: var(--primary-blue);
@@ -293,30 +327,29 @@
 
         /* Section Facebook Widget */
         .facebook-section {
-    background: white;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    text-align: center;
-    border-top: 3px solid var(--accent-red);
-    
-    display: flex;             /* 👈 Permet au contenu de s'étirer */
-    flex-direction: column;    /* 👈 Alignement vertical */
-    height: 100%;              /* 👈 S'étire sur toute la hauteur de la colonne */
-}
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            border-top: 3px solid var(--accent-red);
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* S'étire dynamiquement avec le contenu de gauche */
+        }
 
         .facebook-section h3 {
-    color: var(--primary-blue);
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-}
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
 
-.facebook-section iframe {
-    width: 100%;
-    max-width: 500px;
-    flex: 1;                   /* 👈 L'iframe prend tout l'espace vertical restant */
-    min-height: 500px;         /* 👈 Hauteur minimale de sécurité */
-}
+        .facebook-section iframe {
+            width: 100%;
+            max-width: 500px;
+            flex: 1;
+            min-height: 500px;
+        }
 
         /* POP-UP (Modal) Styles */
         .modal {
@@ -401,26 +434,47 @@
         /* Responsive Mobile */
         @media (max-width: 900px) {
             .header-container {
-                flex-direction: column;
-                gap: 1rem;
+                position: relative;
             }
 
             .brand-group {
-                flex-direction: column;
-                gap: 0.4rem;
+                flex-direction: row;
+                gap: 0.8rem;
             }
 
-            .header-info-block {
-                height: auto;
-                border-left: none;
-                padding-left: 0;
+            /* Affichage du bouton Hamburger */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Transformation du menu en déroulant mobile */
+            nav ul {
+                display: none; /* Masqué par défaut */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            /* Affiché quand le JS ajoute la classe .active */
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
                 text-align: center;
             }
 
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
             }
 
             .main-content {
@@ -459,8 +513,17 @@
                     <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
                 </div>
             </div>
+
+            <!-- Bouton Hamburger (Mobile) -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
             <nav>
-                <ul>
+                <ul id="nav-menu">
                     <li><a href="specialites.html">Nos Spécialités</a></li>
                     <li><a href="certifications.html">Nos Certifications</a></li>
                     <li><a href="partenaires.html">Nos Partenaires</a></li>
@@ -527,17 +590,16 @@
         </div>
 
         <!-- Section Facebook Widget -->
-<aside class="facebook-section">
-    <h3>Suivez notre actualité</h3>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
-            height="500" 
-            style="border:none; overflow:hidden; border-radius:6px;" 
-            scrolling="no" 
-            frameborder="0" 
-            allowfullscreen="true" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
-</aside>
+        <aside class="facebook-section">
+            <h3>Suivez notre actualité</h3>
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=2000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
+                    style="border:none; overflow:hidden; border-radius:6px;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </aside>
 
     </main>
 
@@ -572,8 +634,9 @@
         <p><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
     </footer>
 
-    <!-- Script Pop-Up -->
+    <!-- Scripts Pop-Up & Hamburger -->
     <script>
+        /* Gestion Pop-Up */
         function openModal() {
             document.getElementById('zoneModal').style.display = 'flex';
         }
@@ -587,6 +650,23 @@
                 closeModal();
             }
         }
+
+        /* Gestion Menu Hamburger Mobile */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Ferme le menu au clic sur un lien
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
     </script>
 
 </body>
