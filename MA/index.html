@@ -202,13 +202,14 @@
 
         /* Section Contenu Principal */
         .main-content {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
-            display: grid;
-            grid-template-columns: 1fr 500px;
-            gap: 2.5rem;
-        }
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 400px; /* Largeur ajustée pour le flux */
+    gap: 2.5rem;
+    align-items: stretch; /* Force les deux colonnes à faire la même hauteur */
+}
 
         .about h2, .zone-section h2 {
             color: var(--primary-blue);
@@ -292,13 +293,34 @@
 
         /* Section Facebook Widget */
         .facebook-section {
-            background: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            border-top: 3px solid var(--accent-red);
-        }
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    border-top: 3px solid var(--accent-red);
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Occupe toute la hauteur de la colonne */
+}
+
+/* Astuce : Masquer le haut de l'iframe Facebook pour cacher les followers */
+.facebook-wrapper {
+    position: relative;
+    flex: 1; /* S'étire pour remplir tout le reste de la hauteur */
+    overflow: hidden;
+    border-radius: 6px;
+    min-height: 600px; /* Hauteur minimale de confort */
+}
+
+.facebook-wrapper iframe {
+    position: absolute;
+    top: -50px; /* 👈 Décale l'iframe vers le haut pour cacher l'en-tête/followers */
+    left: 0;
+    width: 100%;
+    height: calc(100% + 50px); /* Compense le décalage vers le haut */
+    border: none;
+}
 
         .facebook-section h3 {
             color: var(--primary-blue);
@@ -519,17 +541,17 @@
             </section>
         </div>
 
-        <!-- Section Facebook Widget -->
+        <!-- Section Facebook Widget qui s'étire sur toute la hauteur -->
 <aside class="facebook-section">
     <h3>Suivez notre actualité</h3>
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
-            height="500" 
-            style="border:none; overflow:hidden; border-radius:6px;" 
-            scrolling="no" 
-            frameborder="0" 
-            allowfullscreen="true" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
+    <div class="facebook-wrapper">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fprofile.php%3Fid%3D100093171485369&tabs=timeline&width=500&height=1000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
+                scrolling="no" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+    </div>
 </aside>
 
     </main>
