@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentions Légales & CGV | Matthieu Artisan - Plomberie & Chauffage</title>
+    <meta name="description" content="Informations légales, immatriculation, assurances décennales et Conditions Générales de Vente (CGV) - MATTHIEU ARTISAN EURL.">
+    
+    <style>
+        :root {
+            --primary-blue: #1a67b3;
+            --action-orange: #f97316;
+            --orange-hover: #ea580c;
+            --accent-red: #fa4222;
+            --accent-turquoise: #48a1cb;
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+            --legal-dark: #1e293b;
+            --legal-border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* En-tête */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 64px;
+            width: auto;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+        }
+
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            text-align: center;
+            padding: 3rem 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Conteneur principal */
+        .legal-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .legal-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-turquoise);
+        }
+
+        .legal-card h2 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .legal-card ul {
+            list-style: none;
+        }
+
+        .legal-card li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-card strong {
+            color: var(--primary-blue);
+        }
+
+        .full-width-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--accent-red);
+            margin-bottom: 2rem;
+        }
+
+        .full-width-card h2 {
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* SECTION CGV : Style Juridique & Solennel */
+        .cgv-section-container {
+            background: #ffffff;
+            border: 1px solid var(--legal-border);
+            border-top: 5px solid var(--legal-dark);
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            margin-bottom: 2.5rem;
+        }
+
+        details.cgv-wrapper summary {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--legal-dark);
+            cursor: pointer;
+            padding: 1.2rem 1.5rem;
+            background-color: #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            list-style: none;
+            border-bottom: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        details.cgv-wrapper summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.cgv-wrapper summary:hover {
+            background-color: #e2e8f0;
+        }
+
+        details.cgv-wrapper[open] summary {
+            border-bottom: 2px solid var(--legal-dark);
+            background-color: #e2e8f0;
+        }
+
+        .legal-badge {
+            font-family: sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-color: var(--legal-dark);
+            color: #ffffff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 3px;
+            margin-left: 0.8rem;
+            vertical-align: middle;
+        }
+
+        .summary-arrow {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+            color: var(--legal-dark);
+        }
+
+        details[open] .summary-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Corps des CGV - Typographie Juridique */
+        .cgv-content {
+            padding: 2rem 2rem 1.5rem 2rem;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: #1e293b;
+            font-size: 0.95rem;
+            line-height: 1.75;
+            background-color: #fafafa;
+        }
+
+        .cgv-header-note {
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #475569;
+            border-bottom: 1px solid var(--legal-border);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .cgv-article {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px dashed #cbd5e1;
+        }
+
+        .cgv-article:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .cgv-article h3 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: 1.05rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            color: var(--legal-dark);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .cgv-article p {
+            text-align: justify;
+            margin-bottom: 0.5rem;
+        }
+
+        .cgv-article p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cgv-article strong {
+            color: #0f172a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .cgv-content {
+                padding: 1.2rem 1rem;
+            }
+            details.cgv-wrapper summary {
+                font-size: 1.05rem;
+                padding: 1rem;
+            }
+            .legal-badge {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie">
+                </a>
+                <div class="header-info-block">
+                    <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
+                    <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+<nav>
+    <ul id="nav-menu">
+        <li><a href="specialites.html">Spécialités</a></li>
+        <li><a href="certifications.html">Certifications</a></li>
+        <li><a href="partenaires.html">Partenaires</a></li>
+        <!-- NOUVEAU LIEN DANS LA NAVIGATION -->
+        <li><a href="mentions-legales.html"class="active-link">Mentions Légales</a></li>
+    </ul>
+</nav>
+        </div>
+    </header>
+
+    <!-- Banner Hero -->
+    <section class="hero">
+        <h1>Structure Juridique & Mentions Légales</h1>
+        <p>Transparence, garanties et régulation contractuelle des prestations de MATTHIEU ARTISAN EURL.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="legal-container">
+
+        <div class="legal-grid">
+            
+            <!-- Carte 1 : Identité -->
+            <div class="legal-card">
+                <h2>Identité Entreprise</h2>
+                <ul>
+                    <li><strong>Raison Sociale :</strong> MATTHIEU ARTISAN EURL</li>
+                    <li><strong>Statut :</strong> ARTISAN</li>
+                    <li><strong>Forme juridique :</strong> EURL au capital de 5 000 €</li>
+                    <li><strong>Date de création :</strong> Août 2005</li>
+                    <li><strong>Siège social :</strong> 345 Chemin du Crêt de Néry, 69870 SAINT JUST D'AVRAY</li>
+                    <li><strong>Téléphone :</strong> 04 78 470 662</li>
+                    <li><strong>Email :</strong> contact@matthieu-artisan.fr</li>
+                </ul>
+            </div>
+
+            <!-- Carte 2 : Immatriculation -->
+            <div class="legal-card">
+                <h2>Immatriculations</h2>
+                <ul>
+                    <li><strong>Chambre des Métiers :</strong> N° 483 812 145 RM 69</li>
+                    <li><strong>R.C.S. :</strong> 483 812 145 R.C.S. Villefranche - Tarare</li>
+                    <li><strong>SIRET :</strong> 483 812 145 00033</li>
+                    <li><strong>N° TVA Intracommunautaire :</strong> FR33 483 812 145</li>
+                    <li><strong>Code APE / NAF :</strong> 4322A (Travaux d'installation d'eau et de gaz en tous locaux)</li>
+                </ul>
+            </div>
+
+            <!-- Carte 3 : Assurance -->
+            <div class="legal-card">
+                <h2>Assurances Professionnelles</h2>
+                <ul>
+                    <li><strong>Assureur :</strong> AXA Doron/Trait (63600 AMBERT)</li>
+                    <li><strong>Garantie :</strong> Responsabilité Civile Professionnelle & Décennale</li>
+                    <li><strong>N° de Contrat :</strong> 6222947504</li>
+                    <li><em>Note : Vos attestations d'assurance vous sont transmises sur simple demande.</em></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Section Médiation -->
+        <div class="full-width-card">
+            <h2>Médiation de la Consommation</h2>
+            <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, notre entreprise a mis en place un dispositif de médiation de la consommation :</p>
+            <p style="margin-top: 0.8rem;">
+                <strong>Entité retenue :</strong> MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV<br>
+                <strong>Adresse postale :</strong> Centre d'Affaires Stéphanois SAS, Immeuble l'Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE<br>
+                <strong>Site internet :</strong> <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a>
+            </p>
+        </div>
+
+        <!-- ACCORDÉON CGV : Style Juridique / Officiel -->
+        <div class="cgv-section-container">
+            <details class="cgv-wrapper">
+                <summary>
+                    <div>
+                        <span>CONDITIONS GÉNÉRALES DE VENTE (CGV)</span>
+                        <span class="legal-badge">EURL MATTHIEU ARTISAN</span>
+                    </div>
+                    <span class="summary-arrow">▼</span>
+                </summary>
+                
+                <div class="cgv-content">
+                    
+                    <p class="cgv-header-note">
+                        Les présentes Conditions Générales de Vente s'appliquent de plein droit à l'ensemble des prestations d'installation, de rénovation, de maintenance et de dépannage fournies par l'entreprise MATTHIEU ARTISAN EURL.
+                    </p>
+                    
+                    <div class="cgv-article">
+                        <h3>Article 1 — Objet</h3>
+                        <p>Les présentes Conditions Générales de Vente régissent l'ensemble des relations contractuelles entre l'entreprise <strong>MATTHIEU ARTISAN EURL</strong> et ses clients dans le cadre de la fourniture de services et travaux de plomberie et de chauffage.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 2 — Devis et Commandes</h3>
+                        <p>Toute prestation fait l’objet d’un devis préalable, détaillant la nature des travaux, les matériaux utilisés et le prix. Le devis doit être expressément accepté et signé par le client avant tout commencement d'exécution des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 3 — Indivisibilité du devis</h3>
+                        <p>Le devis forme un tout indissociable et indivisible. Il doit être accepté dans son intégralité sans suppression de poste ni de ligne. En cas d’acceptation partielle, l’entreprise se réserve le droit de ne pas donner suite à la commande ou de réviser unilatéralement ses conditions tarifaires et d’intervention.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 4 — Prix</h3>
+                        <p>Les prix figurant sur le devis sont fermes et définitifs, sous réserve de la durée de validité mentionnée sur celui-ci. Ils sont exprimés en euros et hors taxes, sauf mention explicite contraire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 5 — Modalités de paiement</h3>
+                        <p>Un acompte est exigible à la signature du devis, dont le montant est expressément stipulé sur le document. Le solde est payable à la réception des travaux. Les règlements s’effectuent par chèque bancaire ou par virement bancaire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 6 — Situations intermédiaires</h3>
+                        <p>Pour tout chantier dont la durée d'exécution excède un mois, l'entreprise établira des factures de situations intermédiaires au prorata de l'avancement des travaux. Tout retard de paiement autorisera l’entreprise, sans mise en demeure préalable ni préavis, à suspendre immédiatement la réalisation des travaux jusqu’au paiement intégral des sommes exigibles.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 7 — Délais de paiement</h3>
+                        <p>Les factures émises par l’entreprise sont payables comptant à réception, sans retenue de garantie et sans escompte pour paiement anticipé.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 8 — Délais d’exécution et pénuries</h3>
+                        <p>Les délais d'exécution communiqués par courrier électronique ou tout autre support le sont à titre purement indicatif. En cas de retard indépendant de la volonté de l'entreprise, le client en sera informé dans les meilleurs délais.</p>
+                        <p>En cas de rupture de stock ou de pénurie rendant indisponible le matériau initialement prévu au devis, l’entreprise pourra proposer un produit équivalent via un avenant contractuel. En cas de refus dudit avenant par le client, ce dernier s’engage à attendre le réapprovisionnement du matériau initial sans pouvoir exercer de recours ni prétendre à de quelconques dommages et intérêts.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 9 — Conditions d’exécution des travaux</h3>
+                        <p>L’entreprise se réserve le droit de refuser la pose de matériaux ou d'équipements fournis directement par le client. Lorsque le support révèle des sujétions imprévues et indécelables lors du chiffrage initial, l’entreprise proposera des travaux complémentaires formalisés par un avenant, dont l'exécution sera conditionnée par la signature préalable du client.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 10 — Clause de réserve de propriété</h3>
+                        <p>En application de la loi n° 80-335 du 12 mai 1980, l’entreprise conserve la propriété exclusive des matériaux, fournitures et ouvrages facturés jusqu’au paiement intégral du prix convenu. Toutefois, les risques de perte, de vol ou de détérioration sont transférés au client dès l’achèvement des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 11 — Garanties</h3>
+                        <p>Les ouvrages réalisés sont couverts par la garantie décennale légale conformément aux articles 1792 et suivants du Code civil. Toute réclamation au titre des garanties doit faire l’objet d'une notification écrite adressée à l'entreprise.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 12 — Responsabilité</h3>
+                        <p>MATTHIEU ARTISAN EURL s’engage à exécuter ses prestations selon les règles de l’art et les normes en vigueur. La responsabilité de l’entreprise ne saurait être engagée en cas de mauvaise utilisation, de négligence ou de défaut d’entretien imputable au client ou à un tiers.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 13 — Droits sur les photographies</h3>
+                        <p>Le client autorise expressément l’entreprise à réaliser des prises de vue photographiques des travaux accomplis et à les exploiter sur ses supports de communication commerciale, notamment son site internet, à titre d'illustration de son savoir-faire.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 14 — Résiliation</h3>
+                        <p>En cas d’inexécution par le client de l’une de ses obligations (notamment le défaut de paiement des acomptes ou situations), MATTHIEU ARTISAN EURL se réserve le droit de suspendre ou de résilier de plein droit la prestation aux torts du client.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 15 — Réclamations</h3>
+                        <p>Toute contestation ou réclamation relative à l'exécution des prestations doit être transmise par écrit (courrier daté ou courriel) dans un délai maximal d’un an à compter de la réception des travaux.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 16 — Médiation de la consommation</h3>
+                        <p>À défaut de résolution amiable d'un litige suite à une réclamation écrite datée et restée infructueuse (réponse négative ou absence de réponse dans un délai de deux mois), le client consommateur peut saisir gratuitement le médiateur de la consommation désigné ci-après :</p>
+                        <p style="margin-top:0.4rem;"><strong>MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV</strong><br>
+                        Saisine en ligne : <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a><br>
+                        Adresse postale : Centre d’Affaires Stéphanois SAS, Immeuble L’Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 17 — Droit applicable et juridiction</h3>
+                        <p>Les présentes Conditions Générales de Vente sont soumises exclusivement au droit français. À défaut d’accord amiable, tout litige sera porté devant les tribunaux compétents du ressort du siège social de l’entreprise.</p>
+                    </div>
+
+                    <div class="cgv-article">
+                        <h3>Article 18 — Protection des données personnelles (RGPD)</h3>
+                        <p>Les données à caractère personnel collectées sont indispensables à la gestion des commandes, au suivi de la relation client et au respect des obligations légales. Elles sont conservées pendant la durée nécessaire à l'exécution des travaux et des garanties légales afférentes.</p>
+                        <p style="margin-top:0.4rem;">Conformément à la loi n° 78-17 du 6 janvier 1978 modifiée et au Règlement Européen n° 2016/679 (RGPD), le Client bénéficie d’un droit d’accès, de rectification, d’effacement, de portabilité et d’opposition au traitement des données le concernant. Ces droits s'exercent par demande écrite adressée à l'entreprise, accompagnée d'un justificatif d'identité valide. En cas de contestation non résolue, le client dispose du droit d'introduire une réclamation auprès de la CNIL.</p>
+                    </div>
+
+                </div>
+            </details>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;">
+                <a href="specialites.html">Spécialités</a> | 
+                <a href="certifications.html">Certifications</a> | 
+                <a href="partenaires.html">Partenaires</a> | 
+                <a href="mentions-legales.html">Mentions Légales & CGV</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
