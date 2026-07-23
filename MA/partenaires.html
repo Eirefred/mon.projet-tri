@@ -307,19 +307,20 @@
         }
 
         .btn-partner {
-            flex: 1;
-            min-width: 120px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.6rem 1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.2s ease;
-            text-align: center;
-        }
+    flex: 1;
+    min-width: 140px; /* Légèrement augmenté pour laisser respirer le texte */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    text-align: center;
+    white-space: nowrap; /* 🔥 Empêche le numéro de téléphone de couper sur 2 lignes */
+}
 
         .btn-phone {
             background-color: var(--action-orange);
