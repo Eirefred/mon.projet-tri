@@ -46,7 +46,7 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.8rem 1.5rem;
+            padding: 0.2rem 1.5rem; /* Padding réduit pour maintenir la hauteur globale */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -58,36 +58,17 @@
             gap: 1rem;
         }
 
-        /* STYLES LOGO HEADER */
+        /* --- STYLES LOGO UNIQUE --- */
         .logo {
-            position: relative;
             display: inline-block;
             flex-shrink: 0;
         }
 
-        .logo img.logo-ref {
+        .logo img {
             display: block;
-            height: 64px;
+            height: 80px;       /* Logo plus grand */
             width: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .logo img.logo-fit {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 100%;
-            width: auto;
-            max-width: 100%;
             object-fit: contain;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .logo img.active {
-            opacity: 1;
         }
 
         .header-info-block {
@@ -307,20 +288,20 @@
         }
 
         .btn-partner {
-    flex: 1;
-    min-width: 140px; /* Légèrement augmenté pour laisser respirer le texte */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.6rem 0.8rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    text-align: center;
-    white-space: nowrap; /* 🔥 Empêche le numéro de téléphone de couper sur 2 lignes */
-}
+            flex: 1;
+            min-width: 140px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            text-align: center;
+            white-space: nowrap;
+        }
 
         .btn-phone {
             background-color: var(--action-orange);
@@ -478,7 +459,7 @@
         @media (max-width: 834px) {
             .header-container {
                 position: relative;
-                padding: 0.6rem 1rem;
+                padding: 0.2rem 1rem;
                 justify-content: space-between;
             }
 
@@ -487,8 +468,8 @@
                 max-width: calc(100% - 40px);
             }
 
-            .logo img.logo-ref {
-                height: 46px;
+            .logo img {
+                height: 58px;
             }
 
             .header-info-block {
@@ -562,11 +543,8 @@
     <header>
         <div class="header-container">
             <div class="brand-group">
-                <a href="index.html" class="logo" id="logo-slider">
-                    <!-- Logo 1 : Actif par défaut -->
-                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" class="logo-ref active" width="325" height="96">
-                    <!-- Logo 2 : Inactif au départ -->
-                    <img src="matthieu-artisan2.png" alt="Matthieu Artisan - Plomberie Logo 2" class="logo-fit" width="1140" height="449">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
                 </a>
                 <div class="header-info-block">
                     <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
@@ -582,15 +560,14 @@
             </button>
 
             <!-- Navigation -->
-<nav>
-    <ul id="nav-menu">
-        <li><a href="specialites.html">Spécialités</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="partenaires.html"class="active-link">Partenaires</a></li>
-        <!-- NOUVEAU LIEN DANS LA NAVIGATION -->
-        <li><a href="mentions-legales.html">Mentions Légales</a></li>
-    </ul>
-</nav>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="specialites.html">Spécialités</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="partenaires.html" class="active-link">Partenaires</a></li>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -759,12 +736,6 @@
 
     <!-- JavaScript -->
     <script>
-        /* Slider Logo Header */
-        const logoImages = document.querySelectorAll('#logo-slider img');
-        setInterval(() => {
-            logoImages.forEach(img => img.classList.toggle('active'));
-        }, 5000);
-
         /* Modal */
         function openModal() {
             document.getElementById('zoneModal').style.display = 'flex';

@@ -35,7 +35,7 @@
             line-height: 1.6;
         }
 
-        /* --- EN-TÊTE (EXACT DU MODÈLE) --- */
+        /* --- EN-TÊTE --- */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -48,7 +48,7 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.8rem 1.5rem;
+            padding: 0.2rem 1.5rem; /* Padding réduit pour maintenir la hauteur globale */
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -60,35 +60,17 @@
             gap: 1rem;
         }
 
+        /* --- STYLES LOGO UNIQUE --- */
         .logo {
-            position: relative;
             display: inline-block;
             flex-shrink: 0;
         }
 
-        .logo img.logo-ref {
+        .logo img {
             display: block;
-            height: 64px;
+            height: 80px;       /* Logo plus grand */
             width: auto;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .logo img.logo-fit {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            height: 100%;
-            width: auto;
-            max-width: 100%;
             object-fit: contain;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .logo img.active {
-            opacity: 1;
         }
 
         .header-info-block {
@@ -384,7 +366,7 @@
             cursor: pointer;
         }
 
-        /* --- BACK TO TOP (EXACT DU MODÈLE) --- */
+        /* --- BACK TO TOP --- */
         #backToTop {
             display: none;
             position: fixed;
@@ -413,7 +395,7 @@
             fill: #000000;
         }
 
-        /* --- PIED DE PAGE (EXACT DU MODÈLE) --- */
+        /* --- PIED DE PAGE --- */
         footer {
             background-color: var(--primary-blue);
             color: white;
@@ -459,7 +441,7 @@
         @media (max-width: 834px) {
             .header-container {
                 position: relative;
-                padding: 0.6rem 1rem;
+                padding: 0.2rem 1rem;
                 justify-content: space-between;
             }
 
@@ -468,8 +450,8 @@
                 max-width: calc(100% - 40px);
             }
 
-            .logo img.logo-ref {
-                height: 46px;
+            .logo img {
+                height: 58px;
             }
 
             .header-info-block {
@@ -532,9 +514,8 @@
     <header>
         <div class="header-container">
             <div class="brand-group">
-                <a href="index.html" class="logo" id="logo-slider">
-                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie" class="logo-ref active" width="325" height="96">
-                    <img src="matthieu-artisan2.png" alt="Matthieu Artisan - Plomberie Logo 2" class="logo-fit" width="1140" height="449">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
                 </a>
                 <div class="header-info-block">
                     <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
@@ -794,12 +775,6 @@
 
     <!-- JavaScript -->
     <script>
-        /* Slider Logo */
-        const logoImages = document.querySelectorAll('#logo-slider img');
-        setInterval(() => {
-            logoImages.forEach(img => img.classList.toggle('active'));
-        }, 5000);
-
         /* Menu Hamburger */
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales & CGV | Matthieu Artisan - Plomberie & Chauffage</title>
-    <meta name="description" content="Informations légales, immatriculation, assurances décennales et Conditions Générales de Vente (CGV) - MATTHIEU ARTISAN EURL.">
+    <title>Mentions Légales | Matthieu Artisan - Plomberie & Chauffage</title>
+    <meta name="description" content="Informations légales, immatriculation, assurances décennales et Conditions Générales de Vente - MATTHIEU ARTISAN EURL.">
     
     <style>
         :root {
@@ -32,7 +32,7 @@
             line-height: 1.6;
         }
 
-        /* En-tête */
+        /* --- EN-TÊTE UNIFIÉ --- */
         header {
             background-color: #ffffff;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -45,7 +45,7 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.8rem 1.5rem;
+            padding: 0.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -57,9 +57,17 @@
             gap: 1rem;
         }
 
+        /* --- STYLES LOGO UNIQUE --- */
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
         .logo img {
-            height: 64px;
+            display: block;
+            height: 80px;
             width: auto;
+            object-fit: contain;
         }
 
         .header-info-block {
@@ -76,6 +84,8 @@
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
         }
 
         .header-phone-link {
@@ -83,6 +93,12 @@
             font-weight: bold;
             color: var(--action-orange);
             text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
         }
 
         /* Navigation */
@@ -97,10 +113,45 @@
             color: var(--text-color);
             font-weight: 600;
             font-size: 0.95rem;
+            transition: color 0.2s;
         }
 
         nav a:hover, nav a.active-link {
             color: var(--accent-turquoise);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
         }
 
         /* Hero Banner */
@@ -291,15 +342,65 @@
             color: #0f172a;
         }
 
+        /* --- BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
         /* Footer */
         footer {
             background-color: var(--primary-blue);
             color: white;
             text-align: center;
             padding: 2rem 1.5rem;
-            margin-top: 3rem;
+            margin-top: 4rem;
             font-size: 0.9rem;
             border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
         }
 
         footer a {
@@ -308,17 +409,84 @@
         }
 
         footer a:hover {
+            color: var(--accent-turquoise);
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
+        /* Responsive Mobile */
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
             .cgv-content {
                 padding: 1.2rem 1rem;
             }
+
             details.cgv-wrapper summary {
                 font-size: 1.05rem;
                 padding: 1rem;
             }
+
             .legal-badge {
                 display: none;
             }
@@ -332,7 +500,7 @@
         <div class="header-container">
             <div class="brand-group">
                 <a href="index.html" class="logo">
-                    <img src="matthieu-artisan.jpg" alt="Matthieu Artisan - Plomberie">
+                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
                 </a>
                 <div class="header-info-block">
                     <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
@@ -340,16 +508,22 @@
                 </div>
             </div>
 
+            <!-- Bouton Hamburger -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <!-- Navigation -->
-<nav>
-    <ul id="nav-menu">
-        <li><a href="specialites.html">Spécialités</a></li>
-        <li><a href="certifications.html">Certifications</a></li>
-        <li><a href="partenaires.html">Partenaires</a></li>
-        <!-- NOUVEAU LIEN DANS LA NAVIGATION -->
-        <li><a href="mentions-legales.html"class="active-link">Mentions Légales</a></li>
-    </ul>
-</nav>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="specialites.html">Spécialités</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="partenaires.html">Partenaires</a></li>
+                    <li><a href="mentions-legales.html" class="active-link">Mentions Légales</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -532,9 +706,20 @@
 
     </main>
 
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
     <!-- Footer -->
     <footer>
         <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Notre secteur d'intervention :</strong>
+                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+            </div>
             <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
             <p style="margin-top: 0.5rem;">
                 <a href="specialites.html">Spécialités</a> | 
@@ -544,6 +729,42 @@
             </p>
         </div>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        /* Menu Hamburger */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* Back to Top */
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
 
 </body>
 </html>

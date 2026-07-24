@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise de Conformité Poêle à Bois | Matthieu Artisan</title>
+    <meta name="description" content="Expertise de conformité pour poêles à bois, poêles à granulés et conduits de fumée. Audits techniques, rapports d'assurance - MATTHIEU ARTISAN EURL.">
+    
+    <style>
+        :root {
+            /* Palette extraite directement du Logo */
+            --logo-navy: #0E2A52;         /* Bleu Marine (M + MATTHIEU) */
+            --logo-steel-blue: #4A80AA;   /* Bleu Acier (Goutte + détails) */
+            --logo-steel-hover: #356083;  /* Bleu Acier Foncé sur survol */
+            --logo-grey: #737679;        /* Gris Anthracite (A + ARTISAN) */
+            --logo-light-grey: #e2e8f0;  /* Gris clair bordures */
+            --bg-light: #f8fafc;         /* Fond de page très clair */
+            --bg-card-accent: #EAF1F8;   /* Fond d'encadré bleuté très doux */
+            --text-color: #2D3748;       /* Texte principal lisible */
+            --legal-dark: #0B1D3A;       /* Bleu nuit très sombre pour CGV */
+            --legal-border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- EN-TÊTE TAILLE ORIGINALE --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--logo-steel-blue);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem; /* Restauration du padding original */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .single-logo-link {
+            display: inline-block;
+            height: 80px; /* Restauration de la hauteur d'origine (80px) */
+            width: 197px;
+            flex-shrink: 0;
+        }
+
+        .single-logo-link img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px; /* Restauration de la hauteur d'origine (64px) */
+            border-left: 2px solid var(--logo-steel-blue);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--logo-navy);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--logo-steel-blue);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--logo-steel-hover);
+        }
+
+        /* Navigation Header */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--logo-steel-blue);
+            color: #ffffff;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(74, 128, 170, 0.3);
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background-color: var(--logo-steel-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(135deg, var(--logo-navy), #06152B);
+            color: white;
+            text-align: center;
+            padding: 3.5rem 1.5rem;
+            border-bottom: 4px solid var(--logo-steel-blue);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+            letter-spacing: 0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 850px;
+            margin: 0 auto;
+            color: #E2E8F0;
+        }
+
+        /* Conteneur principal */
+        .legal-container {
+            max-width: 1000px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .legal-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--logo-steel-blue);
+        }
+
+        .legal-card h2 {
+            color: var(--logo-navy);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--logo-light-grey);
+            padding-bottom: 0.5rem;
+        }
+
+        .legal-card ul {
+            list-style: none;
+        }
+
+        .legal-card li {
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+        }
+
+        .legal-card strong {
+            color: var(--logo-navy);
+        }
+
+        .full-width-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid var(--logo-navy);
+            margin-bottom: 2rem;
+        }
+
+        .full-width-card h2 {
+            color: var(--logo-navy);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* --- BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--logo-steel-blue);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--logo-navy);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--logo-steel-blue);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #cbd5e1;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--logo-steel-blue);
+            text-decoration: underline;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 834px) {
+            .header-container {
+                padding: 0.5rem 1rem;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .single-logo-link {
+                height: 58px;
+                width: 143px;
+            }
+
+            .single-logo-link img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .nav-links {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header avec taille originale (80px), logo matthieu-artisan.expertise.3.png et lien "Voir la Version 2" -->
+    <header>
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="index.html" class="single-logo-link">
+                    <img src="matthieu-artisan.expertise.3.png" alt="Matthieu Artisan - Expertise" width="1727" height="700">
+                </a>
+                <div class="header-info-block">
+                    <span class="header-location-tag">📍 Dans toute la France</span>
+                    <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <!-- Lien mis à jour -->
+            <nav class="nav-links">
+                <a href="expertise2.html" class="nav-btn">
+                    Voir la Version 2
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner avec teintes bleues du logo -->
+    <section class="hero">
+        <h1>Expertise de Conformité — Poêles à Bois & Fumisterie</h1>
+        <p>Contrôle technique indépendant, audit de sécurité incendie et vérification de la conformité aux normes DTU 24.1 & 24.2 pour appareils à granulés et bois bûche.</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="legal-container">
+
+        <!-- Introduction -->
+        <div class="full-width-card" style="border-top-color: var(--logo-navy);">
+            <h2>Votre Sécurité & Votre Conformité sous la Loupe d'un Expert</h2>
+            <p>Une installation de chauffage au bois ou à granulés non conforme présente des risques majeurs : <strong>intoxication au monoxyde de carbone, incendie de conduit et refus d'indemnisation par votre assurance</strong> en cas de sinistre.</p>
+            <p style="margin-top: 0.8rem;">
+                Que vous soyez un particulier, un acheteur, un notaire ou un professionnel de l'immobilier, nous réalisons des <strong>audits techniques impartiaux</strong> et délivrons des <strong>rapports d'expertise officiels</strong> basés sur les réglementations strictes du Bâtiment (DTU 24.1 et 24.2).
+            </p>
+        </div>
+
+        <!-- Grille des Prestations -->
+        <div class="legal-grid">
+            
+            <div class="legal-card">
+                <h2>🔍 Audit de Conformité DTU</h2>
+                <ul>
+                    <li><strong>Contrôle visuel & technique :</strong> Distance de sécurité, isolation des traversées de plancher/toiture.</li>
+                    <li><strong>Analyse des amenées d'air :</strong> Contrôle des débits d'air frais indispensables à la sécurité.</li>
+                    <li><strong>Plaque d'identification :</strong> Vérification de la compatibilité appareil / conduit.</li>
+                </ul>
+            </div>
+
+            <div class="legal-card">
+                <h2>📹 Inspection Caméra Vidéo</h2>
+                <ul>
+                    <li><strong>Passage de caméra endoscopique :</strong> Exploration intégrale de la paroi interne du conduit.</li>
+                    <li><strong>Détection de désordres :</strong> Repérage des fissures, bistrage, pièges à suie ou dévoiements.</li>
+                    <li><strong>Preuve en images :</strong> Enregistrement photo/vidéo joint à votre rapport d'expertise.</li>
+                </ul>
+            </div>
+
+            <div class="legal-card">
+                <h2>⚖️ Expertise Litiges & Assurances</h2>
+                <ul>
+                    <li><strong>Vice caché / Malfaçon :</strong> Diagnostic contradictoire en cas de litige avec un installateur.</li>
+                    <li><strong>Expertise après-sinistre :</strong> Recherche des causes d'incendie ou de feu de cheminée.</li>
+                    <li><strong>Assistance Transaction :</strong> Audit préventif avant l'achat ou la vente d'un bien.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Appareils Pris en Charge -->
+        <div class="full-width-card" style="border-top-color: var(--logo-steel-blue);">
+            <h2>Appareils & Équipements Expertisés</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                <div>
+                    <strong style="color: var(--logo-navy);">🪵 Poêles à Bois Bûche</strong>
+                    <p style="font-size: 0.9rem;">Foyers ouverts, inserts, poêles scandinaves et chaudières bois.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--logo-navy);">🔥 Poêles à Granulés (Pellets)</strong>
+                    <p style="font-size: 0.9rem;">Appareils étanches, sorties ventouse, programmation et conduits concentriques.</p>
+                </div>
+                <div>
+                    <strong style="color: var(--logo-navy);">🏠 Conduit & Fumisterie</strong>
+                    <p style="font-size: 0.9rem;">Tubage, conduits métalliques isolés, boisseaux maçonnés et souches de toit.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagements -->
+        <div class="legal-grid">
+            
+            <div class="legal-card" style="border-top-color: var(--logo-navy);">
+                <h2>Pourquoi faire appel à notre cabinet ?</h2>
+                <ul>
+                    <li><strong>100% Indépendant :</strong> Nous ne vendons ni poêles ni travaux. Notre diagnostic est totalement neutre.</li>
+                    <li><strong>Rapport Officiel :</strong> Un document juridique exploitable auprès des assurances et tribunaux.</li>
+                    <li><strong>Couverture Nationale :</strong> Interventions programmées dans toute la France.</li>
+                </ul>
+            </div>
+
+            <div class="legal-card" style="border-top-color: var(--logo-steel-blue);">
+                <h2>Comment se déroule une expertise ?</h2>
+                <ul>
+                    <li><strong>1. Prise de RDV :</strong> Analyse préalable de votre besoin par téléphone.</li>
+                    <li><strong>2. Inspection sur site :</strong> Tests d'étanchéité, mesures, relevés thermiques et caméra.</li>
+                    <li><strong>3. Remise du rapport :</strong> Envoi sous 48h/72h du dossier complet avec préconisations.</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Call To Action -->
+        <div class="full-width-card" style="border-top-color: var(--logo-steel-blue); text-align: center; background-color: var(--bg-card-accent);">
+            <h2 style="color: var(--logo-navy);">Un doute sur la sécurité de votre poêle ?</h2>
+            <p style="margin: 0.8rem 0 1.5rem 0; color: var(--text-color);">Ne prenez aucun risque avec le feu. Contactez dès aujourd'hui un expert certifié pour planifier votre contrôle de conformité.</p>
+            <a href="tel:0478470662" style="display: inline-block; background-color: var(--logo-steel-blue); color: white; padding: 0.8rem 2rem; border-radius: 5px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: background 0.3s;" onmouseover="this.style.backgroundColor='var(--logo-steel-hover)'" onmouseout="this.style.backgroundColor='var(--logo-steel-blue)'">
+                📞 Demander un diagnostic : 04 78 470 662
+            </a>
+        </div>
+
+    </main>
+
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Périmètre d'Intervention :</strong>
+                Audits et expertises de conformité de poêles à bois, granulés et fumisterie sur l'ensemble du territoire national (France métropolitaine).
+            </div>
+            <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Back To Top -->
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+
+</body>
+</html>
