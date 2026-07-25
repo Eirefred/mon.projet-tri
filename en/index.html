@@ -171,72 +171,6 @@
             overflow: hidden;
         }
 
-/* Conteneur des badges circulaires */
-.floating-badges-container {
-    position: fixed;
-    bottom: 80px;
-    right: 20px;
-    z-index: 1200;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    align-items: center;
-}
-
-/* Badge circulaire avec fond flouté */
-.circle-badge {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 3px solid #D65F3A; /* Bordure d'accent */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    
-    /* Effet de fond flouté (Glassmorphism) */
-    background: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-/* Contenu du badge */
-.circle-badge .badge-icon {
-    font-size: 20px;
-    line-height: 1;
-}
-
-.circle-badge .badge-label {
-    font-size: 9px;
-    font-weight: 800;
-    color: #004c97;
-    text-transform: uppercase;
-    text-align: center;
-    line-height: 1.1;
-    margin-top: 3px;
-    padding: 0 4px;
-}
-
-/* Effet au survol */
-.circle-badge:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-    border-color: #004c97;
-    background: rgba(255, 255, 255, 0.65);
-}
-
-/* Optionnel : Ajustement sur mobile */
-@media (max-width: 834px) {
-    .floating-badges-container {
-        bottom: 75px;
-        right: 15px;
-    }
-}
         /* Container of the iframe to hide YouTube borders */
         .video-background {
             position: absolute;
@@ -822,11 +756,6 @@
             header {
                 padding: 5px 0 !important;
             }
-
-            .floating-badges-container {
-        display: none !important;
-    }
-}
             #backToTop.visible { 
         display: flex !important; 
     }
@@ -1579,18 +1508,6 @@
             });
         });
     </script>
-    <!-- BADGES CIRCULAIRES FLOTTANTS À FOND FLOUTÉ -->
-<div class="floating-badges-container">
-    <a href="calendar.html" class="circle-badge" title="Calendrier 2026">
-        <span class="badge-icon">📅</span>
-        <span class="badge-label">CALENDAR 2026</span>
-    </a>
-    
-    <a href="independant.html" class="circle-badge" title="Boîte à outils">
-        <span class="badge-icon">🧰</span>
-        <span class="badge-label">TOOL BOX</span>
-    </a>
-</div>
 
 </body>
 </html>
