@@ -348,22 +348,22 @@
         }
 
         .flow-step {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-    background: #f0f7ff;
-    border: 2px solid #004c97;
-    border-radius: 15px;
-    padding: 35px 20px 30px 20px; /* Espace en haut pour le contenu sous le tab */
-    position: relative;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
-    box-sizing: border-box;
-}
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+            background: #f0f7ff;
+            border: 2px solid #004c97;
+            border-radius: 15px;
+            padding: 30px 20px;
+            position: relative;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
+            box-sizing: border-box;
+        }
 
         .flow-step:hover {
             transform: translateY(-5px);
@@ -371,58 +371,6 @@
             box-shadow: 0 10px 25px rgba(214, 95, 58, 0.15);
         }
 
-/* Style du TAB Navigateur */
-.browser-tab {
-    position: absolute;
-    top: -27px; /* Chevauche le haut de la carte */
-    left: 20px; /* Positionné à gauche comme un onglet web */
-    background: #004c97;
-    color: #ffffff;
-    font-size: 0.75rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 5px 18px 3px 18px;
-    /* Coins arrondis en haut uniquement (effet tab) */
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    border-bottom: none; /* Fusionne avec le haut de la carte */
-    white-space: nowrap;
-    z-index: 5;
-    transition: all 0.3s ease;
-}
-
-/* Couleurs attribuées selon le type de carte (harmonisées avec vos dégradés) */
-.tab-ressource-a { background: #10b981; } /* Vert (Self-Guided) */
-.tab-ressource-b { background: #004c97; } /* Bleu (Support) */
-.tab-ressource-c { background: #8b5cf6; } /* Violet (Club) */
-
-/* Survol de la carte : légère animation de l'onglet */
-.flow-step:hover .browser-tab {
-    filter: brightness(1.15);
-    transform: translateY(1px);
-}
-
-/* Style dédié au Badge "Popular" collé à droite */
-.badge-populaire {
-    position: absolute;
-    top: -2px;
-    right: 20px; /* Collé sur le bord supérieur droit */
-    background: var(--primary-gradient);
-    color: white;
-    padding: 4px 14px 5px 14px;
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-    font-weight: 900;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-    z-index: 5;
-}
         .step-number {
             color: white;
             padding: 8px 20px;
@@ -631,8 +579,8 @@
             }
             
             .flow-step {
-        padding: 40px 18px 22px 18px !important; /* Garde 40px en haut sur mobile */
-        margin-bottom: 25px !important;
+        padding: 22px 18px !important; /* Increases overall card padding */
+        margin-bottom: 25px !important; /* Increases space between cards on mobile */
     }
 
     .flow-step p {
@@ -1156,7 +1104,6 @@
                 
                 <div class="decision-flow">
                     <a href="independant.html" class="flow-step">
-                        <div class="browser-tab tab-ressource-a">Resource A</div>
                         <div class="step-number step-autonome">Self-Guided</div>
                         <em>"I want to get into triathlon on my own"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
@@ -1170,9 +1117,8 @@
 
                     <!-- SUPPORT CARD WITH POPULAR BADGE AND ORIGINAL BORDER -->
                     <a href="guidance.html" class="flow-step" style="position: relative;">
-                        <div class="browser-tab tab-ressource-b">Ressource B</div>
                         <!-- Popular Badge -->
-                        <div style="position: absolute; top: -12px; left: 80%; transform: translateX(-50%); background: var(--primary-gradient); color: white; padding: 4px 14px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
+                        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-gradient); color: white; padding: 4px 14px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
                             Popular
                         </div>
                         
@@ -1188,7 +1134,6 @@
                     </a>
 
                     <a href="club.html" class="flow-step">
-                        <div class="browser-tab tab-ressource-c">Ressource C</div>
                         <div class="step-number step-club">Club</div>
                         <em>"I want to train with a group"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">

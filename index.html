@@ -350,29 +350,68 @@
         }
 
         .flow-step {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-            background: #f0f7ff;
-            border: 2px solid #004c97;
-            border-radius: 15px;
-            padding: 30px 20px;
-            position: relative;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
-            box-sizing: border-box;
-        }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background: #f0f7ff;
+    border: 2px solid #004c97;
+    border-radius: 15px;
+    padding: 35px 20px 30px 20px; /* Espace en haut pour le contenu sous le tab */
+    position: relative;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 4px 15px rgba(0, 76, 151, 0.05);
+    box-sizing: border-box;
+}
 
         .flow-step:hover {
             transform: translateY(-5px);
             border-color: #D65F3A;
             box-shadow: 0 10px 25px rgba(214, 95, 58, 0.15);
         }
+/* Style du TAB Navigateur */
+.browser-tab {
+    position: absolute;
+    top: -27px; /* Chevauche le haut de la carte */
+    left: 20px; /* Positionné à gauche comme un onglet web */
+    background: #004c97;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 18px 3px 18px;
+    /* Coins arrondis en haut uniquement (effet tab) */
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none; /* Fusionne avec le haut de la carte */
+    white-space: nowrap;
+    z-index: 5;
+    transition: all 0.3s ease;
+}
 
+.tab-ressource-a {
+    background: #10b981; /* Vert (Autonome) */
+}
+
+.tab-ressource-b {
+    background: #004c97; /* Bleu institutionnel (ou #D65F3A orange) */
+}
+
+.tab-ressource-c {
+    background: #8b5cf6; /* Violet (Club) */
+}
+
+/* Changement de couleur au survol de la carte */
+.flow-step:hover .browser-tab {
+    background: #D65F3A;
+    border-color: #D65F3A;
+}
         .step-number {
             color: white;
             padding: 8px 20px;
@@ -581,9 +620,9 @@
             }
             
             .flow-step {
-        padding: 22px 18px !important; /* Augmente l'espace interne global de la carte */
-        margin-bottom: 25px !important; /* Augmente l'espace entre les cartes sur mobile */
-    }
+    padding: 35px 18px 22px 18px !important;
+    margin-bottom: 25px !important;
+}
 
     .flow-step p {
         font-size: 0.85rem !important; 
@@ -1103,8 +1142,9 @@
                 
                 <div class="decision-flow">
                     <a href="autonome.html" class="flow-step">
-                        <div class="step-number step-autonome">Autonome</div>
-                        <em>"Je veux me lancer seul dans le triathlon"</em>
+        <div class="browser-tab tab-ressource-a">Ressource A</div>
+        <div class="step-number step-autonome">Autonome</div>
+        <em>"Je veux me lancer seul dans le triathlon"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
                             Accédez à notre <span style="font-weight: bold; color: #004c97;">boîte à outils complète</span> pour débuter à votre rythme : présentation du triathlon, <span style="font-weight: bold; color: #004c97;">règlements officiels</span>, <span style="font-weight: bold; color: #004c97;">calendriers de la saison</span>, ainsi qu'une sélection de <span style="font-weight: bold; color: #004c97;">lieux sécurisés</span> pour vous entraîner en eau libre, à vélo ou à la course au Québec, et bien plus! Vous pouvez même y partager vos propres bons plans !
                         </p>
@@ -1115,9 +1155,10 @@
                     </a>
 
                     <!-- CARTE ACCOMPAGNEMENT AVEC BADGE POPULAIRE ET BORDURE D'ORIGINE -->
-                    <a href="accompagnement.html" class="flow-step" style="position: relative;">
+                    <a href="accompagnement.html" class="flow-step">
+        <div class="browser-tab tab-ressource-b">Ressource B</div>
                         <!-- Badge Populaire -->
-                        <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary-gradient); color: white; padding: 4px 14px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
+                        <div style="position: absolute; top: -12px; left: 80%; transform: translateX(-50%); background: var(--primary-gradient); color: white; padding: 4px 14px; border-radius: 50px; font-weight: 900; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);">
                             Populaire
                         </div>
                         
@@ -1133,6 +1174,7 @@
                     </a>
 
                     <a href="club.html" class="flow-step">
+        <div class="browser-tab tab-ressource-c">Ressource C</div>
                         <div class="step-number step-club">Club</div>
                         <em>"Je veux m'entraîner en groupe"</em>
                         <p style="font-weight: normal !important; color: #0f172a;">
