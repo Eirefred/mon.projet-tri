@@ -150,7 +150,7 @@
             line-height: 1.5;
         }
 
-        /* --- STYLES DES ONGLETS --- */
+        /* --- STYLES DES ONGLETS & EFFET BOUNCE MOBILE --- */
         .browser-tabs-wrapper {
             position: relative;
             overflow: hidden;
@@ -164,11 +164,27 @@
             box-sizing: border-box !important;     
             padding: 4px 4px 0 4px !important;    
             -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
             scrollbar-width: none;
         }
 
         .browser-tabs-container::-webkit-scrollbar {
             display: none;
+        }
+
+        /* Animation Rebond Horizontale */
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
         }
 
         .tab-button {
@@ -184,10 +200,15 @@
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             white-space: nowrap;
             user-select: none;
             flex-shrink: 0 !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-button:active {
+            transform: scale(0.92);
         }
 
         .tab-button:hover {
@@ -623,7 +644,7 @@
     </button>
 
     <script>
-        // Logique de navigation des onglets
+        // Logique de navigation des onglets + recentrage fluide sur mobile
         function openTab(evt, tabName) {
             let tabPanels = document.getElementsByClassName("tab-panel");
             for (let i = 0; i < tabPanels.length; i++) {
@@ -636,7 +657,11 @@
             }
 
             document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.classList.add("active");
+            const activeBtn = evt.currentTarget;
+            activeBtn.classList.add("active");
+
+            // Recentre doucement l'onglet sélectionné dans la zone visible sur mobile
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
 
         // Gestion du bouton Back To Top
@@ -653,6 +678,20 @@
         backToTopBtn.addEventListener("click", function() { 
             window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
+
+        // Déclencheur automatique de l'effet Bounce au défilement mobile
+        const tabsContainer = document.querySelector('.browser-tabs-container');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 834) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
     </script>
 </body>
 </html>

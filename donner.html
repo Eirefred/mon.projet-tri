@@ -57,23 +57,23 @@
         }
         
         #backToTop {
-    display: none; /* Caché par défaut */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-    background-color: var(--D65F3A, #D65F3A);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    align-items: center;
-    justify-content: center;
-}
+            display: none; /* Caché par défaut */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--D65F3A, #D65F3A);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -221,6 +221,21 @@
 
         .browser-tabs-container::-webkit-scrollbar { display: none; }
 
+        /* Animation Rebond Horizontale */
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
+        }
+
         .tab-button {
             display: flex;
             align-items: center;
@@ -257,23 +272,6 @@
             border-top: 4px solid transparent;
             animation: tabBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-
-        /* Animation Rebond / Bounce lors de l'activation */
-        @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        transform: translateY(0);
-    }
-    40% {
-        transform: translateY(-15px);
-    }
-    60% {
-        transform: translateY(-7px);
-    }
-}
-
-.bounce {
-    animation: bounce 0.8s ease;
-}
 
         .tab-button.tab-coachs.active {
             border-image: var(--coachs-gradient) 1;
@@ -726,6 +724,20 @@
         backToTopBtn.addEventListener("click", function() { 
             window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
+
+        // Déclencheur automatique de l'effet Bounce au défilement mobile
+        const tabsContainer = document.getElementById('tabsContainer');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 834) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
     </script>
 </body>
 </html>
