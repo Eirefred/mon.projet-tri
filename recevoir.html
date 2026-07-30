@@ -433,29 +433,18 @@
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .dropdown-menu {
-        display: none; 
-        position: static;
-        transform: none;
-        box-shadow: none;
-        background-color: transparent;
-        margin: 5px auto 0 auto;
-        border-radius: 0;
-        border: none;
-        min-width: unset;
-        width: 100%;
-        padding: 0;
-    }
-
-    /* Le sous-menu s'affiche uniquement quand la classe .is-open est présente */
-    nav ul li.has-dropdown.is-open .dropdown-menu {
-        display: block;
-    }
-
-    /* Rotation de la flèche quand le menu est ouvert */
-    nav ul li.has-dropdown.is-open .arrow-down {
-        transform: rotate(180deg);
-    }
-    
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
             .dropdown-menu::before { display: none; }
             .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
             .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
