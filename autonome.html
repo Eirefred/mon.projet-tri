@@ -21,7 +21,6 @@
 <meta property="og:url" content="https://mon.projet-tri.org/">
 <meta property="og:site_name" content="mon Projet Tri">
 <meta property="og:locale" content="fr_CA">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -728,6 +727,12 @@
         z-index: 2;
     }
 }
+
+        /* Style automatique pour la page active */
+    .nav-links a.active {
+        color: #d45d39 !important; /* Couleur du texte actif */
+        font-weight: bold !important; /* Texte en gras */
+    }
     </style>
 </head>
 <body>
@@ -2164,6 +2169,27 @@
     function escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
+
+    // Highlight de la page active
+
+document.addEventListener("DOMContentLoaded", function () {
+        // 1. Récupère le nom de la page actuelle
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+        // 2. Parcourt tous les liens du header
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute("href");
+
+            // 3. Si le lien correspond à la page actuelle, on l'active !
+            if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    });
 </script>
 </body>
 </html>

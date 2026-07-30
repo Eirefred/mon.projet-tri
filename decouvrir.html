@@ -542,6 +542,14 @@
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
+
+
+        /* Style automatique pour la page active */
+    .nav-links a.active {
+        color: #d45d39 !important; /* Couleur du texte actif */
+        font-weight: bold !important; /* Texte en gras */
+    }
+
     </style>
 </head>
 <body>
@@ -840,6 +848,25 @@
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        // 1. Récupère le nom de la page actuelle
+        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+
+        // 2. Parcourt tous les liens du header
+        const navLinks = document.querySelectorAll(".nav-links a");
+
+        navLinks.forEach(link => {
+            const linkPage = link.getAttribute("href");
+
+            // 3. Si le lien correspond à la page actuelle, on l'active !
+            if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                link.classList.add("active");
+            } else {
+                link.classList.remove("active");
+            }
+        });
+    });
     </script>
 </body>
 </html>
