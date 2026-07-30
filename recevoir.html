@@ -367,6 +367,76 @@
     flex-shrink: 0;
 }
 
+/* Bloc et badges des codes promo */
+.promo-section {
+    margin-top: 10px;
+    background: #f8fafc;
+    border-left: 3px solid var(--equipementiers-color);
+    padding: 10px 14px;
+    border-radius: 6px;
+}
+.promo-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    display: block;
+}
+.promo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.promo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.promo-badge {
+    background: #ffffff;
+    border: 1px dashed var(--equipementiers-color);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.promo-code {
+    color: var(--equipementiers-color);
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+.btn-copy {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: var(--text-dark);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.btn-copy:hover {
+    background: var(--equipementiers-color);
+    color: #ffffff;
+    border-color: var(--equipementiers-color);
+}
+.btn-copy.copied {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+
         /* --- FOOTER --- */
         footer { 
             background: #0481fb !important; 
@@ -637,23 +707,55 @@
 </div>
 
                 <!-- ONGLET 2 : ÉQUIPEMENTIERS -->
-                <div id="tab-equipementiers" class="tab-panel">
-                    <h2 class="tab-banner-title banner-equipementiers">
-                        <span>🚴 Équipementiers & Avantages</span>
-                    </h2>
-                    <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Retrouvez les boutiques et marques de premier choix offrant du matériel performant et des privilèges exclusifs à nos athlètes.
-                    </p>
-                    <div class="links-list">
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Nom de l'équipementier</span>
-                                <span class="link-desc">(Vélo, trifonction, accessoires...)</span>
+<div id="tab-equipementiers" class="tab-panel">
+    <h2 class="tab-banner-title banner-equipementiers">
+        <span>🚴 Équipementiers & Avantages</span>
+    </h2>
+    <p style="color: var(--text-light); margin-bottom: 20px;">
+        Retrouvez les boutiques et marques de premier choix offrant du matériel performant et des privilèges exclusifs à nos athlètes.
+    </p>
+    <div class="links-list">
+
+        <!-- Partenaire 1 : KRONO Nutrition -->
+        <div class="link-row">
+            <div class="link-logo-wrapper" style="align-items: flex-start;">
+                <img src="https://krononutrition.com/cdn/shop/files/Krono-Nutrition-Logo-noir.png" alt="Logo KRONO Nutrition" class="event-logo">
+                <div style="display: flex; flex-direction: column;">
+                    <span class="link-title">KRONO Nutrition</span>
+                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                        Produits de nutrition sportive sains, performants et faciles à digérer, conçus au Québec pour accompagner les athlètes à l'entraînement comme en compétition.
+                    </span>
+                    
+                    <!-- Section Codes Promo avec bouton Copier -->
+                    <div class="promo-section">
+                        <span class="promo-title">🏷️ Codes promo exclusifs :</span>
+                        <div class="promo-list">
+                            <div class="promo-item">
+                                <span class="promo-badge">
+                                    Code <span class="promo-code" id="code1">projettri20</span> ➔ <strong>20% de rabais</strong> sur tout le site
+                                </span>
+                                <button class="btn-copy" onclick="copyCode('projettri20', this)">
+                                    📋 <span>Copier</span>
+                                </button>
                             </div>
-                            <a href="#" class="link-action text-equipementiers">Visiter le site ↗</a>
+                            <div class="promo-item">
+                                <span class="promo-badge">
+                                    Code <span class="promo-code" id="code2">decouvprojettri</span> ➔ <strong>25% de rabais</strong> sur les paquets découverte
+                                </span>
+                                <button class="btn-copy" onclick="copyCode('decouvprojettri', this)">
+                                    📋 <span>Copier</span>
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    <small style="color: #94a3b8; font-size: 0.75rem; margin-top: 6px;">*Offres promo valides jusqu'au 31 décembre 2026</small>
                 </div>
+            </div>
+            <a href="https://krononutrition.com/fr-ca" target="_blank" rel="noopener noreferrer" class="link-action text-equipementiers">Visiter le site ↗</a>
+        </div>
+
+    </div>
+</div>
 
                 <!-- ONGLET 3 : SANTÉ & SOINS (À VENIR) -->
                 <div id="tab-sante" class="tab-panel">
@@ -762,6 +864,25 @@
             }, { threshold: 0.5 });
             observer.observe(tabsContainer);
         }
+
+        function copyCode(codeText, buttonElement) {
+    navigator.clipboard.writeText(codeText).then(() => {
+        const textSpan = buttonElement.querySelector('span');
+        const originalText = textSpan.innerText;
+
+        // Change l'apparence du bouton
+        buttonElement.classList.add('copied');
+        textSpan.innerText = 'Copié !';
+
+        // Remet le texte d'origine après 2 secondes
+        setTimeout(() => {
+            buttonElement.classList.remove('copied');
+            textSpan.innerText = originalText;
+        }, 2000);
+    }).catch(err => {
+        console.error('Erreur lors de la copie :', err);
+    });
+}
     </script>
 </body>
 </html>
