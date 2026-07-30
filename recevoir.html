@@ -322,17 +322,32 @@
             background: var(--sante-gradient);
         }
 
-        /* Style des lignes de liens */
-        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
-        .link-row {
-            display: flex; align-items: center; justify-content: space-between;
-            background: #f8fafc; padding: 12px 20px; border-radius: 10px;
-            border: 1px solid rgba(0, 76, 151, 0.08); transition: all 0.2s ease;
-        }
-        .link-row:hover { background: #f1f5f9; transform: translateX(4px); }
-        .link-title { font-weight: 700; color: var(--text-dark); }
-        .link-desc { color: var(--text-light); font-size: 0.9rem; margin-left: 8px; }
-        .link-action { font-weight: 800; font-size: 0.9rem; text-decoration: none; }
+        /* Style des lignes de liens mis à jour */
+.links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.link-row {
+    display: flex; 
+    align-items: flex-start; /* Alignement en haut pour gérer les textes longs */
+    justify-content: space-between;
+    gap: 15px; /* Espace garanti entre le contenu et le bouton */
+    background: #f8fafc; 
+    padding: 16px 20px; 
+    border-radius: 10px;
+    border: 1px solid rgba(0, 76, 151, 0.08); 
+    transition: all 0.2s ease;
+}
+.link-row:hover { background: #f1f5f9; transform: translateX(4px); }
+.link-title { font-weight: 700; color: var(--text-dark); }
+.link-desc { color: var(--text-light); font-size: 0.9rem; }
+
+/* Empêche le bouton de s'écraser */
+.link-action { 
+    font-weight: 800; 
+    font-size: 0.9rem; 
+    text-decoration: none; 
+    flex-shrink: 0; /* Important: protège la largeur du bouton */
+    white-space: nowrap; 
+    margin-top: 2px;
+}
 
         .text-evenements { color: var(--evenements-color); }
         .text-equipementiers { color: var(--equipementiers-color); }
@@ -646,9 +661,9 @@
     </p>
     <div class="links-list">
 
-        <!-- Événement 1 : Triathlon de la Vallée-du-Richelieu Rouville -->
+        <!-- Événement 1 : Triathlon de la Vallée-du-Richelieu -->
         <div class="link-row">
-            <div class="link-logo-wrapper" style="align-items: flex-start;">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
                 <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVYIqyaxpbsG2VE_Srvp4x2w0RiUhhdftEeWLU8Z9Fyl4mIdkd-pft3V77ql95sG_swajogtjaYO7_fTxq_g-VvuHC-Z5Jvy97dHskhNqDqadVIxWzsZCMFsJ0Unsexn6nmxrXYQIuV7B-mrrXWxvvU7CN50NSxpHBPaizFY7a1Xm5_lZ1Wt2sOp9ZiuFg=w16383" alt="Logo Triathlon VDR" class="event-logo">
                 <div style="display: flex; flex-direction: column;">
                     <span class="link-title">Triathlon de la Vallée-du-Richelieu</span>
@@ -662,7 +677,7 @@
 
         <!-- Événement 2 : Triathlon Duathlon de Saint-Lambert -->
         <div class="link-row">
-            <div class="link-logo-wrapper" style="align-items: flex-start;">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
                 <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/448658098_1000061068787802_853147903852360356_n.jpg?stp=dst-jpg_tt6&cstp=mx1561x1561&ctp=s1561x1561&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=NUl9UMeoL64Q7kNvwEgK2Uu&_nc_oc=Ado7_dtXoiPq1lqmPxnqiw2qYpQhhqy6T4QULSv0Z5qGawr6JSzLEAI3DLreeg1PqlI&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=XRoP-a6FmoKFpEwZdn6t6A&_nc_ss=782a8&oh=00_AQEVP9Vv52BE3nPwbdejeZm4sdaXkssXQig-jFBhEWURjA&oe=6A714324" alt="Logo Triathlon Saint-Lambert" class="event-logo">
                 <div style="display: flex; flex-direction: column;">
                     <span class="link-title">Triathlon Duathlon de Saint-Lambert</span>
@@ -674,29 +689,28 @@
             <a href="https://trisaintlambert.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
         </div>
 
-
         <!-- Événement 3 : Triathlon Duathlon de Verdun -->
         <div class="link-row">
-            <div class="link-logo-wrapper" style="align-items: flex-start;">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
                 <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUAL0v1t85JA86vtmul-VbKXFjhxlauQTUmsavgiyEu7GSg1vq9ogqaQ6x-jQ7Xdbch8YUPg--Ykdqy8hgfWifMvVUuUgXKSnIoogNX-OHuTh8-tUbF98p3ON8kl28rh09q-mbjmwslkbyBSeVGjJHXU8ge3fXYx5ewAKia_W5G_L6hCnIAk-3r2SlNhKE=w16383" alt="Logo Triathlon Verdun" class="event-logo">
                 <div style="display: flex; flex-direction: column;">
                     <span class="link-title">Triathlon Duathlon de Verdun</span>
                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
-                        Une compétition dynamique au cœur de Saint-Lambert, idéale pour débuter ou performer dans une ambiance stimulante.
+                        Un parcours rapide bordant le fleuve Saint-Laurent à Montréal, réputé pour son organisation sans faille.
                     </span>
                 </div>
             </div>
-            <a href="https://trisaintlambert.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
+            <a href="https://trivdr.triathlondeverdun.com" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
         </div>
 
         <!-- Événement 4 : Triathlon-Duathlon de Boucherville -->
         <div class="link-row">
-            <div class="link-logo-wrapper" style="align-items: flex-start;">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
                 <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/710288141_1377139487795267_2819754358430665686_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=O8LKqP8L93IQ7kNvwEFH1is&_nc_oc=AdrQit1mD0iM_yyjFLu70l9bWd5ch5BaRtohe1ERApbGeqrh8EQ4SM2sIInGFCWWj7I&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=NcFKr1rEaneOph_lRs8SSg&_nc_ss=7b2a8&oh=00_AQH1YjdCikY9mw0LvTgS2oW2vxJD5yWpl8fbb7urTZRjCA&oe=6A714FC7" alt="Logo Triathlon Boucherville" class="event-logo">
                 <div style="display: flex; flex-direction: column;">
                     <span class="link-title">Triathlon-Duathlon de Boucherville</span>
                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
-                        Une compétition dynamique au cœur de Saint-Lambert, idéale pour débuter ou performer dans une ambiance stimulante.
+                        Récompensé par le prix "Événement provincial" en 2023 et 2025 par Triathlon Québec, le Triathlon-Duathlon de Boucherville offre un environnement convivial et sécuritaire pour un premier triathlon. L'épreuve de natation se déroule en piscine ce qui offre un cadre rassurant, en plus d'offrir le meilleur repas d'après-course 🍽️ de toute la province par <a href="https://www.chezlionel.ca/" target="_blank" style="color: var(--evenements-color); font-weight: 700;">Chez Lionel</a>.
                     </span>
                 </div>
             </div>
