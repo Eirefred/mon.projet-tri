@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Trusted Partners | Mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            
+            /* CODES COULEURS ET DÉGRADÉS PARTENAIRES */
+            --coach-club-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
+            --evenements-gradient: linear-gradient(135deg, #004c97 0%, #ef4444 100%);
+            --sante-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
+
+            --coach-club-color: #10b981;
+            --evenements-color: #ef4444;
+            --sante-color: #D65F3A;
+            --equipementiers-color: #8b5cf6;
+
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        /* --- BOUTON BACK TO TOP --- */
+        #backToTop {
+            display: none; /* Caché par défaut sur PC */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--accent);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        .content-section {
+            padding: 60px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        .header-title-wrapper {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 780px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* --- STYLES DES ONGLETS & EFFET BOUNCE MOBILE --- */
+        .browser-tabs-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .browser-tabs-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;          
+            gap: 6px !important;                   
+            overflow-x: auto !important;
+            box-sizing: border-box !important;     
+            padding: 4px 4px 0 4px !important;    
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+        }
+
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Animation Rebond Horizontale */
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
+        }
+
+        .tab-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #cbd5e1;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            user-select: none;
+            flex-shrink: 0 !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-button:active {
+            transform: scale(0.92);
+        }
+
+        .tab-button:hover {
+            background: #e2e8f0;
+            color: #004c97;
+        }
+
+        /* LISERÉS EN DÉGRADÉ SUR LES ONGLETS ACTIFS */
+        .tab-button.active {
+            background: #ffffff;
+            position: relative;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid transparent;
+        }
+
+        .tab-button.tab-evenements.active {
+            border-image: var(--evenements-gradient) 1;
+            color: var(--evenements-color);
+        }
+
+        .tab-button.tab-equipementiers.active {
+            border-image: var(--equipementiers-gradient) 1;
+            color: var(--equipementiers-color);
+        }
+
+        .tab-button.tab-sante.active {
+            border-image: var(--sante-gradient) 1;
+            color: var(--sante-color);
+        }
+
+        @media (min-width: 835px) {
+            .browser-tabs-container {
+                overflow-x: hidden !important;
+            }
+
+            .tab-button {
+                flex: 1 1 0px !important;              
+                min-width: 0 !important;               
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 3px;
+                right: 0;
+                height: 45px; 
+                width: 30px;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                pointer-events: none; 
+                z-index: 2;
+            }
+            .content-section h1 { font-size: 1.9rem; }
+            .header-subtitle { font-size: 0.95rem; }
+        }
+
+        /* --- CONTENU DES ONGLETS --- */
+        .tab-content-wrapper {
+            background: #ffffff;
+            padding: 40px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            min-height: 300px;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* BANDEAUX MINCES POUR LES TITRES DANS LE CORPS DE L'ONGLET */
+        .tab-banner-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-banner-title.banner-evenements {
+            background: var(--evenements-gradient);
+        }
+
+        .tab-banner-title.banner-equipementiers {
+            background: var(--equipementiers-gradient);
+        }
+
+        .tab-banner-title.banner-sante {
+            background: var(--sante-gradient);
+        }
+
+        /* Style des lignes de liens mis à jour */
+        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .link-row {
+            display: flex; 
+            align-items: flex-start; /* Alignement en haut pour gérer les textes longs */
+            justify-content: space-between;
+            gap: 15px; /* Espace garanti entre le contenu et le bouton */
+            background: #f8fafc; 
+            padding: 16px 20px; 
+            border-radius: 10px;
+            border: 1px solid rgba(0, 76, 151, 0.08); 
+            transition: all 0.2s ease;
+        }
+        .link-row:hover { background: #f1f5f9; transform: translateX(4px); }
+        .link-title { font-weight: 700; color: var(--text-dark); }
+        .link-desc { color: var(--text-light); font-size: 0.9rem; }
+
+        /* Empêche le bouton de s'écraser */
+        .link-action { 
+            font-weight: 800; 
+            font-size: 0.9rem; 
+            text-decoration: none; 
+            flex-shrink: 0; /* Important: protège la largeur du bouton */
+            white-space: nowrap; 
+            margin-top: 2px;
+        }
+
+        .text-evenements { color: var(--evenements-color); }
+        .text-equipementiers { color: var(--equipementiers-color); }
+        .text-sante { color: var(--sante-color); }
+
+        .badge-a-venir {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- STYLE DES LOGOS PARTENAIRES --- */
+        .link-logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .event-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: #ffffff;
+            padding: 4px;
+            border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        /* Bloc et badges des codes promo */
+        .promo-section {
+            margin-top: 10px;
+            background: #f8fafc;
+            border-left: 3px solid var(--equipementiers-color);
+            padding: 10px 14px;
+            border-radius: 6px;
+        }
+        .promo-title {
+            font-size: 0.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .promo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .promo-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .promo-badge {
+            background: #ffffff;
+            border: 1px dashed var(--equipementiers-color);
+            color: var(--text-dark);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .promo-code {
+            color: var(--equipementiers-color);
+            font-family: monospace;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+        .btn-copy {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: var(--text-dark);
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-copy:hover {
+            background: var(--equipementiers-color);
+            color: #ffffff;
+            border-color: var(--equipementiers-color);
+        }
+        .btn-copy.copied {
+            background: #10b981 !important;
+            color: #ffffff !important;
+            border-color: #10b981 !important;
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        @media (max-width: 834px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* Style automatique pour la page active */
+        .nav-links a.active {
+            color: #d45d39 !important; /* Couleur du texte actif */
+            font-weight: bold !important; /* Texte en gras */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Across Quebec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="discover.html">About Us</a></li> 
+                    <li class="has-dropdown">
+                        <a href="#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
+                            <li><a href="club.html">Club</a></li>
+                        </ul>
+                    </li>                    
+                    <li class="has-dropdown">
+                        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="receive.html">Receive</a></li>
+                            <li><a href="provide.html">Provide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="calendar.html">Calendar'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label" style="color: #ccc;">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" checked onclick="window.location.href='../recevoir.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SECTION WITH TABS -->
+    <main class="content-section">
+        <div class="container">
+
+            <!-- SECTION HEADER -->
+            <div class="header-title-wrapper">
+                <h1>Our Trusted Partners</h1>
+                <p class="header-subtitle">
+                    We rigorously select exceptional partners who enhance your athletic experience: major events recognized for their organizational quality, dedicated healthcare professionals, and equipment providers offering exclusive benefits to members of our network.
+                </p>
+            </div>
+
+            <!-- TABS BAR -->
+            <div class="browser-tabs-wrapper">
+                <div class="browser-tabs-container">
+                    <button class="tab-button tab-evenements active" onclick="openTab(event, 'tab-evenements')">📅 Events</button>
+                    <button class="tab-button tab-equipementiers" onclick="openTab(event, 'tab-equipementiers')">🚴 Equipment & Gear</button>
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Health & Care (Coming Soon)</button>
+                </div>
+            </div>
+
+            <!-- CONTENT BLOCK -->
+            <div class="tab-content-wrapper">
+
+                <!-- TAB 1: EVENTS -->
+                <div id="tab-evenements" class="tab-panel active">
+                    <h2 class="tab-banner-title banner-evenements">
+                        <span>📅 Selected Events</span>
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        Discover our list of partner competitions, renowned for their high-quality courses, safety, and unique atmosphere.
+                    </p>
+                    <div class="links-list">
+
+                        <!-- Event 1: Triathlon de la Vallée-du-Richelieu -->
+                        <div class="link-row">
+                            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                                <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQVYIqyaxpbsG2VE_Srvp4x2w0RiUhhdftEeWLU8Z9Fyl4mIdkd-pft3V77ql95sG_swajogtjaYO7_fTxq_g-VvuHC-Z5Jvy97dHskhNqDqadVIxWzsZCMFsJ0Unsexn6nmxrXYQIuV7B-mrrXWxvvU7CN50NSxpHBPaizFY7a1Xm5_lZ1Wt2sOp9ZiuFg=w16383" alt="Triathlon VDR Logo" class="event-logo">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="link-title">Triathlon de la Vallée-du-Richelieu</span>
+                                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                                        One of the very first triathlons of the season! Held mainly at the beautiful Domaine International de Rouville, this human-scale triathlon is welcoming and accessible. Open-water swimming takes place in a man-made basin featuring a large central fountain. On the bike leg, participants ride along peaceful, low-traffic countryside roads. All of this comes with a friendly, welcoming, and intimate atmosphere.
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://trivdr.triathlondeverdun.com" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">View details ↗</a>
+                        </div>
+
+                        <!-- Event 2: Triathlon Duathlon de Saint-Lambert -->
+                        <div class="link-row">
+                            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                                <img src="https://scontent-iad3-1.xx.fbcdn.net/v/t39.30808-6/448658098_1000061068787802_853147903852360356_n.jpg?stp=dst-jpg_tt6&cstp=mx1561x1561&ctp=s1561x1561&_nc_cat=108&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=NUl9UMeoL64Q7kNvwEgK2Uu&_nc_oc=Ado7_dtXoiPq1lqmPxnqiw2qYpQhhqy6T4QULSv0Z5qGawr6JSzLEAI3DLreeg1PqlI&_nc_zt=23&_nc_ht=scontent-iad3-1.xx&_nc_gid=XRoP-a6FmoKFpEwZdn6t6A&_nc_ss=782a8&oh=00_AQEVP9Vv52BE3nPwbdejeZm4sdaXkssXQig-jFBhEWURjA&oe=6A714324" alt="Triathlon Saint-Lambert Logo" class="event-logo">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="link-title">Triathlon Duathlon de Saint-Lambert</span>
+                                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                                        A top favorite among beginners, largely thanks to its pool swim format. Organized early in the season, it offers a great opportunity to get into the groove before taking on bigger summer challenges. Its multi-lap course in the heart of Saint-Lambert allows athletes to enjoy continuous cheers and support from enthusiastic spectators.
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://trisaintlambert.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">View details ↗</a>
+                        </div>
+
+                        <!-- Event 3: Triathlon Duathlon de Verdun -->
+                        <div class="link-row">
+                            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                                <img src="https://lh3.googleusercontent.com/sitesv/AG8ngQUAL0v1t85JA86vtmul-VbKXFjhxlauQTUmsavgiyEu7GSg1vq9ogqaQ6x-jQ7Xdbch8YUPg--Ykdqy8hgfWifMvVUuUgXKSnIoogNX-OHuTh8-tUbF98p3ON8kl28rh09q-mbjmwslkbyBSeVGjJHXU8ge3fXYx5ewAKia_W5G_L6hCnIAk-3r2SlNhKE=w16383" alt="Triathlon Verdun Logo" class="event-logo">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="link-title">Triathlon Duathlon de Verdun</span>
+                                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                                        Held in mid-summer, this triathlon brings a true summer holiday vibe at Parc du Quai-de-La Tortue in Verdun, along the St. Lawrence River. The swim portion takes place directly in the river, providing a unique and exhilarating experience due to the current. Organized by a highly experienced crew, it delivers a unique and seamlessly managed event!
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://www.triathlondeverdun.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">View details ↗</a>
+                        </div>
+
+                        <!-- Event 4: Triathlon-Duathlon de Boucherville -->
+                        <div class="link-row">
+                            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                                <img src="https://scontent-iad3-2.xx.fbcdn.net/v/t39.30808-6/710288141_1377139487795267_2819754358430665686_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1080&ctp=s1080x1080&_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=O8LKqP8L93IQ7kNvwEFH1is&_nc_oc=AdrQit1mD0iM_yyjFLu70l9bWd5ch5BaRtohe1ERApbGeqrh8EQ4SM2sIInGFCWWj7I&_nc_zt=23&_nc_ht=scontent-iad3-2.xx&_nc_gid=NcFKr1rEaneOph_lRs8SSg&_nc_ss=7b2a8&oh=00_AQH1YjdCikY9mw0LvTgS2oW2vxJD5yWpl8fbb7urTZRjCA&oe=6A714FC7" alt="Triathlon Boucherville Logo" class="event-logo">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="link-title">Triathlon-Duathlon de Boucherville</span>
+                                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                                        As the final event of the season, the Boucherville Triathlon-Duathlon was awarded the Triathlon Québec "Provincial Event of the Year" in 2023 and 2025. It offers a friendly, safe environment for athletes competing in their first race. The pool swim ensures a reassuring setting, complemented by the best post-race meal 🍽️ in the province catered by <a href="https://www.chezlionel.ca/" target="_blank" style="color: var(--evenements-color); font-weight: 700;">Chez Lionel</a>.
+                                    </span>
+                                </div>
+                            </div>
+                            <a href="https://trisaintlambert.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">View details ↗</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 2: EQUIPMENT & GEAR -->
+                <div id="tab-equipementiers" class="tab-panel">
+                    <h2 class="tab-banner-title banner-equipementiers">
+                        <span>🚴 Equipment & Exclusive Benefits</span>
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        Discover top-tier brands and retail shops offering high-performance gear and exclusive perks for our athletes.
+                    </p>
+                    <div class="links-list">
+
+                        <!-- Partner 1: KRONO Nutrition -->
+                        <div class="link-row">
+                            <div class="link-logo-wrapper" style="align-items: flex-start;">
+                                <img src="https://krononutrition.com/cdn/shop/files/Krono-Nutrition-Logo-noir.png" alt="KRONO Nutrition Logo" class="event-logo">
+                                <div style="display: flex; flex-direction: column;">
+                                    <span class="link-title">KRONO Nutrition</span>
+                                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                                        Healthy, effective, and easy-to-digest sports nutrition products, crafted in Quebec to support athletes during training and competition.
+                                    </span>
+                                    
+                                    <!-- Promo Code Section with Copy Button -->
+                                    <div class="promo-section">
+                                        <span class="promo-title">🏷️ Exclusive promo codes:</span>
+                                        <div class="promo-list">
+                                            <div class="promo-item">
+                                                <span class="promo-badge">
+                                                    Code <span class="promo-code" id="code1">projettri20</span> ➔ <strong>20% off</strong> site-wide
+                                                </span>
+                                                <button class="btn-copy" onclick="copyCode('projettri20', this)">
+                                                    📋 <span>Copy</span>
+                                                </button>
+                                            </div>
+                                            <div class="promo-item">
+                                                <span class="promo-badge">
+                                                    Code <span class="promo-code" id="code2">decouvprojettri</span> ➔ <strong>25% off</strong> discovery packs
+                                                </span>
+                                                <button class="btn-copy" onclick="copyCode('decouvprojettri', this)">
+                                                    📋 <span>Copy</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <small style="color: #94a3b8; font-size: 0.75rem; margin-top: 6px;">*Promo offers valid until December 31, 2026</small>
+                                </div>
+                            </div>
+                            <a href="https://krononutrition.com/en-ca" target="_blank" rel="noopener noreferrer" class="link-action text-equipementiers">Visit website ↗</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- TAB 3: HEALTH & CARE (COMING SOON) -->
+                <div id="tab-sante" class="tab-panel">
+                    <h2 class="tab-banner-title banner-sante">
+                        <span>🩹 Health & Care</span>
+                        <span class="badge-a-venir">Coming Soon</span>
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        This section is currently under preparation. Check back soon for our selected specialists chosen for the high quality of their care (physiotherapy, nutrition, sports medicine, and recovery).
+                    </p>
+                    <div class="links-list">
+                        <div class="link-row" style="opacity: 0.8;">
+                            <div>
+                                <span class="link-title">Network of trusted therapists & practitioners</span>
+                                <span class="link-desc">(Service coming soon)</span>
+                            </div>
+                            <span class="link-action text-sante">Coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+     <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - Nonprofit dedicated to triathlon in Quebec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>View all service areas covered</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <script>
+        // Tab navigation logic + smooth scroll centering on mobile
+        function openTab(evt, tabName) {
+            let tabPanels = document.getElementsByClassName("tab-panel");
+            for (let i = 0; i < tabPanels.length; i++) {
+                tabPanels[i].classList.remove("active");
+            }
+
+            let tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            const activeBtn = evt.currentTarget;
+            activeBtn.classList.add("active");
+
+            // Smoothly center the selected tab in view on mobile
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // --- BACK TO TOP BUTTON MANAGEMENT ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function() { 
+            window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+
+        // Auto trigger bounce effect on mobile scroll
+        const tabsContainer = document.querySelector('.browser-tabs-container');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 834) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
+
+        function copyCode(codeText, buttonElement) {
+            navigator.clipboard.writeText(codeText).then(() => {
+                const textSpan = buttonElement.querySelector('span');
+                const originalText = textSpan.innerText;
+
+                buttonElement.classList.add('copied');
+                textSpan.innerText = 'Copied!';
+
+                setTimeout(() => {
+                    buttonElement.classList.remove('copied');
+                    textSpan.innerText = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Error copying text:', err);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = window.location.pathname.split("/").pop() || "receive.html";
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
+
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "receive.html")) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

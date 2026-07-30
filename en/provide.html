@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soutenir la Mission | Mon Projet Tri</title>
+    <title>Support the Mission | Mon Projet Tri</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" href="../favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="../favicon.png">
 
     <style>
         html { scroll-behavior: smooth; }
@@ -496,10 +496,10 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo Mon Projet Tri"></a>
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
                 </div>
                 <div class="region-stack">
-                    <span class="region-mention">Partout au Québec</span>
+                    <span class="region-mention">Across Quebec</span>
                 </div>
             </div>
             <nav>
@@ -511,166 +511,166 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="decouvrir.html">L'OSBL</a></li> 
+                    <li><a href="discover.html">About Us</a></li> 
                     <li class="has-dropdown">
-                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <a href="#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="autonome.html">Autonome</a></li>
-                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
                             <li><a href="club.html">Club</a></li>
                         </ul>
                     </li>                    
                     <li class="has-dropdown">
-                        <a href="index.html#partenaires" class="dropdown-trigger">Partenaires <span class="arrow-down">▼</span></a>
+                        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="recevoir.html">Recevoir</a></li>
-                            <li><a href="donner.html">Donner</a></li>
+                            <li><a href="receive.html">Receive</a></li>
+                            <li><a href="provide.html">Provide</a></li>
                         </ul>
                     </li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="calendrier.html">Calendrier'26</a></li> 
+                    <li><a href="calendar.html">Calendar'26</a></li> 
                     <li class="lang-switcher">
-                        <span class="lang-label">FR</span>
+                        <span class="lang-label" style="color: #ccc;">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/provide.html'">
+                            <input type="checkbox" checked onclick="window.location.href='../donner.html'">
                             <span class="slider"></span>
                         </label>
-                        <span class="lang-label" style="color: #ccc;">EN</span>
+                        <span class="lang-label">EN</span>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- SECTION PRINCIPALE AVEC ONGLETS -->
+    <!-- MAIN SECTION WITH TABS -->
     <main class="content-section">
         <div class="container">
 
-            <!-- ENTÊTE DE SECTION -->
+            <!-- SECTION HEADER -->
             <div class="header-title-wrapper">
-                <h1>Soutenir Notre Mission</h1>
+                <h1>Support Our Mission</h1>
                 <p class="header-subtitle">
-                    Vous contribuez au dynamisme du triathlon au Québec tout en vous faisant connaître ? Allions-nous pour faire grandir la communauté ensemble.
+                    Would you like to contribute to the vitality of triathlon in Quebec while raising your profile? Let's join forces to grow the community together.
                 </p>
             </div>
 
-            <!-- BARRE DES 4 ONGLETS PARTENAIRES -->
+            <!-- 4 PARTNER TABS BAR -->
             <div class="browser-tabs-wrapper">
                 <div class="browser-tabs-container">
-                    <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coachs & Clubs</button>
-                    <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Événements</button>
-                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button>
-                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Équipementiers</button>
+                    <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coaches & Clubs</button>
+                    <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Events</button>
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Health & Care</button>
+                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Equipment Manufacturers</button>
                 </div>
             </div>
 
-            <!-- BLOC DU CONTENU -->
+            <!-- CONTENT BLOCK -->
             <div class="tab-content-wrapper">
 
-                <!-- ONGLET 1 : COACHS & CLUBS -->
+                <!-- TAB 1: COACHES & CLUBS -->
                 <div id="tab-coachs" class="tab-panel active">
                     <h2 class="tab-banner-title banner-coachs">
-                        <span>⏱️ Coachs & Clubs</span>
+                        <span>⏱️ Coaches & Clubs</span>
                     </h2>
-                    <span class="tab-quote">"Je gère un club" / "J'entraîne des athlètes"</span>
+                    <span class="tab-quote">"I manage a club" / "I train athletes"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Faisons connaissance, définissons votre profil de coach ou votre philosophie de club. Nous allons vous connecter à des athlètes qui vous correspondent.
+                        Let's get connected and define your coaching profile or club philosophy. We will connect you with athletes that best match your approach.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Rejoindre le réseau de coachs certifiés</span>
-                                <span class="link-desc">Proposez vos services de suivi avec des tarifs encadrés pour accueillir de nouveaux athlètes.</span>
+                                <span class="link-title">Join the network of certified coaches</span>
+                                <span class="link-desc">Offer your coaching services at structured rates to welcome new athletes.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-coachs">Nous rejoindre ↗</a>
+                            <a href="index.html#contact" class="link-action btn-coachs">Join us ↗</a>
                         </div>
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Référencer votre club</span>
-                                <span class="link-desc">Augmentez la visibilité de votre club auprès des membres de notre communauté régionale.</span>
+                                <span class="link-title">List your club</span>
+                                <span class="link-desc">Increase your club's visibility among members of our regional community.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-coachs">Inscrire mon club ↗</a>
+                            <a href="index.html#contact" class="link-action btn-coachs">Register my club ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 2 : ÉVÉNEMENTS -->
+                <!-- TAB 2: EVENTS -->
                 <div id="tab-evenement" class="tab-panel">
                     <h2 class="tab-banner-title banner-evenement">
-                        <span>🏁 Événements</span>
+                        <span>🏁 Events</span>
                     </h2>
-                    <span class="tab-quote">"J'organise une course ou un triathlon"</span>
+                    <span class="tab-quote">"I organize a race or a triathlon"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Dynamisez vos événements de triathlon : nous prenons en charge l'accueil des athlètes débutants et vous profitez d'animations exclusives signées mon Projet Tri.
+                        Energize your triathlon events: we take care of welcoming beginner athletes, and you benefit from exclusive animations hosted by Mon Projet Tri.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Accueil & Encadrement Débutants</span>
-                                <span class="link-desc">Mettez en place une zone d'accueil rassurer et guider les novices le jour J.</span>
+                                <span class="link-title">Beginner Welcome & Guidance</span>
+                                <span class="link-desc">Set up a welcome area to reassure and guide novices on race day.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-evenement">Collaborer ↗</a>
+                            <a href="index.html#contact" class="link-action btn-evenement">Collaborate ↗</a>
                         </div>
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Ajouter au calendrier 2026</span>
-                                <span class="link-desc">Faites figurer votre événement dans notre répertoire officiel du triathlon québécois.</span>
+                                <span class="link-title">Add to the 2026 calendar</span>
+                                <span class="link-desc">Feature your event in our official Quebec triathlon directory.</span>
                             </div>
-                            <a href="calendrier.html" class="link-action btn-evenement">Voir le calendrier ↗</a>
+                            <a href="calendar.html" class="link-action btn-evenement">View schedule ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 3 : SANTÉ & SOINS -->
+                <!-- TAB 3: HEALTH & CARE -->
                 <div id="tab-sante" class="tab-panel">
                     <h2 class="tab-banner-title banner-sante">
-                        <span>🩺 Santé & Soins</span>
+                        <span>🩺 Health & Care</span>
                     </h2>
-                    <span class="tab-quote">"Je suis thérapeute, kiné ou nutritionniste"</span>
+                    <span class="tab-quote">"I am a therapist, physio, or nutritionist"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Devenez le praticien de référence pour les triathlètes afin de les aider dans leur préparation, leur récupération ainsi que leurs traitements thérapeutiques.
+                        Become a go-to practitioner for triathletes to assist them with their training preparation, recovery, and therapeutic treatments.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Devenir intervenant réseau</span>
-                                <span class="link-desc">Proposez des séances d'information ou des consultations adaptées aux besoins des triathlètes.</span>
+                                <span class="link-title">Become a network specialist</span>
+                                <span class="link-desc">Offer information sessions or consultations tailored to triathletes' needs.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-sante">Proposer mes services ↗</a>
+                            <a href="index.html#contact" class="link-action btn-sante">Offer my services ↗</a>
                         </div>
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Soutenir l'OSBL (Don & Mécénat)</span>
-                                <span class="link-desc">Contribuez directement au financement des programmes d'accompagnement de l'organisme.</span>
+                                <span class="link-title">Support the NPO (Donations & Sponsorship)</span>
+                                <span class="link-desc">Directly contribute to funding the organization's support programs.</span>
                             </div>
-                            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="link-action btn-sante">Faire un don ↗</a>
+                            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="link-action btn-sante">Make a donation ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 4 : ÉQUIPEMENTIERS -->
+                <!-- TAB 4: EQUIPMENT MANUFACTURERS -->
                 <div id="tab-equipement" class="tab-panel">
                     <h2 class="tab-banner-title banner-equipement">
-                        <span>🚴 Équipementiers</span>
+                        <span>🚴 Equipment Manufacturers</span>
                     </h2>
-                    <span class="tab-quote">"Je vends du matériel ou des produits sportifs"</span>
+                    <span class="tab-quote">"I sell sports gear or products"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Vous vendez de l'équipement ou des produits pour triathlètes ? Participez à rendre le triathlon plus accessible tout en vous faisant connaître. Parlons-en.
+                        Do you sell equipment or products for triathletes? Help make triathlon more accessible while enhancing your visibility. Let's talk.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Partenariat matériel & avantages membres</span>
-                                <span class="link-desc">Offrez des promotions ciblées ou des tests d'équipement à notre communauté.</span>
+                                <span class="link-title">Equipment partnership & member benefits</span>
+                                <span class="link-desc">Provide targeted promotions or gear testing for our community.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-equipement">Devenir partenaire ↗</a>
+                            <a href="index.html#contact" class="link-action btn-equipement">Become a partner ↗</a>
                         </div>
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Commandite globale & visibilité</span>
-                                <span class="link-desc">Associez votre marque à l'essor du triathlon partout au Québec.</span>
+                                <span class="link-title">Global sponsorship & visibility</span>
+                                <span class="link-desc">Associate your brand with the growth of triathlon across Quebec.</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-equipement">Nous contacter ↗</a>
+                            <a href="index.html#contact" class="link-action btn-equipement">Contact us ↗</a>
                         </div>
                     </div>
                 </div>
@@ -684,7 +684,7 @@
         <div class="container">
             <div class="footer-logo">
                 <a href="index.html">
-                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
                 </a>
             </div>
             <div class="footer-text">
@@ -692,28 +692,28 @@
                     &copy; 2026 
                     <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
                     <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-                    - OSBL dédiée au triathlon au Québec
+                    - Nonprofit dedicated to triathlon in Quebec
                 </p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
             </div>
             <div class="footer-zones">
                 <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                    <summary>View all service areas covered</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
                 </details>
             </div>
         </div>
     </footer>
 
-    <!-- BOUTON RETOUR EN HAUT -->
-<button id="backToTop" title="Retour en haut">
+    <!-- BACK TO TOP BUTTON -->
+<button id="backToTop" title="Back to top">
     <svg viewBox="0 0 24 24">
         <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
     </svg>
 </button>
 
     <script>
-        // Logique de navigation des 4 onglets
+        // 4 tabs navigation logic
         function openTab(evt, tabName) {
             let tabPanels = document.getElementsByClassName("tab-panel");
             for (let i = 0; i < tabPanels.length; i++) {
@@ -729,11 +729,11 @@
             evt.currentTarget.classList.add("active");
         }
 
-        // --- GESTION DU BOUTON BACK TO TOP ---
+        // --- BACK TO TOP BUTTON MANAGEMENT ---
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener("scroll", function() {
-            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
+            // Triggers ONLY if screen width <= 834px AND scroll > 300px
             if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
                 backToTopBtn.classList.add("visible");
             } else {
@@ -745,7 +745,7 @@
             window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
 
-        // Déclencheur automatique de l'effet Bounce au défilement mobile
+        // Automatic trigger for mobile Bounce effect on scroll
         const tabsContainer = document.querySelector('.browser-tabs-container');
         if (tabsContainer) {
             const observer = new IntersectionObserver((entries, observerInstance) => {
@@ -759,27 +759,21 @@
             observer.observe(tabsContainer);
         }
 
-        // Highlight de la page active
+        // Highlight active page
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            const navLinks = document.querySelectorAll(".nav-links a");
 
-document.addEventListener("DOMContentLoaded", function () {
-        // 1. Récupère le nom de la page actuelle
-        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
 
-        // 2. Parcourt tous les liens du header
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute("href");
-
-            // 3. Si le lien correspond à la page actuelle, on l'active !
-            if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
         });
-    });
-
     </script>
 </body>
 </html>
