@@ -58,23 +58,24 @@
         
         /* --- BOUTON BACK TO TOP --- */
         #backToTop {
-            display: none; /* Caché par défaut sur PC */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
-            background-color: #D65F3A;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            align-items: center;
-            justify-content: center;
-        }
+    display: none; /* Caché par défaut sur PC */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: var(--accent);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
+
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
 
@@ -637,11 +638,11 @@
     </footer>
 
     <!-- BOUTON RETOUR EN HAUT -->
-    <button id="backToTop" title="Retour en haut">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-        </svg>
-    </button>
+<button id="backToTop" title="Retour en haut">
+    <svg viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
 
     <script>
         // Logique de navigation des onglets + recentrage fluide sur mobile

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soutenir la Mission | Mon Projet Tri</title>
+    <title>Nos Partenaires de Confiance | Mon Projet Tri</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,16 +18,16 @@
             --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
             --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
             
-            /* DÉGRADÉS EXACTS DE LA SECTION PARTENAIRES */
-            --coachs-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
-            --evenement-gradient: linear-gradient(135deg, #004c97 0%, #ef4444 100%);
+            /* CODES COULEURS ET DÉGRADÉS PARTENAIRES */
+            --coach-club-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
+            --evenements-gradient: linear-gradient(135deg, #004c97 0%, #ef4444 100%);
             --sante-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
-            --equipement-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
+            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
 
-            --coachs-color: #10b981;
-            --evenement-color: #ef4444;
+            --coach-club-color: #10b981;
+            --evenements-color: #ef4444;
             --sante-color: #D65F3A;
-            --equipement-color: #8b5cf6;
+            --equipementiers-color: #8b5cf6;
 
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -56,24 +56,25 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
         
+        /* --- BOUTON BACK TO TOP (Masqué par défaut) --- */
         #backToTop {
-            display: none; /* Caché par défaut */
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
-            background-color: var(--D65F3A, #D65F3A);
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            align-items: center;
-            justify-content: center;
-        }
+    display: none; /* Caché par défaut sur PC */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: var(--accent);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -115,57 +116,6 @@
 
         .lang-switcher { display: flex; align-items: center; gap: 8px; }
         .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
-
-        /* --- MENUS DÉROULANTS --- */
-        nav ul li.has-dropdown { position: relative; }
-        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #ffffff;
-            min-width: 180px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 10px 0;
-            margin: 0;
-            list-style: none;
-            z-index: 1100;
-            border: 1px solid rgba(0, 76, 151, 0.08);
-        }
-        .dropdown-menu::before {
-            content: '';
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 6px;
-            border-style: solid;
-            border-color: transparent transparent #ffffff transparent;
-        }
-
-        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
-        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
-
-        .dropdown-menu li { width: 100%; padding: 0; }
-        .dropdown-menu a {
-            display: block;
-            padding: 10px 20px;
-            color: #004c97 !important;
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: none;
-            text-align: left;
-            transition: all 0.2s ease;
-        }
-        .dropdown-menu a:hover {
-            background-color: #f1f5f9;
-            color: #D65F3A !important;
-            padding-left: 24px;
-        }
 
         /* --- ZONE DE CONTENU DE LA PAGE --- */
         .content-section {
@@ -215,11 +165,13 @@
             box-sizing: border-box !important;     
             padding: 4px 4px 0 4px !important;    
             -webkit-overflow-scrolling: touch;
-            overscroll-behavior-x: contain; /* Active l'effet rebond natif d'iOS / Android sur le défilement */
+            overscroll-behavior-x: contain;
             scrollbar-width: none;
         }
 
-        .browser-tabs-container::-webkit-scrollbar { display: none; }
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
 
         /* Animation Rebond Horizontale */
         @keyframes bounceLeftRight {
@@ -240,11 +192,11 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 18px;
+            padding: 12px 20px;
             background: #cbd5e1;
             color: #475569;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border: none;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
@@ -257,7 +209,7 @@
         }
 
         .tab-button:active {
-            transform: scale(0.92); /* Micro-pression lors du clic */
+            transform: scale(0.92);
         }
 
         .tab-button:hover {
@@ -265,22 +217,22 @@
             color: #004c97;
         }
 
+        /* LISERÉS EN DÉGRADÉ SUR LES ONGLETS ACTIFS */
         .tab-button.active {
             background: #ffffff;
             position: relative;
             box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
             border-top: 4px solid transparent;
-            animation: tabBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .tab-button.tab-coachs.active {
-            border-image: var(--coachs-gradient) 1;
-            color: var(--coachs-color);
+        .tab-button.tab-evenements.active {
+            border-image: var(--evenements-gradient) 1;
+            color: var(--evenements-color);
         }
 
-        .tab-button.tab-evenement.active {
-            border-image: var(--evenement-gradient) 1;
-            color: var(--evenement-color);
+        .tab-button.tab-equipementiers.active {
+            border-image: var(--equipementiers-gradient) 1;
+            color: var(--equipementiers-color);
         }
 
         .tab-button.tab-sante.active {
@@ -288,13 +240,11 @@
             color: var(--sante-color);
         }
 
-        .tab-button.tab-equipement.active {
-            border-image: var(--equipement-gradient) 1;
-            color: var(--equipement-color);
-        }
+        @media (min-width: 835px) {
+            .browser-tabs-container {
+                overflow-x: hidden !important;
+            }
 
-        @media (min-width: 900px) {
-            .browser-tabs-container { overflow-x: hidden !important; }
             .tab-button {
                 flex: 1 1 0px !important;              
                 min-width: 0 !important;               
@@ -303,7 +253,12 @@
             }
         }
 
-        @media (max-width: 899px) {
+        @media (max-width: 834px) {
+            /* Activation de l'affichage du bouton BackToTop UNIQUEMENT sur mobile */
+            #backToTop.visible { 
+                display: flex !important; 
+            }
+
             .browser-tabs-wrapper::after {
                 content: "";
                 position: absolute;
@@ -315,117 +270,9 @@
                 pointer-events: none; 
                 z-index: 2;
             }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .content-section h1 { font-size: 1.9rem; }
             .header-subtitle { font-size: 0.95rem; }
-        }
-
-        /* --- CONTENU DES ONGLETS --- */
-        .tab-content-wrapper {
-            background: #ffffff;
-            padding: 40px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            min-height: 300px;
-            border: 1px solid #cbd5e1;
-            border-top: none;
-        }
-
-        .tab-panel { display: none; }
-        .tab-panel.active {
-            display: block;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .tab-banner-title {
-            color: #ffffff;
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-top: 0;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .tab-banner-title.banner-coachs { background: var(--coachs-gradient); }
-        .tab-banner-title.banner-evenement { background: var(--evenement-gradient); }
-        .tab-banner-title.banner-sante { background: var(--sante-gradient); }
-        .tab-banner-title.banner-equipement { background: var(--equipement-gradient); }
-
-        .tab-quote {
-            font-style: italic;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
-        .link-row {
-            display: flex; align-items: center; justify-content: space-between;
-            background: #f8fafc; padding: 16px 20px; border-radius: 10px;
-            border: 1px solid rgba(0, 76, 151, 0.08); transition: all 0.2s ease;
-        }
-        .link-row:hover { background: #f1f5f9; transform: translateX(4px); }
-        .link-title { font-weight: 700; color: var(--text-dark); display: block; }
-        .link-desc { color: var(--text-light); font-size: 0.9rem; margin-top: 2px; display: block; }
-        .link-action { 
-            font-weight: 800; 
-            font-size: 0.85rem; 
-            text-decoration: none; 
-            padding: 8px 16px; 
-            border-radius: 20px;
-            color: white;
-            white-space: nowrap;
-        }
-
-        .btn-coachs { background: var(--coachs-gradient); }
-        .btn-evenement { background: var(--evenement-gradient); }
-        .btn-sante { background: var(--sante-gradient); }
-        .btn-equipement { background: var(--equipement-gradient); }
-
-        /* --- FOOTER --- */
-        footer { 
-            background: #0481fb !important; 
-            color: white !important; 
-            padding: 50px 0 !important; 
-            text-align: center; 
-            border-top: 4px solid #FF6600 !important; 
-        }
-        .footer-logo img { height: 60px; margin-bottom: 20px; }
-        
-        .btn-zeffy-fr { 
-            background-color: #D65F3A; 
-            color: #ffffff !important; 
-            padding: 10px 25px; 
-            text-decoration: none; 
-            border-radius: 50px; 
-            font-size: 12px; 
-            font-weight: 900; 
-            text-transform: uppercase; 
-            display: inline-block; 
-            margin: 20px 0; 
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
-        }
-        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
-        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
-        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
-
-        @media (max-width: 834px) {
-            #backToTop.visible { display: flex !important; }
-            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
-            
             .dropdown-menu {
                 display: block; 
                 position: static;
@@ -465,6 +312,166 @@
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
+
+        /* --- CONTENU DES ONGLETS --- */
+        .tab-content-wrapper {
+            background: #ffffff;
+            padding: 40px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            min-height: 300px;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* BANDEAUX MINCES POUR LES TITRES DANS LE CORPS DE L'ONGLET */
+        .tab-banner-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-banner-title.banner-evenements {
+            background: var(--evenements-gradient);
+        }
+
+        .tab-banner-title.banner-equipementiers {
+            background: var(--equipementiers-gradient);
+        }
+
+        .tab-banner-title.banner-sante {
+            background: var(--sante-gradient);
+        }
+
+        /* Style des lignes de liens */
+        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        .link-row {
+            display: flex; align-items: center; justify-content: space-between;
+            background: #f8fafc; padding: 12px 20px; border-radius: 10px;
+            border: 1px solid rgba(0, 76, 151, 0.08); transition: all 0.2s ease;
+        }
+        .link-row:hover { background: #f1f5f9; transform: translateX(4px); }
+        .link-title { font-weight: 700; color: var(--text-dark); }
+        .link-desc { color: var(--text-light); font-size: 0.9rem; margin-left: 8px; }
+        .link-action { font-weight: 800; font-size: 0.9rem; text-decoration: none; }
+
+        .text-evenements { color: var(--evenements-color); }
+        .text-equipementiers { color: var(--equipementiers-color); }
+        .text-sante { color: var(--sante-color); }
+
+        .badge-a-venir {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
     </style>
 </head>
 <body>
@@ -488,7 +495,7 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="decouvrir.html">L'OSBL</a></li> 
+                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
                     <li class="has-dropdown">
                         <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
@@ -505,11 +512,11 @@
                         </ul>
                     </li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="calendrier.html">Calendrier'26</a></li> 
+                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
                     <li class="lang-switcher">
                         <span class="lang-label">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/donner.html'">
+                            <input type="checkbox" onclick="window.location.href='en/club.html'">
                             <span class="slider"></span>
                         </label>
                         <span class="lang-label" style="color: #ccc;">EN</span>
@@ -523,131 +530,80 @@
     <main class="content-section">
         <div class="container">
 
-            <!-- ENTÊTE DE SECTION -->
+            <!-- ENTÊTE DE SECTION MISE À JOUR -->
             <div class="header-title-wrapper">
-                <h1>Soutenir Notre Mission</h1>
+                <h1>Nos Partenaires de Confiance</h1>
                 <p class="header-subtitle">
-                    Vous contribuez au dynamisme du triathlon au Québec tout en vous faisant connaître ? Allions-nous pour faire grandir la communauté ensemble.
+                    Nous sélectionnons rigoureusement des acteurs d'exception qui enrichissent votre expérience sportive : événements majeurs pour la qualité de leur organisation, professionnels de la santé dédiés et équipementiers offrant des avantages exclusifs aux membres de notre réseau.
                 </p>
             </div>
 
-            <!-- BARRE DES 4 ONGLETS PARTENAIRES -->
+            <!-- BARRE DES ONGLETS -->
             <div class="browser-tabs-wrapper">
-                <div class="browser-tabs-container" id="tabsContainer">
-                    <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coachs & Clubs</button>
-                    <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Événements</button>
-                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button>
-                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Équipementiers</button>
+                <div class="browser-tabs-container">
+                    <button class="tab-button tab-evenements active" onclick="openTab(event, 'tab-evenements')">📅 Événements</button>
+                    <button class="tab-button tab-equipementiers" onclick="openTab(event, 'tab-equipementiers')">🚴 Équipementiers</button>
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins (à venir)</button>
                 </div>
             </div>
 
             <!-- BLOC DU CONTENU -->
             <div class="tab-content-wrapper">
 
-                <!-- ONGLET 1 : COACHS & CLUBS -->
-                <div id="tab-coachs" class="tab-panel active">
-                    <h2 class="tab-banner-title banner-coachs">
-                        <span>⏱️ Coachs & Clubs</span>
+                <!-- ONGLET 1 : ÉVÉNEMENTS -->
+                <div id="tab-evenements" class="tab-panel active">
+                    <h2 class="tab-banner-title banner-evenements">
+                        <span>📅 Événements sélectionnés</span>
                     </h2>
-                    <span class="tab-quote">"Je gère un club" / "J'entraîne des athlètes"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Faisons connaissance, définissons votre profil de coach ou votre philosophie de club. Nous allons vous connecter à des athlètes qui vous correspondent.
+                        Découvrez la liste des compétitions d'exception partenaires reconnues pour la qualité de leur parcours, leur sécurité et leur ambiance unique.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Rejoindre le réseau de coachs certifiés</span>
-                                <span class="link-desc">Proposez vos services de suivi avec des tarifs encadrés pour accueillir de nouveaux athlètes.</span>
+                                <span class="link-title">Nom de l'événement</span>
+                                <span class="link-desc">(Description courte ou ville)</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-coachs">Nous rejoindre ↗</a>
-                        </div>
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Référencer votre club</span>
-                                <span class="link-desc">Augmentez la visibilité de votre club auprès des membres de notre communauté régionale.</span>
-                            </div>
-                            <a href="index.html#contact" class="link-action btn-coachs">Inscrire mon club ↗</a>
+                            <a href="#" class="link-action text-evenements">Voir détails ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 2 : ÉVÉNEMENTS -->
-                <div id="tab-evenement" class="tab-panel">
-                    <h2 class="tab-banner-title banner-evenement">
-                        <span>🏁 Événements</span>
+                <!-- ONGLET 2 : ÉQUIPEMENTIERS -->
+                <div id="tab-equipementiers" class="tab-panel">
+                    <h2 class="tab-banner-title banner-equipementiers">
+                        <span>🚴 Équipementiers & Avantages</span>
                     </h2>
-                    <span class="tab-quote">"J'organise une course ou un triathlon"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Dynamisez vos événements de triathlon : nous prenons en charge l'accueil des athlètes débutants et vous profitez d'animations exclusives signées mon Projet Tri.
+                        Retrouvez les boutiques et marques de premier choix offrant du matériel performant et des privilèges exclusifs à nos athlètes.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Accueil & Encadrement Débutants</span>
-                                <span class="link-desc">Mettez en place une zone d'accueil pour rassurer et guider les novices le jour J.</span>
+                                <span class="link-title">Nom de l'équipementier</span>
+                                <span class="link-desc">(Vélo, trifonction, accessoires...)</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-evenement">Collaborer ↗</a>
-                        </div>
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Ajouter au calendrier 2026</span>
-                                <span class="link-desc">Faites figurer votre événement dans notre répertoire officiel du triathlon québécois.</span>
-                            </div>
-                            <a href="calendrier.html" class="link-action btn-evenement">Voir le calendrier ↗</a>
+                            <a href="#" class="link-action text-equipementiers">Visiter le site ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 3 : SANTÉ & SOINS -->
+                <!-- ONGLET 3 : SANTÉ & SOINS (À VENIR) -->
                 <div id="tab-sante" class="tab-panel">
                     <h2 class="tab-banner-title banner-sante">
-                        <span>🩺 Santé & Soins</span>
+                        <span>🩹 Santé & Soins</span>
+                        <span class="badge-a-venir">À venir</span>
                     </h2>
-                    <span class="tab-quote">"Je suis thérapeute, kiné ou nutritionniste"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Devenez le praticien de référence pour les triathlètes afin de les aider dans leur préparation, leur récupération ainsi que leurs traitements thérapeutiques.
+                        Cette section est actuellement en préparation. Retrouvez très prochainement nos spécialistes sélectionnés pour la qualité supérieure de leurs soins (physiothérapie, nutrition, médecine sportive et récupération).
                     </p>
                     <div class="links-list">
-                        <div class="link-row">
+                        <div class="link-row" style="opacity: 0.8;">
                             <div>
-                                <span class="link-title">Devenir intervenant réseau</span>
-                                <span class="link-desc">Proposez des séances d'information ou des consultations adaptées aux besoins des triathlètes.</span>
+                                <span class="link-title">Réseau de thérapeutes & praticiens de confiance</span>
+                                <span class="link-desc">(Service à venir)</span>
                             </div>
-                            <a href="index.html#contact" class="link-action btn-sante">Proposer mes services ↗</a>
-                        </div>
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Soutenir l'OSBL (Don & Mécénat)</span>
-                                <span class="link-desc">Contribuez directement au financement des programmes d'accompagnement de l'organisme.</span>
-                            </div>
-                            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="link-action btn-sante">Faire un don ↗</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ONGLET 4 : ÉQUIPEMENTIERS -->
-                <div id="tab-equipement" class="tab-panel">
-                    <h2 class="tab-banner-title banner-equipement">
-                        <span>🚴 Équipementiers</span>
-                    </h2>
-                    <span class="tab-quote">"Je vends du matériel ou des produits sportifs"</span>
-                    <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Vous vendez de l'équipement ou des produits pour triathlètes ? Participez à rendre le triathlon plus accessible tout en vous faisant connaître. Parlons-en.
-                    </p>
-                    <div class="links-list">
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Partenariat matériel & avantages membres</span>
-                                <span class="link-desc">Offrez des promotions ciblées ou des tests d'équipement à notre communauté.</span>
-                            </div>
-                            <a href="index.html#contact" class="link-action btn-equipement">Devenir partenaire ↗</a>
-                        </div>
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Commandite globale & visibilité</span>
-                                <span class="link-desc">Associez votre marque à l'essor du triathlon partout au Québec.</span>
-                            </div>
-                            <a href="index.html#contact" class="link-action btn-equipement">Nous contacter ↗</a>
+                            <span class="link-action text-sante">À venir</span>
                         </div>
                     </div>
                 </div>
@@ -683,14 +639,14 @@
     </footer>
 
     <!-- BOUTON RETOUR EN HAUT -->
-    <button id="backToTop" title="Retour en haut">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
-            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
-        </svg>
-    </button>
+<button id="backToTop" title="Retour en haut">
+    <svg viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
 
     <script>
-        // Logique de navigation des 4 onglets + recentrage fluide sur mobile
+        // Logique de navigation des onglets + recentrage fluide sur mobile
         function openTab(evt, tabName) {
             let tabPanels = document.getElementsByClassName("tab-panel");
             for (let i = 0; i < tabPanels.length; i++) {
@@ -706,15 +662,16 @@
             const activeBtn = evt.currentTarget;
             activeBtn.classList.add("active");
 
-            // Recentre doucement l'onglet sélectionné dans la zone visible en mobile
+            // Recentre doucement l'onglet sélectionné dans la zone visible sur mobile
             activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
 
-        // Gestion du bouton Back To Top
+        // --- GESTION DU BOUTON BACK TO TOP ---
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 834 && window.scrollY > 300) {
+            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
                 backToTopBtn.classList.add("visible");
             } else {
                 backToTopBtn.classList.remove("visible");
@@ -726,7 +683,7 @@
         });
 
         // Déclencheur automatique de l'effet Bounce au défilement mobile
-        const tabsContainer = document.getElementById('tabsContainer');
+        const tabsContainer = document.querySelector('.browser-tabs-container');
         if (tabsContainer) {
             const observer = new IntersectionObserver((entries, observerInstance) => {
                 entries.forEach(entry => {
