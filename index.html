@@ -408,7 +408,11 @@
 }
 
 /* Changement de couleur au survol de la carte */
-
+.flow-step:hover {
+            transform: translateY(-5px);
+            border-color: #D65F3A;
+            box-shadow: 0 10px 25px rgba(214, 95, 58, 0.15);
+        }
         .step-number {
             color: white;
             padding: 8px 20px;
@@ -885,9 +889,6 @@
                 padding: 5px 0 !important;
             }
 
-            .floating-badges-container {
-        display: none !important;
-    }
 
             #backToTop.visible { 
         display: flex !important; 
