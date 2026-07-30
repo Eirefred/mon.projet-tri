@@ -57,23 +57,24 @@
         }
         
         #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
-            background-color: #D65F3A;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            align-items: center;
-            justify-content: center;
-        }
+    display: none; /* Caché par défaut */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: var(--D65F3A, #D65F3A);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
+
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
 
@@ -258,11 +259,21 @@
         }
 
         /* Animation Rebond / Bounce lors de l'activation */
-        @keyframes tabBounce {
-            0% { transform: scale(0.92); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
+        @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-15px);
+    }
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+.bounce {
+    animation: bounce 0.8s ease;
+}
 
         .tab-button.tab-coachs.active {
             border-image: var(--coachs-gradient) 1;
