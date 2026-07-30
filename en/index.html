@@ -371,27 +371,7 @@
             border-color: #D65F3A;
             box-shadow: 0 10px 25px rgba(214, 95, 58, 0.15);
         }
-
-        .google-badge-float {
-        display: none !important; /* Caché par défaut sur mobile lors du défilement */
-        position: fixed;
-        bottom: 20px;
-        left: 20px;
-    }
-
-    /* Classe activée en JS uniquement tout en haut de la page */
-    .google-badge-float.at-top {
-        display: flex !important;
-    }
-
-    /* Si la popup est ouverte, on s'assure qu'elle s'adapte bien sur petit écran */
-    .google-reviews-popup {
-        bottom: 75px !important;
-        left: 15px !important;
-        width: 90% !important;
-        max-width: 320px;
-    }
-            
+    
             .flow-step {
     padding: 35px 18px 22px 18px !important;
     margin-bottom: 25px !important;
@@ -669,6 +649,27 @@
     .step-number {
         font-size: 1.1rem !important; 
         margin-bottom: 15px !important; /* Specifically increases space below boxed title */
+    }
+
+
+            .google-badge-float {
+        display: none !important; /* Caché par défaut sur mobile lors du défilement */
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+    }
+
+    /* Classe activée en JS uniquement tout en haut de la page */
+    .google-badge-float.at-top {
+        display: flex !important;
+    }
+
+    /* Si la popup est ouverte, on s'assure qu'elle s'adapte bien sur petit écran */
+    .google-reviews-popup {
+        bottom: 75px !important;
+        left: 15px !important;
+        width: 90% !important;
+        max-width: 320px;
     }
 
             /* Mobile adaptation of profiles box */
@@ -1261,7 +1262,7 @@
     </svg>
     <span style="font-weight: 800; color: #0f172a; font-size: 0.9rem;">5.0</span>
     <span style="color: #ffc107; font-size: 0.85rem;">★★★★★</span>
-    <span style="font-size: 0.75rem; color: #004c97; font-weight: 700;">(Review)</span>
+    <span style="font-size: 0.75rem; color: #004c97; font-weight: 700;">(7 Reviews)</span>
 </div>
 
 <!-- FENÊTRE D'AFFICHAGE DES AVIS (POPUP) -->
