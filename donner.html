@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nos Partenaires de Confiance | Mon Projet Tri</title>
+    <title>Soutenir la Mission | Mon Projet Tri</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,16 +18,16 @@
             --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
             --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
             
-            /* CODES COULEURS ET DÉGRADÉS PARTENAIRES */
-            --coach-club-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
-            --evenements-gradient: linear-gradient(135deg, #004c97 0%, #ef4444 100%);
+            /* DÉGRADÉS EXACTS DE LA SECTION PARTENAIRES DE INDEX.HTML */
+            --coachs-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
+            --evenement-gradient: linear-gradient(135deg, #004c97 0%, #ef4444 100%);
             --sante-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
-            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
+            --equipement-gradient: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%);
 
-            --coach-club-color: #10b981;
-            --evenements-color: #ef4444;
+            --coachs-color: #10b981;
+            --evenement-color: #ef4444;
             --sante-color: #D65F3A;
-            --equipementiers-color: #8b5cf6;
+            --equipement-color: #8b5cf6;
 
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -56,7 +56,7 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
         
-        /* --- BOUTON BACK TO TOP (Masqué par défaut) --- */
+        /* --- BOUTON BACK TO TOP --- */
         #backToTop {
     display: none; /* Caché par défaut sur PC */
     position: fixed;
@@ -151,7 +151,26 @@
             line-height: 1.5;
         }
 
-        /* --- STYLES DES ONGLETS & EFFET BOUNCE MOBILE --- */
+        /* --- STYLES DES ONGLETS --- */
+        .browser-tabs-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .browser-tabs-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;          
+            gap: 6px !important;                   
+            overflow-x: auto !important;
+            box-sizing: border-box !important;     
+            padding: 4px 4px 0 4px !important;    
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .browser-tabs-container::-webkit-scrollbar { display: none; }
+
+/* --- STYLES DES ONGLETS & EFFET BOUNCE MOBILE --- */
         .browser-tabs-wrapper {
             position: relative;
             overflow: hidden;
@@ -187,29 +206,23 @@
                 animation: bounceLeftRight 1.2s ease-in-out;
             }
         }
-
         .tab-button {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 20px;
+            padding: 12px 18px;
             background: #cbd5e1;
             color: #475569;
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             border: none;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
             cursor: pointer;
-            transition: background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.2s ease;
             white-space: nowrap;
             user-select: none;
             flex-shrink: 0 !important;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .tab-button:active {
-            transform: scale(0.92);
         }
 
         .tab-button:hover {
@@ -217,7 +230,7 @@
             color: #004c97;
         }
 
-        /* LISERÉS EN DÉGRADÉ SUR LES ONGLETS ACTIFS */
+        /* LISERÉS EN DÉGRADÉ SELON LES 4 TYPES DE PARTENAIRES */
         .tab-button.active {
             background: #ffffff;
             position: relative;
@@ -225,14 +238,14 @@
             border-top: 4px solid transparent;
         }
 
-        .tab-button.tab-evenements.active {
-            border-image: var(--evenements-gradient) 1;
-            color: var(--evenements-color);
+        .tab-button.tab-coachs.active {
+            border-image: var(--coachs-gradient) 1;
+            color: var(--coachs-color);
         }
 
-        .tab-button.tab-equipementiers.active {
-            border-image: var(--equipementiers-gradient) 1;
-            color: var(--equipementiers-color);
+        .tab-button.tab-evenement.active {
+            border-image: var(--evenement-gradient) 1;
+            color: var(--evenement-color);
         }
 
         .tab-button.tab-sante.active {
@@ -240,11 +253,13 @@
             color: var(--sante-color);
         }
 
-        @media (min-width: 835px) {
-            .browser-tabs-container {
-                overflow-x: hidden !important;
-            }
+        .tab-button.tab-equipement.active {
+            border-image: var(--equipement-gradient) 1;
+            color: var(--equipement-color);
+        }
 
+        @media (min-width: 900px) {
+            .browser-tabs-container { overflow-x: hidden !important; }
             .tab-button {
                 flex: 1 1 0px !important;              
                 min-width: 0 !important;               
@@ -253,12 +268,7 @@
             }
         }
 
-        @media (max-width: 834px) {
-            /* Activation de l'affichage du bouton BackToTop UNIQUEMENT sur mobile */
-            #backToTop.visible { 
-                display: flex !important; 
-            }
-
+        @media (max-width: 899px) {
             .browser-tabs-wrapper::after {
                 content: "";
                 position: absolute;
@@ -270,47 +280,8 @@
                 pointer-events: none; 
                 z-index: 2;
             }
-            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .content-section h1 { font-size: 1.9rem; }
             .header-subtitle { font-size: 0.95rem; }
-            .dropdown-menu {
-                display: block; 
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background-color: transparent;
-                margin: 5px auto 0 auto;
-                border-radius: 0;
-                border: none;
-                min-width: unset;
-                width: 100%;
-                padding: 0;
-            }
-            .dropdown-menu::before { display: none; }
-            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
-            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
-
-            header { padding: 5px 0 !important; }
-            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
-            .region-mention { font-size: 0.7rem; }
-            .menu-icon { display: flex; z-index: 1001; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                gap: 20px;
-                text-align: center;
-            }
-            #menu-toggle:checked ~ .nav-links { display: flex; }
-            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
-            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
         /* --- CONTENU DES ONGLETS --- */
@@ -325,10 +296,7 @@
             border-top: none;
         }
 
-        .tab-panel {
-            display: none;
-        }
-
+        .tab-panel { display: none; }
         .tab-panel.active {
             display: block;
             animation: fadeIn 0.3s ease-in-out;
@@ -339,7 +307,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* BANDEAUX MINCES POUR LES TITRES DANS LE CORPS DE L'ONGLET */
+        /* BANDEAUX EN DÉGRADÉ DÉDIÉS */
         .tab-banner-title {
             color: #ffffff;
             font-size: 1.4rem;
@@ -354,45 +322,44 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
-        .tab-banner-title.banner-evenements {
-            background: var(--evenements-gradient);
+        .tab-banner-title.banner-coachs { background: var(--coachs-gradient); }
+        .tab-banner-title.banner-evenement { background: var(--evenement-gradient); }
+        .tab-banner-title.banner-sante { background: var(--sante-gradient); }
+        .tab-banner-title.banner-equipement { background: var(--equipement-gradient); }
+
+        .tab-quote {
+            font-style: italic;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: block;
         }
 
-        .tab-banner-title.banner-equipementiers {
-            background: var(--equipementiers-gradient);
-        }
-
-        .tab-banner-title.banner-sante {
-            background: var(--sante-gradient);
-        }
-
-        /* Style des lignes de liens */
-        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+        /* Lignes de liens et actions */
+        .links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
         .link-row {
             display: flex; align-items: center; justify-content: space-between;
-            background: #f8fafc; padding: 12px 20px; border-radius: 10px;
+            background: #f8fafc; padding: 16px 20px; border-radius: 10px;
             border: 1px solid rgba(0, 76, 151, 0.08); transition: all 0.2s ease;
         }
         .link-row:hover { background: #f1f5f9; transform: translateX(4px); }
-        .link-title { font-weight: 700; color: var(--text-dark); }
-        .link-desc { color: var(--text-light); font-size: 0.9rem; margin-left: 8px; }
-        .link-action { font-weight: 800; font-size: 0.9rem; text-decoration: none; }
-
-        .text-evenements { color: var(--evenements-color); }
-        .text-equipementiers { color: var(--equipementiers-color); }
-        .text-sante { color: var(--sante-color); }
-
-        .badge-a-venir {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.25);
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 4px 12px;
+        .link-title { font-weight: 700; color: var(--text-dark); display: block; }
+        .link-desc { color: var(--text-light); font-size: 0.9rem; margin-top: 2px; display: block; }
+        .link-action { 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            text-decoration: none; 
+            padding: 8px 16px; 
             border-radius: 20px;
-            text-transform: uppercase;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            white-space: nowrap;
         }
+
+        .btn-coachs { background: var(--coachs-gradient); }
+        .btn-evenement { background: var(--evenement-gradient); }
+        .btn-sante { background: var(--sante-gradient); }
+        .btn-equipement { background: var(--equipement-gradient); }
 
         /* --- FOOTER --- */
         footer { 
@@ -472,6 +439,49 @@
             color: #D65F3A !important;
             padding-left: 24px;
         }
+
+        @media (max-width: 834px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
     </style>
 </head>
 <body>
@@ -495,7 +505,7 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">L'OSBL</a></li> 
+                    <li><a href="decouvrir.html">L'OSBL</a></li> 
                     <li class="has-dropdown">
                         <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
@@ -512,11 +522,11 @@
                         </ul>
                     </li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
+                    <li><a href="calendrier.html">Calendrier'26</a></li> 
                     <li class="lang-switcher">
                         <span class="lang-label">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/club.html'">
+                            <input type="checkbox" onclick="window.location.href='en/donner.html'">
                             <span class="slider"></span>
                         </label>
                         <span class="lang-label" style="color: #ccc;">EN</span>
@@ -530,80 +540,131 @@
     <main class="content-section">
         <div class="container">
 
-            <!-- ENTÊTE DE SECTION MISE À JOUR -->
+            <!-- ENTÊTE DE SECTION -->
             <div class="header-title-wrapper">
-                <h1>Nos Partenaires de Confiance</h1>
+                <h1>Soutenir Notre Mission</h1>
                 <p class="header-subtitle">
-                    Nous sélectionnons rigoureusement des acteurs d'exception qui enrichissent votre expérience sportive : événements majeurs pour la qualité de leur organisation, professionnels de la santé dédiés et équipementiers offrant des avantages exclusifs aux membres de notre réseau.
+                    Vous contribuez au dynamisme du triathlon au Québec tout en vous faisant connaître ? Allions-nous pour faire grandir la communauté ensemble.
                 </p>
             </div>
 
-            <!-- BARRE DES ONGLETS -->
+            <!-- BARRE DES 4 ONGLETS PARTENAIRES -->
             <div class="browser-tabs-wrapper">
                 <div class="browser-tabs-container">
-                    <button class="tab-button tab-evenements active" onclick="openTab(event, 'tab-evenements')">📅 Événements</button>
-                    <button class="tab-button tab-equipementiers" onclick="openTab(event, 'tab-equipementiers')">🚴 Équipementiers</button>
-                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins (à venir)</button>
+                    <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coachs & Clubs</button>
+                    <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Événements</button>
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button>
+                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Équipementiers</button>
                 </div>
             </div>
 
             <!-- BLOC DU CONTENU -->
             <div class="tab-content-wrapper">
 
-                <!-- ONGLET 1 : ÉVÉNEMENTS -->
-                <div id="tab-evenements" class="tab-panel active">
-                    <h2 class="tab-banner-title banner-evenements">
-                        <span>📅 Événements sélectionnés</span>
+                <!-- ONGLET 1 : COACHS & CLUBS -->
+                <div id="tab-coachs" class="tab-panel active">
+                    <h2 class="tab-banner-title banner-coachs">
+                        <span>⏱️ Coachs & Clubs</span>
                     </h2>
+                    <span class="tab-quote">"Je gère un club" / "J'entraîne des athlètes"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Découvrez la liste des compétitions d'exception partenaires reconnues pour la qualité de leur parcours, leur sécurité et leur ambiance unique.
+                        Faisons connaissance, définissons votre profil de coach ou votre philosophie de club. Nous allons vous connecter à des athlètes qui vous correspondent.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Nom de l'événement</span>
-                                <span class="link-desc">(Description courte ou ville)</span>
+                                <span class="link-title">Rejoindre le réseau de coachs certifiés</span>
+                                <span class="link-desc">Proposez vos services de suivi avec des tarifs encadrés pour accueillir de nouveaux athlètes.</span>
                             </div>
-                            <a href="#" class="link-action text-evenements">Voir détails ↗</a>
+                            <a href="index.html#contact" class="link-action btn-coachs">Nous rejoindre ↗</a>
+                        </div>
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Référencer votre club</span>
+                                <span class="link-desc">Augmentez la visibilité de votre club auprès des membres de notre communauté régionale.</span>
+                            </div>
+                            <a href="index.html#contact" class="link-action btn-coachs">Inscrire mon club ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 2 : ÉQUIPEMENTIERS -->
-                <div id="tab-equipementiers" class="tab-panel">
-                    <h2 class="tab-banner-title banner-equipementiers">
-                        <span>🚴 Équipementiers & Avantages</span>
+                <!-- ONGLET 2 : ÉVÉNEMENTS -->
+                <div id="tab-evenement" class="tab-panel">
+                    <h2 class="tab-banner-title banner-evenement">
+                        <span>🏁 Événements</span>
                     </h2>
+                    <span class="tab-quote">"J'organise une course ou un triathlon"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Retrouvez les boutiques et marques de premier choix offrant du matériel performant et des privilèges exclusifs à nos athlètes.
+                        Dynamisez vos événements de triathlon : nous prenons en charge l'accueil des athlètes débutants et vous profitez d'animations exclusives signées mon Projet Tri.
                     </p>
                     <div class="links-list">
                         <div class="link-row">
                             <div>
-                                <span class="link-title">Nom de l'équipementier</span>
-                                <span class="link-desc">(Vélo, trifonction, accessoires...)</span>
+                                <span class="link-title">Accueil & Encadrement Débutants</span>
+                                <span class="link-desc">Mettez en place une zone d'accueil rassurer et guider les novices le jour J.</span>
                             </div>
-                            <a href="#" class="link-action text-equipementiers">Visiter le site ↗</a>
+                            <a href="index.html#contact" class="link-action btn-evenement">Collaborer ↗</a>
+                        </div>
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Ajouter au calendrier 2026</span>
+                                <span class="link-desc">Faites figurer votre événement dans notre répertoire officiel du triathlon québécois.</span>
+                            </div>
+                            <a href="calendrier.html" class="link-action btn-evenement">Voir le calendrier ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 3 : SANTÉ & SOINS (À VENIR) -->
+                <!-- ONGLET 3 : SANTÉ & SOINS -->
                 <div id="tab-sante" class="tab-panel">
                     <h2 class="tab-banner-title banner-sante">
-                        <span>🩹 Santé & Soins</span>
-                        <span class="badge-a-venir">À venir</span>
+                        <span>🩺 Santé & Soins</span>
                     </h2>
+                    <span class="tab-quote">"Je suis thérapeute, kiné ou nutritionniste"</span>
                     <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Cette section est actuellement en préparation. Retrouvez très prochainement nos spécialistes sélectionnés pour la qualité supérieure de leurs soins (physiothérapie, nutrition, médecine sportive et récupération).
+                        Devenez le praticien de référence pour les triathlètes afin de les aider dans leur préparation, leur récupération ainsi que leurs traitements thérapeutiques.
                     </p>
                     <div class="links-list">
-                        <div class="link-row" style="opacity: 0.8;">
+                        <div class="link-row">
                             <div>
-                                <span class="link-title">Réseau de thérapeutes & praticiens de confiance</span>
-                                <span class="link-desc">(Service à venir)</span>
+                                <span class="link-title">Devenir intervenant réseau</span>
+                                <span class="link-desc">Proposez des séances d'information ou des consultations adaptées aux besoins des triathlètes.</span>
                             </div>
-                            <span class="link-action text-sante">À venir</span>
+                            <a href="index.html#contact" class="link-action btn-sante">Proposer mes services ↗</a>
+                        </div>
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Soutenir l'OSBL (Don & Mécénat)</span>
+                                <span class="link-desc">Contribuez directement au financement des programmes d'accompagnement de l'organisme.</span>
+                            </div>
+                            <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="link-action btn-sante">Faire un don ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ONGLET 4 : ÉQUIPEMENTIERS -->
+                <div id="tab-equipement" class="tab-panel">
+                    <h2 class="tab-banner-title banner-equipement">
+                        <span>🚴 Équipementiers</span>
+                    </h2>
+                    <span class="tab-quote">"Je vends du matériel ou des produits sportifs"</span>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        Vous vendez de l'équipement ou des produits pour triathlètes ? Participez à rendre le triathlon plus accessible tout en vous faisant connaître. Parlons-en.
+                    </p>
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Partenariat matériel & avantages membres</span>
+                                <span class="link-desc">Offrez des promotions ciblées ou des tests d'équipement à notre communauté.</span>
+                            </div>
+                            <a href="index.html#contact" class="link-action btn-equipement">Devenir partenaire ↗</a>
+                        </div>
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Commandite globale & visibilité</span>
+                                <span class="link-desc">Associez votre marque à l'essor du triathlon partout au Québec.</span>
+                            </div>
+                            <a href="index.html#contact" class="link-action btn-equipement">Nous contacter ↗</a>
                         </div>
                     </div>
                 </div>
@@ -646,7 +707,7 @@
 </button>
 
     <script>
-        // Logique de navigation des onglets + recentrage fluide sur mobile
+        // Logique de navigation des 4 onglets
         function openTab(evt, tabName) {
             let tabPanels = document.getElementsByClassName("tab-panel");
             for (let i = 0; i < tabPanels.length; i++) {
@@ -659,11 +720,7 @@
             }
 
             document.getElementById(tabName).classList.add("active");
-            const activeBtn = evt.currentTarget;
-            activeBtn.classList.add("active");
-
-            // Recentre doucement l'onglet sélectionné dans la zone visible sur mobile
-            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+            evt.currentTarget.classList.add("active");
         }
 
         // --- GESTION DU BOUTON BACK TO TOP ---
@@ -695,6 +752,7 @@
             }, { threshold: 0.5 });
             observer.observe(tabsContainer);
         }
+
     </script>
 </body>
 </html>
