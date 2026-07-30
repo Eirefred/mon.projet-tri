@@ -433,18 +433,23 @@
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .dropdown-menu {
-                display: block; 
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background-color: transparent;
-                margin: 5px auto 0 auto;
-                border-radius: 0;
-                border: none;
-                min-width: unset;
-                width: 100%;
-                padding: 0;
-            }
+        display: none; 
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 5px auto 0 auto;
+        border-radius: 0;
+        border: none;
+        min-width: unset;
+        width: 100%;
+        padding: 0;
+    }
+
+    nav ul li.has-dropdown:hover .dropdown-menu,
+    nav ul li.has-dropdown:focus-within .dropdown-menu {
+        display: block;
+    }
             .dropdown-menu::before { display: none; }
             .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
             .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
