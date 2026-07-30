@@ -665,11 +665,12 @@
             activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
 
-        // Gestion du bouton Back To Top
+        // --- GESTION DU BOUTON BACK TO TOP ---
         const backToTopBtn = document.getElementById("backToTop");
 
         window.addEventListener("scroll", function() {
-            if (window.innerWidth <= 834 && window.scrollY > 300) {
+            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
                 backToTopBtn.classList.add("visible");
             } else {
                 backToTopBtn.classList.remove("visible");
