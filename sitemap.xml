@@ -2,33 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- PORTAIL D'ACCUEIL (SPLASH) -->
-  <url>
-    <loc>https://mon.projet-tri.org/splash.html</loc>
-    <lastmod>2026-07-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/splash.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/splash.html" />
-  </url>
 
   <!-- VOLET TRIATHLON - ACCUEIL -->
   <url>
     <loc>https://mon.projet-tri.org/</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/" />
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/index.html</loc>
     <lastmod>2026-07-22</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/index.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/" />
   </url>
 
@@ -150,6 +141,46 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/calendar.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/calendrier.html" />
+  </url>
+
+  <!-- DONNER / PROVIDE -->
+  <url>
+    <loc>https://mon.projet-tri.org/donner.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/provide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/donner.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/provide.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/provide.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/donner.html" />
+  </url>
+
+  <!-- RECEVOIR / RECEIVE -->
+  <url>
+    <loc>https://mon.projet-tri.org/recevoir.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/receive.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/recevoir.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/receive.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/receive.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/recevoir.html" />
   </url>
 
 </urlset>
