@@ -170,7 +170,8 @@
             clip-path: ellipse(150% 100% at 50% 0%);
             overflow: hidden;
         }
-        /* Conteneur des badges circulaires */
+        
+        /* Conteneur des badges circulaires (Desktop) */
 .floating-badges-container {
     position: fixed;
     bottom: 80px;
@@ -180,6 +181,26 @@
     flex-direction: column;
     gap: 15px;
     align-items: center;
+}
+
+/* Gestion du masquage sur Mobile */
+@media (max-width: 834px) {
+    /* Masqué par défaut en scrollant */
+    .google-badge-float,
+    .floating-badges-container {
+        display: none !important;
+    }
+
+    /* Affiché UNIQUEMENT en haut de page */
+    .google-badge-float.at-top,
+    .floating-badges-container.at-top {
+        display: flex !important;
+    }
+
+    .floating-badges-container {
+        bottom: 75px;
+        right: 15px;
+    }
 }
 
 /* Badge circulaire avec fond flouté */
@@ -1652,26 +1673,40 @@
             }
         }
 
-        // Détection du défilement pour afficher/masquer le badge Google sur mobile
-const googleBadge = document.querySelector('.google-badge-float');
-
+        // Détection du défilement pour afficher/masquer les badges sur mobile
 function handleGoogleBadgeVisibility() {
+    const googleBadge = document.querySelector('.google-badge-float');
+    const floatingBadges = document.querySelector('.floating-badges-container');
+    
+    // Détection de la position du défilement
+    const isAtTop = window.scrollY <= 50 || document.documentElement.scrollTop <= 50;
+
     if (window.innerWidth <= 834) {
-        // Si la page est tout en haut (scroll <= 50px par sécurité)
-        if (window.pageYOffset <= 50) {
-            googleBadge.classList.add('at-top');
+        if (isAtTop) {
+            if (googleBadge) googleBadge.classList.add('at-top');
+            if (floatingBadges) floatingBadges.classList.add('at-top');
         } else {
-            googleBadge.classList.remove('at-top');
+            if (googleBadge) googleBadge.classList.remove('at-top');
+            if (floatingBadges) floatingBadges.classList.remove('at-top');
             
-            // Optionnel : ferme la popup des avis si l'utilisateur commence à défiler
+            // Ferme la popup des avis si l'utilisateur défile
             const popup = document.getElementById('googlePopup');
             if (popup) popup.style.display = 'none';
         }
     } else {
-        // Réinitialise la classe pour les grands écrans (desktop)
-        googleBadge.classList.remove('at-top');
+        // Sur ordinateur, on retire la classe spécifique mobile
+        if (googleBadge) googleBadge.classList.remove('at-top');
+        if (floatingBadges) floatingBadges.classList.remove('at-top');
     }
 }
+
+// Écouteurs d'événements
+window.addEventListener('scroll', handleGoogleBadgeVisibility);
+window.addEventListener('resize', handleGoogleBadgeVisibility);
+document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
+
+// Exécution immédiate au cas où le DOM est déjà prêt
+handleGoogleBadgeVisibility();
 
 // Écouter le défilement et le chargement de la page
 window.addEventListener('scroll', handleGoogleBadgeVisibility);
