@@ -1513,7 +1513,7 @@
                                 <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Sélectionnez une date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="horloge.jpg" class="icon-small" alt="Horloge"> Préférence horaire (Jour 1)</label>
+                                <label><img src="horloge.jpg" class="icon-small" alt="Horloge"> Option horaire (Date 1)</label>
                                 <select name="tranche_horaire_1" id="time_1" class="form-control placeholder-style">
                                     <option value="" disabled selected hidden>Choisir une tranche horaire...</option>
                                     <option value="matin">Le matin (8h - 12h)</option>
@@ -1529,7 +1529,7 @@
                                 <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Sélectionnez une date...">
                             </div>
                             <div class="form-group">
-                                <label><img src="horloge.jpg" class="icon-small" alt="Horloge"> Préférence horaire (Jour 2)</label>
+                                <label><img src="horloge.jpg" class="icon-small" alt="Horloge"> Option horaire (Date 2)</label>
                                 <select name="tranche_horaire_2" id="time_2" class="form-control placeholder-style">
                                     <option value="" disabled selected hidden>Choisir une tranche horaire...</option>
                                     <option value="matin">Le matin (8h - 12h)</option>
@@ -1543,7 +1543,7 @@
                     <!-- Message commun -->
                     <div class="form-group" style="margin-top: 15px;">
                         <label id="label-message">Votre message</label>
-                        <textarea id="message-field" name="message" placeholder="Parlez-nous de vos objectifs..." required></textarea>
+                        <textarea id="message-field" name="message" placeholder="Dites-nous brièvement la raison de l'appel..." required></textarea>
                     </div>
                     
                     <div class="btn-container">
@@ -1628,11 +1628,14 @@
             if(phoneInput) { phoneInput.style.borderColor = ''; phoneInput.style.backgroundColor = ''; }
 
             if (type === 'appel') {
-                blocAppel.style.display = 'block';
-                blocCourriel.style.display = 'none';
-                btnSubmit.textContent = 'Planifier mon appel gratuit';
-                labelMessage.textContent = 'Un message pour nous ? (Optionnel)';
-                messageField.required = false;
+    blocAppel.style.display = 'block';
+    blocCourriel.style.display = 'none';
+    btnSubmit.textContent = 'Réserver mon appel gratuit';
+    
+    // --- TEXTES MODIFIÉS POUR L'APPEL ---
+    labelMessage.textContent = 'A message for us? (Optional)'; 
+    messageField.placeholder = "Dites-nous brièvement la raison de l'appel...";
+    messageField.required = false;
                 
                 emailInput.required = false;
                 phoneInput.required = true;
@@ -1641,11 +1644,14 @@
                 date2.required = true;
                 time2.required = true;
             } else {
-                blocAppel.style.display = 'none';
-                blocCourriel.style.display = 'block';
-                btnSubmit.textContent = 'Envoyer mon message';
-                labelMessage.textContent = 'Votre message';
-                messageField.required = true;
+    blocAppel.style.display = 'none';
+    blocCourriel.style.display = 'block';
+    btnSubmit.textContent = 'Envoyer mon message';
+    
+    // --- TEXTES POUR LE MESSAGE CLASSIQUE ---
+    labelMessage.textContent = 'Votre message';
+    messageField.placeholder = 'Expliquez-nous la raison de votre message ou comment nous pouvons vous aider...';
+    messageField.required = true;
                 
                 emailInput.required = true;
                 phoneInput.required = false;
@@ -1764,60 +1770,79 @@ document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
             }
 
             // Validation globale lors de la soumission du formulaire
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    const typeContact = document.querySelector('input[name="type_contact"]:checked').value;
-                    let isValid = true;
+if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+        const typeContact = document.querySelector('input[name="type_contact"]:checked').value;
+        let isValid = true;
 
-                    // Vérification du Profil
-                    const profilSelected = document.querySelector('input[name="profil"]:checked');
-                    if (!profilSelected) {
-                        isValid = false;
-                        if (profilError) profilError.style.display = 'block';
-                        const profilBox = document.getElementById('profil-box');
-                        if (profilBox) {
-                            profilBox.style.border = '1px solid #e3342f';
-                            profilBox.style.borderRadius = '8px';
-                            profilBox.style.padding = '5px';
-                        }
-                    }
-
-                    // Vérification du nom
-                    const nomInput = document.querySelector('input[name="nom"]');
-                    if (nomInput && nomInput.value.trim() === "") {
-                        isValid = false;
-                        nomInput.style.borderColor = '#e3342f';
-                    }
-
-                    // Validation appel
-                    if (typeContact === 'appel' && phoneInput) {
-                        const numbersOnly = phoneInput.value.replace(/\D/g, '');
-                        if (numbersOnly.length < 10) {
-                            phoneInput.style.borderColor = '#e3342f';
-                            phoneInput.style.backgroundColor = '#fcebeb';
-                            phoneError.style.display = 'block';
-                            if (isValid) phoneInput.focus();
-                            isValid = false;
-                        }
-                    } 
-                    
-                    // Validation message (Courriel)
-                    if (typeContact === 'message' && emailInput) {
-                        const value = emailInput.value.trim();
-                        if (!emailRegex.test(value)) {
-                            emailInput.style.borderColor = '#e3342f';
-                            emailInput.style.backgroundColor = '#fcebeb';
-                            emailError.style.display = 'block';
-                            if (isValid) emailInput.focus();
-                            isValid = false;
-                        }
-                    }
-
-                    if (!isValid) {
-                        e.preventDefault();
-                    }
-                });
+        // Vérification du Profil
+        const profilSelected = document.querySelector('input[name="profil"]:checked');
+        if (!profilSelected) {
+            isValid = false;
+            if (profilError) profilError.style.display = 'block';
+            const profilBox = document.getElementById('profil-box');
+            if (profilBox) {
+                profilBox.style.border = '1px solid #e3342f';
+                profilBox.style.borderRadius = '8px';
+                profilBox.style.padding = '5px';
             }
+        }
+
+        // Vérification du nom
+        const nomInput = document.querySelector('input[name="nom"]');
+        if (nomInput && nomInput.value.trim() === "") {
+            isValid = false;
+            nomInput.style.borderColor = '#e3342f';
+        }
+
+        // Validation appel (Téléphone + Dates + Tranches Horaire)
+        if (typeContact === 'appel') {
+            if (phoneInput) {
+                const numbersOnly = phoneInput.value.replace(/\D/g, '');
+                if (numbersOnly.length < 10) {
+                    phoneInput.style.borderColor = '#e3342f';
+                    phoneInput.style.backgroundColor = '#fcebeb';
+                    phoneError.style.display = 'block';
+                    if (isValid) phoneInput.focus();
+                    isValid = false;
+                }
+            }
+
+            // Vérification des dates et des tranches horaires
+            const date1 = document.getElementById('date_1');
+            const time1 = document.getElementById('time_1');
+            const date2 = document.getElementById('date_2');
+            const time2 = document.getElementById('time_2');
+
+            [date1, time1, date2, time2].forEach(field => {
+                if (field && (!field.value || field.value === "")) {
+                    field.style.borderColor = '#e3342f';
+                    field.style.backgroundColor = '#fcebeb';
+                    isValid = false;
+                } else if (field) {
+                    field.style.borderColor = '';
+                    field.style.backgroundColor = '';
+                }
+            });
+        } 
+        
+        // Validation message (Courriel)
+        if (typeContact === 'message' && emailInput) {
+            const value = emailInput.value.trim();
+            if (!emailRegex.test(value)) {
+                emailInput.style.borderColor = '#e3342f';
+                emailInput.style.backgroundColor = '#fcebeb';
+                emailError.style.display = 'block';
+                if (isValid) emailInput.focus();
+                isValid = false;
+            }
+        }
+
+        if (!isValid) {
+            e.preventDefault();
+        }
+    });
+}
 
             flatpickr(".datepicker", {
                 locale: "fr",

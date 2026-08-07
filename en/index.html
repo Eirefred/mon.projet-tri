@@ -1456,117 +1456,117 @@
                 </p>
 
                 <!-- novalidate attribute prevents default browser popups -->
-                <form action="https://formspree.io/f/mgolvwnq" method="POST" novalidate>
-                    
-                    <!-- Line 1: Name and Contact Preference -->
-                    <div class="form-row">
-                        <div class="form-group flex-2">
-                            <label>Full Name</label>
-                            <input type="text" name="nom" placeholder="Your name" required>
-                        </div>
-                        
-                        <div class="form-group flex-2">
-                            <label>I prefer to be contacted by:</label>
-                            <div class="radio-container-box">
-                                <label class="radio-option">
-                                    <input type="radio" name="type_contact" value="message" checked onclick="toggleContactFields('message')">
-                                    <span>Simple message</span>
-                                </label>
-                                <label class="radio-option">
-                                    <input type="radio" name="type_contact" value="appel" onclick="toggleContactFields('appel')">
-                                    <span>Free phone call</span>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Line 2: Profile (Always visible) + Email (Dynamic) -->
-                    <div class="form-row">
-    <div class="form-group flex-1-5" id="bloc-profil">
-        <label>You are:</label>
-        <div class="radio-container-box" id="profil-box">
-            <label class="radio-option">
-                <input type="radio" name="profil" value="athlete" required>
-                <span>Athlete</span>
-            </label>
-            <label class="radio-option">
-                <input type="radio" name="profil" value="partenaire">
-                <span>Partner</span>
-            </label>
+                <form id="contact-form" action="https://formspree.io/f/mgolvwnq" method="POST" novalidate>
+    
+    <!-- Ligne 1 : Nom et Mode de contact -->
+    <div class="form-row">
+        <div class="form-group flex-2">
+            <label for="nom">Full Name</label>
+            <input type="text" id="nom" name="nom" placeholder="Your name" required>
         </div>
-        <span id="profil-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-            Please select your profile (Athlete or Partner).
-        </span>
+        
+        <div class="form-group flex-2">
+            <label>I prefer to be contacted by:</label>
+            <div class="radio-container-box">
+                <label class="radio-option">
+                    <input type="radio" name="type_contact" value="message" checked onclick="toggleContactFields('message')">
+                    <span>Simple message</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="type_contact" value="appel" onclick="toggleContactFields('appel')">
+                    <span>Free phone call</span>
+                </label>
+            </div>
+        </div>
     </div>
 
-                        <!-- EMAIL BLOCK: Contains input and uniform error message -->
-                        <div class="form-group flex-2" id="bloc-courriel">
-                            <label>Email Address</label>
-                            <input type="email" id="email" name="email" placeholder="name@example.com" required>
-                            <span id="email-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-                                Please enter a valid email address (e.g., name@example.ca).
-                            </span>
-                        </div>
-                    </div>
+    <!-- Ligne 2 : Profil et Email -->
+    <div class="form-row">
+        <div class="form-group flex-1-5" id="bloc-profil">
+            <label>You are:</label>
+            <div class="radio-container-box" id="profil-box">
+                <label class="radio-option">
+                    <input type="radio" name="profil" value="athlete">
+                    <span>Athlete</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="profil" value="partenaire">
+                    <span>Partner</span>
+                </label>
+            </div>
+            <span id="profil-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
+                Please select your profile (Athlete or Partner).
+            </span>
+        </div>
 
-                    <!-- CALL BLOCK -->
-                    <div id="bloc-appel" style="display: none; margin-top: 10px;">
-                        <div class="form-row">
-                            <div class="form-group flex-2">
-                                <label>Phone Number</label>
-                                <input type="tel" id="phone" name="telephone" placeholder="( ___ ) ___-____">
-                                <span id="phone-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
-                                    Please enter a valid 10-digit phone number.
-                                </span>
-                            </div>
-                        </div>
-                        
-                        <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0 25px 0;">
-                        
-                        <!-- Time slots -->
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 1</label>
-                                <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Select a date...">
-                            </div>
-                            <div class="form-group">
-                                <label><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Day 1)</label>
-                                <select name="tranche_horaire_1" id="time_1" class="form-control placeholder-style">
-                                    <option value="" disabled selected hidden>Choose a time slot...</option>
-                                    <option value="matin">Morning (8am - 12pm)</option>
-                                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
-                                    <option value="soir">Evening (5pm - 8pm)</option>
-                                </select>
-                            </div>
-                        </div>
+        <div class="form-group flex-2" id="bloc-courriel">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="name@example.com" aria-describedby="email-error" required>
+            <span id="email-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
+                Please enter a valid email address (e.g., name@example.ca).
+            </span>
+        </div>
+    </div>
 
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 2</label>
-                                <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Select a date...">
-                            </div>
-                            <div class="form-group">
-                                <label><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Day 2)</label>
-                                <select name="tranche_horaire_2" id="time_2" class="form-control placeholder-style">
-                                    <option value="" disabled selected hidden>Choose a time slot...</option>
-                                    <option value="matin">Morning (8am - 12pm)</option>
-                                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
-                                    <option value="soir">Evening (5pm - 8pm)</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Common Message -->
-                    <div class="form-group" style="margin-top: 15px;">
-                        <label id="label-message">Your message</label>
-                        <textarea id="message-field" name="message" placeholder="Tell us about your goals..." required></textarea>
-                    </div>
-                    
-                    <div class="btn-container">
-                        <button type="submit" id="btn-submit-text" class="btn-submit">Send my message</button>
-                    </div>
-                </form>
+    <!-- BLOC APPEL -->
+    <div id="bloc-appel" style="display: none; margin-top: 10px;">
+        <div class="form-row">
+            <div class="form-group flex-2">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="telephone" placeholder="( ___ ) ___-____" aria-describedby="phone-error">
+                <span id="phone-error" style="color: #e3342f; font-size: 0.85rem; display: none; margin-top: 5px; font-weight: 500;">
+                    Please enter a valid 10-digit phone number.
+                </span>
+            </div>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 10px 0 25px 0;">
+        
+        <!-- Plages horaires -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="date_1"><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 1</label>
+                <input type="text" class="datepicker" id="date_1" name="date_1" placeholder="Select a date...">
+            </div>
+            <div class="form-group">
+                <label for="time_1"><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Date 1)</label>
+                <select name="tranche_horaire_1" id="time_1" class="form-control placeholder-style">
+                    <option value="" disabled selected hidden>Choose a time slot...</option>
+                    <option value="matin">Morning (8am - 12pm)</option>
+                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
+                    <option value="soir">Evening (5pm - 8pm)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="date_2"><img src="../calendrier.jpg" class="icon-small" alt="Calendar icon"> Date option 2</label>
+                <input type="text" class="datepicker" id="date_2" name="date_2" placeholder="Select a date...">
+            </div>
+            <div class="form-group">
+                <label for="time_2"><img src="../horloge.jpg" class="icon-small" alt="Clock icon"> Preferred time (Date 2)</label>
+                <select name="tranche_horaire_2" id="time_2" class="form-control placeholder-style">
+                    <option value="" disabled selected hidden>Choose a time slot...</option>
+                    <option value="matin">Morning (8am - 12pm)</option>
+                    <option value="apres-midi">Afternoon (12pm - 5pm)</option>
+                    <option value="soir">Evening (5pm - 8pm)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Message -->
+    <!-- Message -->
+<div class="form-group" style="margin-top: 15px;">
+    <label id="label-message" for="message-field">Your message</label>
+    <textarea id="message-field" name="message" placeholder="Tell us briefly the reason for the call..." required></textarea>
+</div>
+    
+    <div class="btn-container">
+        <button type="submit" id="btn-submit-text" class="btn-submit">Send my message</button>
+    </div>
+</form>
             </div>
         </div>
     </section>
@@ -1714,136 +1714,142 @@ window.addEventListener('resize', handleGoogleBadgeVisibility);
 document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
 
         document.addEventListener('DOMContentLoaded', () => {
-            const phoneInput = document.getElementById('phone');
-            const emailInput = document.getElementById('email');
-            const emailError = document.getElementById('email-error');
-            const phoneError = document.getElementById('phone-error');
-            const contactForm = document.querySelector('form');
+    const phoneInput = document.getElementById('phone');
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+    const phoneError = document.getElementById('phone-error');
+    const contactForm = document.getElementById('contact-form'); // Déclarée une seule fois ici
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
-            // =========================================================
-            // 2. RESET PROFILE ERROR ON CLICK
-            // =========================================================
-            const profilRadios = document.querySelectorAll('input[name="profil"]');
-            const profilError = document.getElementById('profil-error');
+    // =========================================================
+    // RESET PROFILE ERROR ON CLICK
+    // =========================================================
+    const profilRadios = document.querySelectorAll('input[name="profil"]');
+    const profilError = document.getElementById('profil-error');
 
-            profilRadios.forEach(radio => {
-                radio.addEventListener('change', () => {
-                    if (profilError) profilError.style.display = 'none';
-                    const profilBox = document.getElementById('profil-box');
-                    if (profilBox) profilBox.style.border = 'none';
-                });
-            });
-            // =========================================================
-
-            // Email validation
-            if (emailInput) {
-                emailInput.addEventListener('input', () => {
-                    emailInput.style.borderColor = '';
-                    emailInput.style.backgroundColor = '';
-                    emailError.style.display = 'none';
-                });
-
-                emailInput.addEventListener('blur', () => {
-                    const value = emailInput.value.trim();
-                    if (value !== "" && !emailRegex.test(value)) {
-                        emailInput.style.borderColor = '#e3342f';
-                        emailInput.style.backgroundColor = '#fcebeb';
-                        emailError.style.display = 'block';
-                    }
-                });
-            }
-
-            // Phone mask
-            if (phoneInput) {
-                phoneInput.addEventListener('input', (e) => {
-                    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-                    if (!x[1]) {
-                        e.target.value = '';
-                    } else {
-                        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
-                    }
-                    phoneInput.style.borderColor = '';
-                    phoneInput.style.backgroundColor = '';
-                    phoneError.style.display = 'none';
-                });
-
-                phoneInput.addEventListener('blur', (e) => {
-                    const numbersOnly = e.target.value.replace(/\D/g, '');
-                    if (numbersOnly.length > 0 && numbersOnly.length < 10) {
-                        phoneInput.style.borderColor = '#e3342f';
-                        phoneInput.style.backgroundColor = '#fcebeb';
-                        phoneError.style.display = 'block';
-                    }
-                });
-            }
-
-            // Global validation on form submit
-            if (contactForm) {
-                contactForm.addEventListener('submit', (e) => {
-                    const typeContact = document.querySelector('input[name="type_contact"]:checked').value;
-                    let isValid = true;
-
-                    // Profile check
-                    const profilSelected = document.querySelector('input[name="profil"]:checked');
-                    if (!profilSelected) {
-                        isValid = false;
-                        if (profilError) profilError.style.display = 'block';
-                        const profilBox = document.getElementById('profil-box');
-                        if (profilBox) {
-                            profilBox.style.border = '1px solid #e3342f';
-                            profilBox.style.borderRadius = '8px';
-                            profilBox.style.padding = '-5px';
-                        }
-                    }
-
-                    // Name check
-                    const nomInput = document.querySelector('input[name="nom"]');
-                    if (nomInput && nomInput.value.trim() === "") {
-                        isValid = false;
-                        nomInput.style.borderColor = '#e3342f';
-                    }
-
-                    // Call validation
-                    if (typeContact === 'appel' && phoneInput) {
-                        const numbersOnly = phoneInput.value.replace(/\D/g, '');
-                        if (numbersOnly.length < 10) {
-                            phoneInput.style.borderColor = '#e3342f';
-                            phoneInput.style.backgroundColor = '#fcebeb';
-                            phoneError.style.display = 'block';
-                            if (isValid) phoneInput.focus();
-                            isValid = false;
-                        }
-                    } 
-                    
-                    // Message validation (Email)
-                    if (typeContact === 'message' && emailInput) {
-                        const value = emailInput.value.trim();
-                        if (!emailRegex.test(value)) {
-                            emailInput.style.borderColor = '#e3342f';
-                            emailInput.style.backgroundColor = '#fcebeb';
-                            emailError.style.display = 'block';
-                            if (isValid) emailInput.focus();
-                            isValid = false;
-                        }
-                    }
-
-                    if (!isValid) {
-                        e.preventDefault();
-                    }
-                });
-            }
-
-            flatpickr(".datepicker", {
-                locale: "en",
-                dateFormat: "Y-m-d", 
-                altInput: true,
-                altFormat: "F j, Y", 
-                minDate: "today", 
-                disableMobile: "true" 
-            });
+    profilRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (profilError) profilError.style.display = 'none';
+            const profilBox = document.getElementById('profil-box');
+            if (profilBox) profilBox.style.border = 'none';
         });
+    });
+
+    // Validation Email
+    if (emailInput) {
+        emailInput.addEventListener('input', () => {
+            emailInput.style.borderColor = '';
+            emailInput.style.backgroundColor = '';
+            if (emailError) emailError.style.display = 'none';
+        });
+
+        emailInput.addEventListener('blur', () => {
+            const value = emailInput.value.trim();
+            if (value !== "" && !emailRegex.test(value)) {
+                emailInput.style.borderColor = '#e3342f';
+                emailInput.style.backgroundColor = '#fcebeb';
+                if (emailError) emailError.style.display = 'block';
+            }
+        });
+    }
+
+    // Masque Téléphone
+    if (phoneInput) {
+        phoneInput.addEventListener('input', (e) => {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            if (!x[1]) {
+                e.target.value = '';
+            } else {
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            }
+            phoneInput.style.borderColor = '';
+            phoneInput.style.backgroundColor = '';
+            if (phoneError) phoneError.style.display = 'none';
+        });
+
+        phoneInput.addEventListener('blur', (e) => {
+            const numbersOnly = e.target.value.replace(/\D/g, '');
+            if (numbersOnly.length > 0 && numbersOnly.length < 10) {
+                phoneInput.style.borderColor = '#e3342f';
+                phoneInput.style.backgroundColor = '#fcebeb';
+                if (phoneError) phoneError.style.display = 'block';
+            }
+        });
+    }
+
+    // Validation globale de soumission
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            const typeContactEl = document.querySelector('input[name="type_contact"]:checked');
+            const typeContact = typeContactEl ? typeContactEl.value : 'message';
+            let isValid = true;
+
+            // Validation Profil
+            const profilSelected = document.querySelector('input[name="profil"]:checked');
+            const profilBox = document.getElementById('profil-box');
+            if (!profilSelected) {
+                isValid = false;
+                if (profilError) profilError.style.display = 'block';
+                if (profilBox) {
+                    profilBox.style.border = '1px solid #e3342f';
+                    profilBox.style.borderRadius = '8px';
+                    profilBox.style.padding = '5px';
+                }
+            } else {
+                if (profilError) profilError.style.display = 'none';
+                if (profilBox) profilBox.style.border = 'none';
+            }
+
+            // Validation Nom
+            const nomInput = document.getElementById('nom');
+            if (nomInput && nomInput.value.trim() === "") {
+                isValid = false;
+                nomInput.style.borderColor = '#e3342f';
+            } else if (nomInput) {
+                nomInput.style.borderColor = '';
+            }
+
+            // Validation Appel
+            if (typeContact === 'appel' && phoneInput) {
+                const numbersOnly = phoneInput.value.replace(/\D/g, '');
+                if (numbersOnly.length < 10) {
+                    phoneInput.style.borderColor = '#e3342f';
+                    phoneInput.style.backgroundColor = '#fcebeb';
+                    if (phoneError) phoneError.style.display = 'block';
+                    if (isValid) phoneInput.focus();
+                    isValid = false;
+                }
+            } 
+            
+            // Validation Email
+            if (typeContact === 'message' && emailInput) {
+                const value = emailInput.value.trim();
+                if (!emailRegex.test(value)) {
+                    emailInput.style.borderColor = '#e3342f';
+                    emailInput.style.backgroundColor = '#fcebeb';
+                    if (emailError) emailError.style.display = 'block';
+                    if (isValid) emailInput.focus();
+                    isValid = false;
+                }
+            }
+
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    // Initialisation Flatpickr
+    flatpickr(".datepicker", {
+        locale: "en",
+        dateFormat: "Y-m-d", 
+        altInput: true,
+        altFormat: "F j, Y", 
+        minDate: "today", 
+        disableMobile: "true" 
+    });
+});
 
         document.querySelectorAll('select.placeholder-style').forEach(select => {
             select.addEventListener('change', function() {
