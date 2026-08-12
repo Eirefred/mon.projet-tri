@@ -602,10 +602,10 @@
     document.getElementById('contestForm').addEventListener('submit', function(event) {
         const fileInput = document.getElementById('photo');
         const fileLabelZone = document.getElementById('file-label-zone');
-        const submitBtn = document.getElementById('submit-btn');
+        const overlay = document.getElementById('loading-overlay');
         const form = this;
         
-        // Validation de la photo
+        // 1. Validation de la photo obligatoirement sélectionnée
         if (fileInput.files.length === 0) {
             event.preventDefault(); 
             alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
@@ -614,36 +614,39 @@
             return false;
         }
 
-        // Fonction pour changer l'état du bouton pendant l'envoi
-        function showLoadingState() {
-            submitBtn.disabled = true; // Empêche un second clic
-            submitBtn.innerHTML = "⏳ Patientez, envoi en cours..."; // Message de patience
-            submitBtn.style.opacity = "0.7";
-            submitBtn.style.cursor = "not-allowed";
+        // Fonction pour afficher le Popup d'attente
+        function showLoadingPopup() {
+            if (overlay) {
+                overlay.style.display = 'flex';
+            }
         }
 
-        // Si le reCAPTCHA est déjà validé
+        // Fonction pour masquer le Popup si besoin
+        function hideLoadingPopup() {
+            if (overlay) {
+                overlay.style.display = 'none';
+            }
+        }
+
+        // 2. Si le reCAPTCHA est déjà prêt, on affiche le popup et on envoie
         if (document.getElementById('g-recaptcha-response').value) {
-            showLoadingState();
+            showLoadingPopup();
             return true;
         }
 
         event.preventDefault();
 
-        // Affiche immédiatement le message "Patientez" pendant la résolution du reCAPTCHA
-        showLoadingState();
+        // Affichage immédiat du popup pendant l'exécution de reCAPTCHA
+        showLoadingPopup();
 
         grecaptcha.ready(function() {
             grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
                 document.getElementById('g-recaptcha-response').value = token;
                 form.submit();
             }).catch(function(error) {
-                // En cas d'erreur avec le captcha, réinitialiser le bouton
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = "Soumettre ma participation";
-                submitBtn.style.opacity = "1";
-                submitBtn.style.cursor = "pointer";
-                alert("Une erreur s'est produite lors de la vérification. Veuillez réessayer.");
+                // En cas d'échec du captcha, on masque le popup pour permettre de réessayer
+                hideLoadingPopup();
+                alert("Une erreur s'est produite lors de la vérification reCAPTCHA. Veuillez réessayer.");
             });
         });
     });
@@ -657,7 +660,7 @@
             fileStatus.style.color = "#004c97";
             fileStatus.style.fontWeight = "bold";
 
-            // Défilement automatique sur mobile vers le champ suivant
+            // Défilement automatique vers le commentaire sur mobile
             if (window.innerWidth <= 768) {
                 const nextElement = document.getElementById('commentaire'); 
                 if (nextElement) {
@@ -783,5 +786,24 @@
         </div>
     </div>
 </div>
+<!-- Popup de chargement / attente -->
+<div id="loading-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(5px); z-index: 20000; justify-content: center; align-items: center; text-align: center; color: white;">
+    <div style="background: white; padding: 35px 25px; border-radius: 20px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); max-width: 320px; width: 90%; color: #0f172a; position: relative;">
+        <!-- Animation Spinner -->
+        <div class="spinner" style="width: 50px; height: 50px; border: 5px solid #e2e8f0; border-top: 5px solid #004c97; border-radius: 50%; margin: 0 auto 20px auto; animation: spin 1s linear infinite;"></div>
+        
+        <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.3rem; text-transform: uppercase;">Envoi en cours</h3>
+        <p style="margin: 0; font-size: 0.95rem; color: #5A6A7A; line-height: 1.4;">
+            Veuillez patienter pendant le transfert de votre photo et de vos informations...
+        </p>
+    </div>
+</div>
+
+<style>
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 </body>
 </html>
