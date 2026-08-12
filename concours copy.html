@@ -599,164 +599,143 @@
     <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
 
     <script>
-    document.getElementById('contestForm').addEventListener('submit', function(event) {
-        const fileInput = document.getElementById('photo');
-        const fileLabelZone = document.getElementById('file-label-zone');
-        const submitBtn = document.getElementById('submit-btn');
-        const form = this;
-        
-        // Validation de la photo
-        if (fileInput.files.length === 0) {
-            event.preventDefault(); 
-            alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
-            fileLabelZone.classList.add('error-flash');
-            setTimeout(() => fileLabelZone.classList.remove('error-flash'), 500);
-            return false;
-        }
+        document.getElementById('contestForm').addEventListener('submit', function(event) {
+            const fileInput = document.getElementById('photo');
+            const fileLabelZone = document.getElementById('file-label-zone');
+            const form = this;
+            
+            if (fileInput.files.length === 0) {
+                event.preventDefault(); 
+                alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
+                fileLabelZone.classList.add('error-flash');
+                setTimeout(() => fileLabelZone.classList.remove('error-flash'), 500);
+                return false;
+            }
 
-        // Fonction pour changer l'état du bouton pendant l'envoi
-        function showLoadingState() {
-            submitBtn.disabled = true; // Empêche un second clic
-            submitBtn.innerHTML = "⏳ Patientez, envoi en cours..."; // Message de patience
-            submitBtn.style.opacity = "0.7";
-            submitBtn.style.cursor = "not-allowed";
-        }
+            if (document.getElementById('g-recaptcha-response').value) {
+                return true;
+            }
 
-        // Si le reCAPTCHA est déjà validé
-        if (document.getElementById('g-recaptcha-response').value) {
-            showLoadingState();
-            return true;
-        }
+            event.preventDefault();
 
-        event.preventDefault();
-
-        // Affiche immédiatement le message "Patientez" pendant la résolution du reCAPTCHA
-        showLoadingState();
-
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
-                document.getElementById('g-recaptcha-response').value = token;
-                form.submit();
-            }).catch(function(error) {
-                // En cas d'erreur avec le captcha, réinitialiser le bouton
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = "Soumettre ma participation";
-                submitBtn.style.opacity = "1";
-                submitBtn.style.cursor = "pointer";
-                alert("Une erreur s'est produite lors de la vérification. Veuillez réessayer.");
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
+                    document.getElementById('g-recaptcha-response').value = token;
+                    form.submit();
+                });
             });
         });
-    });
 
-    function updateFileStatus() {
-        const fileInput = document.getElementById('photo');
-        const fileStatus = document.getElementById('file-status');
-        
-        if (fileInput.files.length > 0) {
-            fileStatus.innerText = "✅ Image ajoutée : " + fileInput.files[0].name;
-            fileStatus.style.color = "#004c97";
-            fileStatus.style.fontWeight = "bold";
+        function updateFileStatus() {
+            const fileInput = document.getElementById('photo');
+            const fileStatus = document.getElementById('file-status');
+            if (fileInput.files.length > 0) {
+                fileStatus.innerText = "✅ Image ajoutée : " + fileInput.files[0].name;
+                fileStatus.style.color = "#004c97";
+                fileStatus.style.fontWeight = "bold";
+            }
+        }
 
-            // Défilement automatique sur mobile vers le champ suivant
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener('scroll', function() {
             if (window.innerWidth <= 768) {
-                const nextElement = document.getElementById('commentaire'); 
-                if (nextElement) {
-                    setTimeout(() => {
-                        nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }, 100);
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
                 }
             }
-        }
-    }
+        });
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
 
-    const backToTopBtn = document.getElementById("backToTop");
-    window.addEventListener('scroll', function() {
-        if (window.innerWidth <= 768) {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add("visible");
-            } else {
-                backToTopBtn.classList.remove("visible");
+        // --- LOGIQUE DE LA BULLE VIDÉO YOUTUBE (VERSION NETTOYÉE ET FONCTIONNELLE) ---
+        function openVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            
+            if (modal && iframe) {
+                iframe.src = "https://www.youtube.com/embed/AXelde69oKk?autoplay=1&rel=0&modestbranding=1";
+                modal.style.display = 'flex';
             }
         }
-    });
-    backToTopBtn.onclick = function() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-    };
 
-    // --- LOGIQUE DE LA BULLE VIDÉO YOUTUBE ---
-    function openVideoModal() {
-        const modal = document.getElementById('video-modal');
-        const iframe = document.getElementById('youtube-iframe');
-        
-        if (modal && iframe) {
-            iframe.src = "https://www.youtube.com/embed/AXelde69oKk?autoplay=1&rel=0&modestbranding=1";
-            modal.style.display = 'flex';
+        function closeVideoModal() {
+            const modal = document.getElementById('video-modal');
+            const iframe = document.getElementById('youtube-iframe');
+            
+            if (modal && iframe) {
+                modal.style.display = 'none';
+                iframe.src = ""; 
+            }
         }
-    }
 
-    function closeVideoModal() {
-        const modal = document.getElementById('video-modal');
-        const iframe = document.getElementById('youtube-iframe');
-        
-        if (modal && iframe) {
-            modal.style.display = 'none';
-            iframe.src = ""; 
-        }
-    }
+        // Active les commandes tactiles dès que la page est prête
+        window.addEventListener('DOMContentLoaded', () => {
+            const videoBubble = document.getElementById('youtube-bubble');
+            let isDragging = false;
+            let startX, startY;
+            let initialX, initialY;
 
-    window.addEventListener('DOMContentLoaded', () => {
-        const videoBubble = document.getElementById('youtube-bubble');
-        let isDragging = false;
-        let startX, startY;
-        let initialX, initialY;
+            if (videoBubble) {
+                // Effets de survol (Ordinateur)
+                videoBubble.addEventListener('mouseenter', () => { if (!isDragging) videoBubble.style.transform = 'scale(1.1)'; });
+                videoBubble.addEventListener('mouseleave', () => { videoBubble.style.transform = 'scale(1)'; });
 
-        if (videoBubble) {
-            videoBubble.addEventListener('mouseenter', () => { if (!isDragging) videoBubble.style.transform = 'scale(1.1)'; });
-            videoBubble.addEventListener('mouseleave', () => { videoBubble.style.transform = 'scale(1)'; });
-
-            videoBubble.addEventListener('touchstart', (e) => {
-                isDragging = false;
-                const touch = e.touches[0];
-                startX = touch.clientX;
-                startY = touch.clientY;
-                
-                const rect = videoBubble.getBoundingClientRect();
-                initialX = rect.left;
-                initialY = rect.top;
-                
-                videoBubble.style.transition = 'none';
-            }, { passive: true });
-
-            videoBubble.addEventListener('touchmove', (e) => {
-                const touch = e.touches[0];
-                const deltaX = touch.clientX - startX;
-                const deltaY = touch.clientY - startY;
-
-                if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
-                    isDragging = true;
-                    videoBubble.style.right = 'auto';
-                    videoBubble.style.bottom = 'auto';
+                // Détection du toucher (Mobile)
+                videoBubble.addEventListener('touchstart', (e) => {
+                    isDragging = false;
+                    const touch = e.touches[0];
+                    startX = touch.clientX;
+                    startY = touch.clientY;
                     
-                    let newLeft = initialX + deltaX;
-                    let newTop = initialY + deltaY;
+                    const rect = videoBubble.getBoundingClientRect();
+                    initialX = rect.left;
+                    initialY = rect.top;
                     
-                    newLeft = Math.max(10, Math.min(newLeft, window.innerWidth - 80));
-                    newTop = Math.max(10, Math.min(newTop, window.innerHeight - 100));
+                    // Coupe la transition pour que le déplacement suive instantanément le doigt
+                    videoBubble.style.transition = 'none';
+                }, { passive: true });
 
-                    videoBubble.style.left = newLeft + 'px';
-                    videoBubble.style.top = newTop + 'px';
-                }
-            }, { passive: true });
+                // Déplacement du doigt (Mobile)
+                videoBubble.addEventListener('touchmove', (e) => {
+                    const touch = e.touches[0];
+                    const deltaX = touch.clientX - startX;
+                    const deltaY = touch.clientY - startY;
 
-            videoBubble.addEventListener('touchend', () => {
-                videoBubble.style.transition = 'transform 0.3s ease';
-                if (!isDragging) {
-                    openVideoModal();
-                }
-            });
-        }
-    });
-</script>
+                    // Si le doigt bouge de plus de 5 pixels, c'est un glissement (pas un simple clic)
+                    if (Math.abs(deltaX) > 5 || Math.abs(deltaY) > 5) {
+                        isDragging = true;
+                        
+                        videoBubble.style.right = 'auto';
+                        videoBubble.style.bottom = 'auto';
+                        
+                        let newLeft = initialX + deltaX;
+                        let newTop = initialY + deltaY;
+                        
+                        // Garde la bulle visible sur l'écran (marges de sécurité)
+                        newLeft = Math.max(10, Math.min(newLeft, window.innerWidth - 80));
+                        newTop = Math.max(10, Math.min(newTop, window.innerHeight - 100));
+
+                        videoBubble.style.left = newLeft + 'px';
+                        videoBubble.style.top = newTop + 'px';
+                    }
+                }, { passive: true });
+
+                // Fin du toucher (Mobile)
+                videoBubble.addEventListener('touchend', () => {
+                    // Remet l'animation de survol par défaut
+                    videoBubble.style.transition = 'transform 0.3s ease';
+                    
+                    // Si l'utilisateur n'a pas bougé la bulle, on ouvre la vidéo !
+                    if (!isDragging) {
+                        openVideoModal();
+                    }
+                });
+            }
+        });
+    </script>
     <div id="youtube-bubble" onclick="openVideoModal()" style="position: fixed; bottom: 90px; right: 20px; z-index: 9999; cursor: pointer; text-align: center; font-family: sans-serif; transition: transform 0.3s ease; touch-action: none;">
     <div style="width: 70px; height: 70px; border-radius: 50%; border: 3px solid #D65F3A; box-shadow: 0 8px 24px rgba(0,0,0,0.3); overflow: hidden; position: relative;">
         <img src="https://img.youtube.com/vi/AXelde69oKk/0.jpg" alt="Miniature Vidéo" style="width: 100%; height: 100%; object-fit: cover;">
