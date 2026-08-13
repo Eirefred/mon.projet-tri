@@ -52,7 +52,7 @@
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0.2rem 1.5rem; /* Padding réduit pour maintenir la hauteur globale */
+            padding: 0.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -72,12 +72,11 @@
 
         .logo img {
             display: block;
-            height: 80px;       /* Logo plus grand */
+            height: 80px;
             width: auto;
             object-fit: contain;
         }
 
-        /* Informations bloc à droite du logo */
         .header-info-block {
             display: flex;
             flex-direction: column;
@@ -184,16 +183,16 @@
         }
 
         .hero p {
-    font-size: 1.05rem;
-    max-width: 720px; /* Passage de 650px à 720px */
-    margin: 0 auto 1.5rem auto;
-    opacity: 0.95;
-}
+            font-size: 1.05rem;
+            max-width: 720px;
+            margin: 0 auto 1.5rem auto;
+            opacity: 0.95;
+        }
 
         .hero-buttons {
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: stretch;
             gap: 1rem;
             flex-wrap: wrap;
         }
@@ -203,8 +202,7 @@
             align-items: center;
             justify-content: center;
             min-width: 250px;
-            height: 52px;
-            padding: 0 1.5rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 6px;
             font-weight: bold;
             font-size: 1.05rem;
@@ -213,22 +211,33 @@
             transition: transform 0.2s, background-color 0.2s, color 0.2s;
         }
 
-        .btn-hero svg {
-            margin-right: 8px;
-            flex-shrink: 0;
-        }
-
         .btn-call {
             background-color: var(--action-orange);
             color: white;
             border: 1.5px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+            flex-direction: column;
+            justify-content: center;
+            line-height: 1.25;
         }
 
         .btn-call:hover {
             background-color: var(--orange-hover);
             border-color: #ffffff;
             transform: translateY(-2px);
+        }
+
+        .btn-call-title {
+            font-weight: normal;
+            font-size: 0.95rem;
+        }
+
+        .btn-call-number {
+            font-weight: bold;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .btn-zone {
@@ -277,7 +286,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Élément principal de niveau 1 */
         .services-list > li {
             position: relative;
             padding: 0.4rem 0 0.4rem 1.8rem;
@@ -294,7 +302,6 @@
             top: 0.3rem;
         }
 
-        /* Sous-liste (sous-éléments) */
         .services-list ul {
             list-style: none;
             margin-top: 0.3rem;
@@ -365,11 +372,24 @@
             left: 0;
         }
 
-        .zone-img {
-            max-width: 220px;
-            height: auto;
-            border-radius: 6px;
+        /* Conteneur pour masquer le bandeau supérieur de l'iframe */
+        .zone-map-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            height: 320px;
+            border-radius: 8px;
+            overflow: hidden; /* C'est ce qui masque le bandeau dépassé */
             border: 1px solid #e2e8f0;
+            flex-shrink: 0;
+        }
+
+        /* L'iframe est agrandie et décalée vers le haut */
+        .zone-map-iframe {
+            width: 100%;
+            height: calc(100% + 60px); /* On ajoute de la hauteur pour compenser le décalage */
+            margin-top: -60px;          /* Décale le bandeau noir en dehors du cadre */
+            border: none;
         }
 
         .facebook-section {
@@ -448,12 +468,9 @@
             align-items: center;
         }
 
-        .modal-body img {
-            width: 320px;
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            border: 1px solid #cbd5e1;
+        .modal-body .zone-map-iframe {
+            max-width: 340px;
+            height: 340px;
         }
 
         /* Back To Top */
@@ -601,15 +618,23 @@
                 text-align: left;
             }
 
-            .modal-body img, .zone-img {
+            .zone-map-iframe, .modal-body .zone-map-iframe {
                 width: 100%;
-                max-width: 280px;
+                max-width: 100%;
+                height: 300px;
                 margin: 0 auto;
             }
 
             .btn-hero {
                 width: 100%;
                 max-width: 300px;
+            }
+
+            .zone-map-wrapper, .modal-body .zone-map-wrapper {
+                width: 100%;
+                max-width: 100%;
+                height: 300px;
+                margin: 0 auto;
             }
         }
     </style>
@@ -638,13 +663,13 @@
 
             <!-- Navigation -->
             <nav>
-        <ul id="nav-menu">
-            <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
-            <li><a href="certifications.html">Certifications</a></li>
-            <li><a href="partenaires.html">Partenaires</a></li>
-            <li><a href="mentions-legales.html">Mentions Légales</a></li>
-        </ul>
-    </nav>
+                <ul id="nav-menu">
+                    <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="partenaires.html">Partenaires</a></li>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -653,13 +678,16 @@
         <h1>Installation de Poêles à Bois & à Granulés</h1>
         <p class="hero-subtitle">Pose • Mise en conformité • Conseils & Diagnostic</p>
         <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
-    <p>Appelez-nous ! <strong>Marion</strong> vous guidera pas à pas dans le choix et la concrétisation de votre chauffage au bois. Prenons le temps de définir ensemble la solution qui vous convient.</p>
-    <div class="hero-buttons">
+        <p>Appelez-nous ! <strong>Marion</strong> vous guidera pas à pas dans le choix et la concrétisation de votre chauffage au bois. Prenons le temps de définir ensemble la solution qui vous convient.</p>
+        <div class="hero-buttons">
             <a href="tel:0478470662" class="btn-hero btn-call">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                </svg>
-                04 78 470 662
+                <span class="btn-call-title">Appeler Marion</span>
+                <span class="btn-call-number">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                    04 78 470 662
+                </span>
             </a>
             <button class="btn-hero btn-zone" onclick="openModal()">📍 Zone de couverture</button>
         </div>
@@ -671,29 +699,29 @@
             <article class="about">
                 <h2>Bienvenue chez Matthieu Artisan</h2>
 
-<p>Fort de plusieurs années d'expérience, nous mettons notre savoir-faire au service de vos projets d'installation de poêles à bois et à granulés, ainsi que de mise en conformité de vos conduits de cheminée.</p>
+                <p>Fort de plusieurs années d'expérience, nous mettons notre savoir-faire au service de vos projets d'installation de poêles à bois et à granulés, ainsi que de mise en conformité de vos conduits de cheminée.</p>
 
-<p>Chaque projet étant différent, nous prenons le temps d'échanger avec vous pour comprendre vos besoins, vous conseiller et trouver la solution la plus adaptée à votre situation.</p>
+                <p>Chaque projet étant différent, nous prenons le temps d'échanger avec vous pour comprendre vos besoins, vous conseiller et trouver la solution la plus adaptée à votre situation.</p>
                 
                 <ul class="services-list">
-    <li>
-        INSTALLATION DE POÊLES
-        <ul>
-            <li>Poêles à bois & à granulés</li>
-            <li>Pose de <strong class="badge-specialite">Poêles de masse MELÈZE</strong></li>
-        </ul>
-    </li>
-    <li>CONDUIT DE FUMÉES ET TUBAGE (gainage)</li>
-    <li>MISE EN CONFORMITÉ</li>
-    <li>
-        DIAGNOSTICS / CONSEILS
-        <ul>
-            <li>Analyse en cas de dysfonctionnement</li>
-            <li>Diagnostic pré-vente immobilière</li>
-        </ul>
-    </li>
-    <li>SOUTIEN D'EXPERTISE</li>
-</ul>
+                    <li>
+                        INSTALLATION DE POÊLES
+                        <ul>
+                            <li>Poêles à bois & à granulés</li>
+                            <li>Pose de <strong class="badge-specialite">Poêles de masse MELÈZE</strong></li>
+                        </ul>
+                    </li>
+                    <li>CONDUIT DE FUMÉES ET TUBAGE (gainage)</li>
+                    <li>MISE EN CONFORMITÉ</li>
+                    <li>
+                        DIAGNOSTICS / CONSEILS
+                        <ul>
+                            <li>Analyse en cas de dysfonctionnement</li>
+                            <li>Diagnostic pré-vente immobilière</li>
+                        </ul>
+                    </li>
+                    <li>SOUTIEN D'EXPERTISE</li>
+                </ul>
             </article>
 
             <section class="zone-card">
@@ -713,7 +741,12 @@
                             <em>Pour les <strong>poêles de masse</strong> et <strong>missions d'expertise</strong>, nous intervenons également plus loin (Auvergne, Isère...).</em>
                         </p>
                     </div>
-                    <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention Matthieu Artisan" class="zone-img" width="382" height="433">
+                    
+                    <!-- Carte principale -->
+                    <div class="zone-map-wrapper">
+                        <iframe src="https://www.google.com/maps/d/embed?mid=1lRkP8qHptI7paibUdReOhAwr2PV8jxo" class="zone-map-iframe" title="Carte Zone d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                    </div>
+
                 </div>
             </section>
         </div>
@@ -750,7 +783,12 @@
                         🔥 <strong>Projets spécifiques :</strong> Nous nous déplaçons bien au-delà (Auvergne, Isère...) pour l'installation de <strong>poêles de masse</strong> et les <strong>missions d’expertises</strong> !
                     </p>
                 </div>
-                <img src="Zone.intervention.matthieu-artisan.plomberie.gif" alt="Carte zone d'intervention" width="382" height="433">
+
+                <!-- Carte dans le Pop-up -->
+                <div class="zone-map-wrapper">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1lRkP8qHptI7paibUdReOhAwr2PV8jxo" class="zone-map-iframe" title="Carte Pop-up Zone d'intervention Matthieu Artisan" loading="lazy"></iframe>
+                </div>
+
             </div>
         </div>
     </div>
