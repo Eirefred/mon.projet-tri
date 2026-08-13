@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matthieu Artisan | Plomberie & Chauffage</title>
-    <meta name="description" content="Entreprise de plomberie Matthieu Artisan - Dépannage, installation et rénovation dans la Vallée d'Azergues et ses environs.">
+    <title>Poêles à Bois & Granulés, Fumisterie | Matthieu Artisan (69)</title>
+    <meta name="description" content="Installation, pose et mise en conformité de poêles à bois et à granulés dans la Vallée d'Azergues et le Rhône (69). Artisan RGE Qualibois.">
     
     <style>
         /* Palette de couleurs */
@@ -271,18 +271,52 @@
             margin-bottom: 2rem;
         }
 
-        .services-list li {
-            padding: 0.5rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+        /* Élément principal de niveau 1 */
+        .services-list > li {
+            position: relative;
+            padding: 0.4rem 0 0.4rem 1.8rem;
+            font-weight: 600;
         }
 
-        .services-list li::before {
+        .services-list > li::before {
             content: "✓";
             color: var(--accent-turquoise);
             font-weight: bold;
             font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+        }
+
+        /* Sous-liste (sous-éléments) */
+        .services-list ul {
+            list-style: none;
+            margin-top: 0.3rem;
+            margin-bottom: 0.2rem;
+            padding-left: 0.2rem;
+        }
+
+        .services-list ul li {
+            position: relative;
+            padding: 0.2rem 0 0.2rem 1.2rem;
+            font-size: 0.95rem;
+            font-weight: normal;
+            color: var(--text-color);
+        }
+
+        .services-list ul li::before {
+            content: "•";
+            color: var(--accent-red);
+            font-weight: bold;
+            font-size: 1.1rem;
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+        }
+
+        .badge-specialite {
+            color: var(--action-orange);
+            font-weight: 600;
         }
 
         .zone-card {
@@ -598,22 +632,23 @@
 
             <!-- Navigation -->
             <nav>
-                <ul id="nav-menu">
-                    <li><a href="specialites.html" class="active-link">Spécialités</a></li>
-                    <li><a href="certifications.html">Certifications</a></li>
-                    <li><a href="partenaires.html">Partenaires</a></li>
-                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
-                </ul>
-            </nav>
+        <ul id="nav-menu">
+            <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="partenaires.html">Partenaires</a></li>
+            <li><a href="mentions-legales.html">Mentions Légales</a></li>
+        </ul>
+    </nav>
         </div>
     </header>
 
     <!-- Banner -->
     <section class="hero">
-        <h1>Plomberie & Chauffage à votre service</h1>
+        <h1>Installation de Poêles à Bois & à Granulés</h1>
+        <p class="hero-subtitle">Pose · Mise en conformité · Conseils & Diagnostic</p>
         <p class="location-tag">Basé dans la Vallée d’Azergues & secteurs limitrophes</p>
-        <p>Intervention rapide, installation et entretien de vos équipements sanitaires avec le savoir-faire d'un artisan local.</p>
-        <div class="hero-buttons">
+    <p>Un accompagnement personnalisé pour vos projets de chauffage au bois. Prenons le temps d’échanger sur votre projet et de trouver ensemble la solution qui vous convient.</p>
+    <div class="hero-buttons">
             <a href="tel:0478470662" class="btn-hero btn-call">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
@@ -629,15 +664,30 @@
         <div>
             <article class="about">
                 <h2>Bienvenue chez Matthieu Artisan</h2>
-                <p>Fort de plusieurs années d'expérience, je mets mon expertise au service de vos projets de plomberie, de rénovation de salle de bain et de chauffage.</p>
-                <p>Que ce soit pour un dépannage en urgence ou une installation complète, je m'engage à fournir un travail soigné, respectueux des normes et de votre budget.</p>
+
+<p>Fort de plusieurs années d'expérience, nous mettons notre savoir-faire au service de vos projets d'installation de poêles à bois et à granulés, ainsi que de mise en conformité de vos conduits de cheminée.</p>
+
+<p>Chaque projet étant différent, nous prenons le temps d'échanger avec vous pour comprendre vos besoins, vous conseiller et trouver la solution la plus adaptée à votre situation.</p>
                 
                 <ul class="services-list">
-                    <li>Dépannage d'urgence & recherche de fuites</li>
-                    <li>Rénovation complète de salles de bains</li>
-                    <li>Installation de robinetterie et chauffe-eau</li>
-                    <li>Entretien et pose de systèmes de chauffage</li>
-                </ul>
+    <li>
+        INSTALLATION DE POÊLES
+        <ul>
+            <li>Poêles à bois & à granulés</li>
+            <li>Pose de <strong class="badge-specialite">Poêles de masse MELÈZE</strong></li>
+        </ul>
+    </li>
+    <li>CONDUIT DE FUMÉES ET TUBAGE (gainage)</li>
+    <li>MISE EN CONFORMITÉ</li>
+    <li>
+        DIAGNOSTICS / CONSEILS
+        <ul>
+            <li>Analyse en cas de dysfonctionnement</li>
+            <li>Diagnostic pré-vente immobilière</li>
+        </ul>
+    </li>
+    <li>SOUTIEN D'EXPERTISE</li>
+</ul>
             </article>
 
             <section class="zone-card">
@@ -647,7 +697,7 @@
                 <div class="zone-container">
                     <div class="zone-text">
                         <ul>
-                            <li><strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
+                            <li><strong>Vallée d’Azergues</strong> (Anse à Écharmeaux)</li>
                             <li><strong>Villefranche-sur-Saône</strong> & le pays des Pierres Dorées</li>
                             <li><strong>L'Arbresle</strong>, l'Ouest Lyonnais / Porte de Lyon</li>
                             <li><strong>Tarare</strong></li>
@@ -684,7 +734,7 @@
             <div class="modal-body">
                 <div>
                     <ul style="list-style: none;">
-                        <li style="margin-bottom: 0.5rem;">• <strong>Lamure-sur-Azergues</strong> & la Vallée d’Azergues</li>
+                        <li style="margin-bottom: 0.5rem;">• <strong>Vallée d’Azergues</strong> (Anse à Écharmeaux)</li>
                         <li style="margin-bottom: 0.5rem;">• <strong>Villefranche-sur-Saône</strong> & les Pierres Dorées</li>
                         <li style="margin-bottom: 0.5rem;">• <strong>L'Arbresle</strong> & l'Ouest Lyonnais</li>
                         <li style="margin-bottom: 0.5rem;">• <strong>Tarare</strong></li>
@@ -714,7 +764,7 @@
                 Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
             </div>
             <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;"><a href="specialites.html">Spécialités</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a></p>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
         </div>
     </footer>
 

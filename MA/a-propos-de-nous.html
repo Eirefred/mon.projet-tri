@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos de nous | Matthieu Artisan - Poêles & Fumisterie (69)</title>
+    <meta name="description" content="Découvrez Matthieu Artisan : entreprise familiale spécialisée dans la pose, le conseil et la mise en conformité de poêles à bois et granulés dans le Rhône (69).">
+    
+    <style>
+        /* Palette de couleurs */
+        :root {
+            --primary-blue: #1a67b3;       /* Bleu principal */
+            --navy-academic: #1e293b;     /* Bleu nuit institutionnel */
+            --action-orange: #f97316;      /* Orange Action */
+            --orange-hover: #ea580c;       
+            
+            --accent-red: #fa4222;         
+            --accent-turquoise: #48a1cb;   
+            
+            --bg-light: #f8fafc;
+            --text-color: #334155;
+            --border-color: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- EN-TÊTE --- */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.2rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            display: inline-block;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            display: block;
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .header-info-block {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 64px;
+            border-left: 2px solid var(--accent-turquoise);
+            padding-left: 0.8rem;
+            line-height: 1.25;
+        }
+
+        .header-location-tag {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            white-space: nowrap;
+            margin-bottom: 6px;
+        }
+
+        .header-phone-link {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--action-orange);
+            text-decoration: none;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .header-phone-link:hover {
+            color: var(--orange-hover);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover, nav a.active-link {
+            color: var(--accent-turquoise);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 28px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+            flex-shrink: 0;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-blue);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* --- BANNIÈRE DE PAGE --- */
+        .page-banner {
+            background: linear-gradient(135deg, var(--primary-blue), #114b85);
+            color: white;
+            padding: 3.5rem 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-turquoise);
+        }
+
+        .page-banner h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.6rem;
+        }
+
+        .page-banner p {
+            font-size: 1.05rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        /* --- SYSTÈME D'ONGLETS --- */
+        .main-container {
+            max-width: 1100px;
+            margin: 2.5rem auto 4rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- STYLES SYSTÈME D'ONGLETS UNIFIÉ --- */
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 0.5rem;
+}
+
+.tab-btn {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    padding: 0.8rem 1.6rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: all 0.25s ease;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-blue);
+    color: var(--primary-blue);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 12px rgba(26, 103, 179, 0.2);
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+        /* --- STYLE ONGLET 1 : L'ÉQUIPE --- */
+        .team-box {
+            background: #ffffff;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .team-box h2 {
+            font-size: 1.35rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-box blockquote {
+            font-style: italic;
+            color: #475569;
+            background: #f1f5f9;
+            padding: 1.2rem 1.4rem;
+            border-left: 4px solid var(--accent-turquoise);
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+
+        .team-box blockquote p {
+            margin-bottom: 0.8rem;
+        }
+
+        .team-box blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .brand-matthieu {
+            color: #024d92;
+            font-weight: normal;
+        }
+
+        .brand-artisan {
+            color: #fd3f1e;
+            font-weight: normal;
+        }
+
+        .team-subtitle {
+            color: var(--navy-academic);
+            font-size: 1.15rem;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        /* --- SECTION NOS RÉALISATIONS --- */
+        .realisations-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .realisation-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .realisation-card h3 {
+            color: var(--primary-blue);
+            font-size: 1.35rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+            padding-left: 0.8rem;
+            border-left: 4px solid var(--accent-turquoise);
+        }
+
+        .realisation-location {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .realisation-card p {
+            color: #334155;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .mb-4 { margin-bottom: 1.5rem; }
+        .mt-4 { margin-top: 1.5rem; }
+
+        .gallery-item {
+            margin: 0;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.03);
+        }
+
+        /* --- LIGHTBOX (MODALE PHOTO EN GROS) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            padding-top: 2rem;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            animation: zoom 0.3s ease;
+            object-fit: contain;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.8); opacity: 0;}
+            to {transform: scale(1); opacity: 1;}
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: #ffffff;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: var(--action-orange);
+            text-decoration: none;
+        }
+
+        /* --- BACK TO TOP --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #backToTop.visible {
+            display: flex !important;
+        }
+
+        #backToTop svg {
+            width: 24px;
+            height: 24px;
+            fill: #000000;
+        }
+
+        /* --- PIED DE PAGE --- */
+        footer {
+            background-color: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            border-top: 3px solid var(--accent-turquoise);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .footer-sector {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #e2e8f0;
+        }
+
+        .footer-sector strong {
+            color: #ffffff;
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        footer a {
+            color: #9cdbfb;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: var(--accent-turquoise);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 834px) {
+            .header-container {
+                position: relative;
+                padding: 0.2rem 1rem;
+                justify-content: space-between;
+            }
+
+            .brand-group {
+                gap: 0.5rem;
+                max-width: calc(100% - 40px);
+            }
+
+            .logo img {
+                height: 58px;
+            }
+
+            .header-info-block {
+                height: auto;
+                padding-left: 0.5rem;
+            }
+
+            .header-location-tag {
+                font-size: 0.68rem;
+                margin-bottom: 2px;
+            }
+
+            .header-phone-link {
+                font-size: 0.75rem;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+                align-self: center;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+                padding: 0.5rem 0;
+                gap: 0;
+                border-top: 1px solid #e2e8f0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-bottom: 1px solid #f1f5f9;
+            }
+
+            
+.tabs-container {
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tab-btn {
+    width: 100%;
+    border-radius: 6px;
+    text-align: center;
+    padding: 0.7rem 1rem;
+}
+        }
+
+        /* Grille spécifique 3 images côte-à-côte */
+.gallery-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+/* Grille spécifique 2 images côte-à-côte */
+.gallery-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+}
+
+/* Image pleine largeur pour le projet 3 */
+.gallery-full {
+    width: 100%;
+}
+
+.gallery-full .img-wide {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .gallery-grid-3, 
+    .gallery-grid-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- En-tête -->
+    <header>
+        <div class="header-container">
+            <div class="brand-group">
+                <a href="index.html" class="logo">
+                    <img src="matthieu-artisan.specialiste.png" alt="Matthieu Artisan - Plomberie & Chauffage" width="1150" height="502">
+                </a>
+                <div class="header-info-block">
+                    <span class="header-location-tag">📍 Vallée d’Azergues (69)</span>
+                    <a href="tel:0478470662" class="header-phone-link">📞 04 78 470 662</a>
+                </div>
+            </div>
+
+            <!-- Bouton Hamburger -->
+            <button class="hamburger" id="hamburger-btn" aria-label="Menu de navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Navigation -->
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="a-propos-de-nous.html" class="active-link">À propos de nous</a></li>
+                    <li><a href="certifications.html">Certifications</a></li>
+                    <li><a href="partenaires.html">Partenaires</a></li>
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Bannière de la page -->
+    <section class="page-banner">
+        <h1>À propos de Matthieu Artisan</h1>
+        <p>Une entreprise artisanale et familiale en activité depuis 2005, dédiée au chauffage au bois, aux poêles et à la sécurité des conduits de fumées.</p>
+    </section>
+
+    <!-- Contenu Principal avec Onglets -->
+    <main class="main-container">
+
+        <!-- En-tête des Onglets -->
+        <div class="tabs-container">
+    <button class="tab-btn active" id="btn-equipe" onclick="switchTab('equipe')">L'Équipe & Philosophie</button>
+    <button class="tab-btn" id="btn-realisations" onclick="switchTab('realisations')">Nos Réalisations</button>
+</div>
+
+        <!-- ONGLET 1 : L'ÉQUIPE -->
+        <div id="tab-equipe" class="tab-panel active">
+
+            <!-- Bloc 1 : Matthieu -->
+            <article class="team-box">
+                <h2>
+                    <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span><span class="team-subtitle">, c’est d’abord Matthieu.</span>
+                </h2>
+                <p>Plombier / chauffagiste qui, avant de se mettre à son compte, a fait plusieurs années de maintenances (entretiens et dépannages chaudières).</p>
+                <blockquote>
+                    <p>« Je suis devenu indépendant en 2005. J’ai d’abord œuvré aussi bien dans le domaine de la plomberie (création ou rénovation sanitaire, dépannages…) que du chauffage (chaudières toutes énergies, poêles, réseau chauffage central, travail du cuivre).</p>
+                    <p>Au fil des années j’ai pris goût à l’énergie bois et je suis aujourd’hui spécialiste des moyens de chauffage fonctionnant au bois ou granulés (chaudière, poêles d’appoint ou poêle de masse) ainsi que des conduits de fumées (création ou mise en conformité).</p>
+                    <p>Je suis particulièrement soucieux de toujours mieux maîtriser les règles de l’art. Je pense important de savoir se remettre en question et de mettre à jour son savoir ce que je fais par des formations annuelles (voir <a href="certifications.html" style="color: var(--primary-blue); font-weight: 600;">nos qualifications</a>) et par l’échange avec nos collègues ramoneurs ou installateurs qui sont dans la même démarche. »</p>
+                </blockquote>
+            </article>
+
+            <!-- Bloc 2 : Marion -->
+            <article class="team-box">
+                <h2>
+                    <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span><span class="team-subtitle"> c’est aussi Marion,</span>
+                </h2>
+                <p>Son épouse, à ses côtés au début pour la gestion administrative et relation clients/fournisseurs.</p>
+                <blockquote>
+                    <p>« En travaillant à son compte nous pouvons développer la relation avec nos clients que nous souhaitons. C’est vraiment ce que j’ai aimé d’abord. En ce qui concerne la partie technique, si la plomberie m’a peu passionnée, je l’ai été davantage pour la partie mise en œuvre des conduits de fumées. Avec Matthieu nous prenons plaisir à nous former très régulièrement et maîtriser chaque jour davantage nos connaissances techniques et réglementaires. Je suis aujourd’hui experte à ses côtés, surtout dans la connaissance des textes de référence et dans les calculs de dimensionnement, maniant les logiciels KESA ALADIN (la référence des fabricants de conduits), QC2 et Z1E (développés par C2AP, expert français dans le domaine). »</p>
+                </blockquote>
+            </article>
+
+            <!-- Bloc 3 : L'Équipe -->
+            <article class="team-box" style="border-left-color: var(--accent-turquoise);">
+                <h2>
+                    <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span><span class="team-subtitle"> c’est donc Matthieu et Marion, une équipe qui se complète bien.</span>
+                </h2>
+                <p style="margin-top: 0.5rem;">
+                    Marion établit des pré-projets chiffrés avant que Matthieu, sur le terrain, ne définisse et mette en œuvre les travaux préconisés.
+                </p>
+                <p style="margin-top: 0.8rem;">
+                    À nous deux nous mettons tout en œuvre pour que <strong>notre service</strong> et notre <strong>travail soigné</strong> vous apportent <strong>entière satisfaction</strong> et nous restons <strong>à votre écoute</strong> avant, pendant et après la réalisation de votre projet.
+                </p>
+                <p style="margin-top: 0.8rem; font-weight: 600; color: var(--navy-academic);">
+                    Nos devis sont gratuits et établis après une visite technique et calcul du dimensionnement sur un logiciel agréé pour valider nos installations.
+                </p>
+            </article>
+
+        </div>
+
+        <!-- ONGLET 2 : RÉALISATIONS -->
+<div id="tab-realisations" class="tab-panel">
+    <div class="realisations-container">
+        
+        <!-- PROJET 1 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois sur bûcher avec plaque murale ventilée</h3>
+            <p class="realisation-location">📍 <strong>Theizé (69620)</strong></p>
+            
+            <div class="gallery-grid mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_2339-2-768x1024.jpeg" alt="Percements pour conduit de fumées et admission d'air">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_2340-1-768x1024.jpeg" alt="Installation du poêle à bois Termatech sur bûcher">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_3007-1-783x1024.jpg" alt="Plaque murale ventilée et raccordement poêle">
+                </figure>
+            </div>
+
+            <p>
+                À THEIZE (69620), nos clients nous ont sollicités pour l'installation d'un poêle à bois et la création d'un conduit de fumée. 
+                Vu la configuration, il a été opté pour un conduit de fumées en situation extérieure avec traversée/étanchéité de 2 toitures.
+            </p>
+            <p>
+                Le mur derrière le poêle n'était pas de nature incombustible (aussi bien le placo que l'isolant). Dans ce cas-là, la distance de sécurité du conduit de raccordement est de 3x le diamètre (soit 45 cm si conduit d.150 mm). 
+                Pour éviter cette contrainte, il a été choisi de poser 2 plaques murales ventilées pour diviser par 2 cette distance. 
+                <em>(il existe aussi la possibilité de poser 1 plaque murale sur mesure isolée incombustible pour se placer au plus près du mur)</em>
+            </p>
+            <p>
+                La 1<sup>ère</sup> photo montre les 2 percements qui ont ensuite été réalisés pour le conduit de fumées et l'admission d'air de combustion.<br>
+                <strong>Nous remercions nos clients pour leur gentillesse et leur confiance !</strong>
+            </p>
+        </article>
+
+        <!-- PROJET 2 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois <a href="https://www.jotul.fr/produits/bois/poeles-cheminees/jotul-fs-175" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">JOTUL</a> avec création d’une niche incombustible</h3>
+            <p class="realisation-location">📍 <strong>St Vérand (69620)</strong></p>
+
+            <div class="gallery-grid mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_11781.jpg" alt="Installation poêle à bois JOTUL - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_11811.jpg" alt="Installation poêle à bois JOTUL - Vue 2">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_56721.jpg" alt="Création niche incombustible - Vue 3">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_56741.jpg" alt="Création niche incombustible - Vue 4">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_56711.jpg" alt="Création niche incombustible - Vue 5">
+                </figure>
+            </div>
+
+            <p>
+                A St Vérand (69620), nos clients nous ont sollicités pour la remise en conformité de l’installation bois, existante avant leur arrivée dans la maison.
+            </p>
+            <p>
+                Vu les non-conformités constatées et la section du conduit il a été jugé préférable de démonter le boisseau existant pour le remplacer par un conduit double paroi isolé.
+            </p>
+            <p>
+                Nos clients étaient très attachés à vouloir place le poêle dans une « niche » qui n’existait alors pas. Nous avons pris le temps d’analyser cette possibilité avec eux.
+            </p>
+            <p>
+                Afin de nous assurer que les règles de l’art seraient respectées, il a été convenu que nous réaliserions le caisson autour du poêle (matériaux incombustibles) et qu’un plaquiste ferait le reste de l’habillage.
+            </p>
+            <p>
+                <strong>Le rendu est particulièrement joli et chaleureux !</strong>
+            </p>
+        </article>
+
+        <!-- PROJET 3 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois à inertie <a href="https://www.jotul.fr/produits/bois/poeles-cheminees/jotul-fs-175" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">JOTUL</a> avec un habillage en pierre</h3>
+            <p class="realisation-location">📍 <strong>Saint-Just-d’Avray (69870)</strong></p>
+
+            <div class="mb-4">
+                <div class="gallery-grid-3 mb-4">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1960-768x1024.jpg" alt="Poêle JOTUL FS175 - Vue 1">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1961-1024x768.jpg" alt="Poêle JOTUL FS175 - Vue 2">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1962-768x1024.jpg" alt="Conduit double paroi isolé peint en noir">
+                    </figure>
+                </div>
+                <div class="gallery-full">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1963-1024x768.jpg" alt="Habillage en pierre ollaire" class="img-wide">
+                    </figure>
+                </div>
+            </div>
+
+            <p>
+                A Saint-Just-d’Avray (69870), nous avons été sollicités pour installer un poêle à bois adapté au chauffage d’une maison en fustes, avec radiateurs électriques en appoint.
+            </p>
+            <p>
+                Calcul de dimensionnement à l’appui et dans le respect des contraintes réglementaires et de la notice du fabricant, nous avons installé un poêle JOTUL FS175 avec son habillage en pierre ollaire et un conduit de fumés double paroi isolé peint en noir (peinture sur mesure réalisée par notre tôlier) jusqu’au poêle.
+            </p>
+        </article>
+
+        <!-- PROJET 4 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle de masse <a href="https://poeles-meleze.fr/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">MELEZE</a> (1 flambée pour 12h de chauffe environ)</h3>
+            <p class="realisation-location">📍 <strong>Secteur 01140</strong></p>
+
+            <div class="mb-4">
+                <div class="gallery-grid-3 mb-4">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1018-828x1024.jpg" alt="Poêle de masse MELEZE PM800 - Vue 1">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1886.jpeg" alt="Poêle de masse MELEZE PM800 - Vue 2">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1016-768x1024.jpeg" alt="Poêle de masse MELEZE PM800 - Vue 3">
+                    </figure>
+                </div>
+
+                <div class="gallery-grid-2">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1015-768x1024.jpeg" alt="Détail réhausse et conduit de fumées">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_1012-768x1024.jpg" alt="Cache conduit sur mesure">
+                    </figure>
+                </div>
+            </div>
+
+            <p>
+                Pour leur habitation type ferme bressane toute rénovée, nos clients souhaitaient vivement un poêle de masse pour leur chauffage principal.
+            </p>
+            <p>
+                Ils ont pris contact avec <a href="https://poeles-meleze.fr/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">MELEZE</a>, fabricant français installé dans la Drôme avec qui nous souhaitions vivement collaborer et qui nous ont proposé le projet.
+            </p>
+            <p>
+                Après 2 visites techniques, rendues nécessaire pour un conduit de fumées délicat à mettre en oeuvre, nous avons pu finaliser le projet comme suit :
+            </p>
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: #334155;">
+                <li>poêle MELEZE modèle PM800 – coloris TERRE</li>
+                <li>conduit de fumées double paroi isolé dans le boisseau existant avec réhausse en toiture, peinture NOIR des éléments extérieurs pour un conduit plus discret</li>
+                <li>cache conduit sur mesure de la partie du boisseau dépassant dans la pièce à vivre</li>
+            </ul>
+            <p>
+                Le mur derrière a été refait pour être complètement incombustible (placo ET isolant de catégorie A1) pour que le poêle puisse être positionné au plus près du mur, sous le boisseau.
+            </p>
+        </article>
+
+        <!-- PROJET 5 -->
+        <article class="realisation-card">
+            <h3>Installation d’un conduit de fumées, en attente d’un futur poêle à bois (dans un studio)</h3>
+            <p class="realisation-location">📍 <strong>Secteur 69170</strong></p>
+
+            <div class="gallery-grid-3 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/IMG_3558-1-1024x768.jpg" alt="Conduit de fumées studio - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/RIVIER_COND_10-1024x768.jpg" alt="Conduit de fumées studio - Vue 2">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/RIVIER_Recption39-1024x768.jpg" alt="Conduit de fumées studio - Vue 3">
+                </figure>
+            </div>
+
+            <p>
+                Nous avons été sollicité par le cabinet d’architecte GREGOIRE GAILLARD, avec lequel nous apprécions tout particulièrement collaborer, pour l’installation d’un poêle à bois dans un studio neuf.
+            </p>
+            <p>
+                Nous avons d’abord dû plancher sérieusement sur la faisabilité du projet vu la situation de la souche par rapport aux obstacles environnants. Après une analyse très précise notre calcul de la zone hors surpression (ou « zone 1 élargie ») s’est avéré favorable et nous a permis d’envisager et de concrétiser le projet.
+            </p>
+            <p>
+                Il a ensuite fallu s’adapter aux contraintes du bâtiment ; toit en bacs acier, étanchéïté à l’air, baies vitrées …
+            </p>
+            <p>
+                En respectant toutes les obligations liées à ces matériaux nous avons alors positionné notre conduit double paroi isolé, peint sur mesure en NOIR, en attente de l’installation du futur poêle à bois CHARNWOOD 3,6kW prévu dans un second temps.
+            </p>
+            <p>
+                <em>Nous précisons à ce stade que le conduit de fumées DPI est prévu d’être descendu jusqu’au poêle.</em>
+            </p>
+        </article>
+
+        <!-- PROJET 6 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois double face sur banc sur mesure</h3>
+            <p class="realisation-location">📍 <strong>Secteur 69870</strong></p>
+
+            <div class="mb-4">
+                <div class="gallery-grid-3 mb-4">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_8815-1024x768.jpeg" alt="Poêle double face AXIS PO1000DF - Vue 1">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_8817-1024x768.jpeg" alt="Poêle double face AXIS PO1000DF - Vue 2">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_8819-1024x768.jpeg" alt="Poêle double face AXIS PO1000DF - Vue 3">
+                    </figure>
+                </div>
+                <div class="gallery-full">
+                    <figure class="gallery-item">
+                        <img src="Projets/IMG_0114-1024x768.jpeg" alt="Banc sur mesure et intégration poêle" class="img-wide">
+                    </figure>
+                </div>
+            </div>
+
+            <p>
+                Dans le cadre d’une rénovation complète, nos clients nous ont sollicité pour la dépose d’un poêle à bois existant, le démontage du boisseau et l’installation d’un nouveau poêle à bois en milieu de pièce avec conduit de fumées neuf.
+            </p>
+            <p>
+                Tout en tenant compte des contraintes techniques et de la puissance nécessaire nous avons adapté notre proposition aux critères esthétiques du client : un poêle à bois double face AXIS PO1000DF, posé sur un banc. Ce banc a été réalisé aux mesures souhaitées par notre client, avec peinture haute température et adaptation pour amenée d’air raccordée sous le poêle.
+            </p>
+        </article>
+
+        <!-- PROJET 7 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois VERMONT CASTING et conduit de fumées DPI</h3>
+            <p class="realisation-location">📍 <strong>Secteur 69870</strong></p>
+
+            <div class="gallery-full mb-4">
+                <figure class="gallery-item" style="max-width: 500px; margin: 0 auto;">
+                    <img src="Projets/BE29BD8F-16C2-42F7-923C-3628FE02A5BE-700x933.jpeg" alt="Poêle à bois VERMONT CASTING" style="width: 100%; height: auto; object-fit: contain;">
+                </figure>
+            </div>
+
+            <p>
+                Notre client nous a sollicité pour l’installation d’un poêle à bois dans le cadre d’une rénovation complète destinée à une future location.
+            </p>
+            <p>
+                Nous avons opté pour un poêle à bois de la marque <a href="https://www.cheminees-seguin.com/lunivers-vermont/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">VERMONT CASTING</a> que nous apprécions tout particulièrement pour leur vraie <a href="https://www.cheminees-seguin.com/combustion-catalytique-poeles-vermont/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">double combustion avec catalyseur</a>, leur robustesse et leur fonctionnement moins sensible que certains poêles modernes.
+            </p>
+        </article>
+
+        <!-- PROJET 8 -->
+        <article class="realisation-card">
+            <h3>Remplacement d’un insert par un poêle à bois plus performant</h3>
+            <p class="realisation-location">📍 <strong>Secteur 69490</strong></p>
+
+            <div class="gallery-full mb-4">
+                <figure class="gallery-item" style="max-width: 500px; margin: 0 auto;">
+                    <img src="Projets/FullSizeRender-1.jpeg" alt="Poêle à bois SUPRA Persée" style="width: 100%; height: auto; object-fit: contain;">
+                </figure>
+            </div>
+
+            <ul style="margin-left: 1.5rem; margin-bottom: 1rem; color: #334155;">
+                <li>Installation d’un poêle à bois SUPRA « Persée » ; poêle tout en fonte robuste et puissant (en restant adapté aux besoins de la maison).</li>
+                <li>Remise aux normes de la cloison par le client selon nos indications</li>
+                <li>Raccordement sur conduit POUJOULAT DPI existant</li>
+            </ul>
+        </article>
+
+        <!-- PROJET 9 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle à bois VERMONT CASTING avec catalyseur</h3>
+            <p class="realisation-location">📍 <strong>Secteur Beaujolais</strong></p>
+
+            <div class="gallery-grid-2 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/Po%C3%AAle-%C3%A0-bois-VERMONT-CASTING-1.jpg" alt="Poêle VERMONT CASTING FEDERAL L - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/Po%C3%AAle-%C3%A0-bois-VERMONT-CASTING-2.jpg" alt="Poêle VERMONT CASTING FEDERAL L - Vue 2">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="https://www.cheminees-seguin.com/vermont-castings-ou-le-reve-americain/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">VERMONT CASTING</a> modèle <a href="https://www.cheminees-seguin.com/poeles/vermont/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">FEDERAL L</a> – 8kW.
+            </p>
+            <p>
+                Poêle avec catalyseur ; véritable <a href="https://www.cheminees-seguin.com/combustion-catalytique-poeles-vermont/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">double combustion catalytique</a>. Conduit émail noir, tubage flexible de la cheminée.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> performance du poêle et esthétique harmonieuse avec leur intérieur.
+            </p>
+        </article>
+
+        <!-- PROJET 10 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle cheminée avec portes relevables</h3>
+            <p class="realisation-location">📍 <strong>Secteur 69870</strong></p>
+
+            <div class="gallery-grid-2 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/DSC_9465-e1551353281434.jpg" alt="Poêle cheminée TURBOFONTE - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/DSC_9467-e1551353308198.jpg" alt="Poêle cheminée TURBOFONTE - Vue 2">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="https://www.turbofonte.com/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">TURBOFONTE</a> modèle <a href="https://www.turbofonte.com/foyers-inserts/sigma-95-cv" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">SD VLD 900</a> – 13kW.
+            </p>
+            <p>
+                Installation réalisée avec cadre noir, grilles de décompression, bûcher et cheminée isolée DPI.
+            </p>
+            <p>
+                <strong>Critère prioritaire du client :</strong> poêle d’angle avec portes relevables et grilles assorties.
+            </p>
+        </article>
+
+        <!-- PROJET 11 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle panoramique STOVAX STUDIO2</h3>
+            <p class="realisation-location">📍 <strong>69500 Cublize</strong></p>
+
+            <div class="mb-4">
+                <div class="gallery-grid-2 mb-4">
+                    <figure class="gallery-item">
+                        <img src="Projets/P1020373.jpg" alt="Poêle STOVAX STUDIO2 - Vue 1">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/P1020374.jpg" alt="Poêle STOVAX STUDIO2 - Vue 2">
+                    </figure>
+                </div>
+                <div class="gallery-grid-2">
+                    <figure class="gallery-item">
+                        <img src="Projets/P1020376.jpg" alt="Poêle STOVAX STUDIO2 - Vue 3">
+                    </figure>
+                    <figure class="gallery-item">
+                        <img src="Projets/P1020377.jpg" alt="Poêle STOVAX STUDIO2 - Vue 4">
+                    </figure>
+                </div>
+            </div>
+
+            <p>
+                Marque STOVAX modèle STUDIO2 FREESTANDING – 8kW.
+            </p>
+            <p>
+                Conduit de raccordement émail noir, cheminée extérieure Double Paroi Isolé (DPI).
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> poêle panoramique et plafond LED à préserver.
+            </p>
+        </article>
+
+        <!-- PROJET 12 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle agréé étanche SUPRA STILL</h3>
+            <p class="realisation-location">📍 <strong>69490 Saint-Loup</strong></p>
+
+            <div class="gallery-full mb-4">
+                <figure class="gallery-item" style="max-width: 500px; margin: 0 auto;">
+                    <img src="Projets/photo-po%C3%AAle-1.jpg" alt="Poêle SUPRA STILL" style="width: 100%; height: auto; object-fit: contain;">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="http://supra.fr/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">SUPRA</a> modèle <a href="http://www.supra.fr/produits/poeles-a-bois/eco-performance-poele-a-bois/still-110970.html" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">STILL</a> – 6kW (poêle agréé étanche).
+            </p>
+            <p>
+                Conduit émail noir, plaque de protection murale décorative, raccordement au conduit de fumée existant.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> poêle étanche (maison neuve RT 2012) pour petit budget.
+            </p>
+        </article>
+
+        <!-- PROJET 13 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle SUPRA LYTHAM avec conduit sur mesure</h3>
+            <p class="realisation-location">📍 <strong>69380 Lozanne</strong></p>
+
+            <div class="gallery-full mb-4">
+                <figure class="gallery-item" style="max-width: 500px; margin: 0 auto;">
+                    <img src="Projets/POELE-LYTHAM-lozanne.jpg" alt="Poêle SUPRA LYTHAM" style="width: 100%; height: auto; object-fit: contain;">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="http://supra.fr/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">SUPRA</a> modèle <a href="http://www.supra.fr/produits/poeles-a-bois/fonte/lytham-117133.html" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">LYTHAM</a> – 7kW.
+            </p>
+            <p>
+                Conduit de raccordement émail noir, plaque de protection murale et conduit de fumées sur mesure dans boisseau oblong.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> poêle petit budget avec sortie par dessus et conduit de fumée sur mesure.
+            </p>
+        </article>
+
+        <!-- PROJET 14 -->
+        <article class="realisation-card">
+            <h3>Fourniture et pose d’une plaque sur mesure</h3>
+            <p class="realisation-location">📍 <strong>69870 Saint-Just-d’Avray</strong></p>
+
+            <div class="gallery-full mb-4">
+                <figure class="gallery-item" style="max-width: 500px; margin: 0 auto;">
+                    <img src="Projets/DSC_7395-2.jpeg" alt="Plaque de sol sur mesure" style="width: 100%; height: auto; object-fit: contain;">
+                </figure>
+            </div>
+
+            <p>
+                Poêle VERMONT CASTING <a href="https://www.cheminees-seguin.com/combustion-catalytique-poeles-vermont/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">double combustion catalytique</a> en fonctionnement depuis une vingtaine d’années.
+            </p>
+            <p>
+                <strong>Critères du client :</strong> protection du sol et délimitation d’un rangement pour les bûches, finition brute.
+            </p>
+        </article>
+
+        <!-- PROJET 15 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle INVICTA ASGARDE</h3>
+            <p class="realisation-location">📍 <strong>69490 Saint-Loup</strong></p>
+
+            <div class="gallery-grid-2 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/DSC_6945.jpg" alt="Poêle INVICTA ASGARDE - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/DSC_6947.jpg" alt="Poêle INVICTA ASGARDE - Vue 2">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="http://www.invicta.fr/" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">INVICTA</a> modèle <a href="http://www.invicta.fr/les-poeles-a-bois/poeles-a-bois-en-fonte" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">ASGARDE</a> – 9kW.
+            </p>
+            <p>
+                Conduit de raccordement émail noir, raccordement au conduit de fumée existant.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> installation d’un poêle choisi chez JUNET BRICO à poser à la place de la cuisinière à bois et entre les 2 pièces à vivre.
+            </p>
+        </article>
+
+        <!-- PROJET 16 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle INVICTA MESNIL</h3>
+            <p class="realisation-location">📍 <strong>69210 Saint-Germain</strong></p>
+
+            <div class="gallery-grid-2 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/photo-INVICTA-MESNIL-2.jpg" alt="Poêle INVICTA MESNIL - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/photo-INVICTA-MESNIL.jpg" alt="Poêle INVICTA MESNIL - Vue 2">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="http://www.invicta.fr/fr/les-poeles-a-bois" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">INVICTA</a> modèle <a href="http://www.invicta.fr/fr/les-poeles-a-bois/poeles-a-bois-en-fonte/poele-fonte-mesnil" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">MESNIL</a> – 8kW.
+            </p>
+            <p>
+                Conduit de raccordement émail noir, tubage du boisseau.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> installation d’un poêle choisi chez JUNET BRICO.
+            </p>
+        </article>
+
+        <!-- PROJET 17 -->
+        <article class="realisation-card">
+            <h3>Installation d’un poêle INVICTA SAMARA</h3>
+            <p class="realisation-location">📍 <strong>69170 Saint-Clément-sur-Valsonne</strong></p>
+
+            <div class="gallery-grid-2 mb-4">
+                <figure class="gallery-item">
+                    <img src="Projets/INVICTA-SAMARA-1.jpg" alt="Poêle INVICTA SAMARA - Vue 1">
+                </figure>
+                <figure class="gallery-item">
+                    <img src="Projets/INVICTA-SAMARA-2.jpg" alt="Poêle INVICTA SAMARA - Vue 2">
+                </figure>
+            </div>
+
+            <p>
+                Marque <a href="http://www.invicta.fr/fr/les-poeles-a-bois" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">INVICTA</a> modèle <a href="http://www.invicta.fr/fr/les-poeles-a-bois/poeles-a-bois-en-fonte/poele-fonte-samara-2015" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">SAMARA</a> – 8kW.
+            </p>
+            <p>
+                Conduit de raccordement émail noir, tubage du boisseau.
+            </p>
+            <p>
+                <strong>Critères prioritaires du client :</strong> installation d’un poêle choisi chez JUNET BRICO.
+            </p>
+        </article>
+
+    </div>
+</div>
+
+    </main>
+
+    <!-- Lightbox Popup Modale -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Agrandissement image">
+    </div>
+
+    <!-- Back To Top -->
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-sector">
+                <strong>📍 Notre secteur d'intervention :</strong>
+                Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
+            </div>
+            <p>&copy; 2026 matthieu-artisan.fr — Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        /* Changement d'onglets unifié */
+function switchTab(tabId) {
+    document.getElementById('btn-equipe').classList.remove('active');
+    document.getElementById('btn-realisations').classList.remove('active');
+    document.getElementById('tab-equipe').classList.remove('active');
+    document.getElementById('tab-realisations').classList.remove('active');
+
+    if (tabId === 'equipe') {
+        document.getElementById('btn-equipe').classList.add('active');
+        document.getElementById('tab-equipe').classList.add('active');
+    } else {
+        document.getElementById('btn-realisations').classList.add('active');
+        document.getElementById('tab-realisations').classList.add('active');
+    }
+}
+
+        /* Menu Hamburger */
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            hamburgerBtn.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburgerBtn.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        /* Lightbox - Zoom Image Popup */
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const closeModalBtn = document.querySelector(".modal-close");
+
+        document.querySelectorAll(".gallery-item img").forEach(img => {
+            img.addEventListener("click", function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+            });
+        });
+
+        closeModalBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        modal.addEventListener("click", (e) => {
+            if (e.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && modal.style.display === "block") {
+                modal.style.display = "none";
+            }
+        });
+
+        /* Back to Top */
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+
+</body>
+</html>

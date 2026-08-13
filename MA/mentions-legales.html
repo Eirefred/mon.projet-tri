@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentions Légales | Matthieu Artisan - Plomberie & Chauffage</title>
-    <meta name="description" content="Informations légales, immatriculation, assurances décennales et Conditions Générales de Vente - MATTHIEU ARTISAN EURL.">
+    <title>Mentions Légales & CGV | Matthieu Artisan - Plomberie & Chauffage</title>
+    <meta name="description" content="Informations légales, assurances décennales et Conditions Générales de Vente - MATTHIEU ARTISAN EURL.">
     
     <style>
         :root {
@@ -57,7 +57,6 @@
             gap: 1rem;
         }
 
-        /* --- STYLES LOGO UNIQUE --- */
         .logo {
             display: inline-block;
             flex-shrink: 0;
@@ -174,11 +173,54 @@
             padding: 0 1.5rem;
         }
 
+        /* --- STYLES SYSTÈME D'ONGLETS --- */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: #ffffff;
+            border: 2px solid #cbd5e1;
+            padding: 0.8rem 1.6rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-color);
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            transition: all 0.25s ease;
+        }
+
+        .tab-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary-blue);
+            color: #ffffff;
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(26, 103, 179, 0.2);
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Cartes Mentions Légales */
         .legal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.8rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .legal-card {
@@ -225,71 +267,19 @@
             margin-bottom: 1rem;
         }
 
-        /* SECTION CGV : Style Juridique & Solennel */
+        /* SECTION CGV */
         .cgv-section-container {
             background: #ffffff;
             border: 1px solid var(--legal-border);
             border-top: 5px solid var(--legal-dark);
-            border-radius: 4px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             margin-bottom: 2.5rem;
+            overflow: hidden;
         }
 
-        details.cgv-wrapper summary {
-            font-family: Georgia, 'Times New Roman', Times, serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--legal-dark);
-            cursor: pointer;
-            padding: 1.2rem 1.5rem;
-            background-color: #f1f5f9;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            list-style: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.2s ease;
-        }
-
-        details.cgv-wrapper summary::-webkit-details-marker {
-            display: none;
-        }
-
-        details.cgv-wrapper summary:hover {
-            background-color: #e2e8f0;
-        }
-
-        details.cgv-wrapper[open] summary {
-            border-bottom: 2px solid var(--legal-dark);
-            background-color: #e2e8f0;
-        }
-
-        .legal-badge {
-            font-family: sans-serif;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            background-color: var(--legal-dark);
-            color: #ffffff;
-            padding: 0.2rem 0.6rem;
-            border-radius: 3px;
-            margin-left: 0.8rem;
-            vertical-align: middle;
-        }
-
-        .summary-arrow {
-            font-size: 0.9rem;
-            transition: transform 0.3s ease;
-            color: var(--legal-dark);
-        }
-
-        details[open] .summary-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* Corps des CGV - Typographie Juridique */
         .cgv-content {
-            padding: 2rem 2rem 1.5rem 2rem;
+            padding: 2rem;
             font-family: Georgia, 'Times New Roman', Times, serif;
             color: #1e293b;
             font-size: 0.95rem;
@@ -478,17 +468,20 @@
                 border-bottom: 1px solid #f1f5f9;
             }
 
+            .tabs-container {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .tab-btn {
+                width: 100%;
+                border-radius: 6px;
+                text-align: center;
+                padding: 0.7rem 1rem;
+            }
+
             .cgv-content {
                 padding: 1.2rem 1rem;
-            }
-
-            details.cgv-wrapper summary {
-                font-size: 1.05rem;
-                padding: 1rem;
-            }
-
-            .legal-badge {
-                display: none;
             }
         }
     </style>
@@ -517,13 +510,13 @@
 
             <!-- Navigation -->
             <nav>
-                <ul id="nav-menu">
-                    <li><a href="specialites.html">Spécialités</a></li>
-                    <li><a href="certifications.html">Certifications</a></li>
-                    <li><a href="partenaires.html">Partenaires</a></li>
-                    <li><a href="mentions-legales.html" class="active-link">Mentions Légales</a></li>
-                </ul>
-            </nav>
+        <ul id="nav-menu">
+            <li><a href="a-propos-de-nous.html">À propos de nous</a></li>
+            <li><a href="certifications.html">Certifications</a></li>
+            <li><a href="partenaires.html">Partenaires</a></li>
+            <li><a href="mentions-legales.html" class="active-link">Mentions Légales</a></li>
+        </ul>
+    </nav>
         </div>
     </header>
 
@@ -536,69 +529,59 @@
     <!-- Main Content -->
     <main class="legal-container">
 
-        <div class="legal-grid">
+        <!-- Navigation par Onglets -->
+        <div class="tabs-container">
+            <button class="tab-btn active" id="btn-mentions" onclick="switchTab('mentions')">Mentions Légales</button>
+            <button class="tab-btn" id="btn-cgv" onclick="switchTab('cgv')">Conditions Générales de Vente (CGV)</button>
+        </div>
+
+        <!-- ONGLET 1 : Mentions Légales (Gauche) -->
+        <div id="tab-mentions" class="tab-panel active">
             
-            <!-- Carte 1 : Identité -->
-            <div class="legal-card">
-                <h2>Identité Entreprise</h2>
-                <ul>
-                    <li><strong>Raison Sociale :</strong> MATTHIEU ARTISAN EURL</li>
-                    <li><strong>Statut :</strong> ARTISAN</li>
-                    <li><strong>Forme juridique :</strong> EURL au capital de 5 000 €</li>
-                    <li><strong>Date de création :</strong> Août 2005</li>
-                    <li><strong>Siège social :</strong> 345 Chemin du Crêt de Néry, 69870 SAINT JUST D'AVRAY</li>
-                    <li><strong>Téléphone :</strong> 04 78 470 662</li>
-                    <li><strong>Email :</strong> contact@matthieu-artisan.fr</li>
-                </ul>
+            <div class="legal-grid">
+                <!-- Carte 1 : Identité -->
+                <div class="legal-card">
+                    <h2>Identité Entreprise</h2>
+                    <ul>
+                        <li><strong>Raison Sociale :</strong> MATTHIEU ARTISAN EURL</li>
+                        <li><strong>Statut :</strong> ARTISAN</li>
+                        <li><strong>Forme juridique :</strong> EURL au capital de 5 000 €</li>
+                        <li><strong>Date de création :</strong> Août 2005</li>
+                        <li><strong>Siège social :</strong> 345 Chemin du Crêt de Néry, 69870 SAINT JUST D'AVRAY</li>
+                        <li><strong>Téléphone :</strong> 04 78 470 662</li>
+                        <li><strong>Email :</strong> contact@matthieu-artisan.fr</li>
+                    </ul>
+                </div>
+
+                <!-- Carte 2 : Assurance -->
+                <div class="legal-card">
+                    <h2>Assurances Professionnelles</h2>
+                    <ul>
+                        <li><strong>Assureur :</strong> AXA (63600 AMBERT)</li>
+                        <li><strong>Garantie :</strong> Responsabilité Civile Professionnelle & Décennale</li>
+                        <li><strong>N° de Contrat :</strong> 6222947504</li>
+                        <li><em>Note : Vos attestations d'assurance vous sont transmises sur simple demande.</em></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Carte 2 : Immatriculation -->
-            <div class="legal-card">
-                <h2>Immatriculations</h2>
-                <ul>
-                    <li><strong>Chambre des Métiers :</strong> N° 483 812 145 RM 69</li>
-                    <li><strong>R.C.S. :</strong> 483 812 145 R.C.S. Villefranche - Tarare</li>
-                    <li><strong>SIRET :</strong> 483 812 145 00033</li>
-                    <li><strong>N° TVA Intracommunautaire :</strong> FR33 483 812 145</li>
-                    <li><strong>Code APE / NAF :</strong> 4322A (Travaux d'installation d'eau et de gaz en tous locaux)</li>
-                </ul>
-            </div>
-
-            <!-- Carte 3 : Assurance -->
-            <div class="legal-card">
-                <h2>Assurances Professionnelles</h2>
-                <ul>
-                    <li><strong>Assureur :</strong> AXA Doron/Trait (63600 AMBERT)</li>
-                    <li><strong>Garantie :</strong> Responsabilité Civile Professionnelle & Décennale</li>
-                    <li><strong>N° de Contrat :</strong> 6222947504</li>
-                    <li><em>Note : Vos attestations d'assurance vous sont transmises sur simple demande.</em></li>
-                </ul>
+            <!-- Section Médiation -->
+            <div class="full-width-card">
+                <h2>Médiation de la Consommation</h2>
+                <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, notre entreprise a mis en place un dispositif de médiation de la consommation :</p>
+                <p style="margin-top: 0.8rem;">
+                    <strong>Entité retenue :</strong> MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV<br>
+                    <strong>Adresse postale :</strong> Centre d'Affaires Stéphanois SAS, Immeuble l'Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE<br>
+                    <strong>Site internet :</strong> <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a>
+                </p>
             </div>
 
         </div>
 
-        <!-- Section Médiation -->
-        <div class="full-width-card">
-            <h2>Médiation de la Consommation</h2>
-            <p>Conformément aux articles L.616-1 et R.616-1 du Code de la consommation, notre entreprise a mis en place un dispositif de médiation de la consommation :</p>
-            <p style="margin-top: 0.8rem;">
-                <strong>Entité retenue :</strong> MÉDIATION CONSOMMATION DÉVELOPPEMENT / MED CONSO DEV<br>
-                <strong>Adresse postale :</strong> Centre d'Affaires Stéphanois SAS, Immeuble l'Horizon – Esplanade de France, 3 rue J. Constant Milleret – 42000 SAINT-ÉTIENNE<br>
-                <strong>Site internet :</strong> <a href="https://www.medconsodev.eu" target="_blank" rel="noopener noreferrer" style="color: var(--primary-blue);">www.medconsodev.eu</a>
-            </p>
-        </div>
-
-        <!-- ACCORDÉON CGV : Style Juridique / Officiel -->
-        <div class="cgv-section-container">
-            <details class="cgv-wrapper">
-                <summary>
-                    <div>
-                        <span>CONDITIONS GÉNÉRALES DE VENTE (CGV)</span>
-                        <span class="legal-badge">EURL MATTHIEU ARTISAN</span>
-                    </div>
-                    <span class="summary-arrow">▼</span>
-                </summary>
-                
+        <!-- ONGLET 2 : CGV (Droite) -->
+        <div id="tab-cgv" class="tab-panel">
+            
+            <div class="cgv-section-container">
                 <div class="cgv-content">
                     
                     <p class="cgv-header-note">
@@ -701,7 +684,8 @@
                     </div>
 
                 </div>
-            </details>
+            </div>
+
         </div>
 
     </main>
@@ -721,17 +705,29 @@
                 Vallée d'Azergues de Poule les Echarmeaux à Lissieu (69870 / 69380) - Haut Beaujolais et Beaujolais Vert Quincié / Ranchal - Région des Pierres Dorées Val d'Oingt / Theizé (69620) - Amplepuis / Ronno / Cublize (69550) - Tarare / Valsonne / St Marcel (69170) - Lentilly / l'Arbresle / Bully (69210) - La Tour de Salvagny (69890)
             </div>
             <p>&copy; 2026 MATTHIEU ARTISAN EURL — Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;">
-                <a href="specialites.html">Spécialités</a> | 
-                <a href="certifications.html">Certifications</a> | 
-                <a href="partenaires.html">Partenaires</a> | 
-                <a href="mentions-legales.html">Mentions Légales & CGV</a>
+            <p style="margin-top: 0.5rem;"><a href="a-propos-de-nous.html">À propos de nous</a> | <a href="certifications.html">Certifications</a> | <a href="partenaires.html">Partenaires</a> | <a href="mentions-legales.html">Mentions Légales</a></p>
             </p>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
+        /* Gestion des Onglets */
+        function switchTab(tabId) {
+            document.getElementById('btn-mentions').classList.remove('active');
+            document.getElementById('btn-cgv').classList.remove('active');
+            document.getElementById('tab-mentions').classList.remove('active');
+            document.getElementById('tab-cgv').classList.remove('active');
+
+            if (tabId === 'mentions') {
+                document.getElementById('btn-mentions').classList.add('active');
+                document.getElementById('tab-mentions').classList.add('active');
+            } else {
+                document.getElementById('btn-cgv').classList.add('active');
+                document.getElementById('tab-cgv').classList.add('active');
+            }
+        }
+
         /* Menu Hamburger */
         const hamburgerBtn = document.getElementById('hamburger-btn');
         const navMenu = document.getElementById('nav-menu');

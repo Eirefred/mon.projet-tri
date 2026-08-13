@@ -239,12 +239,29 @@
                 font-size: 0.75rem;
             }
         }
+
+        .logo-box h2 {
+    margin: 12px 0 6px;
+    font-size: 1.35rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.15;
+}
+
+.logo-box h3 {
+    margin: 0;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
     </style>
 </head>
 <body>
 
     <header>
-        <h1>PLUS DE 30 ANS D'EXPÉRIENCE EN <strong>PLOMBERIE & CHAUFFAGE</strong></h1>
+        <h1><strong>Spécialiste en énergie bois </strong>— Entreprise familiale et artisanale depuis 2005</h1>
     </header>
 
     <div class="splash-container">
@@ -252,9 +269,10 @@
         <a href="index.html" onclick="redirectProject(event, 'specialiste')" class="side side-tri">
             <div class="content">
                 <div class="logo-box">
-                    <img src="matthieu-artisan.specialiste.png" alt="Plomberie & Chauffage - Dépannage et Installation" class="logo-img">
-                    <h2>INSTALLATION • DÉPANNAGE</h2>
-                </div>
+    <img src="matthieu-artisan.specialiste.png" alt="Plomberie & Chauffage - Dépannage et Installation" class="logo-img">
+    <h2>POÊLES À BOIS & À GRANULÉS</h2>
+    <h3>INSTALLATION · MISE EN CONFORMITÉ</h3>
+</div>
                 <div class="btn-box">
                     <div class="btn">Accéder au site</div>
                 </div>
@@ -265,9 +283,10 @@
         <a href="expertise.html" onclick="redirectProject(event, 'expertise')" class="side side-run">
             <div class="content">
                 <div class="logo-box">
-                    <img id="expertise-img" src="matthieu-artisan.expertise.2.png" alt="Plomberie & Chauffage - Expertise et Inspection" class="logo-img">
-                    <h2>EXPERTISE • INSPECTION</h2>
-                </div>
+    <img src="matthieu-artisan.expertise.2.png" alt="Expertise énergie bois" class="logo-img">
+    <h2>EXPERTISE TECHNIQUE</h2>
+    <h3>DIAGNOSTIC · MISSION DE SAPITEUR</h3>
+</div>
                 <div class="btn-box">
                     <div class="btn">Accéder au site</div>
                 </div>
@@ -276,21 +295,6 @@
     </div>
 
 <script>
-// Alternance des images pour l'expertise
-const imgElement = document.getElementById('expertise-img');
-const images = ['matthieu-artisan.expertise.2.png', 'matthieu-artisan.expertise.3.png'];
-let currentIndex = 0;
-
-setInterval(() => {
-    // Effet d'évanouissement court lors de la transition
-    imgElement.style.opacity = '0';
-    
-    setTimeout(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        imgElement.src = images[currentIndex];
-        imgElement.style.opacity = '1';
-    }, 250);
-}, 5000);
 
 function redirectProject(event, project) {
     if (event) {
@@ -304,7 +308,7 @@ function redirectProject(event, project) {
     const shouldGoToEn = !hasFrench && hasEnglish;
 
     if (project === 'specialiste') {
-        window.location.href = shouldGoToEn ? 'specialiste.html' : 'index.html';
+        window.location.href = shouldGoToEn ? 'poeles-bois-granules.html' : 'index.html';
     } else if (project === 'expertise') {
         window.location.href = shouldGoToEn ? 'expertise.html' : 'expertise.html';
     }
