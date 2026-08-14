@@ -626,82 +626,6 @@
             text-decoration: underline;
         }
 
-/* Slider d'Avis */
-.reviews-section {
-    background: #ffffff;
-    padding: 2rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-top: 2rem;
-    border-top: 3px solid var(--action-orange);
-    text-align: center;
-}
-
-.reviews-section h2 {
-    color: var(--primary-blue);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.testimonial-carousel {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    min-height: 180px;
-}
-
-.testimonial-slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.6s ease-in-out;
-}
-
-.testimonial-slide.active {
-    display: block;
-    opacity: 1;
-}
-
-.stars {
-    color: #f59e0b;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.testimonial-text {
-    font-style: italic;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-
-.testimonial-author {
-    font-weight: bold;
-    color: var(--primary-blue);
-}
-
-/* Dots de navigation */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 1rem;
-}
-
-.dot {
-    height: 10px;
-    width: 10px;
-    background-color: #cbd5e1;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active-dot {
-    background-color: var(--action-orange);
-}
-
         /* Responsive Mobile */
         @media (max-width: 834px) {
             .header-container {
@@ -897,57 +821,6 @@
                 </ul>
             </article>
 
-<section class="reviews-section">
-    <h2>Ce que disent nos clients</h2>
-    <div class="testimonial-carousel">
-        
-        <!-- Avis 1 -->
-        <div class="testimonial-slide active">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« C'est la 2ème fois que je fais appel à MATTHIEU artisan pour l'installation d'un poële et je suis toujours aussi contente du résultat. Professionnel à l'écoute du client, disponible pour répondre à toutes les questions et ayant le souci de trouver la solution qui s'adapte au mieux à la situation. Le travail est toujours soigné et de qualité et côté facture il n'y a jamais de mauvaise surprise. Je recommande sans aucune hésitation. »</p>
-            <div class="testimonial-author">— Florence DI FOLCO</div>
-        </div>
-
-        <!-- Avis 2 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Nous avons fait appel aux services de Matthieu artisan pour le remplacement de notre installation de poêle (remplacement et sécurisation de la tuyauterie, changement de poêle, sécurisation de la zone entourant le poêle) et nous sommes très satisfaits. Ils ont été de très bon conseil, très patients et à l’écoute selon nos besoins et notre budget. Des travaux réalisés minutieusement et proprement. Nous recommandons grandement ! »</p>
-            <div class="testimonial-author">— Marc Alix</div>
-        </div>
-
-        <!-- Avis 3 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Du devis à la pose puis demande de SAV. Tout s'est bien passé à chaque étape. Bonne communication et réactivité. »</p>
-            <div class="testimonial-author">— E Maelle</div>
-        </div>
-
-        <!-- Avis 4 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« J'ai fait appel à Matthieu Artisan pour la pose d'un poêle à bois dans ma maison une Fuste en Bois, très technique comme habitation !! Un excellent professionnel, à l'écoute, très arrangeant, très sympathique et surtout hyper méticuleux une qualité très précieuse !! Je suis très contente de la qualité de travail de Matthieu et le recommande à 100%. Merciii !!! »</p>
-            <div class="testimonial-author">— Lydie Peltier</div>
-        </div>
-
-        <!-- Avis 5 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Très très professionnel et sympathique ainsi que son épouse qui vous envoie les liens concernant les possibilités de subventions. Installation très pro et propre pour un poêle à la place d’une cheminée. Prix correct et délais respectés. Je conseille cet artisan il sait de quoi il parle et son épouse aussi maîtrise très bien le sujet. Tout était au top. Merci à eux. »</p>
-            <div class="testimonial-author">— Jean Pierre Chiaffredo</div>
-        </div>
-
-    </div>
-
-    <!-- Indicateurs de navigation -->
-    <div class="carousel-dots">
-        <span class="dot active-dot" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-    </div>
-</section>
-
             <section class="zone-card">
                 <h2>Zone d'intervention & Secteur</h2>
                 <p>Basés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous intervenons dans un secteur encadré par :</p>
@@ -1077,45 +950,6 @@
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
-
-        /* Carrousel d'Avis */
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.testimonial-slide');
-const dots = document.querySelectorAll('.dot');
-let autoSlideInterval;
-
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        dots[i].classList.remove('active-dot');
-    });
-    
-    currentSlideIndex = (index + slides.length) % slides.length;
-    
-    slides[currentSlideIndex].classList.add('active');
-    dots[currentSlideIndex].classList.add('active-dot');
-}
-
-function nextSlide() {
-    showSlide(currentSlideIndex + 1);
-}
-
-function currentSlide(index) {
-    showSlide(index);
-    resetTimer();
-}
-
-function startTimer() {
-    autoSlideInterval = setInterval(nextSlide, 6000); // Change toutes les 6 secondes
-}
-
-function resetTimer() {
-    clearInterval(autoSlideInterval);
-    startTimer();
-}
-
-// Lancement automatique au chargement
-startTimer();
     </script>
 
 </body>
