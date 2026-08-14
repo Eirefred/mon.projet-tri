@@ -275,7 +275,7 @@
             align-items: center;
             justify-content: center;
             min-width: 250px;
-            padding: 0.6rem 1.5rem;
+            padding: 0.75rem 1.5rem; /* Ajusté pour égaliser la hauteur globale */
             border-radius: 6px;
             font-weight: bold;
             font-size: 1.05rem;
@@ -291,7 +291,15 @@
             box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
             flex-direction: column;
             justify-content: center;
-            line-height: 1.25;
+            line-height: 1.2; /* Réduit l'écart trop grand entre le titre et le numéro */
+            padding-top: 0.5rem;    /* Ajustement fin pour équilibrer la hauteur */
+            padding-bottom: 0.5rem;
+        }
+
+        .btn-call-title {
+            font-weight: normal;
+            font-size: 0.85rem; /* Taille légèrement affinée pour mieux proportionner l'empilement */
+            margin-bottom: 2px; /* Contrôle précis de l'espace sous "Appeler Marion" */
         }
 
         .btn-call:hover {
@@ -300,10 +308,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-call-title {
-            font-weight: normal;
-            font-size: 0.95rem;
-        }
 
         .btn-call-number {
             font-weight: bold;
