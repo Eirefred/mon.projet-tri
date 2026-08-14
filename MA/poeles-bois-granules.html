@@ -626,35 +626,35 @@
             text-decoration: underline;
         }
 
-/* Slider d'Avis */
+/* Slider d'Avis - Version Compacte */
 .reviews-section {
     background: #ffffff;
-    padding: 2rem 1.5rem;
+    padding: 1rem 1.2rem;          /* Rembourrage réduit */
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-top: 2rem;
+    margin-top: 1.5rem;             /* Espace au-dessus réduit */
     border-top: 3px solid var(--action-orange);
     text-align: center;
 }
 
 .reviews-section h2 {
     color: var(--primary-blue);
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.15rem;             /* Titre plus discret */
+    margin-bottom: 0.6rem;
 }
 
 .testimonial-carousel {
     position: relative;
-    max-width: 800px;
+    max-width: 650px;               /* Largeur max réduite pour compacter */
     margin: 0 auto;
     overflow: hidden;
-    min-height: 180px;
+    min-height: 110px;              /* Hauteur min diminuée */
 }
 
 .testimonial-slide {
     display: none;
     opacity: 0;
-    transition: opacity 0.6s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .testimonial-slide.active {
@@ -664,33 +664,35 @@
 
 .stars {
     color: #f59e0b;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;             /* Étoiles légèrement plus petites */
+    margin-bottom: 0.3rem;
 }
 
 .testimonial-text {
     font-style: italic;
     color: var(--text-color);
-    margin-bottom: 1rem;
-    line-height: 1.5;
+    font-size: 0.88rem;             /* Texte de l'avis affiné */
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
 }
 
 .testimonial-author {
     font-weight: bold;
+    font-size: 0.85rem;
     color: var(--primary-blue);
 }
 
-/* Dots de navigation */
+/* Dots de navigation compacts */
 .carousel-dots {
     display: flex;
     justify-content: center;
-    gap: 8px;
-    margin-top: 1rem;
+    gap: 6px;
+    margin-top: 0.5rem;
 }
 
 .dot {
-    height: 10px;
-    width: 10px;
+    height: 7px;                    /* Puces de navigation plus petites */
+    width: 7px;
     background-color: #cbd5e1;
     border-radius: 50%;
     display: inline-block;
