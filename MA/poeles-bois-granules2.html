@@ -166,89 +166,65 @@
             transform: translateY(-8px) rotate(-45deg);
         }
 
-        /* Hero */
         /* Hero / Banner avec Vidéo */
-.hero {
-    position: relative;
-    overflow: hidden;
-    color: white;
-    text-align: center;
-    padding: 4rem 1.5rem;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-blue); /* Couleur de secours si la vidéo ne charge pas */
-}
+        .hero {
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+            padding: 4rem 1.5rem;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-blue);
+        }
 
-/* Wrapper pour étirer l'iframe YouTube sur toute la surface */
-.hero-video-wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100vw;
-    height: 100vh;
-    min-width: 177.77vh; /* Conserve le ratio 16:9 */
-    min-height: 56.25vw; /* Conserve le ratio 16:9 */
-    transform: translate(-50%, -50%);
-    pointer-events: none; /* Empêche l'interaction directe avec la vidéo */
-    z-index: 1;
-}
+        .hero-video-wrapper {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            min-width: 177.77vh;
+            min-height: 56.25vw;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 1;
+        }
 
-.hero-video-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
+        .hero-video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
 
-/* Voile sombre transparent par-dessus la vidéo pour assurer la lisibilité des textes */
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.55); /* Ajustez l'opacité (0.55) au besoin */
-    z-index: 2;
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 2;
+        }
 
-/* Conteneur de texte pour le faire passer au-dessus de l'overlay et de la vidéo */
-.hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.hero h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-}
-
-.hero .hero-subtitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-}
-
-.hero .location-tag {
-    font-size: 1.15rem;
-    font-weight: 600;
-    color: #9cdbfb;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.05rem;
-    max-width: 720px;
-    margin: 0 auto 1.5rem auto;
-    opacity: 0.95;
-    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-}
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
         .hero h1 {
             font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero .hero-subtitle {
+            font-size: 1.1rem;
+            font-weight: 600;
             margin-bottom: 0.5rem;
         }
 
@@ -264,6 +240,7 @@
             max-width: 720px;
             margin: 0 auto 1.5rem auto;
             opacity: 0.95;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
         }
 
         .hero-buttons {
@@ -279,7 +256,7 @@
             align-items: center;
             justify-content: center;
             min-width: 250px;
-            padding: 0.75rem 1.5rem; /* Ajusté pour égaliser la hauteur globale */
+            padding: 0.75rem 1.5rem;
             border-radius: 6px;
             font-weight: bold;
             font-size: 1.05rem;
@@ -295,15 +272,15 @@
             box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
             flex-direction: column;
             justify-content: center;
-            line-height: 1.2; /* Réduit l'écart trop grand entre le titre et le numéro */
-            padding-top: 0.5rem;    /* Ajustement fin pour équilibrer la hauteur */
+            line-height: 1.2;
+            padding-top: 0.5rem;
             padding-bottom: 0.5rem;
         }
 
         .btn-call-title {
             font-weight: normal;
-            font-size: 0.85rem; /* Taille légèrement affinée pour mieux proportionner l'empilement */
-            margin-bottom: 2px; /* Contrôle précis de l'espace sous "Appeler Marion" */
+            font-size: 0.85rem;
+            margin-bottom: 2px;
         }
 
         .btn-call:hover {
@@ -311,7 +288,6 @@
             border-color: #ffffff;
             transform: translateY(-2px);
         }
-
 
         .btn-call-number {
             font-weight: bold;
@@ -338,7 +314,7 @@
             transform: translateY(-2px);
         }
 
-        /* Contenu */
+        /* Contenu principal */
         .main-content {
             max-width: 1200px;
             margin: 3rem auto;
@@ -346,10 +322,10 @@
             display: grid;
             grid-template-columns: 1fr 500px;
             gap: 2.5rem;
-            align-items: stretch;
+            align-items: start;
         }
 
-        .about h2, .zone-section h2 {
+        .about h2, .zone-card h2 {
             color: var(--primary-blue);
             margin-bottom: 1rem;
             font-size: 1.6rem;
@@ -422,16 +398,24 @@
     box-shadow: 0 2px 8px rgba(249, 115, 22, 0.5);
 }
 
+        /* NOUVEAU: Grille sur 2 colonnes équilibrées pour la liste des prestations */
         .services-list {
             list-style: none;
             margin-top: 1.5rem;
             margin-bottom: 2rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
         }
 
         .services-list > li {
             position: relative;
-            padding: 0.4rem 0 0.4rem 1.8rem;
+            padding: 0.6rem 0.8rem 0.6rem 1.8rem;
             font-weight: 600;
+            background: #ffffff;
+            border-radius: 6px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
 
         .services-list > li::before {
@@ -440,13 +424,13 @@
             font-weight: bold;
             font-size: 1.2rem;
             position: absolute;
-            left: 0;
-            top: 0.3rem;
+            left: 0.5rem;
+            top: 0.5rem;
         }
 
         .services-list ul {
             list-style: none;
-            margin-top: 0.3rem;
+            margin-top: 0.4rem;
             margin-bottom: 0.2rem;
             padding-left: 0.2rem;
         }
@@ -454,7 +438,7 @@
         .services-list ul li {
             position: relative;
             padding: 0.2rem 0 0.2rem 1.2rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: normal;
             color: var(--text-color);
         }
@@ -514,7 +498,6 @@
             left: 0;
         }
 
-        /* Nouveaux styles pour la carte Google Iframe */
         .zone-map-iframe {
             width: 100%;
             max-width: 320px;
@@ -524,6 +507,7 @@
             flex-shrink: 0;
         }
 
+        /* Facebook Section (Côté Droit) */
         .facebook-section {
             background: white;
             padding: 1rem;
@@ -533,7 +517,8 @@
             border-top: 3px solid var(--accent-red);
             display: flex;
             flex-direction: column;
-            height: 100%;
+            position: sticky;
+            top: 100px;
         }
 
         .facebook-section h3 {
@@ -545,7 +530,6 @@
         .facebook-section iframe {
             width: 100%;
             max-width: 500px;
-            flex: 1;
             min-height: 500px;
         }
 
@@ -577,7 +561,6 @@
             max-height: 90vh;
             overflow-y: auto;
         }
-
 
         .close-btn {
             position: absolute;
@@ -677,83 +660,82 @@
             text-decoration: underline;
         }
 
-/* Slider d'Avis - Version Compacte */
-.reviews-section {
-    background: #ffffff;
-    padding: 1rem 1.2rem;          /* Rembourrage réduit */
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    margin-top: 1.5rem;             /* Espace au-dessus réduit */
-    border-top: 3px solid var(--action-orange);
-    text-align: center;
-}
+        /* Slider d'Avis */
+        .reviews-section {
+            background: #ffffff;
+            padding: 1rem 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-top: 2rem;
+            border-top: 3px solid var(--action-orange);
+            text-align: center;
+        }
 
-.reviews-section h2 {
-    color: var(--primary-blue);
-    font-size: 1.15rem;             /* Titre plus discret */
-    margin-bottom: 0.6rem;
-}
+        .reviews-section h2 {
+            color: var(--primary-blue);
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
 
-.testimonial-carousel {
-    position: relative;
-    max-width: 650px;               /* Largeur max réduite pour compacter */
-    margin: 0 auto;
-    overflow: hidden;
-    min-height: 110px;              /* Hauteur min diminuée */
-}
+        .testimonial-carousel {
+            position: relative;
+            max-width: 650px;
+            margin: 0 auto;
+            overflow: hidden;
+            min-height: 110px;
+        }
 
-.testimonial-slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
+        .testimonial-slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
 
-.testimonial-slide.active {
-    display: block;
-    opacity: 1;
-}
+        .testimonial-slide.active {
+            display: block;
+            opacity: 1;
+        }
 
-.stars {
-    color: #f59e0b;
-    font-size: 0.95rem;             /* Étoiles légèrement plus petites */
-    margin-bottom: 0.3rem;
-}
+        .stars {
+            color: #f59e0b;
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
 
-.testimonial-text {
-    font-style: italic;
-    color: var(--text-color);
-    font-size: 0.88rem;             /* Texte de l'avis affiné */
-    line-height: 1.4;
-    margin-bottom: 0.4rem;
-}
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-color);
+            font-size: 0.88rem;
+            line-height: 1.4;
+            margin-bottom: 0.4rem;
+        }
 
-.testimonial-author {
-    font-weight: bold;
-    font-size: 0.85rem;
-    color: var(--primary-blue);
-}
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+        }
 
-/* Dots de navigation compacts */
-.carousel-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 0.5rem;
-}
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0.5rem;
+        }
 
-.dot {
-    height: 7px;                    /* Puces de navigation plus petites */
-    width: 7px;
-    background-color: #cbd5e1;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .dot {
+            height: 7px;
+            width: 7px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
-.dot.active-dot {
-    background-color: var(--action-orange);
-}
+        .dot.active-dot {
+            background-color: var(--action-orange);
+        }
 
         /* Responsive Mobile */
         @media (max-width: 834px) {
@@ -824,6 +806,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .services-list {
+                grid-template-columns: 1fr; /* Passage sur 1 colonne sur mobile */
+            }
+
             .modal-body, .zone-container {
                 flex-direction: column-reverse;
                 text-align: left;
@@ -840,12 +826,12 @@
                 width: 100%;
                 max-width: 300px;
             }
-            .hero h1 {
-        font-size: 1.5rem;   /* Taille légèrement réduite sur mobile */
-        line-height: 1.15;   /* Réduit considérablement l'espace vertical entre chaque ligne */
-        margin-bottom: 0.5rem;
-           }
 
+            .hero h1 {
+                font-size: 1.5rem;
+                line-height: 1.15;
+                margin-bottom: 0.5rem;
+            }
         }
     </style>
 </head>
@@ -884,56 +870,58 @@
     </header>
 
     <!-- Banner avec Vidéo YouTube en Fond -->
-<section class="hero">
-    <!-- Boutons Version 1 et Version 2 (Coin haut droit) -->
+    <section class="hero">
+        <!-- Boutons Version 1 et Version 2 (Coin haut droit) -->
     <div class="version-buttons">
-        <a href="poeles-bois-granules.html" class="btn-version active">V1</a>
-        <a href="poeles-bois-granules2.html" class="btn-version">V2</a>
+        <a href="poeles-bois-granules.html" class="btn-version">V1</a>
+        <a href="poeles-bois-granules2.html" class="btn-version active">V2</a>
     </div>
-    <!-- Vidéo YouTube en arrière-plan (lecture auto, boucle, muet, sans contrôles) -->
-    <div class="hero-video-wrapper">
-        <iframe 
-            src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&loop=1&playlist=kbHfR8u0smo&playsinline=1&rel=0&disablekb=1" 
-            title="Vidéo de fond Matthieu Artisan" 
-            frameborder="0" 
-            allow="autoplay; encrypted-media">
-        </iframe>
-    </div>
-
-    <!-- Overlay sombre pour rendre le texte lisible par-dessus la vidéo -->
-    <div class="hero-overlay"></div>
-
-    <!-- Contenu texte par-dessus -->
-    <div class="hero-content">
-        <h1>Installation de Poêles à Bois & à Granulés</h1>
-        <p class="hero-subtitle">Pose • Mise en conformité • Conseils & Diagnostic</p>
-        <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
-        <p>Appelez-nous ! <strong>Marion</strong> vous guidera pas à pas dans le choix et la concrétisation de votre chauffage au bois. Prenons le temps de définir ensemble la solution qui vous convient.</p>
-        <div class="hero-buttons">
-            <a href="tel:0478470662" class="btn-hero btn-call">
-                <span class="btn-call-title">Appeler Marion</span>
-                <span class="btn-call-number">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                    </svg>
-                    04 78 470 662
-                </span>
-            </a>
-            <button class="btn-hero btn-zone" onclick="openModal()">📍 Zone de couverture</button>
+        <div class="hero-video-wrapper">
+            <iframe 
+                src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&loop=1&playlist=kbHfR8u0smo&playsinline=1&rel=0&disablekb=1" 
+                title="Vidéo de fond Matthieu Artisan" 
+                frameborder="0" 
+                allow="autoplay; encrypted-media">
+            </iframe>
         </div>
-    </div>
-</section>
 
-    <!-- Main -->
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1>Installation de Poêles à Bois & à Granulés</h1>
+            <p class="hero-subtitle">Pose • Mise en conformité • Conseils & Diagnostic</p>
+            <p class="location-tag">Vallée d’Azergues & secteurs limitrophes</p>
+            <p>Appelez-nous ! <strong>Marion</strong> vous guidera pas à pas dans le choix et la concrétisation de votre chauffage au bois. Prenons le temps de définir ensemble la solution qui vous convient.</p>
+            <div class="hero-buttons">
+                <a href="tel:0478470662" class="btn-hero btn-call">
+                    <span class="btn-call-title">Appeler Marion</span>
+                    <span class="btn-call-number">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        04 78 470 662
+                    </span>
+                </a>
+                <button class="btn-hero btn-zone" onclick="openModal()">📍 Zone de couverture</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <main class="main-content">
-        <div>
+        
+        <!-- COLONNE GAUCHE -->
+        <div class="left-column">
+            
+            <!-- 1. Présentation Enrichie & Checks sur 2 colonnes -->
             <article class="about">
                 <h2>Bienvenue chez <span class="brand-matthieu">MATTHIEU</span> <span class="brand-artisan">ARTISAN</span></h2>
 
-                <p>Fort de plusieurs décennies d'expérience, nous mettons notre savoir-faire au service de vos projets d'installation de poêles à bois et à granulés, ainsi que de mise en conformité de vos conduits de cheminée.</p>
+                <p>Forts de plusieurs décennies d'expérience et qualifiés <strong>RGE Qualibois</strong>, nous mettons notre expertise artisanale au service de votre confort thermique. Spécialisés dans l'installation de poêles à bois, à granulés et la fumisterie, nous accompagnons chaque client avec une exigence de qualité et de sécurité irréprochable.</p>
 
-                <p>Chaque projet étant différent, nous prenons le temps d'échanger avec vous pour comprendre vos besoins, vous conseiller et trouver la solution la plus adaptée à votre situation.</p>
+                <p>Chaque habitation possède ses spécificités : c'est pourquoi nous accordons une importance primordiale au diagnostic initial. De la réflexion sur votre projet jusqu'à la mise en service finale, nous vous guidons vers les solutions les plus performantes, économiques et adaptées à votre mode de vie.</p>
                 
+                <!-- Checks sur 2 colonnes équilibrées -->
                 <ul class="services-list">
                     <li>
                         INSTALLATION DE POÊLES
@@ -942,70 +930,77 @@
                             <li>Pose de <strong class="badge-specialite">Poêles de masse MELÈZE</strong></li>
                         </ul>
                     </li>
-                    <li>CONDUIT DE FUMÉES ET TUBAGE (gainage)</li>
-                    <li>MISE EN CONFORMITÉ</li>
                     <li>
-                        DIAGNOSTICS / CONSEILS
+                        CONDUITS & TUBAGE
                         <ul>
-                            <li>Analyse en cas de dysfonctionnement</li>
+                            <li>Création de conduits de fumées</li>
+                            <li>Tubage & gainage sécurisé</li>
+                        </ul>
+                    </li>
+                    <li>
+                        MISE EN CONFORMITÉ
+                        <ul>
+                            <li>Contrôle des normes DTU 24.1</li>
+                            <li>Sécurisation des installations</li>
+                        </ul>
+                    </li>
+                    <li>
+                        DIAGNOSTICS & EXPERTISE
+                        <ul>
+                            <li>Analyse des dysfonctionnements</li>
                             <li>Diagnostic pré-vente immobilière</li>
                         </ul>
                     </li>
-                    <li>SOUTIEN D'EXPERTISE</li>
                 </ul>
             </article>
 
-<section class="reviews-section">
-    <h2>Ce que disent nos clients</h2>
-    <div class="testimonial-carousel">
-        
-        <!-- Avis 1 -->
-        <div class="testimonial-slide active">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« C'est la 2ème fois que je fais appel à MATTHIEU artisan pour l'installation d'un poële et je suis toujours aussi contente du résultat. Professionnel à l'écoute du client, disponible pour répondre à toutes les questions et ayant le souci de trouver la solution qui s'adapte au mieux à la situation. Le travail est toujours soigné et de qualité et côté facture il n'y a jamais de mauvaise surprise. Je recommande sans aucune hésitation. »</p>
-            <div class="testimonial-author">— Florence DI FOLCO</div>
-        </div>
+            <!-- 2. Reviews Section -->
+            <section class="reviews-section">
+                <h2>Ce que disent nos clients</h2>
+                <div class="testimonial-carousel">
+                    
+                    <div class="testimonial-slide active">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">« C'est la 2ème fois que je fais appel à MATTHIEU artisan pour l'installation d'un poële et je suis toujours aussi contente du résultat. Professionnel à l'écoute du client, disponible pour répondre à toutes les questions et ayant le souci de trouver la solution qui s'adapte au mieux à la situation. Le travail est toujours soigné et de qualité et côté facture il n'y a jamais de mauvaise surprise. Je recommande sans aucune hésitation. »</p>
+                        <div class="testimonial-author">— Florence DI FOLCO</div>
+                    </div>
 
-        <!-- Avis 2 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Nous avons fait appel aux services de Matthieu artisan pour le remplacement de notre installation de poêle (remplacement et sécurisation de la tuyauterie, changement de poêle, sécurisation de la zone entourant le poêle) et nous sommes très satisfaits. Ils ont été de très bon conseil, très patients et à l’écoute selon nos besoins et notre budget. Des travaux réalisés minutieusement et proprement. Nous recommandons grandement ! »</p>
-            <div class="testimonial-author">— Marc Alix</div>
-        </div>
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">« Nous avons fait appel aux services de Matthieu artisan pour le remplacement de notre installation de poêle (remplacement et sécurisation de la tuyauterie, changement de poêle, sécurisation de la zone entourant le poêle) et nous sommes très satisfaits. Ils ont été de très bon conseil, très patients et à l’écoute selon nos besoins et notre budget. Des travaux réalisés minutieusement et proprement. Nous recommandons grandement ! »</p>
+                        <div class="testimonial-author">— Marc Alix</div>
+                    </div>
 
-        <!-- Avis 3 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Du devis à la pose puis demande de SAV. Tout s'est bien passé à chaque étape. Bonne communication et réactivité. »</p>
-            <div class="testimonial-author">— E Maelle</div>
-        </div>
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">« Du devis à la pose puis demande de SAV. Tout s'est bien passé à chaque étape. Bonne communication et réactivité. »</p>
+                        <div class="testimonial-author">— E Maelle</div>
+                    </div>
 
-        <!-- Avis 4 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« J'ai fait appel à Matthieu Artisan pour la pose d'un poêle à bois dans ma maison une Fuste en Bois, très technique comme habitation !! Un excellent professionnel, à l'écoute, très arrangeant, très sympathique et surtout hyper méticuleux une qualité très précieuse !! Je suis très contente de la qualité de travail de Matthieu et le recommande à 100%. Merciii !!! »</p>
-            <div class="testimonial-author">— Lydie Peltier</div>
-        </div>
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">« J'ai fait appel à Matthieu Artisan pour la pose d'un poêle à bois dans ma maison une Fuste en Bois, très technique comme habitation !! Un excellent professionnel, à l'écoute, très arrangeant, très sympathique et surtout hyper méticuleux une qualité très précieuse !! Je suis très contente de la qualité de travail de Matthieu et le recommande à 100%. Merciii !!! »</p>
+                        <div class="testimonial-author">— Lydie Peltier</div>
+                    </div>
 
-        <!-- Avis 5 -->
-        <div class="testimonial-slide">
-            <div class="stars">★★★★★</div>
-            <p class="testimonial-text">« Très très professionnel et sympathique ainsi que son épouse qui vous envoie les liens concernant les possibilités de subventions. Installation très pro et propre pour un poêle à la place d’une cheminée. Prix correct et délais respectés. Je conseille cet artisan il sait de quoi il parle et son épouse aussi maîtrise très bien le sujet. Tout était au top. Merci à eux. »</p>
-            <div class="testimonial-author">— Jean Pierre Chiaffredo</div>
-        </div>
+                    <div class="testimonial-slide">
+                        <div class="stars">★★★★★</div>
+                        <p class="testimonial-text">« Très très professionnel et sympathique ainsi que son épouse qui vous envoie les liens concernant les possibilités de subventions. Installation très pro et propre pour un poêle à la place d’une cheminée. Prix correct et délais respectés. Je conseille cet artisan il sait de quoi il parle et son épouse aussi maîtrise très bien le sujet. Tout était au top. Merci à eux. »</p>
+                        <div class="testimonial-author">— Jean Pierre Chiaffredo</div>
+                    </div>
 
-    </div>
+                </div>
 
-    <!-- Indicateurs de navigation -->
-    <div class="carousel-dots">
-        <span class="dot active-dot" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-    </div>
-</section>
+                <div class="carousel-dots">
+                    <span class="dot active-dot" onclick="currentSlide(0)"></span>
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                </div>
+            </section>
 
+            <!-- 3. Zone d'intervention & Secteur (Placée SOUS reviews-section) -->
             <section class="zone-card">
                 <h2>Zone d'intervention & Secteur</h2>
                 <p>Basés à <strong>SAINT JUST d’AVRAY (69)</strong>, nous intervenons dans un secteur encadré par :</p>
@@ -1023,35 +1018,34 @@
                             <em>Pour les <strong>poêles de masse</strong> et <strong>missions d'expertise</strong>, nous intervenons également plus loin (Auvergne, Isère...).</em>
                         </p>
                     </div>
-                    <!-- Remplacement par la carte Google Maps -->
                     <iframe src="https://www.google.com/maps/d/embed?mid=1lRkP8qHptI7paibUdReOhAwr2PV8jxo" class="zone-map-iframe" title="Carte Zone d'intervention Matthieu Artisan" loading="lazy"></iframe>
                 </div>
             </section>
         </div>
 
+        <!-- COLONNE DROITE (Facebook Section) -->
         <aside class="facebook-section">
-    <h3>Suivez notre actualité</h3>
-    
-    <!-- Widget Facebook -->
-    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLSFumisterie&tabs=timeline&width=500&height=2000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
-            style="border:none; overflow:hidden; border-radius:6px;" 
-            scrolling="no" 
-            frameborder="0" 
-            allowfullscreen="true" 
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-    </iframe>
+            <h3>Suivez notre actualité</h3>
+            
+            <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FLSFumisterie&tabs=timeline&width=500&height=2000&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false" 
+                    style="border:none; overflow:hidden; border-radius:6px;" 
+                    scrolling="no" 
+                    frameborder="0" 
+                    allowfullscreen="true" 
+                    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
 
-    <!-- Bouton fallback si AdBlock bloque le composant -->
-    <a href="https://www.facebook.com/LSFumisterie" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9rem;">
-       Retrouvez-nous sur Facebook ↗
-    </a>
-</aside>
+            <a href="https://www.facebook.com/LSFumisterie" 
+               target="_blank" 
+               rel="noopener noreferrer" 
+               style="display: inline-block; margin-top: 1rem; padding: 0.6rem 1.2rem; background-color: #1877f2; color: #ffffff; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 0.9rem;">
+               Retrouvez-nous sur Facebook ↗
+            </a>
+        </aside>
+
     </main>
 
-    <!-- Modal -->
+    <!-- Modal Pop-up -->
     <div id="zoneModal" class="modal" onclick="closeModalOnOuterClick(event)">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -1071,7 +1065,6 @@
                         🔥 <strong>Projets spécifiques :</strong> Nous nous déplaçons bien au-delà (Auvergne, Isère...) pour l'installation de <strong>poêles de masse</strong> et les <strong>missions d’expertises</strong> !
                     </p>
                 </div>
-                <!-- Remplacement par la carte Google Maps dans le Pop-up -->
                 <iframe src="https://www.google.com/maps/d/embed?mid=1lRkP8qHptI7paibUdReOhAwr2PV8jxo" class="zone-map-iframe" title="Carte Pop-up Zone d'intervention Matthieu Artisan" loading="lazy"></iframe>
             </div>
         </div>
@@ -1147,43 +1140,42 @@
         };
 
         /* Carrousel d'Avis */
-let currentSlideIndex = 0;
-const slides = document.querySelectorAll('.testimonial-slide');
-const dots = document.querySelectorAll('.dot');
-let autoSlideInterval;
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.dot');
+        let autoSlideInterval;
 
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        dots[i].classList.remove('active-dot');
-    });
-    
-    currentSlideIndex = (index + slides.length) % slides.length;
-    
-    slides[currentSlideIndex].classList.add('active');
-    dots[currentSlideIndex].classList.add('active-dot');
-}
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active-dot');
+            });
+            
+            currentSlideIndex = (index + slides.length) % slides.length;
+            
+            slides[currentSlideIndex].classList.add('active');
+            dots[currentSlideIndex].classList.add('active-dot');
+        }
 
-function nextSlide() {
-    showSlide(currentSlideIndex + 1);
-}
+        function nextSlide() {
+            showSlide(currentSlideIndex + 1);
+        }
 
-function currentSlide(index) {
-    showSlide(index);
-    resetTimer();
-}
+        function currentSlide(index) {
+            showSlide(index);
+            resetTimer();
+        }
 
-function startTimer() {
-    autoSlideInterval = setInterval(nextSlide, 6000); // Change toutes les 6 secondes
-}
+        function startTimer() {
+            autoSlideInterval = setInterval(nextSlide, 6000);
+        }
 
-function resetTimer() {
-    clearInterval(autoSlideInterval);
-    startTimer();
-}
+        function resetTimer() {
+            clearInterval(autoSlideInterval);
+            startTimer();
+        }
 
-// Lancement automatique au chargement
-startTimer();
+        startTimer();
     </script>
 
 </body>
