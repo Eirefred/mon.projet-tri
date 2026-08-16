@@ -183,4 +183,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/recevoir.html" />
   </url>
 
+  <!-- VOTRE HISTOIRE / YOUR STORY -->
+  <url>
+    <loc>https://mon.projet-tri.org/votre-histoire.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/votre-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/your-story.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/votre-histoire.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/your-story.html</loc>
+    <lastmod>2026-08-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/votre-histoire.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/your-story.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/votre-histoire.html" />
+  </url>
+
 </urlset>
