@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Story | mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+
+    <link rel="canonical" href="https://mon.projet-tri.org/en/your-story.html">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/votre-histoire.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/your-story.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/votre-histoire.html" />
+
+    <meta property="og:title" content="Athlete Stories | mon Projet Tri" />
+    <meta property="og:description" content="Discover the journeys and achievements of our coached athletes. No matter your age or goals, your story starts here." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mon.projet-tri.org/en/your-story.html" />
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="en_CA">
+    <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --histoire-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        /* --- BACK TO TOP BUTTON --- */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: #D65F3A;
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- CONTENT SECTION --- */
+        .content-section {
+            padding: 80px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        .content-section h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--histoire-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        /* --- STORIES GRID --- */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .story-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+            border: 1px solid rgba(0, 76, 151, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 76, 151, 0.12);
+        }
+
+        .story-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+        }
+
+        .story-name {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #004c97;
+            margin: 0;
+        }
+
+        .story-age {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #D65F3A;
+            background: #fff4f0;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .story-coach {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .story-text {
+            font-size: 0.98rem;
+            color: var(--text-dark);
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        /* Call To Action Banner */
+        .cta-banner {
+            margin-top: 60px;
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            border: 2px dashed #004c97;
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: var(--combined-gradient);
+            color: #ffffff !important;
+            padding: 14px 32px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.2);
+            margin-top: 15px;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(214, 95, 58, 0.3);
+        }
+
+        /* Brand Classes */
+        .brand-mon {
+            font-family: 'Oooh Baby', cursive;
+            font-size: 1.4em;
+            font-weight: normal;
+            text-transform: lowercase;
+            vertical-align: baseline;
+            position: relative;
+        }
+        .brand-projet {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+        }
+        .brand-tri {
+            font-family: 'Inclusive Sans', sans-serif;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        /* --- DROPDOWN MENU --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        @media (max-width: 834px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
+
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 20px;
+                text-align: center;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        .nav-links a.active {
+            color: #d45d39 !important;
+            font-weight: bold !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="Mon Projet Tri Logo"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Across Quebec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+    <li><a href="discover.html">About Us</a></li> 
+    <li class="has-dropdown">
+        <!-- Ajout de la classe active ici sur Athletes -->
+        <a href="index.html#athlètes" class="dropdown-trigger active">Athletes <span class="arrow-down">▼</span></a>
+        <ul class="dropdown-menu">
+            <li><a href="independant.html">Independant</a></li>
+            <li><a href="guidance.html">Guidance</a></li>
+            <li><a href="club.html">Club</a></li>
+            <li><a href="your-story.html" class="active">Your Story</a></li>
+        </ul>
+    </li>                    
+    <li class="has-dropdown">
+        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
+        <ul class="dropdown-menu">
+            <li><a href="receive.html">Receive</a></li>
+            <li><a href="provide.html">Provide</a></li>
+        </ul>
+    </li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="calendar.html">Calendar'26</a></li> 
+    <li class="lang-switcher">
+        <span class="lang-label" style="color: #ccc;">FR</span>
+        <label class="switch">
+            <input type="checkbox" checked onclick="window.location.href='../votre-histoire.html'">
+            <span class="slider"></span>
+        </label>
+        <span class="lang-label">EN</span>
+    </li>
+</ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT SECTION -->
+    <main class="content-section">
+        <div class="container">
+            
+            <!-- HERO SECTION -->
+            <div style="text-align: center; margin-bottom: 40px;">
+                <h1>Your Story Starts Here</h1>
+                <p style="font-size: 1.3rem; color: var(--text-light); max-width: 750px; margin: 0 auto 20px auto;">
+                    No matter your age, daily challenges, or starting fitness level: discover those who took the leap with us.
+                </p>
+                
+                <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 800px; margin: 0 auto; line-height: 1.7; background: #ffffff; padding: 20px 25px; border-radius: 12px; border: 1px dashed rgba(0, 76, 151, 0.2);">
+                    🌟 At 
+                    <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin: 0 4px;">
+                        <span class="brand-mon" style="color: #0481fb !important; margin-right: 4px;"><strong>mon</strong></span>
+                        <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
+                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
+                    </span>, every journey is unique. Whether aiming for a first try-a-tri or fulfilling a lifelong dream on an Ironman course, our mission is to balance your athletic passion with your personal life.
+                </p>
+            </div>
+
+            <!-- STORIES CONTAINER (Shuffled dynamically via JS) -->
+            <div class="stories-grid" id="storiesContainer">
+
+                <!-- Dana -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Dana</h2>
+                            <span class="story-age">53 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            After taking a break for a few years, Dana decided to return to triathlon with a major challenge: preparing for the Ottawa Ironman. To get there, she showed tremendous courage and perseverance, committing to the many training hours needed to be ready on race day. Returning to triathlon requires consistency, patience, and a lot of determination.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Luka -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Luka</h2>
+                            <span class="story-age">19 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            Coming from a family of athletes, Luka wanted to take on his own challenge and pick a sport different from those practiced by the rest of his family. He didn't start small either: he chose the Ottawa Ironman. At just 19 years old, he had to learn how to balance CEGEP coursework with the training volume required for an Ironman. It wasn't always easy, but through sheer determination, he successfully integrated his challenge into a busy life.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Nathan -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Nathan</h2>
+                            <span class="story-age">20 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            Initially, Nathan wasn't particularly athletic. When friends invited him to take part in a Sprint triathlon relay, he declined—only to decide later that he wanted to tackle triathlon solo! He jumped straight into an Olympic distance race before setting his sights on a new goal: a 70.3 Half-Ironman. What started as completely uncharted territory quickly turned into a genuine passion.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Jonathan -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Jonathan</h2>
+                            <span class="story-age">41 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            Jonathan had practiced triathlon years prior before stepping away from endurance sports. Over time, a more sedentary routine took over. He decided to take charge of his health and return to endurance sports with a clear objective: complete a Half-Ironman and attempt to beat the personal record he set at age 30. A brand new challenge, continuing a story that began years ago.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Juliette -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Juliette</h2>
+                            <span class="story-age">25 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            After completing her very first Sprint triathlon with a strong performance, Juliette decided to take the next step and reach out to Mon Projet Tri to help her unleash her full potential. Two months later, she won first place in the women's category at her second Sprint race. And this is just the beginning: Juliette now aims to keep progressing and chasing victories on bigger stages.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Carl -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Carl</h2>
+                            <span class="story-age">26 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by David</div>
+                        <p class="story-text">
+                            Carl took advantage of Mon Projet Tri's guidance to optimize his preparation and boost his performance for the Olympic distance. As a physical education teacher, he knows sports well. But being coached by a triathlon specialist like David allowed him to gain triathlon-specific expertise. A winning combination from the start.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Annabel -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Annabel</h2>
+                            <span class="story-age">20 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Geneviève</div>
+                        <p class="story-text">
+                            After participating in her first Sprint triathlon as part of a relay team over the summer, Annabel wanted to take on a fresh challenge: complete her first solo try-a-tri. As if that wasn't enough, she also set a goal to finish a half-marathon two months later. Geneviève supported her through this journey, focusing on a vital outcome: building self-confidence while discovering the true joy of sports.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Nicolas -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Nicolas</h2>
+                            <span class="story-age">50 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Didier</div>
+                        <p class="story-text">
+                            Nicolas approached his first challenge with great modesty: finish his first triathlon, simply hoping to "walk as little as possible during the run." Guided by Didier, his journey grew far beyond race day prep. He worked on improving his overall lifestyle while fitting customized training into a demanding schedule. Proof that triathlon can be a target in itself, but also a catalyst for positive life changes.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Katerine -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Katerine</h2>
+                            <span class="story-age">38 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            An active athlete, Katerine set a goal to complete several triathlons. After crossing her first finish line, she called upon Mon Projet Tri to share best practices and optimize her training for future races. The main challenge was striking the right balance between training and her busy life as an entrepreneur—progressing without losing sight of everything else outside of sport.
+                        </p>
+                    </div>
+                </article>
+
+                <!-- Audrée -->
+                <article class="story-card">
+                    <div>
+                        <div class="story-header">
+                            <h2 class="story-name">Audrée</h2>
+                            <span class="story-age">37 y/o</span>
+                        </div>
+                        <div class="story-coach">🤝 Coached by Frédéric</div>
+                        <p class="story-text">
+                            Audrée set out to compete in two triathlons within a few months. The challenge was exciting, but one question remained: how to prepare effectively? As a young mom with an atypical, fast-paced schedule, she needed to fit this new lifestyle into her routine. Mon Projet Tri supported her in finding a training approach that fits seamlessly into her life, without putting everything else on hold.
+                        </p>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- CALL TO ACTION BANNER -->
+            <div class="cta-banner">
+                <h3 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
+                    Ready to write your own story?
+                </h3>
+                <p style="color: var(--text-light); max-width: 600px; margin: 0 auto 20px auto; font-size: 1.05rem;">
+                    Whether starting from scratch or aiming to push your limits, our coaches are here to guide you every step of the way.
+                </p>
+                <a href="guidance.html" class="btn-cta">Explore Our Coaching Programs 🚀</a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - Nonprofit organization dedicated to triathlon in Quebec
+                </p>
+                <a href="https://www.zeffy.com/en-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make a contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>View all covered service regions</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <!-- RANDOM SHUFFLE & ACTIVE PAGE SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Shuffle stories
+            const container = document.getElementById('storiesContainer');
+            if (container) {
+                const cards = Array.from(container.children);
+                for (let i = cards.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    const temp = cards[i];
+                    cards[i] = cards[j];
+                    cards[j] = temp;
+                }
+                cards.forEach(card => container.appendChild(card));
+            }
+
+            // Back to top behavior
+            const backToTopBtn = document.getElementById("backToTop");
+            if (backToTopBtn) {
+                window.addEventListener("scroll", function() {
+                    if (window.innerWidth <= 834 && window.scrollY > 300) {
+                        backToTopBtn.classList.add("visible");
+                    } else {
+                        backToTopBtn.classList.remove("visible");
+                    }
+                });
+
+                backToTopBtn.addEventListener("click", function() { 
+                    window.scrollTo({ top: 0, behavior: "smooth" }); 
+                });
+            }
+
+            // Highlight de la page active et du menu parent Athletes
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+            link.classList.add("active");
+        }
+    });
+
+    // Active le menu parent ATHLETES si on est sur your-story.html
+    if (currentPage === "your-story.html") {
+        const athletesParent = document.querySelector(".has-dropdown > a.dropdown-trigger");
+        if (athletesParent) athletesParent.classList.add("active");
+    }
+});
+
+    </script>
+</body>
+</html>

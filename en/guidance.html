@@ -398,11 +398,12 @@
                 <ul class="nav-links">
                     <li><a href="discover.html">About Us</a></li> 
                     <li class="has-dropdown">
-                        <a href="index.html#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
+                        <a href="index.html#athlètes" class="dropdown-trigger active">Athletes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="independant.html">Independant</a></li>
                             <li><a href="guidance.html">Guidance</a></li>
                             <li><a href="club.html">Club</a></li>
+                            <li><a href="your-story.html" class="active">Your Story</a></li>
                         </ul>
                     </li>                    
                     <li class="has-dropdown">
@@ -688,26 +689,24 @@
                 }
             });
         });
-                // Highlight de la page active
-
+             // Highlight de la page active et du menu parent Athletes
 document.addEventListener("DOMContentLoaded", function () {
-        // 1. Récupère le nom de la page actuelle
-        const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll(".nav-links a");
 
-        // 2. Parcourt tous les liens du header
-        const navLinks = document.querySelectorAll(".nav-links a");
-
-        navLinks.forEach(link => {
-            const linkPage = link.getAttribute("href");
-
-            // 3. Si le lien correspond à la page actuelle, on l'active !
-            if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
-                link.classList.add("active");
-            } else {
-                link.classList.remove("active");
-            }
-        });
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+            link.classList.add("active");
+        }
     });
+
+    // Active le menu parent ATHLETES si on est sur your-story.html
+    if (currentPage === "your-story.html") {
+        const athletesParent = document.querySelector(".has-dropdown > a.dropdown-trigger");
+        if (athletesParent) athletesParent.classList.add("active");
+    }
+});
     </script>
 </body>
 </html>
