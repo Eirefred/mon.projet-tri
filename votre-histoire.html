@@ -56,24 +56,26 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
+        /* --- BOUTON BACK TO TOP --- */
+
         #backToTop {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2000;
-            background-color: #D65F3A;
-            color: white;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            align-items: center;
-            justify-content: center;
-        }
+    display: none; /* Caché par défaut sur PC */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: var(--accent);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -615,19 +617,34 @@
     <footer>
         <div class="container">
             <div class="footer-logo">
-                <img src="MPT_New_logo_white.png" alt="Logo mon Projet Tri">
+                <a href="index.html">
+                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
             </div>
-            <p style="max-width: 600px; margin: 0 auto 15px auto; font-size: 0.95rem; opacity: 0.9;">
-                Organisme à but non lucratif promouvant la pratique du triathlon accessible partout au Québec.
-            </p>
-            <div>
-                <a href="https://www.zeffy.com/fr-CA/donation-form/mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire un don à l'organisme</a>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - OSBL dédiée au triathlon au Québec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
             </div>
-            <div class="footer-zones" style="margin-top: 30px;">
-                <p style="font-size: 0.8rem; opacity: 0.8; margin: 0;">© 2026 mon Projet Tri — Tous droits réservés.</p>
+            <div class="footer-zones">
+                <details>
+                    <summary>Voir toutes les zones de service couvertes</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                </details>
             </div>
         </div>
     </footer>
+
+    <!-- BOUTON RETOUR EN HAUT -->
+<button id="backToTop" title="Retour en haut">
+    <svg viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
 
     <!-- SCRIPT DE MÉLANGE ALÉATOIRE (SHUFFLE) -->
     <!-- SCRIPT DE MÉLANGE ALÉATOIRE AVEC 3 PREMIERS COACHES DIFFÉRENTS -->
@@ -685,6 +702,22 @@
             // 6. Réinsérer les cartes dans le DOM
             container.innerHTML = ''; // Vide le conteneur existant
             finalOrder.forEach(card => container.appendChild(card));
+        });
+
+        // --- GESTION DU BOUTON BACK TO TOP ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function() { 
+            window.scrollTo({ top: 0, behavior: "smooth" }); 
         });
     </script>
 </body>
