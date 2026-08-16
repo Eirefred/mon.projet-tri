@@ -538,18 +538,83 @@
 
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                gap: 20px;
-                text-align: center;
-            }
+        display: none;
+        flex-direction: column;
+        align-items: center; /* Centre le bloc de liste au milieu de l'écran */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw; /* Pleine largeur d'écran */
+        background: white;
+        padding: 30px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 12px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Boîte interne de largeur fixe centrée sur l'écran */
+    .nav-links > li {
+        width: 180px; /* Ajuste la boîte où se trouvent les 2 axes */
+        text-align: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* AXE 1 : Liens principaux (alignés au bord gauche de la boîte centrée) */
+    .nav-links > li > a {
+        display: block;
+        padding: 6px 0;
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    /* Sous-menu */
+    .dropdown-menu {
+        display: block; 
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 0;
+        border: none;
+        width: 100%;
+        padding: 0;
+        list-style: none;
+    }
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+    .dropdown-menu li {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* AXE 2 : Sous-liens (décalés exactement de 20px vers la droite par rapport à l'Axe 1) */
+    .dropdown-menu a {
+        display: block;
+        text-align: left;
+        padding: 6px 0 6px 20px; /* Décalage sur l'Axe 2 */
+        font-size: 0.95rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dropdown-menu a:hover {
+        padding-left: 20px;
+        background-color: transparent;
+        color: #D65F3A !important;
+    }
 
             #menu-toggle:checked ~ .nav-links { display: flex; }
             #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
