@@ -465,14 +465,15 @@
                 font-size: 0.7rem;
             }
             .menu-icon { display: flex; z-index: 1001; }
-            .nav-links {
+
+    .nav-links {
         display: none;
         flex-direction: column;
-        align-items: center; /* Centre le bloc de liste au milieu de l'écran */
+        align-items: center;
         position: absolute;
         top: 100%;
         left: 0;
-        width: 100vw; /* Pleine largeur d'écran */
+        width: 100vw;
         background: white;
         padding: 30px 0;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -485,25 +486,25 @@
         display: flex;
     }
 
-    /* Boîte interne de largeur fixe centrée sur l'écran */
+    /* Animation du bouton Hamburger en X */
+    #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+    #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* Alignement unifié des éléments et sous-menus */
     .nav-links > li {
-        width: 180px; /* Ajuste la boîte où se trouvent les 2 axes */
+        width: 180px;
         text-align: left;
         list-style: none;
-        margin: 0;
-        padding: 0;
     }
 
-    /* AXE 1 : Liens principaux (alignés au bord gauche de la boîte centrée) */
     .nav-links > li > a {
         display: block;
         padding: 6px 0;
         width: 100%;
         text-align: left;
-        box-sizing: border-box;
     }
 
-    /* Sous-menu */
     .dropdown-menu {
         display: block; 
         position: static;
@@ -517,38 +518,13 @@
         list-style: none;
     }
 
-    .dropdown-menu::before {
-        display: none;
-    }
-
-    .dropdown-menu li {
-        width: 100%;
-        text-align: left;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* AXE 2 : Sous-liens (décalés exactement de 20px vers la droite par rapport à l'Axe 1) */
     .dropdown-menu a {
         display: block;
-        text-align: left;
-        padding: 6px 0 6px 20px; /* Décalage sur l'Axe 2 */
+        text-align: left; /* Maintient la cohérence de l'alignement */
+        padding: 6px 0 6px 20px; 
         font-size: 0.95rem;
         width: 100%;
-        box-sizing: border-box;
     }
-
-    .dropdown-menu a:hover {
-        padding-left: 20px;
-        background-color: transparent;
-        color: #D65F3A !important;
-    }
-            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
-            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-
-            .dropdown-menu { display: block; position: static; transform: none; box-shadow: none; background-color: transparent; border: none; width: 100%; }
-            .dropdown-menu a { text-align: center; }
 
             .content-section { padding: 20px 0 60px 0; }
             .content-section h1 { font-size: 1.8rem; }

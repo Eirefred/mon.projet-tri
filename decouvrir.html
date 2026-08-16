@@ -478,64 +478,28 @@
         /* --- RESPONSIVE MOBILE --- */
         @media (max-width: 834px) {
             #backToTop.visible { display: flex !important; }
-            .page-header h1 { font-size: 2rem; }
-            .founder-container { flex-direction: column-reverse; align-items: center; gap: 30px; }
-            .founder-aside { width: 100%; }
-            .section-title { font-size: 1.8rem; }
-            
-            /* Permet au texte de la marque de revenir à la ligne sur mobile */
-            .profile-card span[style*="white-space: nowrap"] {
-                white-space: normal !important;
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            .pros-cons-container { grid-template-columns: 1fr; }
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 5px auto 0 auto;
+                border-radius: 0;
+                border: none;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
             }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
+            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
 
-            /* Supprime l'ellipse et ajuste le padding du fond gris sur mobile */
-            .content-section.gray-bg {
-                clip-path: none !important;
-                padding-bottom: 60px !important;
-            }
-
-            /* Ajustement et isolation des cartes pour stopper le débordement horizontal */
-            .profile-card { 
-                padding: 20px !important; 
-                box-sizing: border-box !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                overflow: hidden !important;
-            }
-            
-            /* Passage de l'écosystème sur une seule colonne propre */
-            .ecosystem-container { 
-                grid-template-columns: 1fr !important; 
-                gap: 15px !important;
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            
-            .eco-nodes-list {
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-            
-            .eco-node-card { 
-                transform: none !important; 
-                box-sizing: border-box !important;
-                width: 100% !important;
-            }
-
-            /* MASQUAGE ABSOLU DU LOGO, DES PASTILLES ET DES POPOVERS */
-            .ecosystem-view, 
-            .eco-img-asset, 
-            .eco-trigger, 
-            .eco-popover { 
-                display: none !important; 
-                visibility: hidden !important;
-                opacity: 0 !important;
-                height: 0 !important;
-                width: 0 !important;
-                padding: 0 !important;
-                margin: 0 !important;
-            }
-
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
             .menu-icon { display: flex; z-index: 1001; }
             .nav-links {
         display: none;
@@ -615,15 +579,13 @@
         background-color: transparent;
         color: #D65F3A !important;
     }
-
             #menu-toggle:checked ~ .nav-links { display: flex; }
             #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
         }
 
-
-        /* Style automatique pour la page active */
+                /* Style automatique pour la page active */
     .nav-links a.active {
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
