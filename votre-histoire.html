@@ -630,24 +630,61 @@
     </footer>
 
     <!-- SCRIPT DE MÉLANGE ALÉATOIRE (SHUFFLE) -->
+    <!-- SCRIPT DE MÉLANGE ALÉATOIRE AVEC 3 PREMIERS COACHES DIFFÉRENTS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const container = document.getElementById('storiesContainer');
             if (!container) return;
 
-            // Récupère toutes les cartes d'histoire
-            const cards = Array.from(container.children);
+            // 1. Récupérer toutes les cartes sous forme de tableau
+            let cards = Array.from(container.children);
 
-            // Algorithme de mélange de Durstenfeld / Fisher-Yates
-            for (let i = cards.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                const temp = cards[i];
-                cards[i] = cards[j];
-                cards[j] = temp;
+            // 2. Fonction utilitaire pour extraire le nom du coach d'une carte
+            function getCoachName(card) {
+                const coachDiv = card.querySelector('.story-coach');
+                if (!coachDiv) return "Inconnu";
+                // Récupère le texte complet, par ex: "🤝 Accompagné(e) par Frédéric"
+                const text = coachDiv.textContent.trim();
+                // Extrait le dernier mot (le prénom)
+                const parts = text.split(' ');
+                return parts[parts.length - 1]; 
             }
 
-            // Réinsère les cartes dans l'ordre mélangé
-            cards.forEach(card => container.appendChild(card));
+            // 3. Mélanger l'entièreté du tableau de base (Fisher-Yates)
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+
+            // 4. Sélectionner 3 cartes avec des coaches différents pour le haut de la page
+            let topThree = [];
+            let usedCoaches = new Set();
+            let remainingCards = [];
+
+            for (let card of cards) {
+                let coach = getCoachName(card);
+                
+                // Si on n'a pas encore 3 cartes et que ce coach n'est pas déjà dans le Set
+                if (topThree.length < 3 && !usedCoaches.has(coach)) {
+                    topThree.push(card);
+                    usedCoaches.add(coach);
+                } else {
+                    remainingCards.push(card);
+                }
+            }
+
+            // (Cas particulier : si le tableau d'origine n'avait pas 3 coaches différents,
+            // on complète topThree avec des cartes restantes pour bien avoir 3 cartes au début)
+            while (topThree.length < 3 && remainingCards.length > 0) {
+                topThree.push(remainingCards.shift());
+            }
+
+            // 5. Reconstruire l'ordre final : les 3 différentes d'abord, puis le reste
+            const finalOrder = [...topThree, ...remainingCards];
+
+            // 6. Réinsérer les cartes dans le DOM
+            container.innerHTML = ''; // Vide le conteneur existant
+            finalOrder.forEach(card => container.appendChild(card));
         });
     </script>
 </body>

@@ -654,56 +654,62 @@
     </button>
 
     <!-- RANDOM SHUFFLE & ACTIVE PAGE SCRIPT -->
+    <!-- SCRIPT DE MÉLANGE ALÉATOIRE AVEC 3 PREMIERS COACHES DIFFÉRENTS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Shuffle stories
             const container = document.getElementById('storiesContainer');
-            if (container) {
-                const cards = Array.from(container.children);
-                for (let i = cards.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    const temp = cards[i];
-                    cards[i] = cards[j];
-                    cards[j] = temp;
+            if (!container) return;
+
+            // 1. Récupérer toutes les cartes sous forme de tableau
+            let cards = Array.from(container.children);
+
+            // 2. Fonction utilitaire pour extraire le nom du coach d'une carte
+            function getCoachName(card) {
+                const coachDiv = card.querySelector('.story-coach');
+                if (!coachDiv) return "Inconnu";
+                // Récupère le texte complet, par ex: "🤝 Accompagné(e) par Frédéric"
+                const text = coachDiv.textContent.trim();
+                // Extrait le dernier mot (le prénom)
+                const parts = text.split(' ');
+                return parts[parts.length - 1]; 
+            }
+
+            // 3. Mélanger l'entièreté du tableau de base (Fisher-Yates)
+            for (let i = cards.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [cards[i], cards[j]] = [cards[j], cards[i]];
+            }
+
+            // 4. Sélectionner 3 cartes avec des coaches différents pour le haut de la page
+            let topThree = [];
+            let usedCoaches = new Set();
+            let remainingCards = [];
+
+            for (let card of cards) {
+                let coach = getCoachName(card);
+                
+                // Si on n'a pas encore 3 cartes et que ce coach n'est pas déjà dans le Set
+                if (topThree.length < 3 && !usedCoaches.has(coach)) {
+                    topThree.push(card);
+                    usedCoaches.add(coach);
+                } else {
+                    remainingCards.push(card);
                 }
-                cards.forEach(card => container.appendChild(card));
             }
 
-            // Back to top behavior
-            const backToTopBtn = document.getElementById("backToTop");
-            if (backToTopBtn) {
-                window.addEventListener("scroll", function() {
-                    if (window.innerWidth <= 834 && window.scrollY > 300) {
-                        backToTopBtn.classList.add("visible");
-                    } else {
-                        backToTopBtn.classList.remove("visible");
-                    }
-                });
-
-                backToTopBtn.addEventListener("click", function() { 
-                    window.scrollTo({ top: 0, behavior: "smooth" }); 
-                });
+            // (Cas particulier : si le tableau d'origine n'avait pas 3 coaches différents,
+            // on complète topThree avec des cartes restantes pour bien avoir 3 cartes au début)
+            while (topThree.length < 3 && remainingCards.length > 0) {
+                topThree.push(remainingCards.shift());
             }
 
-            // Highlight de la page active et du menu parent Athletes
-document.addEventListener("DOMContentLoaded", function () {
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    const navLinks = document.querySelectorAll(".nav-links a");
+            // 5. Reconstruire l'ordre final : les 3 différentes d'abord, puis le reste
+            const finalOrder = [...topThree, ...remainingCards];
 
-    navLinks.forEach(link => {
-        const linkPage = link.getAttribute("href");
-        if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
-            link.classList.add("active");
-        }
-    });
-
-    // Active le menu parent ATHLETES si on est sur your-story.html
-    if (currentPage === "your-story.html") {
-        const athletesParent = document.querySelector(".has-dropdown > a.dropdown-trigger");
-        if (athletesParent) athletesParent.classList.add("active");
-    }
-});
-
+            // 6. Réinsérer les cartes dans le DOM
+            container.innerHTML = ''; // Vide le conteneur existant
+            finalOrder.forEach(card => container.appendChild(card));
+        });
     </script>
 </body>
 </html>
