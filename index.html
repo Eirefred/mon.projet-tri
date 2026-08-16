@@ -623,38 +623,80 @@
         line-height: 1.3 !important; /* Évite que les lignes de texte se chevauchent */
         margin-bottom: 15px !important;
     }
-            .dropdown-menu {
-                display: block; 
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background-color: transparent; /* Suppression du fond gris */
-                margin: 5px auto 0 auto;
-                border-radius: 0;
-                border: none;
-                min-width: unset;
-                width: 100%;
-                padding: 0;
-            }
-            .dropdown-menu::before {
-                display: none;
-            }
-            .dropdown-menu a {
-                text-align: center;
-                padding: 10px 15px;
-                font-size: 0.95rem; /* Aligné sur la taille de vos autres liens mobiles */
-            }
-            .dropdown-menu a:hover {
-                padding-left: 15px;
-                background-color: transparent; /* Optionnel : supprime aussi le gris au clic/survol mobile */
-                color: #D65F3A !important;
-            }
 
-            .decision-flow {
-                flex-direction: column;
-                align-items: center;
-                gap: 15px;
-            }
+    @media (max-width: 834px) {
+
+    /* Menu principal hamburger centré au milieu de l'écran */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 25px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 12px;
+        align-items: center; /* Centre le sous-conteneur au milieu de l'écran */
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Boîte interne pour garder les axes alignés tout en étant centrée */
+    .nav-links > li {
+        width: 220px; /* Largeur fixe de la zone de menu pour un centrage parfait */
+        text-align: left;
+    }
+
+    /* AXE 1 : Liens principaux */
+    .nav-links > li > a {
+        display: block;
+        padding: 8px 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Structure des sous-menus */
+    .dropdown-menu {
+        display: block; 
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 0;
+        border: none;
+        width: 100%;
+        padding: 0;
+    }
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+    .dropdown-menu li {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* AXE 2 : Sous-liens (décalés de 25px vers la droite par rapport à l'Axe 1) */
+    .dropdown-menu a {
+        display: block;
+        text-align: left;
+        padding: 6px 0 6px 25px; /* Décalage de 25px vers la droite */
+        font-size: 0.95rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dropdown-menu a:hover {
+        padding-left: 25px; /* Maintient le décalage de l'Axe 2 au survol */
+        background-color: transparent;
+        color: #D65F3A !important;
+    }
+}
 
 
 
@@ -976,18 +1018,18 @@
             .menu-icon { display: flex; z-index: 1001; }
 
             .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px 0;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-                gap: 20px;
-                text-align: center;
-            }
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 15px;
+        text-align: left; /* Aligne le texte du menu à gauche */
+    }
 
             #menu-toggle:checked ~ .nav-links {
                 display: flex;
