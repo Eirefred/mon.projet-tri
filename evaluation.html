@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Évaluation Initiale | mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    
+    <link rel="canonical" href="https://mon.projet-tri.org/evaluation.html">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Évaluation Initiale | mon Projet Tri">
+    <meta property="og:description" content="Complétez votre profil d'athlète pour débuter votre accompagnement personnalisé en triathlon.">
+    <meta property="og:url" content="https://mon.projet-tri.org/evaluation.html">
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="fr_CA">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --histoire-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+            --accent: #D65F3A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--accent);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        .content-section {
+            padding: 60px 0 100px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--histoire-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        /* --- STYLES DU FORMULAIRE --- */
+        .form-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        .form-section-title {
+            color: #004c97;
+            font-size: 1.2rem;
+            font-weight: 800;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 8px;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 15px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            padding: 12px 15px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #f8fafc;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #004c97;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(0, 76, 151, 0.1);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background: var(--combined-gradient);
+            color: #ffffff;
+            padding: 16px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 76, 151, 0.2);
+            margin-top: 30px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(214, 95, 58, 0.3);
+        }
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        @media (max-width: 834px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .form-card { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo Mon Projet Tri"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Partout au Québec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="decouvrir.html">L'OSBL</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#athlètes" class="dropdown-trigger active">Athlètes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="autonome.html">Autonome</a></li>
+                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="club.html">Club</a></li>
+                            <li><a href="votre-histoire.html"><i>Votre histoire</i></a></li>
+                        </ul>
+                    </li>                    
+                    <li class="has-dropdown">
+                        <a href="index.html#partenaires" class="dropdown-trigger">Partenaires <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="recevoir.html">Recevoir</a></li>
+                            <li><a href="donner.html">Donner</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="calendrier.html">Calendrier'26</a></li> 
+                    <li class="lang-switcher">
+                        <span class="lang-label">FR</span>
+                        <label class="switch">
+                            <input type="checkbox" onclick="window.location.href='en/evaluation.html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label" style="color: #ccc;">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ZONE DE CONTENU PRINCIPAL -->
+    <main class="content-section">
+        <div class="container">
+            
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h1>Bilan d'évaluation initiale</h1>
+                <p style="font-size: 1.2rem; color: var(--text-light); max-width: 750px; margin: 0 auto;">
+                    Remplissez ces 9 informations pour nous aider à mieux vous connaître et démarrer votre accompagnement.
+                </p>
+            </div>
+
+            <!-- FORMULAIRE SUR MESURE -->
+            <div class="form-card">
+                <form id="evaluationForm">
+                    
+                    <div class="form-section-title">1. Informations personnelles</div>
+                    <div class="form-grid">
+                        <!-- Q1 : Nom -->
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="entry.1786605269" required>
+                        </div>
+                        <!-- Q2 : Prénom -->
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="entry.625392000" required>
+                        </div>
+                        <!-- Q3 : Année de naissance -->
+                        <div class="form-group">
+                            <label for="naissance">Année de naissance *</label>
+                            <input type="number" id="naissance" name="entry.45759550" placeholder="Ex: 1990" required>
+                        </div>
+                        <!-- Q4 : Sexe -->
+                        <div class="form-group">
+                            <label for="sexe">Sexe *</label>
+                            <select id="sexe" name="entry.45765567" required>
+                                <option value="" disabled selected>Sélectionnez...</option>
+                                <option value="Homme">Homme</option>
+                                <option value="Femme">Femme</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <!-- Q5 : Courriel -->
+                        <div class="form-group full-width">
+                            <label for="courriel">Adresse courriel *</label>
+                            <input type="email" id="courriel" name="entry.45755088" required>
+                        </div>
+                    </div>
+
+                    <div class="form-section-title">2. Localisation</div>
+                    <div class="form-grid">
+                        <!-- Q6 : Code postal de résidence -->
+                        <div class="form-group">
+                            <label for="postal-residence">Code postal de résidence *</label>
+                            <input type="text" id="postal-residence" name="entry.45805719" placeholder="Ex: H2L 2W2" required>
+                        </div>
+                        <!-- Q7 : Code postal supplémentaire -->
+                        <div class="form-group">
+                            <label for="postal-supp">Code postal supplémentaire</label>
+                            <input type="text" id="postal-supp" name="entry.45796590" placeholder="Ex: Chalet / Secondaire">
+                        </div>
+                    </div>
+
+                    <div class="form-section-title">3. Équipement (Montre)</div>
+                    <div class="form-grid">
+                        <!-- Q8 : Montre intelligente -->
+                        <div class="form-group">
+                            <label for="montre">Possédez-vous une montre intelligente ?</label>
+                            <select id="montre" name="entry.45776074">
+                                <option value="" disabled selected>Sélectionnez...</option>
+                                <option value="Aucune">Aucune</option>
+                                <option value="Garmin">Garmin</option>
+                                <option value="Apple">Apple Watch</option>
+                                <option value="Coros">Coros</option>
+                                <option value="Polar">Polar</option>
+                                <option value="Suunto">Suunto</option>
+                                <option value="Autre">Autre marque</option>
+                            </select>
+                        </div>
+                        <!-- Q9 : Année d'acquisition -->
+                        <div class="form-group">
+                            <label for="annee-montre">Année d'acquisition (approximative)</label>
+                            <input type="number" id="annee-montre" name="entry.45681910" placeholder="Ex: 2022">
+                        </div>
+                    </div>
+
+                    <!-- BOUTON DE SOUMISSION -->
+                    <button type="submit" class="btn-submit">Soumettre mon évaluation 🚀</button>
+                </form>
+
+                <!-- MESSAGE DE CONFIRMATION -->
+                <div id="message-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 20px; text-align: center; font-size: 1.1rem; background: #e0f2fe; padding: 15px; border-radius: 10px;">
+                    ✅ Vos informations ont été transmises avec succès ! Notre équipe communiquera avec vous sous peu.
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026 
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
+                    - OSBL dédiée au triathlon au Québec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>Voir toutes les zones de service covered</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <button id="backToTop" title="Retour en haut">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <script>
+        const form = document.getElementById('evaluationForm');
+        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse";
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch(formUrl, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: formData
+            }).then(() => {
+                document.getElementById('message-succes').style.display = 'block';
+                form.reset();
+                document.getElementById('message-succes').scrollIntoView({ behavior: 'smooth' });
+            }).catch(error => {
+                alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer.");
+                console.error('Erreur:', error);
+            });
+        });
+
+        // RETOUR EN HAUT
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", function() {
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
+                backToTopBtn.style.display = "flex";
+            } else {
+                backToTopBtn.style.display = "none";
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function() { 
+            window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+    </script>
+</body>
+</html>
