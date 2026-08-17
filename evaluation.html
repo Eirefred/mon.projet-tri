@@ -518,7 +518,7 @@
 
             <!-- FORMULAIRE SUR MESURE -->
             <div class="form-card">
-                <form id="evaluationForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+                <form id="evaluationForm">
     
                     <!-- 1. INFORMATIONS PERSONNELLES -->
                     <div class="form-section-title">1. Informations personnelles</div>
@@ -682,20 +682,21 @@
                                 <!-- TRAININGPEAKS PREMIUM : PUCE OUI / NON (Q17) -->
                                 <div class="form-group full-width">
                                     <label>Possède un compte TrainingPeaks Premium ?</label>
-                                    <div class="radio-group">
-                                        <label class="radio-item">
-                                            <input type="radio" name="entry.17_TP_PREMIUM" value="Oui"> Oui
-                                        </label>
-                                        <label class="radio-item">
-                                            <input type="radio" name="entry.17_TP_PREMIUM" value="Non" id="tp-premium-no"> Non
-                                        </label>
-                                    </div>
+                                    <!-- Remplacer name="entry.17_TP_PREMIUM" par name="entry.1167384337" -->
+<div class="radio-group">
+    <label class="radio-item">
+        <input type="radio" name="entry.1167384337" value="Oui"> Oui
+    </label>
+    <label class="radio-item">
+        <input type="radio" name="entry.1167384337" value="Non" id="tp-premium-no"> Non
+    </label>
+</div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- CHAMP CACHÉ POUR GOOGLE FORMS (Q16) -->
-                        <input type="hidden" id="entry_16_TP" name="entry.16_TP" value="Non">
+                        <input type="hidden" id="entry_16_TP" name="entry.1126021488" value="Non">
                     </div>
 
                     <!-- 4. EXPÉRIENCE & NIVEAU ACTUEL -->
@@ -943,16 +944,34 @@
 
         // Soumission globale du formulaire
         document.getElementById('evaluationForm').addEventListener('submit', function(e) {
-            const tpChoice = document.querySelector('input[name="tp_choice"]:checked');
-            const hiddenInput = document.getElementById('entry_16_TP');
-            
-            if (tpChoice && tpChoice.value === 'Oui') {
-                const emailValue = document.getElementById('tp-email').value.trim();
-                hiddenInput.value = emailValue !== '' ? emailValue : 'Oui';
-            } else {
-                hiddenInput.value = 'Non';
-            }
-        });
+    e.preventDefault();
+
+    // Gestion de la valeur pour TrainingPeaks
+    const tpChoice = document.querySelector('input[name="tp_choice"]:checked');
+    const hiddenInput = document.getElementById('entry_16_TP');
+    if (tpChoice && tpChoice.value === 'Oui') {
+        const emailValue = document.getElementById('tp-email').value.trim();
+        hiddenInput.value = emailValue !== '' ? emailValue : 'Oui';
+    } else {
+        hiddenInput.value = 'Non';
+    }
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse", {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+    }).then(() => {
+        form.reset();
+        document.getElementById('message-succes').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('message-succes').offsetTop - 100, behavior: 'smooth' });
+    }).catch(error => {
+        alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+        console.error("Erreur d'envoi:", error);
+    });
+});
 
 
 
