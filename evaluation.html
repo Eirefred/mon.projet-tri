@@ -662,7 +662,7 @@
                                     <input type="radio" name="tp_choice" value="Oui" onchange="toggleTpOptions(true)"> Oui
                                 </label>
                                 <label class="radio-item">
-                                    <input type="radio" name="tp_choice" value="Non" onchange="toggleTpOptions(false)" checked> Non
+                                    <input type="radio" name="tp_choice" value="Non" onchange="toggleTpOptions(false)"> Non
                                 </label>
                             </div>
                         </div>
@@ -722,7 +722,7 @@
 
                         <!-- GROUPE : PLUS GRANDE DISTANCE / DURÉE ACTUELLE -->
                         <div class="form-group full-width" style="margin-top: 10px; margin-bottom: 5px;">
-                            <label style="font-size: 1.05rem; color: #004c97;">Quelle est la plus grande distance ou durée dont vous êtes capable actuellement ?</label>
+                            <label style="font-size: 1.05rem; color: #004c97;">Quelle est la plus grande que vous êtes capable de faire actuellement ?</label>
                         </div>
 
                         <div class="form-group full-width">
@@ -765,68 +765,94 @@
                         </div>
                     </div>
 
-                    <!-- 5. HISTORIQUE DE COURSES -->
-                    <div class="form-section-title">5. Historique de courses réalisées</div>
+                    <!-- 5. HISTORIQUE DE COURSES ET OBJECTIFS -->
+                    <div class="form-section-title">5. Historique de courses & Objectifs</div>
+                    
+                    <!-- BLOC 1 : QUESTION DE DÉPART -->
                     <div class="form-grid">
-                        
-                        <!-- QUESTION PRINCIPALE : OUI / NON -->
                         <div class="form-group full-width">
-                            <label>Avez-vous déjà fait un triathlon 🏊🏻🚴🏃‍♂️ ? *</label>
+                            <label>Avez-vous déjà fait un triathlon ? 🏊🏻🚴🏃‍♂️ *</label>
                             <div class="radio-group">
                                 <label class="radio-item">
                                     <input type="radio" name="deja_triathlon_choice" value="Oui" onchange="toggleTriathlonHistory(true)"> Oui
                                 </label>
                                 <label class="radio-item">
-                                    <input type="radio" name="deja_triathlon_choice" value="Non" onchange="toggleTriathlonHistory(false)" checked> Non
+                                    <input type="radio" name="deja_triathlon_choice" value="Non" onchange="toggleTriathlonHistory(false)"> Non
                                 </label>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- BLOC CONDITIONNEL HISTORIQUE (MASQUÉ PAR DÉFAUT) -->
-                        <div id="triathlon-history-section" class="full-width" style="display: none;">
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label for="nb-sprint">Combien avez-vous fait de triathlon sprint ?</label>
-                                    <select id="nb-sprint" name="entry.504883000">
-                                        <option value="0" selected>0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3 et +">3 et +</option>
-                                    </select>
-                                </div>
+                    <!-- BLOC 2 : HISTORIQUE DYNAMIQUE (ISOLÉ DU RESTE DE LA GRILLE) -->
+                    <div id="triathlon-history-section" style="display: none; margin-bottom: 15px;">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="nb-sprint">Combien avez-vous fait de triathlon sprint ?</label>
+                                <select id="nb-sprint" name="entry.504883000">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3 et +">3 et +</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="nb-olympique">Combien avez-vous fait de triathlon Olympique ?</label>
-                                    <select id="nb-olympique" name="entry.1380250720">
-                                        <option value="0" selected>0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3 et +">3 et +</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="nb-olympique">Combien avez-vous fait de triathlon Olympique ?</label>
+                                <select id="nb-olympique" name="entry.1380250720">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3 et +">3 et +</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="nb-703">Combien avez-vous fait de 70.3 ?</label>
-                                    <select id="nb-703" name="entry.2110062294">
-                                        <option value="0" selected>0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3 et +">3 et +</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="nb-703">Combien avez-vous fait de 70.3 ?</label>
+                                <select id="nb-703" name="entry.2110062294">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3 et +">3 et +</option>
+                                </select>
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="nb-ironman">Combien avez-vous fait de Ironman ?</label>
-                                    <select id="nb-ironman" name="entry.2093848000">
-                                        <option value="0" selected>0</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3 et +">3 et +</option>
-                                    </select>
-                                </div>
+                            <div class="form-group">
+                                <label for="nb-ironman">Combien avez-vous fait de Ironman ?</label>
+                                <select id="nb-ironman" name="entry.2093848000">
+                                    <option value="0" selected>0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3 et +">3 et +</option>
+                                </select>
                             </div>
                         </div>
+                    </div>
 
+                    <!-- BLOC 3 : OBJECTIFS (SOUJOURS ALIGNÉS EN BAS) -->
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="objectif-distance">Quel est votre objectif de distance ? 🏊🏻🚴🏃‍♂️</label>
+                            <select id="objectif-distance" name="entry.1073496319">
+                                <option value="" selected>Sélectionnez...</option>
+                                <option value="Initiation (Découverte)">Initiation (Découverte)</option>
+                                <option value="Sprint">Sprint</option>
+                                <option value="Olympique">Olympique</option>
+                                <option value="Demi-distance (70.3)">Demi-distance (70.3)</option>
+                                <option value="Distance complète (Ironman)">Distance complète (Ironman)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="objectif-performance">Quel objectif de performance ?</label>
+                            <select id="objectif-performance" name="entry.606376166">
+                                <option value="" selected>Sélectionnez...</option>
+                                <option value="Juste pour le plaisir">🥳 Juste pour le plaisir</option>
+                                <option value="Pour me dépasser">🔥 Pour me dépasser</option>
+                                <option value="Gagner ou podium">🏆 Gagner ou podium</option>
+                                <option value="Aller au championnat du monde">🌍 Aller au championnat du monde</option>
+                                <option value="Autre">✨ Autre</option>
+                            </select>
+                        </div>
                     </div>
 
                     <!-- 6. SANTÉ ET DOSSERS MÉDICAUX -->
@@ -848,33 +874,7 @@
                         </div>
                     </div>
 
-                    <!-- 7. OBJECTIFS -->
-                    <div class="form-section-title">7. Objectifs & Aspirations</div>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="objectif-distance">Quel est votre objectif de distance de triathlon ?</label>
-                            <select id="objectif-distance" name="entry.1073496319">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Initiation (Découverte)">Initiation (Découverte)</option>
-                                <option value="Sprint">Sprint</option>
-                                <option value="Olympique">Olympique</option>
-                                <option value="Demi-distance (70.3)">Demi-distance (70.3)</option>
-                                <option value="Distance complète (Ironman)">Distance complète (Ironman)</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="objectif-performance">Objectif de performance ?</label>
-                            <select id="objectif-performance" name="entry.606376166">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Juste pour le plaisir">Juste pour le plaisir</option>
-                                <option value="Pour me dépasser">Pour me dépasser</option>
-                                <option value="Gagner ou podium">Gagner ou podium</option>
-                                <option value="Aller au championnat du monde">Aller au championnat du monde</option>
-                                <option value="Autre">Autre</option>
-                            </select>
-                        </div>
-                    </div>
+                   
 
                     <button type="submit" class="btn-submit">Soumettre mon évaluation 🚀</button>
                 </form>
