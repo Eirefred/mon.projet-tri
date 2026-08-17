@@ -536,13 +536,16 @@
                             <input type="number" id="naissance" name="entry.469520182" placeholder="Ex: 1990" required>
                         </div>
                         <div class="form-group">
-                            <label for="sexe">Sexe *</label>
-                            <select id="sexe" name="entry.758570987" required>
-                                <option value="" disabled selected>Sélectionnez...</option>
-                                <option value="Homme">Homme</option>
-                                <option value="Femme">Femme</option>
-                            </select>
-                        </div>
+    <label>Sexe *</label>
+    <div class="radio-group">
+        <label class="radio-item">
+            <input type="radio" name="entry.758570987" value="Homme" required> Homme
+        </label>
+        <label class="radio-item">
+            <input type="radio" name="entry.758570987" value="Femme" required> Femme
+        </label>
+    </div>
+</div>
                         <div class="form-group full-width">
                             <label for="courriel">Adresse courriel *</label>
                             <input type="email" id="courriel" name="entry.222462492" required>
