@@ -32,7 +32,7 @@
             --white: #ffffff;
             --text-dark: #0f172a;
             --text-light: #5A6A7A;
-            --accent: #D65F3A;
+          
         }
 
         body {
@@ -57,13 +57,14 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
+        /* --- BOUTON BACK TO TOP --- */
         #backToTop {
-            display: none;
+            display: none; /* Caché par défaut sur PC */
             position: fixed;
             bottom: 20px;
             right: 20px;
             z-index: 2000;
-            background-color: var(--accent);
+            background-color: var(--accent); /* --- comme --accent d'existe pas en haut, ca laisse transparent*/
             color: white;
             width: 45px;
             height: 45px;
@@ -75,6 +76,8 @@
             align-items: center;
             justify-content: center;
         }
+
+#backToTop.visible { display: flex !important; }
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -116,6 +119,146 @@
 
         .lang-switcher { display: flex; align-items: center; gap: 8px; }
         .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- MENU DÉROULANT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        /* Style automatique pour la page active */
+        .nav-links a.active {
+            color: #d45d39 !important;
+            font-weight: bold !important;
+        }
+
+        /* --- STYLES MENU MOBILE HAMBURGER --- */
+        @media (max-width: 834px) {
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100vw;
+                background: white;
+                padding: 30px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 12px;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+            
+            .nav-links > li {
+                width: 180px;
+                text-align: left;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-links > li > a {
+                display: block;
+                padding: 6px 0;
+                width: 100%;
+                text-align: left;
+                box-sizing: border-box;
+            }
+
+            .dropdown-menu {
+                display: block; 
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 0;
+                border: none;
+                width: 100%;
+                padding: 0;
+                list-style: none;
+            }
+
+            .dropdown-menu::before { display: none; }
+
+            .dropdown-menu li {
+                width: 100%;
+                text-align: left;
+                margin: 0;
+                padding: 0;
+            }
+
+            .dropdown-menu a {
+                display: block;
+                text-align: left;
+                padding: 6px 0 6px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+            .dropdown-menu a:hover {
+                padding-left: 20px;
+                background-color: transparent;
+                color: #D65F3A !important;
+            }
+
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
 
         /* --- ZONE DE CONTENU DE LA PAGE --- */
         .content-section {
@@ -277,7 +420,7 @@
                 <ul class="nav-links">
                     <li><a href="decouvrir.html">L'OSBL</a></li>
                     <li class="has-dropdown">
-                        <a href="index.html#athlètes" class="dropdown-trigger active">Athlètes <span class="arrow-down">▼</span></a>
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="autonome.html">Autonome</a></li>
                             <li><a href="accompagnement.html">Accompagnement</a></li>
@@ -434,41 +577,44 @@
     </footer>
 
     <button id="backToTop" title="Retour en haut">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="white">
+        <svg viewBox="0 0 24 24">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
         </svg>
     </button>
 
     <script>
-        var submitted = false;
-
-        function prepareSubmit() {
-            submitted = true;
-            
-            // Désactive temporairement le champ de montre s'il est vide pour ne pas envoyer d'option vide à Google Forms
-            const montreSelect = document.getElementById('montre');
-            if (!montreSelect.value) {
-                montreSelect.disabled = true;
-            }
-
-            // Réactive le champ juste après l'envoi pour conserver l'état du formulaire
-            setTimeout(() => {
-                montreSelect.disabled = false;
-            }, 1000);
-        }
-
-        // RETOUR EN HAUT
+        // --- GESTION DU BOUTON BACK TO TOP ---
         const backToTopBtn = document.getElementById("backToTop");
+
         window.addEventListener("scroll", function() {
+            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
             if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
-                backToTopBtn.style.display = "flex";
+                backToTopBtn.classList.add("visible");
             } else {
-                backToTopBtn.style.display = "none";
+                backToTopBtn.classList.remove("visible");
             }
         });
 
         backToTopBtn.addEventListener("click", function() { 
             window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+
+        // Highlight de la page active et du menu parent Athlètes
+        document.addEventListener("DOMContentLoaded", function () {
+            const currentPage = window.location.pathname.split("/").pop() || "index.html";
+            const navLinks = document.querySelectorAll(".nav-links a");
+
+            navLinks.forEach(link => {
+                const linkPage = link.getAttribute("href");
+                if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+                    link.classList.add("active");
+                }
+            });
+
+            if (currentPage === "evaluation.html") {
+                const athletesParent = document.querySelector(".has-dropdown > a.dropdown-trigger");
+                if (athletesParent) athletesParent.classList.add("active");
+            }
         });
     </script>
 </body>
