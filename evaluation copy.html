@@ -946,17 +946,13 @@
         document.getElementById('evaluationForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // 1. Récupération du choix Oui/Non
+    // Gestion de la valeur pour TrainingPeaks
     const tpChoice = document.querySelector('input[name="tp_choice"]:checked');
     const hiddenInput = document.getElementById('entry_16_TP');
-    
-    // 2. Traitement selon la sélection :
     if (tpChoice && tpChoice.value === 'Oui') {
         const emailValue = document.getElementById('tp-email').value.trim();
-        // Si l'utilisateur a saisi un courriel, on envoie le courriel, sinon par sécurité "Oui"
         hiddenInput.value = emailValue !== '' ? emailValue : 'Oui';
     } else {
-        // S'il a coché "Non", on envoie simplement "Non" dans Google Forms
         hiddenInput.value = 'Non';
     }
 
