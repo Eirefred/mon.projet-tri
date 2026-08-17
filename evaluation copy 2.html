@@ -575,7 +575,7 @@
                                 <option value="Aucune">Aucune</option>
                                 <option value="Apple">Apple</option>
                                 <option value="Coros">Coros</option>
-                                <option value="Decathlons">Decathlons</option>
+                                <option value="Decathlon">Decathlon</option>
                                 <option value="Garmin">Garmin</option>
                                 <option value="Polar">Polar</option>
                                 <option value="Suunto">Suunto</option>
@@ -943,62 +943,33 @@
             }
         }
 
-        // Soumission globale du formulaire avec filtrage et validation
-document.getElementById('evaluationForm').addEventListener('submit', function(e) {
+        // Soumission globale du formulaire
+        document.getElementById('evaluationForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
-    // 1. Gestion spécifique pour TrainingPeaks
+    // 1. Récupération du choix Oui/Non
     const tpChoice = document.querySelector('input[name="tp_choice"]:checked');
     const hiddenInput = document.getElementById('entry_16_TP');
     
+    // 2. Traitement selon la sélection :
     if (tpChoice && tpChoice.value === 'Oui') {
         const emailValue = document.getElementById('tp-email').value.trim();
+        // Si l'utilisateur a saisi un courriel, on envoie le courriel, sinon par sécurité "Oui"
         hiddenInput.value = emailValue !== '' ? emailValue : 'Oui';
     } else {
+        // S'il a coché "Non", on envoie simplement "Non" dans Google Forms
         hiddenInput.value = 'Non';
     }
 
-    // 2. Dictionnaire des options STRICTEMENT autorisées dans votre Google Form pour les questions à choix multiples
-    // (Ajustez les textes ici pour qu'ils soient EXACTEMENT comme dans Google Forms)
-    const validSelectOptions = {
-        'entry.606376166': ['Juste pour le plaisir', 'Pour me dépasser', 'Gagner ou podium', 'Aller au championnat du monde', 'Autre'] 
-        // Note : Si vos choix Google Forms n'ont pas d'émojis, retirez les émojis de la liste ci-dessus !
-    };
-
     const form = e.target;
-    const formData = new FormData();
+    const formData = new FormData(form);
 
-    // 3. Parcours et nettoyage dynamique de chaque champ
-    const inputs = form.querySelectorAll('input, select, textarea');
-
-    inputs.forEach(input => {
-        // On ignore les champs sans attribut "name" ou sans valeur
-        if (!input.name || input.value === '') return;
-
-        // On ignore les cases à cocher et puces non coché(e)s
-        if ((input.type === 'radio' || input.type === 'checkbox') && !input.checked) return;
-
-        // Vérification de conformité pour les champs à liste stricte
-        if (validSelectOptions[input.name]) {
-            if (validSelectOptions[input.name].includes(input.value)) {
-                formData.append(input.name, input.value);
-            } else {
-                console.warn(`Valeur ignorée pour éviter le rejet Google Forms : ${input.name} = "${input.value}"`);
-            }
-        } else {
-            // Ajout direct pour tous les champs texte libre, emails, etc.
-            formData.append(input.name, input.value);
-        }
-    });
-
-    // 4. Envoi sécurisé des données
     fetch("https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse", {
         method: "POST",
         body: formData,
         mode: "no-cors"
     }).then(() => {
         form.reset();
-        toggleTriathlonHistory(false);
         document.getElementById('message-succes').style.display = 'block';
         window.scrollTo({ top: document.getElementById('message-succes').offsetTop - 100, behavior: 'smooth' });
     }).catch(error => {
