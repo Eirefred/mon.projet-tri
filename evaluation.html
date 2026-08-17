@@ -324,7 +324,6 @@
         .form-group input[type="text"], 
         .form-group input[type="number"], 
         .form-group input[type="email"], 
-        .form-group select,
         .form-group textarea {
             padding: 12px 15px;
             border: 1.5px solid #cbd5e1;
@@ -336,6 +335,21 @@
             background: #f8fafc;
             box-sizing: border-box;
             width: 100%;
+        }
+
+        /* RÈGLE SPÉCIFIQUE POUR RÉDUIRE LES MENUS DÉROULANTS */
+        .form-group select {
+            padding: 12px 15px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            outline: none;
+            background: #f8fafc;
+            box-sizing: border-box;
+            width: 100%;
+            max-width: 200px; /* <--- Contrôle la largeur maximale ici */
         }
 
         .form-group textarea {
@@ -571,7 +585,7 @@
                         </div>
 
                         <div class="form-group full-width">
-                            <label>Quel matériel de natation disposez-vous ?</label>
+                            <label>Quel matériel de natation 🏊‍♀️ disposez-vous ?</label>
                             <div class="checkbox-group">
                                 <label class="checkbox-item"><input type="checkbox" name="entry.1362401059" value="Planche"> Planche</label>
                                 <label class="checkbox-item"><input type="checkbox" name="entry.1362401059" value="Pull-buoy"> Pull-buoy</label>
@@ -583,11 +597,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="odometre-velo">Possède un Odomètre vélo intelligent ?</label>
+                            <label for="odometre-velo">Possède un Odomètre vélo 🚴 intelligent ?</label>
                             <select id="odometre-velo" name="entry.2105554663">
                                 <option value="" selected>Sélectionnez...</option>
                                 <option value="Aucun">Aucun</option>
-                                <option value="Garnin">Garnin</option>
+                                <option value="Garmin">Garmin</option>
                                 <option value="Hammerhead">Hammerhead</option>
                                 <option value="VAN RYSEL">VAN RYSEL</option>
                                 <option value="Wahoo">Wahoo</option>
@@ -596,7 +610,7 @@
 
                         <!-- POWERMETER : PUCE OUI / NON -->
                         <div class="form-group">
-                            <label>Possède un powermeter du le vélo ?</label>
+                            <label>Possède un powermeter du le vélo 🚴 ?</label>
                             <div class="radio-group">
                                 <label class="radio-item"><input type="radio" name="entry.2024086829" value="Oui"> Oui</label>
                                 <label class="radio-item"><input type="radio" name="entry.2024086829" value="Non"> Non</label>
@@ -628,7 +642,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="compte-velo-virtuel">Possède un compte de vélo virtuel ?</label>
+                            <label for="compte-velo-virtuel">Possède un compte de vélo 🚴 virtuel ?</label>
                             <select id="compte-velo-virtuel" name="entry.1423287822">
                                 <option value="" selected>Sélectionnez...</option>
                                 <option value="MyWhoosh">MyWhoosh</option>
@@ -706,36 +720,48 @@
                             <input type="text" id="heures-entrainement" name="entry.588546788" placeholder="Ex: 5h à 8h...">
                         </div>
 
+                        <!-- GROUPE : PLUS GRANDE DISTANCE / DURÉE ACTUELLE -->
+                        <div class="form-group full-width" style="margin-top: 10px; margin-bottom: 5px;">
+                            <label style="font-size: 1.05rem; color: #004c97;">Quelle est la plus grande distance ou durée dont vous êtes capable actuellement ?</label>
+                        </div>
+
                         <div class="form-group full-width">
-                            <label for="dist-max-natation">Quel est la plus grande distance capable actuellement de natation ?</label>
-                            <select id="dist-max-natation" name="entry.1038235295">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Moins de 500m">Moins de 500m</option>
-                                <option value="Moins de 2000m">Moins de 2000m</option>
-                                <option value="Plus de 2000m">Plus de 2000m</option>
-                            </select>
-                        </div>
+                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                <!-- NATATION -->
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="dist-max-natation">En natation 🏊‍♀️ :</label>
+                                    <select id="dist-max-natation" name="entry.1038235295">
+                                        <option value="" selected>Sélectionnez...</option>
+                                        <option value="Moins de 500m">Moins de 500m</option>
+                                        <option value="Moins de 2000m">Moins de 2000m</option>
+                                        <option value="Plus de 2000m">Plus de 2000m</option>
+                                    </select>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="duree-max-velo">Quel est la plus grande durée capable actuellement en vélo ?</label>
-                            <select id="duree-max-velo" name="entry.1572975010">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Moins de 30min">Moins de 30min</option>
-                                <option value="Moins de 2h">Moins de 2h</option>
-                                <option value="Entre 2 et 5h">Entre 2 et 5h</option>
-                                <option value="Plus de 5h">Plus de 5h</option>
-                            </select>
-                        </div>
+                                <!-- VÉLO -->
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="duree-max-velo">En vélo 🚴 :</label>
+                                    <select id="duree-max-velo" name="entry.1572975010">
+                                        <option value="" selected>Sélectionnez...</option>
+                                        <option value="Moins de 30min">Moins de 30min</option>
+                                        <option value="Moins de 2h">Moins de 2h</option>
+                                        <option value="Entre 2 et 5h">Entre 2 et 5h</option>
+                                        <option value="Plus de 5h">Plus de 5h</option>
+                                    </select>
+                                </div>
 
-                        <div class="form-group">
-                            <label for="duree-max-course">Quel est la plus grande durée capable actuellement en course à pied ?</label>
-                            <select id="duree-max-course" name="entry.1298463206">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Moins de 10min">Moins de 10min</option>
-                                <option value="Moins de 30min">Moins de 30min</option>
-                                <option value="Moins de 2h">Moins de 2h</option>
-                                <option value="Plus de 2h">Plus de 2h</option>
-                            </select>
+                                <!-- COURSE À PIED -->
+                                <div class="form-group" style="margin-bottom: 0;">
+                                    <label for="duree-max-course">En course à pied 🏃‍♂️ :</label>
+                                    <select id="duree-max-course" name="entry.1298463206">
+                                        <option value="" selected>Sélectionnez...</option>
+                                        <option value="Moins de 10min">Moins de 10min</option>
+                                        <option value="Moins de 30min">Moins de 30min</option>
+                                        <option value="Moins de 2h">Moins de 2h</option>
+                                        <option value="Plus de 2h">Plus de 2h</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -745,7 +771,7 @@
                         
                         <!-- QUESTION PRINCIPALE : OUI / NON -->
                         <div class="form-group full-width">
-                            <label>Avez-vous déjà fait un triathlon ? *</label>
+                            <label>Avez-vous déjà fait un triathlon 🏊🏻🚴🏃‍♂️ ? *</label>
                             <div class="radio-group">
                                 <label class="radio-item">
                                     <input type="radio" name="deja_triathlon_choice" value="Oui" onchange="toggleTriathlonHistory(true)"> Oui
