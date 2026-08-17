@@ -1041,39 +1041,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (athletesParent) athletesParent.classList.add("active");
             }
         });
-
-        // Soumission globale du formulaire -> vérifie la concordance des champs de réponse du formualire google.
-document.getElementById('evaluationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    // 1. Récupération du choix Oui/Non
-    const tpChoice = document.querySelector('input[name="tp_choice"]:checked');
-    const hiddenInput = document.getElementById('entry_16_TP');
-    
-    // 2. Traitement selon la sélection :
-    if (tpChoice && tpChoice.value === 'Oui') {
-        const emailValue = document.getElementById('tp-email').value.trim();
-        hiddenInput.value = emailValue !== '' ? emailValue : 'Oui';
-    } else {
-        hiddenInput.value = 'Non';
-    }
-
-    const form = e.target;
-    const formData = new FormData(form);
-
-    fetch("https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse", {
-        method: "POST",
-        body: formData,
-        mode: "no-cors"
-    }).then(() => {
-        form.reset();
-        document.getElementById('message-succes').style.display = 'block';
-        window.scrollTo({ top: document.getElementById('message-succes').offsetTop - 100, behavior: 'smooth' });
-    }).catch(error => {
-        alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
-        console.error("Erreur d'envoi:", error);
-    });
-});
     </script>
 </body>
 </html>
