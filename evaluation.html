@@ -596,17 +596,24 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="odometre-velo">Possède un Odomètre vélo 🚴 intelligent ?</label>
-                            <select id="odometre-velo" name="entry.2105554663">
-                                <option value="" selected>Sélectionnez...</option>
-                                <option value="Aucun">Aucun</option>
-                                <option value="Garmin">Garmin</option>
-                                <option value="Hammerhead">Hammerhead</option>
-                                <option value="VAN RYSEL">VAN RYSEL</option>
-                                <option value="Wahoo">Wahoo</option>
-                            </select>
-                        </div>
+                        <div class="form-group full-width">
+    <label>Possède un Odomètre vélo 🚴 intelligent ?</label>
+    <div class="radio-group" style="flex-wrap: wrap;">
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="Aucun" onclick="toggleOdoOther(false)"> Aucun</label>
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="Garmin" onclick="toggleOdoOther(false)"> Garmin</label>
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="Hammerhead" onclick="toggleOdoOther(false)"> Hammerhead</label>
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="VAN RYSEL" onclick="toggleOdoOther(false)"> VAN RYSEL</label>
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="Wahoo" onclick="toggleOdoOther(false)"> Wahoo</label>
+        <label class="radio-item"><input type="radio" name="entry.2105554663" value="__other_option__" id="odo-other-radio" onclick="toggleOdoOther(true)"> Autre :</label>
+    </div>
+
+    <!-- Champ texte qui apparaît si "Autre" est coché -->
+    <input type="text" 
+           id="odo-other-text" 
+           name="entry.2105554663.other_option_response" 
+           placeholder="Précisez la marque..." 
+           style="display: none; margin-top: 10px;">
+</div>
 
                         <!-- POWERMETER : PUCE OUI / NON -->
                         <div class="form-group">
