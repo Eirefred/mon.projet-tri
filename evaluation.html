@@ -318,84 +318,85 @@
                 </p>
             </div>
 
+            <!-- IFRAME D'ENVOI DISCRET POUR GOOGLE FORMS -->
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {document.getElementById('evaluationForm').reset(); document.getElementById('message-succes').style.display='block';}"></iframe>
+
             <!-- FORMULAIRE SUR MESURE -->
             <div class="form-card">
-                <form id="evaluationForm">
-                    
-                    <div class="form-section-title">1. Informations personnelles</div>
-                    <div class="form-grid">
-                        <!-- Q1 : Nom -->
-                        <div class="form-group">
-                            <label for="nom">Nom *</label>
-                            <input type="text" id="nom" name="entry.1786605269" required>
-                        </div>
-                        <!-- Q2 : Prénom -->
-                        <div class="form-group">
-                            <label for="prenom">Prénom *</label>
-                            <input type="text" id="prenom" name="entry.625392000" required>
-                        </div>
-                        <!-- Q3 : Année de naissance -->
-                        <div class="form-group">
-                            <label for="naissance">Année de naissance *</label>
-                            <input type="number" id="naissance" name="entry.45759550" placeholder="Ex: 1990" required>
-                        </div>
-                        <!-- Q4 : Sexe -->
-                        <div class="form-group">
-                            <label for="sexe">Sexe *</label>
-                            <select id="sexe" name="entry.45765567" required>
-                                <option value="" disabled selected>Sélectionnez...</option>
-                                <option value="Homme">Homme</option>
-                                <option value="Femme">Femme</option>
-                                <option value="Autre">Autre</option>
-                            </select>
-                        </div>
-                        <!-- Q5 : Courriel -->
-                        <div class="form-group full-width">
-                            <label for="courriel">Adresse courriel *</label>
-                            <input type="email" id="courriel" name="entry.45755088" required>
-                        </div>
-                    </div>
+                <form id="evaluationForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse" method="POST" target="hidden_iframe" onsubmit="prepareSubmit();">
+    
+    <div class="form-section-title">1. Informations personnelles</div>
+    <div class="form-grid">
+        <!-- Nom -->
+        <div class="form-group">
+            <label for="nom">Nom *</label>
+            <input type="text" id="nom" name="entry.782793745" required>
+        </div>
+        <!-- Prénom -->
+        <div class="form-group">
+            <label for="prenom">Prénom *</label>
+            <input type="text" id="prenom" name="entry.1228511512" required>
+        </div>
+        <!-- Année de naissance -->
+        <div class="form-group">
+            <label for="naissance">Année de naissance *</label>
+            <input type="number" id="naissance" name="entry.469520182" placeholder="Ex: 1990" required>
+        </div>
+        <!-- Sexe -->
+        <div class="form-group">
+            <label for="sexe">Sexe *</label>
+            <select id="sexe" name="entry.758570987" required>
+                <option value="" disabled selected>Sélectionnez...</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select>
+        </div>
+        <!-- Courriel -->
+        <div class="form-group full-width">
+            <label for="courriel">Adresse courriel *</label>
+            <input type="email" id="courriel" name="entry.222462492" required>
+        </div>
+    </div>
 
-                    <div class="form-section-title">2. Localisation</div>
-                    <div class="form-grid">
-                        <!-- Q6 : Code postal de résidence -->
-                        <div class="form-group">
-                            <label for="postal-residence">Code postal de résidence *</label>
-                            <input type="text" id="postal-residence" name="entry.45805719" placeholder="Ex: H2L 2W2" required>
-                        </div>
-                        <!-- Q7 : Code postal supplémentaire -->
-                        <div class="form-group">
-                            <label for="postal-supp">Code postal supplémentaire</label>
-                            <input type="text" id="postal-supp" name="entry.45796590" placeholder="Ex: Chalet / Secondaire">
-                        </div>
-                    </div>
+    <div class="form-section-title">2. Localisation</div>
+    <div class="form-grid">
+        <!-- Code postal résidence -->
+        <div class="form-group">
+            <label for="postal-residence">Code postal de résidence *</label>
+            <input type="text" id="postal-residence" name="entry.1929458981" placeholder="Ex: H2L 2W2" required>
+        </div>
+        <!-- Code postal supplémentaire -->
+        <div class="form-group">
+            <label for="postal-supp">Code postal supplémentaire</label>
+            <input type="text" id="postal-supp" name="entry.1474176533" placeholder="Ex: Chalet / Secondaire">
+        </div>
+    </div>
 
-                    <div class="form-section-title">3. Équipement (Montre)</div>
-                    <div class="form-grid">
-                        <!-- Q8 : Montre intelligente -->
-                        <div class="form-group">
-                            <label for="montre">Possédez-vous une montre intelligente ?</label>
-                            <select id="montre" name="entry.45776074">
-                                <option value="" disabled selected>Sélectionnez...</option>
-                                <option value="Aucune">Aucune</option>
-                                <option value="Garmin">Garmin</option>
-                                <option value="Apple">Apple Watch</option>
-                                <option value="Coros">Coros</option>
-                                <option value="Polar">Polar</option>
-                                <option value="Suunto">Suunto</option>
-                                <option value="Autre">Autre marque</option>
-                            </select>
-                        </div>
-                        <!-- Q9 : Année d'acquisition -->
-                        <div class="form-group">
-                            <label for="annee-montre">Année d'acquisition (approximative)</label>
-                            <input type="number" id="annee-montre" name="entry.45681910" placeholder="Ex: 2022">
-                        </div>
-                    </div>
+    <div class="form-section-title">3. Équipement (Montre)</div>
+    <div class="form-grid">
+        <!-- Montre -->
+        <div class="form-group">
+            <label for="montre">Possédez-vous une montre intelligente ?</label>
+            <select id="montre" name="entry.1682593433">
+                <option value="" selected>Sélectionnez...</option>
+                <option value="Aucune">Aucune</option>
+                <option value="Garmin">Garmin</option>
+                <option value="Apple Watch">Apple Watch</option>
+                <option value="Coros">Coros</option>
+                <option value="Polar">Polar</option>
+                <option value="Suunto">Suunto</option>
+                <option value="Autre marque">Autre marque</option>
+            </select>
+        </div>
+        <!-- Année d'acquisition -->
+        <div class="form-group">
+            <label for="annee-montre">Année d'acquisition (approximative)</label>
+            <input type="number" id="annee-montre" name="entry.1156506393" placeholder="Ex: 2022">
+        </div>
+    </div>
 
-                    <!-- BOUTON DE SOUMISSION -->
-                    <button type="submit" class="btn-submit">Soumettre mon évaluation 🚀</button>
-                </form>
+    <button type="submit" class="btn-submit">Soumettre mon évaluation 🚀</button>
+</form>
 
                 <!-- MESSAGE DE CONFIRMATION -->
                 <div id="message-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 20px; text-align: center; font-size: 1.1rem; background: #e0f2fe; padding: 15px; border-radius: 10px;">
@@ -439,27 +440,22 @@
     </button>
 
     <script>
-        const form = document.getElementById('evaluationForm');
-        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd671ABEeT60jM9MXjQuP8UFfA4-UpWO1ZOxLFjXf6vWSJNPg/formResponse";
+        var submitted = false;
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+        function prepareSubmit() {
+            submitted = true;
+            
+            // Désactive temporairement le champ de montre s'il est vide pour ne pas envoyer d'option vide à Google Forms
+            const montreSelect = document.getElementById('montre');
+            if (!montreSelect.value) {
+                montreSelect.disabled = true;
+            }
 
-            const formData = new FormData(form);
-
-            fetch(formUrl, {
-                method: 'POST',
-                mode: 'no-cors',
-                body: formData
-            }).then(() => {
-                document.getElementById('message-succes').style.display = 'block';
-                form.reset();
-                document.getElementById('message-succes').scrollIntoView({ behavior: 'smooth' });
-            }).catch(error => {
-                alert("Une erreur s'est produite lors de l'envoi. Veuillez réessayer.");
-                console.error('Erreur:', error);
-            });
-        });
+            // Réactive le champ juste après l'envoi pour conserver l'état du formulaire
+            setTimeout(() => {
+                montreSelect.disabled = false;
+            }, 1000);
+        }
 
         // RETOUR EN HAUT
         const backToTopBtn = document.getElementById("backToTop");
