@@ -22,7 +22,9 @@
     <meta property="og:locale" content="fr_CA">
 
     <style>
-
+*, *::before, *::after {
+    box-sizing: border-box;
+}
         html { scroll-behavior: smooth; }
 
         :root {
@@ -193,7 +195,7 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-                width: 100%;
+                width: 100vw;
                 background: white;
                 padding: 30px 0;
                 box-shadow: 0 10px 20px rgba(0,0,0,0.1);
