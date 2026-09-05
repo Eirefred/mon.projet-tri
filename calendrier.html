@@ -137,102 +137,8 @@
             text-align: center;
         }
 
-        /* BANDEAU ACCOMPAGNEMENT */
-        .cta-accompagnement {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--dark-blue) 100%);
-            max-width: 850px;
-            margin: 0 auto 40px;
-            padding: 25px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 51, 102, 0.2);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            flex-direction: row; 
-            align-items: center;
-            justify-content: center; 
-            gap: 25px;
-            color: white;
-        }
-
-        .cta-icon-img {
-            width: 60px;
-            height: 60px;
-            flex-shrink: 0;
-            object-fit: contain;
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
-        }
-
-        .cta-content {
-            text-align: left; 
-            z-index: 1;
-        }
-
-        .cta-main-text {
-            margin: 0;
-            font-size: 1.35rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: white;
-        }
-
-        .orange-letter {
-            color: var(--accent);
-            font-weight: 800;
-        }
-
-        .cta-sub-text {
-            display: block;
-            margin-top: 8px;
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .cta-link {
-            color: white;
-            font-weight: bold;
-            text-decoration: underline;
-            transition: all 0.3s;
-        }
-        .cta-link:hover { color: var(--accent); }
-
-        .cat-piscine { background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-weight: bold; }
-
         @media (max-width: 834px) {
 
-            #backToTop.visible { display: flex !important; }
-
-            .cta-accompagnement {
-                display: flex !important;
-                flex-direction: column !important; 
-                align-items: center !important;
-                text-align: center !important;
-                padding: 20px !important;
-                max-width: 90% !important; 
-                margin: 0 auto 30px !important;
-            }
-
-            .cta-icon-img {
-                width: 50px !important;
-                height: 50px !important;
-                margin-right: 0 !important;
-                margin-bottom: 10px !important;
-            }
-
-            .cta-content {
-                display: block !important; 
-            }
-
-            .cta-main-text {
-                font-size: 1.2rem !important;
-                text-align: center !important;
-            }
-
-            .cta-sub-text {
-                margin-top: 8px !important;
-                text-align: center !important;
-                font-size: 0.95rem !important;
-            }
             /* Ajustement de la note TQ sur mobile (2 lignes avec logo) */
             .tq-note-container {
                 flex-direction: row !important;
@@ -637,7 +543,7 @@
                 <ul class="nav-links">
                     <li><a href="decouvrir.html">L'OSBL</a></li>
                     <li class="has-dropdown">
-                        <a href="#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
+                        <a href="javascript:void(0)" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
                             <li><a href="autonome.html">Autonome</a></li>
                             <li><a href="accompagnement.html">Accompagnement</a></li>
