@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ===================================================================
+         SEO — REPLACE for each new page.
+         Based on the real <head> of index.html (EN), located in /en/.
+         =================================================================== -->
+    <title>[PAGE TITLE] | mon Projet Tri</title>
+    <meta name="description" content="[SEO DESCRIPTION, 150-160 CHARACTERS]">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="[PAGE TITLE] | mon Projet Tri">
+    <meta property="og:description" content="[SHORT DESCRIPTION FOR SOCIAL SHARING]">
+    <meta property="og:url" content="https://mon.projet-tri.org/en/[page-name].html">
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="en_CA">
+    <meta property="og:image" content="https://mon.projet-tri.org/og/og-[page-name].jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <link rel="canonical" href="https://mon.projet-tri.org/en/[page-name].html">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
+
+    <!-- FR/EN versions of THIS page. A forgotten prefix or wrong filename here
+         is exactly what caused several dead links across the site — double
+         check both URLs before publishing. -->
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/[page-name].html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/[page-name].html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/[page-name].html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&display=swap" rel="stylesheet">
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
+            --bg-fresh: #f4f7fa;
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-blue: #0481fb;
+            --text-light: #5A6A7A;
+            --shadow-punchy: 0 20px 40px rgba(0, 76, 151, 0.12);
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Prevents the sticky menu from hiding the top of a section when
+           clicking an anchor — add this page's section ids here. */
+        #contact {
+            scroll-margin-top: 30px;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        /* NOTE: background-color intentionally uses an --accent variable that
+           is NOT defined above — that's on purpose, it keeps the button
+           transparent (only the SVG icon stays visible). Don't "fix" this. */
+        #backToTop {
+            display: none; /* Hidden by default on desktop */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: var(--accent);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2);
+            margin-left: 15px;
+            padding-left: 15px;
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        .price-tag-new {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: #D65F3A;
+            font-weight: 600;
+            line-height: 1;
+            margin-top: 2px;
+            display: block;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- PAGE CONTENT AREA ---
+             Starter skeleton, replace with the page's real content. --- */
+        .content-section {
+            padding: 80px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh;
+        }
+
+        .content-section h1 {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: var(--combined-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .main-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-punchy);
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background: var(--combined-gradient);
+            color: #ffffff !important;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(214, 95, 58, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(214, 95, 58, 0.4);
+            opacity: 0.95;
+        }
+
+        /* --- FOOTER --- */
+        footer { background: #0481fb; color: white; padding: 50px 0; text-align: center; border-top: 4px solid #FF6600; }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        .btn-zeffy-fr {
+            background-color: #D65F3A;
+            color: #ffffff !important;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            display: inline-block;
+            margin: 20px 0;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- ATHLETES / PARTNERS DROPDOWN MENU --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        /* ===================================================================
+           MOBILE — a single @media block, deliberately kept together (unlike
+           index.html where these rules are scattered across several separate
+           @media blocks). Do NOT create a second "@media (max-width: 834px)"
+           block elsewhere on this page: that exact duplication is what broke
+           the mobile menu on almost every page of the site.
+           =================================================================== */
+        @media (max-width: 834px) {
+            header { padding: 5px 0 !important; }
+            #backToTop.visible { display: flex !important; }
+
+            .logo-area img { height: 40px !important; }
+
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .price-tag-new { font-size: 0.65rem; }
+
+            .content-section { padding: 40px 0 60px 0; }
+
+            .menu-icon { display: flex; z-index: 1001; }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                gap: 15px;
+                text-align: left;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            #menu-toggle:checked ~ .nav-links { display: flex; }
+
+            /* Fixed-width box centered on screen */
+            .nav-links > li {
+                width: 180px;
+                text-align: left;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            /* AXIS 1: main links */
+            .nav-links > li > a {
+                display: block;
+                padding: 6px 0;
+                width: 100%;
+                text-align: left;
+                box-sizing: border-box;
+            }
+
+            /* Submenu */
+            .dropdown-menu {
+                display: block;
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background-color: transparent;
+                margin: 0;
+                border: none;
+                border-radius: 0;
+                min-width: unset;
+                width: 100%;
+                padding: 0;
+                list-style: none;
+            }
+            .dropdown-menu::before { display: none; }
+            .dropdown-menu li { width: 100%; text-align: left; margin: 0; padding: 0; }
+            /* AXIS 2: sub-links (offset 20px to the right of Axis 1) */
+            .dropdown-menu a {
+                display: block;
+                text-align: left;
+                padding: 6px 0 6px 20px;
+                font-size: 0.95rem;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            .dropdown-menu a:hover {
+                padding-left: 20px;
+                background-color: transparent;
+                color: #D65F3A !important;
+            }
+
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
+                </div>
+                <div class="region-stack">
+                    <span class="region-mention">Across Quebec</span>
+                </div>
+            </div>
+            <nav>
+                <input type="checkbox" id="menu-toggle" style="display: none;">
+                <label for="menu-toggle" class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <ul class="nav-links">
+                    <li><a href="discover.html">About Us</a></li>
+                    <li class="has-dropdown">
+                        <!-- The "index.html" prefix is required: the #athlètes
+                             anchor only exists on index.html, not on this page. -->
+                        <a href="index.html#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
+                            <li><a href="club.html">Club</a></li>
+                            <li><a href="your-story.html"><i>Your story</i></a></li>
+                        </ul>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="receive.html">Receive</a></li>
+                            <li><a href="provide.html">Provide</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="calendar.html">Calendar'26</a></li>
+                    <li class="lang-switcher">
+                        <span class="lang-label" style="color: #ccc;">FR</span>
+                        <label class="switch">
+                            <!-- ⚠️ REPLACE: put the real FR filename for THIS page.
+                                 This is the most commonly forgotten step when
+                                 duplicating a page (language switch pointing to
+                                 the old page). -->
+                            <input type="checkbox" checked onclick="window.location.href='../[nom-de-la-page].html'">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="lang-label">EN</span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ===================================================================
+         CONTENT AREA — starter skeleton to replace.
+         =================================================================== -->
+    <section class="content-section">
+        <div class="container">
+            <h1>[PAGE MAIN TITLE]</h1>
+            <div class="main-card">
+                <p>[Intro text for the page.]</p>
+                <a href="index.html#contact" class="btn-cta">[Call to action]</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <a href="index.html">
+                    <img src="../MPT_New_logo_white.png" alt="mon Projet Tri - Nonprofit dedicated to triathlon in Quebec" style="height: 60px;">
+                </a>
+            </div>
+            <div class="footer-text">
+                <p style="margin-bottom: 12px; margin-top: 0;">
+                    &copy; 2026
+                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span>
+                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span>
+                    - Nonprofit dedicated to triathlon in Quebec
+                </p>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
+            </div>
+            <div class="footer-zones">
+                <details>
+                    <summary>View all service areas covered</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
+                </details>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
+        <svg viewBox="0 0 24 24">
+            <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+        </svg>
+    </button>
+
+    <script>
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener('scroll', function() {
+            if (window.innerWidth <= 834) {
+                if (window.pageYOffset > 300) {
+                    backToTopBtn.classList.add("visible");
+                } else {
+                    backToTopBtn.classList.remove("visible");
+                }
+            }
+        });
+
+        backToTopBtn.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
+</body>
+</html>

@@ -269,23 +269,6 @@
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
             .pros-cons-container { grid-template-columns: 1fr; }
-            .dropdown-menu {
-                display: block; 
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background-color: transparent;
-                margin: 5px auto 0 auto;
-                border-radius: 0;
-                border: none;
-                min-width: unset;
-                width: 100%;
-                padding: 0;
-            }
-            .dropdown-menu::before { display: none; }
-            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
-            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
-
             header { padding: 5px 0 !important; }
             .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
             .region-mention { font-size: 0.7rem; }
@@ -337,6 +320,8 @@
         background-color: transparent;
         margin: 0;
         border: none;
+        border-radius: 0;
+        min-width: unset;
         width: 100%;
         padding: 0;
         list-style: none;
@@ -368,7 +353,6 @@
         background-color: transparent;
         color: #D65F3A !important;
     }
-            #menu-toggle:checked ~ .nav-links { display: flex; }
             #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }

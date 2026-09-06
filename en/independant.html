@@ -192,10 +192,6 @@
             }
         }
 
-        .browser-tabs-container::-webkit-scrollbar {
-            display: none;
-        }
-
         .tab-button {
             display: flex;
             align-items: center;
@@ -585,23 +581,6 @@
         @media (max-width: 834px) {
             #backToTop.visible { display: flex !important; }
             .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
-            .dropdown-menu {
-                display: block; 
-                position: static;
-                transform: none;
-                box-shadow: none;
-                background-color: transparent;
-                margin: 5px auto 0 auto;
-                border-radius: 0;
-                border: none;
-                min-width: unset;
-                width: 100%;
-                padding: 0;
-            }
-            .dropdown-menu::before { display: none; }
-            .dropdown-menu a { text-align: center; padding: 10px 15px; font-size: 0.95rem; }
-            .dropdown-menu a:hover { padding-left: 15px; background-color: transparent; color: #D65F3A !important; }
-
             header { padding: 5px 0 !important; }
             .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
             .region-mention { font-size: 0.7rem; }
@@ -653,6 +632,8 @@
         background-color: transparent;
         margin: 0;
         border: none;
+        border-radius: 0;
+        min-width: unset;
         width: 100%;
         padding: 0;
         list-style: none;
@@ -684,7 +665,6 @@
         background-color: transparent;
         color: #D65F3A !important;
     }
-            #menu-toggle:checked ~ .nav-links { display: flex; }
             #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
             #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
             #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
@@ -768,10 +748,6 @@
         }
 
         @media (max-width: 834px) {
-            .browser-tabs-wrapper {
-                position: relative;
-            }
-
             .browser-tabs-wrapper::after {
                 content: "";
                 position: absolute;
@@ -1950,7 +1926,6 @@
                 <a href="https://www.gatineau.ca/portail/default.aspx?p=activites_evenements_idees_sorties/plein_air_urbain/sites_plein_air/lac_leamy" target="_blank" class="link-action">Visit website ↗</a>
             </div>
         </div>
-           </div>
     </details>
 </div>
 
