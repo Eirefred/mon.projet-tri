@@ -287,12 +287,12 @@
             min-height: 100vh;
             min-width: 177.77vh; /* Ratio 16:9 */
             transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity 0.5s ease;
+            opacity: 0; /* cachée par défaut : pas de transition ici pour un masquage INSTANTANÉ */
         }
 
         .video-background iframe.is-playing {
             opacity: 1;
+            transition: opacity 0.4s ease; /* l'apparition, elle, se fait en fondu */
         }
 
         /* Superposition sombre pour garder le texte lisible */
@@ -1952,17 +1952,24 @@ function prevReview() {
     updateReviewDisplay();
 }
     </script>
-<!-- Gestion du fondu de la vidéo hero : on ne l'affiche que lorsqu'elle est RÉELLEMENT en lecture,
-     ce qui évite de voir apparaître l'icône play/pause de YouTube au démarrage -->
+<!-- Gestion du fondu de la vidéo hero : on ne l'affiche QUE pendant l'état "PLAYING".
+     YouTube affiche un gros bouton play/pause au centre dès que le lecteur n'est pas
+     en lecture (mise en mémoire tampon, pause, redémarrage de boucle...), et ce
+     bouton n'est PAS masquable via les paramètres d'URL (controls=0 ne cache que la
+     barre du bas). On masque donc la vidéo à chaque fois que cet état survient,
+     y compris à chaque redémarrage de la boucle (loop=1). -->
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
     function onYouTubeIframeAPIReady() {
+        const iframe = document.getElementById('heroYtVideo');
         new YT.Player('heroYtVideo', {
             events: {
                 onStateChange: function(event) {
-                    const iframe = document.getElementById('heroYtVideo');
                     if (event.data === YT.PlayerState.PLAYING) {
                         iframe.classList.add('is-playing');
+                    } else {
+                        // BUFFERING, PAUSED, CUED, ENDED... on cache pour éviter le flash de l'icône
+                        iframe.classList.remove('is-playing');
                     }
                 }
             }
