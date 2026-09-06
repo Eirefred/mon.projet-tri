@@ -199,6 +199,12 @@
     width: 100%;
     height: 100%;
     border: 0;
+    opacity: 0; /* cachée par défaut : masquage instantané, pas de transition ici */
+}
+
+.hero-video-wrapper iframe.is-playing {
+    opacity: 1;
+    transition: opacity 0.4s ease; /* l'apparition se fait en fondu */
 }
 
 /* Voile sombre transparent par-dessus la vidéo pour assurer la lisibilité des textes */
@@ -893,7 +899,8 @@
     <!-- Vidéo YouTube en arrière-plan (lecture auto, boucle, muet, sans contrôles) -->
     <div class="hero-video-wrapper">
         <iframe 
-            src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&loop=1&playlist=kbHfR8u0smo&playsinline=1&rel=0&disablekb=1" 
+            id="heroYtVideo"
+            src="https://www.youtube-nocookie.com/embed/kbHfR8u0smo?autoplay=1&mute=1&controls=0&loop=1&playlist=kbHfR8u0smo&playsinline=1&rel=0&disablekb=1&enablejsapi=1" 
             title="Vidéo de fond Matthieu Artisan" 
             frameborder="0" 
             allow="autoplay; encrypted-media">
@@ -1185,6 +1192,30 @@ function resetTimer() {
 // Lancement automatique au chargement
 startTimer();
     </script>
+
+<!-- Gestion du fondu de la vidéo hero : on ne l'affiche QUE pendant l'état "PLAYING".
+     YouTube affiche un gros bouton play/pause au centre dès que le lecteur n'est pas
+     en lecture (mise en mémoire tampon, pause, redémarrage de boucle...), et ce
+     bouton n'est PAS masquable via les paramètres d'URL (controls=0 ne cache que la
+     barre du bas). On masque donc la vidéo à chaque fois que cet état survient,
+     y compris à chaque redémarrage de la boucle (loop=1). -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    function onYouTubeIframeAPIReady() {
+        const iframe = document.getElementById('heroYtVideo');
+        new YT.Player('heroYtVideo', {
+            events: {
+                onStateChange: function(event) {
+                    if (event.data === YT.PlayerState.PLAYING) {
+                        iframe.classList.add('is-playing');
+                    } else {
+                        iframe.classList.remove('is-playing');
+                    }
+                }
+            }
+        });
+    }
+</script>
 
 </body>
 </html>
