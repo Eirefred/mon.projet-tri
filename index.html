@@ -287,6 +287,12 @@
             min-height: 100vh;
             min-width: 177.77vh; /* Ratio 16:9 */
             transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .video-background iframe.is-playing {
+            opacity: 1;
         }
 
         /* Superposition sombre pour garder le texte lisible */
@@ -1262,8 +1268,7 @@
             <!-- Conteneur de la vidéo YouTube en arrière-plan -->
             <div class="video-background">
                 <!-- Identifiant de la nouvelle vidéo : NsGEj3Itu14 -->
-                <iframe src="https://www.youtube-nocookie.com/embed/NsGEj3Itu14?autoplay=1&mute=1&loop=1&playlist=NsGEj3Itu14&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3" 
-        loading="lazy"
+                <iframe id="heroYtVideo" src="https://www.youtube-nocookie.com/embed/NsGEj3Itu14?autoplay=1&mute=1&loop=1&playlist=NsGEj3Itu14&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1&playsinline=1&disablekb=1"
         frameborder="0" 
         referrerpolicy="strict-origin-when-cross-origin"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -1947,6 +1952,23 @@ function prevReview() {
     updateReviewDisplay();
 }
     </script>
+<!-- Gestion du fondu de la vidéo hero : on ne l'affiche que lorsqu'elle est RÉELLEMENT en lecture,
+     ce qui évite de voir apparaître l'icône play/pause de YouTube au démarrage -->
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+    function onYouTubeIframeAPIReady() {
+        new YT.Player('heroYtVideo', {
+            events: {
+                onStateChange: function(event) {
+                    const iframe = document.getElementById('heroYtVideo');
+                    if (event.data === YT.PlayerState.PLAYING) {
+                        iframe.classList.add('is-playing');
+                    }
+                }
+            }
+        });
+    }
+</script>
 <!-- BADGES CIRCULAIRES FLOTTANTS À FOND FLOUTÉ -->
 <div class="floating-badges-container">
     <a href="calendrier.html" class="circle-badge" title="Consultez le calendrier des courses 2026">
