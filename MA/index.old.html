@@ -143,17 +143,12 @@
         .side-tri::before { background-position: left center; }
         .side-run::before { background-position: right center; }
 
-        /* CONTENU & ALIGNEMENT FLEXBOX PARFAIT
-           Seuls logo + titre + bouton comptent dans la hauteur de .content :
-           c'est ce bloc-là qui est centré par .side, toujours à l'identique
-           des deux côtés. .info-box est sorti du flux (position absolute,
-           voir plus bas) pour ne jamais influencer ce centrage, même si son
-           texte est plus ou moins long d'un côté à l'autre. */
+        /* CONTENU & ALIGNEMENT FLEXBOX PARFAIT */
         .content {
             position: relative;
             z-index: 3;
             color: var(--text-dark);
-            padding: 40px 20px 0;
+            padding: 40px 20px;
             width: 100%;
             max-width: 380px;
             transition: transform 0.5s ease;
@@ -165,26 +160,16 @@
 
         /* ZONE LOGO : HAUTEUR FIXE POUR ALIGNER LES DEUX CÔTÉS */
         .logo-box {
-            height: 165px;
+            height: 170px; 
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             align-items: center;
         }
 
-        /* ZONE TITRE : HAUTEUR RÉSERVÉE IDENTIQUE POUR ALIGNER LES DEUX CÔTÉS,
-           QUE LE TITRE FASSE 1 OU 3 LIGNES */
-        .title-box {
-            min-height: 78px;
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Alignement et résolution identiques pour les deux images (110px +30% = 143px) */
+        /* Alignement et résolution identiques pour les deux images */
         .logo-img {
-            height: 143px;
+            height: 110px;
             width: auto;
             max-width: 90%;
             margin: 0 auto 15px auto;
@@ -196,7 +181,7 @@
 
         /* ZONE BOUTON : ALIGNÉ EN BAS */
         .btn-box {
-            margin-top: 10px;
+            margin-top: 30px;
         }
 
         .btn {
@@ -254,67 +239,34 @@
             .side-tri::before { background-position: 20% center !important; }
             .side-run::before { background-position: 85% center !important; }
 
-            .logo-box { height: 125px; }
-            .logo-img { height: 104px; }
+            .logo-box { height: 130px; }
+            .logo-img { height: 80px; }
 
-            .title-box { min-height: 54px; }
-
-            .content { padding: 10px 20px 0; margin-top: 0; }
-
-            .btn-box { margin-top: 8px; }
+            .content { padding: 10px 20px; margin-top: 0; }
+            .content h2 { font-size: 0.85rem; }
+            
+            .btn-box { margin-top: 15px; }
             .btn { 
                 padding: 10px 25px; 
                 font-size: 0.75rem;
             }
         }
 
-        .title-box h2 {
-    margin: 0;
-    font-size: 1.15rem;
+        .logo-box h2 {
+    margin: 12px 0 6px;
+    font-size: 1.35rem;
     font-weight: 800;
-    letter-spacing: 1.2px;
-    line-height: 1.25;
+    letter-spacing: 1.5px;
+    line-height: 1.15;
 }
 
-/* .info-box est positionné en absolute, ancré juste sous .btn-box (top:100%
-   de .content), donc sa longueur (2 lignes à gauche, 4 à droite) ne compte
-   plus dans la hauteur de .content ni dans son centrage : logo, titre et
-   bouton restent à la même hauteur des deux côtés quel que soit le texte
-   en dessous. */
-.info-box {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    margin-top: 22px;
-    padding: 0 20px;
-}
-
-.info-box p {
-    margin: 0 0 5px;
+.logo-box h3 {
+    margin: 0;
     font-size: 0.72rem;
     font-weight: 500;
-    letter-spacing: 1.3px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     opacity: 0.75;
-    line-height: 1.4;
-    white-space: nowrap;
-}
-
-.info-box p:last-child {
-    margin-bottom: 0;
-}
-
-/* ÉCRANS LARGES (mise en page 2 colonnes) : plus de place pour que
-   les lignes tiennent sur une seule ligne */
-@media (min-width: 835px) {
-    .content { max-width: 520px; }
-}
-
-@media (max-width: 834px) {
-    .info-box { margin-top: 12px; }
-    .info-box p { font-size: 0.65rem; letter-spacing: 1px; white-space: normal; }
-    .title-box h2 { font-size: 0.8rem; letter-spacing: 1px; }
 }
     </style>
 </head>
@@ -330,16 +282,11 @@
             <div class="content">
                 <div class="logo-box">
     <img src="matthieu-artisan.specialiste.png" alt="Plomberie & Chauffage - Dépannage et Installation" class="logo-img">
-</div>
-                <div class="title-box">
     <h2>POÊLES À BOIS & GRANULÉS</h2>
+    <h3>INSTALLATION • MISE EN CONFORMITÉ</h3>
 </div>
                 <div class="btn-box">
                     <div class="btn">Accéder au site</div>
-                </div>
-                <div class="info-box">
-                    <p>Conduit de fumées / Tubage flexible</p>
-                    <p>Mise en conformité</p>
                 </div>
             </div>
         </a>
@@ -349,18 +296,11 @@
             <div class="content">
                 <div class="logo-box">
     <img src="matthieu-artisan.expertise.2.png" alt="Expertise énergie bois" class="logo-img">
-</div>
-                <div class="title-box">
-    <h2>EXPERTISE FUMISTERIE PARTICULIERS / PROFESSIONNELS</h2>
+    <h2>EXPERTISE TECHNIQUE</h2>
+    <h3>DIAGNOSTIC • MISSION DE SAPITEUR</h3>
 </div>
                 <div class="btn-box">
                     <div class="btn">Accéder au site</div>
-                </div>
-                <div class="info-box">
-                    <p>Audits avant-vente immobilière</p>
-                    <p>Diagnostics dysfonctionnement / après sinistre</p>
-                    <p>Sapiteur d'experts amiables ou judiciaires</p>
-                    <p>Conseil de partie</p>
                 </div>
             </div>
         </a>
