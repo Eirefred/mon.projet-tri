@@ -24,7 +24,7 @@
     <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <script src="https://www.google.com/recaptcha/api.js?render=6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfJ08stAAAAAF5jjChfZXA6Hy1WXnSolHBZz9_i"></script>
 
     <style>
         html { scroll-behavior: smooth; }
@@ -615,7 +615,7 @@
     // =========================================================
     // Collez ici l'URL de votre application Web Apps Script (se termine par /exec)
     const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxDlQbtaB2ukO7M1RFo2xm0Kn9dsWYwg4o3jjPJSPmV_o41kNBprLALbqhStAf_MDOg/exec";
-    const RECAPTCHA_SITE_KEY = '6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De';
+    const RECAPTCHA_SITE_KEY = '6LfJ08stAAAAAF5jjChfZXA6Hy1WXnSolHBZz9_i';
 
     // Réduit la photo (max 2000 px, JPEG) pour un envoi rapide, même depuis un cellulaire
     function preparerPhoto(fichier) {
@@ -732,7 +732,7 @@
             if (erreur.message === 'trop-gros') {
                 alert("Votre photo est trop volumineuse. Veuillez choisir une image de moins de 20 Mo (ou une photo JPEG).");
             } else {
-                alert("Une erreur est survenue lors de l'envoi de votre participation. Veuillez réessayer.");
+                alert("Une erreur est survenue lors de l'envoi de votre participation. Veuillez réessayer.\n\n(Détail : " + erreur.message + ")");
             }
         }
     });
