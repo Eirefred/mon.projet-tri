@@ -454,7 +454,8 @@
                 <div style="margin-bottom: 20px; padding-bottom: 10px;"></div> 
                 <div style="margin-top: 40px;"></div>
 
-                <form id="contestForm" action="https://forminit.com/f/nwqvzn8s48e" method="POST" enctype="multipart/form-data">
+                <!-- Envoi vers Google Apps Script (tableur + Drive + courriel), voir le script en bas de page -->
+                <form id="contestForm">
                     
                     <div class="form-row">
                         <div class="form-group">
@@ -517,7 +518,11 @@
                         <textarea id="commentaire" name="fi-text-commentaire" rows="4" placeholder="Racontez-nous l'histoire de votre zone de transition ou ajoutez des précisions..."></textarea>
                     </div>
 
-                    <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
+                    <!-- Champ piège anti-robot : invisible pour les humains -->
+                    <div style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;" aria-hidden="true">
+                        <label for="site_web">Ne pas remplir</label>
+                        <input type="text" id="site_web" name="site_web" tabindex="-1" autocomplete="off">
+                    </div>
 
                     <div class="opt-in-box">
                         <div class="opt-in-title">Autorisations de communication</div>
@@ -557,6 +562,12 @@
 
                     <button type="submit" id="submit-btn" class="submit-btn">Soumettre ma participation</button>
                 </form>
+
+                <!-- MESSAGE DE CONFIRMATION -->
+                <div id="concours-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 25px; text-align: center; font-size: 1.1rem; background: #e0f2fe; padding: 25px; border-radius: 12px; border: 1px solid #bae6fd;">
+                    ✅ Merci ! Votre participation a bien été enregistrée.<br>
+                    <span style="font-weight: normal; font-size: 0.95rem;">Bonne chance ! Les gagnants seront contactés par courriel.</span>
+                </div>
 
             </div>
         </div>
@@ -599,56 +610,131 @@
     <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
 
     <script>
-    document.getElementById('contestForm').addEventListener('submit', function(event) {
+    // =========================================================
+    //  ENVOI DU FORMULAIRE VERS GOOGLE APPS SCRIPT
+    // =========================================================
+    // Collez ici l'URL de votre application Web Apps Script (se termine par /exec)
+    const URL_SCRIPT = "https://script.google.com/macros/s/AKfycbxDlQbtaB2ukO7M1RFo2xm0Kn9dsWYwg4o3jjPJSPmV_o41kNBprLALbqhStAf_MDOg/exec";
+    const RECAPTCHA_SITE_KEY = '6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De';
+
+    // Réduit la photo (max 2000 px, JPEG) pour un envoi rapide, même depuis un cellulaire
+    function preparerPhoto(fichier) {
+        const nomBase = fichier.name.replace(/\.[^.]+$/, '');
+        return new Promise((resolve, reject) => {
+            const url = URL.createObjectURL(fichier);
+            const img = new Image();
+            img.onload = () => {
+                const max = 2000;
+                const ratio = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+                const canvas = document.createElement('canvas');
+                canvas.width = Math.round(img.naturalWidth * ratio);
+                canvas.height = Math.round(img.naturalHeight * ratio);
+                canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+                URL.revokeObjectURL(url);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                resolve({ data: dataUrl.split(',')[1], type: 'image/jpeg', name: nomBase + '.jpg' });
+            };
+            img.onerror = () => {
+                // Format non lisible par le navigateur (ex. HEIC sur ordinateur) : envoi du fichier original
+                URL.revokeObjectURL(url);
+                if (fichier.size > 20 * 1024 * 1024) {
+                    reject(new Error('trop-gros'));
+                    return;
+                }
+                const lecteur = new FileReader();
+                lecteur.onload = () => resolve({
+                    data: lecteur.result.split(',')[1],
+                    type: fichier.type || 'application/octet-stream',
+                    name: fichier.name
+                });
+                lecteur.onerror = () => reject(lecteur.error);
+                lecteur.readAsDataURL(fichier);
+            };
+            img.src = url;
+        });
+    }
+
+    // Jeton reCAPTCHA (si reCAPTCHA ne répond pas, on envoie quand même)
+    function obtenirJetonRecaptcha() {
+        return new Promise((resolve) => {
+            if (typeof grecaptcha === 'undefined') { resolve(''); return; }
+            grecaptcha.ready(() => {
+                grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+                    .then(resolve)
+                    .catch(() => resolve(''));
+            });
+        });
+    }
+
+    document.getElementById('contestForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const form = this;
         const fileInput = document.getElementById('photo');
         const fileLabelZone = document.getElementById('file-label-zone');
         const overlay = document.getElementById('loading-overlay');
-        const form = this;
-        
+        const bouton = document.getElementById('submit-btn');
+
         // 1. Validation de la photo obligatoirement sélectionnée
         if (fileInput.files.length === 0) {
-            event.preventDefault(); 
             alert("Attention : Veuillez inclure la photo de votre zone de transition pour valider votre participation au concours.");
             fileLabelZone.classList.add('error-flash');
             setTimeout(() => fileLabelZone.classList.remove('error-flash'), 500);
-            return false;
+            return;
         }
 
-        // Fonction pour afficher le Popup d'attente
-        function showLoadingPopup() {
-            if (overlay) {
-                overlay.style.display = 'flex';
+        const valeur = (id) => document.getElementById(id).value.trim();
+        const radio = (nom) => (document.querySelector(`input[name="${nom}"]:checked`) || {}).value || '';
+
+        if (overlay) overlay.style.display = 'flex';
+        bouton.disabled = true;
+
+        try {
+            const [photo, jeton] = await Promise.all([
+                preparerPhoto(fileInput.files[0]),
+                obtenirJetonRecaptcha()
+            ]);
+
+            const donnees = {
+                prenom: valeur('prenom'),
+                nom: valeur('nom'),
+                age: valeur('age'),
+                courriel: valeur('courriel'),
+                adresse: valeur('adresse'),
+                appartement: valeur('appartement'),
+                ville: valeur('ville'),
+                province: valeur('province'),
+                postal: valeur('postal').toUpperCase(),
+                commentaire: valeur('commentaire'),
+                infolettre_projet_tri: radio('fi-text-infolettre-projet-tri'),
+                infolettre_boucherville: radio('fi-text-infolettre-boucherville'),
+                infolettre_saint_lambert: radio('fi-text-infolettre-saint-lambert'),
+                site_web: valeur('site_web'),
+                recaptcha: jeton,
+                photo: photo
+            };
+
+            // Envoi en texte brut : évite les blocages CORS avec Apps Script
+            const reponse = await fetch(URL_SCRIPT, { method: 'POST', body: JSON.stringify(donnees) });
+            const resultat = await reponse.json();
+            if (!resultat.ok) throw new Error(resultat.erreur || 'Erreur inconnue');
+
+            if (overlay) overlay.style.display = 'none';
+            form.style.display = 'none';
+            const succes = document.getElementById('concours-succes');
+            succes.style.display = 'block';
+            succes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+        } catch (erreur) {
+            console.error("Erreur d'envoi :", erreur);
+            if (overlay) overlay.style.display = 'none';
+            bouton.disabled = false;
+            if (erreur.message === 'trop-gros') {
+                alert("Votre photo est trop volumineuse. Veuillez choisir une image de moins de 20 Mo (ou une photo JPEG).");
+            } else {
+                alert("Une erreur est survenue lors de l'envoi de votre participation. Veuillez réessayer.");
             }
         }
-
-        // Fonction pour masquer le Popup si besoin
-        function hideLoadingPopup() {
-            if (overlay) {
-                overlay.style.display = 'none';
-            }
-        }
-
-        // 2. Si le reCAPTCHA est déjà prêt, on affiche le popup et on envoie
-        if (document.getElementById('g-recaptcha-response').value) {
-            showLoadingPopup();
-            return true;
-        }
-
-        event.preventDefault();
-
-        // Affichage immédiat du popup pendant l'exécution de reCAPTCHA
-        showLoadingPopup();
-
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6LfQJ_ssAAAAAF3CM07Z3PAvFwHd88QN-RIsX7De', {action: 'submit'}).then(function(token) {
-                document.getElementById('g-recaptcha-response').value = token;
-                form.submit();
-            }).catch(function(error) {
-                // En cas d'échec du captcha, on masque le popup pour permettre de réessayer
-                hideLoadingPopup();
-                alert("Une erreur s'est produite lors de la vérification reCAPTCHA. Veuillez réessayer.");
-            });
-        });
     });
 
     function updateFileStatus() {
