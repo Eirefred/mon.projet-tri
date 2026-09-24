@@ -1485,7 +1485,8 @@
                 </p>
 
                 <!-- L'attribut novalidate bloque les popups automatiques et anglais du navigateur -->
-                <form action="https://formspree.io/f/mgolvwnq" method="POST" novalidate>
+                <!-- Envoi vers Google Forms (voir le script en bas de page) -->
+                <form id="contactForm" novalidate>
                     
                     <!-- Ligne 1 : Nom et Choix du contact -->
                     <div class="form-row">
@@ -1596,6 +1597,11 @@
                         <button type="submit" id="btn-submit-text" class="btn-submit">Envoyer mon message</button>
                     </div>
                 </form>
+
+                <!-- MESSAGE DE CONFIRMATION -->
+                <div id="contact-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 25px; text-align: center; font-size: 1.1rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
+                    ✅ Merci ! Votre demande a bien été transmise. Notre équipe communiquera avec vous sous peu.
+                </div>
             </div>
         </div>
     </section>
@@ -1748,7 +1754,7 @@ document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
             const emailInput = document.getElementById('email');
             const emailError = document.getElementById('email-error');
             const phoneError = document.getElementById('phone-error');
-            const contactForm = document.querySelector('form');
+            const contactForm = document.getElementById('contactForm');
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
 
@@ -1859,9 +1865,62 @@ document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
                         }
                     }
 
-                    if (!isValid) {
-                        e.preventDefault();
+                    e.preventDefault();
+                    if (!isValid) return;
+
+                    // --- Envoi vers Google Forms ---
+                    const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfGbL2p50VEyO-tyJn_Jqv7aD4vqZyy-bA4rM3mhLpqqSTLJg/formResponse";
+
+                    // Champ de la page -> identifiant de la question Google Forms
+                    const CHAMPS = {
+                        nom:               "entry.1503322578",
+                        type_contact:      "entry.176779491",
+                        profil:            "entry.1072932402",
+                        email:             "entry.704328293",
+                        telephone:         "entry.1304694612",
+                        date_1:            "entry.68117031",
+                        tranche_horaire_1: "entry.956949108",
+                        date_2:            "entry.1379371946",
+                        tranche_horaire_2: "entry.219589853",
+                        message:           "entry.736131080"
+                    };
+
+                    // Valeurs lisibles dans vos réponses Google
+                    const LIBELLES = {
+                        message: "Simple message",
+                        appel: "Appel téléphonique",
+                        athlete: "Athlète",
+                        partenaire: "Partenaire",
+                        matin: "Matin (8h - 12h)",
+                        "apres-midi": "Après-midi (12h - 17h)",
+                        soir: "Soir (17h - 20h)"
+                    };
+
+                    const source = new FormData(contactForm);
+                    const donnees = new FormData();
+                    for (const [champ, entry] of Object.entries(CHAMPS)) {
+                        const valeur = (source.get(champ) || "").toString().trim();
+                        if (valeur !== "") donnees.append(entry, LIBELLES[valeur] || valeur);
                     }
+
+                    const bouton = document.getElementById('btn-submit-text');
+                    const texteBouton = bouton.textContent;
+                    bouton.disabled = true;
+                    bouton.textContent = "Envoi en cours...";
+
+                    fetch(GOOGLE_FORM_URL, { method: "POST", body: donnees, mode: "no-cors" })
+                        .then(() => {
+                            contactForm.style.display = 'none';
+                            const succes = document.getElementById('contact-succes');
+                            succes.style.display = 'block';
+                            succes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        })
+                        .catch((error) => {
+                            console.error("Erreur d'envoi :", error);
+                            alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+                            bouton.disabled = false;
+                            bouton.textContent = texteBouton;
+                        });
                 });
             }
 
