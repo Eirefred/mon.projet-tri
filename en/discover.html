@@ -674,6 +674,24 @@
             .mis-aud { padding: 18px 18px; }
             .mis-h3 { font-size: 1.15rem; }
         }
+
+        /* ===== CORRECTIFS MOBILE : GENÈSE & ÉCOSYSTÈME ===== */
+        @media (max-width: 834px) {
+            .tab-content-wrapper { overflow: hidden; }
+            .tab-panel .section-title { font-size: 1.6rem; }
+            /* Genèse : photo du fondateur sous le texte */
+            .founder-container { flex-direction: column; align-items: center; gap: 20px; }
+            .founder-aside { width: 100%; }
+            /* Écosystème : cartes empilées, marges réduites */
+            .profile-grid { grid-template-columns: 1fr !important; gap: 20px; }
+            .profile-card { padding: 22px 18px !important; min-width: 0; }
+            .profile-card h3 { font-size: 1.25rem !important; }
+            .profile-card ul { padding-left: 18px !important; font-size: 1rem !important; }
+            .ecosystem-container { grid-template-columns: minmax(0, 1fr); gap: 20px; overflow: hidden; }
+            .ecosystem-container > * { min-width: 0; }
+            /* Logo interactif : dessiné à 620 px puis réduit pour tenir dans l'écran (voir script) */
+            .ecosystem-view { width: 620px; max-width: none; transform-origin: top left; }
+        }
     </style>
 </head>
 <body>
@@ -922,7 +940,7 @@
                     <p>Surrounding the athlete is a complete network of professionals and organizations. <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin-right: 4px;">
                         <span class="brand-mon" style="color: #0481fb !important; margin-right: 4px;"><strong>mon</strong></span>
                         <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
-                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span> 
+                        <span class="brand-tri" style="color: #0481fb !important;">Tri</span></span>
                         acts as the hub connecting these essential components to propel the sport forward:
                     </p>
                     
@@ -1148,6 +1166,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     document.addEventListener('DOMContentLoaded', ouvrirDepuisAdresse);
     window.addEventListener('hashchange', ouvrirDepuisAdresse);
+    </script>
+
+    <script>
+    // Mobile : réduit le logo interactif de l'écosystème pour qu'il tienne dans la largeur de l'écran
+    (function () {
+        function ajusterEcosysteme() {
+            const vue = document.getElementById('ecoView');
+            if (!vue) return;
+            if (window.innerWidth > 834) { vue.style.transform = ''; vue.style.marginBottom = ''; vue.style.marginLeft = ''; return; }
+            const dispo = vue.parentElement.clientWidth;
+            if (!dispo) return; // onglet masqué : on recalcule à l'ouverture
+            const echelle = Math.min(1, dispo / 620);
+            vue.style.transform = 'scale(' + echelle + ')';
+            vue.style.marginBottom = (vue.offsetHeight * (echelle - 1)) + 'px';
+            vue.style.marginLeft = Math.max(0, (dispo - 620 * echelle) / 2) + 'px';
+        }
+        window.addEventListener('resize', ajusterEcosysteme);
+        document.addEventListener('DOMContentLoaded', ajusterEcosysteme);
+        document.querySelectorAll('.tab-button').forEach(b => b.addEventListener('click', () => setTimeout(ajusterEcosysteme, 0)));
+        window.addEventListener('hashchange', () => setTimeout(ajusterEcosysteme, 60));
+        setTimeout(ajusterEcosysteme, 100);
+    })();
     </script>
 </body>
 </html>
