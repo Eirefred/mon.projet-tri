@@ -4,14 +4,14 @@
 
     <link rel="preload" as="image" href="banniere-run.jpg">
     <meta charset="UTF-8">
-    <meta name="description" content="Atteignez vos objectifs de course à pied avec Mon Projet Run. Coaching personnalisé et mentorat sportif pour 5km, 10km, marathon et ultra partout au Québec.">
+    <meta name="description" content="Atteignez vos objectifs de course à pied avec mon Projet Run. Coaching personnalisé et mentorat sportif pour 5km, 10km, marathon et ultra partout au Québec.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&display=swap" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet Run | Mentorat et Coaching</title>
+    <title>mon Projet Run | Mentorat et Coaching</title>
 
     <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -396,11 +396,11 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Coaching de course à pied - Mon Projet Run",
+  "name": "Coaching de course à pied - mon Projet Run",
   "description": "Programmes d'entraînement personnalisés et mentorat pour coureurs au Québec.",
   "provider": {
     "@type": "LocalBusiness",
-    "name": "Mon Projet Run"
+    "name": "mon Projet Run"
   },
   "offers": {
     "@type": "AggregateOffer",
@@ -417,7 +417,7 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="course.html"><img src="MPR_New_logo_blue.png" alt="Mon Projet Run - Coaching et mentorat de course à pied au Québec"></a>
+                    <a href="course.html"><img src="MPR_New_logo_blue.png" alt="mon Projet Run - Coaching et mentorat de course à pied au Québec"></a>
                 </div>
                 <div class="region-stack">
         <span class="region-mention">Partout au Québec</span>
@@ -470,7 +470,7 @@
         <div class="container">
             <h2>L'accompagnement qui vous fait courir</h2>
             <p>
-                <strong><em>Mon Projet Run</em></strong> est une extension de <a href="index.html"><em>Mon Projet Tri</em></a>. 
+                <strong><em>mon Projet Run</em></strong> est une extension de <a href="index.html"><em>Mon Projet Tri</em></a>. 
                 Nous avons conçu ce volet spécifiquement pour répondre aux besoins de ceux qui ont la <strong>course à pied</strong> comme projet principal. 
                 Qu'il s'agisse d'un premier pas ou d'un défi de performance, nous offrons un mentorat connecté et humain pour vous aider à atteindre vos objectifs, peu importe où vous êtes au Québec.
             </p>
@@ -535,7 +535,8 @@
     <p style="text-align: center; font-size: 1.1rem; color: #5A6A7A; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.4;">
         Remplissez ce formulaire et votre mentor vous contactera pour définir la meilleure approche pour votre saison.
     </p>
-                <form action="https://formspree.io/f/votre_id" method="POST">
+                <!-- Envoi vers le Google Form de contact mon Projet Tri (voir le script en bas de page) -->
+                <form id="runForm">
                     <div class="form-group">
                         <label>Nom complet</label>
                         <input type="text" name="name" required>
@@ -555,8 +556,12 @@
                         <label>Votre message ou projet de course</label>
                         <textarea name="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Envoyer ma demande</button>
+                    <button type="submit" id="btn-run" class="submit-btn">Envoyer ma demande</button>
                 </form>
+
+                <div id="run-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 20px; text-align: center; font-size: 1.05rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
+                    ✅ Merci ! Votre demande a bien été transmise. Nous vous répondrons très bientôt.
+                </div>
             </div>
         </div>
     </section>
@@ -608,6 +613,55 @@
                 behavior: "smooth"
             });
         };
+    </script>
+
+    <script>
+    // --- Formulaire mon Projet Run : envoi vers le Google Form de contact ---
+    (function () {
+        const form = document.getElementById('runForm');
+        if (!form) return;
+
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfGbL2p50VEyO-tyJn_Jqv7aD4vqZyy-bA4rM3mhLpqqSTLJg/formResponse";
+
+        // Identifie la provenance dans le sujet du courriel : « Nouvelle demande – mon Projet Run (FR) – Nom »
+        const SOURCE = "mon Projet Run (FR)";
+
+        const FORMULES = {
+            "projet-unique": "Run – Projet Unique (79$/mois)",
+            "accompagnement-continu": "Run – Accompagnement Continu (99$/mois)"
+        };
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const val = (nom) => (form.elements[nom] ? form.elements[nom].value : "").trim();
+            const donnees = new FormData();
+            donnees.append("entry.1503322578", val('name'));             // Nom complet
+            donnees.append("entry.176779491", SOURCE);                   // Type de contact
+            donnees.append("entry.1072932402", FORMULES[val('formule')] || val('formule')); // Profil -> formule
+            donnees.append("entry.704328293", val('email'));             // Courriel
+            donnees.append("entry.736131080", val('message'));           // Message
+
+            const bouton = document.getElementById('btn-run');
+            const texteBouton = bouton.textContent;
+            bouton.disabled = true;
+            bouton.textContent = "Envoi en cours...";
+
+            fetch(GOOGLE_FORM_URL, { method: "POST", body: donnees, mode: "no-cors" })
+                .then(() => {
+                    form.style.display = 'none';
+                    const succes = document.getElementById('run-succes');
+                    succes.style.display = 'block';
+                    succes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch((erreur) => {
+                    console.error(erreur);
+                    alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+                    bouton.disabled = false;
+                    bouton.textContent = texteBouton;
+                });
+        });
+    })();
     </script>
 </body>
 </html>
