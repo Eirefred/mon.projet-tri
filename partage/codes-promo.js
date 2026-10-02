@@ -24,7 +24,7 @@
                 var texte = bouton.querySelector('span');
                 var original = texte.innerText;
                 bouton.classList.add('copied');
-                texte.innerText = 'Copié !';
+                texte.innerText = (document.documentElement.lang || '').toLowerCase().startsWith('en') ? 'Copied!' : 'Copié !';
                 setTimeout(function () {
                     bouton.classList.remove('copied');
                     texte.innerText = original;
