@@ -1,35 +1,31 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonome | mon Projet Tri</title>
+    <title>Independent | mon Projet Tri</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
-    
-<link rel="canonical" href="https://mon.projet-tri.org/autonome.html">
-<link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
-<link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
 
-
-    <!-- Open Graph complet -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="mon Projet Tri | Organisme de Triathlon au Québec">
-    <meta property="og:description" content="Découvrez notre boîte à outils : règlements, calendrier, sites d'entraînement au Québec et conseils pour débuter en triathlon à votre rythme.">
-    <meta property="og:url" content="https://mon.projet-tri.org/autonome.html">
-    <meta property="og:site_name" content="mon Projet Tri">
-    <meta property="og:locale" content="fr_CA">
-    <meta property="og:image" content="https://mon.projet-tri.org/og/og-autonome.jpg">
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:see_also" content="https://www.youtube.com/@monProjetTri" />
-    <!---->
+    <link rel="canonical" href="https://mon.projet-tri.org/en/independant.html">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
 
     <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
     <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/independent.html" />
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/autonome.html" />
+
+    <meta property="og:title" content="Triathlon Coaching & Resources in Quebec | mon Projet Tri" />
+    <meta property="og:description" content="Non-profit organization offering triathlon mentorship, club matching, and free resources across Quebec." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://mon.projet-tri.org/en/index.html" />
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="en_CA">
+    <meta property="og:image" content="https://mon.projet-tri.org/Open_Graph_logo2.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <style>
         html { scroll-behavior: smooth; }
@@ -38,7 +34,7 @@
             --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
             --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
             --combined-gradient: linear-gradient(135deg, #004c97 0%, #D65F3A 100%);
-            /* Dégradé spécifique au bouton Autonome (Bleu vers Vert) */
+            /* Specific gradient for the Independent button (Blue to Green) */
             --autonome-gradient: linear-gradient(135deg, #004c97 0%, #10b981 100%);
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -67,26 +63,30 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
-        /* --- BOUTON BACK TO TOP --- */
+        /* --- BACK TO TOP BUTTON --- */
         #backToTop {
-    display: none; /* Caché par défaut sur PC */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 2000;
-    background-color: var(--accent);
-    color: white;
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    align-items: center;
-    justify-content: center;
-}
+            display: none; /* Hidden by default on PC */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 2000;
+            background-color: transparent;
+            color: black;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            align-items: center;
+            justify-content: center;
+        }
         
+        #backToTop:hover {
+            background-color: #D65F3A;
+            transform: translateY(-3px);
+        }
 
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo img { height: 55px; }
@@ -129,7 +129,7 @@
         .lang-switcher { display: flex; align-items: center; gap: 8px; }
         .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
 
-        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        /* --- PAGE CONTENT AREA --- */
         .content-section {
             padding: 80px 0 140px 0;
             background: #f1f5f9;
@@ -137,7 +137,7 @@
             clip-path: ellipse(150% 100% at 50% 100%); 
         }
 
-        /* Titre avec dégradé vert/bleu "Autonome" */
+        /* Title with green/blue "Independent" gradient */
         .content-section h1 {
             font-size: 2.8rem;
             font-weight: 900;
@@ -149,48 +149,48 @@
             display: inline-block;
         }
 
-        /* --- STYLE DES ONGLETS SUR MOBILE ET PC --- */
+        /* --- TABS STYLE ON MOBILE AND PC --- */
 
-/* 1. Sur TOUS LES ÉCRANS (y compris mobile) : alignement horizontal */
-.browser-tabs-container {
-    display: flex !important;
-    flex-wrap: nowrap !important;          
-    gap: 6px !important;                   
-    overflow-x: auto !important; /* Active le défilement horizontal sur mobile */
-    box-sizing: border-box !important;     
-    padding: 4px 4px 0 4px !important;    
-    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iPhone */
-    scrollbar-width: none; /* Cache la barre de défilement */
-}
+        /* 1. On ALL SCREENS (including mobile): horizontal alignment */
+        .browser-tabs-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;          
+            gap: 6px !important;                   
+            overflow-x: auto !important; /* Enables horizontal scrolling on mobile */
+            box-sizing: border-box !important;     
+            padding: 4px 4px 0 4px !important;    
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iPhone */
+            scrollbar-width: none; /* Hides scrollbar */
+        }
 
-.browser-tabs-container::-webkit-scrollbar {
-    display: none; /* Cache la barre de défilement sur Chrome/Safari */
-}
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none; /* Hides scrollbar on Chrome/Safari */
+        }
 
-/* 2. Sur MOBILE : empêche les onglets de s'écraser */
-.tab-button {
-    flex-shrink: 0 !important; /* Garde la largeur naturelle du texte */
-    white-space: nowrap !important;
-}
+        /* 2. On MOBILE: prevents tabs from squeezing */
+        .tab-button {
+            flex-shrink: 0 !important; /* Keeps natural text width */
+            white-space: nowrap !important;
+        }
 
-/* 3. Sur ORDINATEUR (écran > 834px) : répartit équitablement les onglets */
-@media (min-width: 835px) {
-    .browser-tabs-container {
-        overflow-x: hidden !important;
-    }
+        /* 3. On DESKTOP (screen > 834px): distributes tabs evenly */
+        @media (min-width: 835px) {
+            .browser-tabs-container {
+                overflow-x: hidden !important;
+            }
 
-    .tab-button {
-        flex: 1 1 0px !important;              
-        min-width: 0 !important;               
-        text-align: center;
-        justify-content: center;
-    }
+            .tab-button {
+                flex: 1 1 0px !important;              
+                min-width: 0 !important;               
+                text-align: center;
+                justify-content: center;
+            }
 
-    .browser-tabs-wrapper::after {
-        display: none !important;
-        content: none !important;
-    }
-}
+            .browser-tabs-wrapper::after {
+                display: none !important;
+                content: none !important;
+            }
+        }
 
         .tab-button {
             display: flex;
@@ -303,7 +303,7 @@
             color: #0f172a;
         }
 
-        /* Boutons de Filtres FAQ */
+        /* FAQ Filter Buttons */
         .faq-filter-container {
             display: flex;
             flex-wrap: wrap;
@@ -335,7 +335,7 @@
             box-shadow: 0 2px 6px rgba(0, 76, 151, 0.2);
         }
 
-        /* Highlight de recherche */
+        /* Search Highlight */
         mark.faq-highlight {
             background-color: #fef08a;
             color: #0f172a;
@@ -343,7 +343,7 @@
             border-radius: 2px;
         }
 
-        /* Message aucun résultat */
+        /* No Results Message */
         .faq-no-results {
             display: none;
             text-align: center;
@@ -527,7 +527,7 @@
         .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
         .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
 
-        /* --- MENU DÉROULANT --- */
+        /* --- DROPDOWN MENU --- */
         nav ul li.has-dropdown { position: relative; }
         .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
 
@@ -684,7 +684,7 @@
             }
         }
 
-        /* --- FAQ & ACCORDÉONS --- */
+        /* --- FAQ & ACCORDIONS --- */
         .faq-item {
             border-bottom: 1px solid #e2e8f0;
             padding: 15px 0;
@@ -748,23 +748,23 @@
         }
 
         @media (max-width: 834px) {
-    .browser-tabs-wrapper::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        /* Limite le dégradé à la hauteur exacte des boutons (~45px) */
-        height: 45px; 
-        width: 30px;
-        top: 3px;
-        /* Dégradé vers le blanc pur (#ffffff) */
-        background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
-        pointer-events: none; 
-        z-index: 2;
-    }
-}
+            .browser-tabs-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                /* Limits the gradient to the exact height of the buttons (~45px) */
+                height: 45px; 
+                width: 30px;
+                top: 3px;
+                /* Gradient towards pure white (#ffffff) */
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                pointer-events: none; 
+                z-index: 2;
+            }
+        }
 
-        /* Style automatique pour la page active */
+                /* Style automatique pour la page active */
     .nav-links a.active {
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
@@ -777,10 +777,10 @@
         <div class="container nav-container">
             <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
                 <div class="logo">
-                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo Mon Projet Tri - Coaching Triathlon à distance au Québec et Montréal"></a>
+                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="Logo Mon Projet Tri - Remote Triathlon Coaching in Quebec and Montreal"></a>
                 </div>
                 <div class="region-stack">
-                    <span class="region-mention">Partout au Québec</span>
+                    <span class="region-mention">Across Quebec</span>
                 </div>
             </div>
             <nav>
@@ -792,127 +792,127 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="decouvrir.html">L'OSBL</a></li>
+                    <li><a href="discover.html">About Us</a></li> 
                     <li class="has-dropdown">
-                        <a href="index.html#athlètes" class="dropdown-trigger active">Athlètes <span class="arrow-down">▼</span></a>
+                        <a href="index.html#athlètes" class="dropdown-trigger active">Athletes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="autonome.html">Autonome</a></li>
-                            <li><a href="accompagnement.html">Accompagnement</a></li>
+                            <li><a href="independant.html">Independant</a></li>
+                            <li><a href="guidance.html">Guidance</a></li>
                             <li><a href="club.html">Club</a></li>
-                            <li><a href="votre-histoire.html"><i>Votre histoire</i></a></li>
+                            <li><a href="your-story.html"><i>Your story</i></a></li>
                         </ul>
                     </li>                    
                     <li class="has-dropdown">
-                        <a href="index.html#partenaires" class="dropdown-trigger">Partenaires <span class="arrow-down">▼</span></a>
+                        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="recevoir.html">Recevoir</a></li>
-                            <li><a href="donner.html">Donner</a></li>
+                            <li><a href="receive.html">Receive</a></li>
+                            <li><a href="provide.html">Provide</a></li>
                         </ul>
                     </li>
                     <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="calendrier.html">Calendrier'26</a></li> 
+                    <li><a href="calendar.html">Calendar'26</a></li> 
                     <li class="lang-switcher">
-                        <span class="lang-label">FR</span>
+                        <span class="lang-label" style="color: #ccc;">FR</span>
                         <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/independant.html'">
+                            <input type="checkbox" checked onclick="window.location.href='../autonome.html'">
                             <span class="slider"></span>
                         </label>
-                        <span class="lang-label" style="color: #ccc;">EN</span>
+                        <span class="lang-label">EN</span>
                     </li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- ZONE DE CONTENU PRINCIPAL -->
+    <!-- MAIN CONTENT AREA -->
     <main class="content-section">
         <div class="container">
             
-            <!-- SECTION HERO -->
+            <!-- HERO SECTION -->
             <div style="text-align: center; margin-bottom: 40px;">
-                <h1>Se lancer de façon autonome</h1>
+                <h1>Start on Your Own</h1>
                 <p style="font-size: 1.3rem; color: var(--text-light); max-width: 700px; margin: 0 auto; margin-bottom: 20px;">
-                    Vous débutez en triathlon ? Retrouvez ici toutes les ressources, liens officiels et conseils pour vous organiser et progresser à votre rythme.
+                    New to triathlon? Find all the resources, official links, and advice here to organize yourself and progress at your own pace.
                 </p>
                 
                 <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 750px; margin: 0 auto; line-height: 1.7; background: #f8fafc; padding: 18px 25px; border-radius: 12px; border: 1px dashed rgba(0, 76, 151, 0.15);">
-                    🛠️ Bienvenue dans <strong>la boîte à outils</strong> 🧰 de 
+                    🛠️ Welcome to the <strong>toolbox</strong> 🧰 of 
                     <span style="display: inline-block; white-space: nowrap; vertical-align: middle; margin-right: 4px;">
                         <span class="brand-mon" style="color: #0481fb !important; margin-right: 4px;"><strong>mon</strong></span>
                         <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
                         <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
                     </span> ! 
-                    <br>Si vous vous sentez perdu ou souhaitez aller plus loin, nous proposons également des 
-                    <a href="accompagnement.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">programmes d'accompagnement sur mesure</a> pour vous guider pas à pas.
+                    <br>If you feel lost or want to go further, we also offer 
+                    <a href="guidance.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">tailored guidance programs</a> to guide you step-by-step.
                 </p>
             </div>
 
-            <!-- ONGLETS TYPE NAVIGATEUR WEB -->
+            <!-- BROWSER-STYLE TABS -->
             <div class="browser-tabs-wrapper">
                 <div class="browser-tabs-container">
-                    <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 Les Bases</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
-                    <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
+                    <button class="tab-button active" onclick="openTab(event, 'tab-bases')">🏁 The Basics</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ Beginners FAQ</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Rules</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendar</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Training</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Community</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribute</button>
                 </div>
             </div>
 
-            <!-- CONTENEUR DU CONTENU DES ONGLETS -->
+            <!-- TAB CONTENT CONTAINER -->
             <div class="tab-content-wrapper">
 
-                <!-- ONGLET 1 : LES BASES -->
+                <!-- TAB 1: THE BASICS -->
                 <div id="tab-bases" class="tab-panel active">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-                        🏁 Le triathlon, c'est quoi au juste ?
+                        🏁 What exactly is triathlon?
                     </h2>
                     
                     <div style="margin-left: 15px; margin-bottom: 20px; line-height: 1.6;">
                         <p style="font-size: 1.1rem; color: var(--text-dark); margin-top: 0; margin-bottom: 10px; line-height: 1.7;">
-                            Le triathlon est né au début des <strong style="color: #004c97;">années 1970, en Californie 🇺🇸</strong>, où quelques passionnés ont eu l'idée d'enchaîner une épreuve de <strong style="color: #004c97;">natation 🏊, de vélo 🚴 et de course à pied 🏃</strong> pour relever un nouveau défi. Ce concept simple a rapidement gagné en popularité avant de se répandre partout dans le monde et de devenir un <strong style="color: #004c97;">sport olympique<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/500px-Olympic_rings_without_rims.svg.png" alt="Anneaux olympiques" style="height: 0.8em; vertical-align: middle; margin-left: 4px; transform: translateY(-2px);"></strong> en 2000 .
+                            Triathlon was born in the early <strong style="color: #004c97;">1970s in California 🇺🇸</strong>, where a few enthusiasts had the idea of combining a <strong style="color: #004c97;">swim 🏊, bike 🚴, and run 🏃</strong> to take on a new challenge. This simple concept quickly gained popularity before spreading worldwide and becoming an <strong style="color: #004c97;">Olympic sport<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Olympic_rings_without_rims.svg/500px-Olympic_rings_without_rims.svg.png" alt="Olympic rings" style="height: 0.8em; vertical-align: middle; margin-left: 4px; transform: translateY(-2px);"></strong> in 2000.
                         </p>
 
                         <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-                            Au fil des ans, le triathlon a fini par se forger une réputation de sport extrême, notamment à cause des longues distances comme l'Ironman<img src="https://www.ironman.com/favicon.ico" alt="Ironman" style="height: 1.1em; vertical-align: middle; margin-left: 4px; transform: translateY(-3.5px);">. Pourtant, cette image ne représente qu'une petite partie de la réalité. La grande majorité des triathlons sont conçus pour être <strong style="color: #004c97;">accessibles aux débutants</strong>, avec des distances adaptées à tous les niveaux.
+                            Over the years, triathlon built a reputation as an extreme sport, mainly due to long distances like the Ironman<img src="https://www.ironman.com/favicon.ico" alt="Ironman" style="height: 1.1em; vertical-align: middle; margin-left: 4px; transform: translateY(-3.5px); collapse: inline;">. However, that image is only a small part of reality. The vast majority of triathlons are designed to be <strong style="color: #004c97;">accessible to beginners</strong>, with distances suited for all levels.
                         </p>
 
                         <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-                            Oui, il faut être en bonne condition physique et prévoir un peu d'entraînement, mais <strong style="color: #004c97;">il n'est pas nécessaire d'être un athlète d'élite</strong> pour vivre l'expérience. Ce qui rend le triathlon si spécial, c'est le plaisir d'enchaîner trois disciplines différentes, de <strong style="color: #004c97;">relever un défi personnel à son rythme</strong> et de franchir une ligne d'arrivée 🏁 dont on se souviendra longtemps.
+                            Yes, you need to be in decent physical shape and plan a bit of training, but <strong style="color: #004c97;">you don't need to be an elite athlete</strong> to enjoy the experience. What makes triathlon so special is the joy of stringing together three different disciplines, <strong style="color: #004c97;">taking on a personal challenge at your own pace</strong>, and crossing a finish line 🏁 you will remember for a long time.
                         </p>
 
                         <p style="font-size: 1.05rem; color: var(--text-dark); margin-bottom: 20px; line-height: 1.7;">
-                            Avec un peu de préparation, <strong style="color: #004c97;"> tout le monde peut y arriver</strong> 🏅 !
+                            With a bit of preparation, <strong style="color: #004c97;">anyone can do it</strong> 🏅!
                         </p>
                         <p style="font-size: 1rem; color: var(--text-light); margin-bottom: 20px;">
-                            Il existe plusieurs formats adaptés aux envies de chacun :
+                            There are several formats tailored to everyone's goals:
                         </p>
 
                         <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
                             <div style="background: #f0f7ff; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #10b981;">
-                                <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1.05rem; font-weight: bold;">🌱 Pour se lancer : Découverte / Initiation</h4>
+                                <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1.05rem; font-weight: bold;">🌱 Getting started: Discovery / Try-a-Tri</h4>
                                 <p style="margin: 0 0 6px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
                                     🏊 375m • 🚴 10km • 🏃 2.5km
                                 </p>
                                 <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
-                                    Le format parfait pour essayer sans se casser la tête, à votre rythme et dans une ambiance ultra-bienveillante.
+                                    The perfect format to give it a try hassle-free, at your own pace, and in a welcoming atmosphere.
                                 </p>
                             </div>
 
                             <div style="background: #f8fafc; padding: 14px 18px; border-radius: 10px; border-left: 4px solid #004c97;">
-                                <h4 style="margin: 0 0 4px 0; color: #004c97; font-size: 1.05rem; font-weight: bold;">🚀 Quand on est à l'aise : Sprint & Olympique</h4>
+                                <h4 style="margin: 0 0 4px 0; color: #004c97; font-size: 1.05rem; font-weight: bold;">🚀 Once comfortable: Sprint & Olympic</h4>
                                 <p style="margin: 0 0 6px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
-                                    ⏱️ Sprint : 750m / 20km / 5km &nbsp;|&nbsp; 🏅 Olympique : 1500m / 40km / 10km
+                                    ⏱️ Sprint: 750m / 20km / 5km &nbsp;|&nbsp; 🏅 Olympic: 1500m / 40km / 10km
                                 </p>
                                 <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
-                                    Deux formats classiques idéaux dès que vous gagnez en confiance pour structurer votre progression.
+                                    Two classic formats ideal as soon as you gain confidence to structure your progression.
                                 </p>
                             </div>
                         </div>
 
                         <p style="font-size: 0.9rem; color: var(--text-light); font-style: italic; background: #f8fafc; padding: 10px 14px; border-radius: 8px; border: 1px dashed rgba(0, 76, 151, 0.1); margin-bottom: 20px; line-height: 1.4;">
-                            ℹ️ <strong>Pour votre curiosité :</strong> Il existe également des formats de (très) longue distance (demi-Ironman et Ironman complet). Bien qu'ils impressionnent le grand public, ils ne représentent qu'un volet du triathlon. Chaque distance a son propre charme !
+                            ℹ️ <strong>For your curiosity:</strong> There are also (very) long distance formats (Half-Ironman and full Ironman). While they impress the general public, they only represent a fraction of triathlon. Each distance has its own charm!
                         </p>
                     </div>
 
@@ -922,38 +922,38 @@
                                 <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
                                 <div class="link-text-block">
                                     <span class="link-title">Triathlon Québec</span>
-                                    <span class="link-desc">(Découvrez les variantes et enchaînements officiels reconnus par la fédération)</span>
+                                    <span class="link-desc">(Discover official variations and multisport events recognized by the federation)</span>
                                 </div>
                             </div>
-                            <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="link-action">Explorer les disciplines ↗</a>
+                            <a href="https://www.triathlonquebec.org/recreatif/bases/disciplines/" target="_blank" class="link-action">Explore disciplines ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 2 : FAQ RECHERCHABLE ET FILTRABLE -->
+                <!-- TAB 2: SEARCHABLE AND FILTERABLE FAQ -->
                 <div id="tab-faq" class="tab-panel">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
-                        ❓ Questions fréquentes des débutants
+                        ❓ Frequently asked questions for beginners
                     </h2>
                     <p style="font-size: 1rem; color: var(--text-light); margin-top: 0; margin-bottom: 20px;">
-                        Recherchez une thématique, utilisez les filtres par catégorie ou cliquez sur une question pour afficher la réponse.
+                        Search for a topic, use category filters, or click on a question to reveal the answer.
                     </p>
 
-                    <!-- BLOC RECHERCHE & FILTRES DES CATÉGORIES -->
+                    <!-- SEARCH BLOCK & CATEGORY FILTERS -->
                     <div class="faq-search-wrapper">
                         <div class="faq-search-box">
                             <span class="faq-search-icon">🔍</span>
-                            <input type="text" id="faqSearchInput" placeholder="Rechercher une question ou un mot-clé (ex: wetsuit, vélo, temps...)" oninput="filterFAQ()">
-                            <button class="faq-clear-btn" id="faqClearBtn" onclick="clearFAQSearch()" title="Effacer la recherche">✕</button>
+                            <input type="text" id="faqSearchInput" placeholder="Search a question or keyword (e.g., wetsuit, bike, time...)" oninput="filterFAQ()">
+                            <button class="faq-clear-btn" id="faqClearBtn" onclick="clearFAQSearch()" title="Clear search">✕</button>
                         </div>
 
-                        <!-- Boutons de filtre par catégorie -->
+                        <!-- Category Filter Buttons -->
                         <div class="faq-filter-container">
-                            <button class="faq-filter-btn active" data-category="all" onclick="setFAQCategory('all')">Tous</button>
-                            <button class="faq-filter-btn" data-category="distances" onclick="setFAQCategory('distances')">📏 Distances & Temps</button>
-                            <button class="faq-filter-btn" data-category="equipement" onclick="setFAQCategory('equipement')">🚴 Équipement & Vélo</button>
-                            <button class="faq-filter-btn" data-category="regles" onclick="setFAQCategory('regles')">🏊 Wetsuit & Sécurité</button>
-                            <button class="faq-filter-btn" data-category="entrainement" onclick="setFAQCategory('entrainement')">⏱️ Entraînement</button>
+                            <button class="faq-filter-btn active" data-category="all" onclick="setFAQCategory('all')">All</button>
+                            <button class="faq-filter-btn" data-category="distances" onclick="setFAQCategory('distances')">📏 Distances & Time</button>
+                            <button class="faq-filter-btn" data-category="equipement" onclick="setFAQCategory('equipement')">🚴 Gear & Bike</button>
+                            <button class="faq-filter-btn" data-category="regles" onclick="setFAQCategory('regles')">🏊 Wetsuit & Safety</button>
+                            <button class="faq-filter-btn" data-category="entrainement" onclick="setFAQCategory('entrainement')">⏱️ Training</button>
                         </div>
                     </div>
 
@@ -961,48 +961,48 @@
                         <details class="faq-item" data-categories="distances">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">1. Quelles sont les distances en triathlon ?</div>
+                                    <div class="faq-title">1. What are the distances in triathlon?</div>
                                     <div class="faq-subtopics-preview">
-                                        <span class="faq-subtopic-item">↳ Combien de temps ça prend ?</span>
-                                        <span class="faq-subtopic-item">↳ Y a-t-il une limite de temps ?</span>
+                                        <span class="faq-subtopic-item">↳ How long does it take?</span>
+                                        <span class="faq-subtopic-item">↳ Is there a time limit?</span>
                                     </div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p><strong>Les différentes distances :</strong></p>
+                                <p><strong>The different distances:</strong></p>
                                 <ul>
-                                    <li><strong>Initiation / Découverte :</strong> ~375 m natation • 10 km vélo • 2,5 km course <em>(idéal pour débuter)</em></li>
-                                    <li><strong>Sprint :</strong> 750 m natation • 20 km vélo • 5 km course</li>
-                                    <li><strong>Olympique (Standard) :</strong> 1,5 km natation • 40 km vélo • 10 km course</li>
-                                    <li><strong>Demi-Ironman (70.3) :</strong> 1,9 km natation • 90 km vélo • 21,1 km course</li>
-                                    <li><strong>Ironman (140.6) :</strong> 3,8 km natation • 180 km vélo • 42,2 km course</li>
+                                    <li><strong>Try-a-Tri / Discovery:</strong> ~375 m swim • 10 km bike • 2.5 km run <em>(ideal for beginners)</em></li>
+                                    <li><strong>Sprint:</strong> 750 m swim • 20 km bike • 5 km run</li>
+                                    <li><strong>Olympic (Standard):</strong> 1.5 km swim • 40 km bike • 10 km run</li>
+                                    <li><strong>Half-Ironman (70.3):</strong> 1.9 km swim • 90 km bike • 21.1 km run</li>
+                                    <li><strong>Ironman (140.6):</strong> 3.8 km swim • 180 km bike • 42.2 km run</li>
                                 </ul>
 
-                                <p style="margin-top: 15px;"><strong>Combien de temps ça prend ?</strong></p>
+                                <p style="margin-top: 15px;"><strong>How long does it take?</strong></p>
                                 <ul>
-                                    <li><strong>Initiation :</strong> Entre 45 min et 1 h 15</li>
-                                    <li><strong>Sprint :</strong> Entre 1 h 15 et 2 h 00</li>
-                                    <li><strong>Olympique :</strong> Entre 2 h 30 et 3 h 45</li>
+                                    <li><strong>Discovery:</strong> Between 45 min and 1 h 15</li>
+                                    <li><strong>Sprint:</strong> Between 1 h 15 and 2 h 00</li>
+                                    <li><strong>Olympic:</strong> Between 2 h 30 and 3 h 45</li>
                                 </ul>
 
-                                <p style="margin-top: 15px;"><strong>Barrières horaires (limites de temps) :</strong></p>
-                                <p>La plupart des événements imposent des temps limites (<em>cut-offs</em>) pour la sécurité. Cependant, sur les formats Initiation et Sprint, ces limites sont très larges et permettent de terminer en marchant si besoin.</p>
+                                <p style="margin-top: 15px;"><strong>Time limits (cut-offs):</strong></p>
+                                <p>Most events enforce time limits (<em>cut-offs</em>) for safety reasons. However, on Discovery and Sprint formats, these limits are very generous and allow you to walk if needed.</p>
                             </div>
                         </details>
 
                         <details class="faq-item" data-categories="regles equipement">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">2. Quand puis-je porter une combinaison isotherme (wetsuit) ? Est-ce obligatoire ?</div>
+                                    <div class="faq-title">2. When can I wear a wetsuit? Is it mandatory?</div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p>La combinaison en néoprène <strong>n'est pas obligatoire</strong>, sauf si l'eau est en dessous de 15.9 °C (60.8 °F).</p>
-                                <p>Habituellement elle est permise jusqu'à 22 °C (71.6 °F), mais cela peut dépendre de votre âge, de la distance et de la température de l'air. Au-delà, elle devient interdite pour éviter les coups de chaleur.</p>
+                                <p>A neoprene wetsuit is <strong>not mandatory</strong>, unless the water temperature is below 15.9 °C (60.8 °F).</p>
+                                <p>Usually, it is permitted up to 22 °C (71.6 °F), depending on your age category, distance, and air temperature. Above that threshold, it becomes prohibited to prevent overheating.</p>
                                 <p style="background: #f0f7ff; padding: 10px; border-left: 3px solid #004c97; border-radius: 4px; margin-top: 10px;">
-                                    💡 <strong>Bon à savoir :</strong> La décision officielle sur le port du wetsuit est prise par les arbitres <strong>exactement 1 heure avant le départ</strong>.
+                                    💡 <strong>Good to know:</strong> The official decision regarding wetsuit rules is made by race officials <strong>exactly 1 hour before the start</strong>.
                                 </p>
                             </div>
                         </details>
@@ -1010,61 +1010,61 @@
                         <details class="faq-item" data-categories="regles">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">3. Je suis moins à l'aise en natation, puis-je recevoir de l'aide ?</div>
+                                    <div class="faq-title">3. I am less comfortable swimming, can I receive help?</div>
                                     <div class="faq-subtopics-preview">
-                                        <span class="faq-subtopic-item">↳ Ai-je le droit de porter une bouée de flottaison ?</span>
+                                        <span class="faq-subtopic-item">↳ Am I allowed to wear a swim buoy?</span>
                                     </div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p><strong>L'accompagnement et la sécurité :</strong></p>
+                                <p><strong>Support and safety:</strong></p>
                                 <ul>
-                                    <li><strong>Casque de bain distinctif :</strong> Des casques de couleur particulière sont souvent offerts aux débutants pour qu'ils soient mieux surveillés.</li>
-                                    <li><strong>Temps de repos :</strong> Vous pouvez vous accrocher au kayak d'un sauveteur pour reprendre votre souffle. Tant que l'embarcation ne vous avance pas, vous n'êtes pas disqualifié(e).</li>
+                                    <li><strong>Distinctive swim cap:</strong> Specially colored swim caps are often provided to beginners so lifeguards can keep a closer eye on them.</li>
+                                    <li><strong>Resting:</strong> You can hold onto a lifeguard's kayak to catch your breath. As long as the vessel does not move you forward, you are not disqualified.</li>
                                 </ul>
 
-                                <p style="margin-top: 15px;"><strong>Règlement sur les bouées de flottaison :</strong></p>
-                                <p>Les bouées d'eau libre déployées sont <strong>interdites</strong>. Seules les bouées d'urgence compactes (gonflables manuellement à la taille) sont autorisées, mais leur déclenchement met fin à votre course.</p>
+                                <p style="margin-top: 15px;"><strong>Rules on swim buoys:</strong></p>
+                                <p>Deployed open-water buoys are <strong>prohibited</strong>. Only compact emergency buoys (manually inflatable at the waist) are permitted, but deploying them ends your race.</p>
                             </div>
                         </details>
 
                         <details class="faq-item" data-categories="equipement regles">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">4. Quel est le matériel obligatoire pour un triathlon ?</div>
+                                    <div class="faq-title">4. What is the mandatory equipment for a triathlon?</div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p>Le règlement impose un équipement minimal de sécurité et d'identification pour chaque épreuve :</p>
+                                <p>The rules dictate a minimum set of safety and identification gear for each leg:</p>
                                 
-                                <p style="margin-top: 10px;"><strong>🏊‍♂️ Natation :</strong></p>
+                                <p style="margin-top: 10px;"><strong>🏊‍♂️ Swim:</strong></p>
                                 <ul>
-                                    <li><strong>Casque de bain :</strong> Obligatoire, souvent fourni par l'organisation.</li>
-                                    <li><strong>Costume de bain ou trifonction (trisuit) :</strong> Obligatoire.</li>
+                                    <li><strong>Swim cap:</strong> Mandatory, usually provided by the event organizers.</li>
+                                    <li><strong>Swimsuit or trisuit:</strong> Mandatory.</li>
                                 </ul>
 
-                                <p style="margin-top: 10px;"><strong>🚴‍♂️ Vélo :</strong></p>
+                                <p style="margin-top: 10px;"><strong>🚴‍♂️ Bike:</strong></p>
                                 <ul>
-                                    <li><strong>Casque rigide certifié :</strong> Obligatoire et doit être attaché <em>avant</em> de détacher le vélo du support.</li>
-                                    <li><strong>Vélo conforme :</strong> Freins fonctionnels, embouts de guidon bouchés (obligatoire pour des raisons de sécurité).</li>
-                                    <li><strong>Chandail/Trifonction :</strong> Le torse doit être couvert pendant toute l'épreuve.</li>
+                                    <li><strong>Certified helmet:</strong> Mandatory and must be buckled <em>before</em> removing the bike from the rack.</li>
+                                    <li><strong>Compliant bike:</strong> Working brakes, plugged handlebar ends (mandatory for safety reasons).</li>
+                                    <li><strong>Shirt/Trisuit:</strong> Torso must remain covered throughout the leg.</li>
                                 </ul>
 
-                                <p style="margin-top: 10px;"><strong>🏃‍♂️ Course à pied :</strong></p>
+                                <p style="margin-top: 10px;"><strong>🏃‍♂️ Run:</strong></p>
                                 <ul>
-                                    <li><strong>Souliers de course :</strong> Obligatoires.</li>
-                                    <li><strong>Dossard :</strong> Placé sur le devant du corps, clairement visible.</li>
-                                    <li><strong>Torse couvert :</strong> Chandail ou trifonction fermée.</li>
+                                    <li><strong>Running shoes:</strong> Mandatory.</li>
+                                    <li><strong>Bib number:</strong> Worn on the front of the body, clearly visible.</li>
+                                    <li><strong>Covered torso:</strong> Shirt or zipped-up trisuit.</li>
                                 </ul>
 
                                 <div style="border: 2px solid #e74c3c; background-color: #fdf2e9; padding: 12px 16px; border-radius: 8px; margin: 15px 0;">
                                   <p style="margin: 0; color: #c0392b; font-weight: bold; display: flex; align-items: center; gap: 8px;">
-                                    <span>❗</span> <span>RAPPEL SÉCURITÉ</span>
+                                    <span>❗</span> <span>SAFETY REMINDER</span>
                                   </p>
                                   <p style="margin: 6px 0 0 0; color: #2c3e50; font-size: 0.95em;">
-                                    Les écouteurs, casques audio, téléphones portables et récipients en verre sont strictement interdits sous peine de disqualification immédiate.
+                                    Headphones, earphones, mobile phones, and glass containers are strictly prohibited under penalty of immediate disqualification.
                                   </p>
                                 </div>
                             </div>
@@ -1073,32 +1073,32 @@
                         <details class="faq-item" data-categories="equipement">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">5. Quel type de vélo dois-je avoir pour participer ?</div>
+                                    <div class="faq-title">5. What type of bike do I need to participate?</div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p>Tout vélo traditionnel convient : route, hybride, vélo de montagne ou vélo urbain. La seule règle est d'utiliser un vélo propulsé <strong>uniquement par la force humaine</strong>.</p>
-                                <p style="color: #dc2626; font-weight: bold; margin-top: 5px;">❌ Les vélos à assistance électrique (E-bikes) sont interdits.</p>
+                                <p>Any traditional bike works: road bike, hybrid, mountain bike, or city bike. The only rule is that the bike must be powered <strong>solely by human force</strong>.</p>
+                                <p style="color: #dc2626; font-weight: bold; margin-top: 5px;">❌ Electric-assist bikes (E-bikes) are prohibited.</p>
                             </div>
                         </details>
 
                         <details class="faq-item" data-categories="entrainement distances">
                             <summary class="faq-header">
                                 <div>
-                                    <div class="faq-title">6. Dois-je m'entraîner beaucoup pour mon premier triathlon ?</div>
+                                    <div class="faq-title">6. Do I need to train a lot for my first triathlon?</div>
                                 </div>
                                 <span class="faq-arrow">▼</span>
                             </summary>
                             <div class="faq-answer">
-                                <p>Pour un premier triathlon <strong>Initiation</strong>, environ <strong>1 mois d'entraînement</strong> à raison de <strong>1 séance de 30 minutes par sport par semaine</strong> (3 courtes séances/semaine) suffit amplement pour croiser la ligne d'arrivée avec le sourire !</p>
+                                <p>For a first <strong>Discovery</strong> triathlon, about <strong>1 month of training</strong> consisting of <strong>one 30-minute session per sport per week</strong> (3 short sessions/week) is more than enough to cross the finish line with a smile!</p>
                                 <div style="background: #f0f7ff; padding: 12px 18px; border-radius: 10px; border-left: 4px solid #10b981; margin-top: 15px;">
-                                    <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1rem; font-weight: bold;">🌱 Pour se lancer : Découverte / Initiation</h4>
+                                    <h4 style="margin: 0 0 4px 0; color: #10b981; font-size: 1rem; font-weight: bold;">🌱 Getting started: Discovery / Try-a-Tri</h4>
                                     <p style="margin: 0 0 4px 0; font-size: 0.9rem; font-weight: bold; color: var(--text-dark);">
                                         🏊 375m • 🚴 10km • 🏃 2.5km
                                     </p>
                                     <p style="margin: 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.4;">
-                                        Le format parfait pour essayer sans se casser la tête, à votre rythme et dans une ambiance ultra-bienveillante.
+                                        The perfect format to try without complications, at your pace, and in a supportive environment.
                                     </p>
                                 </div>
                             </div>
@@ -1106,21 +1106,21 @@
                     </div>
 
                     <div class="faq-no-results" id="faqNoResults">
-                        🔍 Aucune question ne correspond à votre recherche ou au filtre sélectionné.
+                        🔍 No questions match your search query or selected filter.
                     </div>
                 </div>
 
-                <!-- ONGLET 3 : RÈGLEMENTS -->
+                <!-- TAB 3: RULES -->
 <div id="tab-reglements" class="tab-panel">
     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-        📚 Les règlements de triathlon
+        📚 Triathlon Rules
     </h2>
     <p style="color: var(--text-light); margin-bottom: 25px;">
-        Pour éviter les surprises et courir en toute sécurité, familiarisez-vous avec les règles de chaque circuit.
+        To avoid surprises and race safely, familiarize yourself with the rules of each organization.
     </p>
 
     <div class="links-list">
-        <!-- BLOC TRIATHLON QUÉBEC & CHALLENGE FAMILY AVEC ENCADRÉ ASTUCE IA -->
+        <!-- TRIATHLON QUÉBEC & CHALLENGE FAMILY BLOCK WITH AI ASSISTANT TIP -->
         <div class="link-row" style="flex-direction: column; align-items: stretch; gap: 12px;">
             <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap; gap: 10px;">
                 <div class="link-info">
@@ -1132,25 +1132,25 @@
                             Challenge Family
                         </span>
                         <span class="link-desc">
-                            (Compétitions au Québec 
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                            (Competitions in Quebec 
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Flag of Quebec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
                         </span>
                     </div>
                 </div>
-                <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+                <a href="https://www.triathlonquebec.org/wp-content/uploads/2026/02/2026-regles-de-competition-TQ-vf.pdf" target="_blank" class="link-action">View rules ↗</a>
             </div>
 
-            <!-- ENCADRÉ ASTUCE ASSISTANT IA -->
+            <!-- AI ASSISTANT TIP BOX -->
             <div style="background: #f0f7ff; border: 1px solid #bae6fd; border-left: 4px solid #004c97; border-radius: 8px; padding: 12px 16px; margin-top: 4px;">
                 <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
                     <div>
-                        <span style="font-weight: bold; color: #004c97; font-size: 0.9rem;">💡 Astuce : Posez vos questions à l'Assistant IA !</span>
+                        <span style="font-weight: bold; color: #004c97; font-size: 0.9rem;">💡 Tip: Ask the AI Assistant your questions!</span>
                         <p style="margin: 4px 0 0 0; font-size: 0.85rem; color: #334155;">
-                            Besoin d'une clarification rapide sur un point du règlement ? Interrogez l'assistant virtuel entraîné spécifiquement sur le guide officiel de Triathlon Québec.
+                            Need a quick clarification on a rule? Ask the virtual assistant trained specifically on the official Triathlon Québec guide.
                         </p>
                     </div>
                     <a href="https://www.facebook.com/share/p/1Cr3LL5Dzn/" target="_blank" class="btn-ressource" style="margin-bottom: 0; padding: 6px 14px; font-size: 0.8rem; white-space: nowrap;">
-                        Consulter l'assistant ChatGPT ↗
+                        Consult the ChatGPT Assistant ↗
                     </a>
                 </div>
             </div>
@@ -1161,25 +1161,25 @@
                 <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
                 <div class="link-text-block">
                     <span class="link-title">IRONMAN</span>
-                    <span class="link-desc">(Règlement international)</span>
+                    <span class="link-desc">(International rules)</span>
                 </div>
             </div>
-            <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+            <a href="https://www.ironman.com/sites/default/files/2026-02/2026%20IRONMAN%20Competition%20Rules_Final_V2.pdf" target="_blank" class="link-action">View rules ↗</a>
         </div>
 
         <div class="link-row">
             <div class="link-info">
-                <img src="https://mon.projet-tri.org/favicon.png" alt="mon Projet Tri" onerror="this.src='favicon.png';">
+                <img src="../favicon.png" alt="mon Projet Tri">
                 <div class="link-text-block">
                     <span class="link-title">
                         <span class="brand-mon" style="color: #0481fb !important; margin-right: 2px;">mon</span>
                         <span class="brand-projet" style="color: #0481fb !important;">Projet</span>
                         <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
                     </span>
-                    <span class="link-desc">(Nos conseils en format vidéo pour tout comprendre)</span>
+                    <span class="link-desc">(Our video tips to understand everything)</span>
                 </div>
             </div>
-            <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="link-action">Regarder les vidéos ↗</a>
+            <a href="https://www.youtube.com/watch?v=BoYIiUsRteQ&list=PL8IYT4CAfTyJqdUjNyuFpmeDOIAdRIxHk" target="_blank" class="link-action">Watch videos ↗</a>
         </div>
 
         <div class="link-row">
@@ -1187,10 +1187,10 @@
                 <img src="https://triathlon.org/favicon.ico" alt="World Triathlon">
                 <div class="link-text-block">
                     <span class="link-title">World Triathlon</span>
-                    <span class="link-desc">(Fédération Internationale)</span>
+                    <span class="link-desc">(International Federation)</span>
                 </div>
             </div>
-            <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="link-action">Consulter les règles ↗</a>
+            <a href="https://cms.triathlon.org/download-file/world-triathlon-competition-rules-2026" target="_blank" class="link-action">View rules ↗</a>
         </div>
 
         <div class="link-row">
@@ -1198,27 +1198,27 @@
                 <span class="emoji-icon">🇺🇸</span>
                 <div class="link-text-block">
                     <span class="link-title">USA Triathlon</span>
-                    <span class="link-desc">(Compétitions aux États-Unis)</span>
+                    <span class="link-desc">(Competitions in the USA)</span>
                 </div>
             </div>
-            <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="link-action">Consulter les règles ↗</a>
+            <a href="https://assets.contentstack.io/v3/assets/blteb7d012fc7ebef7f/blt18e70d5ac2bdc1fc/6949bfa10fbf166236e0e98b/USA_Triathlon_Multisport_Competition_Rules.pdf" target="_blank" class="link-action">View rules ↗</a>
         </div>
     </div>
 </div>
 
-                <!-- ONGLET 4 : CALENDRIER -->
+                <!-- TAB 4: CALENDAR -->
                 <div id="tab-calendrier" class="tab-panel">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-                        📅 Calendrier des évènements
+                        📅 Event Calendar
                     </h2>
                     <p style="color: var(--text-light); margin-bottom: 25px;">
-                        Planifiez votre saison et trouvez les événements adaptés à vos objectifs partout au Québec et à l'international.
+                        Plan your season and find events suited to your goals across Quebec and internationally.
                     </p>
 
                     <div class="links-list">
                         <div class="link-row">
                             <div class="link-info">
-                                <img src="https://mon.projet-tri.org/favicon.png" alt="mon Projet Tri" onerror="this.src='favicon.png';">
+                                <img src="../favicon.png" alt="mon Projet Tri">
                                 <div class="link-text-block">
                                     <span class="link-title">
                                         <span class="brand-mon" style="color: #0481fb !important; margin-right: 2px;">mon</span>
@@ -1226,12 +1226,12 @@
                                         <span class="brand-tri" style="color: #0481fb !important;">Tri</span>
                                     </span>
                                     <span class="link-desc">
-                                        (Saison provinciale au Québec 
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Drapeau du Québec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
+                                        (Provincial season in Quebec 
+                                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Flag_of_Quebec.svg" alt="Flag of Quebec" style="width: 16px; height: 11px; vertical-align: middle; margin: 0 0 2px 2px; display: inline-block; border-radius: 0px !important; object-fit: fill !important;">)
                                     </span>
                                 </div>
                             </div>
-                            <a href="https://mon.projet-tri.org/calendrier.html" target="_blank" class="link-action">Voir le calendrier 2026 ↗</a>
+                            <a href="https://mon.projet-tri.org/calendrier.html" target="_blank" class="link-action">View 2026 calendar ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1239,10 +1239,10 @@
                                 <img src="https://www.ironman.com/favicon.ico" alt="Ironman">
                                 <div class="link-text-block">
                                     <span class="link-title">IRONMAN</span>
-                                    <span class="link-desc">(Circuit mondial longue distance)</span>
+                                    <span class="link-desc">(Global long-distance circuit)</span>
                                 </div>
                             </div>
-                            <a href="https://www.ironman.com/races" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                            <a href="https://www.ironman.com/races" target="_blank" class="link-action">View calendar ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1250,10 +1250,10 @@
                                 <img src="https://challengefamily.com/favicon.ico" alt="Challenge Family">
                                 <div class="link-text-block">
                                     <span class="link-title">Challenge Family</span>
-                                    <span class="link-desc">(Circuit mondial)</span>
+                                    <span class="link-desc">(Global circuit)</span>
                                 </div>
                             </div>
-                            <a href="https://challengefamily.com/races/" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                            <a href="https://challengefamily.com/races/" target="_blank" class="link-action">View calendar ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1261,27 +1261,27 @@
                                 <span class="emoji-icon">🇺🇸</span>
                                 <div class="link-text-block">
                                     <span class="link-title">USA Triathlon</span>
-                                    <span class="link-desc">(Calendrier officiel des événements aux États-Unis)</span>
+                                    <span class="link-desc">(Official event calendar in the USA)</span>
                                 </div>
                             </div>
-                            <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">Voir le calendrier ↗</a>
+                            <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">View calendar ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 5 : ENTRAÎNEMENT -->
+                <!-- TAB 5: TRAINING -->
                 <div id="tab-entrainement" class="tab-panel">
-    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-        🏊 Où s'entraîner ?
-    </h2>
-    <p style="color: var(--text-light); margin-bottom: 25px;">
-        Trouvez les sites d'entraînement reconnus, les parcours populaires et les plans d'eau sécurisés pour vos séances spécifiques.
-    </p>
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        🏊 Where to train?
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 25px;">
+                        Find recognized training sites, popular routes, and safe open water locations for your specific workouts.
+                    </p>
 
-                    <!-- EAU LIBRE -->
+                    <!-- OPEN WATER SWIMMING -->
     <div style="margin-left: 15px; margin-bottom: 30px;">
         <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-            🏊‍♂️ En eau libre
+            🏊‍♂️ Open Water Swimming
         </h3>
         <div class="links-list" style="margin-left: 10px; margin-bottom: 20px;">
             <div class="link-row">
@@ -1289,27 +1289,27 @@
                     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ">
                     <div class="link-text-block">
                         <span class="link-title">Triathlon Québec</span>
-                        <span class="link-desc">(Emplacements et sites sécurisés référencés)</span>
+                        <span class="link-desc">(Referenced locations and safe open-water spots)</span>
                     </div>
                 </div>
-                <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="link-action">Visiter la page ↗</a>
+                <a href="https://www.triathlonquebec.org/recreatif/bases/lieux-entrainement-libre/" target="_blank" class="link-action">Visit Page ↗</a>
             </div>
             <div class="link-row">
                 <div class="link-info">
                     <span class="emoji-icon">🏊</span>
                     <div class="link-text-block">
                         <span class="link-title">MOI J'NAGE</span>
-                        <span class="link-desc">(Carte interactive des sites de nage en eau libre)</span>
+                        <span class="link-desc">(Interactive map of open water swimming sites)</span>
                     </div>
                 </div>
-                <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="link-action">Ouvrir la carte ↗</a>
+                <a href="https://www.nageeneaulibre.ca/carte-des-sites" target="_blank" class="link-action">Open Map ↗</a>
             </div>
         </div>
 
         <!-- RÉGION DE MONTRÉAL (EAU LIBRE) -->
         <details style="margin-left: 10px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Montréal
+                📍 Montréal Région
             </summary>
             
             <div class="links-list" style="margin-top: 15px;">
@@ -1320,7 +1320,7 @@
                         <span class="emoji-icon">🏊‍♂️</span>
                         <div class="link-text-block">
                             <span class="link-title">Parc Jean-Drapeau, Pavillon des activités nautiques</span>
-                            <span class="link-desc">(Trois parcours balisés pour nageurs)</span>
+                            <span class="link-desc">(Three marked courses for swimmers)</span>
                         </div>
                     </div>
                     <a href="https://www.parcjeandrapeau.com/fr/nage-en-eau-libre-corridors-parcours-nageur-athlete-clubs-sportifs-plage-jean-dore-montreal/" target="_blank" class="link-action">Consulter le site ↗</a>
@@ -1332,16 +1332,16 @@
                         <span class="emoji-icon">🏊‍♂️</span>
                         <div class="link-text-block">
                             <span class="link-title">Parc des Rapides, LaSalle</span>
-                            <span class="link-desc">(Petite baie de 150m x 400m de long, à l'abri du courant)</span>
+                            <span class="link-desc">(Small bay ~150m x 400m sheltered from strong currents)</span>
                         </div>
                     </div>
-                    <a href="https://maps.app.goo.gl/X2NcmJasfHkNoqVN7" target="_blank" class="link-action">Visualiser l'emplacement ↗</a>
+                    <a href="https://maps.app.goo.gl/X2NcmJasfHkNoqVN7" target="_blank" class="link-action">View Location ↗</a>
                 </div>
 
                 <!-- ENCADRÉ ASTUCE COMMUN : KSF -->
                 <div style="background: #f0f7ff; border-left: 3px solid #10b981; padding: 10px 14px; border-radius: 6px; width: 100%; box-sizing: border-box; margin-top: 5px;">
                     <span style="font-size: 0.88rem; color: #334155; line-height: 1.5;">
-                        💡 <strong>Astuce :</strong> La compagnie <a href="https://ksf.ca/" target="_blank" style="color: #004c97; font-weight: bold; text-decoration: underline;">KSF</a> propose des services et locations (kayak, SUP) valables pour le <strong>Parc des Rapides</strong> ainsi qu'au <strong>Parc Jean-Drapeau</strong>, idéal pour vous faire accompagner en toute sécurité par un(e) partenaire.
+                        💡 <strong>Tip :</strong> The outdoor company <a href="https://ksf.ca/en/" target="_blank" style="color: #004c97; font-weight: bold; text-decoration: underline;">KSF</a> offers services and rentals (kayak, SUP) valid for <strong>Parc des Rapides</strong> as well as <strong>Parc Jean-Drapeau</strong>, ideal for enjoying a safe, guided experience with a partner.
                     </span>
                 </div>
 
@@ -1350,49 +1350,48 @@
     </div>
                     </div>
 
-                    <!-- VÉLO -->
+                    <!-- CYCLING -->
 <div style="margin-left: 15px; margin-bottom: 30px;">
     <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-        🚴‍♂️ En vélo
+        🚴‍♂️ Cycling
     </h3>
-                        <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Sélectionnez une région pour découvrir les parcours :</p>
 
-                        <!-- PHRASE D'INTRODUCTION ÉCHELLE QUÉBEC -->
-    <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Consultez les réseaux et guides à l'échelle du Québec :</p>
+    <!-- QUEBEC-WIDE INTRO -->
+    <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Explore Province-wide networks and guides across Quebec:</p>
 
-                        <!-- LA ROUTE VERTE ET LE QUÉBEC À VÉLO -->
+    <!-- LA ROUTE VERTE AND QUEBEC CYCLING -->
     <div class="links-list" style="margin-left: 20px; margin-bottom: 20px;">
         <div class="link-row" style="background: #fff;">
             <div class="link-info">
                 <img src="https://www.routeverte.com/content/themes/la-route-verte/dist/images/logo-route-verte.svg" alt="La Route verte" style="width: 24px; height: 24px; object-fit: contain;">
                 <div class="link-text-block">
                     <span class="link-title">La Route verte</span>
-                    <span class="link-desc">Le plus grand réseau cyclable d'Amérique du Nord (accessible partout au Québec)</span>
+                    <span class="link-desc">North America's largest cycling network (accessible throughout Quebec)</span>
                 </div>
             </div>
-            <a href="https://www.routeverte.com" target="_blank" class="link-action">Découvrir le réseau ↗</a>
+            <a href="https://www.routeverte.com" target="_blank" class="link-action">Discover the network ↗</a>
         </div>
         <div class="link-row" style="background: #fff;">
             <div class="link-info">
                 <span class="emoji-icon">🚴</span>
                 <div class="link-text-block">
-                    <span class="link-title">Le Québec à vélo</span>
-                    <span class="link-desc">Guide global des itinéraires cyclables à travers le Québec</span>
+                    <span class="link-title">Québec by Bike</span>
+                    <span class="link-desc">Comprehensive guide to cycling routes across Quebec</span>
                 </div>
             </div>
-            <a href="https://www.lequebecavelo.ca" target="_blank" class="link-action">Explorer la carte ↗</a>
+            <a href="https://www.lequebecavelo.ca" target="_blank" class="link-action">Explore the map ↗</a>
         </div>
     </div>
 
-                    <!-- PHRASE D'INTRODUCTION PAR RÉGION -->
-    <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Sélectionnez une région pour découvrir les parcours :</p>
+    <!-- REGIONAL INTRO -->
+    <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Select a region to discover local routes:</p>
 
-        <!-- RÉGIONS VÉLO PAR ORDRE ALPHABÉTIQUE -->
+        <!-- CYCLING REGIONS IN ALPHABETICAL ORDER -->
 
         <!-- CENTRE-DU-QUÉBEC -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région du Centre-du-Québec
+                📍 Centre-du-Québec Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
@@ -1400,30 +1399,30 @@
                         <span class="emoji-icon">🌸</span>
                         <div class="link-text-block">
                             <span class="link-title">Véloroute des Appalaches</span>
-                            <span class="link-desc">Circuit sur route vallonné pour la longue distance</span>
+                            <span class="link-desc">Hilly road circuit ideal for long-distance training</span>
                         </div>
                     </div>
-                    <a href="https://www.tourismeregionvictoriaville.com/landing/veloroute-des-appalaches/" target="_blank" class="link-action">Voir l'itinéraire ↗</a>
+                    <a href="https://www.tourismeregionvictoriaville.com/landing/veloroute-des-appalaches/" target="_blank" class="link-action">View route ↗</a>
                 </div>
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🌳</span>
                         <div class="link-text-block">
                             <span class="link-title">Parc linéaire des Bois-Francs</span>
-                            <span class="link-desc">Piste cyclable aménagée sur une ancienne voie ferrée</span>
+                            <span class="link-desc">Multi-use trail developed along a former railway line</span>
                         </div>
                     </div>
-                    <a href="https://www.tourismeregionvictoriaville.com/entreprise/842/parc-lineaire-des-bois-francs" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.tourismeregionvictoriaville.com/entreprise/842/parc-lineaire-des-bois-francs" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🚴</span>
                         <div class="link-text-block">
-                            <span class="link-title">Tourisme Centre-du-Québec</span>
-                            <span class="link-desc">Guide des pistes et voies cyclables de la région</span>
+                            <span class="link-title">Tourism Centre-du-Québec</span>
+                            <span class="link-desc">Guide to the region's bike paths and road circuits</span>
                         </div>
                     </div>
-                    <a href="https://tourismecentreduquebec.com" target="_blank" class="link-action">Découvrir les circuits ↗</a>
+                    <a href="https://tourismecentreduquebec.com" target="_blank" class="link-action">Discover routes ↗</a>
                 </div>
             </div>
         </details>
@@ -1431,7 +1430,7 @@
         <!-- CHAUDIÈRE-APPALACHES -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Chaudière-Appalaches
+                📍 Chaudière-Appalaches Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
@@ -1439,39 +1438,39 @@
                         <span class="emoji-icon">🚴</span>
                         <div class="link-text-block">
                             <span class="link-title">Parcours des Anses (Lévis)</span>
-                            <span class="link-desc">Piste cyclable asphaltée longeant le fleuve Saint-Laurent</span>
+                            <span class="link-desc">Paved bike path along the St. Lawrence River</span>
                         </div>
                     </div>
-                    <a href="https://chaudiereappalaches.com/explorer-la-region/nos-15-incontournables/parcours-des-anses/" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://chaudiereappalaches.com/explorer-la-region/nos-15-incontournables/parcours-des-anses/" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
             </div>
         </details>
 
-        <!-- ESTRIE (CANTONS-DE-L'EST) -->
+        <!-- ESTRIE (EASTERN TOWNSHIPS) -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de l'Estrie (Cantons-de-l'Est)
+                📍 Estrie Region (Eastern Townships)
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🚴</span>
                         <div class="link-text-block">
-                            <span class="link-title">Cantons de l'Est à vélo</span>
-                            <span class="link-desc">Réseau complet de pistes et circuits sur route</span>
+                            <span class="link-title">Eastern Townships by Bike</span>
+                            <span class="link-desc">Complete network of bike paths and road circuits</span>
                         </div>
                     </div>
-                    <a href="https://www.cantonsdelest.com/velo" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.cantonsdelest.com/velo" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🏞️</span>
                         <div class="link-text-block">
-                            <span class="link-title">Réseau cyclable Yamaska</span>
-                            <span class="link-desc">Circuit asphalté et en poussière de pierre</span>
+                            <span class="link-title">Yamaska Cycling Network</span>
+                            <span class="link-desc">Paved and stone-dust cycling circuit</span>
                         </div>
                     </div>
-                    <a href="https://www.reseauveloyamaska.ca" target="_blank" class="link-action">Voir la carte ↗</a>
+                    <a href="https://www.reseauveloyamaska.ca" target="_blank" class="link-action">View map ↗</a>
                 </div>
             </div>
         </details>
@@ -1479,26 +1478,26 @@
         <!-- LANAUDIÈRE -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Lanaudière
+                📍 Lanaudière Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🗺️</span>
                         <div class="link-text-block">
-                            <span class="link-title">Itinéraires cyclables de Lanaudière</span>
-                            <span class="link-desc">Sélection de parcours d'entraînement régionaux</span>
+                            <span class="link-title">Lanaudière Cycling Routes</span>
+                            <span class="link-desc">Selection of regional training routes</span>
                         </div>
                     </div>
-                    <a href="https://lanaudiere.ca/fr/activites-lanaudiere/plein-air/velo/itineraires/" target="_blank" class="link-action">Voir les itinéraires ↗</a>
+                    <a href="https://lanaudiere.ca/fr/activites-lanaudiere/plein-air/velo/itineraires/" target="_blank" class="link-action">View routes ↗</a>
                 </div>
             </div>
         </details>
 
-        <!-- LAURENTIDES -->
+        <!-- LAURENTIANS -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région des Laurentides
+                📍 Laurentians Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
@@ -1506,20 +1505,20 @@
                         <span class="emoji-icon">🌲</span>
                         <div class="link-text-block">
                             <span class="link-title">Domaine Saint-Bernard</span>
-                            <span class="link-desc">Réseau de voies secondaires et vélo de montagne / gravel</span>
+                            <span class="link-desc">Network of secondary roads, mountain biking & gravel trails</span>
                         </div>
                     </div>
-                    <a href="https://www.domainesaintbernard.org" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.domainesaintbernard.org" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🌲</span>
                         <div class="link-text-block">
                             <span class="link-title">Le P'tit Train du Nord</span>
-                            <span class="link-desc">Piste linéaire traversant la nature des Laurentides</span>
+                            <span class="link-desc">Linear park trail running through the Laurentian wilderness</span>
                         </div>
                     </div>
-                    <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Découvrir la piste ↗</a>
+                    <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Discover the trail ↗</a>
                 </div>
             </div>
         </details>
@@ -1527,18 +1526,18 @@
         <!-- MAURICIE -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de la Mauricie
+                📍 Mauricie Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🌲</span>
                         <div class="link-text-block">
-                            <span class="link-title">Parc national de la Mauricie</span>
-                            <span class="link-desc">Route promenade vallonnée idéale pour le travail de dénivelé</span>
+                            <span class="link-title">La Mauricie National Park</span>
+                            <span class="link-desc">Hilly parkway ideal for elevation training</span>
                         </div>
                     </div>
-                    <a href="https://parcs.canada.ca/pn-np/qc/mauricie" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://parcs.canada.ca/pn-np/qc/mauricie" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
             </div>
         </details>
@@ -1546,47 +1545,47 @@
         <!-- MONTÉRÉGIE -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de la Montérégie
+                📍 Montérégie Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🌊</span>
                         <div class="link-text-block">
-                            <span class="link-title">Piste du Canal-de-Chambly</span>
-                            <span class="link-desc">Parcours plat le long du canal, sécuritaire et continu</span>
+                            <span class="link-title">Chambly Canal Path</span>
+                            <span class="link-desc">Flat, continuous, and safe trail along the canal</span>
                         </div>
                     </div>
-                    <a href="https://www.tourisme-monteregie.qc.ca/route/piste-du-canal-de-chambly/" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.tourisme-monteregie.qc.ca/route/piste-du-canal-de-chambly/" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
             </div>
         </details>
 
-        <!-- MONTRÉAL -->
+        <!-- MONTREAL -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Montréal
+                📍 Montréal Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🚴</span>
                         <div class="link-text-block">
-                            <span class="link-title">Circuit Gilles-Villeneuve</span>
-                            <span class="link-desc">Piste fermée idéale pour l'entraînement intensif</span>
+                            <span class="link-title">Gilles-Villeneuve Circuit</span>
+                            <span class="link-desc">Traffic-free track ideal for high-intensity training</span>
                         </div>
                     </div>
-                    <a href="https://www.parcjeandrapeau.com/fr/circuit-gilles-villeneuve-piste-multifonctionnelle-provelo-entrainement-sportif-montreal/" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.parcjeandrapeau.com/fr/circuit-gilles-villeneuve-piste-multifonctionnelle-provelo-entrainement-sportif-montreal/" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🌊</span>
                         <div class="link-text-block">
-                            <span class="link-title">Promenade fluviale (La Voie maritime)</span>
-                            <span class="link-desc">Long parcours en ligne droite le long du Saint-Laurent</span>
+                            <span class="link-title">Riverside Promenade (La Voie Maritime)</span>
+                            <span class="link-desc">Long straight pathway running along the St. Lawrence River</span>
                         </div>
                     </div>
-                    <a href="https://www.parcjeandrapeau.com/fr/promenade-fluviale-grand-montreal-pistes-parcours-cyclistes-velo-familles-traverse-ecluses-fleuve-saint-laurent/" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://www.parcjeandrapeau.com/fr/promenade-fluviale-grand-montreal-pistes-parcours-cyclistes-velo-familles-traverse-ecluses-fleuve-saint-laurent/" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
             </div>
         </details>
@@ -1594,349 +1593,350 @@
         <!-- OUTAOUAIS -->
         <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
             <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de l'Outaouais
+                📍 Outaouais Region
             </summary>
             <div class="links-list" style="margin-top: 15px;">
                 <div class="link-row" style="background: #fff;">
                     <div class="link-info">
                         <span class="emoji-icon">🚴</span>
                         <div class="link-text-block">
-                            <span class="link-title">Parc de la Gatineau</span>
-                            <span class="link-desc">Promenades fermées aux voitures à certaines plages horaires</span>
+                            <span class="link-title">Gatineau Park</span>
+                            <span class="link-desc">Scenic parkways closed to motor vehicles during scheduled hours</span>
                         </div>
                     </div>
-                    <a href="https://ccn-ncc.gc.ca/endroits/parc-de-la-gatineau" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-    </div>
-    <!-- COURSE À PIED -->
-    <div style="margin-left: 15px;">
-        <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
-            🏃‍♂️ En course à pied
-        </h3>
-        <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Sélectionnez une région pour découvrir les sites de course :</p>
-
-        <!-- RÉGIONS COURSE À PIED PAR ORDRE ALPHABÉTIQUE -->
-
-        <!-- ABITIBI-TÉMISCAMINGUE -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de l'Abitibi-Témiscamingue
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌲</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Forêt du Lac-Duparquet</span>
-                            <span class="link-desc">Forêt d'enseignement et de recherche adaptée à la course en nature</span>
-                        </div>
-                    </div>
-                    <a href="https://baliseqc.ca/3S/explorer/abitibi-temiscamingue/foret-denseignement-et-de-recherche-du-lac-duparquet-LR0857?" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- CAPITALE-NATIONALE -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de la Capitale-Nationale (Québec)
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Empire 47 (Lac-Delage)</span>
-                            <span class="link-desc">Sentiers dédiés au trail et à la course en montagne</span>
-                        </div>
-                    </div>
-                    <a href="https://www.empire47.com/activites-a-pratiquer/" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">⛰️</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Mont-Sainte-Anne</span>
-                            <span class="link-desc">Sentiers d'entraînement en altitude et fort dénivelé</span>
-                        </div>
-                    </div>
-                    <a href="https://mont-sainte-anne.com" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌊</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Promenade Samuel-De Champlain</span>
-                            <span class="link-desc">Grand aménagement linéaire plat longeant le fleuve Saint-Laurent</span>
-                        </div>
-                    </div>
-                    <a href="https://www.ville.quebec.qc.ca/citoyens/loisirs_sports/parcs/promenade_samuel_dechamplain/index.aspx" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- CENTRE-DU-QUÉBEC -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région du Centre-du-Québec
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌳</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc linéaire des Bois-Francs</span>
-                            <span class="link-desc">Longue surface stabilisée idéale pour les sorties longues de course</span>
-                        </div>
-                    </div>
-                    <a href="https://www.tourismeregionvictoriaville.com/entreprise/842/parc-lineaire-des-bois-francs" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- CHAUDIÈRE-APPALACHES -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Chaudière-Appalaches
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">💡</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Recommandations Chaudière-Appalaches</span>
-                            <span class="link-desc">Incontournables de la région pour les activités de plein air</span>
-                        </div>
-                    </div>
-                    <a href="https://chaudiereappalaches.com/vecu-pour-vrai-nos-recommandations/top-idees/" target="_blank" class="link-action">Voir le guide ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- ESTRIE (CANTONS-DE-L'EST) -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de l'Estrie (Cantons-de-l'Est)
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">⛰️</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc d'environnement naturel de Sutton</span>
-                            <span class="link-desc">Sentiers techniques pour le travail de côte et de trail</span>
-                        </div>
-                    </div>
-                    <a href="https://www.parcsutton.com" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc des Montagnards (Shefford)</span>
-                            <span class="link-desc">Parcours en forêt avec du relief varié</span>
-                        </div>
-                    </div>
-                    <a href="https://www.easterntownships.org/things-to-do/980/parc-des-montagnards" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- LAURENTIDES -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région des Laurentides
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌲</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Le P'tit Train du Nord</span>
-                            <span class="link-desc">Idéal pour vos sorties longues sur surface stabilisée</span>
-                        </div>
-                    </div>
-                    <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Découvrir la piste ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc du Corridor Aérobique</span>
-                            <span class="link-desc">Piste en pleine nature, idéale pour le trail et l'endurance</span>
-                        </div>
-                    </div>
-                    <a href="https://corridoraerobique.ca/" target="_blank" class="link-action">Découvrir le parc ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- LAVAL -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Laval
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌳</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Centre de la Nature de Laval</span>
-                            <span class="link-desc">Grand parc urbain avec des sentiers aménagés pour la course</span>
-                        </div>
-                    </div>
-                    <a href="https://www.laval.ca/sports-loisirs/centre-nature/" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- MAURICIE -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de la Mauricie
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏝️</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Île Saint-Quentin (Trois-Rivières)</span>
-                            <span class="link-desc">Boucle plate en bord de rivière pour entraînements ciblés</span>
-                        </div>
-                    </div>
-                    <a href="https://ilesaintquentin.com" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌲</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc national de la Mauricie</span>
-                            <span class="link-desc">Grands espaces et parcours valonnés</span>
-                        </div>
-                    </div>
-                    <a href="https://parcs.canada.ca/pn-np/qc/mauricie" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Sentier National en Mauricie</span>
-                            <span class="link-desc">Sentiers pour le travail d'endurance fondamentale</span>
-                        </div>
-                    </div>
-                    <a href="https://sentiernationalmauricie.ca/index.html" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- MONTÉRÉGIE -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de la Montérégie
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏝️</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc national des Îles-de-Boucherville</span>
-                            <span class="link-desc">Sentiers très plats entourés par la nature et le fleuve</span>
-                        </div>
-                    </div>
-                    <a href="https://www.boucherville.ca/sports/parcs-installations/iles-de-boucherville/" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌊</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Piste du Canal-de-Chambly</span>
-                            <span class="link-desc">Poussière de pierre idéale pour l'endurance sans impact dur sur la route</span>
-                        </div>
-                    </div>
-                    <a href="https://www.tourisme-monteregie.qc.ca/route/piste-du-canal-de-chambly/" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- MONTRÉAL -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de Montréal
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌳</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc Angrignon</span>
-                            <span class="link-desc">Grands chemins ombragés parfaits pour les intervalles</span>
-                        </div>
-                    </div>
-                    <a href="https://montreal.ca/lieux/parc-angrignon" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc Maisonneuve</span>
-                            <span class="link-desc">Boucle asphaltée et chemins annexes très prisés des coureurs</span>
-                        </div>
-                    </div>
-                    <a href="https://montreal.ca/lieux/parc-maisonneuve" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌊</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc-nature de l'Île-de-la-Visitation</span>
-                            <span class="link-desc">Parcours paisible en bord de rivière</span>
-                        </div>
-                    </div>
-                    <a href="https://montreal.ca/lieux/parc-nature-de-lile-de-la-visitation" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-            </div>
-        </details>
-
-        <!-- OUTAOUAIS -->
-        <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
-            <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
-                📍 Région de l'Outaouais
-            </summary>
-            <div class="links-list" style="margin-top: 15px;">
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🏃</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc de la Gatineau</span>
-                            <span class="link-desc">Sentiers d'endurance et de trail en pleine nature</span>
-                        </div>
-                    </div>
-                    <a href="https://ccn-ncc.gc.ca/endroits/parc-de-la-gatineau" target="_blank" class="link-action">Accéder au site ↗</a>
-                </div>
-                <div class="link-row" style="background: #fff;">
-                    <div class="link-info">
-                        <span class="emoji-icon">🌊</span>
-                        <div class="link-text-block">
-                            <span class="link-title">Parc du Lac-Leamy (Gatineau)</span>
-                            <span class="link-desc">Boucles plates autour du lac pour séances de vitesse</span>
-                        </div>
-                    </div>
-                    <a href="https://www.gatineau.ca/portail/default.aspx?p=activites_evenements_idees_sorties/plein_air_urbain/sites_plein_air/lac_leamy" target="_blank" class="link-action">Accéder au site ↗</a>
+                    <a href="https://ccn-ncc.gc.ca/endroits/parc-de-la-gatineau" target="_blank" class="link-action">Visit website ↗</a>
                 </div>
             </div>
         </details>
     </div>
 
-                <!-- ONGLET 6 : COMMUNAUTÉ -->
+                    <!-- RUNNING -->
+                    <div style="margin-left: 15px;">
+    <h3 style="color: #10b981; font-size: 1.3rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+        🏃‍♂️ Running
+    </h3>
+    <p style="margin: 0 0 15px 20px; font-size: 0.95rem; color: var(--text-light);">Select a region to discover local running spots:</p>
+
+    <!-- RUNNING REGIONS IN ALPHABETICAL ORDER -->
+
+    <!-- ABITIBI-TÉMISCAMINGUE -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Abitibi-Témiscamingue Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌲</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Lac-Duparquet Teaching & Research Forest</span>
+                        <span class="link-desc">Research forest well-suited for nature trail running</span>
+                    </div>
+                </div>
+                <a href="https://baliseqc.ca/3S/explorer/abitibi-temiscamingue/foret-denseignement-et-de-recherche-du-lac-duparquet-LR0857?" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- CAPITALE-NATIONALE -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Capitale-Nationale Region (Quebec City)
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Empire 47 (Lac-Delage)</span>
+                        <span class="link-desc">Dedicated trails for mountain and trail running</span>
+                    </div>
+                </div>
+                <a href="https://www.empire47.com/activites-a-pratiquer/" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">⛰️</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Mont-Sainte-Anne</span>
+                        <span class="link-desc">Altitude training trails with steep elevation gains</span>
+                    </div>
+                </div>
+                <a href="https://mont-sainte-anne.com" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌊</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Promenade Samuel-De Champlain</span>
+                        <span class="link-desc">Spacious flat linear path running along the St. Lawrence River</span>
+                    </div>
+                </div>
+                <a href="https://www.ville.quebec.qc.ca/citoyens/loisirs_sports/parcs/promenade_samuel_dechamplain/index.aspx" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- CENTRE-DU-QUÉBEC -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Centre-du-Québec Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌳</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Parc linéaire des Bois-Francs</span>
+                        <span class="link-desc">Long, crushed-stone trail ideal for long-distance runs</span>
+                    </div>
+                </div>
+                <a href="https://www.tourismeregionvictoriaville.com/entreprise/842/parc-lineaire-des-bois-francs" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- CHAUDIÈRE-APPALACHES -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Chaudière-Appalaches Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">💡</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Chaudière-Appalaches Highlights</span>
+                        <span class="link-desc">Top regional recommendations for outdoor activities</span>
+                    </div>
+                </div>
+                <a href="https://chaudiereappalaches.com/vecu-pour-vrai-nos-recommandations/top-idees/" target="_blank" class="link-action">View guide ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- ESTRIE (EASTERN TOWNSHIPS) -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Estrie Region (Eastern Townships)
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">⛰️</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Sutton Natural Environment Park</span>
+                        <span class="link-desc">Technical singletracks perfect for hill repeats and trail running</span>
+                    </div>
+                </div>
+                <a href="https://www.parcsutton.com" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Parc des Montagnards (Shefford)</span>
+                        <span class="link-desc">Forest trails with rolling terrain</span>
+                    </div>
+                </div>
+                <a href="https://www.easterntownships.org/things-to-do/980/parc-des-montagnards" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- LAURENTIANS -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Laurentians Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌲</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Le P'tit Train du Nord</span>
+                        <span class="link-desc">Ideal for long runs on a smooth, packed surface</span>
+                    </div>
+                </div>
+                <a href="https://ptittraindunord.com/" target="_blank" class="link-action">Discover the trail ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Aerobic Corridor Park</span>
+                        <span class="link-desc">Nature trail ideal for endurance and trail running</span>
+                    </div>
+                </div>
+                <a href="https://corridoraerobique.ca/" target="_blank" class="link-action">Discover the park ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- LAVAL -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Laval Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌳</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Centre de la Nature de Laval</span>
+                        <span class="link-desc">Large urban park featuring maintained running paths</span>
+                    </div>
+                </div>
+                <a href="https://www.laval.ca/sports-loisirs/centre-nature/" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- MAURICIE -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Mauricie Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏝️</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Île Saint-Quentin (Trois-Rivières)</span>
+                        <span class="link-desc">Flat waterfront loop suited for targeted workouts</span>
+                    </div>
+                </div>
+                <a href="https://ilesaintquentin.com" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌲</span>
+                    <div class="link-text-block">
+                        <span class="link-title">La Mauricie National Park</span>
+                        <span class="link-desc">Scenic open spaces and rolling terrain</span>
+                    </div>
+                </div>
+                <a href="https://parcs.canada.ca/pn-np/qc/mauricie" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">National Trail in Mauricie</span>
+                        <span class="link-desc">Trails suited for aerobic base endurance training</span>
+                    </div>
+                </div>
+                <a href="https://sentiernationalmauricie.ca/index.html" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- MONTÉRÉGIE -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Montérégie Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏝️</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Îles-de-Boucherville National Park</span>
+                        <span class="link-desc">Very flat paths surrounded by nature and the river</span>
+                    </div>
+                </div>
+                <a href="https://www.boucherville.ca/sports/parcs-installations/iles-de-boucherville/" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌊</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Chambly Canal Path</span>
+                        <span class="link-desc">Crushed-stone surface ideal for low-impact endurance training</span>
+                    </div>
+                </div>
+                <a href="https://www.tourisme-monteregie.qc.ca/route/piste-du-canal-de-chambly/" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- MONTREAL -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Montreal Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌳</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Angrignon Park</span>
+                        <span class="link-desc">Wide, shaded paths perfect for interval sessions</span>
+                    </div>
+                </div>
+                <a href="https://montreal.ca/lieux/parc-angrignon" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Maisonneuve Park</span>
+                        <span class="link-desc">Popular paved loop and side trails for local runners</span>
+                    </div>
+                </div>
+                <a href="https://montreal.ca/lieux/parc-maisonneuve" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌊</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Île-de-la-Visitation Nature Park</span>
+                        <span class="link-desc">Peaceful riverside running routes</span>
+                    </div>
+                </div>
+                <a href="https://montreal.ca/lieux/parc-nature-de-lile-de-la-visitation" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+
+    <!-- OUTAOUAIS -->
+    <details style="margin-left: 20px; margin-bottom: 12px; background: #f8fafc; padding: 12px 18px; border-radius: 12px; border: 1px solid rgba(0, 76, 151, 0.08);">
+        <summary style="font-size: 1.1rem; color: #004c97; font-weight: bold; cursor: pointer; user-select: none;">
+            📍 Outaouais Region
+        </summary>
+        <div class="links-list" style="margin-top: 15px;">
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🏃</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Gatineau Park</span>
+                        <span class="link-desc">Endurance and trail running routes surrounded by nature</span>
+                    </div>
+                </div>
+                <a href="https://ccn-ncc.gc.ca/endroits/parc-de-la-gatineau" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+            <div class="link-row" style="background: #fff;">
+                <div class="link-info">
+                    <span class="emoji-icon">🌊</span>
+                    <div class="link-text-block">
+                        <span class="link-title">Lac Leamy Park (Gatineau)</span>
+                        <span class="link-desc">Flat loops around the lake ideal for speed workouts</span>
+                    </div>
+                </div>
+                <a href="https://www.gatineau.ca/portail/default.aspx?p=activites_evenements_idees_sorties/plein_air_urbain/sites_plein_air/lac_leamy" target="_blank" class="link-action">Visit website ↗</a>
+            </div>
+        </div>
+    </details>
+</div>
+
+                <!-- TAB 6: COMMUNITY -->
                 <div id="tab-communaute" class="tab-panel">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-                        👥 Communautaire
+                        👥 Community
                     </h2>
                     
                     <p style="color: var(--text-light); margin-bottom: 25px;">
-                        Connectez-vous avec d'autres passionnés et trouvez votre équipement au meilleur prix auprès de la communauté.
+                        Connect with fellow athletes and find your gear at the best price from the community.
                     </p>
 
                     <div class="links-list">
@@ -1945,10 +1945,10 @@
                                 <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
                                 <div class="link-text-block">
                                     <span class="link-title">Triathlon au Québec</span>
-                                    <span class="link-desc">(Groupe Facebook principal d'entraide et d'échange)</span>
+                                    <span class="link-desc">(Main Facebook group for support and discussion)</span>
                                 </div>
                             </div>
-                            <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="link-action">Rejoindre le groupe ↗</a>
+                            <a href="https://www.facebook.com/groups/160636130768966" target="_blank" class="link-action">Join group ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1956,10 +1956,10 @@
                                 <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
                                 <div class="link-text-block">
                                     <span class="link-title">Facebook Marketplace</span>
-                                    <span class="link-desc">(Petites annonces générales pour le matériel usagé)</span>
+                                    <span class="link-desc">(General classifieds for used gear)</span>
                                 </div>
                             </div>
-                            <a href="https://www.facebook.com/marketplace/" target="_blank" class="link-action">Visiter Marketplace ↗</a>
+                            <a href="https://www.facebook.com/marketplace/" target="_blank" class="link-action">Visit Marketplace ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1967,10 +1967,10 @@
                                 <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
                                 <div class="link-text-block">
                                     <span class="link-title">Vente-Achat Route & Triathlon Québec</span>
-                                    <span class="link-desc">(Groupe spécialisé route et matériel de tri)</span>
+                                    <span class="link-desc">(Specialized road and tri gear group)</span>
                                 </div>
                             </div>
-                            <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="link-action">Voir les annonces ↗</a>
+                            <a href="https://www.facebook.com/groups/1738822193041827" target="_blank" class="link-action">See listings ↗</a>
                         </div>
 
                         <div class="link-row">
@@ -1978,56 +1978,56 @@
                                 <img src="https://www.facebook.com/favicon.ico" alt="Facebook">
                                 <div class="link-text-block">
                                     <span class="link-title">Triathlon : achat/vente/échange</span>
-                                    <span class="link-desc">(Communauté ciblée Montréal et Québec)</span>
+                                    <span class="link-desc">(Targeted Montreal and Quebec community)</span>
                                 </div>
                             </div>
-                            <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="link-action">Voir les annonces ↗</a>
+                            <a href="https://www.facebook.com/groups/achat.vente.echange.triathlon.montreal.quebec" target="_blank" class="link-action">See listings ↗</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ONGLET 7 : CONTRIBUER -->
+                <!-- TAB 7: CONTRIBUTE -->
                 <div id="tab-contribuer" class="tab-panel">
                     <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
-                        💡 Contribuez à cette boîte à outils
+                        💡 Contribute to this toolbox
                     </h2>
                     <p style="color: var(--text-light); margin-bottom: 25px; font-size: 0.95rem;">
-                        Vous avez déniché un nouveau site d'entraînement, un règlement mis à jour, ou une astuce incontournable pour débuter ? Partagez vos idées et vos bons coups pour enrichir la page et aider toute la communauté autonome au Québec !
+                        Found a new training spot, updated rule, or must-know tip for beginners? Share your ideas and recommendations to enrich this page and help the entire independent community in Quebec!
                     </p>
 
                     <!-- Envoi vers Google Forms (voir le script en bas de page) -->
                     <form id="contribForm" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin-left: 15px;">
                         
                         <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Que souhaitez-vous ajouter ou améliorer ?</span>
+                            <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">What would you like to add or improve?</span>
                             <div style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.95rem;">
                                 <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                                    <input type="radio" name="secteur_contribution" value="Lieu entrainement" required> 📍 Lieu d'entraînement
+                                    <input type="radio" name="secteur_contribution" value="Lieu entrainement" required> 📍 Training Location
                                 </label>
                                 <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                                    <input type="radio" name="secteur_contribution" value="Lien officiel / Reglement"> 📚 Règlements ou liens officiels
+                                    <input type="radio" name="secteur_contribution" value="Lien officiel / Reglement"> 📚 Rules or Official Links
                                 </label>
                                 <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                                    <input type="radio" name="secteur_contribution" value="Communaute / Astuce"> 👥 Communauté ou astuces d'achat
+                                    <input type="radio" name="secteur_contribution" value="Communaute / Astuce"> 👥 Community or Buying Tips
                                 </label>
                                 <label style="display: flex; align-items: center; gap: 6px; cursor: pointer;">
-                                    <input type="radio" name="secteur_contribution" value="Autre idee"> 💡 Autre bonne idée
+                                    <input type="radio" name="secteur_contribution" value="Autre idee"> 💡 Other Great Idea
                                 </label>
                             </div>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 6px;">
-                            <label for="nom-ressource" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Nom de la ressource, du site ou du lieu :</label>
-                            <input type="text" id="nom-ressource" name="nom_ressource_ou_lieu" required placeholder="Ex: Circuit Gilles-Villeneuve, Guide USAT, Nouveau groupe d'achat..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                            <label for="nom-ressource" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Name of resource, site, or location:</label>
+                            <input type="text" id="nom-ressource" name="nom_ressource_ou_lieu" required placeholder="Ex: Gilles-Villeneuve Circuit, USAT Guide, New buy/sell group..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 6px;">
-                            <label for="portee-geo" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Région concernée ou portée :</label>
-                            <input type="text" id="portee-geo" name="region_ou_portee" required placeholder="Ex: Laurentides, Provincial, International, Montréal..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                            <label for="portee-geo" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Relevant region or scope:</label>
+                            <input type="text" id="portee-geo" name="region_ou_portee" required placeholder="Ex: Laurentians, Provincial, International, Montreal..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 6px;">
-                            <label for="lien-internet" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Lien internet, site officiel ou URL de référence :</label>
+                            <label for="lien-internet" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Website, official link, or reference URL:</label>
                             <input type="url" id="lien-internet" name="lien_internet" value="https://" 
                                 placeholder="https://example.com" 
                                 style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;"
@@ -2048,25 +2048,25 @@
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 6px;">
-                            <label for="explication" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Pourquoi est-ce pratique ? Expliquez votre astuce ou bon coup :</label>
-                            <textarea id="explication" name="explication_et_astuces" rows="4" required placeholder="Décrivez les détails : qualité de la route, gratuité, pourquoi c'est pertinent pour un triathlète autonome..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
+                            <label for="explication" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Why is this useful? Explain your tip or recommendation:</label>
+                            <textarea id="explication" name="explication_et_astuces" rows="4" required placeholder="Describe the details: road quality, free access, why it's relevant for an independent triathlete..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
                         </div>
 
                         <div style="display: flex; flex-direction: column; gap: 6px;">
-                            <label for="courriel-contrib" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Courriel (optionnel, si vous souhaitez une réponse) :</label>
-                            <input type="email" id="courriel-contrib" name="courriel" placeholder="nom@exemple.com" style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                            <label for="courriel-contrib" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Email (optional, if you'd like a reply):</label>
+                            <input type="email" id="courriel-contrib" name="courriel" placeholder="name@example.com" style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
                         </div>
 
                         <div style="margin-top: 5px;">
                             <button type="submit" id="btn-contrib" class="btn-submit-autonome">
-                                Soumettre ma contribution 🚀
+                                Submit my contribution 🚀
                             </button>
                         </div>
 
                     </form>
 
                     <div id="contrib-succes" style="display:none; max-width: 700px; margin: 10px 0 0 15px; color: #004c97; font-weight: bold; text-align: center; font-size: 1.05rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
-                        ✅ Merci pour votre contribution ! Notre équipe va la consulter très bientôt.
+                        ✅ Thank you for your contribution! Our team will review it shortly.
                     </div>
                 </div>
 
@@ -2078,7 +2078,7 @@
         <div class="container">
             <div class="footer-logo">
                 <a href="index.html">
-                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
+                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
                 </a>
             </div>
             <div class="footer-text">
@@ -2086,28 +2086,28 @@
                     &copy; 2026 
                     <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
                     <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-                    - OSBL dédiée au triathlon au Québec
+                    - Nonprofit dedicated to triathlon in Quebec
                 </p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
+                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
             </div>
             <div class="footer-zones">
                 <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montréal, Laval, Montérégie, Laurentides, Lanaudière, Capitale-Nationale, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Estrie, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec.</p>
+                    <summary>View all covered service zones</summary>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
                 </details>
             </div>
         </div>
     </footer>
 
-    <!-- BOUTON RETOUR EN HAUT -->
-    <button id="backToTop" title="Retour en haut">
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" title="Back to top">
         <svg viewBox="0 0 24 24">
             <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
         </svg>
     </button>
 
 <script>
-    // --- BOUTON RETOUR EN HAUT ---
+    // --- BACK TO TOP BUTTON ---
     const backToTopBtn = document.getElementById("backToTop");
 
     window.addEventListener("scroll", function() {
@@ -2122,7 +2122,7 @@
         window.scrollTo({ top: 0, behavior: "smooth" }); 
     });
 
-    // --- GESTION DES ONGLETS ---
+    // --- TAB MANAGEMENT ---
     function openTab(evt, tabName) {
         let tabPanels = document.getElementsByClassName("tab-panel");
         for (let i = 0; i < tabPanels.length; i++) {
@@ -2153,20 +2153,20 @@
             observer.observe(tabsContainer);
         }
 
-        // Sauvegarde de l'état initial HTML de la FAQ pour les highlights
+        // Save initial FAQ HTML state for highlighting
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             item.setAttribute('data-original-html', item.innerHTML);
         });
     });
 
-    // --- LOGIQUE DE RECHERCHE ET FILTRAGE FAQ ---
+    // --- FAQ SEARCH AND FILTER LOGIC ---
     let currentFAQCategory = 'all';
 
     function setFAQCategory(category) {
         currentFAQCategory = category;
         
-        // Mise à jour visuelle des boutons de catégorie
+        // Update visual state of filter buttons
         const filterBtns = document.querySelectorAll('.faq-filter-btn');
         filterBtns.forEach(btn => {
             if (btn.getAttribute('data-category') === category) {
@@ -2194,14 +2194,14 @@
         const noResults = document.getElementById('faqNoResults');
         let visibleCount = 0;
 
-        // Afficher/Cacher le bouton d'effacement
+        // Show/Hide clear button
         clearBtn.style.display = filterTerm.length > 0 ? 'block' : 'none';
 
         faqItems.forEach(item => {
             const categories = item.getAttribute('data-categories') || '';
             const matchesCategory = (currentFAQCategory === 'all') || categories.includes(currentFAQCategory);
             
-            // Restauration du HTML d'origine avant filtrage/surlignage
+            // Restore original HTML before filtering/highlighting
             const originalHTML = item.getAttribute('data-original-html');
             item.innerHTML = originalHTML;
 
@@ -2213,10 +2213,10 @@
                 visibleCount++;
 
                 if (filterTerm.length > 1) {
-                    item.open = true; // Ouvre l'accordéon si recherche active
+                    item.open = true; // Open accordion if search is active
                     highlightText(item, filterTerm);
                 } else if (filterTerm === '') {
-                    item.open = false; // Ferme par défaut sans recherche
+                    item.open = false; // Close by default without search
                 }
             } else {
                 item.style.display = 'none';
@@ -2224,7 +2224,7 @@
             }
         });
 
-        // Gestion du message "aucun résultat"
+        // Manage "no results" message
         noResults.style.display = (visibleCount === 0) ? 'block' : 'none';
     }
 
@@ -2256,6 +2256,7 @@
     function escapeRegExp(string) {
         return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     }
+
 
     // Highlight de la page active et du menu parent Athletes
 document.addEventListener("DOMContentLoaded", function () {
@@ -2297,10 +2298,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Valeurs lisibles dans vos réponses (avec la langue de la page)
         const LIBELLES = {
-            "Lieu entrainement": "Lieu d'entraînement (FR)",
-            "Lien officiel / Reglement": "Règlements ou liens officiels (FR)",
-            "Communaute / Astuce": "Communauté ou astuces d'achat (FR)",
-            "Autre idee": "Autre bonne idée (FR)"
+            "Lieu entrainement": "Lieu d'entraînement (EN)",
+            "Lien officiel / Reglement": "Règlements ou liens officiels (EN)",
+            "Communaute / Astuce": "Communauté ou astuces d'achat (EN)",
+            "Autre idee": "Autre bonne idée (EN)"
         };
 
         form.addEventListener('submit', function (e) {
@@ -2317,7 +2318,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const bouton = document.getElementById('btn-contrib');
             const texteBouton = bouton.innerHTML;
             bouton.disabled = true;
-            bouton.textContent = "Envoi en cours...";
+            bouton.textContent = "Sending...";
 
             fetch(GOOGLE_FORM_URL, { method: "POST", body: donnees, mode: "no-cors" })
                 .then(() => {
@@ -2328,7 +2329,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .catch((erreur) => {
                     console.error(erreur);
-                    alert("Une erreur est survenue lors de l'envoi. Veuillez réessayer.");
+                    alert("An error occurred while sending. Please try again.");
                     bouton.disabled = false;
                     bouton.innerHTML = texteBouton;
                 });
