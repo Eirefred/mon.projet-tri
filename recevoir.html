@@ -994,6 +994,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
     </script>
+    <script>
+    // Ouvre l'onglet demandé dans l'adresse : recevoir.html#evenements, #equipementiers, #sante
+    document.addEventListener('DOMContentLoaded', function () {
+        const h = location.hash.replace('#', '');
+        const bouton = h && document.querySelector(`.tab-button[onclick*="'tab-${h}'"]`);
+        if (bouton) { bouton.click(); bouton.scrollIntoView({ block: 'center' }); }
+    });
+    </script>
     <script src="partage/codes-promo.js"></script>
 </body>
 </html>
