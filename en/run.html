@@ -434,7 +434,8 @@
                 <p style="text-align: center; font-size: 1.1rem; color: #5A6A7A; max-width: 600px; margin: 0 auto 40px auto; line-height: 1.4;">
                     Fill out this form and your mentor will contact you to define the best approach for your season.
                 </p>
-                <form action="https://formspree.io/f/votre_id" method="POST">
+                <!-- Envoi vers le Google Form de contact mon Projet Tri (voir le script en bas de page) -->
+                <form id="runForm">
                     <div class="form-group">
                         <label>Full Name</label>
                         <input type="text" name="name" required>
@@ -454,8 +455,12 @@
                         <label>Your message or running project</label>
                         <textarea name="message" rows="4" required></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send My Request</button>
+                    <button type="submit" id="btn-run" class="submit-btn">Send My Request</button>
                 </form>
+
+                <div id="run-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 20px; text-align: center; font-size: 1.05rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
+                    ✅ Thank you! Your request has been sent. We will get back to you shortly.
+                </div>
             </div>
         </div>
     </section>
@@ -501,6 +506,55 @@
         backToTopBtn.onclick = function() {
             window.scrollTo({ top: 0, behavior: "smooth" });
         };
+    </script>
+
+    <script>
+    // --- Formulaire mon Projet Run : envoi vers le Google Form de contact ---
+    (function () {
+        const form = document.getElementById('runForm');
+        if (!form) return;
+
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfGbL2p50VEyO-tyJn_Jqv7aD4vqZyy-bA4rM3mhLpqqSTLJg/formResponse";
+
+        // Identifie la provenance dans le sujet du courriel : « Nouvelle demande – mon Projet Run (EN) – Nom »
+        const SOURCE = "mon Projet Run (EN)";
+
+        const FORMULES = {
+            "projet-unique": "Run – Projet Unique (79$/mois)",
+            "accompagnement-continu": "Run – Accompagnement Continu (99$/mois)"
+        };
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const val = (nom) => (form.elements[nom] ? form.elements[nom].value : "").trim();
+            const donnees = new FormData();
+            donnees.append("entry.1503322578", val('name'));             // Nom complet
+            donnees.append("entry.176779491", SOURCE);                   // Type de contact
+            donnees.append("entry.1072932402", FORMULES[val('formule')] || val('formule')); // Profil -> formule
+            donnees.append("entry.704328293", val('email'));             // Courriel
+            donnees.append("entry.736131080", val('message'));           // Message
+
+            const bouton = document.getElementById('btn-run');
+            const texteBouton = bouton.textContent;
+            bouton.disabled = true;
+            bouton.textContent = "Sending...";
+
+            fetch(GOOGLE_FORM_URL, { method: "POST", body: donnees, mode: "no-cors" })
+                .then(() => {
+                    form.style.display = 'none';
+                    const succes = document.getElementById('run-succes');
+                    succes.style.display = 'block';
+                    succes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch((erreur) => {
+                    console.error(erreur);
+                    alert("An error occurred while sending. Please try again.");
+                    bouton.disabled = false;
+                    bouton.textContent = texteBouton;
+                });
+        });
+    })();
     </script>
 </body>
 </html>

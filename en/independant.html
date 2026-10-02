@@ -1995,7 +1995,8 @@
                         Found a new training spot, updated rule, or must-know tip for beginners? Share your ideas and recommendations to enrich this page and help the entire independent community in Quebec!
                     </p>
 
-                    <form action="https://formspree.io/f/maqroyzd" method="POST" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin-left: 15px;">
+                    <!-- Envoi vers Google Forms (voir le script en bas de page) -->
+                    <form id="contribForm" style="display: flex; flex-direction: column; gap: 20px; max-width: 700px; margin-left: 15px;">
                         
                         <div style="display: flex; flex-direction: column; gap: 8px;">
                             <span style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">What would you like to add or improve?</span>
@@ -2051,13 +2052,22 @@
                             <textarea id="explication" name="explication_et_astuces" rows="4" required placeholder="Describe the details: road quality, free access, why it's relevant for an independent triathlete..." style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem; resize: vertical;"></textarea>
                         </div>
 
+                        <div style="display: flex; flex-direction: column; gap: 6px;">
+                            <label for="courriel-contrib" style="font-weight: bold; font-size: 0.95rem; color: var(--text-dark);">Email (optional, if you'd like a reply):</label>
+                            <input type="email" id="courriel-contrib" name="courriel" placeholder="name@example.com" style="padding: 10px 15px; border-radius: 8px; border: 1px solid #ccc; font-family: inherit; font-size: 0.95rem;">
+                        </div>
+
                         <div style="margin-top: 5px;">
-                            <button type="submit" class="btn-submit-autonome">
+                            <button type="submit" id="btn-contrib" class="btn-submit-autonome">
                                 Submit my contribution 🚀
                             </button>
                         </div>
 
                     </form>
+
+                    <div id="contrib-succes" style="display:none; max-width: 700px; margin: 10px 0 0 15px; color: #004c97; font-weight: bold; text-align: center; font-size: 1.05rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
+                        ✅ Thank you for your contribution! Our team will review it shortly.
+                    </div>
                 </div>
 
             </div>
@@ -2267,5 +2277,64 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 </script>
+
+    <script>
+    // --- Formulaire « Contribuer » : envoi vers Google Forms ---
+    (function () {
+        const form = document.getElementById('contribForm');
+        if (!form) return;
+
+        const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdq7AoT7i-COoaTO8cAgdI7iQgP3GtBgwAC_vp5KIm00s9KCg/formResponse";
+
+        // Champ de la page -> identifiant de la question Google Forms
+        const CHAMPS = {
+            secteur_contribution:  "entry.1870590711",
+            nom_ressource_ou_lieu: "entry.1225718237",
+            region_ou_portee:      "entry.1661901425",
+            lien_internet:         "entry.1166498912",
+            explication_et_astuces:"entry.1016564203",
+            courriel:              "entry.546586328"
+        };
+
+        // Valeurs lisibles dans vos réponses (avec la langue de la page)
+        const LIBELLES = {
+            "Lieu entrainement": "Lieu d'entraînement (EN)",
+            "Lien officiel / Reglement": "Règlements ou liens officiels (EN)",
+            "Communaute / Astuce": "Communauté ou astuces d'achat (EN)",
+            "Autre idee": "Autre bonne idée (EN)"
+        };
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const source = new FormData(form);
+            const donnees = new FormData();
+            for (const [champ, entry] of Object.entries(CHAMPS)) {
+                let valeur = (source.get(champ) || "").toString().trim();
+                if (champ === 'lien_internet' && /^https?:\/\/$/.test(valeur)) valeur = "";
+                if (valeur !== "") donnees.append(entry, LIBELLES[valeur] || valeur);
+            }
+
+            const bouton = document.getElementById('btn-contrib');
+            const texteBouton = bouton.innerHTML;
+            bouton.disabled = true;
+            bouton.textContent = "Sending...";
+
+            fetch(GOOGLE_FORM_URL, { method: "POST", body: donnees, mode: "no-cors" })
+                .then(() => {
+                    form.style.display = 'none';
+                    const succes = document.getElementById('contrib-succes');
+                    succes.style.display = 'block';
+                    succes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                })
+                .catch((erreur) => {
+                    console.error(erreur);
+                    alert("An error occurred while sending. Please try again.");
+                    bouton.disabled = false;
+                    bouton.innerHTML = texteBouton;
+                });
+        });
+    })();
+    </script>
 </body>
 </html>
