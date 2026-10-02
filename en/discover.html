@@ -305,7 +305,7 @@
         
         /* 1. Top: Athletes (#efd15b) */
         .tg-top .eco-popover { background: rgba(239, 209, 91, 0.15); border: 1px solid #efd15b; }
-        .tg-top .eco-popover strong { color: #c4a11b; }
+        .tg-top .eco-popover strong { color: #8a710d; }
         
         /* 2. Right (Health & Care): Receives color from Coaches & Clubs (#f1a62f) */
         .tg-right .eco-popover { background: rgba(241, 166, 47, 0.15); border: 1px solid #f1a62f; }
@@ -317,7 +317,7 @@
         
         /* 4. Bottom Left: Outfitters (#4daad4) */
         .tg-bottom-left .eco-popover { background: rgba(77, 170, 212, 0.15); border: 1px solid #4daad4; }
-        .tg-bottom-left .eco-popover strong { color: #2e86aa; }
+        .tg-bottom-left .eco-popover strong { color: #004c97; }
         
         /* 5. Left (Coaches & Clubs): Receives color from Health & Care (#a5e1e1) */
         .tg-left .eco-popover { background: rgba(165, 225, 225, 0.18); border: 1px solid #a5e1e1; }
@@ -608,9 +608,9 @@
 
         /* ===== CODES COULEURS DES ACTEURS (référence : « Les forces vives de la communauté »)
            Bordures/icônes = couleur de base · Textes/boutons = même teinte, plus foncée (lisible)
-           Athlètes        #efd15b / #8a710d
+           Athlètes        #4daad4 / #004c97 (bleu du site)
            Coachs & Clubs  #a5e1e1 / #2b8080
-           Équipementiers  #4daad4 / #277ca3
+           Équipementiers  #efd15b / #8a710d
            Santé & Soins   #f1a62f / #a2680b
            Événements      #f08922 / #b25f0c   ===== */
         /* ===== ONGLET MISSION ===== */
@@ -649,6 +649,7 @@
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
         .mis-chip span { font-size: 1.8rem; line-height: 1; }
+        .mis-chip span.mis-tri { font-size: 1.45rem; letter-spacing: -2px; white-space: nowrap; }
         .mis-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); background: #f8fafc; }
         .mis-audiences { display: flex; flex-direction: column; gap: 18px; }
         .mis-aud {
@@ -795,16 +796,16 @@
                         <!-- YOU ARE... -->
                         <h3 class="mis-h3">You are…</h3>
                         <div class="mis-chips">
-                            <a href="#pour-athletes" class="mis-chip" style="--c:#8a710d;--cb:#efd15b;"><span>🏊</span>An athlete</a>
+                            <a href="#pour-athletes" class="mis-chip" style="--c:#004c97;--cb:#4daad4;"><span class="mis-tri">🏊‍♂️🚴‍♂️🏃‍♂️</span>An athlete</a>
                             <a href="#pour-coachs-clubs" class="mis-chip" style="--c:#2b8080;--cb:#a5e1e1;"><span>⏱️</span>A coach or club</a>
-                            <a href="#pour-partenaires" class="mis-chip" style="--c:#277ca3;--cb:#4daad4;"><span>🚴</span>An equipment brand or health professional</a>
+                            <a href="#pour-partenaires" class="mis-chip" style="--c:#8a710d;--cb:#efd15b;"><span>🚴</span>An equipment brand or health professional</a>
                             <a href="#pour-evenements" class="mis-chip" style="--c:#b25f0c;--cb:#f08922;"><span>🏁</span>An event</a>
                         </div>
 
                         <div class="mis-audiences">
 
-                            <div id="pour-athletes" class="mis-aud" style="--c:#8a710d;--cb:#efd15b;">
-                                <h4>🏊 For athletes</h4>
+                            <div id="pour-athletes" class="mis-aud" style="--c:#004c97;--cb:#4daad4;">
+                                <h4>🏊‍♂️🚴‍♂️🏃‍♂️ For athletes</h4>
                                 <ul>
                                     <li>We <strong>advise</strong> you and <strong>answer your questions</strong>.</li>
                                     <li>We find you an <strong>individual coach</strong>, at regulated rates.</li>
@@ -831,7 +832,7 @@
                                 </div>
                             </div>
 
-                            <div id="pour-partenaires" class="mis-aud" style="--c:#277ca3;--cb:#4daad4;">
+                            <div id="pour-partenaires" class="mis-aud" style="--c:#8a710d;--cb:#efd15b;">
                                 <h4>🚴 For equipment brands and health professionals</h4>
                                 <ul>
                                     <li>We <strong>promote your products and services</strong> to our community of athletes.</li>
@@ -903,7 +904,7 @@
                 
                 <!-- CENTRAL PILLAR: ATHLETES -->
                 <div class="profile-card" style="border-color: #004c97; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); padding: 40px;">
-                    <div style="display: inline-block; background: rgba(239, 209, 91, 0.2); border: 1px solid #efd15b; color: #b59210; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">
+                    <div style="display: inline-block; background: rgba(77, 170, 212, 0.15); border: 1px solid #4daad4; color: #004c97; padding: 6px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 900; text-transform: uppercase; margin-bottom: 15px;">
                         The Heart of the Project
                     </div>
                     <h3 style="color: #004c97; font-size: 1.8rem; margin-bottom: 20px;">The Athlete, at the Center of Our Universe</h3>
@@ -941,8 +942,8 @@
                                 <h4 style="color: #c98216;">🩺 Health & Care</h4>
                                 <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Dedicated to injury prevention, clinical care, recovery, and overall well-being.</p>
                             </div>
-                            <div class="eco-node-card" data-target="bottom-left">
-                                <h4 style="color: #2e86ab;">🚴 Outfitters & Retailers</h4>
+                            <div class="eco-node-card" data-target="top">
+                                <h4 style="color: #8a710d;">🚴 Outfitters & Retailers</h4>
                                 <p style="font-size: 0.95rem; color: var(--text-light); margin: 0;">Specialized shops and manufacturers providing adapted, cutting-edge gear.</p>
                             </div>
                         </div>
@@ -954,8 +955,8 @@
                             <!-- Top Branch: Athletes -->
                             <div class="eco-trigger tg-top" data-ref="top">
                                 <div class="eco-popover">
-                                    <strong>🥇 Athletes</strong>
-                                    Athletes guide the overall direction of our initiatives and programs.
+                                    <strong>🚴 Outfitters</strong>
+                                    Local shops equipping athletes.
                                 </div>
                             </div>
 
@@ -978,8 +979,8 @@
                             <!-- Bottom Left Branch: Outfitters -->
                             <div class="eco-trigger tg-bottom-left" data-ref="bottom-left">
                                 <div class="eco-popover">
-                                    <strong>🚴 Outfitters</strong>
-                                    Local shops equipping athletes.
+                                    <strong>🥇 Athletes</strong>
+                                    Athletes guide the overall direction of our initiatives and programs.
                                 </div>
                             </div>
 
