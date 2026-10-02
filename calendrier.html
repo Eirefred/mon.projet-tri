@@ -209,6 +209,14 @@
         .legend-item.active { background: var(--primary); color: white; font-weight: bold; }
         .legend-item.inactive { opacity: 0.3; filter: grayscale(1); }
 
+        /* Légende FR : libellés plus longs qu'en anglais (« ÉPREUVES TERMINÉES », « Piscine »…)
+           → espacements légèrement resserrés pour garder la même marge que la version anglaise */
+        @media (min-width: 835px) {
+            .legend { gap: 0; padding: 4px 8px; }
+            .legend-item { padding: 2px 3px; }
+            .legend .lang-switcher { margin-left: 8px !important; padding-left: 8px !important; }
+        }
+
         /* --- PICTOGRAMME DE MAIN (DÉMONSTRATION DE CLIC) --- */
         .legend-hand-hint {
             position: fixed;
