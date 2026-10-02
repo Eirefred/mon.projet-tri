@@ -566,6 +566,106 @@
         font-weight: bold !important; /* Texte en gras */
     }
 
+        /* ===== ONGLETS (même style que les pages Autonome / Recevoir) ===== */
+        .tabs-section { background: #f1f5f9; padding: 50px 0 70px; scroll-margin-top: 70px; }
+        .browser-tabs-wrapper { position: relative; overflow: hidden; }
+        .browser-tabs-container {
+            display: flex; flex-wrap: nowrap; gap: 6px; overflow-x: auto;
+            padding: 4px 4px 0 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+        }
+        .browser-tabs-container::-webkit-scrollbar { display: none; }
+        .tab-button {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px 20px; background: #cbd5e1; color: #475569;
+            font-weight: 700; font-size: 0.95rem; font-family: inherit; border: none;
+            border-top-left-radius: 12px; border-top-right-radius: 12px;
+            cursor: pointer; transition: all 0.2s ease; white-space: nowrap; flex-shrink: 0; user-select: none;
+        }
+        .tab-button:hover { background: #e2e8f0; color: #004c97; }
+        .tab-button.active { background: #ffffff; color: #004c97; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+        .tab-content-wrapper {
+            background: #ffffff; padding: 40px;
+            border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); min-height: 400px;
+        }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; animation: fadeInTab 0.3s ease-in-out; }
+        .tab-panel > .section-title:first-child, .tab-panel > h2:first-child { margin-top: 0; }
+        @keyframes fadeInTab { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        @media (min-width: 835px) {
+            .browser-tabs-container { overflow-x: hidden; }
+            .tab-button { flex: 1 1 0px; min-width: 0; }
+        }
+        @media (max-width: 834px) {
+            .browser-tabs-wrapper::after {
+                content: ""; position: absolute; top: 3px; right: 0; height: 45px; width: 30px;
+                background: linear-gradient(to right, rgba(241,245,249,0), rgba(241,245,249,1));
+                pointer-events: none; z-index: 2;
+            }
+            .tab-content-wrapper { padding: 25px 18px; }
+            .tab-button { padding: 10px 14px; font-size: 0.88rem; }
+        }
+
+        /* ===== ONGLET MISSION ===== */
+        .mis-badges { display: flex; gap: 10px; flex-wrap: wrap; margin: -15px 0 20px; }
+        .mis-badge {
+            background: rgba(0, 76, 151, 0.08); color: #004c97; border: 1px solid rgba(0, 76, 151, 0.2);
+            padding: 5px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .mis-intro { font-size: 1.1rem; line-height: 1.7; color: var(--text-dark); margin: 0 0 10px; }
+        .mis-h3 {
+            color: #004c97; font-size: 1.35rem; font-weight: 900; text-transform: uppercase;
+            margin: 40px 0 18px; letter-spacing: -0.3px;
+        }
+        .mis-cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .mis-cost-card { border-radius: 16px; padding: 22px 24px; border: 1.5px solid; }
+        .mis-cost-card ul { margin: 0; padding-left: 20px; line-height: 1.7; color: var(--text-dark); }
+        .mis-cost-card li { margin-bottom: 6px; }
+        .mis-cost-card a { color: #004c97; font-weight: 700; text-decoration: none; white-space: nowrap; }
+        .mis-cost-card a:hover { text-decoration: underline; }
+        .mis-cost-head { font-weight: 900; font-size: 1.15rem; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.3px; }
+        .mis-free { background: #f0fdf4; border-color: #86efac; }
+        .mis-free .mis-cost-head { color: #15803d; }
+        .mis-paid { background: #fff7ed; border-color: #fdba74; }
+        .mis-paid .mis-cost-head { color: #c2410c; }
+        .mis-note {
+            font-size: 0.95rem; line-height: 1.6; color: var(--text-light);
+            background: #f8fafc; border-left: 4px solid #cbd5e1; padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 18px 0 0;
+        }
+        .mis-note a { color: #D65F3A; font-weight: 700; text-decoration: none; white-space: nowrap; }
+        .mis-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
+        .mis-chip {
+            display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
+            padding: 18px 12px; border-radius: 14px; background: #ffffff; border: 2px solid var(--c);
+            color: var(--c); font-weight: 800; font-size: 0.95rem; text-decoration: none; line-height: 1.25;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+        .mis-chip span { font-size: 1.8rem; line-height: 1; }
+        .mis-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); background: #f8fafc; }
+        .mis-audiences { display: flex; flex-direction: column; gap: 18px; }
+        .mis-aud {
+            scroll-margin-top: 110px; background: #ffffff; border: 1px solid #e2e8f0; border-left: 6px solid var(--c);
+            border-radius: 14px; padding: 22px 26px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+        }
+        .mis-aud:target { box-shadow: 0 0 0 3px var(--c); }
+        .mis-aud h4 { margin: 0 0 12px; color: var(--c); font-size: 1.3rem; font-weight: 900; }
+        .mis-aud ul { margin: 0; padding-left: 20px; line-height: 1.75; color: var(--text-dark); font-size: 1.02rem; }
+        .mis-aud ul a { color: #004c97; font-weight: 700; }
+        .mis-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 16px; }
+        .mis-btn {
+            display: inline-block; background: var(--c); color: #ffffff; text-decoration: none; font-weight: 800;
+            padding: 10px 22px; border-radius: 50px; font-size: 0.9rem; transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .mis-btn:hover { opacity: 0.9; transform: translateY(-2px); }
+        .mis-link { color: var(--c); font-weight: 800; text-decoration: none; font-size: 0.92rem; }
+        .mis-link:hover { text-decoration: underline; }
+        @media (max-width: 834px) {
+            .mis-cost-grid { grid-template-columns: 1fr; }
+            .mis-chips { grid-template-columns: 1fr 1fr; }
+            .mis-aud { padding: 18px 18px; }
+            .mis-h3 { font-size: 1.15rem; }
+        }
     </style>
 </head>
 <body>
@@ -632,9 +732,130 @@
         </section>
     </div>
 
-    <!-- SECTION THE GENESIS OF THE PROJECT -->
-    <section class="content-section">
+    <!-- ===== TABBED CONTENT: MISSION / GENESIS / ECOSYSTEM ===== -->
+    <section class="content-section tabs-section">
         <div class="container">
+
+            <div class="browser-tabs-wrapper">
+                <div class="browser-tabs-container">
+                    <button class="tab-button active" data-tab="mission" onclick="openTab(event, 'tab-mission')">🎯 Our Mission</button>
+                    <button class="tab-button" data-tab="genese" onclick="openTab(event, 'tab-genese')">🌱 The Genesis of the Project</button>
+                    <button class="tab-button" data-tab="ecosysteme" onclick="openTab(event, 'tab-ecosysteme')">🔗 The Quebec Triathlon Ecosystem</button>
+                </div>
+            </div>
+
+            <div class="tab-content-wrapper">
+
+                <!-- TAB 1: MISSION -->
+                <div id="tab-mission" class="tab-panel active">
+
+                        <h2 class="section-title">Our Mission</h2>
+                        <p class="sub-header">Contributing to the development of triathlon in Quebec by making it more accessible, both financially and athletically.</p>
+
+                        <div class="mis-badges">
+                            <span class="mis-badge">Non-profit organization</span>
+                        </div>
+
+                        <p class="mis-intro">
+                            <strong><em>mon</em> Projet Tri</strong> supports triathletes, especially those who are just starting out, and creates a <strong>positive synergy among everyone involved in triathlon</strong>: athletes, coaches and clubs, events, equipment brands and health professionals. Our goal is not to make money, but to help triathlon grow.
+                        </p>
+
+                        <!-- FREE / PAID -->
+                        <h3 class="mis-h3">What's free, what's paid</h3>
+                        <div class="mis-cost-grid">
+                            <div class="mis-cost-card mis-free">
+                                <div class="mis-cost-head">✅ Free</div>
+                                <ul>
+                                    <li>Advice and answers to your questions</li>
+                                    <li>Help finding a coach or a club that fits your needs</li>
+                                    <li>Promo codes from our equipment partners</li>
+                                    <li>Recommendations of trusted health professionals</li>
+                                    <li>Our booth and course tours at events</li>
+                                </ul>
+                            </div>
+                            <div class="mis-cost-card mis-paid">
+                                <div class="mis-cost-head">💳 Paid</div>
+                                <ul>
+                                    <li><strong>An individual coach</strong>, found by <em>mon</em> Projet Tri, at regulated rates. You pay <em>mon</em> Projet Tri, which then pays the coach, who is self-employed. <a href="guidance.html">Learn more ›</a></li>
+                                    <li><strong>Club membership</strong>, paid directly to the club. <a href="club.html">Find a club ›</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mis-note">
+                            The people who represent <em>mon</em> Projet Tri volunteer their time. Only the coaches are paid, and the fees paid for coaching go to them. The non-profit's operations are made possible through sponsorship, and we are actively seeking funding. <a href="provide.html">Support the mission ›</a>
+                        </p>
+
+                        <!-- YOU ARE... -->
+                        <h3 class="mis-h3">You are…</h3>
+                        <div class="mis-chips">
+                            <a href="#pour-athletes" class="mis-chip" style="--c:#004c97;"><span>🏊</span>An athlete</a>
+                            <a href="#pour-coachs-clubs" class="mis-chip" style="--c:#52b1b1;"><span>⏱️</span>A coach or club</a>
+                            <a href="#pour-partenaires" class="mis-chip" style="--c:#2e86ab;"><span>🚴</span>An equipment brand or health professional</a>
+                            <a href="#pour-evenements" class="mis-chip" style="--c:#d06d14;"><span>🏁</span>An event</a>
+                        </div>
+
+                        <div class="mis-audiences">
+
+                            <div id="pour-athletes" class="mis-aud" style="--c:#004c97;">
+                                <h4>🏊 For athletes</h4>
+                                <ul>
+                                    <li>We <strong>advise</strong> you and <strong>answer your questions</strong>.</li>
+                                    <li>We find you an <strong>individual coach</strong>, at regulated rates.</li>
+                                    <li>We help you find a <strong>club</strong>, if you wish.</li>
+                                    <li>We work with <strong>equipment brands</strong> to get you promotional prices.</li>
+                                    <li>We recommend <strong>health professionals</strong> we trust.</li>
+                                    <li>We attend <a href="receive.html#evenements">several events</a> with our <strong>booth</strong>: answering your questions, giving advice and offering course tours.</li>
+                                </ul>
+                                <div class="mis-actions">
+                                    <a href="index.html#contact" class="mis-btn">Book my free call</a>
+                                    <a href="receive.html#evenements" class="mis-link">See our events ›</a>
+                                </div>
+                            </div>
+
+                            <div id="pour-coachs-clubs" class="mis-aud" style="--c:#52b1b1;">
+                                <h4>⏱️ For coaches and clubs</h4>
+                                <ul>
+                                    <li>We help you <strong>support and guide new athletes</strong>.</li>
+                                    <li>For <strong>clubs</strong>: new members joining your group.</li>
+                                    <li>For <strong>independent coaches</strong>: new athletes to coach.</li>
+                                </ul>
+                                <div class="mis-actions">
+                                    <a href="index.html#contact" class="mis-btn">Contact us</a>
+                                </div>
+                            </div>
+
+                            <div id="pour-partenaires" class="mis-aud" style="--c:#2e86ab;">
+                                <h4>🚴 For equipment brands and health professionals</h4>
+                                <ul>
+                                    <li>We <strong>promote your products and services</strong> to our community of athletes.</li>
+                                    <li>In return, you offer athletes a <strong>promo code</strong> or a benefit.</li>
+                                    <li>A <strong>positive synergy</strong>: more visibility for you, and a real benefit, in kind or financial, for the athlete.</li>
+                                </ul>
+                                <div class="mis-actions">
+                                    <a href="index.html#contact" class="mis-btn">Become a partner</a>
+                                    <a href="receive.html#equipementiers" class="mis-link">See our partners ›</a>
+                                </div>
+                            </div>
+
+                            <div id="pour-evenements" class="mis-aud" style="--c:#d06d14;">
+                                <h4>🏁 For events</h4>
+                                <ul>
+                                    <li>We help with <strong>logistics</strong> and <strong>improving the athlete experience</strong>.</li>
+                                    <li>We can take care of <strong>course tours</strong>.</li>
+                                    <li>We look after <strong>athletes who have questions</strong>, while your volunteers, organizers and officials focus on their roles.</li>
+                                </ul>
+                                <div class="mis-actions">
+                                    <a href="index.html#contact" class="mis-btn">Contact us</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                </div>
+
+                <!-- TAB 2: GENESIS -->
+                <div id="tab-genese" class="tab-panel">
+
             <h2 class="section-title">The Genesis of the Project</h2>
             <p class="sub-header">Transforming field experience and passion into a professional support structure.</p>
             
@@ -662,12 +883,12 @@
                     The goal: enabling passionate individuals to reach their goals backed by a structure that values human connection, technical precision, and accessibility.
                 </p>
             </div>
-        </div>
-    </section>
 
-    <!-- SECTION: THE ECOSYSTEM -->
-    <section class="content-section gray-bg">
-        <div class="container">
+                </div>
+
+                <!-- TAB 3: ECOSYSTEM -->
+                <div id="tab-ecosysteme" class="tab-panel">
+
             <h2 class="section-title" style="border-left-color: #D65F3A;">The Quebec Triathlon Ecosystem</h2>
             <p class="sub-header">An interconnected framework where every key player collaborates to energize and grow the sport across Quebec.</p>
             
@@ -804,6 +1025,10 @@
                 </div>
 
             </div>
+
+                </div>
+
+            </div>
         </div>
     </section>
 
@@ -885,6 +1110,36 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+    </script>
+    <script>
+    // ===== Onglets Mission / Genèse / Écosystème =====
+    function openTab(evt, tabName) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+        document.getElementById(tabName).classList.add('active');
+        const btn = evt && evt.currentTarget ? evt.currentTarget : document.querySelector(`.tab-button[onclick*="${tabName}"]`);
+        if (btn) {
+            btn.classList.add('active');
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    }
+
+    // Opens the right tab from the URL: discover.html#mission, #genese, #ecosysteme
+    // (et #pour-athletes, #pour-coachs-clubs, etc. ouvrent la Mission puis défilent)
+    function ouvrirDepuisAdresse() {
+        const h = decodeURIComponent(location.hash.replace('#', ''));
+        if (!h) return;
+        if (['mission', 'genese', 'ecosysteme'].includes(h)) {
+            openTab(null, 'tab-' + h);
+            document.querySelector('.tabs-section').scrollIntoView({ behavior: 'smooth' });
+        } else if (h.startsWith('pour-')) {
+            openTab(null, 'tab-mission');
+            const cible = document.getElementById(h);
+            if (cible) setTimeout(() => cible.scrollIntoView({ behavior: 'smooth' }), 50);
+        }
+    }
+    document.addEventListener('DOMContentLoaded', ouvrirDepuisAdresse);
+    window.addEventListener('hashchange', ouvrirDepuisAdresse);
     </script>
 </body>
 </html>
