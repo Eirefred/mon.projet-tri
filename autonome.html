@@ -854,6 +854,7 @@
                     <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ FAQ Débutants</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Règlements</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendrier</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-codes-promo')">🏷️ Codes promo</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Entraînement</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Communauté</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribuer</button>
@@ -1267,6 +1268,15 @@
                             <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">Voir le calendrier ↗</a>
                         </div>
                     </div>
+                </div>
+
+                <!-- ONGLET CODES PROMO (contenu partagé avec recevoir.html > Équipementiers) -->
+                <div id="tab-codes-promo" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        🏷️ Codes promo & Avantages
+                    </h2>
+                    <!-- Pour modifier ce contenu : éditez partage/codes-promo.html -->
+                    <div class="codes-promo" data-include="partage/codes-promo.html"></div>
                 </div>
 
                 <!-- ONGLET 5 : ENTRAÎNEMENT -->
@@ -2335,5 +2345,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })();
     </script>
+    <script src="partage/codes-promo.js"></script>
 </body>
 </html>
