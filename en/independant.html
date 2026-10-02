@@ -854,6 +854,7 @@
                     <button class="tab-button" onclick="openTab(event, 'tab-faq')">❓ Beginners FAQ</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-reglements')">📚 Rules</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-calendrier')">📅 Calendar</button>
+                    <button class="tab-button" onclick="openTab(event, 'tab-codes-promo')">🏷️ Promo Codes</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-entrainement')">🏊 Training</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-communaute')">👥 Community</button>
                     <button class="tab-button" onclick="openTab(event, 'tab-contribuer')">💡 Contribute</button>
@@ -1267,6 +1268,15 @@
                             <a href="https://member.usatriathlon.org/events" target="_blank" class="link-action">View calendar ↗</a>
                         </div>
                     </div>
+                </div>
+
+                <!-- PROMO CODES TAB (shared content with en/receive.html > Equipment) -->
+                <div id="tab-codes-promo" class="tab-panel">
+                    <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;">
+                        🏷️ Promo Codes & Benefits
+                    </h2>
+                    <!-- To edit this content: partage/promo-codes-en.html -->
+                    <div class="codes-promo" data-include="../partage/promo-codes-en.html"></div>
                 </div>
 
                 <!-- TAB 5: TRAINING -->
@@ -2336,5 +2346,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     })();
     </script>
+    <script src="../partage/codes-promo.js"></script>
 </body>
 </html>
