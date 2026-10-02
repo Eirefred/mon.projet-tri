@@ -615,6 +615,13 @@
             .tab-button { padding: 10px 14px; font-size: 0.88rem; }
         }
 
+        /* ===== CODES COULEURS DES ACTEURS (référence : « Les forces vives de la communauté »)
+           Bordures/icônes = couleur de base · Textes/boutons = même teinte, plus foncée (lisible)
+           Athlètes        #efd15b / #8a710d
+           Coachs & Clubs  #a5e1e1 / #2b8080
+           Équipementiers  #4daad4 / #277ca3
+           Santé & Soins   #f1a62f / #a2680b
+           Événements      #f08922 / #b25f0c   ===== */
         /* ===== ONGLET MISSION ===== */
         .mis-badges { display: flex; gap: 10px; flex-wrap: wrap; margin: -15px 0 20px; }
         .mis-badge {
@@ -646,7 +653,7 @@
         .mis-chips { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 25px; }
         .mis-chip {
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; text-align: center;
-            padding: 18px 12px; border-radius: 14px; background: #ffffff; border: 2px solid var(--c);
+            padding: 18px 12px; border-radius: 14px; background: #ffffff; border: 2px solid var(--cb, var(--c));
             color: var(--c); font-weight: 800; font-size: 0.95rem; text-decoration: none; line-height: 1.25;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
@@ -654,10 +661,10 @@
         .mis-chip:hover { transform: translateY(-3px); box-shadow: 0 8px 18px rgba(0,0,0,0.08); background: #f8fafc; }
         .mis-audiences { display: flex; flex-direction: column; gap: 18px; }
         .mis-aud {
-            scroll-margin-top: 110px; background: #ffffff; border: 1px solid #e2e8f0; border-left: 6px solid var(--c);
+            scroll-margin-top: 110px; background: #ffffff; border: 1px solid #e2e8f0; border-left: 6px solid var(--cb, var(--c));
             border-radius: 14px; padding: 22px 26px; box-shadow: 0 4px 14px rgba(0,0,0,0.03);
         }
-        .mis-aud:target { box-shadow: 0 0 0 3px var(--c); }
+        .mis-aud:target { box-shadow: 0 0 0 3px var(--cb, var(--c)); }
         .mis-aud h4 { margin: 0 0 12px; color: var(--c); font-size: 1.3rem; font-weight: 900; }
         .mis-aud ul { margin: 0; padding-left: 20px; line-height: 1.75; color: var(--text-dark); font-size: 1.02rem; }
         .mis-aud ul a { color: #004c97; font-weight: 700; }
@@ -698,7 +705,7 @@
                 </label>
 
                 <ul class="nav-links">
-                    <li><a href="decouvrir.html">L'OSBL</a></li>
+                    <li><a href="decouvrir.html">Mission</a></li>
                     <li class="has-dropdown">
                         <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
                         <ul class="dropdown-menu">
@@ -798,15 +805,15 @@
                         <!-- VOUS ÊTES... -->
                         <h3 class="mis-h3">Vous êtes…</h3>
                         <div class="mis-chips">
-                            <a href="#pour-athletes" class="mis-chip" style="--c:#004c97;"><span>🏊</span>Athlète</a>
-                            <a href="#pour-coachs-clubs" class="mis-chip" style="--c:#52b1b1;"><span>⏱️</span>Coach ou club</a>
-                            <a href="#pour-partenaires" class="mis-chip" style="--c:#2e86ab;"><span>🚴</span>Équipementier ou pro de la santé</a>
-                            <a href="#pour-evenements" class="mis-chip" style="--c:#d06d14;"><span>🏁</span>Événement</a>
+                            <a href="#pour-athletes" class="mis-chip" style="--c:#8a710d;--cb:#efd15b;"><span>🏊</span>Athlète</a>
+                            <a href="#pour-coachs-clubs" class="mis-chip" style="--c:#2b8080;--cb:#a5e1e1;"><span>⏱️</span>Coach ou club</a>
+                            <a href="#pour-partenaires" class="mis-chip" style="--c:#277ca3;--cb:#4daad4;"><span>🚴</span>Équipementier ou professionnel de la santé</a>
+                            <a href="#pour-evenements" class="mis-chip" style="--c:#b25f0c;--cb:#f08922;"><span>🏁</span>Événement</a>
                         </div>
 
                         <div class="mis-audiences">
 
-                            <div id="pour-athletes" class="mis-aud" style="--c:#004c97;">
+                            <div id="pour-athletes" class="mis-aud" style="--c:#8a710d;--cb:#efd15b;">
                                 <h4>🏊 Pour les athlètes</h4>
                                 <ul>
                                     <li>On vous <strong>conseille</strong> et on <strong>répond à vos questions</strong>.</li>
@@ -822,7 +829,7 @@
                                 </div>
                             </div>
 
-                            <div id="pour-coachs-clubs" class="mis-aud" style="--c:#52b1b1;">
+                            <div id="pour-coachs-clubs" class="mis-aud" style="--c:#2b8080;--cb:#a5e1e1;">
                                 <h4>⏱️ Pour les coachs et les clubs</h4>
                                 <ul>
                                     <li>On vous permet de <strong>soutenir et d'aider de nouveaux athlètes</strong>.</li>
@@ -834,7 +841,7 @@
                                 </div>
                             </div>
 
-                            <div id="pour-partenaires" class="mis-aud" style="--c:#2e86ab;">
+                            <div id="pour-partenaires" class="mis-aud" style="--c:#277ca3;--cb:#4daad4;">
                                 <h4>🚴 Pour les équipementiers et les professionnels de la santé</h4>
                                 <ul>
                                     <li>On fait <strong>connaître vos produits et services</strong> auprès de notre communauté d'athlètes.</li>
@@ -847,7 +854,7 @@
                                 </div>
                             </div>
 
-                            <div id="pour-evenements" class="mis-aud" style="--c:#d06d14;">
+                            <div id="pour-evenements" class="mis-aud" style="--c:#b25f0c;--cb:#f08922;">
                                 <h4>🏁 Pour les événements</h4>
                                 <ul>
                                     <li>On vous aide avec la <strong>logistique</strong> et l'<strong>amélioration de l'expérience athlète</strong>.</li>
