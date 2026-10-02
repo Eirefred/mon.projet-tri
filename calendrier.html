@@ -508,6 +508,28 @@
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
     }
+
+        /* --- BANDEAU FIN DE SAISON (à retirer quand le nouveau calendrier est publié) --- */
+        .season-banner {
+            display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+            max-width: 1000px; margin: 0 auto 25px; padding: 18px 22px;
+            background: linear-gradient(135deg, rgba(0, 76, 151, 0.06) 0%, rgba(214, 95, 58, 0.08) 100%);
+            border: 1px solid rgba(0, 76, 151, 0.15); border-left: 6px solid #D65F3A; border-radius: 14px;
+            box-sizing: border-box;
+        }
+        .season-banner-text { flex: 1 1 420px; min-width: 0; }
+        .season-banner-title { margin: 0 0 6px; color: #004c97; font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 1.15rem; text-transform: uppercase; }
+        .season-banner-text p { margin: 0; color: #334155; font-size: 0.95rem; line-height: 1.55; }
+        .season-banner-btn {
+            flex-shrink: 0; background: #004c97; color: #ffffff; border: none; border-radius: 50px;
+            padding: 10px 20px; font-weight: 800; font-size: 0.88rem; cursor: pointer; font-family: inherit;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .season-banner-btn:hover { transform: translateY(-2px); opacity: 0.92; }
+        @media (max-width: 600px) {
+            .season-banner { padding: 15px 16px; gap: 12px; }
+            .season-banner-btn { width: 100%; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -588,6 +610,16 @@
             
             <h1>Calendrier provincial 2026</h1>
 <div id="calendarSubtitle" style="text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text-light); margin-top: -15px; margin-bottom: 25px; text-transform: uppercase;">Épreuves à venir</div>
+
+            <!-- BANDEAU FIN DE SAISON : supprimez ce bloc quand le nouveau calendrier est publié -->
+            <div class="season-banner" role="status">
+                <div class="season-banner-text">
+                    <p class="season-banner-title">🏁 La saison 2026 est terminée</p>
+                    <p>Le calendrier de la prochaine saison sera diffusé dès que le calendrier des compétitions aura été entériné par <strong>Triathlon Québec</strong>. En attendant, activez <strong>« Épreuves terminées »</strong> pour avoir un aperçu des courses possibles.</p>
+                </div>
+                <button type="button" class="season-banner-btn" id="seasonBannerBtn" onclick="afficherEpreuvesTerminees()">Voir les épreuves 2026</button>
+            </div>
+
 
             <!-- FILTRE LÉGENDE STICKY CONTENU RÉDUIT -->
             <div class="legend-container">
@@ -1036,6 +1068,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
+    </script>
+
+    <script>
+    // Bandeau fin de saison : active « Épreuves terminées » et descend vers le tableau
+    function afficherEpreuvesTerminees() {
+        const toggle = document.getElementById('pastToggle');
+        if (toggle && !toggle.checked) { toggle.checked = true; togglePastEvents(); }
+        const btn = document.getElementById('seasonBannerBtn');
+        if (btn) btn.textContent = "Épreuves 2026 affichées ✓";
+        const cible = document.querySelector('.legend-container') || document.getElementById('calTable');
+        if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
     </script>
 </body>
 </html>
