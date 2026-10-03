@@ -584,7 +584,7 @@
         
         <div class="footer-text">
             <p style="margin-bottom: 12px; margin-top: 0;">
-                &copy; 2026 
+                &copy; <span class="annee-courante">2026</span> 
                 <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative;">mon</span> 
                 <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
                 - OSBL dédiée au triathlon au Québec
@@ -891,5 +891,9 @@
         100% { transform: rotate(360deg); }
     }
 </style>
+<script>
+    // Année du pied de page : toujours l'année en cours, même sans republier le site
+    document.querySelectorAll('.annee-courante').forEach(function (e) { e.textContent = new Date().getFullYear(); });
+</script>
 </body>
 </html>
