@@ -1,0 +1,56 @@
+<!--
+  SHARED HEADER (English pages) — edit HERE to change the menu on every English page.
+  Variables read from each page's front matter (between the --- lines):
+    section      : athletes | partenaires   (highlights the right dropdown)
+    autre_langue : matching French page (e.g. ../accompagnement.html)
+-->
+<header>
+    <div class="container nav-container">
+        <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+            <div class="logo">
+                <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
+            </div>
+            <div class="region-stack">
+                <span class="region-mention">Across Quebec</span>
+            </div>
+        </div>
+        <nav>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <ul class="nav-links">
+                <li><a href="discover.html">Our&nbsp;Mission</a></li>
+                <li class="has-dropdown">
+                    <a href="index.html#athlètes" class="dropdown-trigger{% if page.section == 'athletes' %} active{% endif %}">Athletes <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="independant.html"{% if page.url == '/en/independant.html' %} class="active"{% endif %}>Independant</a></li>
+                        <li><a href="guidance.html"{% if page.url == '/en/guidance.html' %} class="active"{% endif %}>Guidance</a></li>
+                        <li><a href="club.html"{% if page.url == '/en/club.html' %} class="active"{% endif %}>Club</a></li>
+                        <li><a href="your-story.html"{% if page.url == '/en/your-story.html' %} class="active"{% endif %}><i>Your story</i></a></li>
+                    </ul>
+                </li>
+                <li class="has-dropdown">
+                    <a href="index.html#partners" class="dropdown-trigger{% if page.section == 'partenaires' %} active{% endif %}">Partners <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="receive.html"{% if page.url == '/en/receive.html' %} class="active"{% endif %}>Receive</a></li>
+                        <li><a href="provide.html"{% if page.url == '/en/provide.html' %} class="active"{% endif %}>Provide</a></li>
+                    </ul>
+                </li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li><a href="calendar.html">Calendar'26</a></li>
+                <li class="lang-switcher">
+                    <span class="lang-label" style="color: #ccc;">FR</span>
+                    <label class="switch">
+                        <input type="checkbox" checked onclick="window.location.href='{{ page.autre_langue | default: '../index.html' }}'">
+                        <span class="slider"></span>
+                    </label>
+                    <span class="lang-label">EN</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
