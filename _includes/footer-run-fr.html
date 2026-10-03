@@ -8,7 +8,7 @@
 </div>
             <div class="footer-text">
                 <p style="margin-bottom: 12px; margin-top: 0;">
-    &copy; {{ site.time | date: "%Y" }} 
+    &copy; <span class="annee-courante">{{ site.time | date: "%Y" }}</span> 
     <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
     <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
     - OSBL dédiée au triathlon au Québec
@@ -23,3 +23,7 @@
             </div>
         </div>
     </footer>
+<script>
+    // Année du pied de page : toujours l'année en cours, même sans republier le site
+    document.querySelectorAll('.annee-courante').forEach(function (e) { e.textContent = new Date().getFullYear(); });
+</script>
