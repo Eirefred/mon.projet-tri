@@ -1,3 +1,8 @@
+---
+# Page traitée par Jekyll (GitHub Pages) : en-tête et pied de page communs dans _includes/
+section: partenaires
+autre_langue: en/receive.html
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,12 +51,12 @@
             --coach-club-gradient: linear-gradient(135deg, #004c97 0%, #2b8080 100%);
             --evenements-gradient: linear-gradient(135deg, #004c97 0%, #b25f0c 100%);
             --sante-gradient: linear-gradient(135deg, #004c97 0%, #a2680b 100%);
-            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #277ca3 100%);
+            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #c9a227 100%);
 
             --coach-club-color: #2b8080;
             --evenements-color: #b25f0c;
             --sante-color: #a2680b;
-            --equipementiers-color: #277ca3;
+            --equipementiers-color: #8a710d;
 
             --white: #ffffff;
             --text-dark: #0f172a;
@@ -696,56 +701,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
-                <div class="logo">
-                    <a href="index.html"><img src="MPT_New_logo_blue.png" alt="Logo mon Projet Tri"></a>
-                </div>
-                <div class="region-stack">
-                    <span class="region-mention">Partout au Québec</span>
-                </div>
-            </div>
-            <nav>
-                <input type="checkbox" id="menu-toggle" style="display: none;">
-                <label for="menu-toggle" class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-
-                <ul class="nav-links">
-                    <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank">Mission</a></li> 
-                    <li class="has-dropdown">
-                        <a href="index.html#athlètes" class="dropdown-trigger">Athlètes <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="autonome.html">Autonome</a></li>
-                            <li><a href="accompagnement.html">Accompagnement</a></li>
-                            <li><a href="club.html">Club</a></li>
-                            <li><a href="votre-histoire.html"><i>Votre histoire</i></a></li>
-                        </ul>
-                    </li>                    
-                    <li class="has-dropdown">
-                        <a href="index.html#partenaires" class="dropdown-trigger active">Partenaires <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="recevoir.html">Recevoir</a></li>
-                            <li><a href="donner.html">Donner</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                    <li><a href="https://mon.projet-tri.org/calendrier.html" target="_blank">Calendrier'26</a></li> 
-                    <li class="lang-switcher">
-                        <span class="lang-label">FR</span>
-                        <label class="switch">
-                            <input type="checkbox" onclick="window.location.href='en/receive.html'">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="lang-label" style="color: #ccc;">EN</span>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    {% include header-fr.html %}
 
     <!-- SECTION PRINCIPALE AVEC ONGLETS -->
     <main class="content-section">
@@ -874,30 +830,7 @@
         </div>
     </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <a href="index.html">
-                    <img src="MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
-                </a>
-            </div>
-            <div class="footer-text">
-                <p style="margin-bottom: 12px; margin-top: 0;">
-                    &copy; 2026 
-                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
-                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-                    - OSBL dédiée au triathlon au Québec
-                </p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
-            </div>
-            <div class="footer-zones">
-                <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, ainsi que l'ensemble des régions du Québec.</p>
-                </details>
-            </div>
-        </div>
-    </footer>
+    {% include footer-fr.html %}
 
     <!-- BOUTON RETOUR EN HAUT -->
 <button id="backToTop" title="Retour en haut">
