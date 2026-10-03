@@ -1,3 +1,7 @@
+---
+# Page traitée par Jekyll (GitHub Pages) : en-tête et pied de page communs dans _includes/
+autre_langue: ../index.html
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1216,56 +1220,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
-                <div class="logo">
-                    <a href="index.html"><img src="../MPT_New_logo_blue.png" alt="mon Projet Tri (my Tri Project) - Triathlon coaching and mentorship in Quebec"></a>
-                </div>
-                <div class="region-stack">
-                    <span class="region-mention">Across Quebec</span>
-                </div>
-            </div>
-            <nav>
-                <input type="checkbox" id="menu-toggle" style="display: none;">
-                <label for="menu-toggle" class="menu-icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-
-                <ul class="nav-links">
-                    <li><a href="discover.html">Mission</a></li> 
-                    <li class="has-dropdown">
-                        <a href="#athlètes" class="dropdown-trigger">Athletes <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="independant.html">Independant</a></li>
-                            <li><a href="guidance.html">Guidance</a></li>
-                            <li><a href="club.html">Club</a></li>
-                            <li><a href="your-story.html"><i>Your story</i></a></li>
-                        </ul>
-                    </li>                    
-                    <li class="has-dropdown">
-                        <a href="index.html#partners" class="dropdown-trigger">Partners <span class="arrow-down">▼</span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="receive.html">Receive</a></li>
-                            <li><a href="provide.html">Provide</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="calendar.html">Calendar'26</a></li> 
-                    <li class="lang-switcher">
-                        <span class="lang-label" style="color: #ccc;">FR</span>
-                        <label class="switch">
-                            <input type="checkbox" checked onclick="window.location.href='../index.html'">
-                            <span class="slider"></span>
-                        </label>
-                        <span class="lang-label">EN</span>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    {% include header-en.html %}
 
     <!-- WRAPPER : Provides background color #f1f5f9 to the cut ellipse of the Hero section -->
     <div class="hero-wrapper">
@@ -1611,30 +1566,7 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-                <a href="index.html">
-                    <img src="../MPT_New_logo_white.png" alt="Logo" style="height: 60px;">
-                </a>
-            </div>
-            <div class="footer-text">
-                <p style="margin-bottom: 12px; margin-top: 0;">
-                    &copy; 2026 
-                    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
-                    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-                    - Nonprofit dedicated to triathlon in Quebec
-                </p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Make my contribution</a>
-            </div>
-            <div class="footer-zones">
-                <details>
-                    <summary>View all service areas covered</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montreal, Quebec City, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montreal, Laval, Montérégie, Laurentians, Lanaudière, National Capital Region, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Eastern Townships, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec</p>
-                </details>
-            </div>
-        </div>
-    </footer>
+    {% include footer-en.html %}
     
     <!-- BACK TO TOP BUTTON -->
     <button id="backToTop" title="Back to top">
