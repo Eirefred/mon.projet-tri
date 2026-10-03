@@ -1,0 +1,41 @@
+<!--
+  EN-TÊTE COMMUN du site mon Projet Run (pages françaises) — modifier ICI.
+  autre_langue (dans l'en-tête de la page) : page anglaise équivalente.
+-->
+<header>
+        <div class="container nav-container">
+            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
+                <div class="logo">
+                    <a href="course.html"><img src="MPR_New_logo_blue.png" alt="mon Projet Run - Coaching et mentorat de course à pied au Québec"></a>
+                </div>
+                <div class="region-stack">
+        <span class="region-mention">Partout au Québec</span>
+        <span class="price-tag-new">Dès 79$/mois</span>
+        </div>
+            </div>
+            <nav>
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <label for="menu-toggle" class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <ul class="nav-links">
+        <li><a href="course-mission.html"{% if page.url == '/course-mission.html' %} class="active"{% endif %}>La&nbsp;mission</a></li> 
+        <li><a href="course.html#propos">À Propos</a></li>                    
+        <li><a href="course.html#programme">Programmes</a></li>
+        <li><a href="course.html#contact">Contact</a></li>
+        <li><a href="https://mon.projet-tri.org/" target="_blank" rel="noopener">mon Projet Tri</a></li> 
+        <li class="lang-switcher">
+            <span class="lang-label">FR</span>
+            <label class="switch">
+                <input type="checkbox" onclick="window.location.href='{{ page.autre_langue | default: 'en/run.html' }}'">
+                <span class="slider"></span>
+            </label>
+            <span class="lang-label" style="color: #ccc;">EN</span>
+        </li>
+    </ul>
+</nav>
+        </div>
+    </header>
