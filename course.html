@@ -392,9 +392,25 @@ autre_langue: en/run.html
     #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
     #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 }
-        }
 
+        /* --- CHOIX DE LA FORMULE : deux lignes simples --- */
+        .plan-choices { display: flex; flex-direction: column; gap: 8px; }
+        .plan-choice { display: flex !important; align-items: center; gap: 12px; margin: 0 !important; cursor: pointer;
+            padding: 12px 16px; background: #ffffff; border: 1px solid #ddd; border-radius: 12px;
+            text-transform: none !important; font-size: 0.95rem !important; font-weight: 600 !important; color: #0f172a !important;
+            transition: border-color 0.2s ease, background 0.2s ease; }
+        .plan-choice:hover { border-color: #94a3b8; }
+        .plan-choice input { appearance: none; -webkit-appearance: none; width: 18px !important; height: 18px; padding: 0 !important; margin: 0;
+            flex-shrink: 0; border: 2px solid #cbd5e1 !important; border-radius: 50% !important; background: #fff; cursor: pointer; transition: all 0.2s ease; }
+        .plan-choice input:checked { border-color: #D65F3A !important; background: radial-gradient(circle, #D65F3A 0 40%, #fff 46%); }
+        .plan-choice input:focus-visible { outline: 3px solid rgba(0, 76, 151, 0.3); outline-offset: 2px; }
+        .plan-choice:has(input:checked) { border-color: #D65F3A; background: #fff8f4; }
+        .plan-price { margin-left: auto; font-weight: 800; color: #D65F3A; white-space: nowrap; }
 
+        /* Lien « mon Projet Tri » dans le texte : même apparence que « mon Projet Run » */
+        .presentation a.brand-link { color: inherit; text-decoration: none; border-bottom: 2px solid rgba(214, 95, 58, 0.35); transition: border-color 0.2s ease; }
+        .presentation a.brand-link:hover { border-bottom-color: #D65F3A; }
+        .presentation a.brand-link strong { color: var(--text-dark); }
     </style>
     <script type="application/ld+json">
 {
@@ -438,7 +454,7 @@ autre_langue: en/run.html
         <div class="container">
             <h2>L'accompagnement qui vous fait courir</h2>
             <p>
-                <strong><em>mon</em> Projet Run</strong> est une extension de <a href="index.html"><strong><em>mon</em> Projet Tri</strong></a>. 
+                <span style="white-space: nowrap; color: var(--text-dark);"><span style="font-family: 'Oooh Baby', cursive; font-size: 1.35em; font-weight: 400; vertical-align: -1px; margin-right: 3px;">mon</span><span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: 700;">Projet Run</span></span> est une extension de <a class="brand-link" href="index.html"><span style="white-space: nowrap; color: var(--text-dark);"><span style="font-family: 'Oooh Baby', cursive; font-size: 1.35em; font-weight: 400; vertical-align: -1px; margin-right: 3px;">mon</span><span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: 700;">Projet Tri</span></span></a>. 
                 Nous avons conçu ce volet spécifiquement pour répondre aux besoins de ceux qui ont la <strong>course à pied</strong> comme projet principal. 
                 Qu'il s'agisse d'un premier pas ou d'un défi de performance, nous offrons un mentorat connecté et humain pour vous aider à atteindre vos objectifs, peu importe où vous êtes au Québec.
             </p>
@@ -461,7 +477,7 @@ autre_langue: en/run.html
                         <li>Analyse de vos besoins spécifiques</li>
                         <li>Accès plateforme de suivi</li>
                     </ul>
-                    <a href="#contact" class="card-button">Choisir ce plan</a>
+                    <a href="#contact" class="card-button" data-plan="projet-unique">Choisir ce plan</a>
                 </div>
 
                 <div class="programme-card">
@@ -475,7 +491,7 @@ autre_langue: en/run.html
                         <li>Conseils techniques et motivation</li>
                         <li>Planification annuelle complète</li>
                     </ul>
-                    <a href="#contact" class="card-button">S'inscrire</a>
+                    <a href="#contact" class="card-button" data-plan="accompagnement-continu">S'inscrire</a>
                 </div>
 
             </div>
@@ -515,10 +531,18 @@ autre_langue: en/run.html
                     </div>
                     <div class="form-group">
                         <label>Formule souhaitée</label>
-                        <select name="formule">
-                            <option value="projet-unique">Projet Unique (79$/mois)</option>
-                            <option value="accompagnement-continu">Accompagnement Continu (99$/mois)</option>
-                        </select>
+                        <div class="plan-choices" role="radiogroup">
+                            <label class="plan-choice">
+                                <input type="radio" name="formule" value="projet-unique" checked>
+                                <span class="plan-name">Projet Unique</span>
+                                <span class="plan-price">79$ / mois</span>
+                            </label>
+                            <label class="plan-choice">
+                                <input type="radio" name="formule" value="accompagnement-continu">
+                                <span class="plan-name">Accompagnement continu</span>
+                                <span class="plan-price">99$ / mois</span>
+                            </label>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Votre message ou projet de course</label>
@@ -607,6 +631,16 @@ autre_langue: en/run.html
                 });
         });
     })();
+    </script>
+
+    <script>
+    // Les boutons des programmes présélectionnent la formule dans le formulaire
+    document.querySelectorAll('[data-plan]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            const choix = document.querySelector('input[name="formule"][value="' + btn.dataset.plan + '"]');
+            if (choix) choix.checked = true;
+        });
+    });
     </script>
 </body>
 </html>
