@@ -1,3 +1,7 @@
+---
+# Page traitée par Jekyll (GitHub Pages) : en-tête et pied de page communs dans _includes/
+autre_langue: en/run.html
+---
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -413,43 +417,7 @@
 </head>
 <body>
 
-    <header>
-        <div class="container nav-container">
-            <div class="logo-area" style="display: flex; align-items: center; gap: 15px;">
-                <div class="logo">
-                    <a href="course.html"><img src="MPR_New_logo_blue.png" alt="mon Projet Run - Coaching et mentorat de course à pied au Québec"></a>
-                </div>
-                <div class="region-stack">
-        <span class="region-mention">Partout au Québec</span>
-        <span class="price-tag-new">Dès 79$/mois</span>
-        </div>
-            </div>
-            <nav>
-    <input type="checkbox" id="menu-toggle" style="display: none;">
-    <label for="menu-toggle" class="menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-    <ul class="nav-links">
-        <li><a href="https://mon.projet-tri.org/decouvrir.html" target="_blank" rel="noopener">La&nbsp;mission</a></li> 
-        <li><a href="#propos">À Propos</a></li>                    
-        <li><a href="#programme">Programmes</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="https://mon.projet-tri.org/" target="_blank" rel="noopener">mon Projet Tri</a></li> 
-        <li class="lang-switcher">
-            <span class="lang-label">FR</span>
-            <label class="switch">
-                <input type="checkbox" onclick="window.location.href='en/run.html'">
-                <span class="slider"></span>
-            </label>
-            <span class="lang-label" style="color: #ccc;">EN</span>
-        </li>
-    </ul>
-</nav>
-        </div>
-    </header>
+    {% include header-run-fr.html %}
 
     <section class="hero">
         <div class="hero-content">
@@ -566,30 +534,7 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-logo">
-    <a href="index.html">
-        <img src="MPR_New_logo_white.png" alt="Logo" style="height: 60px;">
-    </a>
-</div>
-            <div class="footer-text">
-                <p style="margin-bottom: 12px; margin-top: 0;">
-    &copy; 2026 
-    <span style="font-family: 'Oooh Baby', cursive; font-size: 1.4em; vertical-align: baseline; position: relative; ">mon</span> 
-    <span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic;">Projet Tri</span> 
-    - OSBL dédiée au triathlon au Québec
-</p>
-                <a href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" class="btn-zeffy-fr">Faire ma contribution</a>
-            </div>
-            <div class="footer-zones">
-                <details>
-                    <summary>Voir toutes les zones de service couvertes</summary>
-                    <p style="margin-top: 15px; font-style: italic; font-size: 0.8rem; opacity: 0.9;">Montréal, Québec, Laval, Longueuil, Gatineau, Sherbrooke, Trois-Rivières, Saguenay, Lévis, Drummondville, Saint-Hyacinthe, Granby, Saint-Jean-sur-Richelieu, Blainville, Terrebonne, Repentigny, Mascouche, Joliette, Victoriaville, Rimouski, Rivière-du-Loup, Alma, Dolbeau-Mistassini, Baie-Comeau, Sept-Îles, Gaspé, Rouyn-Noranda, Val-d'Or, Amos, Magog, Thetford Mines, Sorel-Tracy, Salaberry-de-Valleyfield, Châteauguay, Boucherville, Brossard, Saint-Jérôme, Mirabel, Shawinigan, Cowansville, Mont-Tremblant, Mont-Laurier, La Tuque, Chandler, Matane, Montmagny, Baie-Saint-Paul, Roberval, Carleton-sur-Mer, Montréal, Laval, Montérégie, Laurentides, Lanaudière, Capitale-Nationale, Chaudière-Appalaches, Centre-du-Québec, Mauricie, Estrie, Outaouais, Bas-Saint-Laurent, Saguenay–Lac-Saint-Jean, Côte-Nord, Gaspésie–Îles-de-la-Madeleine, Abitibi-Témiscamingue, Nord-du-Québec.</p>
-                </details>
-            </div>
-        </div>
-    </footer>
+    {% include footer-run-fr.html %}
 <a href="javascript:void(0)" id="backToTop" title="Retour en haut">↑</a>
 
     <script>
