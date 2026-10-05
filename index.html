@@ -1189,6 +1189,38 @@ autre_langue: en/index.html
     background: #D65F3A;
 }
 
+
+        /* ===== RESSOURCE D : combinaison B + C (Club + Coach), version compacte ===== */
+        .combo-bridge { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 20px; }
+        .combo-zone { grid-column: 2 / 4; position: relative; display: flex; flex-direction: column; align-items: center; }
+        .combo-u { position: relative; display: block; align-self: stretch; height: 16px; margin: 0 calc((100% - 20px) / 4);
+            border: 1.5px solid #b6c2d2; border-top: none; border-radius: 0 0 10px 10px; }
+        .combo-u::after { content: "+"; position: absolute; left: 50%; bottom: -9px; transform: translateX(-50%); width: 16px; height: 16px; line-height: 15px;
+            text-align: center; border-radius: 50%; background: #ffffff; border: 1.5px solid #b6c2d2; color: #D65F3A; font-size: 0.8rem; font-weight: 900; }
+        .combo-stem { display: block; width: 1.5px; height: 30px; background: #b6c2d2; margin-top: 9px; }
+        .combo-card { position: relative; display: flex; align-items: center; gap: 16px; width: 100%; box-sizing: border-box;
+            background: #f0f7ff; border: 2px solid #004c97; border-radius: 12px; padding: 14px 18px; text-decoration: none; color: #0f172a;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease; }
+        .combo-card:hover { transform: translateY(-3px); border-color: #D65F3A; box-shadow: 0 8px 20px rgba(214, 95, 58, 0.15); }
+        .combo-tab { position: absolute; top: -23px; left: 18px; background: #004c97; color: #ffffff; font-size: 0.7rem; font-weight: 800;
+            text-transform: uppercase; letter-spacing: 0.5px; padding: 4px 12px; border-radius: 8px 8px 0 0; }
+        .combo-chips { display: flex; align-items: center; gap: 5px; flex-shrink: 0; }
+        .combo-chips b { color: #ffffff; font-size: 0.78rem; font-weight: 800; padding: 5px 10px; border-radius: 7px; white-space: nowrap; }
+        .combo-chips .c-b { background: linear-gradient(135deg, #004c97 0%, #D65F3A 100%); }
+        .combo-chips .c-c { background: linear-gradient(135deg, #004c97 0%, #8b5cf6 100%); }
+        .combo-chips i { font-style: normal; font-weight: 900; color: #D65F3A; }
+        .combo-txt { flex: 1; margin: 0; font-size: 0.9rem; line-height: 1.4; text-align: left; }
+        .combo-txt strong { color: #004c97; }
+        .combo-go { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;
+            background: #004c97; color: #ffffff; font-size: 0.85rem; transition: background 0.25s ease, transform 0.25s ease; }
+        .combo-card:hover .combo-go { background: #D65F3A; transform: translateX(3px); }
+        @media (max-width: 834px) {
+            .combo-bridge { grid-template-columns: 1fr; }
+            .combo-zone { grid-column: 1; margin-top: 30px; }
+            .combo-u, .combo-stem { display: none; }
+            .combo-card { flex-wrap: wrap; justify-content: center; gap: 10px; padding: 18px 16px 14px; }
+            .combo-txt { flex-basis: 100%; text-align: center; }
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -1366,6 +1398,19 @@ autre_langue: en/index.html
                             <div class="step-arrow">➔</div>
                         </div>
                     </a>
+                </div>
+
+                <!-- RESSOURCE D : COMBINAISON B + C (formule Club + Coach) -->
+                <div class="combo-bridge">
+                    <div class="combo-zone">
+                        <span class="combo-u" aria-hidden="true"></span><span class="combo-stem" aria-hidden="true"></span>
+                        <a class="combo-card" href="accompagnement.html#club-coach">
+                            <span class="combo-tab">Ressource D</span>
+                            <span class="combo-chips"><b class="c-c">Club</b><i>+</i><b class="c-b">Coach</b></span>
+                            <p class="combo-txt">Vous êtes déjà en club? Ajoutez un <strong>suivi personnalisé</strong> avec un coach, en complément de vos entraînements de groupe.</p>
+                            <span class="combo-go">➔</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
