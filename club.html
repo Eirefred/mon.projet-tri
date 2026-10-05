@@ -376,6 +376,24 @@ autre_langue: en/club.html
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
     }
+
+        /* --- ENCADRÉ FORMULE CLUB + COACH (version compacte) --- */
+        .hybride-box { margin-top: 22px; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 16px rgba(43, 128, 128, 0.14); text-align: left; }
+        .hybride-top { background: linear-gradient(135deg, #1f6f6f 0%, #2b8080 50%, #4fb3b3 100%); color: #ffffff; padding: 16px 20px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+        .hybride-txt { flex: 1 1 360px; min-width: 0; }
+        .hybride-head { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; margin-bottom: 4px; }
+        .hybride-head .hybride-badge, .hybride-head .hybride-title { margin: 0; }
+        .hybride-badge { display: inline-block; background: #ffffff; color: #1f6f6f; font-size: 0.65rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 10px; border-radius: 50px; margin-bottom: 6px; }
+        .hybride-title { margin: 0 0 4px; font-size: 1.12rem; font-weight: 900; line-height: 1.25; color: #ffffff; }
+        .hybride-title span { color: #fde68a; }
+        .hybride-desc { margin: 0; font-size: 0.9rem; line-height: 1.5; color: rgba(255,255,255,0.92); }
+        .hybride-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+        .hybride-pills span { background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.3); border-radius: 50px; padding: 2px 10px; font-size: 0.72rem; font-weight: 700; }
+        .hybride-btn { flex-shrink: 0; background: #ffffff; color: #1f6f6f !important; text-decoration: none; font-weight: 800; padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; box-shadow: 0 4px 10px rgba(0,0,0,0.12); transition: transform 0.2s ease; white-space: nowrap; }
+        .hybride-btn:hover { transform: translateY(-2px); }
+        .hybride-bottom { background: #f0fafa; padding: 9px 20px; font-size: 0.85rem; color: #334155; }
+        .hybride-bottom a { color: #004c97; font-weight: 700; }
+        @media (max-width: 600px) { .hybride-top { padding: 14px 16px; } .hybride-btn { width: 100%; text-align: center; box-sizing: border-box; white-space: normal; } .hybride-bottom { padding: 9px 16px; } }
     </style>
 </head>
 <body>
@@ -443,9 +461,17 @@ autre_langue: en/club.html
                     </div>
 
                     <!-- NOTE : REDIRECTION ACCOMPAGNEMENT -->
-                    <p style="font-size: 1.05rem; color: var(--text-dark); background: #f8fafc; padding: 15px 20px; border-radius: 12px; border: 1px dashed rgba(214, 95, 58, 0.3); margin-top: 25px;">
-                        💡 <strong>Note importante :</strong> Si les contraintes horaires ou géographiques ne correspondent pas à votre réalité, ou si vous préférez tout simplement vous entraîner seul en toute liberté, découvrez nos programmes sur mesure dans la section <a href="accompagnement.html" style="color: #004c97; font-weight: bold; text-decoration: underline; transition: 0.2s;">Accompagnement</a>.
-                    </p>
+                    <div class="hybride-box">
+                        <div class="hybride-top">
+                            <div class="hybride-txt">
+                                <div class="hybride-head"><span class="hybride-badge">✨ Formule unique</span><h3 class="hybride-title">Club <span>+</span> Coach : le meilleur des deux mondes</h3></div>
+                                <p class="hybride-desc">Le club ne colle pas toujours à votre horaire ? Pas besoin de choisir. Entraînez-vous en groupe quand vous le pouvez, avec un coach qui complète le club et prend le relais les semaines où vous ne pouvez pas y aller.</p>
+                                <div class="hybride-pills"><span>👥 Énergie du groupe</span><span>🎯 Suivi personnalisé</span><span>📅 Flexible selon votre horaire</span></div>
+                            </div>
+                            <a class="hybride-btn" href="accompagnement.html#club-coach">Découvrir Club&nbsp;+&nbsp;Coach&nbsp;→</a>
+                        </div>
+                        <div class="hybride-bottom">Vous préférez plutôt vous entraîner seul, en toute liberté ? Découvrez nos autres <a href="accompagnement.html">programmes d'accompagnement</a>.</div>
+                    </div>
                 </div>
             </div>
 
