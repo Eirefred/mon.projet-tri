@@ -428,6 +428,57 @@ autre_langue: ../accompagnement.html
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
     }
+
+        /* ===== FORMULES EN ONGLETS (Premier Pas / Progression / Club + Coach) ===== */
+        .acc-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .acc-tab { --c: #004c97; border: 2px solid #e2e8f0; border-bottom: none; border-radius: 14px 14px 0 0; background: #f8fafc;
+            padding: 14px 12px 12px; text-align: center; cursor: pointer; position: relative; font-family: inherit; transition: background 0.2s ease; }
+        .acc-tab:hover { background: #ffffff; }
+        .acc-tab .acc-ico { font-size: 1.5rem; display: block; }
+        .acc-tab .acc-nm { font-weight: 900; color: #004c97; font-size: 1.05rem; display: block; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
+        .acc-tab .acc-sub { font-size: 0.78rem; color: var(--text-light); display: block; margin-top: 2px; }
+        .acc-tab.active { background: #ffffff; border-color: var(--c); box-shadow: 0 -4px 14px rgba(0,0,0,0.04); }
+        .acc-tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 4px; background: #ffffff; }
+        .acc-tab.active .acc-nm { color: var(--c); }
+        .acc-panel { --c: #004c97; display: none; border: 2px solid var(--c); border-radius: 0 0 16px 16px; padding: 26px 28px; text-align: left; }
+        .acc-panel.active { display: grid; grid-template-columns: 1.25fr 1fr; gap: 30px; animation: accFade 0.25s ease; }
+        @keyframes accFade { from { opacity: 0; } to { opacity: 1; } }
+        .acc-badge { display: inline-block; background: rgba(0,0,0,0.05); background: color-mix(in srgb, var(--c) 12%, white); color: var(--c);
+            border-radius: 50px; padding: 4px 12px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; }
+        .acc-panel h3 { color: var(--c); font-size: 1.6rem; margin: 10px 0 6px; line-height: 1.2; }
+        .acc-quote { font-style: italic; color: var(--text-light); margin: 0 0 12px; }
+        .acc-desc { line-height: 1.6; margin: 0 0 14px; color: var(--text-dark); }
+        .acc-list { margin: 0; padding-left: 0; list-style: none; }
+        .acc-list li { padding: 5px 0 5px 26px; position: relative; line-height: 1.45; font-size: 0.95rem; color: #475569; }
+        .acc-list li::before { content: "✓"; position: absolute; left: 4px; color: var(--c); font-weight: 900; }
+        .acc-list li b { color: var(--text-dark); }
+        .acc-price { --c: #004c97; border: 1px solid #e2e8f0; border-left: 5px solid var(--c); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; background: #ffffff; }
+        .acc-price .acc-lbl { font-weight: 800; color: var(--c); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.3px; }
+        .acc-price .acc-amt { font-size: 1.6rem; font-weight: 900; margin-top: 2px; color: var(--text-dark); }
+        .acc-price .acc-amt small { font-size: 0.85rem; color: var(--text-light); font-weight: 600; }
+        .acc-price p { margin: 4px 0 0; font-size: 0.85rem; color: var(--text-light); line-height: 1.45; }
+        .acc-price p.acc-hint { font-size: 0.72rem; margin-top: 8px; opacity: 0.85; }
+        .acc-tip { font-size: 0.85rem; color: #334155; line-height: 1.5; background: #fff8f4; border-radius: 10px; padding: 10px 12px; margin: 0 0 8px; }
+        .acc-tip b { color: #D65F3A; }
+        .acc-note { font-size: 0.78rem; color: var(--text-light); margin: 6px 0 0; }
+        .acc-panel > div:last-child { display: flex; flex-direction: column; }
+        .acc-price { margin-bottom: 12px !important; }
+        .acc-cta { display: block; width: 100%; box-sizing: border-box; text-align: center; margin-top: 6px !important; padding: 13px 22px !important; font-size: 0.95rem !important; background: var(--c); color: #ffffff !important; text-decoration: none; font-weight: 800;
+            padding: 10px 22px; border-radius: 50px; font-size: 0.9rem; transition: transform 0.2s ease, opacity 0.2s ease; }
+        .acc-cta:hover { transform: translateY(-2px); opacity: 0.92; }
+        .acc-alacarte { margin-top: 22px; display: flex; gap: 14px; align-items: flex-start; background: #fff8f4; border: 1px dashed #f0a586;
+            border-radius: 14px; padding: 16px 20px; text-align: left; }
+        .acc-alacarte strong.acc-t { color: #D65F3A; }
+        .acc-alacarte span.acc-txt { font-size: 0.92rem; color: #334155; line-height: 1.5; }
+        .acc-alacarte span.acc-txt b { color: var(--text-dark); }
+        @media (max-width: 700px) {
+            .acc-tabs { gap: 6px; }
+            .acc-tab { padding: 10px 4px; }
+            .acc-tab .acc-sub { display: none; }
+            .acc-tab .acc-nm { font-size: 0.78rem; }
+            .acc-panel { padding: 18px 16px; }
+            .acc-panel.active { grid-template-columns: 1fr; gap: 16px; }
+        }
     </style>
 </head>
 <body>
@@ -490,124 +541,82 @@ autre_langue: ../accompagnement.html
                     As a nonprofit organization, our mission is to make triathlon accessible to all. That's why <span style="color: #D65F3A; font-weight: bold;">we keep prices as low as possible</span>. We have carefully established coaching criteria focused on what is truly essential, especially when guiding and reassuring beginners.
                 </p>
 
-                <div class="pricing-grid">
-                    
-                    <!-- PACKAGE 1: FIRST STEPS -->
-                    <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
-                        <div>
-                            <span style="color: #D65F3A; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Beginner</span>
-                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">First Step</h3>
-                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
-                                "One day, I'll do one..."
-                            </p>
-                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
-                                For those who have never dared to stand at a starting line due to fear or lack of guidance. Enjoy a reassuring structure from start to finish with mentors who have been in your shoes. <strong>This program is at the core of our mission: getting you across your first finish line!</strong>
-                            </p>
-                            
-                            <!-- ACCORDION START -->
-                            <details class="program-details">
-                                <summary>View Pricing & Details <span class="toggle-arrow">▼</span></summary>
-                                
-                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
-                                
-                                <ul class="features-list">
-                                    <li>Dedicated mentor assigned based on your goals.</li>
-                                    <li>Full assistance when buying your first equipment.</li>
-                                    <li>12-week training plan adapted to your current fitness level.</li>
-                                    <li>Flexible plan adjustments to fit your lifestyle.</li>
-                                    <li>Detailed breakdown of race proceedings and rules.</li>
-                                    <li>Comprehensive moral and psychological support for race day.</li>
-                                </ul>
-
-                                <div class="option-box">
-    <span style="font-size: 1.25rem; font-weight: 800; color: #004c97; display: block;">
-        SEMI-SUPPORTED :
-    </span>
-    <div style="margin-top: 2px;">
-        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$299 / 3 months</span>
-        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(approx. $99/month)</span>
-    </div>
-    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Training plan + 3 mentorship sessions (40 min each).</p>
-</div>
-                                
-                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
-    <span style="font-size: 1.25rem; font-weight: 800; color: #D65F3A; display: block;">
-        FULLY SUPPORTED :
-    </span>
-    <div style="margin-top: 2px;">
-        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$399 / 3 months</span>
-        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">($133/month)</span>
-    </div>
-    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Training plan + 5 mentorship sessions (40 min each).</p>
-</div>
-                            </details>
-                        </div>
-                    </div>
-
-                    <!-- PACKAGE 2: PERFORMANCE -->
-                    <div class="pricing-card" style="border-color: #004c97; box-shadow: 0 4px 20px rgba(0, 76, 151, 0.05);">
-                        <div>
-                            <span style="color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 5px;">Intermediate & Advanced</span>
-                            <h3 style="margin: 0 0 10px 0; color: #004c97; font-size: 1.6rem; line-height: 1.2;">Performance</h3>
-                            <p style="font-style: italic; color: var(--text-light); margin: 0 0 15px 0; font-size: 0.95rem;">
-                                "I want to structure my growth and perform."
-                            </p>
-                            <p style="font-size: 0.95rem; color: var(--text-dark); line-height: 1.5; margin-bottom: 10px;">
-                                Whether you're aiming to optimize your fitness for the local season or take on the ultimate challenge of an Ironman, benefit from expert, highly connected mentorship tailored precisely to your seasonal ambitions.
-                            </p>
-                            
-                            <!-- ACCORDION START -->
-                            <details class="program-details">
-                                <summary>View Pricing & Details <span class="toggle-arrow">▼</span></summary>
-                                
-                                <hr style="border: none; border-top: 1px solid #f1f5f9; margin-bottom: 15px; margin-top: 10px;">
-                                
-                                <ul class="features-list">
-                                    <li>Dedicated mentor matched to your goals (Sprint to Ironman).</li>
-                                    <li>Personalized and evolving training plan (built in 4-week blocks).</li>
-                                    <li>Up to 2 adjustments per month based on your availability and fitness level.</li>
-                                    <li>
-                                    Regular individual video calls to track progress.
-                                   <span style="display: block; font-size: 0.85rem; color: var(--text-light); margin-top: 4px; padding-left: 5px;">
-                                    ↳ Communication every 2 days during the first two weeks, followed by video calls every 2 to 4 weeks, depending on your needs.
-                                  </span>
-                                </li>
-                                    <li>In-depth data analysis (TrainingPeaks*) to optimize performance.</li>
-                                    <li>Targeted race nutrition and pacing strategy.</li>
-                                </ul>
-
-                                <div class="option-box">
-    <span style="font-size: 1.25rem; font-weight: 800; color: #004c97; display: block;">
-        FOR THE SEASON :
-    </span>
-    <div style="margin-top: 2px;">
-        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$149 / month</span>
-        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(6 months commitment)</span>
-    </div>
-    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Ideal to progress with structure, discipline, and motivation.</p>
-</div>
-                                
-                                <div class="option-box" style="border-left-color: #D65F3A; margin-top: 12px;">
-    <span style="font-size: 1.25rem; font-weight: 800; color: #D65F3A; display: block;">
-        FULL YEAR :
-    </span>
-    <div style="margin-top: 2px;">
-        <span style="font-size: 1.25rem; font-weight: 800; color: var(--text-dark);">$165 / month</span>
-        <span style="font-size: 0.85rem; color: var(--text-light); margin-left: 8px;">(12 months commitment)</span>
-    </div>
-    <p style="font-size: 0.85rem; margin: 5px 0 0 0; color: var(--text-dark);">Advanced data analysis and strategy (70.3 & Ironman).</p>
-</div>
-<p style="font-size: 0.8rem; color: var(--text-light); margin: 10px 0 0 0; line-height: 1.4;">
-    <span style="font-style: italic; font-size: 0.75rem; display: block;">*TrainingPeaks Premium subscription required</span>
-    <span style="font-weight: 800; color: #004c97; font-size: 0.9rem; display: block; margin-top: 6px;">💡 Shorter-term projects can be discussed.</span>
-</p>
-
-                            </details>
-
-                        </div>
-                    </div>
-
+                <!-- FORMULES EN ONGLETS -->
+                <div class="acc-tabs" role="tablist">
+                    <button type="button" class="acc-tab active" role="tab" aria-selected="true" data-panel="acc-p1" style="--c:#004c97;"><span class="acc-ico">🌱</span><span class="acc-nm">First Step</span><span class="acc-sub">My first triathlon</span></button>
+                    <button type="button" class="acc-tab" role="tab" aria-selected="false" data-panel="acc-p2" style="--c:#D65F3A;"><span class="acc-ico">📈</span><span class="acc-nm">Progression</span><span class="acc-sub">Intermediate & advanced · Sprint to Ironman</span></button>
+                    <button type="button" class="acc-tab" role="tab" aria-selected="false" data-panel="acc-p3" style="--c:#2b8080;"><span class="acc-ico">🤝</span><span class="acc-nm">Club + Coach</span><span class="acc-sub">Group + personal coaching</span></button>
                 </div>
+
+                <!-- FORMULE 1 -->
+                <div class="acc-panel active" id="acc-p1" role="tabpanel" style="--c:#004c97;">
+                    <div>
+                        <span class="acc-badge">Beginner</span>
+                        <h3>First Step</h3>
+                        <p class="acc-quote">"One day, I'll do one..."</p>
+                        <p class="acc-desc">For those who have never dared to stand at a starting line. A reassuring structure from start to finish, with mentors who have been in your shoes. <strong>Goal: getting you across your first finish line!</strong></p>
+                        <ul class="acc-list">
+                            <li>A <b>dedicated mentor</b> matched to your goals</li>
+                            <li>Help with <b>buying your first equipment</b></li>
+                            <li><b>12-week training plan</b> adapted to your level</li>
+                            <li>Plan <b>adjusted to your lifestyle</b></li>
+                            <li><b>Race proceedings</b> and <b>rules</b> explained</li>
+                            <li>Full <b>moral support</b> for race day</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="acc-price"><div class="acc-lbl">Semi-supported</div><div class="acc-amt">$299 <small>/ 3 months (≈ $99/month)</small></div><p>Training plan + 3 mentoring sessions of 40 min</p></div>
+                        <div class="acc-price" style="--c:#D65F3A;"><div class="acc-lbl">Fully supported</div><div class="acc-amt">$399 <small>/ 3 months (≈ $133/month)</small></div><p>Training plan + 5 mentoring sessions of 40 min</p></div>
+                        <a class="acc-cta" href="index.html#contact">I'm in</a>
+                    </div>
+                </div>
+
+                <!-- FORMULE 2 -->
+                <div class="acc-panel" id="acc-p2" role="tabpanel" style="--c:#D65F3A;">
+                    <div>
+                        <span class="acc-badge">Intermediate & advanced · Sprint to Ironman</span>
+                        <h3>Progression</h3>
+                        <p class="acc-quote">"I want to structure my progress and perform."</p>
+                        <p class="acc-desc">Whether you're chasing a faster sprint time or taking on an Ironman, a coach follows you all year with a plan that evolves with you.</p>
+                        <ul class="acc-list">
+                            <li>A <b>dedicated coach</b> matched to your goals (sprint to Ironman)</li>
+                            <li><b>Personalized plan</b>, built in 4-week blocks</li>
+                            <li><b>Adjustments twice a month</b> based on your availability and fitness</li>
+                            <li><b>Regular video calls</b>: check-ins every 2 days at first, then every 2 to 4 weeks</li>
+                            <li><b>Analysis of your data</b> on TrainingPeaks*</li>
+                            <li>Race <b>nutrition</b> and <b>pacing</b> strategy</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="acc-price" style="--c:#D65F3A;"><div class="acc-lbl">Year-round coaching</div><div class="acc-amt">$165 <small>/ month</small></div><p>12-month commitment · from winter preparation to the end of the season</p></div>
+                        <p class="acc-tip">This package covers the needs of most triathletes. Depending on your goals, <b>à la carte add-ons</b> are available.</p>
+                        <p class="acc-note">*TrainingPeaks Premium membership required.</p>
+                        <a class="acc-cta" href="index.html#contact">I want to progress</a>
+                    </div>
+                </div>
+
+                <!-- FORMULE 3 -->
+                <div class="acc-panel" id="acc-p3" role="tabpanel" style="--c:#2b8080;">
+                    <div>
+                        <span class="acc-badge">Train with a group… at your own pace</span>
+                        <h3>Club + Coach</h3>
+                        <p class="acc-quote">"I love the club's energy, but my schedule doesn't always let me go."</p>
+                        <p class="acc-desc">Join group workouts when you can, with personal coaching that complements your club: to progress further, or to stay on track during the weeks you can't make it.</p>
+                        <ul class="acc-list">
+                            <li>We help you <b>find the club</b> that suits you</li>
+                            <li>A <b>coach</b> who takes your <b>club sessions</b> into account</li>
+                            <li><b>Replacement workouts</b> when your schedule doesn't allow it</li>
+                            <li><b>Targeted follow-up</b> on your personal goals</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="acc-price" style="--c:#2b8080;"><div class="acc-lbl">Variable pricing</div><div class="acc-amt">Depends on your plan</div><p>Your club membership, paid directly to the club, + à la carte coaching tailored to your needs. We build the right combination together.</p><p class="acc-hint">As a guide, annual club membership is often between $300 and $500.</p></div>
+                        <a class="acc-cta" href="index.html#contact">Let's talk</a>
+                    </div>
+                </div>
+
+                <!-- AJOUTS À LA CARTE (communs aux trois formules) -->
+                <div class="acc-alacarte"><span style="font-size: 1.6rem; line-height: 1;">🧩</span><div><strong class="acc-t">À la carte add-ons, available in all three plans</strong><br><span class="acc-txt">Depending on your goals, you can add for example: <b>sport-specific strength training</b>, <b>nutrition education</b>, <b>more frequent plan adjustments</b>, <b>ongoing support</b>… We'll discuss it together during our first call, free and with no commitment.</span></div></div>
             </div>
 
             <!-- SECTION 3: CALL TO ACTION / MATCHING -->
@@ -690,6 +699,17 @@ document.addEventListener("DOMContentLoaded", function () {
         if (athletesParent) athletesParent.classList.add("active");
     }
 });
+    </script>
+
+    <script>
+    // Onglets des formules d'accompagnement
+    document.querySelectorAll('.acc-tab').forEach(function (onglet) {
+        onglet.addEventListener('click', function () {
+            document.querySelectorAll('.acc-tab, .acc-panel').forEach(function (e) { e.classList.remove('active'); e.setAttribute && e.classList.contains('acc-tab') && e.setAttribute('aria-selected', 'false'); });
+            onglet.classList.add('active'); onglet.setAttribute('aria-selected', 'true');
+            document.getElementById(onglet.dataset.panel).classList.add('active');
+        });
+    });
     </script>
 </body>
 </html>
