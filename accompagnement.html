@@ -480,7 +480,10 @@ autre_langue: en/guidance.html
         .acc-alacarte strong.acc-t { color: #D65F3A; }
         .acc-alacarte span.acc-txt { font-size: 0.92rem; color: #334155; line-height: 1.5; }
         .acc-alacarte span.acc-txt b { color: var(--text-dark); }
+        .acc-panel { background: #ffffff; }
         @media (max-width: 700px) {
+            /* Mobile : pas de double cadre, les onglets prennent toute la largeur */
+            .acc-section { border: none !important; box-shadow: none !important; background: transparent !important; padding: 10px 0 0 !important; }
             .acc-tabs { gap: 6px; }
             .acc-tab { padding: 10px 4px; }
             .acc-tab .acc-sub { display: none; }
@@ -538,7 +541,7 @@ autre_langue: en/guidance.html
             </div>
 
             <!-- SECTION 2 : NOS PROGRAMMES & FORFAITS -->
-            <div class="main-card-accompagnement" style="margin-bottom: 40px;">
+            <div class="main-card-accompagnement acc-section" style="margin-bottom: 40px;">
                 <h2 style="color: #004c97; font-size: 1.8rem; margin-top: 0; margin-bottom: 10px;">
                     🏆 Programmes d'accompagnement
                 </h2>
@@ -720,6 +723,20 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(onglet.dataset.panel).classList.add('active');
         });
     });
+    </script>
+
+    <script>
+    // Ouvre directement une formule depuis l'adresse : #premier-pas, #progression, #club-coach
+    (function () {
+        var cibles = { 'premier-pas': 'acc-p1', 'first-step': 'acc-p1', 'progression': 'acc-p2', 'club-coach': 'acc-p3' };
+        function ouvrir() {
+            var id = cibles[decodeURIComponent(location.hash.replace('#', ''))];
+            var onglet = id && document.querySelector('.acc-tab[data-panel="' + id + '"]');
+            if (onglet) { onglet.click(); onglet.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        }
+        document.addEventListener('DOMContentLoaded', ouvrir);
+        window.addEventListener('hashchange', ouvrir);
+    })();
     </script>
 </body>
 </html>
