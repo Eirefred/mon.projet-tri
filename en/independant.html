@@ -774,6 +774,43 @@ autre_langue: ../autonome.html
         color: #d45d39 !important; /* Couleur du texte actif */
         font-weight: bold !important; /* Texte en gras */
     }
+
+        /* ===== RÈGLES ESSENTIELLES (onglet Règlements) ===== */
+        .regles-box { background: #f8fbff; border: 1px solid #dbe7f3; border-radius: 14px; padding: 22px 22px 16px; margin-bottom: 30px; }
+        .regles-box h3 { margin: 0 0 4px; color: #004c97; font-size: 1.2rem; }
+        .regles-box .regles-intro { margin: 0 0 18px; font-size: 0.88rem; color: var(--text-light); }
+        .regles-etapes { list-style: none; margin: 0; padding: 0; }
+        .regle-etape { position: relative; display: grid; grid-template-columns: 38px 1fr; column-gap: 14px; padding-bottom: 16px; }
+        .regle-etape::before { content: ""; position: absolute; left: 18px; top: 38px; bottom: 0; width: 2px; background: #dbe7f3; }
+        .regle-etape:last-child { padding-bottom: 4px; }
+        .regle-etape:last-child::before { display: none; }
+        .regle-ico { width: 38px; height: 38px; border-radius: 50%; background: #e3f1fb; border: 2px solid #4daad4; box-sizing: border-box; color: #004c97; display: flex; align-items: center; justify-content: center; font-size: 1.05rem; position: relative; z-index: 1; }
+        .regle-etape.transition .regle-ico { background: #ffffff; border: 2px solid #D65F3A; color: #D65F3A; font-size: 0.8rem; font-weight: 900; }
+        .regle-etape h4 { margin: 8px 0 6px; font-size: 1rem; color: #0f172a; }
+        .regle-etape h4 small { font-weight: 600; color: var(--text-light); font-size: 0.8rem; margin-left: 4px; }
+        .regle-etape.transition h4 { color: #D65F3A; }
+        .regle-etape ul { margin: 0; padding-left: 18px; }
+        .regle-etape li { font-size: 0.9rem; line-height: 1.5; color: #334155; margin-bottom: 4px; }
+        .regle-etape li strong { color: #004c97; }
+        .ligne-couleur { display: inline-block; width: 18px; height: 4px; border-radius: 2px; vertical-align: middle; margin: 0 2px 2px; }
+        .ligne-verte { background: #16a34a; } .ligne-rouge { background: #dc2626; }
+        .regles-gen { margin-top: 14px; padding-top: 16px; border-top: 1px dashed #cbd5e1; }
+        .regles-gen h4 { margin: 0 0 10px; font-size: 1rem; color: #0f172a; }
+        .regles-gen-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+        .regle-gen { display: flex; gap: 10px; align-items: flex-start; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 9px 12px; font-size: 0.86rem; line-height: 1.4; color: #334155; }
+        .regle-gen span { font-size: 1.1rem; line-height: 1.2; }
+        .regle-gen strong { color: #0f172a; }
+        .regles-note { margin: 14px 0 0; font-size: 0.78rem; color: var(--text-light); font-style: italic; }
+        .regles-complets { color: #004c97; font-size: 1.2rem; margin: 0 0 14px; }
+        @media (max-width: 600px) {
+            .regles-box { padding: 18px 14px 12px; }
+            .regle-etape { grid-template-columns: 32px 1fr; column-gap: 10px; }
+            .regle-ico { width: 32px; height: 32px; font-size: 0.95rem; }
+            .regle-etape::before { left: 15px; top: 32px; }
+            .regle-etape h4 { margin-top: 6px; }
+            .regles-gen-grid { grid-template-columns: 1fr; }
+            .regle-etape h4 small { display: block; margin: 2px 0 0; }
+        }
     </style>
 </head>
 <body>
@@ -1075,6 +1112,81 @@ autre_langue: ../autonome.html
     <p style="color: var(--text-light); margin-bottom: 25px;">
         To avoid surprises and race safely, familiarize yourself with the rules of each organization.
     </p>
+
+    <!-- ESSENTIAL RULES -->
+    <div class="regles-box">
+        <h3>✅ The essential rules</h3>
+        <p class="regles-intro">What you need to remember, in race order.</p>
+        <ol class="regles-etapes">
+            <li class="regle-etape">
+                <div class="regle-ico">🏊</div>
+                <div>
+                    <h4>Swim</h4>
+                    <ul>
+                        <li>Go around <strong>all the buoys</strong> that mark the course.</li>
+                        <li>Need to catch your breath? You may <strong>hold on to a lifeguard's kayak or paddleboard</strong>, but you can't move forward with it.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="regle-etape transition">
+                <div class="regle-ico">T1</div>
+                <div>
+                    <h4>Transition area <small>swim → bike</small></h4>
+                    <ul>
+                        <li>Set up next to your bike: you have about <strong>50 cm</strong> of space (sometimes less if space is tight).</li>
+                        <li>Only place <strong>what you need for the race</strong>: no bike pump, no bag, no box.</li>
+                        <li>Don't <strong>mark</strong> your spot: no highly visible item to find it.</li>
+                        <li>Only your <strong>helmet, nutrition and bike shoes</strong> may stay on the bike. Everything else goes on the ground.</li>
+                        <li>Move <strong>on foot</strong> and only get on your bike after the <strong>mount line</strong>, often a <span class="ligne-couleur ligne-verte"></span> green line with green flags.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="regle-etape">
+                <div class="regle-ico">🚴</div>
+                <div>
+                    <h4>Bike</h4>
+                    <ul>
+                        <li>Ride on the <strong>right</strong> side of the road, unless the course says otherwise (or it's a "blocking" violation).</li>
+                        <li><strong>Never ride against traffic</strong>.</li>
+                        <li>Pass <strong>on the left</strong>.</li>
+                        <li>Keep <strong>12 m</strong> from the bike in front of you. If you find yourself in that zone (on purpose or not, whether you're passing or being passed), you have <strong>25 seconds</strong> to leave it: forward if you're passing, backward if you're being passed.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="regle-etape transition">
+                <div class="regle-ico">T2</div>
+                <div>
+                    <h4>Transition area <small>bike → run</small></h4>
+                    <ul>
+                        <li>Get off your bike <strong>before the dismount line</strong>, often a <span class="ligne-couleur ligne-rouge"></span> red line with red flags.</li>
+                        <li>Rack your bike <strong>in your own spot</strong> and stay within your 50 cm space.</li>
+                    </ul>
+                </div>
+            </li>
+            <li class="regle-etape">
+                <div class="regle-ico">🏃</div>
+                <div>
+                    <h4>Run</h4>
+                    <ul>
+                        <li>Run on the <strong>right</strong> side of the road, unless the course says otherwise (or it's a "blocking" violation).</li>
+                    </ul>
+                </div>
+            </li>
+        </ol>
+
+        <div class="regles-gen">
+            <h4>At all times</h4>
+            <div class="regles-gen-grid">
+                <div class="regle-gen"><span>🗑️</span><div><strong>No littering</strong>: keep your trash or drop it in the designated zones.</div></div>
+                <div class="regle-gen"><span>🤝</span><div><strong>No outside assistance</strong>: only someone taking part in the race can help you.</div></div>
+                <div class="regle-gen"><span>🎧</span><div><strong>No music</strong> or headphones.</div></div>
+                <div class="regle-gen"><span>📱</span><div><strong>No smartphone use.</strong></div></div>
+            </div>
+        </div>
+        <p class="regles-note">This summary doesn't replace the official rules: when in doubt, the event's rules apply.</p>
+    </div>
+
+    <h3 class="regles-complets">📄 The full rulebooks</h3>
 
     <div class="links-list">
         <!-- TRIATHLON QUÉBEC & CHALLENGE FAMILY BLOCK WITH AI ASSISTANT TIP -->
