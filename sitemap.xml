@@ -203,4 +203,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/votre-histoire.html" />
   </url>
 
+  <!-- POURQUOI UN COACH ? / WHY A COACH? -->
+  <url>
+    <loc>https://mon.projet-tri.org/besoin-coach.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/besoin-coach.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/need-a-coach.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/besoin-coach.html" />
+  </url>
+  <url>
+    <loc>https://mon.projet-tri.org/en/need-a-coach.html</loc>
+    <lastmod>2026-10-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/besoin-coach.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/need-a-coach.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/besoin-coach.html" />
+  </url>
+
 </urlset>
