@@ -1,7 +1,7 @@
 <!--
   SHARED HEADER (English pages) — edit HERE to change the menu on every English page.
   Variables read from each page's front matter (between the --- lines):
-    section      : athletes | partenaires   (highlights the right dropdown)
+    section      : athletes | partenaires | coach   (highlights the right dropdown)
     autre_langue : matching French page (e.g. ../accompagnement.html)
 -->
 <header>
@@ -23,7 +23,16 @@
             </label>
 
             <ul class="nav-links">
-                <li><a href="discover.html">Our&nbsp;Mission</a></li>
+                <li class="has-dropdown">
+                    <a href="discover.html" class="dropdown-trigger{% if page.section == 'partenaires' or page.url == '/en/discover.html' %} active{% endif %}">Our&nbsp;Mission <span class="arrow-down">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="discover.html"{% if page.url == '/en/discover.html' %} class="active"{% endif %}>Our mission</a></li>
+                        <li class="menu-sep" role="separator"></li>
+                        <li class="menu-titre">Partners</li>
+                        <li><a href="receive.html"{% if page.url == '/en/receive.html' %} class="active"{% endif %}>Receive</a></li>
+                        <li><a href="provide.html"{% if page.url == '/en/provide.html' %} class="active"{% endif %}>Provide</a></li>
+                    </ul>
+                </li>
                 <li class="has-dropdown">
                     <a href="index.html#athlètes" class="dropdown-trigger{% if page.section == 'athletes' %} active{% endif %}">Athletes <span class="arrow-down">▼</span></a>
                     <ul class="dropdown-menu">
@@ -33,13 +42,7 @@
                         <li><a href="your-story.html"{% if page.url == '/en/your-story.html' %} class="active"{% endif %}><i>Your story</i></a></li>
                     </ul>
                 </li>
-                <li class="has-dropdown">
-                    <a href="index.html#partners" class="dropdown-trigger{% if page.section == 'partenaires' %} active{% endif %}">Partners <span class="arrow-down">▼</span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="receive.html"{% if page.url == '/en/receive.html' %} class="active"{% endif %}>Receive</a></li>
-                        <li><a href="provide.html"{% if page.url == '/en/provide.html' %} class="active"{% endif %}>Provide</a></li>
-                    </ul>
-                </li>
+                <li><a href="need-a-coach.html"{% if page.url == '/en/need-a-coach.html' %} class="active"{% endif %}>Why&nbsp;a&nbsp;coach?</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
                 <li><a href="calendar.html">Calendar'26</a></li>
                 <li class="lang-switcher">
@@ -54,3 +57,25 @@
         </nav>
     </div>
 </header>
+
+<style>
+    /* Menu : évite le débordement sur tablette / petits écrans d'ordinateur (769 à 1100 px) */
+    @media (min-width: 769px) and (max-width: 1100px) {
+        header nav ul.nav-links { gap: 14px; }
+        header nav ul.nav-links > li > a { font-size: 0.74rem; }
+        header .region-stack { display: none; }
+        header .logo img { height: 44px; }
+    }
+    @media (min-width: 769px) and (max-width: 900px) {
+        header nav ul.nav-links { gap: 10px; }
+        header nav ul.nav-links > li > a { font-size: 0.68rem; }
+    }
+    header .dropdown-menu a { white-space: nowrap; }
+    /* Section « Partenaires » dans le menu La mission */
+    header .dropdown-menu .menu-sep { height: 0; border-top: 1px solid #e2e8f0; margin: 6px 14px; padding: 0; width: auto; max-width: calc(100% - 28px); box-sizing: border-box; }
+    header .dropdown-menu .menu-titre { padding: 6px 20px 2px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #94a3b8; cursor: default; }
+    @media (max-width: 768px) {
+        header .dropdown-menu .menu-sep { margin: 6px 0 4px 20px; width: 140px; }
+        header .dropdown-menu .menu-titre { padding: 2px 0 0 20px; }
+    }
+</style>
