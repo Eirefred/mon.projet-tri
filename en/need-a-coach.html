@@ -744,7 +744,7 @@ autre_langue: ../besoin-coach.html
         .sw-warn { display: flex; gap: 10px; align-items: flex-start; margin: -4px 0 16px; padding: 10px 14px; background: #fff7ed; border: 1px solid #fed7aa; border-left: 4px solid #D65F3A; border-radius: 8px; font-size: 0.9rem; line-height: 1.45; color: #1e293b; }
         .sw-warn strong { color: #b25f0c; }
         .sw-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
-        .sw-tab { flex: 1 1 140px; background: #f0f7ff; border: 1px solid #dbe7f3; border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 0.86rem; font-weight: 800; color: #004c97; cursor: pointer; text-align: left; line-height: 1.25; transition: 0.2s; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
+        .sw-tab { flex: 1 1 0; min-width: 0; background: #f0f7ff; border: 1px solid #dbe7f3; border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 0.86rem; font-weight: 800; color: #004c97; cursor: pointer; text-align: left; line-height: 1.25; transition: 0.2s; display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; }
         .sw-tab:hover { border-color: #D65F3A; }
         .sw-tab small { display: block; font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.4px; color: var(--text-light); }
         .sw-tab.active { background: #004c97; color: #ffffff; border-color: #004c97; }
@@ -798,6 +798,14 @@ autre_langue: ../besoin-coach.html
         @media (max-width: 700px) {
             .sw-wrap h1 { font-size: 1.9rem; overflow-wrap: anywhere; }
             .sw-card { padding: 18px 14px; }
+            /* Mobile : 5 boutons de taille identique (2 par ligne, le 5e centré) */
+            .sw-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 6px; }
+            .sw-tab { box-sizing: border-box; padding: 8px 10px; font-size: 0.82rem; border-radius: 9px; }
+            .sw-tab:last-child { grid-column: 1 / -1; justify-self: center; width: calc(50% - 3px); }
+            .sw-tab small { font-size: 0.58rem; margin-bottom: 1px; }
+        }
+        @media (max-width: 360px) {
+            .sw-tab { font-size: 0.74rem; padding: 7px 8px; }
             .sw-week { grid-template-columns: 1fr; }
             .sw-day { flex-direction: row; flex-wrap: wrap; min-height: 0; align-items: center; }
             .sw-day b { width: 38px; text-align: left; }
@@ -944,7 +952,7 @@ autre_langue: ../besoin-coach.html
                 <h2>A typical triathlon training week, by goal</h2>
                 <p class="sw-intro">Pick your goal to see an example week during a build phase.</p>
                 <p class="sw-warn"><span>ℹ️</span><span><strong>Example only.</strong> These typical weeks are meant to give you a rough idea of what to expect. They are not a program to follow: your plan should be adapted to your profile.</span></p>
-                <div class="sw-tabs" role="tablist"><button type="button" class="sw-tab active" data-p="init" role="tab" aria-selected="true"><small>Getting fit</small>Try-a-tri</button><button type="button" class="sw-tab" data-p="sprint" role="tab" aria-selected="false"><small>Competitive</small>Sprint or Olympic</button><button type="button" class="sw-tab" data-p="demi" role="tab" aria-selected="false"><small>Finisher</small>Half-Ironman (70.3)</button><button type="button" class="sw-tab" data-p="im" role="tab" aria-selected="false"><small>Finisher</small>Ironman</button><button type="button" class="sw-tab" data-p="imc" role="tab" aria-selected="false"><small>Competitive</small>Ironman performance</button></div>
+                <div class="sw-tabs" role="tablist"><button type="button" class="sw-tab active" data-p="init" role="tab" aria-selected="true"><small>Getting fit</small>Try-a-tri<br>or discovery</button><button type="button" class="sw-tab" data-p="sprint" role="tab" aria-selected="false"><small>Competitive</small>Sprint triathlon<br>/ Olympic</button><button type="button" class="sw-tab" data-p="demi" role="tab" aria-selected="false"><small>Finisher</small>Half-Ironman<br>(70.3)</button><button type="button" class="sw-tab" data-p="im" role="tab" aria-selected="false"><small>Finisher</small>Long distance<br>Ironman</button><button type="button" class="sw-tab" data-p="imc" role="tab" aria-selected="false"><small>Competitive</small>Ironman<br>performance</button></div>
                 <div class="sw-panel active" id="p-init" role="tabpanel">
                     <div class="sw-head"><span class="sw-big">≈ 3 h</span><span class="sw-sub">per week · 6 sessions</span><p>Building the habit: short sessions, easy intensity, lots of swim technique.</p></div>
                     <div class="sw-week"><div class="sw-day"><b>Mon</b><span class="sw-rest">Rest</span></div><div class="sw-day"><b>Tue</b><span class="sw-chip" style="--c:#4daad4">🏊 30 min <em>technique</em></span></div><div class="sw-day"><b>Wed</b><span class="sw-chip" style="--c:#2b8080">🏃 30 min <em>run-walk</em></span></div><div class="sw-day"><b>Thu</b><span class="sw-chip" style="--c:#8b5cf6">💪 20 min <em>core</em></span></div><div class="sw-day"><b>Fri</b><span class="sw-rest">Rest</span></div><div class="sw-day"><b>Sat</b><span class="sw-chip" style="--c:#D65F3A">🚴 1 h <em>easy</em></span><span class="sw-chip" style="--c:#2b8080">🏃 10 min <em>brick</em></span></div><div class="sw-day"><b>Sun</b><span class="sw-chip" style="--c:#4daad4">🏊 30 min <em>for fun</em></span></div></div>
