@@ -807,10 +807,10 @@ autre_langue: ../besoin-coach.html
         .cv-lg { font-size: 11.5px; fill: #334155; }
         .cv-lg2 { fill: var(--text-light); font-size: 10.5px; }
         .cv-taper-l { fill: #b25f0c; }
-        .cv-leg-m { gap: 14px; flex-wrap: wrap; font-size: 0.8rem; color: #334155; margin-top: 6px; }
-        .cv-leg-m span { position: relative; display: block; padding-left: 26px; line-height: 1.35; }
-        .cv-leg-m span i { position: absolute; left: 0; top: 8px; margin: 0; }
-        .cv-leg-m small { color: var(--text-light); font-size: 0.75rem; }
+        .cv-leg-m { flex-direction: column; gap: 4px; flex-wrap: wrap; font-size: 0.8rem; color: #334155; margin-top: 6px; }
+        .cv-leg-m span { position: relative; display: block; padding-left: 24px; line-height: 1.35; font-size: 0.74rem; }
+        .cv-leg-m span i { position: absolute; left: 0; top: 7px; margin: 0; }
+        .cv-leg-m small { color: var(--text-light); font-size: 1em; }
         .cv-leg-m .l-ideal { height: 0; border-top: 2px dashed #94a3b8; border-radius: 0; width: 18px; }
         .cv-leg-m .l-real { height: 3px; background: #004c97; width: 18px; }
         .cv-msg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-top: 14px; }
@@ -838,6 +838,7 @@ autre_langue: ../besoin-coach.html
             .cv-mobile { display: block; width: calc(100% + 16px); max-width: none; margin: 0 -8px; }
             .cv-leg-m { display: flex; }
         }
+        @media (max-width: 375px) { .cv-leg-m span { font-size: 0.66rem; padding-left: 22px; } }
         @media (max-width: 360px) {
             .sw-tab { font-size: 0.74rem; padding: 7px 8px; }
         }
@@ -1039,7 +1040,7 @@ autre_langue: ../besoin-coach.html
 <line x1="16" y1="284" x2="398" y2="284" class="cv-axis"/><line x1="16" y1="34" x2="16" y2="284" class="cv-axis"/>
 <text x="16.0" y="300" class="cv-tick">W0</text><text x="143.3" y="300" class="cv-tick">W8</text><text x="270.7" y="300" class="cv-tick">W16</text><text x="398.0" y="300" class="cv-tick">W24</text><text x="207.0" y="318" class="cv-tick">Training weeks</text><text transform="translate(32,157.1) rotate(-90)" class="cv-tick" style="text-anchor:middle">Fitness level</text>
 </svg>
-                <div class="cv-leg-m"><span><i class="l-ideal"></i>Ideal progress, no overload<br><small>(e.g., generic plan)</small></span><span><i class="l-real"></i>Real progress:<br><small>needs regular adjustment</small></span></div>
+                <div class="cv-leg-m"><span><i class="l-ideal"></i>Ideal progress, no overload <small>(e.g., generic plan)</small></span><span><i class="l-real"></i>Real progress: <small>needs regular adjustment</small></span></div>
                 <div class="cv-msg"><div><b>Follow the ideal curve</b>A gradual increase in load, without overload: you improve without getting hurt.</div><div><b>Adjusted to your reality</b>Work, illness, vacation: the load is eased, then raised reasonably to rejoin the ideal progress, without going above it, or you risk overtraining.</div><div><b>Taper</b>In the 2 to 3 weeks before the race, volume is reduced but intensity is kept: fitness holds, fatigue fades, and you arrive fresh on race day.</div></div>
                 <p class="sw-note">Every athlete's starting point and goal are their own. The coach's role: map the path between the two, then adjust it week after week.</p>
             </div>
