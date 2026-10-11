@@ -736,6 +736,20 @@ autre_langue: en/need-a-coach.html
         @media (max-width: 768px) { .coach-faq { padding: 16px 16px 10px; } }
         .acc-art > summary h2 .num { width: 36px; height: 36px; font-size: 1.2rem; margin-right: 10px; vertical-align: -5px; }
         @media (max-width: 768px) { .acc-art > summary h2 .num { width: 32px; height: 32px; font-size: 1.05rem; } }
+        .coach-resume-jauge table { table-layout: fixed; }
+        .coach-resume-jauge th:first-child, .coach-resume-jauge td:first-child { width: 31%; }
+        .coach-resume-jauge td { vertical-align: middle; }
+        .res-sit { display: flex; gap: 10px; align-items: center; }
+        .res-ico { flex-shrink: 0; width: 34px; height: 34px; border-radius: 50%; background: #e3f1fb; border: 2px solid #4daad4; display: inline-flex; align-items: center; justify-content: center; font-size: 1.05rem; }
+        .jauge { display: flex; gap: 4px; margin: 0 0 5px; }
+        .jauge i { display: block; width: 34px; height: 9px; border-radius: 5px; background: #e2e8f0; }
+        .jauge i.c1 { background: #86efac; }
+        .jauge i.c2 { background: #15803d; }
+        @media (max-width: 768px) {
+            .coach-resume-jauge table { table-layout: auto; }
+            .coach-resume-jauge th:first-child, .coach-resume-jauge td:first-child { width: auto; }
+            .coach-resume-jauge td { vertical-align: top; }
+        }
         .acc-refs { border-left-color: #94a3b8; }
         .acc-refs > summary h2 { font-size: 1.05rem; color: #334155; margin-bottom: 4px; }
         .acc-refs ol li { font-size: 0.85rem; line-height: 1.5; margin-bottom: 8px; word-break: break-word; }
@@ -1041,14 +1055,14 @@ autre_langue: en/need-a-coach.html
             </div>
                 </div>
             </div>
-            <div class="coach-resume">
+            <div class="coach-resume coach-resume-jauge">
                 <h2>En résumé</h2>
                 <div class="table-scroll"><table>
                     <tr><th>Votre situation</th><th>Avez-vous besoin d'un coach&nbsp;?</th></tr>
-                    <tr><td>Bouger, découvrir le triathlon, être en forme</td><td><strong>Pas nécessaire</strong> : un programme, un club ou notre boîte à outils suffisent.</td></tr>
-                    <tr><td>Progresser, améliorer vos chronos, allonger la distance</td><td><strong>Recommandé</strong> : vous progresserez plus vite et plus sûrement.</td></tr>
-                    <tr><td>Défi hors de l'ordinaire (demi-Ironman, Ironman…)</td><td><strong>Fortement recommandé</strong> : la gestion de la charge devient déterminante.</td></tr>
-                    <tr><td>Blessures fréquentes ou condition particulière</td><td><strong>Fortement recommandé</strong> : avec vos professionnels de la santé.</td></tr>
+                    <tr><td><div class="res-sit"><span class="res-ico" aria-hidden="true">🏃</span><span>Bouger, découvrir le triathlon, être en forme</span></div></td><td><div class="jauge" role="img" aria-label="Pas nécessaire"><i class="c1"></i><i class="vide"></i></div><strong>Pas nécessaire</strong> : un programme, un club ou notre boîte à outils suffisent.</td></tr>
+                    <tr><td><div class="res-sit"><span class="res-ico" aria-hidden="true">📈</span><span>Progresser, améliorer vos chronos, allonger la distance</span></div></td><td><div class="jauge" role="img" aria-label="Recommandé"><i class="c2"></i><i class="vide"></i></div><strong>Recommandé</strong> : vous progresserez plus vite et plus sûrement.</td></tr>
+                    <tr><td><div class="res-sit"><span class="res-ico" aria-hidden="true">🏆</span><span>Défi hors de l'ordinaire (demi-Ironman, Ironman…)</span></div></td><td><div class="jauge" role="img" aria-label="Fortement recommandé"><i class="c2"></i><i class="c2"></i></div><strong>Fortement recommandé</strong> : la gestion de la charge devient déterminante.</td></tr>
+                    <tr><td><div class="res-sit"><span class="res-ico" aria-hidden="true">🩺</span><span>Blessures fréquentes ou condition particulière</span></div></td><td><div class="jauge" role="img" aria-label="Fortement recommandé"><i class="c2"></i><i class="c2"></i></div><strong>Fortement recommandé</strong> : avec vos professionnels de la santé.</td></tr>
                 </table></div>
             </div>
             
