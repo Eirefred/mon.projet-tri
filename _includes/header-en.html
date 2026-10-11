@@ -71,6 +71,8 @@
         header nav ul.nav-links > li > a { font-size: 0.68rem; }
     }
     header .dropdown-menu a { white-space: nowrap; }
+    /* Très petits téléphones : on masque la mention de région pour garder le menu dans l'écran */
+    @media (max-width: 360px) { header .region-stack { display: none; } }
     /* Section « Partenaires » dans le menu La mission */
     header .dropdown-menu .menu-sep { height: 0; border-top: 1px solid #e2e8f0; margin: 6px 14px; padding: 0; width: auto; max-width: calc(100% - 28px); box-sizing: border-box; }
     header .dropdown-menu .menu-titre { padding: 6px 20px 2px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #94a3b8; cursor: default; }
