@@ -560,7 +560,7 @@ autre_langue: en/index.html
             </div>
 
             <!-- IFRAME D'ENVOI DISCRET POUR GOOGLE FORMS -->
-            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {document.getElementById('evaluationForm').reset(); document.getElementById('message-succes').style.display='block';}"></iframe>
+            <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(window.submitted) {document.getElementById('evaluationForm').reset(); document.getElementById('message-succes').style.display='block';}"></iframe>
 
             <!-- FORMULAIRE SUR MESURE -->
             <div class="form-card">
@@ -626,7 +626,7 @@ autre_langue: en/index.html
                     <!-- SOUS-SECTION : MONTRE INTELLIGENTE -->
                     <div class="form-grid" style="margin-bottom: 20px;">
                         <div class="form-group">
-                            <label for="montre">Possédez-vous une montre intelligente ?</label>
+                            <label for="montre">Possédez-vous une montre intelligente ?</label>
                             <select id="montre" name="entry.1682593433">
                                 <option value="" selected>Sélectionnez...</option>
                                 <option value="Aucune">Aucune</option>
@@ -652,7 +652,7 @@ autre_langue: en/index.html
         <span>Matériel de Natation</span>
     </div>
     <div class="form-group full-width">
-        <label>Quel matériel de natation 🏊‍♀️ disposez-vous ?</label>
+        <label>Quel matériel de natation 🏊‍♀️ disposez-vous ?</label>
         <div class="checkbox-group">
             <label class="checkbox-item"><input type="checkbox" name="entry.1362401059" value="Planche"> Planche</label>
             <label class="checkbox-item"><input type="checkbox" name="entry.1362401059" value="Pull-buoy"> Pull-buoy</label>
@@ -673,7 +673,7 @@ autre_langue: en/index.html
                         
                         <div class="form-grid">
                             <div class="form-group full-width">
-                                <label>Quel type de vélo avez-vous ? (Choix multiples)</label>
+                                <label>Quel type de vélo avez-vous ? (Choix multiples)</label>
                                 <div class="checkbox-group">
                                     <label class="checkbox-item">
                                         <input type="checkbox" name="entry.1980038485" value="Route"> Route
@@ -698,7 +698,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label for="odometre-velo">Compteur (odomètre) vélo intelligent ?</label>
+                                <label for="odometre-velo">Compteur (odomètre) vélo intelligent ?</label>
                                 <select id="odometre-velo" name="entry.2105554663">
                                     <option value="" selected>Sélectionnez...</option>
                                     <option value="Aucun">Aucun</option>
@@ -712,7 +712,7 @@ autre_langue: en/index.html
 
                             <!-- POSITIONNEMENT VÉLO -->
                             <div class="form-group">
-                                <label>Avez-vous déjà fait un positionnement vélo (bike fitting) ?</label>
+                                <label>Avez-vous déjà fait un positionnement vélo (bike fitting) ?</label>
                                 <div class="radio-group">
                                     <label class="radio-item">
                                         <input type="radio" name="bike_fitting_choice" value="Oui" onchange="toggleBikeFittingOptions(true)"> Oui
@@ -725,13 +725,13 @@ autre_langue: en/index.html
 
                             <!-- CONDITIONNEL POSITIONNEMENT VÉLO -->
                             <div id="bike-fitting-conditional-section" class="form-group" style="display: none;">
-                                <label for="bike-fitting-date">Date du dernier positionnement ? *</label>
+                                <label for="bike-fitting-date">Date du dernier positionnement ? *</label>
                                 <input type="text" id="bike-fitting-date" class="input-medium" placeholder="Ex: Mai 2023, 2 ans...">
                             </div>
 
                             <!-- POWERMETER -->
                             <div class="form-group">
-                                <label>Powermeter sur le vélo ?</label>
+                                <label>Powermeter sur le vélo ?</label>
                                 <div class="radio-group">
                                     <label class="radio-item"><input type="radio" name="entry.2024086829" value="Oui"> Oui</label>
                                     <label class="radio-item"><input type="radio" name="entry.2024086829" value="Non"> Non</label>
@@ -754,7 +754,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label>Base d'entraînement connectée ?</label>
+                                <label>Base d'entraînement connectée ?</label>
                                 <div class="radio-group">
                                     <label class="radio-item"><input type="radio" name="entry.1067957132" value="Oui"> Oui</label>
                                     <label class="radio-item"><input type="radio" name="entry.1067957132" value="Non"> Non</label>
@@ -762,7 +762,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label for="compte-velo-virtuel">Compte de vélo virtuel ?</label>
+                                <label for="compte-velo-virtuel">Compte de vélo virtuel ?</label>
                                 <select id="compte-velo-virtuel" name="entry.1423287822">
                                     <option value="" selected>Sélectionnez...</option>
                                     <option value="MyWhoosh">MyWhoosh</option>
@@ -776,7 +776,7 @@ autre_langue: en/index.html
                         </div>
                           <div class="form-grid" style="margin-top: 15px;">
                         <div class="form-group">
-                            <label>Avez-vous un compte TrainingPeaks ?</label>
+                            <label>Avez-vous un compte TrainingPeaks ?</label>
                             <div class="radio-group">
                                 <label class="radio-item">
                                     <input type="radio" name="tp_choice" value="Oui" onchange="toggleTpOptions(true)"> Oui
@@ -799,7 +799,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group" style="margin-bottom: 0;">
-                                <label>Possédez-vous un compte TrainingPeaks Premium ?</label>
+                                <label>Possédez-vous un compte TrainingPeaks Premium ?</label>
                                 <div class="radio-group">
                                     <label class="radio-item">
                                         <input type="radio" name="entry.1167384337" value="Oui"> Oui
@@ -823,7 +823,7 @@ autre_langue: en/index.html
 </div>
 <div class="form-grid">
     <div class="form-group">
-        <label for="sport-et-vous">Le sport et vous ?</label>
+        <label for="sport-et-vous">Le sport et vous ?</label>
         <select id="sport-et-vous" name="entry.1500798025">
             <option value="" selected>Sélectionnez...</option>
             <option value="Depuis toujours">Depuis toujours</option>
@@ -835,20 +835,20 @@ autre_langue: en/index.html
     </div>
 
     <div class="form-group">
-        <label for="heures-entrainement">Volume d'entraînement hebdomadaire habituel ?</label>
+        <label for="heures-entrainement">Volume d'entraînement hebdomadaire habituel ?</label>
         <input type="text" id="heures-entrainement" name="entry.588546788" class="input-medium" placeholder="Ex: 5h à 8h...">
     </div>
 
                         <!-- GROUPE : PLUS GRANDE DISTANCE / DURÉE ACTUELLE -->
                         <div class="form-group full-width" style="margin-top: 10px; margin-bottom: 5px;">
-                            <label style="font-size: 1rem; color: #004c97; font-weight: 800;">Pour combien de temps êtes-vous capable de faire chacun de ses sport ?</label>
+                            <label style="font-size: 1rem; color: #004c97; font-weight: 800;">Pour combien de temps êtes-vous capable de faire chacun de ses sport ?</label>
                         </div>
 
                         <div class="form-group full-width">
                             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
                                 <!-- NATATION -->
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <label for="dist-max-natation">En natation 🏊‍♀️ :</label>
+                                    <label for="dist-max-natation">En natation 🏊‍♀️ :</label>
                                     <select id="dist-max-natation" name="entry.1038235295">
                                         <option value="" selected>Sélectionnez...</option>
                                         <option value="Moins de 500m">Moins de 500m</option>
@@ -859,7 +859,7 @@ autre_langue: en/index.html
 
                                 <!-- VÉLO -->
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <label for="duree-max-velo">En vélo 🚴 :</label>
+                                    <label for="duree-max-velo">En vélo 🚴 :</label>
                                     <select id="duree-max-velo" name="entry.1572975010">
                                         <option value="" selected>Sélectionnez...</option>
                                         <option value="Moins de 30min">Moins de 30min</option>
@@ -871,7 +871,7 @@ autre_langue: en/index.html
 
                                 <!-- COURSE À PIED -->
                                 <div class="form-group" style="margin-bottom: 0;">
-                                    <label for="duree-max-course">En course à pied 🏃‍♂️ :</label>
+                                    <label for="duree-max-course">En course à pied 🏃‍♂️ :</label>
                                     <select id="duree-max-course" name="entry.1298463206">
                                         <option value="" selected>Sélectionnez...</option>
                                         <option value="Moins de 10min">Moins de 10min</option>
@@ -892,7 +892,7 @@ autre_langue: en/index.html
                     
                     <div class="form-grid">
                         <div class="form-group full-width">
-                            <label>Avez-vous déjà fait un triathlon ? 🏊🏻🚴🏃‍♂️ *</label>
+                            <label>Avez-vous déjà fait un triathlon ? 🏊🏻🚴🏃‍♂️ *</label>
                             <div class="radio-group">
                                 <label class="radio-item">
                                     <input type="radio" name="deja_triathlon_choice" value="Oui" onchange="toggleTriathlonHistory(true)"> Oui
@@ -908,7 +908,7 @@ autre_langue: en/index.html
                     <div id="triathlon-history-section" style="display: none; margin-bottom: 15px;">
                         <div class="form-grid">
                             <div class="form-group">
-                                <label for="nb-sprint">Triathlons Sprint complétés :</label>
+                                <label for="nb-sprint">Triathlons Sprint complétés :</label>
                                 <select id="nb-sprint" name="entry.504883000">
                                     <option value="0" selected>0</option>
                                     <option value="1">1</option>
@@ -918,7 +918,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label for="nb-olympique">Triathlons Olympiques complétés :</label>
+                                <label for="nb-olympique">Triathlons Olympiques complétés :</label>
                                 <select id="nb-olympique" name="entry.1380250720">
                                     <option value="0" selected>0</option>
                                     <option value="1">1</option>
@@ -928,7 +928,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label for="nb-703">Triathlons 70.3 (Demi-Ironman) :</label>
+                                <label for="nb-703">Triathlons 70.3 (Demi-Ironman) :</label>
                                 <select id="nb-703" name="entry.2110062294">
                                     <option value="0" selected>0</option>
                                     <option value="1">1</option>
@@ -938,7 +938,7 @@ autre_langue: en/index.html
                             </div>
 
                             <div class="form-group">
-                                <label for="nb-ironman">Triathlons Ironman (Distance complète) :</label>
+                                <label for="nb-ironman">Triathlons Ironman (Distance complète) :</label>
                                 <select id="nb-ironman" name="entry.2093848000">
                                     <option value="0" selected>0</option>
                                     <option value="1">1</option>
@@ -952,7 +952,7 @@ autre_langue: en/index.html
                     <!-- OBJECTIFS -->
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="objectif-distance">Objectif de distance visé ? 🏊🏻🚴🏃‍♂️</label>
+                            <label for="objectif-distance">Objectif de distance visé ? 🏊🏻🚴🏃‍♂️</label>
                             <select id="objectif-distance" name="entry.1073496319">
                                 <option value="" selected>Sélectionnez...</option>
                                 <option value="Initiation (Découverte)">Initiation (Découverte)</option>
@@ -964,7 +964,7 @@ autre_langue: en/index.html
                         </div>
 
                         <div class="form-group">
-                            <label for="objectif-performance">Objectif de performance ?</label>
+                            <label for="objectif-performance">Objectif de performance ?</label>
                             <select id="objectif-performance" name="entry.606376166">
                                 <option value="" selected>Sélectionnez...</option>
                                 <option value="Juste pour le plaisir">🥳 Juste pour le plaisir</option>
@@ -988,7 +988,7 @@ autre_langue: en/index.html
                         </div>
 
                         <div class="form-group full-width">
-                            <label for="allergies">Allergies connues ?</label>
+                            <label for="allergies">Allergies connues ?</label>
                             <textarea id="allergies" name="entry.45391564" placeholder="Précisez vos allergies..."></textarea>
                         </div>
 
@@ -1003,7 +1003,7 @@ autre_langue: en/index.html
 
                 <!-- MESSAGE DE CONFIRMATION -->
                 <div id="message-succes" style="display:none; color: #004c97; font-weight: bold; margin-top: 25px; text-align: center; font-size: 1.1rem; background: #e0f2fe; padding: 20px; border-radius: 12px; border: 1px solid #bae6fd;">
-                    ✅ Vos informations ont été transmises avec succès ! Notre équipe communiquera avec vous sous peu.
+                    ✅ Vos informations ont été transmises avec succès ! Notre équipe communiquera avec vous sous peu.
                 </div>
             </div>
 
