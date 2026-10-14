@@ -180,15 +180,27 @@ autre_langue: en/independant.html
 
 /* 3. Sur ORDINATEUR (écran > 834px) : répartit équitablement les onglets */
 @media (min-width: 835px) {
+    /* Les onglets s'étirent pour remplir la largeur, sans jamais devenir plus étroits que leur texte.
+       Si la fenêtre est trop étroite, la rangée défile horizontalement (comme sur mobile). */
     .browser-tabs-container {
-        overflow-x: hidden !important;
+        overflow-x: auto !important;
     }
 
     .tab-button {
-        flex: 1 1 0px !important;              
-        min-width: 0 !important;               
+        flex: 1 0 auto !important;
+        min-width: max-content !important;
         text-align: center;
         justify-content: center;
+        padding: 12px 10px !important;
+        font-size: 0.88rem !important;
+        gap: 5px !important;
+    }
+}
+@media (min-width: 835px) and (max-width: 1180px) {
+    .tab-button {
+        padding: 10px 7px !important;
+        font-size: 0.8rem !important;
+        gap: 4px !important;
     }
 
     .browser-tabs-wrapper::after {
