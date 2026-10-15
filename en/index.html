@@ -1219,6 +1219,7 @@ autre_langue: ../index.html
             .combo-card { flex-wrap: wrap; justify-content: center; gap: 10px; padding: 18px 16px 14px; }
             .combo-txt { flex-basis: 100%; text-align: center; }
         }
+        .hp-field { position: absolute !important; left: -10000px !important; width: 1px; height: 1px; overflow: hidden; }
     </style>
 
     <script type="application/ld+json">
@@ -1492,6 +1493,8 @@ autre_langue: ../index.html
                 <!-- novalidate attribute prevents default browser popups -->
                 <!-- Sent to Google Forms (see script at bottom of page) -->
                 <form id="contactForm" novalidate>
+                    <!-- Anti-spam : champ invisible pour les humains (les robots le remplissent) -->
+                    <div class="hp-field" aria-hidden="true"><label>Website <input type="text" name="site_web" tabindex="-1" autocomplete="off"></label></div>
                     
                     <!-- Line 1: Name and Contact Preference -->
                     <div class="form-row">
@@ -1735,6 +1738,7 @@ document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
             const emailInput = document.getElementById('email');
             const emailError = document.getElementById('email-error');
             const phoneError = document.getElementById('phone-error');
+            window.__chargementPage = Date.now();
             const contactForm = document.getElementById('contactForm');
 
             const emailRegex = /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
@@ -1848,6 +1852,33 @@ document.addEventListener('DOMContentLoaded', handleGoogleBadgeVisibility);
 
                     e.preventDefault();
                     if (!isValid) return;
+
+                    // --- Anti-spam ---
+                    // 1) Aucun lien accepté dans le message (les pourriels contiennent presque toujours un lien)
+                    const champMessage = document.getElementById('message-field');
+                    let erreurLien = document.getElementById('message-lien-erreur');
+                    if (!erreurLien) {
+                        erreurLien = document.createElement('div');
+                        erreurLien.id = 'message-lien-erreur';
+                        erreurLien.style.cssText = 'display:none;color:#e3342f;font-size:0.85rem;margin-top:6px;';
+                        erreurLien.textContent = "For your safety and ours, links (http, www) are not accepted in the message. Please remove them.";
+                        champMessage.insertAdjacentElement('afterend', erreurLien);
+                    }
+                    if (/https?:\/\/|www\.|\[url|<a\s/i.test(champMessage.value)) {
+                        erreurLien.style.display = 'block';
+                        champMessage.style.borderColor = '#e3342f';
+                        champMessage.focus();
+                        return;
+                    }
+                    erreurLien.style.display = 'none';
+                    // 2) Champ piège rempli, ou formulaire envoyé en moins de 4 secondes : c'est un robot.
+                    //    On affiche le message de réussite sans rien envoyer.
+                    const piege = contactForm.querySelector('input[name="site_web"]');
+                    if ((piege && piege.value) || (Date.now() - (window.__chargementPage || 0)) < 4000) {
+                        contactForm.style.display = 'none';
+                        document.getElementById('contact-succes').style.display = 'block';
+                        return;
+                    }
 
                     // --- Send to Google Forms (same form as the French page) ---
                     const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSfGbL2p50VEyO-tyJn_Jqv7aD4vqZyy-bA4rM3mhLpqqSTLJg/formResponse";
