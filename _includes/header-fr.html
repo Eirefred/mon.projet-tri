@@ -25,6 +25,7 @@
             <ul class="nav-links">
                 <li class="has-dropdown">
                     <a href="decouvrir.html" class="dropdown-trigger{% if page.section == 'partenaires' or page.url == '/decouvrir.html' %} active{% endif %}">La&nbsp;mission <span class="arrow-down">▼</span></a>
+                    <button type="button" class="sous-menu-btn" aria-expanded="false" aria-label="Afficher les pages : La mission"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <ul class="dropdown-menu">
                         <li><a href="decouvrir.html"{% if page.url == '/decouvrir.html' %} class="active"{% endif %}>Notre mission</a></li>
                         <li class="menu-sep" role="separator"></li>
@@ -35,6 +36,7 @@
                 </li>
                 <li class="has-dropdown">
                     <a href="index.html#athlètes" class="dropdown-trigger{% if page.section == 'athletes' %} active{% endif %}">Athlètes <span class="arrow-down">▼</span></a>
+                    <button type="button" class="sous-menu-btn" aria-expanded="false" aria-label="Afficher les pages : Athlètes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <ul class="dropdown-menu">
                         <li><a href="autonome.html"{% if page.url == '/autonome.html' %} class="active"{% endif %}>Autonome</a></li>
                         <li><a href="accompagnement.html"{% if page.url == '/accompagnement.html' %} class="active"{% endif %}>Accompagnement</a></li>
@@ -80,4 +82,41 @@
         header .dropdown-menu .menu-sep { margin: 6px 0 4px 20px; width: 140px; }
         header .dropdown-menu .menu-titre { padding: 2px 0 0 20px; }
     }
+    /* ===== MENU MOBILE (hamburger ouvert) : sections en accordéon ===== */
+    header #menu-toggle:checked ~ .nav-links { align-items: stretch; padding: 6px 22px 22px; gap: 0; max-height: calc(100vh - 80px); overflow-y: auto; }
+    header #menu-toggle:checked ~ .nav-links > li { width: 100%; border-bottom: 1px solid #e8eef5; position: relative; }
+    header #menu-toggle:checked ~ .nav-links > li.lang-switcher { border-bottom: none; justify-content: center; padding-top: 16px; }
+    header #menu-toggle:checked ~ .nav-links > li > a { display: flex; justify-content: space-between; align-items: center; padding: 15px 4px; font-size: 0.95rem; letter-spacing: 0.4px; }
+    header #menu-toggle:checked ~ .nav-links > li:not(.has-dropdown) > a::after { content: "›"; font-size: 1.35rem; line-height: 1; color: #9fb3c8; font-weight: 400; }
+    header #menu-toggle:checked ~ .nav-links > li.has-dropdown > a { padding-right: 56px; }
+    header #menu-toggle:checked ~ .nav-links .arrow-down { display: none; }
+    header #menu-toggle:checked ~ .nav-links li.has-dropdown:not(.ouvert) .dropdown-menu { display: none !important; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu { background: #f3f8fd; border-radius: 12px; padding: 4px 0; margin: 0 0 14px; border-left: 3px solid #4daad4; box-sizing: border-box; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; font-size: 1rem; font-weight: 600; text-transform: none; white-space: normal; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a:hover { padding-left: 16px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a::after { content: "›"; color: #9fb3c8; font-size: 1.2rem; line-height: 1; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu li + li a { border-top: 1px solid #e3ecf5; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu .menu-sep { display: none; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu .menu-titre { padding: 12px 16px 2px; border-top: 1px solid #e3ecf5; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu .menu-titre + li a { border-top: none; }
+    header .sous-menu-btn { display: none; }
+    header #menu-toggle:checked ~ .nav-links .sous-menu-btn { display: inline-flex; align-items: center; justify-content: center; position: absolute; right: 0; top: 8px; width: 38px; height: 38px; border: none; border-radius: 50%; background: #e3f1fb; color: #004c97; cursor: pointer; padding: 0; }
+    header .sous-menu-btn svg { width: 18px; height: 18px; transition: transform 0.2s ease; }
+    header li.ouvert > .sous-menu-btn svg { transform: rotate(180deg); }
+    /* Pastilles flottantes masquées pendant que le menu mobile est ouvert */
+    body:has(#menu-toggle:checked) .floating-badges-container, body:has(#menu-toggle:checked) .google-badge-float { display: none !important; }
 </style>
+<script>
+    // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
+    (function () {
+        document.querySelectorAll('header li.has-dropdown').forEach(function (li) {
+            var btn = li.querySelector('.sous-menu-btn');
+            if (!btn) return;
+            if (li.querySelector('a.active')) { li.classList.add('ouvert'); btn.setAttribute('aria-expanded', 'true'); }
+            btn.addEventListener('click', function () {
+                var ouvert = li.classList.toggle('ouvert');
+                btn.setAttribute('aria-expanded', ouvert ? 'true' : 'false');
+            });
+        });
+    })();
+</script>
