@@ -447,6 +447,8 @@ autre_langue: en/guidance.html
         .acc-tab .acc-nm { font-weight: 900; color: #004c97; font-size: 1.05rem; display: block; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px; }
         .acc-tab .acc-sub { font-size: 0.78rem; color: var(--text-light); display: block; margin-top: 2px; }
         .acc-tab.active { background: #ffffff; border-color: var(--c); box-shadow: 0 -4px 14px rgba(0,0,0,0.04); }
+        /* Onglet actif au-dessus du panneau : évite le trait qui apparaît pendant le fondu du panneau */
+        .acc-tab.active { z-index: 2; }
         .acc-tab.active::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 4px; background: #ffffff; }
         .acc-tab.active .acc-nm { color: var(--c); }
         .acc-panel { --c: #004c97; display: none; border: 2px solid var(--c); border-radius: 0 0 16px 16px; padding: 26px 28px; text-align: left; }
