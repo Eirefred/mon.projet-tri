@@ -678,23 +678,36 @@ autre_langue: ../aubaines.html
             font-weight: bold !important; /* Texte en gras */
         }
             .av-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
-        .av-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; color: #004c97; background: #e3f1fb; border: 1px solid #b9dcf2; border-radius: 50px; padding: 3px 10px; }
             /* Onglet long : 2 lignes alignées à gauche sur mobile seulement */
         .tab-2l { display: inline-block; text-align: left; line-height: 1.25; }
         .tab-2l br { display: none; }
         @media (max-width: 899px) { .tab-2l br { display: inline; } }
             .presence-box { background: #f3f8fd; border: 1px solid #d6e6f5; border-left: 4px solid #004c97; border-radius: 12px; padding: 18px 20px 14px; margin: 0 0 22px; }
-        .presence-titre { display: block; font-weight: 800; color: #004c97; font-size: 1.05rem; margin-bottom: 4px; }
-        .presence-intro { margin: 0 0 14px !important; color: #475569; font-size: 0.95rem; line-height: 1.55; }
-        .presence-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
-        @media (max-width: 899px) { .presence-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-        @media (max-width: 560px) { .presence-grid { grid-template-columns: 1fr; } }
-        .presence-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 14px; }
-        .presence-card b { display: block; color: #004c97; font-size: 0.95rem; margin-bottom: 4px; }
-        .presence-card p { margin: 0 !important; font-size: 0.88rem !important; line-height: 1.5 !important; color: #475569; }
+            /* Légende compacte des services + pictogrammes sur chaque événement */
+        .presence-box { background: #f3f8fd; border: 1px solid #d6e6f5; border-left: 4px solid #004c97; border-radius: 12px; padding: 14px 18px 12px; margin: 0 0 20px; }
+        .presence-titre { display: block; font-weight: 800; color: #004c97; font-size: 1.02rem; margin-bottom: 2px; }
+        .presence-intro { margin: 0 0 10px !important; color: #475569; font-size: 0.9rem; line-height: 1.5; }
+        .presence-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px 22px; }
+        .presence-list li { display: flex; gap: 9px; align-items: flex-start; font-size: 0.88rem; line-height: 1.45; color: #475569; }
+        .presence-list li b { color: #004c97; }
+        .presence-list a { color: #004c97; font-weight: 700; white-space: nowrap; }
+        .pico { width: 20px; height: 20px; flex-shrink: 0; color: #004c97; margin-top: 1px; }
+        @media (max-width: 760px) { .presence-list { grid-template-columns: 1fr; } }
+        .av-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .av-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 700; color: #004c97; background: #e3f1fb; border: 1px solid #b9dcf2; border-radius: 50px; padding: 3px 10px 3px 7px; }
+        .av-badge .pico { width: 15px; height: 15px; margin: 0; }
     </style>
 </head>
 <body>
+<!-- Pictogrammes des services mon Projet Tri sur les événements -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ico-kiosque" viewBox="0 0 24 24"><path d="M3 20h18M4.5 20 12 5l7.5 15M12 5v15M9.5 20 12 14l2.5 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ico-visite" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-10.2a6 6 0 1 1 12 0C18 15.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10.6" r="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="ico-presentation" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="ico-expertise" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ico-jeu" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5.5 12v8.5h13V12M12 8v12.5M12 8c-1.5-3.5-5.5-3.8-5.5-1.5C6.5 8 9.5 8 12 8zm0 0c1.5-3.5 5.5-3.8 5.5-1.5C17.5 8 14.5 8 12 8z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+</svg>
+
 
     {% include header-en.html %}
 
@@ -730,15 +743,15 @@ autre_langue: ../aubaines.html
                     </h2>
                     <div class="presence-box">
                         <span class="presence-titre">Free: what our presence brings you</span>
-                        <p class="presence-intro">At these partner events, <span class="brand-mon">mon</span> <span class="brand-projet">Projet</span> <span class="brand-tri">Tri</span> is on site to support you, from the day before to the finish line.</p>
-                        <div class="presence-grid">
-            <div class="presence-card"><b>⛺ A booth on race day</b><p>Come see us: answers to your questions, advice and support before and after your race.</p></div>
-            <div class="presence-card"><b>🗺️ A site visit the day before</b><p>Scout the course and transition area with us, so you feel confident on race day. Offered at most events.</p></div>
-            <div class="presence-card"><b>🎤 The pre‑race briefing</b><p>Depending on the event, we attend to answer your questions, or we lead part of it.</p></div>
-            <div class="presence-card"><b>🧠 Our triathlon expertise</b><p>Advice from coaches for a better experience: setting up your transition area, handling your transitions, tackling your first race.</p></div>
-            <div class="presence-card"><b>🎁 A contest at our booth</b><p>Set up your transition area at our booth for a chance to win prizes.</p></div>
-                        </div>
-                    </div>
+                        <p class="presence-intro">At these partner events, <span class="brand-mon">mon</span> <span class="brand-projet">Projet</span> <span class="brand-tri">Tri</span> is on site to support you. Services vary by event: look for each event's pictograms below.</p>
+                        <ul class="presence-list">
+            <li><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg><span><b>Booth</b>: on race day: answers to your questions, advice and support.</span></li>
+            <li><svg class="pico" aria-hidden="true"><use href="#ico-visite"/></svg><span><b>Site visit</b>: the day before, to scout the course and transition area.</span></li>
+            <li><svg class="pico" aria-hidden="true"><use href="#ico-presentation"/></svg><span><b>Pre‑race briefing</b>: we attend, or lead part of it.</span></li>
+            <li><svg class="pico" aria-hidden="true"><use href="#ico-expertise"/></svg><span><b>Triathlon expertise</b>: coaches' advice to set up your transition area and tackle your race.</span></li>
+            <li><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg><span><b>Contest</b>: set up your transition area at our booth and win prizes. <a href="../concours.html">See the contest (in French) ›</a></span></li>
+        </ul>
+    </div>
                     <div class="links-list">
 
                         <!-- Event 1: Triathlon de la Vallée-du-Richelieu -->
@@ -747,7 +760,7 @@ autre_langue: ../aubaines.html
                                 <img src="../Triathlon_de_Rouville_logo.png" alt="Triathlon VDR Logo" class="event-logo">
                                 <div style="display: flex; flex-direction: column;">
                                     <span class="link-title">Triathlon de la Vallée-du-Richelieu</span>
-                                    <span class="av-badges"><span class="av-badge">⛺ mon Projet Tri booth</span><span class="av-badge">🗺️ Site visit</span></span>
+                                    <span class="av-badges"><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg>Booth</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-visite"/></svg>Site visit</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-expertise"/></svg>Triathlon expertise</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg>Contest</span></span>
                                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
                                         One of the very first triathlons of the season! Held mainly at the beautiful Domaine International de Rouville, this human-scale triathlon is welcoming and accessible. Open-water swimming takes place in a man-made basin featuring a large central fountain. On the bike leg, participants ride along peaceful, low-traffic countryside roads. All of this comes with a friendly, welcoming, and intimate atmosphere.
                                     </span>
@@ -762,7 +775,7 @@ autre_langue: ../aubaines.html
                                 <img src="../Triathlon-Duathlon_de_Saint-Lambert.png" alt="Triathlon Saint-Lambert Logo" class="event-logo">
                                 <div style="display: flex; flex-direction: column;">
                                     <span class="link-title">Triathlon Duathlon de Saint-Lambert</span>
-                                    <span class="av-badges"><span class="av-badge">⛺ mon Projet Tri booth</span></span>
+                                    <span class="av-badges"><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg>Booth</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg>Contest</span></span>
                                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
                                         A top favorite among beginners, largely thanks to its pool swim format. Organized early in the season, it offers a great opportunity to get into the groove before taking on bigger summer challenges. Its multi-lap course in the heart of Saint-Lambert allows athletes to enjoy continuous cheers and support from enthusiastic spectators.
                                     </span>
@@ -777,7 +790,7 @@ autre_langue: ../aubaines.html
                                 <img src="../Triathlon_de_Verdun_logo.png" alt="Triathlon Verdun Logo" class="event-logo">
                                 <div style="display: flex; flex-direction: column;">
                                     <span class="link-title">Triathlon Duathlon de Verdun</span>
-                                    <span class="av-badges"><span class="av-badge">⛺ mon Projet Tri booth</span><span class="av-badge">🗺️ Site visit</span></span>
+                                    <span class="av-badges"><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg>Booth</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-visite"/></svg>Site visit</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-expertise"/></svg>Triathlon expertise</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg>Contest</span></span>
                                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
                                         Held in mid-summer, this triathlon brings a true summer holiday vibe at Parc du Quai-de-La Tortue in Verdun, along the St. Lawrence River. The swim portion takes place directly in the river, providing a unique and exhilarating experience due to the current. Organized by a highly experienced crew, it delivers a unique and seamlessly managed event!
                                     </span>
@@ -792,7 +805,7 @@ autre_langue: ../aubaines.html
                                 <img src="https://www.boucherville.ca/wp-content/uploads/2021/04/LOGO.png" alt="Triathlon Boucherville Logo" class="event-logo">
                                 <div style="display: flex; flex-direction: column;">
                                     <span class="link-title">Triathlon-Duathlon de Boucherville</span>
-                                    <span class="av-badges"><span class="av-badge">⛺ mon Projet Tri booth</span><span class="av-badge">🗺️ Site visit</span></span>
+                                    <span class="av-badges"><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg>Booth</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-visite"/></svg>Site visit</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-presentation"/></svg>Pre‑race briefing</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-expertise"/></svg>Triathlon expertise</span><span class="av-badge"><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg>Contest</span></span>
                                     <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
                                         As the final event of the season, the Boucherville Triathlon-Duathlon was awarded the Triathlon Québec "Provincial Event of the Year" in 2023 and 2025. It offers a friendly, safe environment for athletes competing in their first race. The pool swim ensures a reassuring setting, complemented by the best post-race meal 🍽️ in the province catered by <a href="https://www.chezlionel.ca/" target="_blank" style="color: black; font-weight: 700;">Chez Lionel</a>.
                                     </span>
