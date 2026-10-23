@@ -130,6 +130,15 @@
     header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep { border-top: none; height: 10px; background: transparent; }
     /* 2e groupe (Vos avantages, Votre histoire) d'une teinte différente */
     header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; border-left-color: #a9b6c6; }
+    /* Ordinateur : les deux groupes du menu Athlètes en deux teintes (bleu pâle, puis gris pâle) */
+    header .dropdown-menu:has(li.menu-sep) { padding: 0 !important; overflow: hidden; }
+    header .dropdown-menu:has(li.menu-sep) > li:not(.menu-sep) { background: #f3f8fd; }
+    header .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; }
+    header .dropdown-menu:has(li.menu-sep) > li:first-child { padding-top: 8px; }
+    header .dropdown-menu:has(li.menu-sep) > li:has(+ li.menu-sep) { padding-bottom: 6px; }
+    header .dropdown-menu:has(li.menu-sep) > li.menu-sep + li { padding-top: 6px; }
+    header .dropdown-menu:has(li.menu-sep) > li:last-child { padding-bottom: 8px; }
+    header .dropdown-menu:has(li.menu-sep) > li.menu-sep { margin: 0; max-width: none; border-top: 1px solid #dfe5ec; }
 </style>
 <script>
     // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
