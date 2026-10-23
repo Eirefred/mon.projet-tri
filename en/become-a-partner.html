@@ -587,9 +587,28 @@ autre_langue: ../devenir-partenaire.html
         .tab-2l { display: inline-block; text-align: left; line-height: 1.25; }
         .tab-2l br { display: none; }
         @media (max-width: 899px) { .tab-2l br { display: inline; } }
+            .presence-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin: 6px 0 8px; }
+            /* Liste compacte avec pictogrammes (onglet Événements) */
+        .presence-list { list-style: none; margin: 2px 0 6px; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 22px; }
+        .presence-list li { display: flex; gap: 9px; align-items: flex-start; font-size: 0.9rem; line-height: 1.45; color: #475569; }
+        .presence-list li b { color: #004c97; }
+        .presence-list a { color: #004c97; font-weight: 700; }
+        .presence-note { margin: 6px 0 4px !important; font-size: 0.82rem !important; color: #64748b; font-style: italic; }
+        .pico { width: 20px; height: 20px; flex-shrink: 0; color: #004c97; margin-top: 1px; }
+        @media (max-width: 760px) { .presence-list { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+<!-- Pictogrammes des services mon Projet Tri sur les événements -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ico-kiosque" viewBox="0 0 24 24"><path d="M3 20h18M4.5 20 12 5l7.5 15M12 5v15M9.5 20 12 14l2.5 6" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ico-visite" viewBox="0 0 24 24"><path d="M12 21s-6-5.6-6-10.2a6 6 0 1 1 12 0C18 15.4 12 21 12 21z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><circle cx="12" cy="10.6" r="2.2" fill="none" stroke="currentColor" stroke-width="1.9"/></symbol>
+  <symbol id="ico-presentation" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="ico-expertise" viewBox="0 0 24 24"><path d="M9.5 18h5M10.5 21h3M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.3 1.1 2.2h5c0-.9.4-1.6 1.1-2.2A6 6 0 0 0 12 3z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="ico-jeu" viewBox="0 0 24 24"><rect x="3.5" y="8" width="17" height="4" rx="1" fill="none" stroke="currentColor" stroke-width="1.9"/><path d="M5.5 12v8.5h13V12M12 8v12.5M12 8c-1.5-3.5-5.5-3.8-5.5-1.5C6.5 8 9.5 8 12 8zm0 0c1.5-3.5 5.5-3.8 5.5-1.5C17.5 8 14.5 8 12 8z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="ico-visibilite" viewBox="0 0 24 24"><path d="M3.5 10v4h3l7 4.5v-13L6.5 10h-3zM17 9a4 4 0 0 1 0 6M19.5 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
 
     {% include header-en.html %}
 
@@ -666,13 +685,15 @@ autre_langue: ../devenir-partenaire.html
                     </p>
                     <div class="offre-box" style="--oc: var(--evenement-color);">
                         <span class="offre-titre">✨ What we offer you</span>
-                        <ul>
-                            <li>A <strong>support booth</strong>: we take care of athletes with questions, while your volunteers, organizers and officials focus on their roles.</li>
-                            <li><strong>Race site visits</strong> for athletes, before the start.</li>
-                            <li>Our participation in <strong>pre-race meetings</strong>.</li>
-                            <li>Help with logistics and improving the athlete experience.</li>
-                            <li>Your event featured on our <a href="deals.html">Deals &amp; free perks</a> page.</li>
+                                                                        <ul class="presence-list">
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-kiosque"/></svg><span><b>Support booth</b>: we take care of athletes with questions, while your volunteers, organizers and officials focus on their roles.</span></li>
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-visite"/></svg><span><b>Site visit the day before</b>: athletes scout the course and transition area: less stress and fewer questions on race day.</span></li>
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-presentation"/></svg><span><b>Pre‑race briefing</b>: depending on your needs, we attend to answer questions, or we lead part of it.</span></li>
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-expertise"/></svg><span><b>Triathlon expertise</b>: advice on logistics and the athlete experience, especially for welcoming beginners.</span></li>
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-jeu"/></svg><span><b>Contest at our booth</b>: our transition area game livens up your site and draws participants. <a href="../concours.html">See the contest (in French) ›</a></span></li>
+                            <li><svg class="pico" aria-hidden="true"><use href="#ico-visibilite"/></svg><span><b>Visibility</b>: your event featured for athletes on our <a href="deals.html">Deals &amp; free perks</a> page.</span></li>
                         </ul>
+                        <p class="presence-note">These services are tailored to each event: we'll discuss them together based on your needs.</p>
                     </div>
                     <span class="offre-sous-titre">How to take part</span>
                     <div class="links-list">
