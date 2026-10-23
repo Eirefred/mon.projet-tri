@@ -583,6 +583,10 @@ autre_langue: ../devenir-partenaire.html
         .note-don span { color: #D65F3A; }
         .note-don:hover { background: #ffece4; }
         .offre-sous-titre { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; margin: 0 0 4px; }
+            /* Onglet long : 2 lignes alignées à gauche sur mobile seulement */
+        .tab-2l { display: inline-block; text-align: left; line-height: 1.25; }
+        .tab-2l br { display: none; }
+        @media (max-width: 899px) { .tab-2l br { display: inline; } }
     </style>
 </head>
 <body>
@@ -606,7 +610,7 @@ autre_langue: ../devenir-partenaire.html
                 <div class="browser-tabs-container">
                     <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coaches & Clubs</button>
                     <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Events</button>
-                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Retailers & Brands</button>
+                    <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 <span class="tab-2l">Retailers &amp;<br> Brands</span></button>
                     <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Health & Care</button>
                 </div>
             </div>
