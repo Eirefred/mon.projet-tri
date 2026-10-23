@@ -550,6 +550,12 @@ autre_langue: en/provide.html
         .offre-box ul { margin: 0; padding-left: 20px; }
         .offre-box li { margin-bottom: 7px; line-height: 1.5; color: #1e293b; font-size: 0.95rem; }
         .offre-box a { color: #004c97; font-weight: 700; }
+        .note-gratuit { max-width: 760px; margin: 28px auto 0; background: #fff6f2; border: 1px solid #f6d9cc; border-radius: 14px; padding: 18px 22px; text-align: center; }
+        .note-gratuit p { margin: 0 0 8px; color: #334155; font-size: 0.95rem; line-height: 1.6; }
+        .note-gratuit strong { color: #004c97; }
+        .note-don { display: inline-block; margin-top: 4px; font-weight: 800; color: #004c97; text-decoration: none; border: 1px solid #f0bfa9; background: #ffffff; border-radius: 50px; padding: 7px 18px; font-size: 0.9rem; }
+        .note-don span { color: #D65F3A; }
+        .note-don:hover { background: #ffece4; }
         .offre-sous-titre { display: block; font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; color: #94a3b8; margin: 0 0 4px; }
     </style>
 </head>
@@ -574,8 +580,8 @@ autre_langue: en/provide.html
                 <div class="browser-tabs-container">
                     <button class="tab-button tab-coachs active" onclick="openTab(event, 'tab-coachs')">⏱️ Coachs & Clubs</button>
                     <button class="tab-button tab-evenement" onclick="openTab(event, 'tab-evenement')">🏁 Événements</button>
-                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button>
                     <button class="tab-button tab-equipement" onclick="openTab(event, 'tab-equipement')">🚴 Commerçants</button>
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button>
                 </div>
             </div>
 
@@ -650,36 +656,7 @@ autre_langue: en/provide.html
                     </div>
                 </div>
 
-                <!-- ONGLET 3 : SANTÉ & SOINS -->
-                <div id="tab-sante" class="tab-panel">
-                    <h2 class="tab-banner-title banner-sante">
-                        <span>🩺 Santé & Soins</span>
-                    </h2>
-                    <span class="tab-quote">"Je suis thérapeute, kiné ou nutritionniste"</span>
-                    <p style="color: var(--text-light); margin-bottom: 20px;">
-                        Devenez le praticien de référence pour les triathlètes afin de les aider dans leur préparation, leur récupération ainsi que leurs traitements thérapeutiques.
-                    </p>
-                    <div class="offre-box" style="--oc: var(--sante-color);">
-                        <span class="offre-titre">✨ Ce que nous vous offrons</span>
-                        <ul>
-                        <li>De la <strong>visibilité</strong> auprès de notre communauté d'athlètes, dans notre page <a href="avantages.html">Avantages</a>.</li>
-                        <li>Des athlètes dirigés vers vous quand ils ont besoin de soins ou de conseils.</li>
-                        <li>En échange, vous offrez un code promo ou un avantage aux athlètes : une synergie positive pour tous.</li>
-                        </ul>
-                    </div>
-                    <span class="offre-sous-titre">Comment participer</span>
-                    <div class="links-list">
-                        <div class="link-row">
-                            <div>
-                                <span class="link-title">Accompagner les triathlètes</span>
-                                <span class="link-desc">Proposez des séances d'information ou des consultations adaptées aux besoins des triathlètes.</span>
-                            </div>
-                            <a href="index.html#contact" class="link-action btn-sante">Proposer mes services ↗</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ONGLET 4 : ÉQUIPEMENTIERS -->
+                <!-- ONGLET 3 : COMMERÇANTS & ÉQUIPEMENTIERS -->
                 <div id="tab-equipement" class="tab-panel">
                     <h2 class="tab-banner-title banner-equipement">
                         <span>🚴 Commerçants & équipementiers</span>
@@ -715,6 +692,42 @@ autre_langue: en/provide.html
                     </div>
                 </div>
 
+                <!-- ONGLET 4 : SANTÉ & SOINS -->
+                <div id="tab-sante" class="tab-panel">
+                    <h2 class="tab-banner-title banner-sante">
+                        <span>🩺 Santé & Soins</span>
+                    </h2>
+                    <span class="tab-quote">"Je suis thérapeute, kiné ou nutritionniste"</span>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        Devenez le praticien de référence pour les triathlètes afin de les aider dans leur préparation, leur récupération ainsi que leurs traitements thérapeutiques.
+                    </p>
+                    <div class="offre-box" style="--oc: var(--sante-color);">
+                        <span class="offre-titre">✨ Ce que nous vous offrons</span>
+                        <ul>
+                        <li>De la <strong>visibilité</strong> auprès de notre communauté d'athlètes, dans notre page <a href="avantages.html">Avantages</a>.</li>
+                        <li>Des athlètes dirigés vers vous quand ils ont besoin de soins ou de conseils.</li>
+                        <li>En échange, vous offrez un code promo ou un avantage aux athlètes : une synergie positive pour tous.</li>
+                        </ul>
+                    </div>
+                    <span class="offre-sous-titre">Comment participer</span>
+                    <div class="links-list">
+                        <div class="link-row">
+                            <div>
+                                <span class="link-title">Accompagner les triathlètes</span>
+                                <span class="link-desc">Proposez des séances d'information ou des consultations adaptées aux besoins des triathlètes.</span>
+                            </div>
+                            <a href="index.html#contact" class="link-action btn-sante">Proposer mes services ↗</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- GRATUITÉ ET DONS -->
+            <div class="note-gratuit">
+                <p><strong>Devenir partenaire ne coûte rien</strong> : nous ne facturons aucun frais à nos partenaires.</p>
+                <p><span class="brand-mon">mon</span> <span class="brand-projet">Projet</span> <span class="brand-tri">Tri</span> est un organisme sans but lucratif qui vit grâce au mécénat. Si vous souhaitez nous aider à fonctionner, les dons sont les bienvenus.</p>
+                <a class="note-don" href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" rel="noopener"><span aria-hidden="true">♥</span> Faire un don</a>
             </div>
 
         </div>
