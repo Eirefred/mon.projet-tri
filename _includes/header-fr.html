@@ -36,10 +36,12 @@
                     <a href="index.html#athlètes" class="dropdown-trigger{% if page.section == 'athletes' %} active{% endif %}">Athlètes <span class="arrow-down">▼</span></a>
                     <button type="button" class="sous-menu-btn" aria-expanded="false" aria-label="Afficher les pages : Athlètes"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <ul class="dropdown-menu">
+                        <li class="menu-titre">Selon votre besoin</li>
                         <li><a href="autonome.html"{% if page.url == '/autonome.html' %} class="active"{% endif %}>Autonome</a></li>
                         <li><a href="accompagnement.html"{% if page.url == '/accompagnement.html' %} class="active"{% endif %}>Accompagnement</a></li>
                         <li><a href="club.html"{% if page.url == '/club.html' %} class="active"{% endif %}>Club</a></li>
-                        <li><a href="avantages.html"{% if page.url == '/avantages.html' %} class="active"{% endif %}>Avantages</a></li>
+                        <li class="menu-sep" role="separator"></li>
+                        <li><a href="avantages.html"{% if page.url == '/avantages.html' %} class="active"{% endif %}>Bons plans</a></li>
                         <li><a href="votre-histoire.html"{% if page.url == '/votre-histoire.html' %} class="active"{% endif %}><i>Votre histoire</i></a></li>
                     </ul>
                 </li>
@@ -113,6 +115,21 @@
     header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don { border-radius: 0 0 12px 0; }
     header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don { justify-content: flex-start; gap: 6px; }
     header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don::after { margin-left: auto; }
+    /* Athlètes : séparateur entre les formules (Autonome, Accompagnement, Club) et les autres sujets */
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu li.menu-sep { display: block; height: 0; margin: 0; width: auto; max-width: none; border-top: 2px solid #c9dcef; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu li.menu-sep + li a { border-top: none; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu li.menu-titre:first-child { border-top: none; }
+    header .dropdown-menu li.menu-titre:first-child { padding-top: 4px; }
+    /* Menu mobile : un encadré séparé pour chaque groupe de liens (coupé au séparateur) */
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) { background: transparent; border-left: none; padding: 0; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li:not(.menu-sep) { background: #f3f8fd; border-left: 3px solid #4daad4; box-sizing: border-box; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li:first-child { border-radius: 12px 12px 0 0; padding-top: 4px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li:has(+ li.menu-sep) { border-radius: 0 0 12px 12px; padding-bottom: 4px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep + li { border-radius: 12px 12px 0 0; padding-top: 4px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li:last-child { border-radius: 0 0 12px 12px; padding-bottom: 4px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep { border-top: none; height: 10px; background: transparent; }
+    /* 2e groupe (Vos avantages, Votre histoire) d'une teinte différente */
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; border-left-color: #a9b6c6; }
 </style>
 <script>
     // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
