@@ -1,0 +1,949 @@
+---
+# Page traitée par Jekyll (GitHub Pages) : en-tête et pied de page communs dans _includes/
+section: athletes
+autre_langue: en/receive.html
+---
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+
+    <!-- Open Graph complet -->
+    <meta charset="UTF-8">
+    <meta name="description" content="Codes promo de nos partenaires, kiosque et visites du site de course sur nos événements partenaires : les avantages gratuits de mon Projet Tri pour les triathlètes.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Vos avantages d'athlète | mon Projet Tri">
+    <meta property="og:description" content="Codes promo de nos partenaires, kiosque et visites du site de course sur nos événements partenaires.">
+    <meta property="og:url" content="https://mon.projet-tri.org/avantages.html">
+    <meta property="og:site_name" content="mon Projet Tri">
+    <meta property="og:locale" content="fr_CA">
+    <meta property="og:image" content="https://mon.projet-tri.org/og/og-recevoir.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:see_also" content="https://www.youtube.com/@monProjetTri" />
+    <!--  -->
+
+
+    <title>Avantages athlètes : codes promo et événements partenaires | mon Projet Tri</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,400;1,400&family=Oooh+Baby&family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="https://mon.projet-tri.org/favicon.png" sizes="32x32">
+    <link rel="shortcut icon" href="https://mon.projet-tri.org/favicon.ico">
+
+    <link rel="canonical" href="https://mon.projet-tri.org/avantages.html">
+
+
+    <link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/avantages.html" />
+    <link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/receive.html" />
+    <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/avantages.html" />
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --primary-gradient: linear-gradient(135deg, #D65F3A 0%, #D65F3A 100%);
+            --secondary-gradient: linear-gradient(135deg, #004c97 0%, #0083fe 100%);
+            
+            /* CODES COULEURS ET DÉGRADÉS PARTENAIRES */
+            --coach-club-gradient: linear-gradient(135deg, #004c97 0%, #2b8080 100%);
+            --evenements-gradient: linear-gradient(135deg, #004c97 0%, #b25f0c 100%);
+            --sante-gradient: linear-gradient(135deg, #004c97 0%, #a2680b 100%);
+            --equipementiers-gradient: linear-gradient(135deg, #004c97 0%, #c9a227 100%);
+
+            --coach-club-color: #2b8080;
+            --evenements-color: #b25f0c;
+            --sante-color: #a2680b;
+            --equipementiers-color: #8a710d;
+
+            --white: #ffffff;
+            --text-dark: #0f172a;
+            --text-light: #5A6A7A;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: #ffffff; 
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- HEADER --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+        
+        /* --- BOUTON BACK TO TOP --- */
+        #backToTop {
+    display: none; /* Caché par défaut sur PC */
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+    background-color: var(--accent);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    align-items: center;
+    justify-content: center;
+}
+
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo img { height: 55px; }
+
+        .region-stack {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-left: 1px solid rgba(0, 51, 102, 0.2); 
+            margin-left: 15px; 
+            padding-left: 15px; 
+            height: 40px;
+            flex-shrink: 0;
+        }
+
+        .region-mention {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #555;
+            line-height: 1.2;
+            display: block;
+            white-space: nowrap;
+        }
+
+        nav ul { list-style: none; display: flex; gap: 25px; align-items: center; padding: 0; margin: 0; }
+        nav a { text-decoration: none; color: #004c97; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; transition: 0.3s; }
+        nav a:hover { color: #D65F3A; }
+
+        .switch { position: relative; display: inline-block; width: 34px; height: 20px; vertical-align: middle; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 14px; width: 14px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+        input:checked + .slider { background: var(--primary-gradient); }
+        input:checked + .slider:before { transform: translateX(14px); }
+
+        .menu-icon { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+        .menu-icon span { width: 25px; height: 3px; background-color: #004c97; border-radius: 2px; transition: 0.3s; }
+
+        .lang-switcher { display: flex; align-items: center; gap: 8px; }
+        .lang-label { font-weight: 900; font-size: 0.7rem; color: #004c97; }
+
+        /* --- ZONE DE CONTENU DE LA PAGE --- */
+        .content-section {
+            padding: 60px 0 140px 0;
+            background: #f1f5f9;
+            min-height: 50vh; 
+            clip-path: ellipse(150% 100% at 50% 100%); 
+        }
+
+        .header-title-wrapper {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .content-section h1 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 780px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* --- STYLES DES ONGLETS & EFFET BOUNCE MOBILE --- */
+        .browser-tabs-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .browser-tabs-container {
+            display: flex !important;
+            flex-wrap: nowrap !important;          
+            gap: 6px !important;                   
+            overflow-x: auto !important;
+            box-sizing: border-box !important;     
+            padding: 4px 4px 0 4px !important;    
+            -webkit-overflow-scrolling: touch;
+            overscroll-behavior-x: contain;
+            scrollbar-width: none;
+        }
+
+        .browser-tabs-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Animation Rebond Horizontale */
+        @keyframes bounceLeftRight {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-15px); }
+            40% { transform: translateX(10px); }
+            60% { transform: translateX(-5px); }
+            80% { transform: translateX(2px); }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-container.animate-bounce {
+                animation: bounceLeftRight 1.2s ease-in-out;
+            }
+        }
+
+        .tab-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 20px;
+            background: #cbd5e1;
+            color: #475569;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: none;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease, transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            white-space: nowrap;
+            user-select: none;
+            flex-shrink: 0 !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .tab-button:active {
+            transform: scale(0.92);
+        }
+
+        .tab-button:hover {
+            background: #e2e8f0;
+            color: #004c97;
+        }
+
+        /* LISERÉS EN DÉGRADÉ SUR LES ONGLETS ACTIFS */
+        .tab-button.active {
+            background: #ffffff;
+            position: relative;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+            border-top: 4px solid transparent;
+        }
+
+        .tab-button.tab-evenements.active {
+            border-image: var(--evenements-gradient) 1;
+            color: var(--evenements-color);
+        }
+
+        .tab-button.tab-equipementiers.active {
+            border-image: var(--equipementiers-gradient) 1;
+            color: var(--equipementiers-color);
+        }
+
+        .tab-button.tab-sante.active {
+            border-image: var(--sante-gradient) 1;
+            color: var(--sante-color);
+        }
+
+        @media (min-width: 835px) {
+            .browser-tabs-container {
+                overflow-x: hidden !important;
+            }
+
+            .tab-button {
+                flex: 1 1 0px !important;              
+                min-width: 0 !important;               
+                text-align: center;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 834px) {
+            .browser-tabs-wrapper::after {
+                content: "";
+                position: absolute;
+                top: 3px;
+                right: 0;
+                height: 45px; 
+                width: 30px;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+                pointer-events: none; 
+                z-index: 2;
+            }
+            .content-section h1 { font-size: 1.9rem; }
+            .header-subtitle { font-size: 0.95rem; }
+
+            /* 1. Correction pour l'onglet Événements (texte serré / écrasé) */
+    .link-row {
+        flex-direction: column; /* Empile les éléments verticalement */
+        align-items: stretch;
+        padding: 14px; /* Réduit la marge interne pour gagner de l'espace */
+    }
+
+    .link-logo-wrapper {
+        flex-direction: column; /* Empile le logo et la description */
+        align-items: flex-start !important;
+        gap: 10px;
+    }
+
+    .link-action {
+        align-self: flex-end; /* Place le bouton "View details" en bas à droite */
+        margin-top: 10px;
+    }
+
+    /* 2. Correction pour le cadre des codes promo qui dépasse */
+    .promo-section {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+    }
+
+    .promo-badge {
+        flex-wrap: wrap; /* Permet le retour à la ligne si le texte est long */
+        max-width: 100%;
+        box-sizing: border-box;
+        white-space: normal; /* Autorise la rupture de ligne */
+        font-size: 0.8rem;
+    }
+
+    .promo-item {
+        width: 100%;
+        justify-content: space-between;
+    }
+        }
+
+        /* --- CONTENU DES ONGLETS --- */
+        .tab-content-wrapper {
+            background: #ffffff;
+            padding: 40px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            min-height: 300px;
+            border: 1px solid #cbd5e1;
+            border-top: none;
+        }
+
+        .tab-panel {
+            display: none;
+        }
+
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* BANDEAUX MINCES POUR LES TITRES DANS LE CORPS DE L'ONGLET */
+        .tab-banner-title {
+            color: #ffffff;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .tab-banner-title.banner-evenements {
+            background: var(--evenements-gradient);
+        }
+
+        .tab-banner-title.banner-equipementiers {
+            background: var(--equipementiers-gradient);
+        }
+
+        .tab-banner-title.banner-sante {
+            background: var(--sante-gradient);
+        }
+
+        /* Style des lignes de liens mis à jour */
+.links-list { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+.link-row {
+    display: flex; 
+    align-items: flex-start; /* Alignement en haut pour gérer les textes longs */
+    justify-content: space-between;
+    gap: 15px; /* Espace garanti entre le contenu et le bouton */
+    background: #f8fafc; 
+    padding: 16px 20px; 
+    border-radius: 10px;
+    border: 1px solid rgba(0, 76, 151, 0.08); 
+    transition: all 0.2s ease;
+}
+.link-row:hover { background: #f1f5f9; transform: translateX(4px); }
+.link-title { font-weight: 700; color: var(--text-dark); }
+.link-desc { color: var(--text-light); font-size: 0.9rem; }
+
+/* Empêche le bouton de s'écraser */
+.link-action { 
+    font-weight: 800; 
+    font-size: 0.9rem; 
+    text-decoration: none; 
+    flex-shrink: 0; /* Important: protège la largeur du bouton */
+    white-space: nowrap; 
+    margin-top: 2px;
+}
+
+        .text-evenements { color: var(--evenements-color); }
+        .text-equipementiers { color: var(--equipementiers-color); }
+        .text-sante { color: var(--sante-color); }
+
+        .badge-a-venir {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+/* --- STYLE DES LOGOS PARTENAIRES --- */
+.link-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.event-logo {
+    width: 58px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 8px;
+    background: #ffffff;
+    padding: 4px;
+    border: 1px solid #e2e8f0;
+    flex-shrink: 0;
+}
+
+/* Bloc et badges des codes promo */
+.promo-section {
+    margin-top: 10px;
+    background: #f8fafc;
+    border-left: 3px solid var(--equipementiers-color);
+    padding: 10px 14px;
+    border-radius: 6px;
+}
+.promo-title {
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    display: block;
+}
+.promo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.promo-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.promo-badge {
+    background: #ffffff;
+    border: 1px dashed var(--equipementiers-color);
+    color: var(--text-dark);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.promo-code {
+    color: var(--equipementiers-color);
+    font-family: monospace;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+}
+.btn-copy {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    color: var(--text-dark);
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.btn-copy:hover {
+    background: var(--equipementiers-color);
+    color: #ffffff;
+    border-color: var(--equipementiers-color);
+}
+.btn-copy.copied {
+    background: #10b981 !important;
+    color: #ffffff !important;
+    border-color: #10b981 !important;
+}
+
+        /* --- FOOTER --- */
+        footer { 
+            background: #0481fb !important; 
+            color: white !important; 
+            padding: 50px 0 !important; 
+            text-align: center; 
+            border-top: 4px solid #FF6600 !important; 
+        }
+        .footer-logo img { height: 60px; margin-bottom: 20px; }
+        
+        .btn-zeffy-fr { 
+            background-color: #D65F3A; 
+            color: #ffffff !important; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 50px; 
+            font-size: 12px; 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            display: inline-block; 
+            margin: 20px 0; 
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(214, 95, 58, 0.2);
+        }
+        .btn-zeffy-fr:hover { background-color: white !important; color: #D65F3A !important; }
+        .footer-zones { width: 100%; max-width: 850px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin: 0 auto; }
+        .footer-zones details summary { list-style: none; text-decoration: underline; font-size: 0.8rem; cursor: pointer; opacity: 0.9; }
+
+        /* --- MENU DÉROULANT --- */
+        nav ul li.has-dropdown { position: relative; }
+        .arrow-down { font-size: 0.65rem; margin-left: 4px; display: inline-block; transition: transform 0.2s ease; }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 180px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+            z-index: 1100;
+            border: 1px solid rgba(0, 76, 151, 0.08);
+        }
+        .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #ffffff transparent;
+        }
+
+        nav ul li.has-dropdown:hover .dropdown-menu { display: block; }
+        nav ul li.has-dropdown:hover .arrow-down { transform: rotate(180deg); }
+
+        .dropdown-menu li { width: 100%; padding: 0; }
+        .dropdown-menu a {
+            display: block;
+            padding: 10px 20px;
+            color: #004c97 !important;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: none;
+            text-align: left;
+            transition: all 0.2s ease;
+        }
+        .dropdown-menu a:hover {
+            background-color: #f1f5f9;
+            color: #D65F3A !important;
+            padding-left: 24px;
+        }
+
+        @media (max-width: 834px) {
+            #backToTop.visible { display: flex !important; }
+            .content-section { clip-path: none !important; padding: 40px 0 60px 0; }
+            header { padding: 5px 0 !important; }
+            .region-stack { height: 30px; margin-left: 10px; padding-left: 10px; }
+            .region-mention { font-size: 0.7rem; }
+            .menu-icon { display: flex; z-index: 1001; }
+            .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: center; /* Centre le bloc de liste au milieu de l'écran */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw; /* Pleine largeur d'écran */
+        background: white;
+        padding: 30px 0;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        gap: 12px;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Boîte interne de largeur fixe centrée sur l'écran */
+    .nav-links > li {
+        width: 180px; /* Ajuste la boîte où se trouvent les 2 axes */
+        text-align: left;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* AXE 1 : Liens principaux (alignés au bord gauche de la boîte centrée) */
+    .nav-links > li > a {
+        display: block;
+        padding: 6px 0;
+        width: 100%;
+        text-align: left;
+        box-sizing: border-box;
+    }
+
+    /* Sous-menu */
+    .dropdown-menu {
+        display: block; 
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background-color: transparent;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        min-width: unset;
+        width: 100%;
+        padding: 0;
+        list-style: none;
+    }
+
+    .dropdown-menu::before {
+        display: none;
+    }
+
+    .dropdown-menu li {
+        width: 100%;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* AXE 2 : Sous-liens (décalés exactement de 20px vers la droite par rapport à l'Axe 1) */
+    .dropdown-menu a {
+        display: block;
+        text-align: left;
+        padding: 6px 0 6px 20px; /* Décalage sur l'Axe 2 */
+        font-size: 0.95rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .dropdown-menu a:hover {
+        padding-left: 20px;
+        background-color: transparent;
+        color: #D65F3A !important;
+    }
+            #menu-toggle:checked + .menu-icon span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            #menu-toggle:checked + .menu-icon span:nth-child(2) { opacity: 0; }
+            #menu-toggle:checked + .menu-icon span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+        }
+
+        /* Style automatique pour la page active */
+    .nav-links a.active {
+        color: #d45d39 !important; /* Couleur du texte actif */
+        font-weight: bold !important; /* Texte en gras */
+    }
+
+
+            .av-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+        .av-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; color: #004c97; background: #e3f1fb; border: 1px solid #b9dcf2; border-radius: 50px; padding: 3px 10px; }
+    </style>
+</head>
+<body>
+
+    {% include header-fr.html %}
+
+    <!-- SECTION PRINCIPALE AVEC ONGLETS -->
+    <main class="content-section">
+        <div class="container">
+
+            <!-- ENTÊTE DE SECTION MISE À JOUR -->
+            <div class="header-title-wrapper">
+                <h1>Vos avantages d'athlète</h1>
+                <p class="header-subtitle">
+                    Grâce à nos partenaires, profitez d'avantages concrets pour vous préparer et courir : des codes promo, et notre accompagnement sur les événements partenaires.
+                </p>
+            </div>
+
+            <!-- BARRE DES ONGLETS -->
+            <div class="browser-tabs-wrapper">
+                <div class="browser-tabs-container">
+                    <button class="tab-button tab-evenements active" onclick="openTab(event, 'tab-evenements')">🏁 Événements</button>
+                    <button class="tab-button tab-equipementiers" onclick="openTab(event, 'tab-codes-promo')">🏷️ Codes promo</button>
+                    <!-- Onglet Santé masqué tant qu'il est vide : retirez les marques de commentaire pour l'afficher
+                    <button class="tab-button tab-sante" onclick="openTab(event, 'tab-sante')">🩺 Santé & Soins</button> -->
+                </div>
+            </div>
+
+            <!-- BLOC DU CONTENU -->
+            <div class="tab-content-wrapper">
+
+                <!-- ONGLET 1 : ÉVÉNEMENTS -->
+<div id="tab-evenements" class="tab-panel active">
+    <h2 class="tab-banner-title banner-evenements">
+        <span>🏁 Événements partenaires</span>
+    </h2>
+    <p style="color: var(--text-light); margin-bottom: 20px;">
+        Sur ces événements, <span class="brand-mon">mon</span> <span class="brand-projet">Projet</span> <span class="brand-tri">Tri</span> est présent avec son <strong>kiosque</strong> : réponses à vos questions, conseils et accompagnement le jour de la course. Sur la plupart d'entre eux, nous proposons aussi une <strong>visite du site de course</strong> avant le départ, pour repérer le parcours et la zone de transition.
+    </p>
+    <div class="links-list">
+
+        <!-- Événement 1 : Triathlon de la Vallée-du-Richelieu -->
+        <div class="link-row">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                <img src="Triathlon_de_Rouville_logo.png" alt="Logo Triathlon VDR" class="event-logo">
+                <div style="display: flex; flex-direction: column;">
+                    <span class="link-title">Triathlon de la Vallée-du-Richelieu</span>
+                    <span class="av-badges"><span class="av-badge">⛺ Kiosque mon Projet Tri</span><span class="av-badge">🗺️ Visite du site</span></span>
+                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                        C’est l’un des tout premiers triathlons de la saison ! Organisé principalement sur le magnifique site du Domaine International de Rouville, ce triathlon propose une taille humaine et accessible. La natation se déroule en eau libre, au cœur d'un bassin artificiel agrémenté d’un grand jet d'eau central. Côté vélo, le parcours emprunte de paisibles routes de campagne, très peu fréquentées par les voitures. Le tout dans une ambiance particulièrement conviviale, voire intimiste.
+                    </span>
+                </div>
+            </div>
+            <a href="https://trivdr.triathlondeverdun.com" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
+        </div>
+
+        <!-- Événement 2 : Triathlon Duathlon de Saint-Lambert -->
+        <div class="link-row">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                <img src="Triathlon-Duathlon_de_Saint-Lambert.png" alt="Triathlon Saint-Lambert Logo" class="event-logo">
+                <div style="display: flex; flex-direction: column;">
+                    <span class="link-title">Triathlon Duathlon de Saint-Lambert</span>
+                    <span class="av-badges"><span class="av-badge">⛺ Kiosque mon Projet Tri</span></span>
+                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                        C'est l’un des triathlons les plus prisés par les débutants, notamment grâce à son épreuve de natation en piscine. Organisé tôt dans la saison, il offre une excellente occasion de prendre ses marques avant de se lancer dans d'autres défis estivaux. Son parcours en petites boucles au cœur des rues de Saint-Lambert permet aux participants de profiter des encouragements enthousiastes du public presque en continu.
+                    </span>
+                </div>
+            </div>
+            <a href="https://trisaintlambert.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
+        </div>
+
+        <!-- Événement 3 : Triathlon Duathlon de Verdun -->
+        <div class="link-row">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                <img src="Triathlon_de_Verdun_logo.png" alt="Logo Triathlon Verdun" class="event-logo">
+                <div style="display: flex; flex-direction: column;">
+                    <span class="link-title">Triathlon Duathlon de Verdun</span>
+                    <span class="av-badges"><span class="av-badge">⛺ Kiosque mon Projet Tri</span><span class="av-badge">🗺️ Visite du site</span></span>
+                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                        Organisé au cœur de l’été, ce triathlon offre un véritable parfum de vacances au sein du Parc du Quai-de-La Tortue à Verdun, le long du fleuve Saint-Laurent. La section natation, à la fois atypique et stimulante en raison du courant, se déroule directement dans le fleuve. Une compétition portée par une équipe d'organisation chevronnée pour un événement aussi unique que maîtrisé !
+                    </span>
+                </div>
+            </div>
+            <a href="https://www.triathlondeverdun.com/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
+        </div>
+
+        <!-- Événement 4 : Triathlon-Duathlon de Boucherville -->
+        <div class="link-row">
+            <div class="link-logo-wrapper" style="align-items: flex-start; flex: 1;">
+                <img src="https://www.boucherville.ca/wp-content/uploads/2021/04/LOGO.png" alt="Logo Triathlon Boucherville" class="event-logo">
+                <div style="display: flex; flex-direction: column;">
+                    <span class="link-title">Triathlon-Duathlon de Boucherville</span>
+                    <span class="av-badges"><span class="av-badge">⛺ Kiosque mon Projet Tri</span><span class="av-badge">🗺️ Visite du site</span></span>
+                    <span class="link-desc" style="margin-top: 4px; font-size: 0.85rem; color: var(--text-light);">
+                        Dernier évènement de la saison, le Triathlon-Duathlon de Boucherville a été écompensé par le prix Triathlon Québec "Événement provincial" en 2023 et 2025. Cet évènement se déroule dans un environnement convivial et sécuritaire pour les athlètes cherchant à faire un premier triathlon. L'épreuve de natation se déroule en piscine ce qui offre un cadre rassurant, en plus d'offrir le meilleur repas d'après-course 🍽️ de toute la province par <a href="https://www.chezlionel.ca/" target="_blank" style="color: black; font-weight: 700;">Chez Lionel</a>.
+                    </span>
+                </div>
+            </div>
+            <a href="https://www.boucherville.ca/grands-evenements/triathlon-duathlon/" target="_blank" rel="noopener noreferrer" class="link-action text-evenements">Voir détails ↗</a>
+        </div>
+
+    </div>
+</div>
+
+                <!-- ONGLET 2 : ÉQUIPEMENTIERS -->
+<div id="tab-codes-promo" class="tab-panel">
+    <h2 class="tab-banner-title banner-equipementiers">
+        <span>🏷️ Codes promo</span>
+    </h2>
+    <!-- Contenu partagé avec autonome.html (onglet Codes promo) : modifiez partage/codes-promo.html -->
+    <div class="codes-promo" data-include="partage/codes-promo.html"></div>
+</div>
+
+                <!-- ONGLET 3 : SANTÉ & SOINS (À VENIR) -->
+                <div id="tab-sante" class="tab-panel" hidden>
+                    <h2 class="tab-banner-title banner-sante">
+                        <span>🩺 Santé & Soins</span>
+                        <span class="badge-a-venir">À venir</span>
+                    </h2>
+                    <p style="color: var(--text-light); margin-bottom: 20px;">
+                        Cette section est actuellement en préparation. Retrouvez très prochainement nos spécialistes sélectionnés pour la qualité supérieure de leurs soins (physiothérapie, nutrition, médecine sportive et récupération).
+                    </p>
+                    <div class="links-list">
+                        <div class="link-row" style="opacity: 0.8;">
+                            <div>
+                                <span class="link-title">Réseau de thérapeutes & praticiens de confiance</span>
+                                <span class="link-desc">(Service à venir)</span>
+                            </div>
+                            <span class="link-action text-sante">À venir</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    {% include footer-fr.html %}
+
+    <!-- BOUTON RETOUR EN HAUT -->
+<button id="backToTop" title="Retour en haut">
+    <svg viewBox="0 0 24 24">
+        <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/>
+    </svg>
+</button>
+
+    <script>
+        // Logique de navigation des onglets + recentrage fluide sur mobile
+        function openTab(evt, tabName) {
+            let tabPanels = document.getElementsByClassName("tab-panel");
+            for (let i = 0; i < tabPanels.length; i++) {
+                tabPanels[i].classList.remove("active");
+            }
+
+            let tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            const activeBtn = evt.currentTarget;
+            activeBtn.classList.add("active");
+
+            // Recentre doucement l'onglet sélectionné dans la zone visible sur mobile
+            activeBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // --- GESTION DU BOUTON BACK TO TOP ---
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", function() {
+            // Se déclenche UNIQUEMENT si la largeur d'écran est <= 834px ET le défilement > 300px
+            if (window.innerWidth <= 834 && (window.pageYOffset > 300 || window.scrollY > 300)) {
+                backToTopBtn.classList.add("visible");
+            } else {
+                backToTopBtn.classList.remove("visible");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", function() { 
+            window.scrollTo({ top: 0, behavior: "smooth" }); 
+        });
+
+        // Déclencheur automatique de l'effet Bounce au défilement mobile
+        const tabsContainer = document.querySelector('.browser-tabs-container');
+        if (tabsContainer) {
+            const observer = new IntersectionObserver((entries, observerInstance) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && window.innerWidth <= 834) {
+                        tabsContainer.classList.add('animate-bounce');
+                        observerInstance.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(tabsContainer);
+        }
+
+        function copyCode(codeText, buttonElement) {
+    navigator.clipboard.writeText(codeText).then(() => {
+        const textSpan = buttonElement.querySelector('span');
+        const originalText = textSpan.innerText;
+
+        // Change l'apparence du bouton
+        buttonElement.classList.add('copied');
+        textSpan.innerText = 'Copié !';
+
+        // Remet le texte d'origine après 2 secondes
+        setTimeout(() => {
+            buttonElement.classList.remove('copied');
+            textSpan.innerText = originalText;
+        }, 2000);
+    }).catch(err => {
+        console.error('Erreur lors de la copie :', err);
+    });
+}
+// Highlight de la page active et du menu parent Athletes
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const navLinks = document.querySelectorAll(".nav-links a");
+
+    navLinks.forEach(link => {
+        const linkPage = link.getAttribute("href");
+        if (linkPage === currentPage || (currentPage === "" && linkPage === "index.html")) {
+            link.classList.add("active");
+        }
+    });
+
+    // Active le menu parent ATHLETES si on est sur your-story.html
+    if (currentPage === "your-story.html") {
+        const athletesParent = document.querySelector(".has-dropdown > a.dropdown-trigger");
+        if (athletesParent) athletesParent.classList.add("active");
+    }
+});
+    </script>
+    <script>
+    // Ouvre l'onglet demandé dans l'adresse : avantages.html#evenements, #codes-promo (#equipementiers accepté)
+    function ouvrirOngletAdresse() {
+        let h = location.hash.replace('#', ''); if (h === 'equipementiers') h = 'codes-promo';
+        const bouton = h && document.querySelector(`.tab-button[onclick*="'tab-${h}'"]`);
+        if (bouton) { bouton.click(); bouton.scrollIntoView({ block: 'center' }); }
+    }
+    document.addEventListener('DOMContentLoaded', ouvrirOngletAdresse);
+    window.addEventListener('hashchange', ouvrirOngletAdresse);
+    </script>
+    <script src="partage/codes-promo.js"></script>
+</body>
+</html>

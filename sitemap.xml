@@ -143,44 +143,44 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/calendrier.html" />
   </url>
 
-  <!-- DONNER / PROVIDE -->
+  <!-- DEVENIR PARTENAIRE / PROVIDE -->
   <url>
-    <loc>https://mon.projet-tri.org/donner.html</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://mon.projet-tri.org/devenir-partenaire.html</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/devenir-partenaire.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/provide.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/devenir-partenaire.html" />
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/provide.html</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/devenir-partenaire.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/provide.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/donner.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/devenir-partenaire.html" />
   </url>
 
-  <!-- RECEVOIR / RECEIVE -->
+  <!-- AVANTAGES / RECEIVE -->
   <url>
-    <loc>https://mon.projet-tri.org/recevoir.html</loc>
-    <lastmod>2026-07-30</lastmod>
+    <loc>https://mon.projet-tri.org/avantages.html</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/avantages.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/receive.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/avantages.html" />
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/receive.html</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/avantages.html" />
     <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/receive.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/recevoir.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/avantages.html" />
   </url>
 
   <!-- VOTRE HISTOIRE / YOUR STORY -->
