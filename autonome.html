@@ -2434,5 +2434,15 @@ document.addEventListener("DOMContentLoaded", function () {
     })();
     </script>
     <script src="partage/codes-promo.js"></script>
+    <script>
+    // Ouvre l'onglet demandé dans l'adresse : autonome.html#codes-promo, #bases, #faq, #reglements, #calendrier, #entrainement, #communaute, #contribuer
+    function ouvrirOngletAdresse() {
+        var h = location.hash.replace('#', '');
+        var bouton = h && document.querySelector('.tab-button[onclick*="\'tab-' + h + '\'"]');
+        if (bouton) { bouton.click(); bouton.scrollIntoView({ block: 'center' }); }
+    }
+    document.addEventListener('DOMContentLoaded', ouvrirOngletAdresse);
+    window.addEventListener('hashchange', ouvrirOngletAdresse);
+    </script>
 </body>
 </html>
