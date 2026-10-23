@@ -28,10 +28,8 @@
                     <button type="button" class="sous-menu-btn" aria-expanded="false" aria-label="Show pages: Our Mission"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
                     <ul class="dropdown-menu">
                         <li><a href="discover.html"{% if page.url == '/en/discover.html' %} class="active"{% endif %}>Our mission</a></li>
-                        <li class="menu-sep" role="separator"></li>
-                        <li class="menu-titre">Partners</li>
-                        <li><a href="receive.html"{% if page.url == '/en/receive.html' %} class="active"{% endif %}>Receive</a></li>
-                        <li><a href="provide.html"{% if page.url == '/en/provide.html' %} class="active"{% endif %}>Provide</a></li>
+                        <li><a href="become-a-partner.html"{% if page.url == '/en/become-a-partner.html' %} class="active"{% endif %}>Become a partner</a></li>
+                        <li class="menu-don-li"><a class="menu-don" href="https://www.zeffy.com/fr-CA/ticketing/programmes-de-mon-projet-tri" target="_blank" rel="noopener"><span class="coeur" aria-hidden="true">♥</span> Make a donation</a></li>
                     </ul>
                 </li>
                 <li class="has-dropdown">
@@ -41,6 +39,7 @@
                         <li><a href="independant.html"{% if page.url == '/en/independant.html' %} class="active"{% endif %}>Independant</a></li>
                         <li><a href="guidance.html"{% if page.url == '/en/guidance.html' %} class="active"{% endif %}>Guidance</a></li>
                         <li><a href="club.html"{% if page.url == '/en/club.html' %} class="active"{% endif %}>Club</a></li>
+                        <li><a href="perks.html"{% if page.url == '/en/perks.html' %} class="active"{% endif %}>Perks</a></li>
                         <li><a href="your-story.html"{% if page.url == '/en/your-story.html' %} class="active"{% endif %}><i>Your story</i></a></li>
                     </ul>
                 </li>
@@ -105,6 +104,15 @@
     header li.ouvert > .sous-menu-btn svg { transform: rotate(180deg); }
     /* Pastilles flottantes masquées pendant que le menu mobile est ouvert */
     body:has(#menu-toggle:checked) .floating-badges-container, body:has(#menu-toggle:checked) .google-badge-float { display: none !important; }
+    /* "Make a donation" link: discreet (very pale peach background, orange heart); orange text stays reserved for the active page */
+    header .dropdown-menu li.menu-don-li { border-top: 1px solid #eef2f7; margin-top: 4px; padding-top: 4px; }
+    header .dropdown-menu a.menu-don { background: #fff6f2; }
+    header .dropdown-menu a.menu-don .coeur { color: #D65F3A; }
+    header .dropdown-menu a.menu-don:hover { background: #ffece4; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu li.menu-don-li { margin-top: 0; padding-top: 0; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don { border-radius: 0 0 12px 0; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don { justify-content: flex-start; gap: 6px; }
+    header #menu-toggle:checked ~ .nav-links .dropdown-menu a.menu-don::after { margin-left: auto; }
 </style>
 <script>
     // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
