@@ -508,6 +508,11 @@ autre_langue: en/index.html
             display: block;
         }
 
+        .partner-actions-duo { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        .btn-partner-secondary { display: inline-block; padding: 14px 36px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 1rem; color: #0481fb; border: 2px solid #0481fb; background: #ffffff; transition: all 0.3s ease; }
+        .btn-partner-secondary:hover { background: #eef6ff; transform: translateY(-3px); }
+        .flow-plus { display: inline-block; margin-top: 12px; font-weight: 800; font-size: 0.9rem; color: #004c97; text-decoration: none; }
+        .flow-plus:hover { color: #D65F3A; }
         .partner-action-container {
             text-align: center;
             margin-top: 40px;
@@ -1421,15 +1426,16 @@ autre_langue: en/index.html
     <section id="partenaires" class="programme-section" style="padding-bottom: 60px;"> <!-- Réduit de 140px à 60px -->
         <div class="container">
             <h2 style="text-align: center; color: #004c97; font-size: 2.5rem; font-weight: 900; margin-bottom: 10px; text-transform: uppercase;">Pour les Partenaires</h2>
-            <p style="text-align: center; font-size: 1.3rem; color: var(--text-light); margin-bottom: 50px;">Vous contribuez au dynamisme du triathlon au Québec tout en vous faisant connaître ? Allions-nous.</p>
+            <p style="text-align: center; font-size: 1.3rem; color: var(--text-light); margin-bottom: 50px;">Collaborons au développement du triathlon : chaque partenaire apporte quelque chose aux athlètes, et reçoit en retour notre appui. Collaborer avec nous est gratuit.</p>
             
             <div class="decision-flow">
                 <div class="flow-step">
-                    <div class="step-number step-autonome">Coachs & Club</div>
+                    <div class="step-number step-autonome">Coachs & Clubs</div>
                     <em>"Je gère un club" "J'entraîne des athlètes"</em>
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        Faisons connaissance, définissons votre <span style="font-weight: bold; color: #004c97;">profil de coach</span> ou votre <span style="font-weight: bold; color: #004c97;">philosophie de club</span>. Nous allons vous <span style="font-weight: bold; color: #004c97;">connecter à des athlètes</span> qui vous correspondent.
+                        Faisons connaissance, définissons votre <span style="font-weight: bold; color: #004c97;">profil de coach</span> ou votre <span style="font-weight: bold; color: #004c97;">philosophie de club</span>. Nous pourrons vous <span style="font-weight: bold; color: #004c97;">proposer à des athlètes</span> qui vous correspondent.
                     </p>
+                    <a href="devenir-partenaire.html#coachs" class="flow-plus">En savoir plus ›</a>
                 </div>
 
                 <div class="flow-step">
@@ -1438,6 +1444,16 @@ autre_langue: en/index.html
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
                         <span style="font-weight: bold; color: #004c97;">Dynamisez vos événements</span> de triathlon : nous prenons en charge l'<span style="font-weight: bold; color: #004c97;">accueil des athlètes débutants</span> et vous profitez d'<span style="font-weight: bold; color: #004c97;">animations exclusives</span> signées <span style="font-family: 'Oooh Baby', cursive; font-size: 1.35em; color: #004c97; vertical-align: baseline; margin-right: 2px;">mon</span><span style="font-family: 'Inclusive Sans', sans-serif; font-style: italic; font-weight: bold; color: #004c97; font-size: 1em; letter-spacing: 0.5px;"> Projet Tri</span>.
                     </p>
+                    <a href="devenir-partenaire.html#evenements" class="flow-plus">En savoir plus ›</a>
+                </div>
+
+                <div class="flow-step">
+                    <div class="step-number step-club">Commerçants & Équipementiers</div>
+                    <em>"Je vends ou je produis du matériel ou des produits sportifs"</em>
+                    <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
+                        Magasin ou marque, en natation, vélo, course à pied ou nutrition sportive ? Faites-vous <span style="font-weight: bold; color: #004c97;">connaître</span> auprès des triathlètes et participez à <span style="font-weight: bold; color: #004c97;">rendre le triathlon plus accessible</span>.
+                    </p>
+                    <a href="devenir-partenaire.html#commercants" class="flow-plus">En savoir plus ›</a>
                 </div>
 
                 <div class="flow-step">
@@ -1446,20 +1462,16 @@ autre_langue: en/index.html
                     <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
                         Devenez le <span style="font-weight: bold; color: #004c97;">praticien de référence</span> pour les triathlètes afin de les aider dans leur <span style="font-weight: bold; color: #004c97;">préparation</span>, leur <span style="font-weight: bold; color: #004c97;">récupération</span> ainsi que leurs traitements thérapeutiques.
                     </p>
-                </div>
-
-                <div class="flow-step">
-                    <div class="step-number step-club">Équipementiers</div>
-                    <em>"Je vends du matériel ou des produits sportifs"</em>
-                    <p style="font-size: 1rem; font-weight: normal; font-style: normal; color: var(--text-light); line-height: 1.5; margin-top: 15px; margin-bottom: 0;">
-                        Vous vendez de l'équipement ou des produits pour triathlètes ? Participez à <span style="font-weight: bold; color: #004c97;">rendre le triathlon plus accessible</span> tout en vous faisant <span style="font-weight: bold; color: #004c97;">connaître</span>. Parlons-en.
-                    </p>
+                    <a href="devenir-partenaire.html#sante" class="flow-plus">En savoir plus ›</a>
                 </div>
             </div>
 
             <!-- margin-top réduit de 40px à 25px et suppression de la marge basse par défaut -->
             <div class="partner-action-container" style="margin-top: 50px; margin-bottom: 0;">
-                <a href="#contact" class="btn-partner-global">Contactez-nous</a>
+                <div class="partner-actions-duo">
+                    <a href="devenir-partenaire.html" class="btn-partner-global">Devenir partenaire</a>
+                    <a href="#contact" class="btn-partner-secondary">Contactez-nous</a>
+                </div>
             </div>
 
             <!-- margin-top réduit de 80px à 25px et margin-bottom réduit à 0 -->
