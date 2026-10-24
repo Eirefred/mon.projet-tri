@@ -638,6 +638,10 @@ autre_langue: en/discover.html
             color: #004c97; font-size: 1.35rem; font-weight: 900; text-transform: uppercase;
             margin: 40px 0 18px; letter-spacing: -0.3px;
         }
+        .mis-cost-lead { background: #ffffff; border: 1.5px solid #bbf7d0; border-left: 5px solid #15803d; border-radius: 14px; padding: 14px 20px; margin: 0 0 18px; }
+        .mis-cost-lead p { margin: 0 !important; font-size: 1.05rem; line-height: 1.6; color: var(--text-dark); }
+        .mis-cost-lead strong { color: #15803d; }
+        .mis-cost-lead p strong + strong, .mis-cost-lead p strong:last-of-type { color: #c2410c; }
         .mis-cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         .mis-cost-card { border-radius: 16px; padding: 22px 24px; border: 1.5px solid; }
         .mis-cost-card ul { margin: 0; padding-left: 20px; line-height: 1.7; color: var(--text-dark); }
@@ -753,19 +757,22 @@ autre_langue: en/discover.html
 
                         <!-- GRATUIT / PAYANT -->
                         <h3 class="mis-h3">Ce qui est gratuit, ce qui est payant</h3>
+                        <div class="mis-cost-lead">
+                            <p><strong>Notre mission est de rendre le triathlon accessible : toute notre aide est donc gratuite.</strong> Si vous décidez d'être accompagné par un coach ou de vous inscrire dans un club, seuls <strong>ces services-là</strong> ont un coût.</p>
+                        </div>
                         <div class="mis-cost-grid">
                             <div class="mis-cost-card mis-free">
-                                <div class="mis-cost-head">✅ Gratuit</div>
+                                <div class="mis-cost-head">✅ Gratuit : notre aide</div>
                                 <ul>
                                     <li><strong>Conseils</strong> et <strong>réponses</strong> à vos questions</li>
                                     <li>Recherche d'un <strong>coach</strong> ou d'un <strong>club</strong> adapté à vos besoins</li>
-                                    <li><strong>Codes promo</strong> de nos équipementiers partenaires</li>
+                                    <li><strong>Codes promo</strong> de nos partenaires (<a href="aubaines.html#codes-promo">voir les aubaines</a>)</li>
                                     <li>Recommandations de <strong>professionnels de la santé</strong> de confiance</li>
-                                    <li>Notre <strong>kiosque</strong> et les <strong>visites de site</strong> lors des événements</li>
+                                    <li>Notre <strong>kiosque</strong>, les <strong>visites de site</strong> et notre soutien lors des <a href="aubaines.html#evenements">événements partenaires</a></li>
                                 </ul>
                             </div>
                             <div class="mis-cost-card mis-paid">
-                                <div class="mis-cost-head">💳 Payant</div>
+                                <div class="mis-cost-head">💳 Payant : les services de tiers</div>
                                 <ul>
                                     <li><strong>Les honoraires d'un coach d'accompagnement individuel</strong>, à tarifs encadrés. Trouver votre coach ne coûte rien : seul son accompagnement est payant. Vous payez <em>mon</em> Projet Tri, qui rémunère ensuite le coach, travailleur autonome. <a href="accompagnement.html">En savoir plus ›</a></li>
                                     <li><strong>L'inscription à un club</strong>, payée directement au club. <a href="club.html">Trouver un club ›</a></li>
