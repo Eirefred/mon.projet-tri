@@ -487,26 +487,6 @@ autre_langue: ../accompagnement.html
             .acc-panel.active { grid-template-columns: 1fr; gap: 16px; }
         }
 
-        /* Comparatif du coût du coaching (165 $ / mois) */
-        .cout-box { background: #f3f8fd; border: 1px solid #d6e6f5; border-left: 4px solid #004c97; border-radius: 12px; padding: 16px 18px 12px; margin-top: 18px; text-align: left; }
-        .cout-box .cout-titre { font-weight: 800; color: #004c97; font-size: 1.05rem; margin: 0 0 2px; line-height: 1.4; }
-        .cout-box .cout-intro { margin: 0 0 12px; color: #475569; font-size: 0.9rem; line-height: 1.5; }
-        .cout-box .cout-intro strong { color: #004c97; }
-        .cout-box .cout-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 22px; }
-        .cout-box .cout-col h4 { display: flex; justify-content: space-between; gap: 8px; margin: 0 0 6px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.4px; color: #475569; }
-        .cout-box .cout-col h4 span { text-transform: none; letter-spacing: 0; font-weight: 600; color: #64748b; font-size: 0.74rem; }
-        .cout-box .cout-list { list-style: none; margin: 0; padding: 0; }
-        .cout-box .cout-list li { display: grid; grid-template-columns: 24px 1fr auto; gap: 8px; align-items: center; margin: 0; padding: 7px 0; border-top: 1px solid #dde9f5; font-size: 0.88rem; line-height: 1.35; color: #1e293b; }
-        .cout-box .cout-list li:first-child { border-top: 0; }
-        .cout-box .ic { font-size: 1.05rem; text-align: center; }
-        .cout-box .lbl b { font-weight: 700; color: #1e293b; }
-        .cout-box .lbl small { display: block; color: #64748b; font-size: 0.78rem; }
-        .cout-box sup { font-size: 0.65rem; color: #004c97; font-weight: 700; }
-        .cout-box .cout-eq { white-space: nowrap; font-size: 0.75rem; font-weight: 800; color: #004c97; background: #e3f1fb; border: 1px solid #b9dcf2; border-radius: 50px; padding: 3px 9px; }
-        .cout-box .cout-eq.plus { color: #9a3412; background: #fff1e8; border-color: #fbd3bb; }
-        .cout-box .cout-note { margin: 10px 0 0; font-size: 0.74rem; color: #64748b; line-height: 1.5; }
-        .cout-box .cout-note a { color: #004c97; font-weight: 600; }
-        @media (max-width: 700px) { .cout-box .cout-cols { grid-template-columns: 1fr; } }
         .acc-cout { grid-column: 1 / -1; }
         .acc-cout summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; background: #f3f8fd; border: 1px solid #d6e6f5; border-left: 4px solid #004c97; border-radius: 12px; padding: 12px 16px; font-size: 0.95rem; color: #334155; transition: background 0.2s; }
         .acc-cout summary:hover { background: #e8f2fb; }
@@ -637,25 +617,7 @@ autre_langue: ../accompagnement.html
                     <details class="acc-cout">
                         <summary><span class="txt"><span class="ico" aria-hidden="true">☕</span><span>$165 a month is <b>≈ $5.50 a day</b>, the price of a latte.</span></span><span class="ouvrir">Compare with other expenses</span></summary>
                         <div class="cout-box">
-                            <div class="cout-cols">
-                <div class="cout-col"><h4>Everyday life <span>in months of coaching</span></h4><ul class="cout-list">
-                        <li><span class="ic">☕</span><span class="lbl"><b>1 latte a day</b><small>≈ $165/month</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">🥤</span><span class="lbl"><b>1 protein smoothie a day</b><sup>4</sup><small>≈ $270 to $350/month</small></span><span class="cout-eq plus">≈ 2 months</span></li>
-                        <li><span class="ic">🍽️</span><span class="lbl"><b>2 restaurant lunches a week</b><small>≈ $173/month</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">🔧</span><span class="lbl"><b>1 hour at the mechanic</b><small>≈ $120 to $160</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">🚗</span><span class="lbl"><b>1 month of car leasing</b><sup>1</sup><small>≈ $350 to $520</small></span><span class="cout-eq plus">≈ 2 to 3 months</span></li>
-                    </ul></div>
-                <div class="cout-col"><h4>Triathlon <span>in months of coaching</span></h4><ul class="cout-list">
-                        <li><span class="ic">⚡</span><span class="lbl"><b>1.5 Krono gels a day</b><sup>2</sup><small>≈ $146/month</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">🩺</span><span class="lbl"><b>1 physio session every 2 weeks</b><sup>3</sup><small>≈ $150 to $260/month</small></span><span class="cout-eq">≈ 1 to 1.5 months</span></li>
-                        <li><span class="ic">🚲</span><span class="lbl"><b>1 full bike tune-up</b><sup>5</sup><small>≈ $180</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">👟</span><span class="lbl"><b>1 pair of running shoes</b><small>≈ $180 to $200</small></span><span class="cout-eq">≈ 1 month</span></li>
-                        <li><span class="ic">⌚</span><span class="lbl"><b>1 GPS running watch</b><sup>6</sup><small>≈ $660</small></span><span class="cout-eq plus">≈ 4 months</span></li>
-                        <li><span class="ic">🏅</span><span class="lbl"><b>1 IRONMAN 70.3 registration</b><small>≈ $550 to $650</small></span><span class="cout-eq plus">≈ 3 to 4 months</span></li>
-                        <li><span class="ic">🏆</span><span class="lbl"><b>1 IRONMAN registration</b><small>≈ $1,250 to $1,400</small></span><span class="cout-eq plus">≈ 8 months</span></li>
-                    </ul></div>
-            </div>
-            <p class="cout-note">Approximate prices (before tax, Montréal area, 2026), for comparison only. Sources: <sup>1</sup> <a href="https://calculqc.ca/blog/immobilier/pret-auto-vs-leasing" target="_blank" rel="noopener">calculqc.ca</a> (in French) · <sup>2</sup> <a href="https://www.decathlon.ca/fr/p/gel-energetique-krono-erable-agrumes/387208/m9032950" target="_blank" rel="noopener">Decathlon</a> ($3.25 each) · <sup>3</sup> <a href="https://hellosafe.ca/assurance-sante/ramq/remboursement/physiotherapie" target="_blank" rel="noopener">HelloSafe</a> ($70 to $120 per session) · <sup>4</sup> Booster Juice ($11.79) · <sup>5</sup> <a href="https://www.lacordee.com/en/pages/prise-de-rendez-vous-atelier-velo" target="_blank" rel="noopener">La Cordée</a> · <sup>6</sup> <a href="https://www.mec.ca/en/product/6026-300/forerunner-265" target="_blank" rel="noopener">MEC</a> (Garmin Forerunner 265). Other amounts: estimates of typical prices.</p>
+                            {% include cout-coaching-en.html %}
                         </div>
                     </details>
                 </div>
