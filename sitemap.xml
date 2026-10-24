@@ -6,7 +6,7 @@
   <!-- VOLET TRIATHLON - ACCUEIL -->
   <url>
     <loc>https://mon.projet-tri.org/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
@@ -15,7 +15,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/" />
@@ -26,7 +26,7 @@
   <!-- VOLET COURSE À PIED / RUN -->
   <url>
     <loc>https://mon.projet-tri.org/course.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html" />
@@ -35,7 +35,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/run.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/course.html" />
@@ -46,7 +46,7 @@
   <!-- DECOUVRIR / DISCOVER -->
   <url>
     <loc>https://mon.projet-tri.org/decouvrir.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
@@ -55,7 +55,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/discover.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/decouvrir.html" />
@@ -66,7 +66,7 @@
   <!-- AUTONOME / INDEPENDANT -->
   <url>
     <loc>https://mon.projet-tri.org/autonome.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
@@ -75,7 +75,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/independant.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/autonome.html" />
@@ -86,7 +86,7 @@
   <!-- ACCOMPAGNEMENT / GUIDANCE -->
   <url>
     <loc>https://mon.projet-tri.org/accompagnement.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/accompagnement.html" />
@@ -95,7 +95,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/guidance.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/accompagnement.html" />
@@ -106,7 +106,7 @@
   <!-- CLUB -->
   <url>
     <loc>https://mon.projet-tri.org/club.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/club.html" />
@@ -115,7 +115,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/club.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/club.html" />
@@ -163,30 +163,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/devenir-partenaire.html" />
   </url>
 
-  <!-- AVANTAGES / PERKS -->
+  <!-- AUBAINES & GRATUITÉS / DEALS & FREE PERKS -->
   <url>
-    <loc>https://mon.projet-tri.org/avantages.html</loc>
+    <loc>https://mon.projet-tri.org/aubaines.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/avantages.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/perks.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/avantages.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/aubaines.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/deals.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/aubaines.html" />
   </url>
   <url>
-    <loc>https://mon.projet-tri.org/en/perks.html</loc>
+    <loc>https://mon.projet-tri.org/en/deals.html</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/avantages.html" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/perks.html" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/avantages.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/aubaines.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://mon.projet-tri.org/en/deals.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/aubaines.html" />
   </url>
 
   <!-- VOTRE HISTOIRE / YOUR STORY -->
   <url>
     <loc>https://mon.projet-tri.org/votre-histoire.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/votre-histoire.html" />
@@ -195,7 +195,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/your-story.html</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/votre-histoire.html" />
@@ -206,7 +206,7 @@
   <!-- POURQUOI UN COACH ? / WHY A COACH? -->
   <url>
     <loc>https://mon.projet-tri.org/besoin-coach.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/besoin-coach.html" />
@@ -215,7 +215,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/need-a-coach.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/besoin-coach.html" />
