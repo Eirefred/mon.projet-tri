@@ -130,15 +130,20 @@
     header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep { border-top: none; height: 10px; background: transparent; }
     /* 2e groupe (Vos avantages, Votre histoire) d'une teinte différente */
     header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; border-left-color: #a9b6c6; }
-    /* Ordinateur : les deux groupes du menu Athlètes en deux teintes (bleu pâle, puis gris pâle) */
-    header .dropdown-menu:has(li.menu-sep) { padding: 0 !important; overflow: hidden; }
-    header .dropdown-menu:has(li.menu-sep) > li:not(.menu-sep) { background: #f3f8fd; }
-    header .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; }
-    header .dropdown-menu:has(li.menu-sep) > li:first-child { padding-top: 8px; }
-    header .dropdown-menu:has(li.menu-sep) > li:has(+ li.menu-sep) { padding-bottom: 6px; }
-    header .dropdown-menu:has(li.menu-sep) > li.menu-sep + li { padding-top: 6px; }
-    header .dropdown-menu:has(li.menu-sep) > li:last-child { padding-bottom: 8px; }
-    header .dropdown-menu:has(li.menu-sep) > li.menu-sep { margin: 0; max-width: none; border-top: 1px solid #dfe5ec; }
+    /* Ordinateur : menu Athlètes en deux blocs, même style que sur mobile (bleu pâle, puis gris pâle) */
+    @media (min-width: 835px) {
+        header .dropdown-menu:has(li.menu-sep) { padding: 8px !important; overflow: visible; min-width: 230px; }
+        header .dropdown-menu:has(li.menu-sep) > li:not(.menu-sep) { background: #f3f8fd; border-left: 3px solid #4daad4; box-sizing: border-box; }
+        header .dropdown-menu:has(li.menu-sep) > li.menu-sep ~ li { background: #f4f5f7; border-left-color: #a9b6c6; }
+        header .dropdown-menu:has(li.menu-sep) > li:not(.menu-sep):not(.menu-titre) + li:not(.menu-sep) a { border-top: 1px solid #e3ecf5; }
+        header .dropdown-menu:has(li.menu-sep) > li:first-child { border-radius: 10px 10px 0 0; padding-top: 6px; }
+        header .dropdown-menu:has(li.menu-sep) > li:has(+ li.menu-sep) { border-radius: 0 0 10px 10px; padding-bottom: 2px; }
+        header .dropdown-menu:has(li.menu-sep) > li.menu-sep + li { border-radius: 10px 10px 0 0; padding-top: 2px; }
+        header .dropdown-menu:has(li.menu-sep) > li:last-child { border-radius: 0 0 10px 10px; padding-bottom: 2px; }
+        header .dropdown-menu:has(li.menu-sep) > li.menu-sep { height: 8px; margin: 0; padding: 0; border: none; background: transparent; max-width: none; }
+        header .dropdown-menu:has(li.menu-sep) > li.menu-sep + li a, header .dropdown-menu:has(li.menu-sep) > li.menu-titre + li a { border-top: none !important; }
+        header .dropdown-menu:has(li.menu-sep) a { padding-left: 16px; padding-right: 16px; }
+    }
 </style>
 <script>
     // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
