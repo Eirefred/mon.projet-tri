@@ -698,7 +698,7 @@ autre_langue: ../calendrier.html
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 2027 calendar being confirmed</p>
                     <p class="banniere-courte">Races <span class="ex-pointille">in grey with a dotted outline</span> are awaiting confirmation.</p>
-                    <p>Organizers are confirming their dates over the coming weeks. Races shown <span class="ex-pointille">in grey with a dotted outline</span> haven't announced their 2027 date yet: the date shown is an estimate based on the 2026 edition (same day of the week).</p>
+                    <p>Organizers are confirming their dates over the coming weeks. Races shown <span class="ex-pointille">in grey with a dotted outline</span> haven't announced their 2027 date yet: the date shown is an estimate based on the 2026 edition.</p>
                 </div>
             </div>
 
@@ -906,7 +906,7 @@ function formatDateToEnglish(dateStr) {
             dp: ":", lDate: "Date", lOrg: "Organizer", lLieu: "Location", lEp: "Races",
             bSite: "Website", bMail: "Email", bCarte: "Map",
             epreuve: "race", epreuves: "races",
-            note: "Date not yet confirmed for 2027: estimated from the 2026 edition (same day of the week).",
+            note: "Date not yet confirmed for 2027: estimated from the 2026 edition.",
             vide: "No races to show. Turn on “Past Events” or change the filter."
         };
         // Épreuves regroupées par type (la piscine n'est pas une épreuve : elle n'apparaît pas ici)
@@ -1220,7 +1220,7 @@ function formatDateToEnglish(dateStr) {
                 let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Location";
 
                 tr.setAttribute('data-categories', rowCats.join(','));
-                if (row.estimee) { tr.classList.add('estimee'); tr.title = "Date not yet confirmed for 2027: estimated from the 2026 edition (same day of the week)"; }
+                if (row.estimee) { tr.classList.add('estimee'); tr.title = "Date not yet confirmed for 2027: estimated from the 2026 edition"; }
                 tr.innerHTML = `
                     <td data-label="Date"><b>${formatDateToEnglish(row[0])}</b></td>
                     <td data-label="Event"><b>${isTQ}${row[1]}</b></td>
