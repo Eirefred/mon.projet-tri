@@ -646,6 +646,7 @@ autre_langue: ../calendrier.html
         .ep-groupes { list-style: none; margin: 0 0 2px; padding: 0; }
         .ep-groupes li { font-size: 0.86rem; line-height: 1.6; color: #334155; }
         .ep-groupes li b { color: #0f172a; }
+        .tag-piscine { display: inline-flex; align-items: center; gap: 4px; margin: 1px 0 1px 6px; padding: 2px 9px; border-radius: 50px; background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-size: 0.72rem; font-weight: 700; vertical-align: middle; white-space: nowrap; }
     </style>
 
     <script type="application/ld+json">
@@ -934,7 +935,7 @@ function formatDateToEnglish(dateStr) {
                         </button>
                         <div class="cm-det">
                             <h3>${it.isTQ}${r[1]}</h3>
-                            <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}</div>
+                            <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Pool swim</span>` : ""}</div>
                             <p><span>${CM.lDate}${CM.dp}</span> ${dateTxt}</p>
                             <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
@@ -1021,7 +1022,7 @@ function formatDateToEnglish(dateStr) {
             fiche.innerHTML = `
                 <div class="cb-quand">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
                 <h3>${it.isTQ}${r[1]}</h3>
-                <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}</div>
+                <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Pool swim</span>` : ""}</div>
                 <div class="cb-infos">
                     <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                     <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
