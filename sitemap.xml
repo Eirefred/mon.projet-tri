@@ -126,7 +126,7 @@
   <!-- CALENDRIER / CALENDAR -->
   <url>
     <loc>https://mon.projet-tri.org/calendrier.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
@@ -135,7 +135,7 @@
   </url>
   <url>
     <loc>https://mon.projet-tri.org/en/calendar.html</loc>
-    <lastmod>2026-07-22</lastmod>
+    <lastmod>2026-11-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://mon.projet-tri.org/calendrier.html" />
