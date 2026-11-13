@@ -660,6 +660,9 @@ autre_langue: ../calendrier.html
         .cal-statique { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
         .banniere-courte { display: none; }
         @media (max-width: 834px) { .season-banner .banniere-courte { display: block; font-size: 0.86rem; } }
+        /* Date non confirmée dans la fiche : grisée et encadrée en pointillé, comme la ligne de l'épreuve */
+        .cm-fiche .fiche-date.estimee, .cb-fiche .cb-quand.estimee { display: inline-block; color: #94a3b8 !important; font-style: italic; border: 2px dashed #94a3b8; border-radius: 6px; padding: 0 7px; background: #f8fafc; }
+        .cb-fiche .cb-quand.estimee { padding: 2px 8px; margin-bottom: 2px; }
     </style>
 
     <script type="application/ld+json">
@@ -952,7 +955,7 @@ function formatDateToEnglish(dateStr) {
                         <div class="cm-det">
                             <h3>${it.isTQ}${r[1]}</h3>
                             <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Pool swim</span>` : ""}</div>
-                            <p><span>${CM.lDate}${CM.dp}</span> ${dateTxt}</p>
+                            <p><span>${CM.lDate}${CM.dp}</span> <span class="fiche-date${r.estimee ? " estimee" : ""}">${dateTxt}</span></p>
                             <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
                             ${epreuvesGroupees(it.cats)}
@@ -1036,7 +1039,7 @@ function formatDateToEnglish(dateStr) {
             const r = it.row;
             const lieu = it.lieu || it.ville;
             fiche.innerHTML = `
-                <div class="cb-quand">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
+                <div class="cb-quand${r.estimee ? " estimee" : ""}">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
                 <h3>${it.isTQ}${r[1]}</h3>
                 <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Pool swim</span>` : ""}</div>
                 <div class="cb-infos">
