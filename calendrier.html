@@ -618,6 +618,67 @@ autre_langue: en/calendar.html
             html, body { touch-action: pan-y pinch-zoom; overscroll-behavior-x: none; }
             .legend-container { touch-action: pan-x pan-y; }
         }
+
+        /* --- CALENDRIER ORDINATEUR : mois à gauche, liste au centre, fiche à droite --- */
+        .cal-bureau { display: none; }
+        @media (min-width: 835px) {
+            #calTable { display: none !important; }
+            .cal-bureau { display: grid; grid-template-columns: 150px minmax(0, 1fr) 340px; gap: 0; align-items: start; background: #ffffff; border-radius: 14px; box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06); margin-top: 10px; }
+            .cb-mois { position: sticky; top: var(--cb-top, 160px); padding: 12px 0; border-right: 1px solid #e8edf3; align-self: start; }
+            .cb-mois button { display: flex; justify-content: space-between; width: 100%; padding: 8px 18px; background: none; border: 0; font: inherit; font-size: 0.85rem; font-weight: 700; color: #334155; cursor: pointer; text-align: left; }
+            .cb-mois button small { color: #64748b; font-weight: 600; }
+            .cb-mois button:hover { color: #004c97; }
+            .cb-mois button.on { background: #e8f2fb; color: #004c97; box-shadow: inset 3px 0 0 #004c97; }
+            .cb-liste { padding: 6px 16px 18px; background: #f8fafc; min-height: 400px; }
+            .cb-recherche { position: relative; margin: 10px 0 4px; }
+            .cb-recherche input { width: 100%; box-sizing: border-box; font: inherit; font-size: 0.86rem; padding: 9px 14px 9px 36px; border: 1px solid #dbe3ec; border-radius: 50px; background: #ffffff; color: #0f172a; outline: none; }
+            .cb-recherche input:focus { border-color: #004c97; box-shadow: 0 0 0 3px rgba(0, 76, 151, 0.12); }
+            .cb-recherche::before { content: "🔍"; position: absolute; left: 13px; top: 50%; transform: translateY(-50%); font-size: 0.8rem; opacity: 0.6; }
+            .cb-mh { display: flex; justify-content: space-between; align-items: baseline; margin: 16px 2px 6px; font-family: 'Montserrat', sans-serif; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #004c97; scroll-margin-top: var(--cb-top, 160px); }
+            .cb-mh span { font-family: inherit; font-weight: 600; letter-spacing: 0; text-transform: none; color: #64748b; }
+            .cb-row { display: grid; grid-template-columns: 52px minmax(0, 1fr) 124px 12px; gap: 12px; align-items: center; width: 100%; margin-bottom: 6px; padding: 8px 12px; background: #ffffff; border: 0; border-radius: 10px; box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); font: inherit; text-align: left; color: inherit; cursor: pointer; transition: box-shadow 0.15s; }
+            .cb-row:hover { box-shadow: 0 0 0 1px #b9d3ee, 0 2px 6px rgba(15, 23, 42, 0.06); }
+            .cb-row.sel { box-shadow: 0 0 0 2px #004c97; }
+            .cb-row.hidden, .cb-row.cb-cache, .cal-bureau.hide-past .cb-row.past-event { display: none; }
+            .cb-row.past-event { opacity: 0.55; }
+            .cb-d { text-align: center; border-radius: 9px; background: #eef6ff; padding: 4px 0; line-height: 1; }
+            .cb-d small { display: block; font-size: 0.58rem; font-weight: 800; color: #64748b; text-transform: uppercase; margin-bottom: 2px; }
+            .cb-d b { font-size: 1.05rem; color: #004c97; white-space: nowrap; }
+            .cb-n { display: block; font-weight: 800; font-size: 0.88rem; color: #0f172a; }
+            .cb-n img { width: 14px !important; margin-right: 4px !important; }
+            .cb-v { display: block; font-size: 0.75rem; color: #64748b; margin-top: 1px; }
+            .cb-badges { display: flex; flex-wrap: wrap; }
+            .cb-badges .badge { width: 23px; height: 20px; font-size: 0.56rem; margin: 1px; }
+            .cb-chev { color: #94a3b8; font-size: 1.1rem; }
+            .cb-row.estimee { background: #f8fafc; outline: 2px dashed #94a3b8; outline-offset: -3px; }
+            .cb-row.estimee .cb-d { background: #eef2f6; }
+            .cb-row.estimee .cb-d b, .cb-row.estimee .cb-n, .cb-row.estimee .cb-v { color: #94a3b8; }
+            .cb-row.estimee .badge, .cb-row.estimee .cb-n img { opacity: 0.55; }
+            .cb-vide { display: none; padding: 30px 10px; text-align: center; color: #64748b; font-size: 0.88rem; }
+            .cb-fiche { position: sticky; top: var(--cb-top, 160px); padding: 20px 22px 22px; border-left: 1px solid #e8edf3; align-self: start; }
+            .cb-fiche .cb-quand { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #D65F3A; }
+            .cb-fiche h3 { margin: 4px 0 6px; font-size: 1.2rem; line-height: 1.3; color: #0f172a; }
+            .cb-fiche h3 img { width: 15px !important; margin-right: 5px !important; }
+            .cb-fiche .cb-fiche-badges .badge { width: 25px; height: 21px; font-size: 0.58rem; }
+            .cb-fiche p { margin: 0; font-size: 0.86rem; line-height: 1.7; color: #334155; }
+            .cb-fiche p span { color: #64748b; }
+            .cb-fiche .cb-infos { margin: 10px 0 12px; }
+            .cb-fiche .cb-note { font-style: italic; color: #64748b; font-size: 0.8rem; line-height: 1.5; margin-top: 6px; padding: 8px 10px; border: 2px dashed #94a3b8; border-radius: 8px; background: #f8fafc; }
+            .cb-carte { height: 180px; border-radius: 12px; overflow: hidden; border: 1px solid #e8edf3; background: #eef2f6; margin: 12px 0; }
+            .cb-carte iframe { width: 100%; height: 100%; border: 0; display: block; }
+            .cb-btns { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; }
+            .cb-btns a { display: flex; align-items: center; justify-content: center; height: 40px; border-radius: 50px; background: #003366; color: #ffffff; border: 1.5px solid #003366; font-size: 0.8rem; font-weight: 800; text-decoration: none; white-space: nowrap; }
+            .cb-btns a.cb-iti { background: #ffffff; color: #003366; }
+            .cb-btns a:hover { opacity: 0.9; }
+        }
+        /* Écrans moyens : les mois passent en barre au-dessus de la liste */
+        @media (min-width: 835px) and (max-width: 1100px) {
+            .cal-bureau { grid-template-columns: minmax(0, 1fr) 300px; }
+            .cb-mois { position: static; grid-column: 1 / -1; display: flex; gap: 6px; overflow-x: auto; padding: 10px 14px; border-right: 0; border-bottom: 1px solid #e8edf3; }
+            .cb-mois button { width: auto; flex-shrink: 0; gap: 6px; padding: 5px 12px; border: 1px solid #d6e6f5; border-radius: 8px; font-size: 0.78rem; }
+            .cb-mois button.on { box-shadow: none; }
+            .cb-fiche { padding: 16px; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -714,6 +775,7 @@ autre_langue: en/calendar.html
                         <tbody id="calBody"></tbody>
                     </table>
                     <div id="calMobile" class="cal-mobile hide-past"></div>
+                    <div id="calBureau" class="cal-bureau hide-past"></div>
                 </div>
             </div>
 
@@ -894,6 +956,116 @@ autre_langue: en/calendar.html
             });
             majMobile();
         }
+        // --- CALENDRIER ORDINATEUR : mois à gauche, liste au centre, fiche détaillée à droite ---
+        const CB = { recherche: "Rechercher une épreuve, une ville…", vide: "Aucune épreuve ne correspond. Changez la recherche ou le filtre, ou activez « Épreuves terminées ».", itineraire: "Itinéraire", carte: "Carte du lieu" };
+        let CB_ITEMS = [];
+        function cbSansAccent(t) { return String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+        function construireBureau(items) {
+            const box = document.getElementById('calBureau');
+            if (!box) return;
+            CB_ITEMS = items;
+            const groupes = {}, ordre = [];
+            items.forEach((it, i) => {
+                const p = lireDate(it.row[0], ANNEE);
+                it.debut = p ? p.debut : null; it.fin = p ? p.fin : null; it.i = i;
+                const m = it.debut ? it.debut.getMonth() : 12;
+                if (!groupes[m]) { groupes[m] = []; ordre.push(m); }
+                groupes[m].push(it);
+            });
+            let nav = '<nav class="cb-mois">' + ordre.map(m => `<button type="button" data-m="${m}">${m < 12 ? CM.mois[m] : "?"}<small></small></button>`).join("") + '</nav>';
+            let liste = `<div class="cb-liste"><div class="cb-recherche"><input type="search" id="cbRecherche" placeholder="${CB.recherche}" aria-label="${CB.recherche}"></div>`;
+            ordre.forEach(m => {
+                liste += `<h3 class="cb-mh" data-m="${m}">${m < 12 ? CM.mois[m] + " " + ANNEE : ""}<span></span></h3>`;
+                groupes[m].forEach(it => {
+                    const r = it.row, d = it.debut, f = it.fin;
+                    const num = d ? d.getDate() + (f ? "–" + f.getDate() : "") : (r[0] || "");
+                    const cherche = cbSansAccent([r[1], it.ville, r[2], r[6]].join(" "));
+                    liste += `<button type="button" class="cb-row${r.estimee ? " estimee" : ""}${it.past ? " past-event" : ""}" data-i="${it.i}" data-m="${m}" data-categories="${it.cats}" data-cherche="${cherche.replace(/"/g, "")}"${r.estimee ? ` title="${CM.note}"` : ""}>
+                        <span class="cb-d"><small>${d ? CM.jours[d.getDay()] : ""}</small><b>${num}</b></span>
+                        <span><span class="cb-n">${it.isTQ}${r[1]}</span><span class="cb-v">📍 ${it.ville}${r[2] ? " · " + r[2] : ""}</span></span>
+                        <span class="cb-badges">${it.badges}</span>
+                        <span class="cb-chev" aria-hidden="true">›</span>
+                    </button>`;
+                });
+            });
+            liste += `<div class="cb-vide">${CB.vide}</div></div>`;
+            box.innerHTML = nav + liste + '<aside class="cb-fiche" id="cbFiche" aria-live="polite"></aside>';
+            const decalage = () => (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0) + (document.querySelector('.legend-container') ? document.querySelector('.legend-container').offsetHeight : 0) + 12;
+            box.style.setProperty('--cb-top', decalage() + 'px');
+            box.addEventListener('click', e => {
+                const row = e.target.closest('.cb-row');
+                if (row) { afficherFicheBureau(+row.dataset.i); return; }
+                const b = e.target.closest('.cb-mois button');
+                if (b) { const t = box.querySelector(`.cb-mh[data-m="${b.dataset.m}"]`); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.pageYOffset - decalage(), behavior: 'smooth' }); }
+            });
+            document.getElementById('cbRecherche').addEventListener('input', majBureau);
+            window.addEventListener('scroll', cbMoisActif, { passive: true });
+            majBureau();
+        }
+        function afficherFicheBureau(i) {
+            const it = CB_ITEMS[i], fiche = document.getElementById('cbFiche');
+            if (!it || !fiche) return;
+            document.querySelectorAll('.cb-row.sel').forEach(r => r.classList.remove('sel'));
+            const row = document.querySelector(`.cb-row[data-i="${i}"]`);
+            if (row) row.classList.add('sel');
+            const r = it.row;
+            const noms = [...it.badges.matchAll(/title="([^"]+)"/g)].map(x => x[1]).join(", ");
+            const lieu = it.lieu || it.ville;
+            fiche.innerHTML = `
+                <div class="cb-quand">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
+                <h3>${it.isTQ}${r[1]}</h3>
+                <div class="cb-fiche-badges">${it.badges}</div>
+                <div class="cb-infos">
+                    <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
+                    <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
+                    ${noms ? `<p><span>${CM.lEp}${CM.dp}</span> ${noms}</p>` : ""}
+                    ${r.estimee ? `<p class="cb-note">${CM.note}</p>` : ""}
+                </div>
+                ${lieu ? `<div class="cb-carte"><iframe loading="lazy" title="${CB.carte}" src="https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=11&output=embed"></iframe></div>` : ""}
+                <div class="cb-btns">
+                    ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
+                    ${r[3] ? `<a href="mailto:${r[3]}">${CM.bMail}</a>` : ""}
+                    ${lieu ? `<a class="cb-iti" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(lieu)}" target="_blank" rel="noopener">${CB.itineraire}</a>` : ""}
+                </div>`;
+        }
+        // Compteurs, recherche et épreuves terminées ; garde une fiche affichée
+        function majBureau() {
+            const box = document.getElementById('calBureau');
+            if (!box || !box.innerHTML) return;
+            const champ = document.getElementById('cbRecherche');
+            const mots = cbSansAccent(champ ? champ.value : "").split(/\s+/).filter(Boolean);
+            box.querySelectorAll('.cb-row').forEach(r => r.classList.toggle('cb-cache', mots.length > 0 && !mots.every(m => r.dataset.cherche.includes(m))));
+            const cachePasse = box.classList.contains('hide-past');
+            const visible = r => !r.classList.contains('hidden') && !r.classList.contains('cb-cache') && !(cachePasse && r.classList.contains('past-event'));
+            let total = 0;
+            box.querySelectorAll('.cb-mh').forEach(t => {
+                const m = t.dataset.m;
+                const n = [...box.querySelectorAll(`.cb-row[data-m="${m}"]`)].filter(visible).length;
+                total += n;
+                t.style.display = n ? '' : 'none';
+                t.querySelector('span').textContent = n + " " + (n > 1 ? CM.epreuves : CM.epreuve);
+                const b = box.querySelector(`.cb-mois button[data-m="${m}"]`);
+                if (b) { b.style.display = n ? '' : 'none'; b.querySelector('small').textContent = n; }
+            });
+            box.querySelector('.cb-vide').style.display = total ? 'none' : 'block';
+            const sel = box.querySelector('.cb-row.sel');
+            if (!sel || !visible(sel)) {
+                const premier = [...box.querySelectorAll('.cb-row')].find(visible);
+                if (premier) afficherFicheBureau(+premier.dataset.i);
+                else document.getElementById('cbFiche').innerHTML = "";
+            }
+            cbMoisActif();
+        }
+        // Surligne le mois en cours de lecture dans la colonne de gauche
+        function cbMoisActif() {
+            const box = document.getElementById('calBureau');
+            if (!box || !box.offsetParent) return;
+            const limite = parseInt(getComputedStyle(box).getPropertyValue('--cb-top')) + 30;
+            let actif = null;
+            box.querySelectorAll('.cb-mh').forEach(t => { if (t.style.display !== 'none' && t.getBoundingClientRect().top <= limite) actif = t.dataset.m; });
+            if (actif === null) { const t = [...box.querySelectorAll('.cb-mh')].find(t => t.style.display !== 'none'); if (t) actif = t.dataset.m; }
+            box.querySelectorAll('.cb-mois button').forEach(b => b.classList.toggle('on', b.dataset.m === actif));
+        }
         // --- Fiche d'épreuve (mobile) : s'ouvre du bas, se ferme avec ✕, en touchant à côté ou en la glissant vers le bas ---
         let ficheScrollY = 0;
         function creerFiche() {
@@ -1040,6 +1212,7 @@ autre_langue: en/calendar.html
             }
             document.getElementById('status').style.display = 'none';
             construireMobile(MOB);
+            construireBureau(MOB);
             document.getElementById('calTable').style.display = (window.innerWidth <= 834) ? 'block' : 'table';
         }
 
@@ -1112,12 +1285,12 @@ autre_langue: en/calendar.html
 
         function setupFilters() {
             const items = document.querySelectorAll('.clickable-cat');
-            const rows = document.querySelectorAll('#calBody tr, .cm-row');
+            const rows = document.querySelectorAll('#calBody tr, .cm-row, .cb-row');
             
             items.forEach(item => {
                 item.addEventListener('click', () => {
                     const cat = item.getAttribute('data-cat');
-                    setTimeout(majMobile, 0);
+                    setTimeout(() => { majMobile(); majBureau(); }, 0);
                     
                     if (activeFilter === cat) {
                         activeFilter = null;
@@ -1144,7 +1317,7 @@ autre_langue: en/calendar.html
                     // Alignement automatique après filtrage
                     setTimeout(() => {
                         const legend = document.querySelector('.legend-container');
-                        const table = (window.innerWidth <= 834) ? document.getElementById('calMobile') : document.getElementById('calTable');
+                        const table = (window.innerWidth <= 834) ? document.getElementById('calMobile') : document.getElementById('calBureau');
                         if (table && legend) {
                             const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
                             const legendHeight = legend.offsetHeight;
@@ -1228,6 +1401,8 @@ function togglePastEvents() {
     showPast = toggle.checked;
     const mobile = document.getElementById('calMobile');
     if (mobile) mobile.classList.toggle('hide-past', !showPast);
+    const bureau = document.getElementById('calBureau');
+    if (bureau) bureau.classList.toggle('hide-past', !showPast);
     
     if (showPast) {
         table.classList.remove('hide-past');
@@ -1238,7 +1413,7 @@ function togglePastEvents() {
     }
 
     // Ré-appliquer manuellement les filtres si une catégorie est active
-    const rows = document.querySelectorAll('#calBody tr, .cm-row');
+    const rows = document.querySelectorAll('#calBody tr, .cm-row, .cb-row');
     const catActive = document.querySelector('.legend-item.active');
     
     if (catActive) {
@@ -1250,7 +1425,7 @@ function togglePastEvents() {
             }
         });
     }
-    majMobile();
+    majMobile(); majBureau();
 }
 
 // Highlight de la page active
