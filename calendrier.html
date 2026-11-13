@@ -1537,7 +1537,9 @@ autre_langue: en/calendar.html
 
         function openGlobalMap() {
             document.getElementById('modalTitle').innerText = "Carte Globale";
-            document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=13OYaC1_OwlD75g4qMS56ppVFxuL05Og&ehbc=2E312F"></iframe>`;
+            // Carte Google My Maps de la saison affichée (2027 par défaut, 2026 en archives)
+            const carteMid = ANNEE === 2026 ? "1j1mESDNJYcpD_zawTt1CjhPrl_aHQ8k" : "15bzuYt_0elPbFlcY_W42afQ-4hEJMus";
+            document.getElementById('mapContainer').innerHTML = `<iframe src="https://www.google.com/maps/d/embed?mid=${carteMid}&ehbc=2E312F"></iframe>`;
             document.getElementById('mapModal').style.display = "block";
         }
 
