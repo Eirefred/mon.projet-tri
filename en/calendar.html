@@ -650,12 +650,16 @@ autre_langue: ../calendrier.html
         @media (max-width: 834px) {
             .season-banner.banniere-2027 { padding: 10px 14px; }
             .season-banner.banniere-2027 .season-banner-title { margin: 0; font-size: 0.92rem; }
-            .season-banner.banniere-2027 .season-banner-text p:not(.season-banner-title) { display: none; }
+            .season-banner.banniere-2027 .season-banner-text p:not(.season-banner-title):not(.banniere-courte) { display: none; }
+            .season-banner.banniere-2027 .season-banner-title { margin-bottom: 4px; }
+            .cm-legende-estimee { display: none; }
             .cm-legende-estimee { margin: 0; padding: 6px 16px; font-size: 0.7rem; color: #64748b; background: #ffffff; border-bottom: 1px solid #e8edf3; }
             .cm-legende-estimee i { display: inline-block; width: 16px; height: 10px; border: 2px dashed #94a3b8; border-radius: 3px; background: #f8fafc; vertical-align: -1px; margin-right: 6px; }
         }
         /* Liste texte des épreuves pour les moteurs de recherche (remplacée à l'écran par le calendrier interactif) */
         .cal-statique { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+        .banniere-courte { display: none; }
+        @media (max-width: 834px) { .season-banner .banniere-courte { display: block; font-size: 0.86rem; } }
     </style>
 
     <script type="application/ld+json">
@@ -693,6 +697,7 @@ autre_langue: ../calendrier.html
             <div class="season-banner banniere-2027" role="status">
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 2027 calendar being confirmed</p>
+                    <p class="banniere-courte">Races <span class="ex-pointille">in grey with a dotted outline</span> are awaiting confirmation.</p>
                     <p>Organizers are confirming their dates over the coming weeks. Races shown <span class="ex-pointille">in grey with a dotted outline</span> haven't announced their 2027 date yet: the date shown is an estimate based on the 2026 edition (same day of the week).</p>
                 </div>
             </div>
