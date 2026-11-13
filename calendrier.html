@@ -752,8 +752,22 @@ autre_langue: en/calendar.html
         .tq-note-container { display: none !important; }
         .f-tq { display: flex; gap: 6px; align-items: center; margin: 0 16px 8px; padding: 0; font-size: 0.7rem; line-height: 1.3; color: #64748b; }
         .f-tq img { flex-shrink: 0; margin-top: 1px; }
+        .f-tq-egal { font-weight: 800; color: #475569; margin-right: 1px; }
         .f-tq a { color: #64748b; font-weight: 600; text-decoration: underline; white-space: nowrap; }
         .f-mobile .f-tq { margin: 4px 0 0; font-size: 0.76rem; }
+        /* Bandeau d'options (mention TQ, piscine, épreuves terminées) */
+        .cal-options { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 18px; margin: 4px auto 14px; padding: 8px 18px; max-width: 1100px; box-sizing: border-box; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 50px; font-size: 0.8rem; color: #475569; }
+        .cal-options .co-tq { display: inline; line-height: 1.5; }
+        .cal-options .co-tq img { vertical-align: -3px; }
+        .cal-options .co-tq a { color: #004c97; font-weight: 700; text-decoration: underline; }
+        .cal-options .co-sep { width: 1px; height: 20px; background: #e2e8f0; }
+        .cal-options .f-ck { width: auto; font-size: 0.8rem; }
+        @media (max-width: 834px) {
+            .cal-options { border-radius: 14px; margin: 0 0 12px; padding: 8px 12px; gap: 4px 14px; justify-content: flex-start; font-size: 0.76rem; }
+            .cal-options .co-tq { flex-basis: 100%; }
+            .cal-options .co-sep { display: none; }
+            .cal-options .f-ck { font-size: 0.78rem; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -824,7 +838,13 @@ autre_langue: en/calendar.html
             </div>
 
             <!-- Note d'information optimisée pour l'affichage sur deux lignes -->
-<div class="tq-note-container" style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap;">
+            <div class="cal-options" role="group" aria-label="Options d'affichage">
+                <span class="co-tq"><img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ" width="16" height="16"> <b>=</b> épreuve sanctionnée par Triathlon Québec · <a href="javascript:void(0)" onclick="openTqModal()">Voir plus</a></span>
+                <span class="co-sep" aria-hidden="true"></span>
+                <button type="button" class="f-ck" data-f-pis role="checkbox" aria-checked="false"><span class="bx" aria-hidden="true"></span><span class="badge cat-piscine">PI</span>Épreuves en piscine seulement</button>
+                <button type="button" class="f-ck" data-f-passe role="checkbox" aria-checked="true"><span class="bx" aria-hidden="true"></span>Afficher les épreuves terminées</button>
+            </div>
+            <div class="tq-note-container" style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; vertical-align: middle;">
     <span class="tq-label"><strong>Note sur la mention TQ :</strong></span>
     <span class="tq-desc">gage de sécurité et de qualité organisationnelle.</span>
@@ -1063,7 +1083,7 @@ autre_langue: en/calendar.html
                 if (!groupes[m]) { groupes[m] = []; ordre.push(m); }
                 groupes[m].push(it);
             });
-            let nav = `<div class="cb-side">${noteTQ()}<div class="cb-titre">${FILT.mois}</div><nav class="cb-mois">` + ordre.map(m => `<button type="button" data-m="${m}" title="${m < 12 ? CM.mois[m] : ""}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + `</nav><div class="cb-titre">${FILT.filtres}<button type="button" data-f-effacer>${FILT.effacer}</button></div>${filtresHTML()}</div>`;
+            let nav = `<div class="cb-side"><div class="cb-titre">${FILT.mois}</div><nav class="cb-mois">` + ordre.map(m => `<button type="button" data-m="${m}" title="${m < 12 ? CM.mois[m] : ""}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + `</nav><div class="cb-titre">${FILT.filtres}<button type="button" data-f-effacer>${FILT.effacer}</button></div>${filtresHTML()}</div>`;
             let liste = `<div class="cb-liste"><div class="cb-outils"><div class="cb-recherche"><input type="search" id="cbRecherche" placeholder="${CB.recherche}" aria-label="${CB.recherche}"></div><button type="button" class="cb-carteg" onclick="openGlobalMap()">🌎 ${FILT.carte}</button></div>`;
             ordre.forEach(m => {
                 liste += `<h3 class="cb-mh" data-m="${m}">${m < 12 ? CM.mois[m] + " " + ANNEE : ""}<span></span></h3>`;
@@ -1243,11 +1263,10 @@ autre_langue: en/calendar.html
         const FILTRES = new Set();
         let FILTRE_PISCINE = false;
         // Mention TQ (déplacée dans la colonne de gauche sur ordinateur et dans la fiche Filtres sur mobile)
-        function noteTQ() { return `<div class="f-tq"><img src="${TQ_LOGO}" alt="TQ" width="14" height="14"><span>Sanctionné par Triathlon Québec · <a href="javascript:void(0)" onclick="fermerFiche(); openTqModal()">Voir plus</a></span></div>`; }
+        function noteTQ() { return `<div class="f-tq"><img src="${TQ_LOGO}" alt="TQ" width="14" height="14"><span><b class="f-tq-egal">=</b> épreuve sanctionnée par Triathlon Québec · <a href="javascript:void(0)" onclick="fermerFiche(); openTqModal()">Voir plus</a></span></div>`; }
         function filtresHTML() {
             const ck = (code, label) => `<button type="button" class="f-ck" data-f-code="${code}" role="checkbox" aria-checked="false"${code === "AT" ? ` title="${FILT.atInfo}"` : ""}><span class="bx" aria-hidden="true"></span><span class="badge ${EP_INFO[code].cat}">${code}</span>${label}${code === "AT" ? ' <span class="f-i" aria-hidden="true">ⓘ</span>' : ""}</button>`;
             let h = FILT.groupes.map(g => `<div class="f-groupe ${g.cls}"><button type="button" class="f-fam-titre" data-f-fam="${g.id}">${g.titre}${g.em ? ` <span class="em" aria-hidden="true">${g.em}</span>` : ""}</button><div class="f-items">${g.codes.map(c => ck(c[0], c[1])).join("")}</div>${g.id === "aut" ? `<p class="f-note">${g.codes.find(c => c[0] === "AT")[1]}${CM.dp} ${FILT.atInfo.charAt(0).toLowerCase() + FILT.atInfo.slice(1)}.</p>` : ""}</div>`).join("");
-            h += `<div class="f-groupe o"><span class="f-fam-titre">${FILT.options}</span><div class="f-items"><button type="button" class="f-ck" data-f-pis role="checkbox" aria-checked="false"><span class="bx" aria-hidden="true"></span><span class="badge cat-piscine">PI</span>${FILT.piscine}</button><button type="button" class="f-ck" data-f-passe role="checkbox" aria-checked="false"><span class="bx" aria-hidden="true"></span>${FILT.passe}</button></div></div>`;
             return h;
         }
         function lignesVisibles(selecteur, boite) {
@@ -1270,11 +1289,10 @@ autre_langue: en/calendar.html
             document.querySelectorAll('[data-f-passe]').forEach(b => { b.classList.toggle('on', passe); b.setAttribute('aria-checked', passe); });
             const nb = FILTRES.size + (FILTRE_PISCINE ? 1 : 0);
             document.querySelectorAll('.cm-nb').forEach(e => e.textContent = nb ? "\u00a0·\u00a0" + nb : "");
-            document.querySelectorAll('[data-f-effacer]').forEach(e => e.style.visibility = (nb || passe) ? "visible" : "hidden");
+            document.querySelectorAll('[data-f-effacer]').forEach(e => e.style.visibility = nb ? "visible" : "hidden");
             const libelle = code => { const g = FILT.groupes.find(g => g.codes.some(c => c[0] === code)); const c = g.codes.find(c => c[0] === code); return (g.court ? g.court + " " : "") + c[1]; };
             const chips = [...FILTRES].sort((a, b) => EP_ORDRE.indexOf(a) - EP_ORDRE.indexOf(b)).map(c => `<button type="button" class="f-chip" data-f-code="${c}" aria-label="${FILT.retirer} : ${libelle(c)}">${libelle(c)} ✕</button>`);
             if (FILTRE_PISCINE) chips.push(`<button type="button" class="f-chip" data-f-pis aria-label="${FILT.retirer}">${FILT.piscine} ✕</button>`);
-            if (passe) chips.push(`<button type="button" class="f-chip" data-f-passe aria-label="${FILT.retirer}">${FILT.passeCourt} ✕</button>`);
             document.querySelectorAll('.cm-actifs').forEach(e => e.innerHTML = chips.join(""));
             const voir = document.querySelector('.f-voir');
             if (voir) voir.textContent = FILT.voir(lignesVisibles('.cm-row', document.getElementById('calMobile')));
@@ -1290,7 +1308,7 @@ autre_langue: en/calendar.html
             if (!fiche) {
                 fiche = document.createElement('div'); fiche.id = 'cmFiltresFiche'; fiche.className = 'cm-fiche cm-fiche-filtres';
                 fiche.setAttribute('role', 'dialog'); fiche.setAttribute('aria-modal', 'true');
-                fiche.innerHTML = `<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="${FILT.fermer}" onclick="fermerFiche()">✕</button><div class="f-tete"><h3>${FILT.titreFiche}</h3><button type="button" class="f-lien" data-f-effacer>${FILT.toutEffacer}</button></div><div class="f-mobile">${filtresHTML()}${noteTQ()}</div><button type="button" class="f-voir" onclick="fermerFiche(); const l = document.getElementById('calMobile'); if (l) window.scrollTo({ top: l.getBoundingClientRect().top + window.pageYOffset - (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0), behavior: 'smooth' });"></button>`;
+                fiche.innerHTML = `<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="${FILT.fermer}" onclick="fermerFiche()">✕</button><div class="f-tete"><h3>${FILT.titreFiche}</h3><button type="button" class="f-lien" data-f-effacer>${FILT.toutEffacer}</button></div><div class="f-mobile">${filtresHTML()}</div><button type="button" class="f-voir" onclick="fermerFiche(); const l = document.getElementById('calMobile'); if (l) window.scrollTo({ top: l.getBoundingClientRect().top + window.pageYOffset - (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0), behavior: 'smooth' });"></button>`;
                 document.body.appendChild(fiche);
             }
             syncFiltresUI();
@@ -1304,7 +1322,7 @@ autre_langue: en/calendar.html
             const b = e.target.closest('[data-f-code], [data-f-fam], [data-f-pis], [data-f-passe], [data-f-effacer], [data-f-ouvrir]');
             if (!b) return;
             if (b.hasAttribute('data-f-ouvrir')) { ouvrirFiltres(); return; }
-            if (b.hasAttribute('data-f-effacer')) { FILTRES.clear(); FILTRE_PISCINE = false; if (typeof showPast !== 'undefined' && showPast && ANNEE !== 2026) basculerPasse(false); appliquerFiltres(); return; }
+            if (b.hasAttribute('data-f-effacer')) { FILTRES.clear(); FILTRE_PISCINE = false; appliquerFiltres(); return; }
             if (b.hasAttribute('data-f-passe')) { basculerPasse(!(typeof showPast !== 'undefined' && showPast)); return; }
             if (b.hasAttribute('data-f-pis')) { FILTRE_PISCINE = !FILTRE_PISCINE; appliquerFiltres(); return; }
             if (b.dataset.fFam) {
@@ -1324,6 +1342,7 @@ autre_langue: en/calendar.html
                 const rows = ANNEE === 2027 ? preparer2027(brut) : brut;
                 renderTable(rows);
                 setupFilters();
+                if (ANNEE === 2027) basculerPasse(true); // épreuves terminées affichées par défaut
                 const statique = document.getElementById('calStatique');
                 if (statique) statique.remove();
             } catch (e) { 
