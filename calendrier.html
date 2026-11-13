@@ -679,6 +679,9 @@ autre_langue: en/calendar.html
             .cb-mois button.on { box-shadow: none; }
             .cb-fiche { padding: 16px; }
         }
+        .ep-groupes { list-style: none; margin: 0 0 2px; padding: 0; }
+        .ep-groupes li { font-size: 0.86rem; line-height: 1.6; color: #334155; }
+        .ep-groupes li b { color: #0f172a; }
     </style>
 
     <script type="application/ld+json">
@@ -896,6 +899,18 @@ autre_langue: en/calendar.html
             note: "Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine).",
             vide: "Aucune épreuve à afficher. Activez « Épreuves terminées » ou changez de filtre."
         };
+        // Épreuves regroupées par type (la piscine n'est pas une épreuve : elle n'apparaît pas ici)
+        const EPREUVES_TYPES = {
+            TI: ["Triathlon", "Initiation"], TS: ["Triathlon", "Sprint"], TO: ["Triathlon", "Olympique"], "T½": ["Triathlon", "Demi-distance"], TC: ["Triathlon", "Longue distance"],
+            DS: ["Duathlon", "Sprint"], DO: ["Duathlon", "Olympique"], DL: ["Duathlon", "Longue distance"],
+            AV: ["Autres", "Aquavélo"], AQ: ["Autres", "Aquathlon"]
+        };
+        function epreuvesGroupees(cats) {
+            const g = {}, ordre = [];
+            String(cats || "").split(",").forEach(c => { const t = EPREUVES_TYPES[c]; if (!t) return; if (!g[t[0]]) { g[t[0]] = []; ordre.push(t[0]); } g[t[0]].push(t[1]); });
+            if (!ordre.length) return "";
+            return `<p><span>${CM.lEp}${CM.dp}</span></p><ul class="ep-groupes">` + ordre.map(t => `<li><b>${t}</b>${CM.dp} ${g[t].join(", ")}</li>`).join("") + `</ul>`;
+        }
         function construireMobile(items) {
             const box = document.getElementById('calMobile');
             if (!box) return;
@@ -914,7 +929,6 @@ autre_langue: en/calendar.html
                     const r = it.row, d = it.debut, f = it.fin;
                     const jour = d ? CM.jours[d.getDay()] : "";
                     const num = d ? d.getDate() + (f ? "–" + f.getDate() : "") : (r[0] || "");
-                    const noms = [...it.badges.matchAll(/title="([^"]+)"/g)].map(x => x[1]).join(", ");
                     const dateTxt = CM.dateComplete(r[0], d, f);
                     const nom = String(r[1]).replace(/'/g, "\\'");
                     h += `<div class="cm-row${r.estimee ? " estimee" : ""}${it.past ? " past-event" : ""}" data-categories="${it.cats}" data-m="${m}">
@@ -926,11 +940,11 @@ autre_langue: en/calendar.html
                         </button>
                         <div class="cm-det">
                             <h3>${it.isTQ}${r[1]}</h3>
-                            <div class="cm-fiche-badges">${it.badges}</div>
+                            <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}</div>
                             <p><span>${CM.lDate}${CM.dp}</span> ${dateTxt}</p>
                             <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
-                            ${noms ? `<p><span>${CM.lEp}${CM.dp}</span> ${noms}</p>` : ""}
+                            ${epreuvesGroupees(it.cats)}
                             ${r.estimee ? `<p class="cm-note">${CM.note}</p>` : ""}
                             <div class="cm-btns">
                                 ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
@@ -1009,16 +1023,15 @@ autre_langue: en/calendar.html
             const row = document.querySelector(`.cb-row[data-i="${i}"]`);
             if (row) row.classList.add('sel');
             const r = it.row;
-            const noms = [...it.badges.matchAll(/title="([^"]+)"/g)].map(x => x[1]).join(", ");
             const lieu = it.lieu || it.ville;
             fiche.innerHTML = `
                 <div class="cb-quand">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
                 <h3>${it.isTQ}${r[1]}</h3>
-                <div class="cb-fiche-badges">${it.badges}</div>
+                <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}</div>
                 <div class="cb-infos">
                     <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                     <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
-                    ${noms ? `<p><span>${CM.lEp}${CM.dp}</span> ${noms}</p>` : ""}
+                    ${epreuvesGroupees(it.cats)}
                     ${r.estimee ? `<p class="cb-note">${CM.note}</p>` : ""}
                 </div>
                 ${lieu ? `<div class="cb-carte"><iframe loading="lazy" title="${CB.carte}" src="https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=11&output=embed"></iframe></div>` : ""}
