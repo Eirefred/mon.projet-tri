@@ -748,6 +748,12 @@ autre_langue: en/calendar.html
         .f-voir { display: block; width: 100%; height: 46px; margin-top: 10px; border: 0; border-radius: 50px; background: #003366; color: #ffffff; font: inherit; font-size: 0.9rem; font-weight: 800; cursor: pointer; }
         @media (min-width: 1101px) { .cal-bureau { grid-template-columns: 200px minmax(0, 1fr) 320px; } }
         .f-fam-titre { white-space: nowrap; }
+        /* Mention TQ : retirée du haut de la page, affichée avec les filtres */
+        .tq-note-container { display: none !important; }
+        .f-tq { display: flex; gap: 6px; align-items: center; margin: 0 16px 8px; padding: 0; font-size: 0.7rem; line-height: 1.3; color: #64748b; }
+        .f-tq img { flex-shrink: 0; margin-top: 1px; }
+        .f-tq a { color: #64748b; font-weight: 600; text-decoration: underline; white-space: nowrap; }
+        .f-mobile .f-tq { margin: 4px 0 0; font-size: 0.76rem; }
     </style>
 
     <script type="application/ld+json">
@@ -1057,7 +1063,7 @@ autre_langue: en/calendar.html
                 if (!groupes[m]) { groupes[m] = []; ordre.push(m); }
                 groupes[m].push(it);
             });
-            let nav = `<div class="cb-side"><div class="cb-titre">${FILT.mois}</div><nav class="cb-mois">` + ordre.map(m => `<button type="button" data-m="${m}" title="${m < 12 ? CM.mois[m] : ""}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + `</nav><div class="cb-titre">${FILT.filtres}<button type="button" data-f-effacer>${FILT.effacer}</button></div>${filtresHTML()}</div>`;
+            let nav = `<div class="cb-side">${noteTQ()}<div class="cb-titre">${FILT.mois}</div><nav class="cb-mois">` + ordre.map(m => `<button type="button" data-m="${m}" title="${m < 12 ? CM.mois[m] : ""}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + `</nav><div class="cb-titre">${FILT.filtres}<button type="button" data-f-effacer>${FILT.effacer}</button></div>${filtresHTML()}</div>`;
             let liste = `<div class="cb-liste"><div class="cb-outils"><div class="cb-recherche"><input type="search" id="cbRecherche" placeholder="${CB.recherche}" aria-label="${CB.recherche}"></div><button type="button" class="cb-carteg" onclick="openGlobalMap()">🌎 ${FILT.carte}</button></div>`;
             ordre.forEach(m => {
                 liste += `<h3 class="cb-mh" data-m="${m}">${m < 12 ? CM.mois[m] + " " + ANNEE : ""}<span></span></h3>`;
@@ -1236,6 +1242,8 @@ autre_langue: en/calendar.html
         };
         const FILTRES = new Set();
         let FILTRE_PISCINE = false;
+        // Mention TQ (déplacée dans la colonne de gauche sur ordinateur et dans la fiche Filtres sur mobile)
+        function noteTQ() { return `<div class="f-tq"><img src="${TQ_LOGO}" alt="TQ" width="14" height="14"><span>Sanctionné par Triathlon Québec · <a href="javascript:void(0)" onclick="fermerFiche(); openTqModal()">Voir plus</a></span></div>`; }
         function filtresHTML() {
             const ck = (code, label) => `<button type="button" class="f-ck" data-f-code="${code}" role="checkbox" aria-checked="false"${code === "AT" ? ` title="${FILT.atInfo}"` : ""}><span class="bx" aria-hidden="true"></span><span class="badge ${EP_INFO[code].cat}">${code}</span>${label}${code === "AT" ? ' <span class="f-i" aria-hidden="true">ⓘ</span>' : ""}</button>`;
             let h = FILT.groupes.map(g => `<div class="f-groupe ${g.cls}"><button type="button" class="f-fam-titre" data-f-fam="${g.id}">${g.titre}${g.em ? ` <span class="em" aria-hidden="true">${g.em}</span>` : ""}</button><div class="f-items">${g.codes.map(c => ck(c[0], c[1])).join("")}</div>${g.id === "aut" ? `<p class="f-note">${g.codes.find(c => c[0] === "AT")[1]}${CM.dp} ${FILT.atInfo.charAt(0).toLowerCase() + FILT.atInfo.slice(1)}.</p>` : ""}</div>`).join("");
@@ -1282,7 +1290,7 @@ autre_langue: en/calendar.html
             if (!fiche) {
                 fiche = document.createElement('div'); fiche.id = 'cmFiltresFiche'; fiche.className = 'cm-fiche cm-fiche-filtres';
                 fiche.setAttribute('role', 'dialog'); fiche.setAttribute('aria-modal', 'true');
-                fiche.innerHTML = `<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="${FILT.fermer}" onclick="fermerFiche()">✕</button><div class="f-tete"><h3>${FILT.titreFiche}</h3><button type="button" class="f-lien" data-f-effacer>${FILT.toutEffacer}</button></div><div class="f-mobile">${filtresHTML()}</div><button type="button" class="f-voir" onclick="fermerFiche(); const l = document.getElementById('calMobile'); if (l) window.scrollTo({ top: l.getBoundingClientRect().top + window.pageYOffset - (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0), behavior: 'smooth' });"></button>`;
+                fiche.innerHTML = `<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="${FILT.fermer}" onclick="fermerFiche()">✕</button><div class="f-tete"><h3>${FILT.titreFiche}</h3><button type="button" class="f-lien" data-f-effacer>${FILT.toutEffacer}</button></div><div class="f-mobile">${filtresHTML()}${noteTQ()}</div><button type="button" class="f-voir" onclick="fermerFiche(); const l = document.getElementById('calMobile'); if (l) window.scrollTo({ top: l.getBoundingClientRect().top + window.pageYOffset - (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0), behavior: 'smooth' });"></button>`;
                 document.body.appendChild(fiche);
             }
             syncFiltresUI();
