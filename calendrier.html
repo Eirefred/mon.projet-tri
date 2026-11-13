@@ -606,8 +606,8 @@ autre_langue: en/calendar.html
         .cm-fiche p { margin: 0; font-size: 0.86rem; line-height: 1.65; color: #334155; }
         .cm-fiche p span { color: #64748b; }
         .cm-fiche .cm-note { margin-top: 6px; font-style: italic; color: #64748b; font-size: 0.8rem; }
-        .cm-fiche .cm-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-        .cm-fiche .cm-btns a, .cm-fiche .cm-btns button { font-family: inherit; font-size: 0.8rem; font-weight: 800; padding: 9px 18px; border-radius: 50px; background: #003366; color: #ffffff; text-decoration: none; border: 1.5px solid #003366; cursor: pointer; }
+        .cm-fiche .cm-btns { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; margin-top: 16px; }
+        .cm-fiche .cm-btns a, .cm-fiche .cm-btns button { display: flex; align-items: center; justify-content: center; gap: 4px; box-sizing: border-box; height: 42px; margin: 0; padding: 0 10px; font-family: inherit; font-size: 0.82rem; font-weight: 800; line-height: 1; border-radius: 50px; background: #003366; color: #ffffff; text-decoration: none; border: 1.5px solid #003366; cursor: pointer; -webkit-appearance: none; appearance: none; white-space: nowrap; }
         .cm-fiche .cm-btns .cm-carte { background: #ffffff; color: #003366; }
         .cm-fiche.estimee h3 { color: #64748b; }
         html.cm-bloque, html.cm-bloque body { overflow: hidden; }
