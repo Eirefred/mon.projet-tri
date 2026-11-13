@@ -24,7 +24,7 @@ autre_langue: en/calendar.html
     <!--  -->
 
 
-    <title>Calendrier Triathlon Duathlon Québec 2026 | mon Projet Tri</title>
+    <title>Calendrier Triathlon Duathlon Québec 2027 | mon Projet Tri</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -542,22 +542,33 @@ autre_langue: en/calendar.html
             .season-banner { padding: 15px 16px; gap: 12px; }
             .season-banner-btn { width: 100%; }
         }
+
+        /* Calendrier 2027 : épreuves dont la date n'est pas encore confirmée */
+        tr.estimee { background-color: #f8fafc; }
+        tr.estimee td, tr.estimee td b, tr.estimee .lieu-link { color: #94a3b8 !important; }
+        tr.estimee td[data-label="Date"] b { font-style: italic; font-weight: 600; }
+        tr.estimee .badge, tr.estimee img, tr.estimee .btn-action { opacity: 0.55; }
+        .tag-a-confirmer { display: inline-block; margin-top: 3px; font-family: 'Montserrat', sans-serif; font-style: normal; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.3px; text-transform: uppercase; color: #64748b !important; background: #ffffff; border: 1px dashed #94a3b8; border-radius: 50px; padding: 1px 7px; white-space: nowrap; }
+        .season-banner .ex-gris { color: #94a3b8; font-style: italic; font-weight: 700; }
+        .archive-wrap { text-align: center; margin: -14px 0 18px; }
+        .lien-archive { font-size: 0.82rem; font-weight: 600; color: #64748b; text-decoration: underline; text-underline-offset: 3px; }
+        .lien-archive:hover { color: #004c97; }
     </style>
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Dataset",
-      "name": "Calendrier des compétitions de triathlon au Québec - Saison 2026",
-      "description": "Répertoire complet et dates des triathlons, duathlons et aquathlons au Québec pour l'année 2026. Inclut les courses affiliées à Triathlon Québec.",
-      "keywords": ["Triathlon Québec", "Calendrier 2026", "Course à pied", "Cyclisme", "Natation"],
+      "name": "Calendrier des compétitions de triathlon au Québec - Saison 2027",
+      "description": "Répertoire complet et dates des triathlons, duathlons et aquathlons au Québec pour l'année 2027. Inclut les courses affiliées à Triathlon Québec.",
+      "keywords": ["Triathlon Québec", "Calendrier 2027", "Course à pied", "Cyclisme", "Natation"],
       "creator": {
         "@type": "Organization",
         "name": "mon Projet Tri",
         "url": "https://mon.projet-tri.org"
       },
       "spatialCoverage": "Quebec, Canada",
-      "temporalCoverage": "2026-01-01/2026-12-31",
+      "temporalCoverage": "2027-01-01/2027-12-31",
       "license": "https://creativecommons.org/licenses/by/4.0/"
     }
     </script>
@@ -571,16 +582,16 @@ autre_langue: en/calendar.html
     <section class="content-section">
         <div class="container">
             
-            <h1>Calendrier provincial 2026</h1>
+            <h1>Calendrier provincial 2027</h1>
 <div id="calendarSubtitle" style="text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text-light); margin-top: -15px; margin-bottom: 25px; text-transform: uppercase;">Épreuves à venir</div>
+            <p class="archive-wrap" id="archiveLink"><a href="?annee=2026" class="lien-archive">Consulter le calendrier 2026 ›</a></p>
 
-            <!-- BANDEAU FIN DE SAISON : supprimez ce bloc quand le nouveau calendrier est publié -->
+            <!-- BANDEAU 2027 : supprimez ce bloc quand toutes les dates 2027 sont confirmées -->
             <div class="season-banner" role="status">
                 <div class="season-banner-text">
-                    <p class="season-banner-title">🏁 La saison 2026 est terminée</p>
-                    <p>Le calendrier de la prochaine saison sera diffusé dès que le calendrier des compétitions aura été entériné par <strong>Triathlon Québec</strong>. En attendant, activez <strong>« Épreuves terminées »</strong> pour avoir un aperçu des courses possibles.</p>
+                    <p class="season-banner-title">📅 Calendrier 2027 en cours de confirmation</p>
+                    <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-gris">en gris</span>, avec la mention <span class="tag-a-confirmer">À confirmer</span>, n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026 (même jour de la semaine).</p>
                 </div>
-                <button type="button" class="season-banner-btn" id="seasonBannerBtn" onclick="afficherEpreuvesTerminees()">Voir les épreuves 2026</button>
             </div>
 
 
@@ -685,9 +696,64 @@ autre_langue: en/calendar.html
 
     <!-- SCRIPTS LOGIQUE EXCEL & FILTRES -->
     <script>
-        const EXCEL_FILE = 'Calendrier-2026.xlsx';
+        // Calendrier affiché : 2027 par défaut, 2026 (archives) avec ?annee=2026 dans l'adresse
+        const ANNEE = new URLSearchParams(location.search).get('annee') === '2026' ? 2026 : 2027;
+        const EXCEL_FILE = ANNEE === 2026 ? 'Calendrier-2026.xlsx' : 'Calendrier-2027.xlsx';
         const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
         let activeFilter = null;
+
+        // --- CALENDRIER 2027 : dates confirmées (colonne « Date (2027) ») ou estimées d'après 2026 ---
+        const MOIS_FR = ["janv.", "fév.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
+        function moisIndex(txt) {
+            const t = String(txt || "").trim().toLowerCase().replace(/\./g, "");
+            return t ? MOIS_FR.findIndex(m => t.startsWith(m.replace(".", "").slice(0, 4))) : -1;
+        }
+        // Lit « 14 fév. », « 14-22 fév. » ou « 30 mai-1 juin » et renvoie les dates de début et de fin
+        function lireDate(txt, annee) {
+            const s = String(txt || "").trim().replace(/\s+/g, " ");
+            const m = s.match(/^(\d{1,2})\s*([^\d\s-][^-]*?)?\s*(?:-\s*(\d{1,2})\s*(.+))?$/);
+            if (!m) return null;
+            const mFin = moisIndex(m[4] || m[2]);
+            const mDeb = m[2] ? moisIndex(m[2]) : mFin;
+            if (mDeb === -1 || mFin === -1) return null;
+            const debut = new Date(annee, mDeb, parseInt(m[1]));
+            const fin = m[3] ? new Date(annee, mFin, parseInt(m[3])) : null;
+            return { debut, fin };
+        }
+        // Même jour de la semaine, un an plus tard (+ 52 semaines) : samedi 11 juil. 2026 → samedi 10 juil. 2027
+        function decaler(d) { return new Date(d.getTime() + 364 * 86400000); }
+        function ecrireDate(debut, fin) {
+            if (!fin) return `${debut.getDate()} ${MOIS_FR[debut.getMonth()]}`;
+            if (debut.getMonth() === fin.getMonth()) return `${debut.getDate()}-${fin.getDate()} ${MOIS_FR[fin.getMonth()]}`;
+            return `${debut.getDate()} ${MOIS_FR[debut.getMonth()]}-${fin.getDate()} ${MOIS_FR[fin.getMonth()]}`;
+        }
+        // Retire la colonne « Date (2027) » : chaque ligne garde le même format que l'ancien fichier
+        function preparer2027(rows) {
+            const lignes = [];
+            for (let i = 1; i < rows.length; i++) {
+                const r = rows[i] || [];
+                if (!r[2]) continue;
+                let date = r[1] ? String(r[1]).trim() : "";
+                let estimee = false, tri = null;
+                if (date) {
+                    const p = lireDate(date, 2027);
+                    if (p) tri = p.debut;
+                } else if (r[0]) {
+                    const p = lireDate(r[0], 2026);
+                    if (p) {
+                        const debut = decaler(p.debut), fin = p.fin ? decaler(p.fin) : null;
+                        date = ecrireDate(debut, fin); tri = debut;
+                    } else { date = String(r[0]).trim(); }
+                    estimee = true;
+                }
+                const ligne = [date].concat(r.slice(2));
+                ligne.estimee = estimee;
+                ligne.tri = tri ? tri.getTime() : Infinity;
+                lignes.push(ligne);
+            }
+            lignes.sort((a, b) => a.tri - b.tri);
+            return [[]].concat(lignes);
+        }
 
         async function loadExcel() {
             try {
@@ -695,7 +761,8 @@ autre_langue: en/calendar.html
                 const arrayBuffer = await response.arrayBuffer();
                 const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
                 const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                const rows = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                const brut = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                const rows = ANNEE === 2027 ? preparer2027(brut) : brut;
                 renderTable(rows);
                 setupFilters();
             } catch (e) { 
@@ -723,7 +790,7 @@ autre_langue: en/calendar.html
                     const jour = parseInt(dateRef.match(/\d+/));
                     const indexMois = moisFr.findIndex(m => dateRef.toLowerCase().includes(m.toLowerCase()));
                     if (jour && indexMois !== -1) {
-                        const dateEpreuve = new Date(2026, indexMois, jour);
+                        const dateEpreuve = new Date(ANNEE, indexMois, jour);
                         if (dateEpreuve < today) tr.classList.add('past-event');
                     }
                 }
@@ -764,8 +831,9 @@ autre_langue: en/calendar.html
                 let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
 
                 tr.setAttribute('data-categories', rowCats.join(','));
+                if (row.estimee) tr.classList.add('estimee');
                 tr.innerHTML = `
-                    <td data-label="Date"><b>${row[0] || ""}</b></td>
+                    <td data-label="Date"><b>${row[0] || ""}</b>${row.estimee ? `<br><span class="tag-a-confirmer" title="Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine)">À confirmer</span>` : ""}</td>
                     <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
                     <td data-label="Organisateur">${row[6] || "-"}</td>
                     <td data-label="Région">${row[2] || ""}</td>
@@ -965,7 +1033,7 @@ function togglePastEvents() {
     
     if (showPast) {
         table.classList.remove('hide-past');
-        if (subtitle) subtitle.innerText = "TOUTES LES ÉPREUVES 2026";
+        if (subtitle) subtitle.innerText = "TOUTES LES ÉPREUVES" + " " + ANNEE;
     } else {
         table.classList.add('hide-past');
         if (subtitle) subtitle.innerText = "ÉPREUVES À VENIR";
@@ -1019,6 +1087,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (btn) btn.textContent = "Épreuves 2026 affichées ✓";
         const cible = document.querySelector('.legend-container') || document.getElementById('calTable');
         if (cible) cible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    </script>
+
+    <script>
+    // Mode archives 2026 : titre, bandeau et lien adaptés, toutes les épreuves affichées
+    if (ANNEE === 2026) {
+        document.querySelector('h1').textContent = "Calendrier provincial 2026";
+        const banniere = document.querySelector('.season-banner');
+        if (banniere) banniere.innerHTML = '<div class="season-banner-text"><p class="season-banner-title">📁 Archives : calendrier 2026</p><p>Vous consultez le calendrier de la saison 2026, terminée. Les dates de la saison 2027 sont dans le calendrier à jour.</p></div>';
+        document.getElementById('archiveLink').innerHTML = '<a href="calendrier.html" class="lien-archive">‹ Revenir au calendrier 2027</a>';
+        const toggle = document.getElementById('pastToggle');
+        if (toggle) { toggle.checked = true; togglePastEvents(); }
     }
     </script>
 </body>
