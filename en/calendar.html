@@ -8,11 +8,11 @@ autre_langue: ../calendrier.html
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quebec Triathlon & Duathlon Calendar 2027 | mon Projet Tri</title>
-    <meta name="description" content="Find all dates for triathlons, duathlons, and aquathlons in Quebec for 2027. Complete calendar, locations, and registration links. Plan your season!">
+    <meta name="description" content="2027 calendar of triathlons, duathlons and aquathlons in Quebec: dates, locations, distances and organizers for every race, updated as dates are confirmed.">
     <meta name="keywords" content="Quebec triathlon calendar 2027, Quebec triathlon races, Quebec duathlon, triathlon competition 2027, mon Projet Tri, Frédéric Hadi">
 
-    <meta property="og:title" content="Triathlon Coaching & Resources in Quebec | mon Projet Tri" />
-    <meta property="og:description" content="Non-profit organization offering triathlon mentorship, club matching, and free resources across Quebec." />
+    <meta property="og:title" content="Quebec Triathlon & Duathlon Calendar 2027 | mon Projet Tri" />
+    <meta property="og:description" content="Every 2027 triathlon, duathlon and aquathlon race in Quebec: dates, locations, distances and organizers." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://mon.projet-tri.org/en/index.html" />
     <meta property="og:site_name" content="mon Projet Tri">
@@ -35,7 +35,6 @@ autre_langue: ../calendrier.html
     <link rel="alternate" hreflang="x-default" href="https://mon.projet-tri.org/calendrier.html" />
 
     <!-- SheetJS Library -->
-    <script src="https://cdn.sheetjs.com/xlsx-0.20.1/package/dist/xlsx.full.min.js"></script>
 
     <style>
         html { scroll-behavior: smooth; }
@@ -647,6 +646,16 @@ autre_langue: ../calendrier.html
         .ep-groupes li { font-size: 0.86rem; line-height: 1.6; color: #334155; }
         .ep-groupes li b { color: #0f172a; }
         .tag-piscine { display: inline-flex; align-items: center; gap: 4px; margin: 1px 0 1px 6px; padding: 2px 9px; border-radius: 50px; background: #e0f7fa; color: #00838f; border: 1px solid #b2ebf2; font-size: 0.72rem; font-weight: 700; vertical-align: middle; white-space: nowrap; }
+        /* Mobile : le bandeau 2027 garde seulement son titre (une ligne de légende explique le pointillé au-dessus de la liste) */
+        @media (max-width: 834px) {
+            .season-banner.banniere-2027 { padding: 10px 14px; }
+            .season-banner.banniere-2027 .season-banner-title { margin: 0; font-size: 0.92rem; }
+            .season-banner.banniere-2027 .season-banner-text p:not(.season-banner-title) { display: none; }
+            .cm-legende-estimee { margin: 0; padding: 6px 16px; font-size: 0.7rem; color: #64748b; background: #ffffff; border-bottom: 1px solid #e8edf3; }
+            .cm-legende-estimee i { display: inline-block; width: 16px; height: 10px; border: 2px dashed #94a3b8; border-radius: 3px; background: #f8fafc; vertical-align: -1px; margin-right: 6px; }
+        }
+        /* Liste texte des épreuves pour les moteurs de recherche (remplacée à l'écran par le calendrier interactif) */
+        .cal-statique { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
     </style>
 
     <script type="application/ld+json">
@@ -681,7 +690,7 @@ autre_langue: ../calendrier.html
             <p class="archive-wrap" id="archiveLink"><a href="?annee=2026" class="lien-archive">View the 2026 calendar ›</a></p>
 
             <!-- 2027 BANNER: remove this block once all 2027 dates are confirmed -->
-            <div class="season-banner" role="status">
+            <div class="season-banner banniere-2027" role="status">
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 2027 calendar being confirmed</p>
                     <p>Organizers are confirming their dates over the coming weeks. Races shown <span class="ex-pointille">in grey with a dotted outline</span> haven't announced their 2027 date yet: the date shown is an estimate based on the 2026 edition (same day of the week).</p>
@@ -727,6 +736,7 @@ autre_langue: ../calendrier.html
             <!-- RACE TABLE -->
             <div class="main-content">
                 <div id="status" style="text-align:center; padding: 20px; font-weight: bold;">Loading calendar...</div>
+                {% include calendrier-seo.html lang="en" %}
                 <div class="table-outer">
                     <table id="calTable" class="hide-past" style="display:none;">
                         <thead>
@@ -790,6 +800,7 @@ autre_langue: ../calendrier.html
     </button>
 
     <!-- EXCEL & FILTERS LOGIC SCRIPTS -->
+    {% include calendrier-donnees.html %}
     <script>
         // Dictionnaires pour convertir le français vers l'anglais
 function formatDateToEnglish(dateStr) {
@@ -824,7 +835,6 @@ function formatDateToEnglish(dateStr) {
 }
         // Calendrier affiché : 2027 par défaut, 2026 (archives) avec ?annee=2026 dans l'adresse
         const ANNEE = new URLSearchParams(location.search).get('annee') === '2026' ? 2026 : 2027;
-        const EXCEL_FILE = ANNEE === 2026 ? '../Calendrier-2026.xlsx' : '../Calendrier-2027.xlsx';
         const TQ_LOGO = "https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp";
         let activeFilter = null;
 
@@ -918,6 +928,7 @@ function formatDateToEnglish(dateStr) {
                 groupes[m].push(it);
             });
             let h = '<div class="cm-mois-barre">' + ordre.map(m => `<button type="button" class="cm-chip" data-m="${m}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + '</div>';
+            if (items.some(it => it.row.estimee)) h += '<p class="cm-legende-estimee"><i aria-hidden="true"></i>Dotted outline: 2027 date to be confirmed</p>';
             ordre.forEach(m => {
                 h += `<div class="cm-month" data-m="${m}">${m < 12 ? CM.mois[m] + " " + ANNEE : ""}<span></span></div>`;
                 groupes[m].forEach(it => {
@@ -1127,18 +1138,18 @@ function formatDateToEnglish(dateStr) {
             box.querySelector('.cm-mois-barre').style.display = total ? '' : 'none';
         }
 
+        // Les données viennent des fichiers CSV de _data/, écrits dans la page par Jekyll (_includes/calendrier-donnees.html)
         async function loadExcel() {
             try {
-                const response = await fetch(EXCEL_FILE);
-                const arrayBuffer = await response.arrayBuffer();
-                const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: 'array' });
-                const sheet = workbook.Sheets[workbook.SheetNames[0]];
-                const brut = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+                const brut = (typeof DONNEES_CAL !== 'undefined') ? DONNEES_CAL[ANNEE] : null;
+                if (!brut || brut.length < 2) throw new Error('Données absentes');
                 const rows = ANNEE === 2027 ? preparer2027(brut) : brut;
                 renderTable(rows);
                 setupFilters();
+                const statique = document.getElementById('calStatique');
+                if (statique) statique.remove();
             } catch (e) { 
-                document.getElementById('status').innerText = "Error loading the Excel file."; 
+                document.getElementById('status').innerText = "Error loading the calendar."; 
             }
         }
 
@@ -1461,6 +1472,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (ANNEE === 2026) {
         document.querySelector('h1').textContent = "Provincial Calendar 2026";
         const banniere = document.querySelector('.season-banner');
+        if (banniere) banniere.classList.remove('banniere-2027');
         if (banniere) banniere.innerHTML = '<div class="season-banner-text"><p class="season-banner-title">📁 Archive: 2026 calendar</p><p>You\'re viewing the calendar for the 2026 season, which is over. 2027 dates are in the current calendar.</p></div>';
         document.getElementById('archiveLink').innerHTML = '<a href="calendar.html" class="lien-archive">‹ Back to the 2027 calendar</a>';
         const toggle = document.getElementById('pastToggle');
