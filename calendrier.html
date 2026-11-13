@@ -475,7 +475,7 @@ autre_langue: en/calendar.html
                 overflow-y: hidden; /* Bloque le défilement vertical */
                 white-space: nowrap; 
                 display: block; 
-                width: 100vw; 
+                width: auto; margin: 0 -20px; /* pleine largeur sans dépasser de l'écran */ 
                 height: 38px; /* Force une hauteur stricte pour éviter les sauts */
                 -webkit-overflow-scrolling: touch; 
             }
@@ -510,7 +510,8 @@ autre_langue: en/calendar.html
 
             html, body {
     max-width: 100%;
-    overflow-x: hidden; /* Bloque le défilement horizontal global */
+    overflow-x: hidden;
+    overflow-x: clip; /* iPhone : empêche vraiment de glisser la page sur le côté */ /* Bloque le défilement horizontal global */
 }
             
         }
@@ -559,6 +560,45 @@ autre_langue: en/calendar.html
         .archive-wrap { text-align: center; margin: -14px 0 18px; }
         .lien-archive { font-size: 0.82rem; font-weight: 600; color: #64748b; text-decoration: underline; text-underline-offset: 3px; }
         .lien-archive:hover { color: #004c97; }
+
+        /* --- CALENDRIER MOBILE : agenda par mois (remplace les cartes sur téléphone) --- */
+        .cal-mobile { display: none; }
+        @media (max-width: 834px) {
+            #calTable { display: none !important; }
+            .cal-mobile { display: block; margin: 0 -20px; background: #ffffff; border-top: 1px solid #e8edf3; }
+            .cm-mois-barre { display: flex; gap: 6px; overflow-x: auto; padding: 10px 16px; background: #ffffff; border-bottom: 1px solid #e8edf3; scrollbar-width: none; }
+            .cm-mois-barre::-webkit-scrollbar { display: none; }
+            .cm-chip { flex-shrink: 0; font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; color: #004c97; background: #ffffff; border: 1px solid #d6e6f5; border-radius: 8px; padding: 5px 10px; cursor: pointer; }
+            .cm-chip small { color: #64748b; font-weight: 600; margin-left: 4px; }
+            .cm-month { position: sticky; top: var(--cm-top, 124px); z-index: 5; display: flex; justify-content: space-between; align-items: center; background: #e8f2fb; color: #004c97; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.74rem; letter-spacing: 0.6px; text-transform: uppercase; padding: 8px 16px; border-bottom: 1px solid #d6e6f5; }
+            .cm-month span { font-family: inherit; font-weight: 600; letter-spacing: 0; text-transform: none; color: #64748b; }
+            .cm-row { border-bottom: 1px solid #e8edf3; background: #ffffff; }
+            .cm-row.hidden, .cal-mobile.hide-past .cm-row.past-event { display: none; }
+            .cm-row.past-event { opacity: 0.55; }
+            .cm-head { display: grid; grid-template-columns: 50px 1fr auto 14px; gap: 8px; align-items: center; width: 100%; padding: 9px 16px; background: none; border: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+            .cm-date { font-size: 0.64rem; font-weight: 800; color: #64748b; text-transform: uppercase; line-height: 1.15; }
+            .cm-date b { display: block; font-size: 0.98rem; color: #0f172a; white-space: nowrap; }
+            .cm-nom { display: block; font-weight: 700; font-size: 0.86rem; line-height: 1.25; color: #0f172a; }
+            .cm-nom img { width: 14px !important; margin-right: 4px !important; }
+            .cm-ville { display: block; font-size: 0.72rem; color: #64748b; margin-top: 1px; }
+            .cm-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; max-width: 82px; }
+            .cm-badges .badge { width: 21px; height: 19px; font-size: 0.55rem; margin: 1px; }
+            .cm-chev { color: #94a3b8; font-size: 0.8rem; transition: transform 0.2s; }
+            .cm-row.open .cm-chev { transform: rotate(180deg); }
+            .cm-row.open .cm-head { background: #f3f8fd; box-shadow: inset 3px 0 0 #004c97; }
+            .cm-det { display: none; padding: 2px 16px 14px 74px; font-size: 0.78rem; line-height: 1.55; color: #334155; }
+            .cm-row.open .cm-det { display: block; background: #f3f8fd; }
+            .cm-det p { margin: 0; }
+            .cm-det p span { color: #64748b; }
+            .cm-det .cm-note { margin-top: 4px; font-style: italic; color: #64748b; }
+            .cm-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+            .cm-btns a, .cm-btns button { font-family: inherit; font-size: 0.74rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; background: #003366; color: #ffffff; text-decoration: none; border: 1.5px solid #003366; cursor: pointer; }
+            .cm-btns .cm-carte { background: #ffffff; color: #003366; }
+            .cm-row.estimee { background: #f8fafc; outline: 2px dashed #94a3b8; outline-offset: -3px; }
+            .cm-row.estimee .cm-nom, .cm-row.estimee .cm-date b, .cm-row.estimee .cm-date { color: #94a3b8; }
+            .cm-row.estimee .cm-badges .badge, .cm-row.estimee .cm-nom img { opacity: 0.55; }
+            .cm-vide { padding: 24px 16px; text-align: center; color: #64748b; font-size: 0.85rem; display: none; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -654,6 +694,7 @@ autre_langue: en/calendar.html
                         </thead>
                         <tbody id="calBody"></tbody>
                     </table>
+                    <div id="calMobile" class="cal-mobile hide-past"></div>
                 </div>
             </div>
 
@@ -761,6 +802,96 @@ autre_langue: en/calendar.html
             return [[]].concat(lignes);
         }
 
+        // --- CALENDRIER MOBILE : agenda par mois, une ligne par épreuve qu'on touche pour voir les détails ---
+        const CM = {
+            mois: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"],
+            moisCourts: ["Janv", "Févr", "Mars", "Avril", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
+            jours: ["dim", "lun", "mar", "mer", "jeu", "ven", "sam"],
+            joursLongs: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+            dateComplete: (txt, d, f) => (d && !f ? ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"][d.getDay()] + " " : "") + (txt || "") + " " + ANNEE,
+            dp: "\u00a0:", lDate: "Date", lOrg: "Organisateur", lLieu: "Lieu", lEp: "Épreuves",
+            bSite: "Site", bMail: "Courriel", bCarte: "Carte",
+            epreuve: "épreuve", epreuves: "épreuves",
+            note: "Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine).",
+            vide: "Aucune épreuve à afficher. Activez « Épreuves terminées » ou changez de filtre."
+        };
+        function construireMobile(items) {
+            const box = document.getElementById('calMobile');
+            if (!box) return;
+            const groupes = {}, ordre = [];
+            items.forEach(it => {
+                const p = lireDate(it.row[0], ANNEE);
+                it.debut = p ? p.debut : null; it.fin = p ? p.fin : null;
+                const m = it.debut ? it.debut.getMonth() : 12;
+                if (!groupes[m]) { groupes[m] = []; ordre.push(m); }
+                groupes[m].push(it);
+            });
+            let h = '<div class="cm-mois-barre">' + ordre.map(m => `<button type="button" class="cm-chip" data-m="${m}">${m < 12 ? CM.moisCourts[m] : "?"}<small></small></button>`).join("") + '</div>';
+            ordre.forEach(m => {
+                h += `<div class="cm-month" data-m="${m}">${m < 12 ? CM.mois[m] + " " + ANNEE : ""}<span></span></div>`;
+                groupes[m].forEach(it => {
+                    const r = it.row, d = it.debut, f = it.fin;
+                    const jour = d ? CM.jours[d.getDay()] : "";
+                    const num = d ? d.getDate() + (f ? "–" + f.getDate() : "") : (r[0] || "");
+                    const noms = [...it.badges.matchAll(/title="([^"]+)"/g)].map(x => x[1]).join(", ");
+                    const dateTxt = CM.dateComplete(r[0], d, f);
+                    const nom = String(r[1]).replace(/'/g, "\\'");
+                    h += `<div class="cm-row${r.estimee ? " estimee" : ""}${it.past ? " past-event" : ""}" data-categories="${it.cats}" data-m="${m}">
+                        <button type="button" class="cm-head" aria-expanded="false">
+                            <span class="cm-date">${jour}<b>${num}</b></span>
+                            <span><span class="cm-nom">${it.isTQ}${r[1]}</span><span class="cm-ville">📍 ${it.ville}</span></span>
+                            <span class="cm-badges">${it.badges}</span>
+                            <span class="cm-chev" aria-hidden="true">▼</span>
+                        </button>
+                        <div class="cm-det">
+                            <p><span>${CM.lDate}${CM.dp}</span> ${dateTxt}</p>
+                            <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
+                            <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
+                            ${noms ? `<p><span>${CM.lEp}${CM.dp}</span> ${noms}</p>` : ""}
+                            ${r.estimee ? `<p class="cm-note">${CM.note}</p>` : ""}
+                            <div class="cm-btns">
+                                ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
+                                ${r[3] ? `<a href="mailto:${r[3]}">${CM.bMail}</a>` : ""}
+                                ${it.lieu ? `<button type="button" class="cm-carte" onclick="openMap('${it.lieu.replace(/'/g, "\\'")}', '${nom}')">📍 ${CM.bCarte}</button>` : ""}
+                            </div>
+                        </div>
+                    </div>`;
+                });
+            });
+            h += `<div class="cm-vide">${CM.vide}</div>`;
+            box.innerHTML = h;
+            const decalage = () => (document.querySelector('header') ? document.querySelector('header').offsetHeight : 0) + (document.querySelector('.legend-container') ? document.querySelector('.legend-container').offsetHeight : 0);
+            box.style.setProperty('--cm-top', decalage() + 'px');
+            box.addEventListener('click', e => {
+                const tete = e.target.closest('.cm-head');
+                if (tete) { const row = tete.parentElement; const ouvert = row.classList.toggle('open'); tete.setAttribute('aria-expanded', ouvert); return; }
+                const chip = e.target.closest('.cm-chip');
+                if (chip) {
+                    const cible = box.querySelector(`.cm-month[data-m="${chip.dataset.m}"]`);
+                    if (cible) window.scrollTo({ top: cible.getBoundingClientRect().top + window.pageYOffset - decalage() + 1, behavior: 'smooth' });
+                }
+            });
+            majMobile();
+        }
+        // Met à jour les compteurs par mois selon les filtres et les épreuves terminées
+        function majMobile() {
+            const box = document.getElementById('calMobile');
+            if (!box || !box.innerHTML) return;
+            const cachePasse = box.classList.contains('hide-past');
+            let total = 0;
+            box.querySelectorAll('.cm-month').forEach(t => {
+                const m = t.dataset.m;
+                const n = [...box.querySelectorAll(`.cm-row[data-m="${m}"]`)].filter(r => !r.classList.contains('hidden') && !(cachePasse && r.classList.contains('past-event'))).length;
+                total += n;
+                t.style.display = n ? '' : 'none';
+                t.querySelector('span').textContent = n + " " + (n > 1 ? CM.epreuves : CM.epreuve);
+                const chip = box.querySelector(`.cm-chip[data-m="${m}"]`);
+                if (chip) { chip.style.display = n ? '' : 'none'; chip.querySelector('small').textContent = n; }
+            });
+            box.querySelector('.cm-vide').style.display = total ? 'none' : 'block';
+            box.querySelector('.cm-mois-barre').style.display = total ? '' : 'none';
+        }
+
         async function loadExcel() {
             try {
                 const response = await fetch(EXCEL_FILE);
@@ -779,6 +910,7 @@ autre_langue: en/calendar.html
         function renderTable(rows) {
             const body = document.getElementById('calBody');
             body.innerHTML = ""; 
+            const MOB = [];
             
             for (let i = 1; i < rows.length; i++) {
                 const row = rows[i];
@@ -849,8 +981,10 @@ autre_langue: en/calendar.html
                     <td data-label="Épreuves"><div style="display:flex; flex-wrap:wrap; gap:1px">${badges.join("")}</div></td>
                 `;
                 body.appendChild(tr);
+                MOB.push({ row, badges: badges.join(""), cats: rowCats.join(","), past: tr.classList.contains("past-event"), lieu: lieuComplet, ville, isTQ });
             }
             document.getElementById('status').style.display = 'none';
+            construireMobile(MOB);
             document.getElementById('calTable').style.display = (window.innerWidth <= 834) ? 'block' : 'table';
         }
 
@@ -923,11 +1057,12 @@ autre_langue: en/calendar.html
 
         function setupFilters() {
             const items = document.querySelectorAll('.clickable-cat');
-            const rows = document.querySelectorAll('#calBody tr');
+            const rows = document.querySelectorAll('#calBody tr, .cm-row');
             
             items.forEach(item => {
                 item.addEventListener('click', () => {
                     const cat = item.getAttribute('data-cat');
+                    setTimeout(majMobile, 0);
                     
                     if (activeFilter === cat) {
                         activeFilter = null;
@@ -954,7 +1089,7 @@ autre_langue: en/calendar.html
                     // Alignement automatique après filtrage
                     setTimeout(() => {
                         const legend = document.querySelector('.legend-container');
-                        const table = document.getElementById('calTable');
+                        const table = (window.innerWidth <= 834) ? document.getElementById('calMobile') : document.getElementById('calTable');
                         if (table && legend) {
                             const tableTop = table.getBoundingClientRect().top + window.pageYOffset;
                             const legendHeight = legend.offsetHeight;
@@ -1036,6 +1171,8 @@ function togglePastEvents() {
     const subtitle = document.getElementById('calendarSubtitle');
     
     showPast = toggle.checked;
+    const mobile = document.getElementById('calMobile');
+    if (mobile) mobile.classList.toggle('hide-past', !showPast);
     
     if (showPast) {
         table.classList.remove('hide-past');
@@ -1046,7 +1183,7 @@ function togglePastEvents() {
     }
 
     // Ré-appliquer manuellement les filtres si une catégorie est active
-    const rows = document.querySelectorAll('#calBody tr');
+    const rows = document.querySelectorAll('#calBody tr, .cm-row');
     const catActive = document.querySelector('.legend-item.active');
     
     if (catActive) {
@@ -1058,6 +1195,7 @@ function togglePastEvents() {
             }
         });
     }
+    majMobile();
 }
 
 // Highlight de la page active
