@@ -543,13 +543,19 @@ autre_langue: en/calendar.html
             .season-banner-btn { width: 100%; }
         }
 
-        /* Calendrier 2027 : épreuves dont la date n'est pas encore confirmée */
+        /* Calendrier 2027 : épreuves dont la date n'est pas encore confirmée (en gris, encadrées en pointillé) */
         tr.estimee { background-color: #f8fafc; }
+        tr.estimee td { border-top: 2px dashed #94a3b8 !important; border-bottom: 2px dashed #94a3b8 !important; }
+        tr.estimee td:first-child { border-left: 2px dashed #94a3b8 !important; }
+        tr.estimee td:last-child { border-right: 2px dashed #94a3b8 !important; }
         tr.estimee td, tr.estimee td b, tr.estimee .lieu-link { color: #94a3b8 !important; }
         tr.estimee td[data-label="Date"] b { font-style: italic; font-weight: 600; }
         tr.estimee .badge, tr.estimee img, tr.estimee .btn-action { opacity: 0.55; }
-        .tag-a-confirmer { display: inline-block; margin-top: 3px; font-family: 'Montserrat', sans-serif; font-style: normal; font-size: 0.6rem; font-weight: 800; letter-spacing: 0.3px; text-transform: uppercase; color: #64748b !important; background: #ffffff; border: 1px dashed #94a3b8; border-radius: 50px; padding: 1px 7px; white-space: nowrap; }
-        .season-banner .ex-gris { color: #94a3b8; font-style: italic; font-weight: 700; }
+        @media (max-width: 834px) {
+            tr.estimee { border: 2px dashed #94a3b8 !important; box-shadow: none !important; background-color: #f8fafc !important; }
+            tr.estimee td, tr.estimee td:first-child, tr.estimee td:last-child { border-top: 0 !important; border-left: 0 !important; border-right: 0 !important; border-bottom: 1px solid #eef2f6 !important; }
+        }
+        .season-banner .ex-pointille { display: inline-block; color: #94a3b8; font-style: italic; font-weight: 700; border: 2px dashed #94a3b8; border-radius: 4px; padding: 0 6px; background: #f8fafc; }
         .archive-wrap { text-align: center; margin: -14px 0 18px; }
         .lien-archive { font-size: 0.82rem; font-weight: 600; color: #64748b; text-decoration: underline; text-underline-offset: 3px; }
         .lien-archive:hover { color: #004c97; }
@@ -590,7 +596,7 @@ autre_langue: en/calendar.html
             <div class="season-banner" role="status">
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 Calendrier 2027 en cours de confirmation</p>
-                    <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-gris">en gris</span>, avec la mention <span class="tag-a-confirmer">À confirmer</span>, n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026 (même jour de la semaine).</p>
+                    <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026 (même jour de la semaine).</p>
                 </div>
             </div>
 
@@ -831,9 +837,9 @@ autre_langue: en/calendar.html
                 let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
 
                 tr.setAttribute('data-categories', rowCats.join(','));
-                if (row.estimee) tr.classList.add('estimee');
+                if (row.estimee) { tr.classList.add('estimee'); tr.title = "Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine)"; }
                 tr.innerHTML = `
-                    <td data-label="Date"><b>${row[0] || ""}</b>${row.estimee ? `<br><span class="tag-a-confirmer" title="Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine)">À confirmer</span>` : ""}</td>
+                    <td data-label="Date"><b>${row[0] || ""}</b></td>
                     <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
                     <td data-label="Organisateur">${row[6] || "-"}</td>
                     <td data-label="Région">${row[2] || ""}</td>
