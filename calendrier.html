@@ -734,7 +734,7 @@ autre_langue: en/calendar.html
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 Calendrier 2027 en cours de confirmation</p>
                     <p class="banniere-courte">Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> sont en attente de confirmation.</p>
-                    <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026 (même jour de la semaine).</p>
+                    <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026.</p>
                 </div>
             </div>
 
@@ -912,7 +912,7 @@ autre_langue: en/calendar.html
             dp: "\u00a0:", lDate: "Date", lOrg: "Organisateur", lLieu: "Lieu", lEp: "Épreuves",
             bSite: "Site", bMail: "Courriel", bCarte: "Carte",
             epreuve: "épreuve", epreuves: "épreuves",
-            note: "Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine).",
+            note: "Date non confirmée pour 2027 : estimation d'après l'édition 2026.",
             vide: "Aucune épreuve à afficher. Activez « Épreuves terminées » ou changez de filtre."
         };
         // Épreuves regroupées par type (la piscine n'est pas une épreuve : elle n'apparaît pas ici)
@@ -1226,7 +1226,7 @@ autre_langue: en/calendar.html
                 let ville = lieuComplet ? (lieuComplet.split(',').length >= 3 ? lieuComplet.split(',')[lieuComplet.split(',').length - 3].trim() : lieuComplet) : "Lieu";
 
                 tr.setAttribute('data-categories', rowCats.join(','));
-                if (row.estimee) { tr.classList.add('estimee'); tr.title = "Date non confirmée pour 2027 : estimation d'après l'édition 2026 (même jour de la semaine)"; }
+                if (row.estimee) { tr.classList.add('estimee'); tr.title = "Date non confirmée pour 2027 : estimation d'après l'édition 2026"; }
                 tr.innerHTML = `
                     <td data-label="Date"><b>${row[0] || ""}</b></td>
                     <td data-label="Événement"><b>${isTQ}${row[1]}</b></td>
