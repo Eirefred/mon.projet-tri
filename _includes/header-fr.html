@@ -48,7 +48,7 @@
                 </li>
                 <li><a href="besoin-coach.html"{% if page.url == '/besoin-coach.html' %} class="active"{% endif %}>Coach&nbsp;ou&nbsp;pas&nbsp;?</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
-                <li><a href="calendrier.html">Calendrier'27</a></li>
+                <li><a href="calendrier.html" class="lien-nouveau">Calendrier'27<span class="badge-nouveau">Nouveau</span></a></li>
                 <li class="lang-switcher">
                     <span class="lang-label">FR</span>
                     <label class="switch">
@@ -154,6 +154,15 @@
     /* Bloc d'un seul lien : coins arrondis en haut et en bas */
     header .dropdown-menu:has(li.menu-sep) > li:first-child:has(+ li.menu-sep) { border-radius: 10px !important; }
     header #menu-toggle:checked ~ .nav-links .dropdown-menu:has(li.menu-sep) > li:first-child:has(+ li.menu-sep) { border-radius: 12px !important; }
+    /* Pastille « Nouveau » sur le lien du calendrier (à retirer quand ce n'est plus une nouveauté) */
+    header .badge-nouveau { font-family: 'Montserrat', sans-serif; font-size: 0.5rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #ffffff; background: #D65F3A; border-radius: 50px; padding: 1px 6px; line-height: 1.3; white-space: nowrap; pointer-events: none; }
+    @media (min-width: 769px) {
+        header nav ul.nav-links > li > a.lien-nouveau { position: relative; }
+        header a.lien-nouveau .badge-nouveau { position: absolute; left: 50%; top: -15px; transform: translateX(-50%); }
+    }
+    @media (max-width: 768px) {
+        header a.lien-nouveau .badge-nouveau { margin-left: 8px; margin-right: auto; font-size: 0.6rem; padding: 2px 7px; }
+    }
 </style>
 <script>
     // Menu mobile : ouvre / ferme une section ; la section de la page en cours est ouverte d'office
