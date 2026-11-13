@@ -1,0 +1,70 @@
+{%- comment -%}
+  Référencement du calendrier 2027 :
+  1) une liste texte des épreuves (lue par les moteurs de recherche, remplacée à l'écran par le calendrier interactif) ;
+  2) une fiche « SportsEvent » par épreuve dont la date 2027 est confirmée (les dates estimées ne sont pas déclarées).
+  Paramètre : lang="fr" ou lang="en".
+{%- endcomment -%}
+{%- assign d = site.data.calendrier_2027 -%}
+{%- assign moisCle = "janv,fév,mars,avri,mai,juin,juil,août,sept,oct,nov,déc" | split: "," -%}
+{%- if include.lang == "en" -%}{%- assign urlPage = "https://mon.projet-tri.org/en/calendar.html" -%}{%- else -%}{%- assign urlPage = "https://mon.projet-tri.org/calendrier.html" -%}{%- endif %}
+<section id="calStatique" class="cal-statique">
+    <h2>{% if include.lang == "en" %}2027 triathlon, duathlon and aquathlon races in Quebec{% else %}Triathlons, duathlons et aquathlons 2027 au Québec{% endif %}</h2>
+    <ul>
+{%- for r in d -%}
+{%- if r["Événement"] %}
+        <li><strong>{{ r["Événement"] }}</strong> — {% if r["Date (2027)"] %}{{ r["Date (2027)"] }} 2027{% elsif include.lang == "en" %}2027 date to be confirmed{% else %}date 2027 à confirmer{% endif %} — {{ r["Lieu"] }}{% if r["Région"] %} ({{ r["Région"] }}){% endif %}{% if r["Organisateur"] %} — {% if include.lang == "en" %}Organizer: {% else %}Organisateur : {% endif %}{{ r["Organisateur"] }}{% endif %}</li>
+{%- endif -%}
+{%- endfor %}
+    </ul>
+</section>
+<script type="application/ld+json">
+[
+{%- assign sep = "" -%}
+{%- for r in d -%}
+{%- if r["Événement"] and r["Date (2027)"] -%}
+{%- assign txt = r["Date (2027)"] | strip -%}
+{%- assign parts = txt | split: "-" -%}
+{%- assign p1 = parts | first | strip -%}
+{%- assign p2 = parts | last | strip -%}
+{%- assign w1 = p1 | split: " " -%}
+{%- assign w2 = p2 | split: " " -%}
+{%- assign tokFin = w2 | last | remove: "." -%}
+{%- if w1.size > 1 -%}{%- assign tokDeb = w1 | last | remove: "." -%}{%- else -%}{%- assign tokDeb = tokFin -%}{%- endif -%}
+{%- assign mDeb = "" -%}{%- assign mFin = "" -%}
+{%- for k in moisCle -%}
+{%- assign n = forloop.index | prepend: "0" | slice: -2, 2 -%}
+{%- assign a = tokDeb | slice: 0, k.size -%}{%- if a == k and mDeb == "" -%}{%- assign mDeb = n -%}{%- endif -%}
+{%- assign b = tokFin | slice: 0, k.size -%}{%- if b == k and mFin == "" -%}{%- assign mFin = n -%}{%- endif -%}
+{%- endfor -%}
+{%- assign jDeb = w1 | first | prepend: "0" | slice: -2, 2 -%}
+{%- assign jFin = w2 | first | prepend: "0" | slice: -2, 2 -%}
+{%- if mDeb != "" and mFin != "" -%}
+{%- assign eps = "" -%}
+{%- for p in r -%}{%- if forloop.index > 10 -%}{%- if p[1] == "X" or p[1] == "x" -%}{%- if eps != "" -%}{%- assign eps = eps | append: ", " -%}{%- endif -%}{%- assign eps = eps | append: p[0] -%}{%- endif -%}{%- endif -%}{%- endfor -%}
+{%- assign lp = r["Lieu"] | split: "," -%}{%- if lp.size >= 3 -%}{%- assign iv = lp.size | minus: 3 -%}{%- assign nomLieu = lp[iv] | strip -%}{%- else -%}{%- assign nomLieu = lp | first | strip -%}{%- endif -%}
+{{ sep }}
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsEvent",
+    "name": {{ r["Événement"] | jsonify }},
+    "startDate": "2027-{{ mDeb }}-{{ jDeb }}",
+    "endDate": "2027-{{ mFin }}-{{ jFin }}",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "sport": "Triathlon",
+    "location": { "@type": "Place", "name": {{ nomLieu | jsonify }}, "address": {{ r["Lieu"] | jsonify }} },
+    {%- if r["Organisateur"] %}
+    "organizer": { "@type": "Organization", "name": {{ r["Organisateur"] | jsonify }}{% if r["Site"] %}, "url": {{ r["Site"] | jsonify }}{% endif %} },
+    {%- endif %}
+    {%- if eps != "" %}
+    "description": {% if include.lang == "en" %}{{ eps | prepend: "Races: " | jsonify }}{% else %}{{ eps | prepend: "Épreuves : " | jsonify }}{% endif %},
+    {%- endif %}
+    "image": "https://mon.projet-tri.org/og/og-calendrier.jpg",
+    "url": {{ r["Site"] | default: urlPage | jsonify }}
+  }
+{%- assign sep = "," -%}
+{%- endif -%}
+{%- endif -%}
+{%- endfor %}
+]
+</script>
