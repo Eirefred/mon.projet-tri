@@ -686,12 +686,16 @@ autre_langue: en/calendar.html
         @media (max-width: 834px) {
             .season-banner.banniere-2027 { padding: 10px 14px; }
             .season-banner.banniere-2027 .season-banner-title { margin: 0; font-size: 0.92rem; }
-            .season-banner.banniere-2027 .season-banner-text p:not(.season-banner-title) { display: none; }
+            .season-banner.banniere-2027 .season-banner-text p:not(.season-banner-title):not(.banniere-courte) { display: none; }
+            .season-banner.banniere-2027 .season-banner-title { margin-bottom: 4px; }
+            .cm-legende-estimee { display: none; }
             .cm-legende-estimee { margin: 0; padding: 6px 16px; font-size: 0.7rem; color: #64748b; background: #ffffff; border-bottom: 1px solid #e8edf3; }
             .cm-legende-estimee i { display: inline-block; width: 16px; height: 10px; border: 2px dashed #94a3b8; border-radius: 3px; background: #f8fafc; vertical-align: -1px; margin-right: 6px; }
         }
         /* Liste texte des épreuves pour les moteurs de recherche (remplacée à l'écran par le calendrier interactif) */
         .cal-statique { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; }
+        .banniere-courte { display: none; }
+        @media (max-width: 834px) { .season-banner .banniere-courte { display: block; font-size: 0.86rem; } }
     </style>
 
     <script type="application/ld+json">
@@ -729,6 +733,7 @@ autre_langue: en/calendar.html
             <div class="season-banner banniere-2027" role="status">
                 <div class="season-banner-text">
                     <p class="season-banner-title">📅 Calendrier 2027 en cours de confirmation</p>
+                    <p class="banniere-courte">Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> sont en attente de confirmation.</p>
                     <p>Les organisateurs confirment leurs dates au fil des semaines. Les épreuves <span class="ex-pointille">en gris et encadrées en pointillé</span> n'ont pas encore annoncé leur date pour 2027 : la date affichée est une estimation basée sur l'édition 2026 (même jour de la semaine).</p>
                 </div>
             </div>
