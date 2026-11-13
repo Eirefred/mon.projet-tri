@@ -583,21 +583,40 @@ autre_langue: en/calendar.html
             .cm-ville { display: block; font-size: 0.72rem; color: #64748b; margin-top: 1px; }
             .cm-badges { display: flex; flex-wrap: wrap; justify-content: flex-end; max-width: 82px; }
             .cm-badges .badge { width: 21px; height: 19px; font-size: 0.55rem; margin: 1px; }
-            .cm-chev { color: #94a3b8; font-size: 0.8rem; transition: transform 0.2s; }
-            .cm-row.open .cm-chev { transform: rotate(180deg); }
-            .cm-row.open .cm-head { background: #f3f8fd; box-shadow: inset 3px 0 0 #004c97; }
-            .cm-det { display: none; padding: 2px 16px 14px 74px; font-size: 0.78rem; line-height: 1.55; color: #334155; }
-            .cm-row.open .cm-det { display: block; background: #f3f8fd; }
-            .cm-det p { margin: 0; }
-            .cm-det p span { color: #64748b; }
-            .cm-det .cm-note { margin-top: 4px; font-style: italic; color: #64748b; }
-            .cm-btns { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
-            .cm-btns a, .cm-btns button { font-family: inherit; font-size: 0.74rem; font-weight: 800; padding: 6px 14px; border-radius: 50px; background: #003366; color: #ffffff; text-decoration: none; border: 1.5px solid #003366; cursor: pointer; }
-            .cm-btns .cm-carte { background: #ffffff; color: #003366; }
+            .cm-chev { color: #94a3b8; font-size: 1.2rem; line-height: 1; }
+            .cm-det { display: none; }
+            .cm-head:active { background: #f3f8fd; }
             .cm-row.estimee { background: #f8fafc; outline: 2px dashed #94a3b8; outline-offset: -3px; }
             .cm-row.estimee .cm-nom, .cm-row.estimee .cm-date b, .cm-row.estimee .cm-date { color: #94a3b8; }
             .cm-row.estimee .cm-badges .badge, .cm-row.estimee .cm-nom img { opacity: 0.55; }
             .cm-vide { padding: 24px 16px; text-align: center; color: #64748b; font-size: 0.85rem; display: none; }
+        }
+
+        /* --- FICHE D'ÉPREUVE (mobile) : s'ouvre du bas de l'écran --- */
+        .cm-voile { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.45); z-index: 1900; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+        .cm-voile.ouvert { opacity: 1; pointer-events: auto; }
+        .cm-fiche { position: fixed; left: 0; right: 0; bottom: 0; z-index: 1950; max-height: 82vh; overflow-y: auto; overscroll-behavior: contain; background: #ffffff; border-radius: 18px 18px 0 0; box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.25); padding: 8px 20px calc(22px + env(safe-area-inset-bottom)); transform: translateY(105%); transition: transform 0.28s ease; visibility: hidden; }
+        .cm-fiche.ouvert { transform: translateY(0); visibility: visible; }
+        .cm-poignee { width: 42px; height: 5px; border-radius: 5px; background: #cbd5e1; margin: 4px auto 12px; }
+        .cm-fermer { position: absolute; top: 10px; right: 12px; width: 32px; height: 32px; border-radius: 50%; border: 0; background: #f1f5f9; color: #475569; font-size: 0.95rem; cursor: pointer; }
+        .cm-fiche h3 { margin: 0 40px 6px 0; font-size: 1.08rem; line-height: 1.3; color: #0f172a; }
+        .cm-fiche h3 img { width: 15px !important; margin-right: 5px !important; }
+        .cm-fiche .cm-fiche-badges { margin: 4px 0 10px; }
+        .cm-fiche .cm-fiche-badges .badge { width: 24px; height: 21px; font-size: 0.58rem; }
+        .cm-fiche p { margin: 0; font-size: 0.86rem; line-height: 1.65; color: #334155; }
+        .cm-fiche p span { color: #64748b; }
+        .cm-fiche .cm-note { margin-top: 6px; font-style: italic; color: #64748b; font-size: 0.8rem; }
+        .cm-fiche .cm-btns { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+        .cm-fiche .cm-btns a, .cm-fiche .cm-btns button { font-family: inherit; font-size: 0.8rem; font-weight: 800; padding: 9px 18px; border-radius: 50px; background: #003366; color: #ffffff; text-decoration: none; border: 1.5px solid #003366; cursor: pointer; }
+        .cm-fiche .cm-btns .cm-carte { background: #ffffff; color: #003366; }
+        .cm-fiche.estimee h3 { color: #64748b; }
+        html.cm-bloque, html.cm-bloque body { overflow: hidden; }
+        html.cm-bloque #backToTop { display: none !important; }
+        .cm-fermer:focus:not(:focus-visible) { outline: none; }
+        /* Empêche de glisser la page sur le côté (la légende garde son propre défilement) */
+        @media (max-width: 834px) {
+            html, body { touch-action: pan-y pinch-zoom; overscroll-behavior-x: none; }
+            .legend-container { touch-action: pan-x pan-y; }
         }
     </style>
 
@@ -837,13 +856,15 @@ autre_langue: en/calendar.html
                     const dateTxt = CM.dateComplete(r[0], d, f);
                     const nom = String(r[1]).replace(/'/g, "\\'");
                     h += `<div class="cm-row${r.estimee ? " estimee" : ""}${it.past ? " past-event" : ""}" data-categories="${it.cats}" data-m="${m}">
-                        <button type="button" class="cm-head" aria-expanded="false">
+                        <button type="button" class="cm-head" aria-haspopup="dialog">
                             <span class="cm-date">${jour}<b>${num}</b></span>
                             <span><span class="cm-nom">${it.isTQ}${r[1]}</span><span class="cm-ville">📍 ${it.ville}</span></span>
                             <span class="cm-badges">${it.badges}</span>
-                            <span class="cm-chev" aria-hidden="true">▼</span>
+                            <span class="cm-chev" aria-hidden="true">›</span>
                         </button>
                         <div class="cm-det">
+                            <h3>${it.isTQ}${r[1]}</h3>
+                            <div class="cm-fiche-badges">${it.badges}</div>
                             <p><span>${CM.lDate}${CM.dp}</span> ${dateTxt}</p>
                             <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
@@ -852,7 +873,7 @@ autre_langue: en/calendar.html
                             <div class="cm-btns">
                                 ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
                                 ${r[3] ? `<a href="mailto:${r[3]}">${CM.bMail}</a>` : ""}
-                                ${it.lieu ? `<button type="button" class="cm-carte" onclick="openMap('${it.lieu.replace(/'/g, "\\'")}', '${nom}')">📍 ${CM.bCarte}</button>` : ""}
+                                ${it.lieu ? `<button type="button" class="cm-carte" onclick="fermerFiche(); openMap('${it.lieu.replace(/'/g, "\\'")}', '${nom}')">📍 ${CM.bCarte}</button>` : ""}
                             </div>
                         </div>
                     </div>`;
@@ -864,7 +885,7 @@ autre_langue: en/calendar.html
             box.style.setProperty('--cm-top', decalage() + 'px');
             box.addEventListener('click', e => {
                 const tete = e.target.closest('.cm-head');
-                if (tete) { const row = tete.parentElement; const ouvert = row.classList.toggle('open'); tete.setAttribute('aria-expanded', ouvert); return; }
+                if (tete) { ouvrirFiche(tete.parentElement); return; }
                 const chip = e.target.closest('.cm-chip');
                 if (chip) {
                     const cible = box.querySelector(`.cm-month[data-m="${chip.dataset.m}"]`);
@@ -872,6 +893,40 @@ autre_langue: en/calendar.html
                 }
             });
             majMobile();
+        }
+        // --- Fiche d'épreuve (mobile) : s'ouvre du bas, se ferme avec ✕, en touchant à côté ou en la glissant vers le bas ---
+        let ficheScrollY = 0;
+        function creerFiche() {
+            if (document.getElementById('cmFiche')) return;
+            const voile = document.createElement('div'); voile.className = 'cm-voile'; voile.id = 'cmVoile'; voile.addEventListener('click', fermerFiche);
+            const fiche = document.createElement('div'); fiche.className = 'cm-fiche'; fiche.id = 'cmFiche';
+            fiche.setAttribute('role', 'dialog'); fiche.setAttribute('aria-modal', 'true');
+            fiche.innerHTML = '<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="Fermer" onclick="fermerFiche()">✕</button><div class="cm-fiche-corps"></div>';
+            document.body.appendChild(voile); document.body.appendChild(fiche);
+            // Glisser vers le bas pour fermer
+            let y0 = null, dy = 0;
+            fiche.addEventListener('touchstart', e => { if (fiche.scrollTop <= 0) { y0 = e.touches[0].clientY; dy = 0; fiche.style.transition = 'none'; } }, { passive: true });
+            fiche.addEventListener('touchmove', e => { if (y0 === null) return; dy = Math.max(0, e.touches[0].clientY - y0); fiche.style.transform = dy ? `translateY(${dy}px)` : ''; }, { passive: true });
+            fiche.addEventListener('touchend', () => { if (y0 === null) return; fiche.style.transition = ''; fiche.style.transform = ''; if (dy > 90) fermerFiche(); y0 = null; });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') fermerFiche(); });
+        }
+        function ouvrirFiche(row) {
+            creerFiche();
+            const fiche = document.getElementById('cmFiche');
+            fiche.querySelector('.cm-fiche-corps').innerHTML = row.querySelector('.cm-det').innerHTML;
+            fiche.classList.toggle('estimee', row.classList.contains('estimee'));
+            fiche.scrollTop = 0;
+            document.documentElement.classList.add('cm-bloque');
+            document.getElementById('cmVoile').classList.add('ouvert');
+            fiche.classList.add('ouvert');
+            fiche.querySelector('.cm-fermer').focus({ preventScroll: true });
+        }
+        function fermerFiche() {
+            const fiche = document.getElementById('cmFiche');
+            if (!fiche || !fiche.classList.contains('ouvert')) return;
+            fiche.classList.remove('ouvert');
+            document.getElementById('cmVoile').classList.remove('ouvert');
+            document.documentElement.classList.remove('cm-bloque');
         }
         // Met à jour les compteurs par mois selon les filtres et les épreuves terminées
         function majMobile() {
