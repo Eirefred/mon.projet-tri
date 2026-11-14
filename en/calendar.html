@@ -618,7 +618,7 @@ autre_langue: ../calendrier.html
             .cb-row.estimee .cb-d b, .cb-row.estimee .cb-n, .cb-row.estimee .cb-v { color: #94a3b8; }
             .cb-row.estimee .badge, .cb-row.estimee .cb-n img { opacity: 0.55; }
             .cb-vide { display: none; padding: 30px 10px; text-align: center; color: #64748b; font-size: 0.88rem; }
-            .cb-fiche { position: sticky; top: var(--cb-top, 160px); padding: 20px 22px 22px; border-left: 1px solid #e8edf3; align-self: start; }
+            .cb-fiche { position: sticky; top: var(--cb-top, 160px); padding: 20px 22px 22px; border-left: 1px solid #e8edf3; align-self: start; max-height: calc(100vh - var(--cb-top, 160px) - 12px); overflow-y: auto; scrollbar-width: thin; box-sizing: border-box; }
             .cb-fiche .cb-quand { font-family: 'Montserrat', sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #D65F3A; }
             .cb-fiche h3 { margin: 4px 0 6px; font-size: 1.2rem; line-height: 1.3; color: #0f172a; }
             .cb-fiche h3 img { width: 15px !important; margin-right: 5px !important; }
@@ -712,6 +712,21 @@ autre_langue: ../calendrier.html
         .f-voir { display: block; width: 100%; height: 46px; margin-top: 10px; border: 0; border-radius: 50px; background: #003366; color: #ffffff; font: inherit; font-size: 0.9rem; font-weight: 800; cursor: pointer; }
         @media (min-width: 1101px) { .cal-bureau { grid-template-columns: 200px minmax(0, 1fr) 320px; } }
         .f-fam-titre { white-space: nowrap; }
+        /* Historique de la combinaison isothermique (fiche des épreuves) */
+        .ws { margin: 4px 0 14px; padding: 10px 12px; border: 1px solid #e2e8f0; border-radius: 10px; background: #f8fafc; text-align: left; }
+        .ws-t { font-family: 'Montserrat', sans-serif; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; color: #335a80; margin-bottom: 6px; }
+        .ws-l { display: flex; justify-content: space-between; align-items: center; gap: 8px; font-size: 0.82rem; padding: 3px 0; color: #334155; border-top: 1px solid #eef2f6; }
+        .ws-l:first-of-type { border-top: 0; }
+        .ws-s { display: inline-flex; align-items: center; gap: 5px; font-weight: 700; font-size: 0.76rem; padding: 1px 8px; border-radius: 50px; white-space: nowrap; }
+        .ws .ok { background: #e6f4ea; color: #1e7b3a; } .ws .no { background: #fde8e8; color: #b42318; } .ws .na { background: #eef2f6; color: #64748b; }
+        .ws-msg { margin: 0; font-size: 0.82rem; color: #334155; }
+        .ws-msg.vide { color: #64748b; }
+        .ws-plus { margin-top: 6px; font-size: 0.72rem; line-height: 1.45; color: #64748b; }
+        .ws-plus summary { cursor: pointer; list-style: none; }
+        .ws-plus summary::-webkit-details-marker { display: none; }
+        .ws-plus summary u { color: #004c97; font-weight: 700; white-space: nowrap; }
+        .ws-plus p { margin: 5px 0 0; font-size: 0.72rem; line-height: 1.45; color: #475569; }
+        .ws-plus a { color: #004c97; font-weight: 700; }
         /* Ordinateur : panneau de filtres teinté et détaché de la liste */
         @media (min-width: 835px) {
             .table-outer:has(.cal-bureau) { background: transparent; box-shadow: none; }
@@ -1004,6 +1019,20 @@ function formatDateToEnglish(dateStr) {
             DS: ["Duathlon", "Sprint"], DO: ["Duathlon", "Olympic"], DL: ["Duathlon", "Long distance"],
             AQ: ["Other", "Aquathlon"], AV: ["Other", "Aquabike"], AT: ["Other", "Atypical (unconventional race format or distance)"]
         };
+        // Historique de la combinaison isothermique (données : _data/combinaison.csv)
+        const COMBI = { titre: 'Wetsuit: history', st: { Oui: ["ok", "✓", "Allowed"], Non: ["no", "✕", "Not allowed"], NA: ["na", "–", "Swim cancelled"] }, mois: ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], piscine: '🏊 Pool swim: no wetsuit.', vide: 'No data for this race.', resTQ: 'Decided on race morning by a Triathlon Québec official.', resAutre: 'Decided on race day.', plus: 'More info', txtTQ: "For races sanctioned by Triathlon Québec, a Triathlon Québec official decides on race morning, based on the water temperature. The rules depend on the water temperature, the race distance and the participant's age.", txtAutre: "This race is not sanctioned by Triathlon Québec: the organizers decide on race day according to their own rules. As a reference, Triathlon Québec's rules depend on the water temperature, the race distance and the participant's age.", lien: 'Triathlon Québec competition rules (French)\u00a0›', regles: "https://www.triathlonquebec.org/series-evenements/regles-competition/" };
+        function combinaisonHTML(it) {
+            let h = `<div class="ws"><div class="ws-t">🌊 ${COMBI.titre}</div>`;
+            if (String(it.cats).split(",").includes("PI")) return h + `<p class="ws-msg">${COMBI.piscine}</p></div>`;
+            const nom = String(it.row[1] || "").trim();
+            const lignes = (typeof DONNEES_COMBI !== "undefined" ? DONNEES_COMBI : []).filter(l => String(l[0]).trim() === nom && COMBI.st[l[3]])
+                .sort((a, b) => (b[1] - a[1]) || (b[2] - a[2]));
+            if (!lignes.length) return h + `<p class="ws-msg vide">${COMBI.vide}</p></div>`;
+            h += lignes.map(l => { const s = COMBI.st[l[3]]; return `<div class="ws-l"><span>${COMBI.mois[Number(l[2])] || ""} ${l[1]}</span><span class="ws-s ${s[0]}">${s[1]} ${s[2]}</span></div>`; }).join("");
+            const tq = !!it.isTQ;
+            h += `<details class="ws-plus"><summary><u>${COMBI.plus}</u></summary><p>${tq ? COMBI.txtTQ : COMBI.txtAutre}</p><p><a href="${COMBI.regles}" target="_blank" rel="noopener">${COMBI.lien}</a></p></details>`;
+            return h + `</div>`;
+        }
         function epreuvesGroupees(cats) {
             const g = {}, ordre = [];
             String(cats || "").split(",").forEach(c => { const t = EPREUVES_TYPES[c]; if (!t) return; if (!g[t[0]]) { g[t[0]] = []; ordre.push(t[0]); } g[t[0]].push(t[1]); });
@@ -1047,6 +1076,7 @@ function formatDateToEnglish(dateStr) {
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
                             ${epreuvesGroupees(it.cats)}
                             ${r.estimee ? `<p class="cm-note">${CM.note}</p>` : ""}
+                            ${combinaisonHTML(it)}
                             <div class="cm-btns">
                                 ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
                                 ${r[3] ? `<a href="mailto:${r[3]}">${CM.bMail}</a>` : ""}
@@ -1136,6 +1166,7 @@ function formatDateToEnglish(dateStr) {
                     ${epreuvesGroupees(it.cats)}
                     ${r.estimee ? `<p class="cb-note">${CM.note}</p>` : ""}
                 </div>
+                ${combinaisonHTML(it)}
                 ${lieu ? `<div class="cb-carte"><iframe loading="lazy" title="${CB.carte}" src="https://maps.google.com/maps?q=${encodeURIComponent(lieu)}&z=11&output=embed"></iframe></div>` : ""}
                 <div class="cb-btns">
                     ${r[4] ? `<a href="${r[4]}" target="_blank" rel="noopener">${CM.bSite}</a>` : ""}
