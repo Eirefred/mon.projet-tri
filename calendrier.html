@@ -1035,8 +1035,24 @@ autre_langue: en/calendar.html
             DS: ["Duathlon", "Sprint"], DO: ["Duathlon", "Olympique"], DL: ["Duathlon", "Longue distance"],
             AQ: ["Autres", "Aquathlon"], AV: ["Autres", "Aquavélo"], AT: ["Autres", "Atypique (épreuve ou distance non conventionnelle)"]
         };
-        // Historique de la combinaison isothermique (données : _data/combinaison.csv)
+        // Historique de la combinaison isothermique (données : _data/historique_wetsuit.csv)
         const COMBI = { titre: 'Combinaison isothermique : historique', st: { Oui: ["ok", "✓", "Permise"], Non: ["no", "✕", "Interdite"], NA: ["na", "–", "Natation annulée"] }, mois: ["", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"], piscine: '🏊 Natation en piscine : pas de combinaison.', vide: 'Aucune donnée pour cette épreuve.', resTQ: 'Décision prise le matin même par un officiel de Triathlon Québec.', resAutre: "Décision prise le jour de l'épreuve.", plus: "Plus d'info", txtTQ: "Pour les épreuves sanctionnées par Triathlon Québec, un officiel de Triathlon Québec décide le matin même, en fonction de la température de l'eau. Les règles dépendent de la température de l'eau, de la distance de l'épreuve et de l'âge du participant.", txtAutre: "Épreuve non sanctionnée par Triathlon Québec : le port de la combinaison isothermique (wetsuit) dépend de la décision de l'organisateur.", lien: 'Règles de compétition de Triathlon Québec\u00a0›', regles: "https://www.triathlonquebec.org/series-evenements/regles-competition/" };
+        // Lit l'historique (colonnes « Mois Année ») et le met sous la forme [événement, année, mois, statut]
+        let COMBI_LIGNES = null;
+        function combiLignes() {
+            if (COMBI_LIGNES) return COMBI_LIGNES;
+            const M = { janvier: 1, fevrier: 2, mars: 3, avril: 4, mai: 5, juin: 6, juillet: 7, aout: 8, septembre: 9, octobre: 10, novembre: 11, decembre: 12 };
+            const vus = new Set(); COMBI_LIGNES = [];
+            (typeof DONNEES_COMBI !== "undefined" ? DONNEES_COMBI : []).forEach(([ev, cols]) => (cols || []).forEach(([k, v]) => {
+                const m = String(k).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim().match(/^([a-z]+)\s+(\d{4})$/);
+                const st = { oui: "Oui", non: "Non", na: "NA" }[String(v).trim().toLowerCase()];
+                if (!m || !M[m[1]] || !st) return;
+                const cle = [String(ev).trim(), m[2], M[m[1]], st].join("|");
+                if (vus.has(cle)) return;
+                vus.add(cle); COMBI_LIGNES.push([String(ev).trim(), +m[2], M[m[1]], st]);
+            }));
+            return COMBI_LIGNES;
+        }
         function combinaisonHTML(it) {
             // Épreuve atypique seule (aucun autre type de course) : pas de natation, donc pas d'info sur la combinaison
             const codes = String(it.cats || "").split(",").filter(c => c && c !== "PI");
@@ -1044,7 +1060,7 @@ autre_langue: en/calendar.html
             const tete = `🌊 Combinaison `;
             if (String(it.cats).split(",").includes("PI")) return `<div class="ws"><div class="ws-res"><span><span class="ws-lab">🌊 Combinaison (wetsuit)</span><b class="ws-niv na">Non applicable (piscine)</b></span></div></div>`;
             const nom = String(it.row[1] || "").trim();
-            const lignes = (typeof DONNEES_COMBI !== "undefined" ? DONNEES_COMBI : []).filter(l => String(l[0]).trim() === nom && COMBI.st[l[3]])
+            const lignes = combiLignes().filter(l => String(l[0]).trim() === nom && COMBI.st[l[3]])
                 .sort((a, b) => (b[1] - a[1]) || (b[2] - a[2]));
             if (!lignes.length) return `<div class="ws"><div class="ws-res"><span><span class="ws-lab">🌊 Combinaison (wetsuit)</span><b class="ws-niv vide">Aucune donnée</b></span></div></div>`;
             const y = lignes.filter(l => l[3] !== "NA").length, x = lignes.filter(l => l[3] === "Oui").length;
