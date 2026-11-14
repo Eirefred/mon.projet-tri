@@ -1028,6 +1028,9 @@ autre_langue: en/calendar.html
         // Historique de la combinaison isothermique (données : _data/combinaison.csv)
         const COMBI = { titre: 'Combinaison isothermique : historique', st: { Oui: ["ok", "✓", "Permise"], Non: ["no", "✕", "Interdite"], NA: ["na", "–", "Natation annulée"] }, mois: ["", "Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"], piscine: '🏊 Natation en piscine : pas de combinaison.', vide: 'Aucune donnée pour cette épreuve.', resTQ: 'Décision prise le matin même par un officiel de Triathlon Québec.', resAutre: "Décision prise le jour de l'épreuve.", plus: "Plus d'info", txtTQ: "Pour les épreuves sanctionnées par Triathlon Québec, un officiel de Triathlon Québec décide le matin même, en fonction de la température de l'eau. Les règles dépendent de la température de l'eau, de la distance de l'épreuve et de l'âge du participant.", txtAutre: "Cette épreuve n'est pas sanctionnée par Triathlon Québec : l'organisation décide le jour de l'épreuve selon ses propres règles. Pour vous faire une idée, les règles de Triathlon Québec dépendent de la température de l'eau, de la distance de l'épreuve et de l'âge du participant.", lien: 'Règles de compétition de Triathlon Québec\u00a0›', regles: "https://www.triathlonquebec.org/series-evenements/regles-competition/" };
         function combinaisonHTML(it) {
+            // Épreuve atypique seule (aucun autre type de course) : pas de natation, donc pas d'info sur la combinaison
+            const codes = String(it.cats || "").split(",").filter(c => c && c !== "PI");
+            if (codes.length && codes.every(c => c === "AT")) return "";
             let h = `<div class="ws"><div class="ws-t">🌊 ${COMBI.titre}</div>`;
             if (String(it.cats).split(",").includes("PI")) return h + `<p class="ws-msg">${COMBI.piscine}</p></div>`;
             const nom = String(it.row[1] || "").trim();
@@ -1076,7 +1079,7 @@ autre_langue: en/calendar.html
                         </button>
                         <div class="cm-det">
                             <h3>${it.isTQ}${r[1]}</h3>
-                            <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Natation en piscine</span>` : ""}</div>
+                            <div class="cm-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 en piscine</span>` : ""}</div>
                             <p><span>${CM.lDate}${CM.dp}</span> <span class="fiche-date${r.estimee ? " estimee" : ""}">${dateTxt}</span></p>
                             <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                             <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
@@ -1165,7 +1168,7 @@ autre_langue: en/calendar.html
             fiche.innerHTML = `
                 <div class="cb-quand${r.estimee ? " estimee" : ""}">${CM.dateComplete(r[0], it.debut, it.fin)}</div>
                 <h3>${it.isTQ}${r[1]}</h3>
-                <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 Natation en piscine</span>` : ""}</div>
+                <div class="cb-fiche-badges">${it.badges.replace(/<span class="badge cat-piscine"[^>]*>PI<\/span>/, "")}${String(it.cats).split(",").includes("PI") ? `<span class="tag-piscine">🏊 en piscine</span>` : ""}</div>
                 <div class="cb-infos">
                     <p><span>${CM.lOrg}${CM.dp}</span> ${r[6] || "-"}</p>
                     <p><span>${CM.lLieu}${CM.dp}</span> ${it.ville}${r[2] ? ", " + r[2] : ""}</p>
