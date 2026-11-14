@@ -674,6 +674,7 @@ autre_langue: ../calendrier.html
         .badge[title^="Atyp"] { cursor: help; }
         /* Ordinateur : colonne de gauche = mois + filtres */
         @media (min-width: 835px) {
+            .cal-bureau { min-height: calc(100vh - var(--cb-top, 120px) - 12px); }
             .cb-side { position: sticky; top: var(--cb-top, 120px); align-self: start; max-height: calc(100vh - var(--cb-top, 120px) - 12px); overflow-y: auto; border-right: 1px solid #e8edf3; padding: 10px 0 14px; scrollbar-width: thin; }
             .cb-titre { display: flex; justify-content: space-between; align-items: center; padding: 6px 16px 5px; font-family: 'Montserrat', sans-serif; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.6px; text-transform: uppercase; color: #64748b; }
             .cb-titre button { font: inherit; font-size: 0.72rem; text-transform: none; letter-spacing: 0; color: #004c97; background: none; border: 0; cursor: pointer; padding: 0; }
@@ -1338,6 +1339,14 @@ function formatDateToEnglish(dateStr) {
                 r.classList.toggle('hidden', !ok);
             });
             majMobile(); majBureau(); syncFiltresUI();
+            // Ordinateur : si la liste devient courte, la page raccourcit et le navigateur saute vers le bas.
+            // On ramène plutôt le haut du calendrier sous l'en-tête.
+            const cb = document.getElementById('calBureau');
+            if (cb && cb.offsetParent && window.innerWidth >= 835) {
+                const haut = parseFloat(getComputedStyle(cb).getPropertyValue('--cb-top')) || 0;
+                const y = cb.getBoundingClientRect().top + window.pageYOffset - haut - 10;
+                if (window.pageYOffset > y) window.scrollTo({ top: y });
+            }
         }
         function syncFiltresUI() {
             document.querySelectorAll('[data-f-code]').forEach(b => { if (!b.classList.contains('f-chip')) { const on = FILTRES.has(b.dataset.fCode); b.classList.toggle('on', on); b.setAttribute('aria-checked', on); } });
