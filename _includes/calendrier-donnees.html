@@ -2,7 +2,8 @@
   Données du calendrier lues par la page (calendrier.html et en/calendar.html).
   Jekyll les écrit à partir des fichiers _data/calendrier_2027.csv et _data/calendrier_2026.csv.
   Historique de la combinaison isothermique : _data/historique_wetsuit.csv
-  (une ligne par épreuve et par édition : Événement, Année, Mois en chiffre, Statut Oui / Non / NA).
+  (une ligne par épreuve, une colonne par édition nommée « Mois Année », par exemple « Juin 2025 » ;
+  valeurs : Oui, Non, NA ; les autres colonnes sont ignorées. Chaque nom de colonne doit être unique.)
   Ne pas renommer ni réordonner les colonnes des fichiers CSV.
 {%- endcomment -%}
 <script>
@@ -15,6 +16,7 @@
         {{ an }}: [{%- for r in d -%}{%- if forloop.first -%}[{%- for p in r -%}{{ p[0] | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}],{%- endif -%}[{%- for p in r -%}{{ p[1] | jsonify }}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]{%- unless forloop.last -%},{%- endunless -%}
 {%- endfor %}
     };
-    // Historique de la combinaison isothermique : [événement, année, mois, statut]
-    const DONNEES_COMBI = [{%- for r in site.data.historique_wetsuit -%}[{{ r["Événement"] | jsonify }},{{ r["Année"] | jsonify }},{{ r["Mois"] | jsonify }},{{ r["Statut"] | jsonify }}]{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}];
+    // Historique de la combinaison isothermique : pour chaque épreuve, les colonnes « Mois Année » non vides
+    // (la page garde seulement les valeurs Oui, Non et NA)
+    const DONNEES_COMBI = [{%- for r in site.data.historique_wetsuit -%}[{{ r["Événement"] | jsonify }},[{%- assign premier = true -%}{%- for p in r -%}{%- if p[1] and p[1] != "" -%}{%- unless premier -%},{%- endunless -%}[{{ p[0] | jsonify }},{{ p[1] | jsonify }}]{%- assign premier = false -%}{%- endif -%}{%- endfor -%}]]{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}];
 </script>
