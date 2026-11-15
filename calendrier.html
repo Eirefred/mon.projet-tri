@@ -749,6 +749,44 @@ autre_langue: en/calendar.html
         .f-voir { display: block; width: 100%; height: 46px; margin-top: 10px; border: 0; border-radius: 50px; background: #003366; color: #ffffff; font: inherit; font-size: 0.9rem; font-weight: 800; cursor: pointer; }
         @media (min-width: 1101px) { .cal-bureau { grid-template-columns: 200px minmax(0, 1fr) 320px; } }
         .f-fam-titre { white-space: nowrap; }
+        /* Bouton et fenêtre « Proposer un ajout ou une correction » (envoi vers le Google Form de la page Contribuer) */
+        .co-prop { display: inline-flex; align-items: center; gap: 6px; height: 30px; padding: 0 14px; border-radius: 50px; border: 1px solid #004c97; background: #ffffff; color: #004c97; font: inherit; font-size: 0.78rem; font-weight: 800; cursor: pointer; white-space: nowrap; }
+        .co-prop:hover { background: #e8f2fb; }
+        @media (min-width: 835px) {
+            .cal-options { justify-content: flex-start; flex-wrap: nowrap; white-space: nowrap; }
+            .cal-options .co-prop { margin-left: auto; }
+            .cm-fiche.pp-fiche { left: 50%; right: auto; top: 50%; bottom: auto; width: 520px; max-width: calc(100vw - 40px); max-height: 88vh; border-radius: 16px; padding: 22px 24px; transform: translate(-50%, -46%); opacity: 0; transition: transform 0.2s ease, opacity 0.2s ease; }
+            .cm-fiche.pp-fiche.ouvert { transform: translate(-50%, -50%); opacity: 1; }
+            .cm-fiche.pp-fiche .cm-poignee { display: none; }
+        }
+        @media (max-width: 834px) {
+            .cal-options .co-prop { margin-top: 2px; }
+        }
+        .pp-fiche h3 { margin: 0 40px 4px 0; font-size: 1.12rem; color: #003366; }
+        .pp-fiche .pp-sous { margin: 0 0 14px; font-size: 0.8rem; line-height: 1.45; color: #64748b; }
+        .pp-seg { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; background: #f1f5f9; border-radius: 10px; padding: 4px; margin-bottom: 6px; }
+        .pp-seg button { border: 0; background: none; padding: 7px 4px; border-radius: 8px; font: inherit; font-size: 0.78rem; line-height: 1.25; font-weight: 700; color: #475569; cursor: pointer; }
+        .pp-seg button.on { background: #ffffff; color: #003366; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+        .pp-form label.pp-l { display: block; font-size: 0.8rem; font-weight: 700; color: #1e293b; margin: 12px 0 4px; }
+        .pp-form label.pp-l i { font-style: normal; color: #b42318; }
+        .pp-form label.pp-l small { font-weight: 500; color: #64748b; }
+        .pp-form input[type=text], .pp-form input[type=url], .pp-form input[type=email], .pp-form select, .pp-form textarea { width: 100%; box-sizing: border-box; border: 1px solid #cbd5e1; border-radius: 8px; padding: 9px 10px; font: inherit; font-size: 0.86rem; color: #0f172a; background: #ffffff; }
+        .pp-form textarea { min-height: 70px; resize: vertical; }
+        .pp-form input:focus, .pp-form select:focus, .pp-form textarea:focus { outline: 2px solid #93c5fd; border-color: #1976d2; }
+        .pp-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .pp-ck { display: flex; flex-wrap: wrap; gap: 5px; }
+        .pp-ck label { cursor: pointer; }
+        .pp-ck input { position: absolute; opacity: 0; pointer-events: none; }
+        .pp-ck span { display: inline-block; font-size: 0.76rem; padding: 5px 10px; border: 1px solid #e2e8f0; border-radius: 50px; background: #f8fafc; color: #334155; }
+        .pp-ck input:checked + span { background: #e3f2fd; border-color: #1976d2; color: #0d47a1; font-weight: 700; }
+        .pp-ck input:focus-visible + span { outline: 2px solid #93c5fd; }
+        .pp-rad { display: flex; gap: 18px; font-size: 0.86rem; }
+        .pp-rad label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+        .pp-note { margin: 4px 0 0; font-size: 0.72rem; color: #64748b; }
+        .pp-envoyer { display: block; width: 100%; height: 46px; margin-top: 16px; border: 0; border-radius: 50px; background: #003366; color: #ffffff; font: inherit; font-size: 0.9rem; font-weight: 800; cursor: pointer; }
+        .pp-envoyer:disabled { opacity: 0.6; cursor: default; }
+        .pp-merci { margin: 10px 0 0; padding: 18px; border-radius: 12px; background: #e0f2fe; color: #004c97; font-weight: 700; text-align: center; line-height: 1.5; }
+        .pp-cache { display: none !important; }
         /* Historique de la combinaison isothermique (fiche des épreuves) : une ligne, l'historique s'ouvre au clic */
         .ws { margin: 2px 0 12px; font-size: 0.8rem; color: #334155; text-align: left; }
         .ws-res, .ws > summary { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 10px; border: 1px solid #e2e8f0; border-radius: 9px; background: #f8fafc; }
@@ -875,10 +913,11 @@ autre_langue: en/calendar.html
 
             <!-- Note d'information optimisée pour l'affichage sur deux lignes -->
             <div class="cal-options" role="group" aria-label="Options d'affichage">
-                <span class="co-tq"><img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ" width="16" height="16"> <b>=</b> épreuve sanctionnée par Triathlon Québec · <a href="javascript:void(0)" onclick="openTqModal()">Voir plus</a></span>
+                <span class="co-tq"><img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="TQ" width="16" height="16"> <b>=</b> sanctionnée par TQ · <a href="javascript:void(0)" onclick="openTqModal()">Voir plus</a></span>
                 <span class="co-sep" aria-hidden="true"></span>
-                <button type="button" class="f-ck" data-f-pis role="checkbox" aria-checked="false"><span class="bx" aria-hidden="true"></span><span class="badge cat-piscine">PI</span>Épreuves en piscine seulement</button>
-                <button type="button" class="f-ck" data-f-passe role="checkbox" aria-checked="true"><span class="bx" aria-hidden="true"></span>Afficher les épreuves terminées</button>
+                <button type="button" class="f-ck" data-f-pis role="checkbox" aria-checked="false"><span class="bx" aria-hidden="true"></span><span class="badge cat-piscine">PI</span>Piscine seulement</button>
+                <button type="button" class="f-ck" data-f-passe role="checkbox" aria-checked="true"><span class="bx" aria-hidden="true"></span>Épreuves terminées</button>
+                <button type="button" class="co-prop" onclick="ouvrirProposition()">✏️ Proposer un ajout ou une correction</button>
             </div>
             <div class="tq-note-container" style="position: relative; z-index: 1; margin: 15px auto; font-size: 0.8rem; color: #5A6A7A; line-height: 1.4; max-width: 1000px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 5px; flex-wrap: wrap;">
     <img src="https://www.triathlonquebec.org/wp-content/uploads/2025/01/cropped-cropped-favicon_TQ-32x32-1-1-32x32.webp" alt="Logo TQ" style="width: 16px; height: 16px; vertical-align: middle;">
@@ -1390,6 +1429,101 @@ autre_langue: en/calendar.html
             const t = document.getElementById('pastToggle');
             if (t) { t.checked = on; togglePastEvents(); }
             syncFiltresUI();
+        }
+        // --- Proposer un ajout ou une correction : fenêtre envoyée au Google Form de la page Contribuer ---
+        // Les réponses arrivent dans le tableur « Contribuer - Ressources » ; la colonne « Type de contribution » indique « Calendrier : … (FR) ».
+        const PROP = {"com": "💬 Commentaire ou suggestion", "msg": "Votre commentaire ou suggestion", "msgPh": "Ex. : une idée pour améliorer le calendrier, une information à ajouter, une remarque…", "optCom": "(optionnel, pour une réponse)", "titre": "Contribuer au calendrier", "sous": "Votre message sera lu par l'équipe de mon Projet Tri. Les ajouts et corrections sont vérifiés avant d'être publiés.", "corr": "✏️ Corriger une épreuve", "ajout": "➕ Ajouter une épreuve", "epreuve": "Épreuve à corriger", "choisir": "Choisir une épreuve…", "quoi": "Qu'est-ce qui doit être corrigé ?", "quoiPh": "Ex. : nouvelle date confirmée, distance ajoutée, site web changé…", "nom": "Nom de l'épreuve", "nomPh": "Ex. : Triathlon du lac Bleu", "date": "Date 2027", "datePh": "Ex. : 12 juin 2027", "ville": "Ville", "villePh": "Ex. : Sherbrooke", "site": "Site web", "offertes": "Épreuves offertes", "prec": "Précisions", "precPh": "Natation en lac ou en piscine, inscription, etc.", "orga": "Êtes-vous l'organisateur de cette épreuve ?", "oui": "Oui", "non": "Non", "courriel": "Courriel", "opt": "(optionnel, pour un suivi)", "oblig": "Obligatoire pour les organisateurs : nous pourrons confirmer l'information avec vous.", "envoyer": "Envoyer la proposition", "envoi": "Envoi en cours…", "merci": "✅ Merci ! Votre proposition a été envoyée. Notre équipe va la vérifier très bientôt.", "fermer": "Fermer", "erreur": "Une erreur est survenue lors de l'envoi. Veuillez réessayer.", "dist": ["Initiation", "Super sprint", "Sprint", "Olympique", "Demi-distance", "Longue distance", "Duathlon", "Aquathlon", "Aquavélo", "Autre"]};
+        const PROP_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdq7AoT7i-COoaTO8cAgdI7iQgP3GtBgwAC_vp5KIm00s9KCg/formResponse";
+        const PROP_ENTREES = { type: "entry.1870590711", nom: "entry.1225718237", region: "entry.1661901425", lien: "entry.1166498912", explication: "entry.1016564203", courriel: "entry.546586328" };
+        function propChamps(mode) {
+            const T = PROP, e = s => String(s).replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+            const orga = `<label class="pp-l">${T.orga} <i>*</i></label><div class="pp-rad"><label><input type="radio" name="orga" value="oui" required> ${T.oui}</label><label><input type="radio" name="orga" value="non"> ${T.non}</label></div>
+                <label class="pp-l" for="ppCourriel">${T.courriel} <i class="pp-etoile pp-cache">*</i> <small class="pp-opt">${T.opt}</small></label><input type="email" id="ppCourriel" name="courriel" placeholder="nom@exemple.com" autocomplete="email"><p class="pp-note pp-oblig pp-cache">${T.oblig}</p>`;
+            if (mode === "com") {
+                const ph = document.documentElement.lang === "en" ? "name@example.com" : "nom@exemple.com";
+                return `<label class="pp-l" for="ppMsg">${T.msg} <i>*</i></label><textarea id="ppMsg" name="msg" required placeholder="${e(T.msgPh)}" style="min-height:110px"></textarea>
+                    <label class="pp-l" for="ppCourriel">${T.courriel} <small>${T.optCom}</small></label><input type="email" id="ppCourriel" name="courriel" placeholder="${ph}" autocomplete="email">`;
+            }
+            if (mode === "corr") {
+                const vus = new Set();
+                const opts = (CB_ITEMS || []).filter(it => { const n = String(it.row[1] || "").trim(); if (!n || vus.has(n)) return false; vus.add(n); return true; })
+                    .map(it => `<option value="${e(String(it.row[1]).trim())}">${e(String(it.row[1]).trim())}${it.row[0] ? " — " + e(it.row[0]) : ""}</option>`).join("");
+                return `<label class="pp-l" for="ppEpreuve">${T.epreuve} <i>*</i></label><select id="ppEpreuve" name="epreuve" required><option value="">${T.choisir}</option>${opts}</select>
+                    <label class="pp-l" for="ppQuoi">${T.quoi} <i>*</i></label><textarea id="ppQuoi" name="quoi" required placeholder="${e(T.quoiPh)}"></textarea>` + orga;
+            }
+            return `<label class="pp-l" for="ppNom">${T.nom} <i>*</i></label><input type="text" id="ppNom" name="nom" required placeholder="${e(T.nomPh)}">
+                <div class="pp-row2"><div><label class="pp-l" for="ppDate">${T.date} <i>*</i></label><input type="text" id="ppDate" name="date" required placeholder="${e(T.datePh)}"></div><div><label class="pp-l" for="ppVille">${T.ville} <i>*</i></label><input type="text" id="ppVille" name="ville" required placeholder="${e(T.villePh)}"></div></div>
+                <label class="pp-l" for="ppSite">${T.site}</label><input type="url" id="ppSite" name="site" placeholder="https://">
+                <label class="pp-l">${T.offertes}</label><div class="pp-ck">${T.dist.map(d => `<label><input type="checkbox" name="dist" value="${e(d)}"><span>${d}</span></label>`).join("")}</div>
+                <label class="pp-l" for="ppPrec">${T.prec}</label><textarea id="ppPrec" name="prec" placeholder="${e(T.precPh)}"></textarea>` + orga;
+        }
+        function propMode(mode) {
+            const fiche = document.getElementById('ppFiche');
+            fiche.dataset.mode = mode;
+            fiche.querySelectorAll('.pp-seg button').forEach(b => b.classList.toggle('on', b.dataset.mode === mode));
+            fiche.querySelector('.pp-champs').innerHTML = propChamps(mode);
+            fiche.querySelectorAll('input[name=orga]').forEach(r => r.addEventListener('change', propOrga));
+        }
+        // Organisateur : courriel obligatoire
+        function propOrga() {
+            const fiche = document.getElementById('ppFiche');
+            const oui = !!fiche.querySelector('input[name=orga][value=oui]:checked');
+            fiche.querySelector('#ppCourriel').required = oui;
+            fiche.querySelector('.pp-etoile').classList.toggle('pp-cache', !oui);
+            fiche.querySelector('.pp-opt').classList.toggle('pp-cache', oui);
+            fiche.querySelector('.pp-oblig').classList.toggle('pp-cache', !oui);
+        }
+        function ouvrirProposition(mode, nom) {
+            creerFiche();
+            let fiche = document.getElementById('ppFiche');
+            if (!fiche) {
+                fiche = document.createElement('div'); fiche.id = 'ppFiche'; fiche.className = 'cm-fiche pp-fiche';
+                fiche.setAttribute('role', 'dialog'); fiche.setAttribute('aria-modal', 'true'); fiche.setAttribute('aria-labelledby', 'ppTitre');
+                document.body.appendChild(fiche);
+            }
+            const T = PROP;
+            fiche.innerHTML = `<div class="cm-poignee" aria-hidden="true"></div><button type="button" class="cm-fermer" aria-label="${T.fermer}" onclick="fermerFiche()">✕</button>
+                <h3 id="ppTitre">${T.titre}</h3><p class="pp-sous">${T.sous}</p>
+                <form class="pp-form" novalidate><div class="pp-seg" role="tablist"><button type="button" data-mode="corr" onclick="propMode('corr')">${T.corr}</button><button type="button" data-mode="ajout" onclick="propMode('ajout')">${T.ajout}</button><button type="button" data-mode="com" onclick="propMode('com')">${T.com}</button></div>
+                <div class="pp-champs"></div><button type="submit" class="pp-envoyer">${T.envoyer}</button></form>`;
+            fiche.querySelector('form').addEventListener('submit', propEnvoyer);
+            propMode(mode || "corr");
+            if (nom) { const s = fiche.querySelector('#ppEpreuve'); if (s) s.value = nom; }
+            fiche.scrollTop = 0;
+            document.documentElement.classList.add('cm-bloque');
+            document.getElementById('cmVoile').classList.add('ouvert');
+            fiche.classList.add('ouvert');
+        }
+        function propEnvoyer(ev) {
+            ev.preventDefault();
+            const form = ev.target, fiche = document.getElementById('ppFiche'), mode = fiche.dataset.mode, T = PROP;
+            if (!form.reportValidity()) return;
+            const f = new FormData(form), v = k => String(f.get(k) || "").trim();
+            const orga = v("orga") === "oui" ? "Oui" : "Non";
+            let nom, region = "", lien = "", lignes;
+            if (mode === "com") {
+                nom = ""; lignes = ["Message : " + v("msg")];
+            } else if (mode === "corr") {
+                nom = v("epreuve");
+                const it = (CB_ITEMS || []).find(i => String(i.row[1] || "").trim() === nom);
+                if (it) { region = [it.ville, it.row[2]].filter(Boolean).join(", "); lien = it.row[4] || ""; }
+                lignes = ["Organisateur de l'épreuve : " + orga, "Correction : " + v("quoi")];
+            } else {
+                nom = v("nom"); region = v("ville"); lien = /^https?:\/\/$/.test(v("site")) ? "" : v("site");
+                lignes = ["Organisateur de l'épreuve : " + orga, "Date 2027 : " + v("date")];
+                const d = f.getAll("dist"); if (d.length) lignes.push("Épreuves offertes : " + d.join(", "));
+                if (v("prec")) lignes.push("Précisions : " + v("prec"));
+            }
+            const donnees = new FormData();
+            const ajouter = (k, val) => { if (val) donnees.append(PROP_ENTREES[k], val); };
+            ajouter("type", ({ corr: "Calendrier : correction", ajout: "Calendrier : ajout", com: "Calendrier : commentaire" })[mode] + " (FR)");
+            ajouter("nom", nom); ajouter("region", region); ajouter("lien", lien);
+            ajouter("explication", lignes.join("\n")); ajouter("courriel", v("courriel"));
+            const bouton = form.querySelector('.pp-envoyer');
+            bouton.disabled = true; bouton.textContent = T.envoi;
+            fetch(PROP_FORM, { method: "POST", body: donnees, mode: "no-cors" })
+                .then(() => { form.outerHTML = `<p class="pp-merci">${T.merci}</p><button type="button" class="pp-envoyer" onclick="fermerFiche()">${T.fermer}</button>`; })
+                .catch(() => { alert(T.erreur); bouton.disabled = false; bouton.textContent = T.envoyer; });
         }
         function ouvrirFiltres() {
             creerFiche();
